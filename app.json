@@ -1,6 +1,6 @@
 {
   "expo": {
-    "name": "apothecary-recipes",
+    "name": "Apothecary Recipes",
     "slug": "apothecary-recipes",
     "version": "1.0.0",
     "orientation": "portrait",
@@ -16,6 +16,7 @@
       "supportsTablet": true
     },
     "android": {
+      "package": "com.ai1offs.apothecaryrecipes",
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"
@@ -25,6 +26,11 @@
     },
     "web": {
       "favicon": "./assets/favicon.png"
+    },
+    "extra": {
+      "eas": {
+        "projectId": "a731f3e3-66ef-47c3-8a09-974590383942"
+      }
     }
   }
 }
