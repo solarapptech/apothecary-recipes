@@ -1,9 +1,14 @@
 import { StatusBar } from 'expo-status-bar';
 import { useEffect, useMemo, useRef, useState } from 'react';
 import { ActivityIndicator, Alert, BackHandler, Modal, Platform, Pressable, StatusBar as RNStatusBar, StyleSheet, Text, View } from 'react-native';
+import { useFonts } from 'expo-font';
+import { Inter_400Regular, Inter_500Medium, Inter_600SemiBold } from '@expo-google-fonts/inter';
+import { PlayfairDisplay_600SemiBold, PlayfairDisplay_700Bold } from '@expo-google-fonts/playfair-display';
+import * as SplashScreen from 'expo-splash-screen';
 import Animated, { FadeInLeft, FadeInRight, FadeOutLeft, FadeOutRight } from 'react-native-reanimated';
 
 import { motionDurationMs } from './motionPolicy';
+import { AppBackground } from '../components/AppBackground';
 import { DashboardControlsRow } from '../components/DashboardControlsRow';
 import { PaginationBar } from '../components/PaginationBar';
 import { OverflowMenu } from '../components/OverflowMenu';
@@ -49,6 +54,7 @@ import { SettingsScreen } from '../screens/SettingsScreen';
 import type { Plan } from '../types/plan';
 import type { SortMode } from '../types/sortMode';
 import type { ViewMode } from '../types/viewMode';
+import { theme } from '../ui/theme';
 
 type RouteName = 'dashboard' | 'settings';
 
@@ -155,7 +161,18 @@ type UiState =
 export function AppShell({ deps, initialPage }: AppShellProps) {
   const resolved = useMemo(() => ({ ...defaultDeps, ...deps }), [deps]);
 
+  const [fontsLoaded] = useFonts({
+    Inter_400Regular,
+    Inter_500Medium,
+    Inter_600SemiBold,
+    PlayfairDisplay_600SemiBold,
+    PlayfairDisplay_700Bold,
+  });
+
   const androidTopInset = Platform.OS === 'android' ? RNStatusBar.currentHeight ?? 0 : 0;
+
+  const [uiState, setUiState] = useState<UiState>({ status: 'loading' });
+  const [route, setRoute] = useState<RouteName>('dashboard');
 
   const isMountedRef = useRef(true);
   useEffect(() => {
@@ -164,8 +181,16 @@ export function AppShell({ deps, initialPage }: AppShellProps) {
     };
   }, []);
 
-  const [uiState, setUiState] = useState<UiState>({ status: 'loading' });
-  const [route, setRoute] = useState<RouteName>('dashboard');
+  useEffect(() => {
+    if (!fontsLoaded) {
+      return;
+    }
+    if (uiState.status !== 'ready') {
+      return;
+    }
+
+    void SplashScreen.hideAsync().catch(() => undefined);
+  }, [fontsLoaded, uiState.status]);
 
   const [menuVisible, setMenuVisible] = useState(false);
 
@@ -434,76 +459,69 @@ export function AppShell({ deps, initialPage }: AppShellProps) {
     return () => {
       cancelled = true;
     };
-  }, [infinitePage, infiniteScrollEnabled, page, pageSize, plan, randomSeed, recipesRefreshNonce, resolved, searchQuery, sortMode, uiState]);
+  }, [
+    infinitePage,
+    infiniteScrollEnabled,
+    page,
+    pageSize,
+    plan,
+    randomSeed,
+    recipesRefreshNonce,
+    resolved,
+    searchQuery,
+    sortMode,
+    uiState,
+  ]);
 
   const isInitialRecipesLoading = recipes.length === 0 && isRecipesLoading;
 
+  if (!fontsLoaded) {
+    return (
+      <AppBackground>
+        <View style={styles.centered}>
+          <ActivityIndicator />
+          <Text style={styles.subtitle}>Loading fonts…</Text>
+        </View>
+      </AppBackground>
+    );
+  }
+
   if (uiState.status === 'loading') {
     return (
-      <View style={styles.centered}>
-        <ActivityIndicator />
-        <Text style={styles.subtitle}>Initializing library…</Text>
-        <StatusBar style="auto" />
-      </View>
+      <AppBackground>
+        <View style={styles.centered}>
+          <ActivityIndicator />
+          <Text style={styles.subtitle}>Initializing library…</Text>
+        </View>
+      </AppBackground>
     );
   }
 
   if (uiState.status === 'error') {
     return (
-      <View style={styles.centered}>
-        <Text style={styles.title}>Apothecary Recipes</Text>
-        <Text style={styles.error}>Error: {uiState.message}</Text>
-        <StatusBar style="auto" />
-      </View>
+      <AppBackground>
+        <View style={styles.centered}>
+          <Text style={styles.title}>Apothecary Recipes</Text>
+          <Text style={styles.error}>Error: {uiState.message}</Text>
+        </View>
+      </AppBackground>
     );
   }
 
-  const footer = (
-    <View style={styles.footerContainer}>
-      <PaginationBar
-        mode={infiniteScrollEnabled ? 'infinite' : 'paged'}
-        page={page}
-        totalPages={totalPages}
-        pageSize={pageSize}
-        totalCount={totalCount}
-        loadedCount={infiniteScrollEnabled ? recipes.length : undefined}
-        maxNumericButtons={MAX_NUMERIC_PAGE_BUTTONS}
-        onPrev={() => {
-          setPage((prev) => Math.max(1, prev - 1));
-        }}
-        onNext={() => {
-          setPage((prev) => Math.min(totalPages, prev + 1));
-        }}
-        onSelectPage={(nextPage) => {
-          setPage(nextPage);
-        }}
-        canLoadMore={infiniteScrollEnabled ? recipes.length < totalCount && !isLoadingMore : undefined}
-        onLoadMore={() => {
-          if (!infiniteScrollEnabled) {
-            return;
-          }
-          if (recipes.length >= totalCount) {
-            return;
-          }
-          setInfinitePage((prev) => prev + 1);
-        }}
-        reduceMotionEnabled={reduceMotionEnabled}
-      />
-    </View>
-  );
-
-  const transitionDuration = motionDurationMs(reduceMotionEnabled, 250);
+  const transitionDuration = motionDurationMs(reduceMotionEnabled, 220);
 
   const bannerProgress = typeof premiumDownloadProgress === 'number' ? premiumDownloadProgress : 0;
-  const bannerVisible = premiumDownloadStatus === 'downloading' || premiumDownloadStatus === 'paused' || premiumDownloadStatus === 'failed';
+  const bannerVisible = plan === 'premium' && premiumCode !== null && premiumDownloadStatus !== 'ready';
   const bannerText =
     premiumDownloadStatus === 'downloading'
-      ? `Downloading premium… ${bannerProgress}%`
+      ? `Downloading ${bannerProgress}%`
       : premiumDownloadStatus === 'paused'
-        ? `Premium download paused (${bannerProgress}%)`
+        ? 'Download paused'
         : premiumDownloadStatus === 'failed'
-          ? 'Premium download failed'
-          : '';
+          ? 'Download failed'
+          : premiumDownloadStatus === 'not-downloaded'
+            ? 'Premium not downloaded'
+            : 'Premium content';
 
   const banner = bannerVisible ? (
     <Pressable
@@ -514,7 +532,9 @@ export function AppShell({ deps, initialPage }: AppShellProps) {
       testID="premium-download-banner"
     >
       <View style={styles.premiumBannerRow}>
-        {premiumDownloadStatus === 'downloading' ? <ActivityIndicator color="#fff" size="small" /> : null}
+        {premiumDownloadStatus === 'downloading' ? (
+          <ActivityIndicator color={theme.colors.ink.onBrand} size="small" />
+        ) : null}
         <Text style={styles.premiumBannerText}>{bannerText}</Text>
       </View>
       <View style={styles.premiumBannerTrack}>
@@ -523,165 +543,196 @@ export function AppShell({ deps, initialPage }: AppShellProps) {
     </Pressable>
   ) : null;
 
-  if (route === 'settings') {
-    return (
-      <>
+  const footer = (
+    <View style={styles.footerContainer}>
+      <PaginationBar
+        mode={infiniteScrollEnabled ? 'infinite' : 'paged'}
+        page={infiniteScrollEnabled ? infinitePage : page}
+        totalPages={totalPages}
+        pageSize={pageSize}
+        totalCount={totalCount}
+        loadedCount={infiniteScrollEnabled ? recipes.length : undefined}
+        maxNumericButtons={MAX_NUMERIC_PAGE_BUTTONS}
+        reduceMotionEnabled={reduceMotionEnabled}
+        onPrev={
+          infiniteScrollEnabled
+            ? undefined
+            : () => {
+                setRecipes([]);
+                setPage((prev) => Math.max(1, prev - 1));
+              }
+        }
+        onNext={
+          infiniteScrollEnabled
+            ? undefined
+            : () => {
+                setRecipes([]);
+                setPage((prev) => Math.min(totalPages, prev + 1));
+              }
+        }
+        onSelectPage={
+          infiniteScrollEnabled
+            ? undefined
+            : (nextPage) => {
+                if (nextPage === page) {
+                  return;
+                }
+                setRecipes([]);
+                setPage(nextPage);
+              }
+        }
+        onLoadMore={
+          infiniteScrollEnabled
+            ? () => {
+                if (recipes.length >= totalCount) {
+                  return;
+                }
+                if (isLoadingMore) {
+                  return;
+                }
+                setInfinitePage((prev) => prev + 1);
+              }
+            : undefined
+        }
+        canLoadMore={infiniteScrollEnabled ? recipes.length < totalCount && !isLoadingMore : undefined}
+      />
+    </View>
+  );
+
+if (route === 'settings') {
+  return (
+    <>
+      <AppBackground>
         <View style={styles.appContainer}>
           {banner}
           <Animated.View
             entering={reduceMotionEnabled ? undefined : FadeInLeft.duration(transitionDuration)}
-            exiting={reduceMotionEnabled ? undefined : FadeOutRight.duration(transitionDuration)}
+            exiting={reduceMotionEnabled ? undefined : FadeOutLeft.duration(transitionDuration)}
             style={styles.screenContainer}
           >
-          <SettingsScreen
-            plan={plan}
-            reduceMotionEnabled={reduceMotionEnabled}
-            onToggleReduceMotionEnabled={(enabled) => {
-              if (uiState.status !== 'ready') {
-                return;
-              }
-
-              const previous = reduceMotionEnabled;
-              setReduceMotionEnabled(enabled);
-              void (async () => {
-                try {
-                  await resolved.setReduceMotionEnabledAsync(uiState.bootstrap.db, enabled);
-                } catch {
-                  setReduceMotionEnabled(previous);
+            <SettingsScreen
+              onBackPress={() => {
+                setRoute('dashboard');
+              }}
+              plan={plan}
+              reduceMotionEnabled={reduceMotionEnabled}
+              onToggleReduceMotionEnabled={async (enabled) => {
+                setReduceMotionEnabled(enabled);
+                await resolved.setReduceMotionEnabledAsync(uiState.bootstrap.db, enabled);
+              }}
+              closeAsYouTapEnabled={closeAsYouTapEnabled}
+              onToggleCloseAsYouTapEnabled={async (enabled) => {
+                setCloseAsYouTapEnabled(enabled);
+                await resolved.setCloseAsYouTapEnabledAsync(uiState.bootstrap.db, enabled);
+              }}
+              autoScrollEnabled={autoScrollEnabled}
+              onToggleAutoScrollEnabled={async (enabled) => {
+                setAutoScrollEnabled(enabled);
+                await resolved.setAutoScrollEnabledAsync(uiState.bootstrap.db, enabled);
+              }}
+              premiumCode={premiumCode}
+              premiumDownloadStatus={premiumDownloadStatus}
+              premiumDownloadProgress={premiumDownloadProgress}
+              onPressUpgrade={() => setCodeEntryVisible(true)}
+              onPressStartPremiumDownload={() => {
+                setPremiumDownloadModalVisible(true);
+                setPremiumDownloadStatus('downloading');
+                setPremiumDownloadProgress(0);
+                void premiumDownloadServiceRef.current?.startAsync();
+              }}
+              onPressPausePremiumDownload={() => {
+                setPremiumDownloadStatus('paused');
+                void premiumDownloadServiceRef.current?.pauseAsync();
+              }}
+              onPressResumePremiumDownload={() => {
+                setPremiumDownloadModalVisible(true);
+                setPremiumDownloadStatus('downloading');
+                void premiumDownloadServiceRef.current?.resumeAsync();
+              }}
+              onPressRetryPremiumDownload={() => {
+                setPremiumDownloadModalVisible(true);
+                setPremiumDownloadStatus('downloading');
+                setPremiumDownloadProgress(0);
+                void premiumDownloadServiceRef.current?.retryAsync();
+              }}
+              onPressShowPremiumDownload={() => {
+                setPremiumDownloadModalVisible(true);
+              }}
+              onPressDevResetPremium={() => {
+                if (!(__DEV__ || ENABLE_DEV_RESET)) {
+                  Alert.alert(
+                    'Reset unavailable',
+                    'Reset Premium is only enabled in dev builds or when EXPO_PUBLIC_ENABLE_DEV_RESET=true.'
+                  );
+                  return;
                 }
-              })();
-            }}
-            closeAsYouTapEnabled={closeAsYouTapEnabled}
-            onToggleCloseAsYouTapEnabled={(enabled) => {
-              if (uiState.status !== 'ready') {
-                return;
-              }
-
-              const previous = closeAsYouTapEnabled;
-              setCloseAsYouTapEnabled(enabled);
-              void (async () => {
-                try {
-                  await resolved.setCloseAsYouTapEnabledAsync(uiState.bootstrap.db, enabled);
-                } catch {
-                  setCloseAsYouTapEnabled(previous);
+                if (!premiumCode) {
+                  Alert.alert('Nothing to reset', 'No premium code is set on this device.');
+                  return;
                 }
-              })();
-            }}
-            autoScrollEnabled={autoScrollEnabled}
-            onToggleAutoScrollEnabled={(enabled: boolean) => {
-              if (uiState.status !== 'ready') {
-                return;
-              }
 
-              const previous = autoScrollEnabled;
-              setAutoScrollEnabled(enabled);
-              void (async () => {
-                try {
-                  await resolved.setAutoScrollEnabledAsync(uiState.bootstrap.db, enabled);
-                } catch {
-                  setAutoScrollEnabled(previous);
-                }
-              })();
-            }}
-            premiumCode={premiumCode}
-            premiumDownloadStatus={premiumDownloadStatus}
-            premiumDownloadProgress={premiumDownloadProgress}
-            onPressUpgrade={() => setCodeEntryVisible(true)}
-            onPressStartPremiumDownload={() => {
-              if (uiState.status !== 'ready') {
-                return;
-              }
-              setPremiumDownloadModalVisible(true);
-              setPremiumDownloadStatus('downloading');
-              setPremiumDownloadProgress(0);
-              void premiumDownloadServiceRef.current?.startAsync();
-            }}
-            onPressPausePremiumDownload={() => {
-              setPremiumDownloadStatus('paused');
-              void premiumDownloadServiceRef.current?.pauseAsync();
-            }}
-            onPressResumePremiumDownload={() => {
-              setPremiumDownloadModalVisible(true);
-              setPremiumDownloadStatus('downloading');
-              void premiumDownloadServiceRef.current?.resumeAsync();
-            }}
-            onPressRetryPremiumDownload={() => {
-              setPremiumDownloadModalVisible(true);
-              setPremiumDownloadStatus('downloading');
-              setPremiumDownloadProgress(0);
-              void premiumDownloadServiceRef.current?.retryAsync();
-            }}
-            onPressShowPremiumDownload={() => {
-              setPremiumDownloadModalVisible(true);
-            }}
-            onPressDevResetPremium={() => {
-              if (!(__DEV__ || ENABLE_DEV_RESET)) {
                 Alert.alert(
-                  'Reset unavailable',
-                  'Reset Premium is only enabled in dev builds or when EXPO_PUBLIC_ENABLE_DEV_RESET=true.'
+                  'Reset Premium?',
+                  'This will remove downloaded premium recipes and switch you back to Free.',
+                  [
+                    { text: 'Cancel', style: 'cancel' },
+                    {
+                      text: 'Reset',
+                      style: 'destructive',
+                      onPress: () => {
+                        void (async () => {
+                          try {
+                            const db = uiState.bootstrap.db;
+
+                            premiumDownloadServiceRef.current = null;
+                            await deleteLocalPremiumBundleFilesAsync();
+                            await db.runAsync('DELETE FROM recipes WHERE isPremium = 1');
+
+                            await resolved.setPremiumDownloadStatusAsync(db, 'not-downloaded');
+                            await resolved.setPremiumDownloadProgressAsync(db, null);
+                            await resolved.setPremiumBundleUrlAsync(db, null);
+                            await resolved.setPremiumBundleVersionAsync(db, null);
+                            await resolved.setPremiumBundleSha256Async(db, null);
+                            await resolved.setPremiumCodeAsync(db, null);
+                            await resolved.setPlanAsync(db, 'free');
+
+                            setPremiumDownloadStatus('not-downloaded');
+                            setPremiumDownloadProgress(null);
+                            setPremiumBundleUrl(null);
+                            setPremiumBundleVersion(null);
+                            setPremiumBundleSha256(null);
+                            setPremiumCode(null);
+                            setPlan('free');
+
+                            setRecipes([]);
+                            setPage(1);
+                            setInfinitePage(1);
+                            setRecipesRefreshNonce((value) => value + 1);
+
+                            Alert.alert('Reset complete', 'Premium has been reset and the app is back on the Free plan.');
+                          } catch (error) {
+                            const message = error instanceof Error ? error.message : 'Unknown error';
+                            Alert.alert('Reset failed', message);
+                          }
+                        })();
+                      },
+                    },
+                  ]
                 );
-                return;
-              }
-              if (uiState.status !== 'ready') {
-                Alert.alert('Please wait', 'The app is still loading. Try again in a moment.');
-                return;
-              }
-              if (!premiumCode) {
-                Alert.alert('Nothing to reset', 'No premium code is set on this device.');
-                return;
-              }
-
-              Alert.alert('Reset Premium?', 'This will remove downloaded premium recipes and switch you back to Free.', [
-                { text: 'Cancel', style: 'cancel' },
-                {
-                  text: 'Reset',
-                  style: 'destructive',
-                  onPress: () => {
-                    void (async () => {
-                      try {
-                        const db = uiState.bootstrap.db;
-
-                        premiumDownloadServiceRef.current = null;
-                        await deleteLocalPremiumBundleFilesAsync();
-                        await db.runAsync('DELETE FROM recipes WHERE isPremium = 1');
-
-                        await resolved.setPremiumDownloadStatusAsync(db, 'not-downloaded');
-                        await resolved.setPremiumDownloadProgressAsync(db, null);
-                        await resolved.setPremiumBundleUrlAsync(db, null);
-                        await resolved.setPremiumBundleVersionAsync(db, null);
-                        await resolved.setPremiumBundleSha256Async(db, null);
-                        await resolved.setPremiumCodeAsync(db, null);
-                        await resolved.setPlanAsync(db, 'free');
-
-                        setPremiumDownloadStatus('not-downloaded');
-                        setPremiumDownloadProgress(null);
-                        setPremiumBundleUrl(null);
-                        setPremiumBundleVersion(null);
-                        setPremiumBundleSha256(null);
-                        setPremiumCode(null);
-                        setPlan('free');
-
-                        setRecipes([]);
-                        setPage(1);
-                        setInfinitePage(1);
-                        setRecipesRefreshNonce((value) => value + 1);
-
-                        Alert.alert('Reset complete', 'Premium has been reset and the app is back on the Free plan.');
-                      } catch (error) {
-                        const message = error instanceof Error ? error.message : 'Unknown error';
-                        Alert.alert('Reset failed', message);
-                      }
-                    })();
-                  },
-                },
-              ]);
-            }}
-            onBackPress={() => {
-              setRoute('dashboard');
-            }}
-          />
+              }}
+            />
           </Animated.View>
         </View>
+      </AppBackground>
+
+      <PremiumPaywallModal
+        visible={paywallVisible}
+        onRequestClose={() => setPaywallVisible(false)}
+        onPressEnterCode={() => {
+          setPaywallVisible(false);
+          setCodeEntryVisible(true);
+        }}
+      />
 
         <PremiumCodeEntryModal
           visible={codeEntryVisible}
@@ -751,89 +802,91 @@ export function AppShell({ deps, initialPage }: AppShellProps) {
 
   return (
     <>
-      <View style={styles.appContainer}>
-        {banner}
-        <Animated.View
-          entering={reduceMotionEnabled ? undefined : FadeInRight.duration(transitionDuration)}
-          exiting={reduceMotionEnabled ? undefined : FadeOutLeft.duration(transitionDuration)}
-          style={styles.screenContainer}
-        >
-        {isInitialRecipesLoading ? (
-          <View style={styles.recipesLoadingOverlay} pointerEvents="none" testID="recipes-initial-loading">
-            <ActivityIndicator />
-            <Text style={styles.recipesLoadingText}>Loading recipes…</Text>
-          </View>
-        ) : null}
-        <DashboardScreen
-          title="Apothecary Recipes"
-          headerRight={
-            <Pressable
-              accessibilityRole="button"
-              accessibilityLabel="Menu"
-              onPress={() => setMenuVisible(true)}
-              style={styles.overflowButton}
-              testID="header-overflow-button"
-            >
-              <Text style={styles.overflowButtonText}>⋮</Text>
-            </Pressable>
-          }
-          controls={
-            <DashboardControlsRow
-              searchInput={searchInput}
-              onChangeSearchInput={(value) => setSearchInput(value)}
-              onClearSearch={() => {
-                setSearchInput('');
-                setPage(1);
-                setInfinitePage(1);
-                setRecipes([]);
-                setSearchQuery('');
-              }}
-              sortMode={sortMode}
-              onChangeSortMode={async (mode) => {
-                setRecipes([]);
-                setPage(1);
-                setInfinitePage(1);
-                setSortMode(mode);
-                await resolved.setSortModeAsync(uiState.bootstrap.db, mode);
-              }}
-              onRandomize={async () => {
-                setRecipes([]);
-                setPage(1);
-                setInfinitePage(1);
-                setSortMode('random');
-                await resolved.setSortModeAsync(uiState.bootstrap.db, 'random');
-                setRandomSeed(resolved.createRandomSeed());
-              }}
+      <AppBackground>
+        <View style={styles.appContainer}>
+          {banner}
+          <Animated.View
+            entering={reduceMotionEnabled ? undefined : FadeInRight.duration(transitionDuration)}
+            exiting={reduceMotionEnabled ? undefined : FadeOutLeft.duration(transitionDuration)}
+            style={styles.screenContainer}
+          >
+            {isInitialRecipesLoading ? (
+              <View style={styles.recipesLoadingOverlay} pointerEvents="none" testID="recipes-initial-loading">
+                <ActivityIndicator />
+                <Text style={styles.recipesLoadingText}>Loading recipes…</Text>
+              </View>
+            ) : null}
+            <DashboardScreen
+              title="Apothecary Recipes"
+              headerRight={
+                <Pressable
+                  accessibilityRole="button"
+                  accessibilityLabel="Menu"
+                  onPress={() => setMenuVisible(true)}
+                  style={styles.overflowButton}
+                  testID="header-overflow-button"
+                >
+                  <Text style={styles.overflowButtonText}>⋮</Text>
+                </Pressable>
+              }
+              controls={
+                <DashboardControlsRow
+                  searchInput={searchInput}
+                  onChangeSearchInput={(value) => setSearchInput(value)}
+                  onClearSearch={() => {
+                    setSearchInput('');
+                    setPage(1);
+                    setInfinitePage(1);
+                    setRecipes([]);
+                    setSearchQuery('');
+                  }}
+                  sortMode={sortMode}
+                  onChangeSortMode={async (mode) => {
+                    setRecipes([]);
+                    setPage(1);
+                    setInfinitePage(1);
+                    setSortMode(mode);
+                    await resolved.setSortModeAsync(uiState.bootstrap.db, mode);
+                  }}
+                  onRandomize={async () => {
+                    setRecipes([]);
+                    setPage(1);
+                    setInfinitePage(1);
+                    setSortMode('random');
+                    await resolved.setSortModeAsync(uiState.bootstrap.db, 'random');
+                    setRandomSeed(resolved.createRandomSeed());
+                  }}
+                  viewMode={viewMode}
+                  onChangeViewMode={async (mode) => {
+                    setViewMode(mode);
+                    await resolved.setViewModeAsync(uiState.bootstrap.db, mode);
+                  }}
+                  reduceMotionEnabled={reduceMotionEnabled}
+                />
+              }
+              footer={footer}
+              recipes={recipes}
+              totalCount={totalCount}
               viewMode={viewMode}
-              onChangeViewMode={async (mode) => {
-                setViewMode(mode);
-                await resolved.setViewModeAsync(uiState.bootstrap.db, mode);
+              onEndReached={() => {
+                if (!infiniteScrollEnabled) {
+                  return;
+                }
+                if (recipes.length >= totalCount) {
+                  return;
+                }
+                if (isLoadingMore) {
+                  return;
+                }
+                setInfinitePage((prev) => prev + 1);
               }}
               reduceMotionEnabled={reduceMotionEnabled}
+              closeAsYouTapEnabled={closeAsYouTapEnabled}
+              autoScrollEnabled={autoScrollEnabled}
             />
-          }
-          footer={footer}
-          recipes={recipes}
-          totalCount={totalCount}
-          viewMode={viewMode}
-          onEndReached={() => {
-            if (!infiniteScrollEnabled) {
-              return;
-            }
-            if (recipes.length >= totalCount) {
-              return;
-            }
-            if (isLoadingMore) {
-              return;
-            }
-            setInfinitePage((prev) => prev + 1);
-          }}
-          reduceMotionEnabled={reduceMotionEnabled}
-          closeAsYouTapEnabled={closeAsYouTapEnabled}
-          autoScrollEnabled={autoScrollEnabled}
-        />
-        </Animated.View>
-      </View>
+          </Animated.View>
+        </View>
+      </AppBackground>
 
       <OverflowMenu
         visible={menuVisible}
@@ -971,18 +1024,18 @@ const styles = StyleSheet.create({
     paddingTop: 12,
     paddingBottom: 12,
     paddingHorizontal: 16,
-    backgroundColor: 'rgba(255,255,255,0.9)',
+    backgroundColor: theme.colors.surface.paper,
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'center',
     gap: 10,
   },
   recipesLoadingText: {
-    color: '#444',
-    fontWeight: '600',
+    ...theme.typography.bodyMuted,
+    fontFamily: theme.typography.fontFamily.sans.semiBold,
   },
   premiumBanner: {
-    backgroundColor: '#111',
+    backgroundColor: theme.colors.ink.primary,
     paddingHorizontal: 16,
     paddingTop: 2,
     paddingBottom: 0,
@@ -993,19 +1046,19 @@ const styles = StyleSheet.create({
     gap: 10,
   },
   premiumBannerText: {
-    color: '#fff',
-    fontWeight: '600',
+    color: theme.colors.ink.onBrand,
+    fontFamily: theme.typography.fontFamily.sans.semiBold,
   },
   premiumBannerTrack: {
     marginTop: 6,
     height: 4,
-    backgroundColor: 'rgba(255,255,255,0.2)',
+    backgroundColor: theme.colors.brand.onInkTrack,
     borderRadius: 999,
     overflow: 'hidden',
   },
   premiumBannerFill: {
     height: 4,
-    backgroundColor: '#0a7d36',
+    backgroundColor: theme.colors.brand.primaryStrong,
   },
   centered: {
     flex: 1,
@@ -1016,16 +1069,15 @@ const styles = StyleSheet.create({
     gap: 10,
   },
   title: {
-    fontSize: 20,
-    fontWeight: '700',
+    ...theme.typography.title,
     marginBottom: 8,
   },
   subtitle: {
-    color: '#444',
+    ...theme.typography.bodyMuted,
     marginTop: 8,
   },
   error: {
-    color: '#b00020',
+    color: theme.colors.status.danger,
   },
   overflowButton: {
     height: 44,
@@ -1035,11 +1087,11 @@ const styles = StyleSheet.create({
   },
   overflowButtonText: {
     fontSize: 20,
-    color: '#111',
+    color: theme.colors.ink.primary,
   },
   exitBackdrop: {
     flex: 1,
-    backgroundColor: 'rgba(0,0,0,0.35)',
+    backgroundColor: theme.colors.backdrop.modal,
     alignItems: 'center',
     justifyContent: 'center',
     paddingHorizontal: 16,
@@ -1047,21 +1099,18 @@ const styles = StyleSheet.create({
   exitModal: {
     width: '100%',
     maxWidth: 420,
-    backgroundColor: '#fff',
+    backgroundColor: theme.colors.surface.paperStrong,
     borderRadius: 14,
     borderWidth: StyleSheet.hairlineWidth,
-    borderColor: '#ddd',
+    borderColor: theme.colors.border.subtle,
     padding: 16,
     gap: 8,
   },
   exitTitle: {
-    fontSize: 18,
-    fontWeight: '700',
-    color: '#111',
+    ...theme.typography.sectionTitle,
   },
   exitBody: {
-    color: '#444',
-    fontSize: 14,
+    ...theme.typography.bodyMuted,
   },
   exitActions: {
     marginTop: 10,
@@ -1072,27 +1121,27 @@ const styles = StyleSheet.create({
     flex: 1,
     minHeight: 44,
     borderRadius: 10,
-    backgroundColor: '#111',
+    backgroundColor: theme.colors.brand.primary,
     alignItems: 'center',
     justifyContent: 'center',
     paddingHorizontal: 12,
   },
   exitPrimaryButtonText: {
-    color: '#fff',
-    fontWeight: '600',
+    color: theme.colors.ink.onBrand,
+    fontFamily: theme.typography.fontFamily.sans.semiBold,
   },
   exitSecondaryButton: {
     flex: 1,
     minHeight: 44,
     borderRadius: 10,
     borderWidth: StyleSheet.hairlineWidth,
-    borderColor: '#ddd',
+    borderColor: theme.colors.border.subtle,
     alignItems: 'center',
     justifyContent: 'center',
     paddingHorizontal: 12,
   },
   exitSecondaryButtonText: {
-    color: '#111',
-    fontWeight: '600',
+    color: theme.colors.ink.primary,
+    fontFamily: theme.typography.fontFamily.sans.semiBold,
   },
 });

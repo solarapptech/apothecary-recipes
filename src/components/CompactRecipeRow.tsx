@@ -1,6 +1,7 @@
 import { Image, StyleSheet, Text, View } from 'react-native';
  
 import { getRecipeImageSource } from '../assets/getRecipeImageSource';
+import { theme } from '../ui/theme';
 
 type CompactRecipeRowProps = {
   recipeId: number;
@@ -16,6 +17,7 @@ export function CompactRecipeRow({
   preparationTime,
 }: CompactRecipeRowProps) {
   const imageSource = getRecipeImageSource(recipeId);
+  const displayTitle = title.replace(/\s*\n\s*/g, ' ');
 
   return (
     <View style={styles.container} testID={`compact-recipe-row-${recipeId}`}>
@@ -42,7 +44,7 @@ export function CompactRecipeRow({
           ellipsizeMode="tail"
           testID={`compact-recipe-row-title-${recipeId}`}
         >
-          {title}
+          {displayTitle}
         </Text>
 
         <View style={styles.metaRow}>
@@ -64,6 +66,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     paddingHorizontal: 16,
     paddingVertical: 16,
+    backgroundColor: theme.colors.surface.paper,
     borderBottomWidth: StyleSheet.hairlineWidth,
     borderBottomColor: '#eee',
   },
@@ -90,14 +93,14 @@ const styles = StyleSheet.create({
     color: '#111',
   },
   metaRow: {
-    marginTop: 2,
+    marginTop: 6,
     flexDirection: 'row',
     justifyContent: 'space-between',
     gap: 12,
   },
   metaText: {
     color: '#666',
-    fontSize: 13,
+    fontSize: 11,
     flexShrink: 1,
   },
 });

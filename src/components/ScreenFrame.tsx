@@ -1,6 +1,8 @@
 import type { ReactNode } from 'react';
 import { Platform, Pressable, SafeAreaView, StatusBar, StyleSheet, Text, View } from 'react-native';
 
+import { theme } from '../ui/theme';
+
 const HEADER_HEIGHT = 56;
 
 type ScreenFrameProps = {
@@ -72,7 +74,7 @@ export function ScreenFrame({
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
+    backgroundColor: 'transparent',
   },
   header: {
     height: HEADER_HEIGHT,
@@ -87,9 +89,7 @@ const styles = StyleSheet.create({
     flexShrink: 1,
   },
   title: {
-    fontSize: 18,
-    fontWeight: '600',
-    color: '#111',
+    ...theme.typography.headerTitle,
     flexShrink: 1,
   },
   headerRight: {
@@ -107,7 +107,7 @@ const styles = StyleSheet.create({
   },
   backButtonText: {
     fontSize: 18,
-    color: '#111',
+    color: theme.colors.ink.primary,
   },
   controls: {
     paddingHorizontal: 16,
@@ -120,7 +120,7 @@ const styles = StyleSheet.create({
   },
   footer: {
     borderTopWidth: StyleSheet.hairlineWidth,
-    borderTopColor: '#ddd',
+    borderTopColor: theme.colors.border.subtle,
     paddingHorizontal: 16,
     paddingVertical: 10,
   },

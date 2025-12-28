@@ -47,6 +47,7 @@ export function DashboardScreen({
   autoScrollEnabled = true,
 }: DashboardScreenProps) {
   const [expandedIds, setExpandedIds] = useState<Set<number>>(() => new Set());
+  const [listDetailsIds, setListDetailsIds] = useState<Set<number>>(() => new Set());
   const [listBigExpandedIds, setListBigExpandedIds] = useState<Set<number>>(() => new Set());
   const { width } = useWindowDimensions();
   const listRef = useRef<FlashList<RecipeRow>>(null);
@@ -57,6 +58,9 @@ export function DashboardScreen({
   useEffect(() => {
     if (viewMode !== 'list' && viewMode !== 'grid') {
       setExpandedIds(new Set());
+    }
+    if (viewMode !== 'list') {
+      setListDetailsIds(new Set());
     }
     if (viewMode !== 'list-big') {
       setListBigExpandedIds(new Set());
@@ -74,19 +78,23 @@ export function DashboardScreen({
       const next = new Set(prev);
       if (next.has(recipeId)) {
         next.delete(recipeId);
+        setListDetailsIds((prevDetails) => {
+          if (!prevDetails.has(recipeId)) {
+            return prevDetails;
+          }
+          const updated = new Set(prevDetails);
+          updated.delete(recipeId);
+          return updated;
+        });
       } else {
         if (closeAsYouTapEnabled) {
           next.clear();
+          setListDetailsIds(new Set());
         }
         next.add(recipeId);
       }
       return next;
     });
-  };
-
-  const handleHeaderPress = (recipeId: number) => {
-    // The component will handle whether to allow collapse based on details mode
-    toggleExpanded(recipeId);
   };
 
   const handleScroll = (event: any) => {
@@ -107,6 +115,28 @@ export function DashboardScreen({
     }, 50);
   };
 
+  const handleListDetailsExpandedChange = (recipeId: number, nextDetailsMode: boolean) => {
+    if (nextDetailsMode) {
+      handleShowDetails();
+      setListDetailsIds((prev) => {
+        const updated = new Set(prev);
+        updated.add(recipeId);
+        return updated;
+      });
+      return;
+    }
+
+    setListDetailsIds((prev) => {
+      if (!prev.has(recipeId)) {
+        return prev;
+      }
+      const updated = new Set(prev);
+      updated.delete(recipeId);
+      return updated;
+    });
+    handleShowLess();
+  };
+
   const listKey = viewMode === 'grid' ? `grid-${gridNumColumns}` : viewMode;
 
   const animDuration = motionDurationMs(reduceMotionEnabled, 200);
@@ -125,7 +155,7 @@ export function DashboardScreen({
         onEndReached={onEndReached}
         onEndReachedThreshold={0.6}
         keyExtractor={(item: RecipeRow) => String(item.id)}
-        extraData={viewMode === 'list-big' ? listBigExpandedIds : expandedIds}
+        extraData={viewMode === 'list-big' ? listBigExpandedIds : { expandedIds, listDetailsIds }}
         renderItem={({ item }: { item: RecipeRow }) => {
           if (viewMode === 'grid') {
             const isExpanded = expandedIds.has(item.id);
@@ -213,6 +243,7 @@ export function DashboardScreen({
           }
 
           const isExpanded = expandedIds.has(item.id);
+          const isDetailsMode = listDetailsIds.has(item.id);
 
           if (isExpanded) {
             return (
@@ -232,11 +263,27 @@ export function DashboardScreen({
                 historicalContext={item.historicalContext}
                 scientificEvidence={item.scientificEvidence}
                 reduceMotionEnabled={reduceMotionEnabled}
-                onPress={() => toggleExpanded(item.id)}
-                allowDetailsToggle={false}
-                showDetailsButton={true}
-                onShowDetails={handleShowDetails}
-                onShowLess={handleShowLess}
+                expanded={isDetailsMode}
+                onRequestSetExpanded={(next) => handleListDetailsExpandedChange(item.id, next)}
+                showMinimizeButton={true}
+                onPressMinimize={() => {
+                  setExpandedIds((prev) => {
+                    if (!prev.has(item.id)) {
+                      return prev;
+                    }
+                    const updated = new Set(prev);
+                    updated.delete(item.id);
+                    return updated;
+                  });
+                  setListDetailsIds((prev) => {
+                    if (!prev.has(item.id)) {
+                      return prev;
+                    }
+                    const updated = new Set(prev);
+                    updated.delete(item.id);
+                    return updated;
+                  });
+                }}
               />
             );
           }

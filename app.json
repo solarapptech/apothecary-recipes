@@ -7,6 +7,9 @@
     "icon": "./assets/icon.png",
     "userInterfaceStyle": "light",
     "newArchEnabled": true,
+    "plugins": [
+      "./plugins/withAndroidPointerTaggingDisabled"
+    ],
     "splash": {
       "image": "./assets/splash-icon.png",
       "resizeMode": "contain",
@@ -29,7 +32,7 @@
     },
     "extra": {
       "eas": {
-        "projectId": "a731f3e3-66ef-47c3-8a09-974590383942"
+        "projectId": "a1fc7fa6-a8db-40ef-b528-6d23811c2c13"
       }
     }
   }

@@ -214,14 +214,16 @@ test('toggles inline expansion in list mode and allows multiple expanded items',
   expect(tree.root.findByProps({ testID: 'list-big-recipe-row-2' })).toBeTruthy();
 
   act(() => {
-    tree.root.findByProps({ testID: 'list-big-recipe-row-1' }).props.onPress();
+    tree.root.findByProps({ testID: 'list-big-recipe-row-minimize-1' }).props.onPress({
+      stopPropagation: () => {},
+    });
   });
 
   expect(tree.root.findByProps({ testID: 'compact-recipe-row-thumb-1' })).toBeTruthy();
   expect(tree.root.findByProps({ testID: 'list-big-recipe-row-2' })).toBeTruthy();
 });
 
-test('list view expanded items show Show Details button and toggle details mode', () => {
+test('list view expanded items toggle details mode by tapping the opened card (no Show Details/Show Less buttons)', () => {
   const DashboardScreen = loadDashboardScreenWithFlashListMock();
   const recipes = createRecipes(1);
 
@@ -242,35 +244,34 @@ test('list view expanded items show Show Details button and toggle details mode'
   });
 
   expect(tree.root.findByProps({ testID: 'list-big-recipe-row-1' })).toBeTruthy();
-  expect(tree.root.findByProps({ testID: 'list-big-recipe-row-show-details-1' })).toBeTruthy();
   expect(tree.root.findAllByProps({ testID: 'list-big-recipe-row-details-mode-1' })).toHaveLength(0);
 
-  act(() => {
-    tree.root.findByProps({ testID: 'list-big-recipe-row-show-details-1' }).props.onPress({
-      stopPropagation: () => {},
-    });
-  });
-
-  expect(tree.root.findByProps({ testID: 'list-big-recipe-row-details-mode-1' })).toBeTruthy();
-  expect(tree.root.findByProps({ testID: 'list-big-recipe-row-show-less-1' })).toBeTruthy();
-
-  act(() => {
-    tree.root.findByProps({ testID: 'list-big-recipe-row-show-less-1' }).props.onPress({
-      stopPropagation: () => {},
-    });
-  });
-
-  expect(tree.root.findAllByProps({ testID: 'list-big-recipe-row-details-mode-1' })).toHaveLength(0);
-  expect(tree.root.findByProps({ testID: 'list-big-recipe-row-show-details-1' })).toBeTruthy();
+  // No Show Details/Show Less controls in compact list mode
+  expect(tree.root.findAllByProps({ testID: 'list-big-recipe-row-show-details-1' })).toHaveLength(0);
+  expect(tree.root.findAllByProps({ testID: 'list-big-recipe-row-show-less-1' })).toHaveLength(0);
 
   act(() => {
     tree.root.findByProps({ testID: 'list-big-recipe-row-1' }).props.onPress();
   });
 
+  expect(tree.root.findByProps({ testID: 'list-big-recipe-row-details-mode-1' })).toBeTruthy();
+
+  act(() => {
+    tree.root.findByProps({ testID: 'list-big-recipe-row-1' }).props.onPress();
+  });
+
+  expect(tree.root.findAllByProps({ testID: 'list-big-recipe-row-details-mode-1' })).toHaveLength(0);
+
+  act(() => {
+    tree.root.findByProps({ testID: 'list-big-recipe-row-minimize-1' }).props.onPress({
+      stopPropagation: () => {},
+    });
+  });
+
   expect(tree.root.findByProps({ testID: 'compact-recipe-row-thumb-1' })).toBeTruthy();
 });
 
-test('list view expanded items with details mode do NOT collapse to big view on tap (must use Show Less)', () => {
+test('list view expanded items with details mode collapse back to 4-field summary on tap (and minimize collapses to compact row)', () => {
   const DashboardScreen = loadDashboardScreenWithFlashListMock();
   const recipes = createRecipes(1);
 
@@ -291,31 +292,27 @@ test('list view expanded items with details mode do NOT collapse to big view on 
   });
 
   act(() => {
-    tree.root.findByProps({ testID: 'list-big-recipe-row-show-details-1' }).props.onPress({
-      stopPropagation: () => {},
-    });
+    tree.root.findByProps({ testID: 'list-big-recipe-row-1' }).props.onPress();
   });
 
   expect(tree.root.findByProps({ testID: 'list-big-recipe-row-details-mode-1' })).toBeTruthy();
 
-  // Tap container - should NOT collapse details
+  // Tap container - should collapse details back to summary fields
   act(() => {
     tree.root.findByProps({ testID: 'list-big-recipe-row-1' }).props.onPress();
   });
 
-  // Verify details mode is still active
-  expect(tree.root.findByProps({ testID: 'list-big-recipe-row-details-mode-1' })).toBeTruthy();
-  
-  // Now tap Show Less
+  // Verify details mode is NOT active
+  expect(tree.root.findAllByProps({ testID: 'list-big-recipe-row-details-mode-1' })).toHaveLength(0);
+
+  // Now tap minimize (collapse to compact row)
   act(() => {
-    tree.root.findByProps({ testID: 'list-big-recipe-row-show-less-1' }).props.onPress({
+    tree.root.findByProps({ testID: 'list-big-recipe-row-minimize-1' }).props.onPress({
       stopPropagation: () => {},
     });
   });
 
-  // Now it should be collapsed (no details mode)
-  expect(tree.root.findAllByProps({ testID: 'list-big-recipe-row-details-mode-1' })).toHaveLength(0);
-  expect(tree.root.findAllByProps({ testID: 'list-big-recipe-row-show-details-1' }).length).toBeGreaterThan(0);
+  expect(tree.root.findByProps({ testID: 'compact-recipe-row-thumb-1' })).toBeTruthy();
 });
 
 test('grid tiles toggle expanded state and allow multiple expanded items', () => {
@@ -455,18 +452,14 @@ test('restores scroll position when collapsing details', () => {
     tree.root.findByProps({ testID: 'dashboard-recipe-toggle-1' }).props.onPress();
   });
 
-  // 3. Show Details (captures scroll pos 150)
+  // 3. Enter details mode (captures scroll pos 150)
   act(() => {
-    tree.root.findByProps({ testID: 'list-big-recipe-row-show-details-1' }).props.onPress({
-      stopPropagation: () => {},
-    });
+    tree.root.findByProps({ testID: 'list-big-recipe-row-1' }).props.onPress();
   });
 
-  // 4. Show Less (should restore scroll pos 150)
+  // 4. Exit details mode (should restore scroll pos 150)
   act(() => {
-    tree.root.findByProps({ testID: 'list-big-recipe-row-show-less-1' }).props.onPress({
-      stopPropagation: () => {},
-    });
+    tree.root.findByProps({ testID: 'list-big-recipe-row-1' }).props.onPress();
   });
 
   // Fast-forward timers for the setTimeout in handleShowLess

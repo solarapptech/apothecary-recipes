@@ -5,6 +5,11 @@ import { motionDurationMs } from '../app/motionPolicy';
  
 import { getRecipeImageSource } from '../assets/getRecipeImageSource';
 
+import { FieldIcon } from '../ui/icons';
+import { theme } from '../ui/theme';
+
+import { FieldRow } from './FieldRow';
+
 type RecipeGridTileProps = {
   recipeId: number;
   title: string;
@@ -76,12 +81,18 @@ export function RecipeGridTile({
       </Text>
 
       <View style={styles.metaRow}>
-        <Text style={styles.metaText} numberOfLines={1} testID={`recipe-grid-tile-difficulty-${recipeId}`}>
-          Difficulty {difficultyScore}
-        </Text>
-        <Text style={styles.metaText} numberOfLines={1} testID={`recipe-grid-tile-time-${recipeId}`}>
-          {preparationTime}
-        </Text>
+        <View style={styles.metaItem} testID={`recipe-grid-tile-difficulty-${recipeId}`}>
+          <FieldIcon name="difficulty" size={14} color={theme.colors.brand.primary} />
+          <Text style={styles.metaText} numberOfLines={1}>
+            Difficulty {difficultyScore}
+          </Text>
+        </View>
+        <View style={styles.metaItem} testID={`recipe-grid-tile-time-${recipeId}`}>
+          <FieldIcon name="prepTime" size={14} color={theme.colors.brand.primary} />
+          <Text style={styles.metaText} numberOfLines={1}>
+            {preparationTime}
+          </Text>
+        </View>
       </View>
 
       {expanded ? (
@@ -91,46 +102,16 @@ export function RecipeGridTile({
           style={styles.expandedFields}
           testID={`recipe-grid-tile-expanded-fields-${recipeId}`}
         >
-          <View style={styles.fieldRow}>
-            <Text style={styles.fieldLabel}>Description</Text>
-            <Text style={styles.fieldValue}>{description}</Text>
-          </View>
-          <View style={styles.fieldRow}>
-            <Text style={styles.fieldLabel}>Time period</Text>
-            <Text style={styles.fieldValue}>{timePeriod}</Text>
-          </View>
-          <View style={styles.fieldRow}>
-            <Text style={styles.fieldLabel}>Region</Text>
-            <Text style={styles.fieldValue}>{region}</Text>
-          </View>
-          <View style={styles.fieldRow}>
-            <Text style={styles.fieldLabel}>Ingredients</Text>
-            <Text style={styles.fieldValue}>{ingredients}</Text>
-          </View>
-          <View style={styles.fieldRow}>
-            <Text style={styles.fieldLabel}>Detailed Measurements</Text>
-            <Text style={styles.fieldValue}>{detailedMeasurements}</Text>
-          </View>
-          <View style={styles.fieldRow}>
-            <Text style={styles.fieldLabel}>Preparation Steps</Text>
-            <Text style={styles.fieldValue}>{preparationSteps}</Text>
-          </View>
-          <View style={styles.fieldRow}>
-            <Text style={styles.fieldLabel}>Usage</Text>
-            <Text style={styles.fieldValue}>{usage}</Text>
-          </View>
-          <View style={styles.fieldRow}>
-            <Text style={styles.fieldLabel}>Warning</Text>
-            <Text style={styles.fieldValue}>{warning}</Text>
-          </View>
-          <View style={styles.fieldRow}>
-            <Text style={styles.fieldLabel}>Historical</Text>
-            <Text style={styles.fieldValue}>{historicalContext}</Text>
-          </View>
-          <View style={styles.fieldRow}>
-            <Text style={styles.fieldLabel}>Evidence</Text>
-            <Text style={styles.fieldValue}>{scientificEvidence}</Text>
-          </View>
+          <FieldRow icon="description" label="Description" value={description} />
+          <FieldRow icon="timePeriod" label="Time period" value={timePeriod} />
+          <FieldRow icon="region" label="Region" value={region} />
+          <FieldRow icon="ingredients" label="Ingredients" value={ingredients} />
+          <FieldRow icon="detailedMeasurements" label="Detailed Measurements" value={detailedMeasurements} />
+          <FieldRow icon="preparationSteps" label="Preparation Steps" value={preparationSteps} />
+          <FieldRow icon="usage" label="Usage" value={usage} />
+          <FieldRow icon="warning" label="Warning" value={warning} />
+          <FieldRow icon="historical" label="Historical" value={historicalContext} />
+          <FieldRow icon="evidence" label="Evidence" value={scientificEvidence} />
         </Animated.View>
       ) : null}
     </View>
@@ -145,27 +126,27 @@ const styles = StyleSheet.create({
   },
   containerExpanded: {
     borderWidth: StyleSheet.hairlineWidth,
-    borderColor: '#ddd',
+    borderColor: theme.colors.border.subtle,
     borderRadius: 14,
   },
   thumbnail: {
     height: 128,
     width: '100%',
     borderRadius: 16,
-    backgroundColor: '#f0f0f0',
+    backgroundColor: theme.colors.surface.popover,
     alignItems: 'center',
     justifyContent: 'center',
   },
   thumbnailText: {
-    color: '#777',
+    color: theme.colors.ink.subtle,
     fontSize: 14,
-    fontWeight: '600',
+    fontFamily: theme.typography.fontFamily.sans.semiBold,
   },
   title: {
     marginTop: 8,
     fontSize: 15,
-    fontWeight: '600',
-    color: '#111',
+    fontFamily: theme.typography.fontFamily.sans.semiBold,
+    color: theme.colors.ink.primary,
   },
   metaRow: {
     marginTop: 4,
@@ -173,29 +154,20 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     gap: 12,
   },
+  metaItem: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 6,
+    flexShrink: 1,
+  },
   metaText: {
-    color: '#666',
+    color: theme.colors.ink.muted,
     fontSize: 13,
     flexShrink: 1,
+    fontFamily: theme.typography.fontFamily.sans.regular,
   },
   expandedFields: {
     marginTop: 8,
     gap: 6,
-  },
-  fieldRow: {
-    gap: 2,
-  },
-  fieldLabel: {
-    fontSize: 12,
-    fontWeight: '700',
-    color: '#000',
-    backgroundColor: '#f8f8f8',
-    paddingHorizontal: 6,
-    paddingVertical: 2,
-    borderRadius: 3,
-  },
-  fieldValue: {
-    fontSize: 13,
-    color: '#111',
   },
 });

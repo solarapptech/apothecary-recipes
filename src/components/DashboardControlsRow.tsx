@@ -4,6 +4,8 @@ import Animated, { useSharedValue, useAnimatedStyle, withTiming } from 'react-na
 
 import { motionDurationMs } from '../app/motionPolicy';
 
+import { theme } from '../ui/theme';
+
 import type { SortMode } from '../types/sortMode';
 import type { ViewMode } from '../types/viewMode';
 
@@ -265,6 +267,8 @@ const styles = StyleSheet.create({
     paddingVertical: 6,
     fontSize: 14,
     minHeight: 40,
+    fontFamily: theme.typography.fontFamily.sans.regular,
+    color: theme.colors.ink.primary,
   },
   controlsRow: {
     flexDirection: 'row',
@@ -278,9 +282,10 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     borderWidth: StyleSheet.hairlineWidth,
-    borderColor: '#ddd',
+    borderColor: theme.colors.border.subtle,
     borderRadius: 10,
     overflow: 'hidden',
+    backgroundColor: theme.colors.surface.paperStrong,
   },
   searchClearButton: {
     height: 40,
@@ -290,7 +295,7 @@ const styles = StyleSheet.create({
   },
   searchClearText: {
     fontSize: 18,
-    color: '#666',
+    color: theme.colors.ink.subtle,
   },
   iconButton: {
     height: 40,
@@ -298,13 +303,14 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     borderWidth: StyleSheet.hairlineWidth,
-    borderColor: '#ddd',
+    borderColor: theme.colors.border.subtle,
     borderRadius: 10,
+    backgroundColor: theme.colors.surface.paperStrong,
   },
   iconButtonText: {
     fontSize: 16,
-    color: '#111',
-    fontWeight: '600',
+    color: theme.colors.ink.primary,
+    fontFamily: theme.typography.fontFamily.sans.semiBold,
   },
   sortButton: {
     minHeight: 40,
@@ -312,10 +318,11 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     borderWidth: StyleSheet.hairlineWidth,
-    borderColor: '#ddd',
+    borderColor: theme.colors.border.subtle,
     borderRadius: 10,
     paddingHorizontal: 10,
     gap: 6,
+    backgroundColor: theme.colors.surface.paperStrong,
   },
   randomizeIconInline: {
     height: 28,
@@ -323,23 +330,24 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     borderRadius: 6,
-    backgroundColor: '#f5f5f5',
+    backgroundColor: theme.colors.surface.popover,
   },
   randomizeDisabled: {
     opacity: 0.4,
   },
   sortButtonText: {
     fontSize: 13,
-    color: '#111',
-    fontWeight: '600',
+    color: theme.colors.ink.primary,
+    fontFamily: theme.typography.fontFamily.sans.semiBold,
   },
   viewToggleGroup: {
     position: 'relative',
     flexDirection: 'row',
     borderWidth: StyleSheet.hairlineWidth,
-    borderColor: '#ddd',
+    borderColor: theme.colors.border.subtle,
     borderRadius: 10,
     overflow: 'hidden',
+    backgroundColor: theme.colors.surface.paperStrong,
   },
   pillBackground: {
     position: 'absolute',
@@ -347,7 +355,7 @@ const styles = StyleSheet.create({
     left: 0,
     bottom: 0,
     width: 52,
-    backgroundColor: '#111',
+    backgroundColor: theme.colors.brand.primary,
     zIndex: 0,
   },
   toggle: {
@@ -361,12 +369,12 @@ const styles = StyleSheet.create({
   },
   toggleText: {
     fontSize: 14,
-    color: '#111',
-    fontWeight: '500',
+    color: theme.colors.ink.primary,
+    fontFamily: theme.typography.fontFamily.sans.medium,
   },
   toggleIcon: {
     fontSize: 16,
-    color: '#111',
+    color: theme.colors.ink.primary,
     width: 20,
     textAlign: 'center',
   },
@@ -374,20 +382,20 @@ const styles = StyleSheet.create({
     fontSize: 24,
   },
   toggleTextActive: {
-    color: '#fff',
+    color: theme.colors.ink.onBrand,
   },
   menuBackdrop: {
     flex: 1,
-    backgroundColor: 'rgba(0,0,0,0.2)',
+    backgroundColor: theme.colors.backdrop.dim,
   },
   menu: {
     position: 'absolute',
     top: 130,
     left: 16,
-    backgroundColor: '#fff',
+    backgroundColor: theme.colors.surface.paperStrong,
     borderRadius: 10,
     borderWidth: StyleSheet.hairlineWidth,
-    borderColor: '#ddd',
+    borderColor: theme.colors.border.subtle,
     overflow: 'hidden',
   },
   menuItem: {
@@ -395,13 +403,14 @@ const styles = StyleSheet.create({
     paddingVertical: 12,
   },
   menuItemSelected: {
-    backgroundColor: '#f0f0f0',
+    backgroundColor: theme.colors.surface.popover,
   },
   menuItemText: {
     fontSize: 16,
-    color: '#111',
+    color: theme.colors.ink.primary,
+    fontFamily: theme.typography.fontFamily.sans.regular,
   },
   menuItemTextSelected: {
-    fontWeight: '600',
+    fontFamily: theme.typography.fontFamily.sans.semiBold,
   },
 });
