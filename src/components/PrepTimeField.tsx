@@ -23,17 +23,19 @@ const styles = StyleSheet.create({
   container: {
     alignItems: 'center',
     gap: 4,
+    marginLeft: 10,
   },
   label: {
-    fontSize: 10,
+    fontSize: 11,
     fontFamily: theme.typography.fontFamily.sans.semiBold,
+    fontWeight: '900',
     letterSpacing: 0.8,
     color: theme.colors.ink.onBrand,
     textTransform: 'uppercase',
     backgroundColor: theme.colors.brand.prepTimeGreen,
     borderRadius: 999,
     paddingHorizontal: 10,
-    paddingVertical: 3,
+    paddingVertical: 1,
     overflow: 'hidden',
   },
   valueRow: {

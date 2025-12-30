@@ -19,7 +19,6 @@ import { motionDurationMs } from '../app/motionPolicy';
 
 import { getRecipeImageSource } from '../assets/getRecipeImageSource';
 
-import { DecorativeLeaves } from '../ui/DecorativeLeaves';
 import { theme } from '../ui/theme';
 
 import { DescriptionInline } from './DescriptionInline';
@@ -413,7 +412,7 @@ export function ListBigRecipeRow({
         <View pointerEvents="none" style={styles.accent} />
         
         <View style={styles.decorativeLeavesContainer} pointerEvents="none">
-          <DecorativeLeaves size={42} />
+          <Image source={require('../assets/leaves.png')} style={styles.leavesImage} />
         </View>
 
         {headerContent}
@@ -491,18 +490,17 @@ const styles = StyleSheet.create({
     marginBottom: theme.spacing.md,
     paddingRight: theme.spacing.md,
     paddingLeft: theme.spacing.sm + ACCENT_WIDTH,
-    paddingTop: theme.spacing.md,
-    paddingBottom: 14,
-    backgroundColor: theme.colors.surface.paper,
+    paddingTop: 20,
+    paddingBottom: 20,
+    backgroundColor: theme.colors.surface.paperStrong,
     borderRadius: theme.radii.lg,
     overflow: 'visible',
-    borderWidth: StyleSheet.hairlineWidth,
-    borderColor: theme.colors.border.subtle,
+    borderWidth: 0,
     shadowColor: '#000',
-    shadowOpacity: 0.06,
-    shadowRadius: 10,
+    shadowOpacity: 0.02,
+    shadowRadius: 6,
     shadowOffset: { width: 0, height: 4 },
-    elevation: 3,
+    elevation: 2,
     gap: 5,
   },
   containerOpened: {
@@ -522,10 +520,14 @@ const styles = StyleSheet.create({
   },
   decorativeLeavesContainer: {
     position: 'absolute',
-    top: -12,
-    left: -12,
+    top: -8,
+    left: -8,
     zIndex: 2,
     opacity: 1,
+  },
+  leavesImage: {
+    width: 24,
+    height: 24,
   },
   waveOverlay: {
     ...StyleSheet.absoluteFillObject,
@@ -600,7 +602,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'flex-start',
     gap: 16,
-    marginTop: 0,
+    marginTop: 8,
   },
   detailsMode: {
     gap: 8,
@@ -661,7 +663,7 @@ const styles = StyleSheet.create({
     paddingVertical: 2,
     paddingHorizontal: 8,
     borderWidth: StyleSheet.hairlineWidth,
-    borderColor: theme.colors.brand.primary,
+    borderColor: theme.colors.brand.moreInfoGreen,
   },
   moreInfoText: {
     fontSize: 11,

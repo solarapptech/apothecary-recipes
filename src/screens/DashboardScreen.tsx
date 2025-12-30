@@ -154,6 +154,13 @@ export function DashboardScreen({
         scrollEventThrottle={16}
         key={listKey}
         data={recipes}
+        contentContainerStyle={
+          viewMode === 'list-big'
+            ? styles.listBigContentContainer
+            : viewMode === 'list' && expandedIds.size > 0
+              ? styles.listContentContainerWithExpanded
+              : undefined
+        }
         estimatedItemSize={estimatedItemSize}
         numColumns={viewMode === 'grid' ? gridNumColumns : 1}
         onEndReached={onEndReached}
@@ -348,5 +355,11 @@ export function DashboardScreen({
 const styles = StyleSheet.create({
   gridItem: {
     flex: 1,
+  },
+  listBigContentContainer: {
+    paddingTop: 14,
+  },
+  listContentContainerWithExpanded: {
+    paddingTop: 14,
   },
 });

@@ -71,7 +71,7 @@ const styles = StyleSheet.create({
   labelTextCollapsed: {
     fontSize: 9,
     lineHeight: 13,
-    fontWeight: '500',
+    fontFamily: theme.typography.fontFamily.sans.semiBold,
   },
   valueText: {
     ...theme.typography.caption,
