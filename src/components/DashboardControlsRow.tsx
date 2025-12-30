@@ -70,7 +70,7 @@ export function DashboardControlsRow({
   }, [viewMode, reduceMotionEnabled, pillPosition]);
 
   const pillStyle = useAnimatedStyle(() => {
-    const translateX = pillPosition.value * 52;
+    const translateX = pillPosition.value * 44;
     return {
       transform: [{ translateX }],
     };
@@ -263,9 +263,10 @@ const styles = StyleSheet.create({
   container: {},
   searchInput: {
     flex: 1,
-    paddingHorizontal: 12,
+    paddingLeft: 10,
+    paddingRight: 2,
     paddingVertical: 6,
-    fontSize: 14,
+    fontSize: 12,
     minHeight: 40,
     fontFamily: theme.typography.fontFamily.sans.regular,
     color: theme.colors.ink.primary,
@@ -289,7 +290,7 @@ const styles = StyleSheet.create({
   },
   searchClearButton: {
     height: 40,
-    width: 40,
+    width: 32,
     alignItems: 'center',
     justifyContent: 'center',
   },
@@ -320,8 +321,8 @@ const styles = StyleSheet.create({
     borderWidth: StyleSheet.hairlineWidth,
     borderColor: theme.colors.border.subtle,
     borderRadius: 10,
-    paddingHorizontal: 10,
-    gap: 6,
+    paddingHorizontal: 8,
+    gap: 4,
     backgroundColor: theme.colors.surface.paperStrong,
   },
   randomizeIconInline: {
@@ -336,7 +337,7 @@ const styles = StyleSheet.create({
     opacity: 0.4,
   },
   sortButtonText: {
-    fontSize: 13,
+    fontSize: 12,
     color: theme.colors.ink.primary,
     fontFamily: theme.typography.fontFamily.sans.semiBold,
   },
@@ -354,16 +355,16 @@ const styles = StyleSheet.create({
     top: 0,
     left: 0,
     bottom: 0,
-    width: 52,
+    width: 44,
     backgroundColor: theme.colors.brand.primary,
     zIndex: 0,
   },
   toggle: {
     minHeight: 40,
-    minWidth: 52,
+    minWidth: 44,
     alignItems: 'center',
     justifyContent: 'center',
-    paddingHorizontal: 10,
+    paddingHorizontal: 6,
     backgroundColor: 'transparent',
     zIndex: 1,
   },
@@ -373,13 +374,13 @@ const styles = StyleSheet.create({
     fontFamily: theme.typography.fontFamily.sans.medium,
   },
   toggleIcon: {
-    fontSize: 16,
+    fontSize: 14,
     color: theme.colors.ink.primary,
     width: 20,
     textAlign: 'center',
   },
   toggleIconLarger: {
-    fontSize: 24,
+    fontSize: 22,
   },
   toggleTextActive: {
     color: theme.colors.ink.onBrand,

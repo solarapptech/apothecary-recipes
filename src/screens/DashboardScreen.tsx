@@ -1,20 +1,20 @@
 import type { ReactNode } from 'react';
 import { useEffect, useRef, useState } from 'react';
 import {
-  Pressable,
   StyleSheet,
-  Text,
   useWindowDimensions,
-  View,
 } from 'react-native';
 import { FlashList } from '@shopify/flash-list';
-import Animated, { LayoutAnimationConfig } from 'react-native-reanimated';
+import Animated, {
+  Layout,
+  LayoutAnimationConfig,
+} from 'react-native-reanimated';
 
 import { motionDurationMs } from '../app/motionPolicy';
-
 import { CompactRecipeRow } from '../components/CompactRecipeRow';
 import { ListBigRecipeRow } from '../components/ListBigRecipeRow';
 import { RecipeGridTile } from '../components/RecipeGridTile';
+import { WavePressable } from '../components/WavePressable';
 import { ScreenFrame } from '../components/ScreenFrame';
 import type { RecipeRow } from '../repositories/recipesRepository';
 import type { ViewMode } from '../types/viewMode';
@@ -46,6 +46,7 @@ export function DashboardScreen({
   closeAsYouTapEnabled = false,
   autoScrollEnabled = true,
 }: DashboardScreenProps) {
+  const [didMount, setDidMount] = useState(false);
   const [expandedIds, setExpandedIds] = useState<Set<number>>(() => new Set());
   const [listDetailsIds, setListDetailsIds] = useState<Set<number>>(() => new Set());
   const [listBigExpandedIds, setListBigExpandedIds] = useState<Set<number>>(() => new Set());
@@ -54,6 +55,11 @@ export function DashboardScreen({
   const currentScrollY = useRef(0);
   const restoreScrollY = useRef(0);
   const listBigRestoreScrollYById = useRef<Map<number, number>>(new Map());
+  const collapseAnimDuration = motionDurationMs(reduceMotionEnabled, 200);
+
+  useEffect(() => {
+    setDidMount(true);
+  }, []);
 
   useEffect(() => {
     if (viewMode !== 'list' && viewMode !== 'grid') {
@@ -139,11 +145,9 @@ export function DashboardScreen({
 
   const listKey = viewMode === 'grid' ? `grid-${gridNumColumns}` : viewMode;
 
-  const animDuration = motionDurationMs(reduceMotionEnabled, 200);
-
   return (
     <ScreenFrame title={title} headerRight={headerRight} controls={controls} footer={footer}>
-      <LayoutAnimationConfig skipEntering skipExiting>
+      <LayoutAnimationConfig skipEntering={!didMount} skipExiting={viewMode !== 'list'}>
       <FlashList
         ref={listRef}
         onScroll={handleScroll}
@@ -160,12 +164,13 @@ export function DashboardScreen({
           if (viewMode === 'grid') {
             const isExpanded = expandedIds.has(item.id);
             return (
-              <Pressable
+              <WavePressable
                 accessibilityRole="button"
                 accessibilityLabel="Toggle recipe"
                 style={styles.gridItem}
                 onPress={() => toggleExpanded(item.id)}
                 testID={`dashboard-grid-recipe-toggle-${item.id}`}
+                reduceMotionEnabled={reduceMotionEnabled}
               >
                 <RecipeGridTile
                   recipeId={item.id}
@@ -185,13 +190,20 @@ export function DashboardScreen({
                   expanded={isExpanded}
                   reduceMotionEnabled={reduceMotionEnabled}
                 />
-              </Pressable>
+              </WavePressable>
             );
           }
 
           if (viewMode === 'list-big') {
             const isExpanded = listBigExpandedIds.has(item.id);
+            const hasAnyExpandedBig = listBigExpandedIds.size > 0;
+            const isGrayedOutBig = hasAnyExpandedBig && !isExpanded;
             return (
+              <Animated.View
+                key={`list-big-cell-${item.id}`}
+                layout={reduceMotionEnabled ? undefined : Layout.duration(collapseAnimDuration)}
+                style={isGrayedOutBig ? { opacity: 0.4 } : undefined}
+              >
               <ListBigRecipeRow
                 recipeId={item.id}
                 title={item.title}
@@ -209,6 +221,7 @@ export function DashboardScreen({
                 scientificEvidence={item.scientificEvidence}
                 reduceMotionEnabled={reduceMotionEnabled}
                 expanded={isExpanded}
+                showDetailsButton={true}
                 onRequestSetExpanded={(next) => {
                   setListBigExpandedIds((prev) => {
                     const updated = new Set(prev);
@@ -239,69 +252,91 @@ export function DashboardScreen({
                   });
                 }}
               />
+              </Animated.View>
             );
           }
 
           const isExpanded = expandedIds.has(item.id);
           const isDetailsMode = listDetailsIds.has(item.id);
-
-          if (isExpanded) {
-            return (
-              <ListBigRecipeRow
-                recipeId={item.id}
-                title={item.title}
-                difficultyScore={item.difficultyScore}
-                preparationTime={item.preparationTime}
-                description={item.description}
-                timePeriod={item.timePeriod}
-                warning={item.warning}
-                region={item.region}
-                ingredients={item.ingredients}
-                detailedMeasurements={item.detailedMeasurements}
-                preparationSteps={item.preparationSteps}
-                usage={item.usage}
-                historicalContext={item.historicalContext}
-                scientificEvidence={item.scientificEvidence}
-                reduceMotionEnabled={reduceMotionEnabled}
-                expanded={isDetailsMode}
-                onRequestSetExpanded={(next) => handleListDetailsExpandedChange(item.id, next)}
-                showMinimizeButton={true}
-                onPressMinimize={() => {
-                  setExpandedIds((prev) => {
-                    if (!prev.has(item.id)) {
-                      return prev;
-                    }
-                    const updated = new Set(prev);
-                    updated.delete(item.id);
-                    return updated;
-                  });
-                  setListDetailsIds((prev) => {
-                    if (!prev.has(item.id)) {
-                      return prev;
-                    }
-                    const updated = new Set(prev);
-                    updated.delete(item.id);
-                    return updated;
-                  });
-                }}
-              />
-            );
-          }
+          const hasAnyExpanded = expandedIds.size > 0;
+          const isGrayedOut = hasAnyExpanded && !isExpanded;
 
           return (
-            <Pressable
-              accessibilityRole="button"
-              accessibilityLabel="Expand recipe"
-              onPress={() => toggleExpanded(item.id)}
-              testID={`dashboard-recipe-toggle-${item.id}`}
+            <Animated.View
+              key={`list-cell-${item.id}`}
+              layout={reduceMotionEnabled ? undefined : Layout.duration(collapseAnimDuration)}
+              style={isGrayedOut ? { opacity: 0.4 } : undefined}
             >
-              <CompactRecipeRow
-                recipeId={item.id}
-                title={item.title}
-                difficultyScore={item.difficultyScore}
-                preparationTime={item.preparationTime}
-              />
-            </Pressable>
+              {isExpanded ? (
+                <ListBigRecipeRow
+                  recipeId={item.id}
+                  title={item.title}
+                  difficultyScore={item.difficultyScore}
+                  preparationTime={item.preparationTime}
+                  description={item.description}
+                  timePeriod={item.timePeriod}
+                  warning={item.warning}
+                  region={item.region}
+                  ingredients={item.ingredients}
+                  detailedMeasurements={item.detailedMeasurements}
+                  preparationSteps={item.preparationSteps}
+                  usage={item.usage}
+                  historicalContext={item.historicalContext}
+                  scientificEvidence={item.scientificEvidence}
+                  reduceMotionEnabled={reduceMotionEnabled}
+                  expanded={isDetailsMode}
+                  onRequestSetExpanded={(next) => handleListDetailsExpandedChange(item.id, next)}
+                  showDetailsButton={true}
+                  showMinimizeButton={true}
+                  onPressMinimize={() => {
+                    const collapseToCompact = () => {
+                      setExpandedIds((prev) => {
+                        if (!prev.has(item.id)) {
+                          return prev;
+                        }
+                        const updated = new Set(prev);
+                        updated.delete(item.id);
+                        return updated;
+                      });
+                      setListDetailsIds((prev) => {
+                        if (!prev.has(item.id)) {
+                          return prev;
+                        }
+                        const updated = new Set(prev);
+                        updated.delete(item.id);
+                        return updated;
+                      });
+                    };
+
+                    // If details mode is active, fold back to summary first so the user sees the text "retract" animation.
+                    if (isDetailsMode) {
+                      handleListDetailsExpandedChange(item.id, false);
+                      setTimeout(() => {
+                        collapseToCompact();
+                      }, reduceMotionEnabled ? 0 : collapseAnimDuration);
+                      return;
+                    }
+
+                    collapseToCompact();
+                  }}
+                />
+              ) : (
+                <WavePressable
+                  accessibilityRole="button"
+                  accessibilityLabel="Expand recipe"
+                  onPress={() => toggleExpanded(item.id)}
+                  testID={`dashboard-recipe-toggle-${item.id}`}
+                  reduceMotionEnabled={reduceMotionEnabled}
+                >
+                  <CompactRecipeRow
+                    recipeId={item.id}
+                    title={item.title}
+                    difficultyScore={item.difficultyScore}
+                    preparationTime={item.preparationTime}
+                  />
+                </WavePressable>
+              )}
+            </Animated.View>
           );
         }}
       />

@@ -2,6 +2,8 @@ export const colors = {
   brand: {
     primary: '#2e6043',
     primaryStrong: '#31724c',
+    prepTimeGreen: '#3d7a54',
+    moreInfoGreen: '#a8caa0',
     onInkTrack: 'rgba(240,240,239,0.22)',
   },
   ink: {
@@ -14,6 +16,9 @@ export const colors = {
     paper: 'rgba(240,240,239,0.94)',
     paperStrong: '#f0f0ef',
     popover: 'rgba(231,230,228,0.96)',
+    recipeOpened: 'rgba(121, 84, 44, 0.02)',
+    secondaryField: '#f5f3ef',
+    wave: 'rgba(121, 84, 44, 0.22)',
   },
   border: {
     subtle: 'rgba(33,31,28,0.14)',

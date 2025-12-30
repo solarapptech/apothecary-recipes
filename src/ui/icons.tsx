@@ -16,7 +16,9 @@ export type IconName =
   | 'warning'
   | 'historical'
   | 'evidence'
-  | 'description';
+  | 'description'
+  | 'star'
+  | 'starOutline';
 
 type FieldIconProps = {
   name: IconName;
@@ -152,6 +154,32 @@ export function FieldIcon({
         <Path d="M10 2h4" {...common} />
         <Path d="M10 2v4l-5.5 9.5A4 4 0 0 0 8 22h8a4 4 0 0 0 3.5-6.5L14 6V2" {...common} />
         <Path d="M8 14h8" {...common} />
+      </Svg>
+    );
+  }
+
+  if (name === 'star') {
+    return (
+      <Svg width={size} height={size} viewBox="0 0 24 24" {...rest}>
+        <Path
+          d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"
+          fill={color}
+          stroke={color}
+          strokeWidth={strokeWidth}
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        />
+      </Svg>
+    );
+  }
+
+  if (name === 'starOutline') {
+    return (
+      <Svg width={size} height={size} viewBox="0 0 24 24" {...rest}>
+        <Path
+          d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"
+          {...common}
+        />
       </Svg>
     );
   }

@@ -817,7 +817,7 @@ if (route === 'settings') {
               </View>
             ) : null}
             <DashboardScreen
-              title="Apothecary Recipes"
+              title="Forgotten Home Apothecary"
               headerRight={
                 <Pressable
                   accessibilityRole="button"

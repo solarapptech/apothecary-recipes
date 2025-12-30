@@ -1,5 +1,6 @@
 import type { ReactNode } from 'react';
-import { Platform, Pressable, SafeAreaView, StatusBar, StyleSheet, Text, View } from 'react-native';
+import { Keyboard, Platform, Pressable, SafeAreaView, StatusBar, StyleSheet, Text, View } from 'react-native';
+import Svg, { Path } from 'react-native-svg';
 
 import { theme } from '../ui/theme';
 
@@ -38,6 +39,14 @@ export function ScreenFrame({
             : null,
         ]}
       >
+        <Pressable
+          accessibilityLabel="Dismiss keyboard"
+          onPress={() => {
+            Keyboard.dismiss();
+          }}
+          style={styles.headerBackdrop}
+          testID="header-dismiss-keyboard"
+        />
         <View style={styles.headerLeft}>
           {onBackPress ? (
             <Pressable
@@ -50,6 +59,21 @@ export function ScreenFrame({
               <Text style={styles.backButtonText}>←</Text>
             </Pressable>
           ) : null}
+          <View style={styles.leafIcon} pointerEvents="none">
+            <Svg width={18} height={18} viewBox="0 0 24 24" fill="none">
+              <Path
+                d="M20 4C14 4 9.5 6.5 7.2 9.9C5.7 12.1 5 14.7 5 17.5V20H7.5C10.3 20 12.9 19.3 15.1 17.8C18.5 15.5 21 11 21 5V4H20Z"
+                fill={theme.colors.brand.primary}
+              />
+              <Path
+                d="M6.2 18.3C9.4 14.5 13.1 11.7 18.7 9.6"
+                stroke={theme.colors.ink.onBrand}
+                strokeWidth={1.6}
+                strokeLinecap="round"
+                opacity={0.55}
+              />
+            </Svg>
+          </View>
           <Text style={styles.title} numberOfLines={1}>
             {title}
           </Text>
@@ -83,10 +107,19 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'space-between',
   },
+  headerBackdrop: {
+    ...StyleSheet.absoluteFillObject,
+  },
   headerLeft: {
     flexDirection: 'row',
     alignItems: 'center',
     flexShrink: 1,
+    zIndex: 1,
+  },
+  leafIcon: {
+    marginRight: 6,
+    alignItems: 'center',
+    justifyContent: 'center',
   },
   title: {
     ...theme.typography.headerTitle,
@@ -97,6 +130,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'flex-end',
     minWidth: 44,
+    zIndex: 1,
   },
   backButton: {
     height: 44,

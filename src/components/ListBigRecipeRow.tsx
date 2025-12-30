@@ -1,17 +1,38 @@
-import { useState } from 'react';
+import { useRef, useState } from 'react';
 import { Image, Modal, Platform, Pressable, StyleSheet, Text, View } from 'react-native';
-import Animated, { FadeIn, FadeOut, FadeInDown, Layout } from 'react-native-reanimated';
+import Animated, {
+  Extrapolate,
+  FadeIn,
+  FadeOut,
+  FadeInDown,
+  Layout,
+  interpolateColor,
+  interpolate,
+  useAnimatedProps,
+  useAnimatedStyle,
+  useSharedValue,
+  withTiming,
+} from 'react-native-reanimated';
 import { Path, Svg } from 'react-native-svg';
 
 import { motionDurationMs } from '../app/motionPolicy';
 
 import { getRecipeImageSource } from '../assets/getRecipeImageSource';
 
+import { DecorativeLeaves } from '../ui/DecorativeLeaves';
 import { theme } from '../ui/theme';
 
+import { DescriptionInline } from './DescriptionInline';
+import { DifficultyField } from './DifficultyField';
 import { FieldRow } from './FieldRow';
+import { PrepTimeField } from './PrepTimeField';
+import { SecondaryFieldRow } from './SecondaryFieldRow';
+import { TimePeriodRegionRow } from './TimePeriodRegionRow';
 
 const AnimatedPressable = Animated.createAnimatedComponent(Pressable);
+const AnimatedPath = Animated.createAnimatedComponent(Path);
+
+ const ACCENT_WIDTH = 8;
 
 type ListBigRecipeRowProps = {
   recipeId: number;
@@ -29,6 +50,7 @@ type ListBigRecipeRowProps = {
   historicalContext: string;
   scientificEvidence: string;
   reduceMotionEnabled?: boolean;
+  tinted?: boolean;
   expanded?: boolean;
   onRequestSetExpanded?: (expanded: boolean) => void;
   onPress?: () => void;
@@ -56,6 +78,7 @@ export function ListBigRecipeRow({
   historicalContext,
   scientificEvidence,
   reduceMotionEnabled = false,
+  tinted = false,
   expanded,
   onRequestSetExpanded,
   onPress,
@@ -69,6 +92,14 @@ export function ListBigRecipeRow({
   const [detailsModeInternal, setDetailsModeInternal] = useState(false);
   const [imageModalVisible, setImageModalVisible] = useState(false);
   const imageSource = getRecipeImageSource(recipeId);
+
+  const minimizeFeedback = useSharedValue(0);
+
+  const layoutRef = useRef({ width: 0, height: 0 });
+  const originX = useSharedValue(0);
+  const originY = useSharedValue(0);
+  const diameter = useSharedValue(0);
+  const waveProgress = useSharedValue(0);
 
   const detailsMode = expanded ?? detailsModeInternal;
   const displayTitle = detailsMode ? title : title.replace(/\s*\n\s*/g, ' ');
@@ -84,6 +115,75 @@ export function ListBigRecipeRow({
   const animDuration = motionDurationMs(reduceMotionEnabled, 150);
   const enableExitAnimations = !reduceMotionEnabled && Platform.OS !== 'android';
 
+  const minimizeIconStyle = useAnimatedStyle(() => {
+    return {
+      transform: [{ rotate: `${minimizeFeedback.value * 180}deg` }],
+    };
+  });
+
+  const minimizePathProps = useAnimatedProps(() => {
+    return {
+      stroke: interpolateColor(
+        minimizeFeedback.value,
+        [0, 1],
+        [theme.colors.ink.subtle, theme.colors.brand.primaryStrong]
+      ),
+    } as any;
+  });
+
+  const triggerWave = (event?: any) => {
+    if (reduceMotionEnabled) {
+      return;
+    }
+
+    const { width, height } = layoutRef.current;
+    if (width <= 0 || height <= 0) {
+      return;
+    }
+
+    const x = typeof event?.nativeEvent?.locationX === 'number' ? event.nativeEvent.locationX : width / 2;
+    const y = typeof event?.nativeEvent?.locationY === 'number' ? event.nativeEvent.locationY : height / 2;
+
+    const distTL = Math.hypot(x - 0, y - 0);
+    const distTR = Math.hypot(x - width, y - 0);
+    const distBL = Math.hypot(x - 0, y - height);
+    const distBR = Math.hypot(x - width, y - height);
+    const radius = Math.max(distTL, distTR, distBL, distBR);
+
+    originX.value = x;
+    originY.value = y;
+    diameter.value = radius * 2;
+
+    waveProgress.value = 0;
+    waveProgress.value = withTiming(1, { duration: motionDurationMs(reduceMotionEnabled, 320) }, () => {
+      waveProgress.value = 0;
+    });
+  };
+
+  const waveStyle = useAnimatedStyle(() => {
+    if (waveProgress.value <= 0 || diameter.value <= 0) {
+      return {
+        opacity: 0,
+      };
+    }
+
+    const scale = interpolate(waveProgress.value, [0, 1], [0.15, 1], Extrapolate.CLAMP);
+    const opacity = interpolate(waveProgress.value, [0, 0.2, 1], [0.32, 0.22, 0], Extrapolate.CLAMP);
+
+    const size = diameter.value;
+    const radius = size / 2;
+
+    return {
+      opacity,
+      transform: [{ scale }],
+      width: size,
+      height: size,
+      borderRadius: radius,
+      left: originX.value - radius,
+      top: originY.value - radius,
+    };
+  });
+
   const handleContainerPress = () => {
     if (showDetailsButton && detailsMode) {
       return;
@@ -96,6 +196,7 @@ export function ListBigRecipeRow({
 
   const handleShowDetailsPress = (e: any) => {
     e.stopPropagation();
+    triggerWave(e);
     setDetailsMode(true);
     if (onShowDetails) {
       onShowDetails();
@@ -104,6 +205,7 @@ export function ListBigRecipeRow({
 
   const handleShowLessPress = (e: any) => {
     e.stopPropagation();
+    triggerWave(e);
     setDetailsMode(false);
     if (onShowLess) {
       onShowLess();
@@ -163,21 +265,30 @@ export function ListBigRecipeRow({
               accessibilityLabel="Minimize recipe"
               onPress={(e) => {
                 e.stopPropagation();
+                triggerWave(e);
+
+                if (!reduceMotionEnabled) {
+                  minimizeFeedback.value = 0;
+                  minimizeFeedback.value = withTiming(1, { duration: animDuration });
+                }
+
                 onPressMinimize?.();
               }}
               style={styles.minimizeButton}
               testID={`list-big-recipe-row-minimize-${recipeId}`}
             >
-              <Svg width={16} height={16} viewBox="0 0 24 24">
-                <Path
+              <Animated.View style={minimizeIconStyle}>
+              <Svg width={24} height={24} viewBox="0 0 24 24">
+                <AnimatedPath
                   d="M7 14l5-5 5 5"
                   fill="none"
-                  stroke={theme.colors.ink.subtle}
                   strokeWidth={2}
                   strokeLinecap="round"
                   strokeLinejoin="round"
+                  animatedProps={minimizePathProps}
                 />
               </Svg>
+              </Animated.View>
             </Pressable>
           ) : null}
         </Animated.View>
@@ -194,7 +305,7 @@ export function ListBigRecipeRow({
               layout={reduceMotionEnabled ? undefined : Layout.duration(animDuration)}
               style={styles.detailsField}
             >
-              <FieldRow icon="difficulty" label="Difficulty" value={String(difficultyScore)} />
+              <FieldRow icon="ingredients" label="Ingredients" value={ingredients} />
             </Animated.View>
             <Animated.View 
               entering={reduceMotionEnabled ? undefined : FadeInDown.duration(animDuration).delay(50)}
@@ -202,7 +313,7 @@ export function ListBigRecipeRow({
               layout={reduceMotionEnabled ? undefined : Layout.duration(animDuration)}
               style={styles.detailsField}
             >
-              <FieldRow icon="prepTime" label="Prep time" value={preparationTime} />
+              <FieldRow icon="preparationSteps" label="Preparation Steps" value={preparationSteps} />
             </Animated.View>
             <Animated.View 
               entering={reduceMotionEnabled ? undefined : FadeInDown.duration(animDuration).delay(100)}
@@ -210,7 +321,7 @@ export function ListBigRecipeRow({
               layout={reduceMotionEnabled ? undefined : Layout.duration(animDuration)}
               style={styles.detailsField}
             >
-              <FieldRow icon="timePeriod" label="Time period" value={timePeriod} />
+              <SecondaryFieldRow icon="usage" label="Usage" value={usage} />
             </Animated.View>
             <Animated.View 
               entering={reduceMotionEnabled ? undefined : FadeInDown.duration(animDuration).delay(150)}
@@ -218,7 +329,7 @@ export function ListBigRecipeRow({
               layout={reduceMotionEnabled ? undefined : Layout.duration(animDuration)}
               style={styles.detailsField}
             >
-              <FieldRow icon="region" label="Region" value={region} />
+              <SecondaryFieldRow icon="historical" label="Historical" value={historicalContext} />
             </Animated.View>
             <Animated.View 
               entering={reduceMotionEnabled ? undefined : FadeInDown.duration(animDuration).delay(200)}
@@ -226,7 +337,7 @@ export function ListBigRecipeRow({
               layout={reduceMotionEnabled ? undefined : Layout.duration(animDuration)}
               style={styles.detailsField}
             >
-              <FieldRow icon="ingredients" label="Ingredients" value={ingredients} />
+              <SecondaryFieldRow icon="evidence" label="Evidence" value={scientificEvidence} />
             </Animated.View>
             <Animated.View 
               entering={reduceMotionEnabled ? undefined : FadeInDown.duration(animDuration).delay(250)}
@@ -234,7 +345,7 @@ export function ListBigRecipeRow({
               layout={reduceMotionEnabled ? undefined : Layout.duration(animDuration)}
               style={styles.detailsField}
             >
-              <FieldRow icon="detailedMeasurements" label="Detailed Measurements" value={detailedMeasurements} />
+              <SecondaryFieldRow icon="warning" label="Warning" value={warning} />
             </Animated.View>
             <Animated.View 
               entering={reduceMotionEnabled ? undefined : FadeInDown.duration(animDuration).delay(300)}
@@ -242,43 +353,11 @@ export function ListBigRecipeRow({
               layout={reduceMotionEnabled ? undefined : Layout.duration(animDuration)}
               style={styles.detailsField}
             >
-              <FieldRow icon="preparationSteps" label="Preparation Steps" value={preparationSteps} />
-            </Animated.View>
-            <Animated.View 
-              entering={reduceMotionEnabled ? undefined : FadeInDown.duration(animDuration).delay(350)}
-              exiting={enableExitAnimations ? FadeOut.duration(animDuration) : undefined}
-              layout={reduceMotionEnabled ? undefined : Layout.duration(animDuration)}
-              style={styles.detailsField}
-            >
-              <FieldRow icon="usage" label="Usage" value={usage} />
-            </Animated.View>
-            <Animated.View 
-              entering={reduceMotionEnabled ? undefined : FadeInDown.duration(animDuration).delay(400)}
-              exiting={enableExitAnimations ? FadeOut.duration(animDuration) : undefined}
-              layout={reduceMotionEnabled ? undefined : Layout.duration(animDuration)}
-              style={styles.detailsField}
-            >
-              <FieldRow icon="warning" label="Warning" value={warning} />
-            </Animated.View>
-            <Animated.View 
-              entering={reduceMotionEnabled ? undefined : FadeInDown.duration(animDuration).delay(450)}
-              exiting={enableExitAnimations ? FadeOut.duration(animDuration) : undefined}
-              layout={reduceMotionEnabled ? undefined : Layout.duration(animDuration)}
-              style={styles.detailsField}
-            >
-              <FieldRow icon="historical" label="Historical" value={historicalContext} />
-            </Animated.View>
-            <Animated.View 
-              entering={reduceMotionEnabled ? undefined : FadeInDown.duration(animDuration).delay(500)}
-              exiting={enableExitAnimations ? FadeOut.duration(animDuration) : undefined}
-              layout={reduceMotionEnabled ? undefined : Layout.duration(animDuration)}
-              style={styles.detailsField}
-            >
-              <FieldRow icon="evidence" label="Evidence" value={scientificEvidence} />
+              <TimePeriodRegionRow timePeriod={timePeriod} region={region} />
             </Animated.View>
             {showDetailsButton && (
               <Animated.View
-                entering={reduceMotionEnabled ? undefined : FadeInDown.duration(animDuration).delay(550)}
+                entering={reduceMotionEnabled ? undefined : FadeInDown.duration(animDuration).delay(350)}
                 exiting={enableExitAnimations ? FadeOut.duration(animDuration) : undefined}
                 layout={reduceMotionEnabled ? undefined : Layout.duration(animDuration)}
               >
@@ -298,32 +377,14 @@ export function ListBigRecipeRow({
           <Animated.View
             entering={reduceMotionEnabled ? undefined : FadeIn.duration(animDuration)}
             exiting={enableExitAnimations ? FadeOut.duration(animDuration) : undefined}
-            style={styles.fieldsGrid}
+            style={styles.collapsedFieldsRow}
           >
-            <View style={styles.field} testID={`list-big-recipe-row-field-difficulty-${recipeId}`}>
-              <FieldRow icon="difficulty" label="Difficulty" value={String(difficultyScore)} numberOfLines={1} variant="collapsed" />
+            <View testID={`list-big-recipe-row-field-difficulty-${recipeId}`}>
+              <DifficultyField score={difficultyScore} />
             </View>
-            <View style={styles.field} testID={`list-big-recipe-row-field-prep-time-${recipeId}`}>
-              <FieldRow icon="prepTime" label="Prep time" value={preparationTime} numberOfLines={1} variant="collapsed" />
+            <View testID={`list-big-recipe-row-field-prep-time-${recipeId}`}>
+              <PrepTimeField value={preparationTime} />
             </View>
-            <View style={styles.field} testID={`list-big-recipe-row-field-time-period-${recipeId}`}>
-              <FieldRow icon="timePeriod" label="Time period" value={timePeriod} numberOfLines={1} variant="collapsed" />
-            </View>
-            {showDetailsButton ? (
-              <Pressable
-                accessibilityRole="button"
-                accessibilityLabel="Show more details"
-                onPress={handleShowDetailsPress}
-                style={styles.showDetailsButton}
-                testID={`list-big-recipe-row-show-details-${recipeId}`}
-              >
-                <Text style={styles.showDetailsText}>Show Details</Text>
-              </Pressable>
-            ) : (
-              <View style={styles.field} testID={`list-big-recipe-row-field-region-${recipeId}`}>
-                <FieldRow icon="region" label="Region" value={region} numberOfLines={1} variant="collapsed" />
-              </View>
-            )}
           </Animated.View>
         )}
       </Animated.View>
@@ -335,11 +396,26 @@ export function ListBigRecipeRow({
       <AnimatedPressable 
         style={styles.container} 
         testID={`list-big-recipe-row-${recipeId}`}
-        onPress={handleContainerPress}
+        onLayout={(e) => {
+          layoutRef.current = {
+            width: e.nativeEvent.layout.width,
+            height: e.nativeEvent.layout.height,
+          };
+        }}
+        onPress={(e) => {
+          triggerWave(e);
+          handleContainerPress();
+        }}
         accessibilityRole="button"
         accessibilityLabel={detailsMode ? "Collapse recipe details" : "Expand recipe details"}
         layout={reduceMotionEnabled ? undefined : Layout.duration(animDuration)}
       >
+        <View pointerEvents="none" style={styles.accent} />
+        
+        <View style={styles.decorativeLeavesContainer} pointerEvents="none">
+          <DecorativeLeaves size={42} />
+        </View>
+
         {headerContent}
 
         <Animated.View
@@ -347,14 +423,42 @@ export function ListBigRecipeRow({
           style={styles.descriptionBlock}
           testID={`list-big-recipe-row-description-block-${recipeId}`}
         >
-          <FieldRow
-            icon="description"
-            label="Description"
-            value={description}
-            testID={`list-big-recipe-row-description-${recipeId}`}
-            variant={detailsMode ? 'default' : 'collapsed'}
-          />
+          {detailsMode ? (
+            <FieldRow
+              icon="description"
+              label="Description"
+              value={description}
+              testID={`list-big-recipe-row-description-${recipeId}`}
+            />
+          ) : (
+            <DescriptionInline
+              value={description}
+              numberOfLines={3}
+            />
+          )}
         </Animated.View>
+
+        {!detailsMode && showDetailsButton && (
+          <Animated.View
+            entering={reduceMotionEnabled ? undefined : FadeIn.duration(animDuration)}
+            exiting={enableExitAnimations ? FadeOut.duration(animDuration) : undefined}
+            style={styles.moreInfoRow}
+          >
+            <Pressable
+              accessibilityRole="button"
+              accessibilityLabel="Show more details"
+              onPress={handleShowDetailsPress}
+              style={styles.moreInfoButton}
+              testID={`list-big-recipe-row-more-info-${recipeId}`}
+            >
+              <Text style={styles.moreInfoText}>+ more info</Text>
+            </Pressable>
+          </Animated.View>
+        )}
+
+        <View style={styles.waveOverlay} pointerEvents="none">
+          <Animated.View style={[styles.wave, waveStyle]} />
+        </View>
       </AnimatedPressable>
     
     <Modal
@@ -382,12 +486,54 @@ export function ListBigRecipeRow({
 
 const styles = StyleSheet.create({
   container: {
-    paddingHorizontal: 16,
-    paddingVertical: 24,
+    position: 'relative',
+    marginHorizontal: theme.spacing.md,
+    marginBottom: theme.spacing.md,
+    paddingRight: theme.spacing.md,
+    paddingLeft: theme.spacing.sm + ACCENT_WIDTH,
+    paddingTop: theme.spacing.md,
+    paddingBottom: 14,
     backgroundColor: theme.colors.surface.paper,
-    borderBottomWidth: StyleSheet.hairlineWidth,
-    borderBottomColor: theme.colors.border.subtle,
-    gap: 10,
+    borderRadius: theme.radii.lg,
+    overflow: 'visible',
+    borderWidth: StyleSheet.hairlineWidth,
+    borderColor: theme.colors.border.subtle,
+    shadowColor: '#000',
+    shadowOpacity: 0.06,
+    shadowRadius: 10,
+    shadowOffset: { width: 0, height: 4 },
+    elevation: 3,
+    gap: 5,
+  },
+  containerOpened: {
+    backgroundColor: theme.colors.surface.recipeOpened,
+  },
+  accent: {
+    position: 'absolute',
+    left: 0,
+    top: 0,
+    bottom: 0,
+    width: ACCENT_WIDTH,
+    backgroundColor: theme.colors.brand.primary,
+    borderTopLeftRadius: theme.radii.lg,
+    borderBottomLeftRadius: theme.radii.lg,
+    borderTopRightRadius: 6,
+    borderBottomRightRadius: 6,
+  },
+  decorativeLeavesContainer: {
+    position: 'absolute',
+    top: -12,
+    left: -12,
+    zIndex: 2,
+    opacity: 1,
+  },
+  waveOverlay: {
+    ...StyleSheet.absoluteFillObject,
+    overflow: 'hidden',
+  },
+  wave: {
+    position: 'absolute',
+    backgroundColor: theme.colors.surface.wave,
   },
   headerRow: {
     flexDirection: 'row',
@@ -408,7 +554,8 @@ const styles = StyleSheet.create({
   },
   headerContent: {
     flex: 1,
-    gap: 8,
+    gap: 2,
+    marginTop: -8,
   },
   titleRow: {
     flexDirection: 'row',
@@ -416,12 +563,15 @@ const styles = StyleSheet.create({
     gap: 8,
   },
   title: {
-    ...theme.typography.sectionTitle,
+    fontSize: 14,
+    lineHeight: 18,
+    fontFamily: theme.typography.fontFamily.sans.medium,
+    color: theme.colors.ink.primary,
     flex: 1,
   },
   minimizeButton: {
-    height: theme.typography.sectionTitle.lineHeight,
-    width: theme.typography.sectionTitle.lineHeight,
+    height: 32,
+    width: 32,
     alignItems: 'center',
     justifyContent: 'center',
   },
@@ -445,6 +595,13 @@ const styles = StyleSheet.create({
     flexWrap: 'wrap',
     gap: 8,
   },
+  collapsedFieldsRow: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'flex-start',
+    gap: 16,
+    marginTop: 0,
+  },
   detailsMode: {
     gap: 8,
   },
@@ -461,6 +618,8 @@ const styles = StyleSheet.create({
     justifyContent: 'flex-end',
   },
   descriptionBlock: {
+    marginTop: 10,
+    marginBottom: 6,
     gap: 4,
   },
   readMore: {
@@ -489,6 +648,23 @@ const styles = StyleSheet.create({
   },
   showLessText: {
     fontSize: 13,
+    color: theme.colors.brand.primary,
+    fontFamily: theme.typography.fontFamily.sans.semiBold,
+  },
+  moreInfoRow: {
+    alignItems: 'flex-end',
+    marginTop: 6,
+  },
+  moreInfoButton: {
+    backgroundColor: theme.colors.brand.moreInfoGreen,
+    borderRadius: theme.radii.pill,
+    paddingVertical: 2,
+    paddingHorizontal: 8,
+    borderWidth: StyleSheet.hairlineWidth,
+    borderColor: theme.colors.brand.primary,
+  },
+  moreInfoText: {
+    fontSize: 11,
     color: theme.colors.brand.primary,
     fontFamily: theme.typography.fontFamily.sans.semiBold,
   },

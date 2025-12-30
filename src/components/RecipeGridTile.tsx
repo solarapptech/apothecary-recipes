@@ -52,7 +52,11 @@ export function RecipeGridTile({
 
   return (
     <View
-      style={[styles.container, expanded ? styles.containerExpanded : null]}
+      style={[
+        styles.container,
+        expanded ? styles.containerOpened : null,
+        expanded ? styles.containerExpanded : null,
+      ]}
       testID={expanded ? `recipe-grid-tile-expanded-${recipeId}` : `recipe-grid-tile-${recipeId}`}
     >
       {imageSource ? (
@@ -123,6 +127,10 @@ const styles = StyleSheet.create({
     flex: 1,
     paddingHorizontal: 12,
     paddingVertical: 12,
+  },
+  containerOpened: {
+    backgroundColor: theme.colors.surface.recipeOpened,
+    borderRadius: 14,
   },
   containerExpanded: {
     borderWidth: StyleSheet.hairlineWidth,
