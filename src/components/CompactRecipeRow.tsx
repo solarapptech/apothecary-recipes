@@ -1,6 +1,7 @@
 import { Image, StyleSheet, Text, View } from 'react-native';
  
 import { getRecipeImageSource } from '../assets/getRecipeImageSource';
+import { FieldIcon } from '../ui/icons';
 import { theme } from '../ui/theme';
 
  const ACCENT_WIDTH = 8;
@@ -10,6 +11,7 @@ type CompactRecipeRowProps = {
   title: string;
   difficultyScore: number;
   preparationTime: string;
+  dimmed?: boolean;
 };
 
 export function CompactRecipeRow({
@@ -17,12 +19,28 @@ export function CompactRecipeRow({
   title,
   difficultyScore,
   preparationTime,
+  dimmed = false,
 }: CompactRecipeRowProps) {
   const imageSource = getRecipeImageSource(recipeId);
   const displayTitle = title.replace(/\s*\n\s*/g, ' ');
 
+  const stars = [];
+  for (let i = 1; i <= 3; i++) {
+    stars.push(
+      <FieldIcon
+        key={i}
+        name={i <= difficultyScore ? 'star' : 'starOutline'}
+        size={12}
+        color={theme.colors.brand.primary}
+      />
+    );
+  }
+
   return (
-    <View style={styles.container} testID={`compact-recipe-row-${recipeId}`}> 
+    <View
+      style={[styles.container, dimmed && styles.containerDimmed]}
+      testID={`compact-recipe-row-${recipeId}`}
+    > 
       <View pointerEvents="none" style={styles.accent} />
       {imageSource ? (
         <Image
@@ -51,12 +69,15 @@ export function CompactRecipeRow({
         </Text>
 
         <View style={styles.metaRow}>
-          <Text style={styles.metaText} numberOfLines={1} testID={`compact-recipe-row-difficulty-${recipeId}`}>
-            Difficulty {difficultyScore}
-          </Text>
-          <Text style={styles.metaText} numberOfLines={1} testID={`compact-recipe-row-time-${recipeId}`}>
-            {preparationTime}
-          </Text>
+          <View style={styles.difficultyStars} testID={`compact-recipe-row-difficulty-${recipeId}`}>
+            {stars}
+          </View>
+          <View style={styles.timeRow} testID={`compact-recipe-row-time-${recipeId}`}>
+            <FieldIcon name="prepTime" size={12} color={theme.colors.ink.muted} />
+            <Text style={styles.metaText} numberOfLines={1}>
+              {preparationTime}
+            </Text>
+          </View>
         </View>
       </View>
     </View>
@@ -83,6 +104,12 @@ const styles = StyleSheet.create({
     shadowRadius: 8,
     shadowOffset: { width: 0, height: 3 },
     elevation: 2,
+  },
+  containerDimmed: {
+    borderColor: 'transparent',
+    shadowOpacity: 0,
+    shadowRadius: 0,
+    elevation: 0,
   },
   accent: {
     position: 'absolute',
@@ -124,6 +151,16 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
     gap: 12,
+  },
+  difficultyStars: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 2,
+  },
+  timeRow: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 4,
   },
   metaText: {
     color: theme.colors.ink.muted,

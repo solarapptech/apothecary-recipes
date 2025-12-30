@@ -24,6 +24,7 @@ import { theme } from '../ui/theme';
 import { DescriptionInline } from './DescriptionInline';
 import { DifficultyField } from './DifficultyField';
 import { FieldRow } from './FieldRow';
+import { PreparationStepsValue } from './PreparationStepsValue';
 import { PrepTimeField } from './PrepTimeField';
 import { SecondaryFieldRow } from './SecondaryFieldRow';
 import { TimePeriodRegionRow } from './TimePeriodRegionRow';
@@ -292,100 +293,18 @@ export function ListBigRecipeRow({
           ) : null}
         </Animated.View>
 
-        {detailsMode ? (
-          <Animated.View
-            layout={reduceMotionEnabled ? undefined : Layout.duration(animDuration)}
-            style={[styles.detailsMode, styles.detailsModeClip]}
-            testID={`list-big-recipe-row-details-mode-${recipeId}`}
-          >
-            <Animated.View 
-              entering={reduceMotionEnabled ? undefined : FadeInDown.duration(animDuration).delay(0)}
-              exiting={enableExitAnimations ? FadeOut.duration(animDuration) : undefined}
-              layout={reduceMotionEnabled ? undefined : Layout.duration(animDuration)}
-              style={styles.detailsField}
-            >
-              <FieldRow icon="ingredients" label="Ingredients" value={ingredients} />
-            </Animated.View>
-            <Animated.View 
-              entering={reduceMotionEnabled ? undefined : FadeInDown.duration(animDuration).delay(50)}
-              exiting={enableExitAnimations ? FadeOut.duration(animDuration) : undefined}
-              layout={reduceMotionEnabled ? undefined : Layout.duration(animDuration)}
-              style={styles.detailsField}
-            >
-              <FieldRow icon="preparationSteps" label="Preparation Steps" value={preparationSteps} />
-            </Animated.View>
-            <Animated.View 
-              entering={reduceMotionEnabled ? undefined : FadeInDown.duration(animDuration).delay(100)}
-              exiting={enableExitAnimations ? FadeOut.duration(animDuration) : undefined}
-              layout={reduceMotionEnabled ? undefined : Layout.duration(animDuration)}
-              style={styles.detailsField}
-            >
-              <SecondaryFieldRow icon="usage" label="Usage" value={usage} />
-            </Animated.View>
-            <Animated.View 
-              entering={reduceMotionEnabled ? undefined : FadeInDown.duration(animDuration).delay(150)}
-              exiting={enableExitAnimations ? FadeOut.duration(animDuration) : undefined}
-              layout={reduceMotionEnabled ? undefined : Layout.duration(animDuration)}
-              style={styles.detailsField}
-            >
-              <SecondaryFieldRow icon="historical" label="Historical" value={historicalContext} />
-            </Animated.View>
-            <Animated.View 
-              entering={reduceMotionEnabled ? undefined : FadeInDown.duration(animDuration).delay(200)}
-              exiting={enableExitAnimations ? FadeOut.duration(animDuration) : undefined}
-              layout={reduceMotionEnabled ? undefined : Layout.duration(animDuration)}
-              style={styles.detailsField}
-            >
-              <SecondaryFieldRow icon="evidence" label="Evidence" value={scientificEvidence} />
-            </Animated.View>
-            <Animated.View 
-              entering={reduceMotionEnabled ? undefined : FadeInDown.duration(animDuration).delay(250)}
-              exiting={enableExitAnimations ? FadeOut.duration(animDuration) : undefined}
-              layout={reduceMotionEnabled ? undefined : Layout.duration(animDuration)}
-              style={styles.detailsField}
-            >
-              <SecondaryFieldRow icon="warning" label="Warning" value={warning} />
-            </Animated.View>
-            <Animated.View 
-              entering={reduceMotionEnabled ? undefined : FadeInDown.duration(animDuration).delay(300)}
-              exiting={enableExitAnimations ? FadeOut.duration(animDuration) : undefined}
-              layout={reduceMotionEnabled ? undefined : Layout.duration(animDuration)}
-              style={styles.detailsField}
-            >
-              <TimePeriodRegionRow timePeriod={timePeriod} region={region} />
-            </Animated.View>
-            {showDetailsButton && (
-              <Animated.View
-                entering={reduceMotionEnabled ? undefined : FadeInDown.duration(animDuration).delay(350)}
-                exiting={enableExitAnimations ? FadeOut.duration(animDuration) : undefined}
-                layout={reduceMotionEnabled ? undefined : Layout.duration(animDuration)}
-              >
-                <Pressable
-                  accessibilityRole="button"
-                  accessibilityLabel="Show less details"
-                  onPress={handleShowLessPress}
-                  style={styles.showLessButton}
-                  testID={`list-big-recipe-row-show-less-${recipeId}`}
-                >
-                  <Text style={styles.showLessText}>Show Less</Text>
-                </Pressable>
-              </Animated.View>
-            )}
-          </Animated.View>
-        ) : (
-          <Animated.View
-            entering={reduceMotionEnabled ? undefined : FadeIn.duration(animDuration)}
-            exiting={enableExitAnimations ? FadeOut.duration(animDuration) : undefined}
-            style={styles.collapsedFieldsRow}
-          >
-            <View testID={`list-big-recipe-row-field-difficulty-${recipeId}`}>
-              <DifficultyField score={difficultyScore} />
-            </View>
-            <View testID={`list-big-recipe-row-field-prep-time-${recipeId}`}>
-              <PrepTimeField value={preparationTime} />
-            </View>
-          </Animated.View>
-        )}
+        <Animated.View
+          entering={reduceMotionEnabled ? undefined : FadeIn.duration(animDuration)}
+          exiting={enableExitAnimations ? FadeOut.duration(animDuration) : undefined}
+          style={styles.collapsedFieldsRow}
+        >
+          <View testID={`list-big-recipe-row-field-difficulty-${recipeId}`}>
+            <DifficultyField score={difficultyScore} />
+          </View>
+          <View testID={`list-big-recipe-row-field-prep-time-${recipeId}`}>
+            <PrepTimeField value={preparationTime} />
+          </View>
+        </Animated.View>
       </Animated.View>
     </Animated.View>
   );
@@ -422,20 +341,103 @@ export function ListBigRecipeRow({
           style={styles.descriptionBlock}
           testID={`list-big-recipe-row-description-block-${recipeId}`}
         >
-          {detailsMode ? (
-            <FieldRow
-              icon="description"
-              label="Description"
-              value={description}
-              testID={`list-big-recipe-row-description-${recipeId}`}
-            />
-          ) : (
-            <DescriptionInline
-              value={description}
-              numberOfLines={3}
-            />
-          )}
+          <DescriptionInline
+            value={description}
+            numberOfLines={detailsMode ? undefined : 3}
+          />
         </Animated.View>
+
+        {detailsMode ? (
+          <Animated.View
+            layout={reduceMotionEnabled ? undefined : Layout.duration(animDuration)}
+            style={[styles.detailsMode, styles.detailsModeClip]}
+            testID={`list-big-recipe-row-details-mode-${recipeId}`}
+          >
+            <Animated.View
+              entering={reduceMotionEnabled ? undefined : FadeInDown.duration(animDuration).delay(0)}
+              exiting={enableExitAnimations ? FadeOut.duration(animDuration) : undefined}
+              layout={reduceMotionEnabled ? undefined : Layout.duration(animDuration)}
+              style={[styles.detailsField, styles.detailsFieldCentered, styles.ingredientsField]}
+            >
+              <View style={styles.centeredNarrowField}>
+                <FieldRow
+                  icon="ingredients"
+                  label="Ingredients"
+                  value={ingredients}
+                  align="center"
+                  hideIcon
+                  hideLabelChip
+                />
+              </View>
+            </Animated.View>
+            <Animated.View
+              entering={reduceMotionEnabled ? undefined : FadeInDown.duration(animDuration).delay(50)}
+              exiting={enableExitAnimations ? FadeOut.duration(animDuration) : undefined}
+              layout={reduceMotionEnabled ? undefined : Layout.duration(animDuration)}
+              style={[styles.detailsField, styles.detailsFieldCentered]}
+            >
+              <View style={styles.centeredNarrowField}>
+                <FieldRow
+                  icon="preparationSteps"
+                  label="Preparation Steps"
+                  value={preparationSteps}
+                  valueNode={<PreparationStepsValue value={preparationSteps} />}
+                  headerAlign="center"
+                  valueAlign="left"
+                  hideIcon
+                  hideLabelChip
+                />
+              </View>
+            </Animated.View>
+
+            <Animated.View
+              entering={reduceMotionEnabled ? undefined : FadeInDown.duration(animDuration).delay(100)}
+              exiting={enableExitAnimations ? FadeOut.duration(animDuration) : undefined}
+              layout={reduceMotionEnabled ? undefined : Layout.duration(animDuration)}
+              style={styles.secondaryFieldsGroup}
+            >
+              <SecondaryFieldRow icon="usage" label="Usage" value={usage} variant="grouped" />
+              <SecondaryFieldRow
+                icon="historical"
+                label="Historical"
+                value={historicalContext}
+                variant="grouped"
+              />
+              <SecondaryFieldRow
+                icon="evidence"
+                label="Evidence"
+                value={scientificEvidence}
+                variant="grouped"
+              />
+              <SecondaryFieldRow icon="warning" label="Warning" value={warning} variant="grouped" />
+            </Animated.View>
+            <Animated.View
+              entering={reduceMotionEnabled ? undefined : FadeInDown.duration(animDuration).delay(300)}
+              exiting={enableExitAnimations ? FadeOut.duration(animDuration) : undefined}
+              layout={reduceMotionEnabled ? undefined : Layout.duration(animDuration)}
+              style={[styles.detailsField, styles.timePeriodRegionBlock]}
+            >
+              <TimePeriodRegionRow timePeriod={timePeriod} region={region} />
+            </Animated.View>
+            {showDetailsButton && (
+              <Animated.View
+                entering={reduceMotionEnabled ? undefined : FadeInDown.duration(animDuration).delay(350)}
+                exiting={enableExitAnimations ? FadeOut.duration(animDuration) : undefined}
+                layout={reduceMotionEnabled ? undefined : Layout.duration(animDuration)}
+              >
+                <Pressable
+                  accessibilityRole="button"
+                  accessibilityLabel="Show less details"
+                  onPress={handleShowLessPress}
+                  style={styles.showLessButton}
+                  testID={`list-big-recipe-row-show-less-${recipeId}`}
+                >
+                  <Text style={styles.showLessText}>Show Less</Text>
+                </Pressable>
+              </Animated.View>
+            )}
+          </Animated.View>
+        ) : null}
 
         {!detailsMode && showDetailsButton && (
           <Animated.View
@@ -613,6 +615,30 @@ const styles = StyleSheet.create({
   detailsField: {
     gap: 2,
   },
+  detailsFieldCentered: {
+    alignItems: 'center',
+    paddingTop: 1,
+    paddingBottom: 1,
+    marginTop: 10,
+    marginBottom: 12,
+  },
+  ingredientsField: {
+    marginBottom: 12,
+  },
+  centeredNarrowField: {
+    width: '100%',
+    maxWidth: 280,
+    alignSelf: 'center',
+    paddingHorizontal: theme.spacing.md,
+  },
+  secondaryFieldsGroup: {
+    backgroundColor: theme.colors.surface.secondaryField,
+    borderRadius: 10,
+    overflow: 'hidden',
+  },
+  timePeriodRegionBlock: {
+    marginTop: 16,
+  },
   field: {
     flexGrow: 1,
     flexBasis: '45%',
@@ -645,8 +671,9 @@ const styles = StyleSheet.create({
     fontFamily: theme.typography.fontFamily.sans.semiBold,
   },
   showLessButton: {
-    alignSelf: 'flex-start',
+    alignSelf: 'flex-end',
     paddingVertical: 4,
+    marginTop: 12,
   },
   showLessText: {
     fontSize: 13,

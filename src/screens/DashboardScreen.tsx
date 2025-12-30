@@ -27,6 +27,7 @@ type DashboardScreenProps = {
   recipes: RecipeRow[];
   totalCount: number;
   viewMode: ViewMode;
+  focusResetNonce?: number;
   onEndReached?: () => void;
   reduceMotionEnabled?: boolean;
   closeAsYouTapEnabled?: boolean;
@@ -41,6 +42,7 @@ export function DashboardScreen({
   recipes,
   totalCount,
   viewMode,
+  focusResetNonce = 0,
   onEndReached,
   reduceMotionEnabled = false,
   closeAsYouTapEnabled = false,
@@ -73,6 +75,13 @@ export function DashboardScreen({
       listBigRestoreScrollYById.current.clear();
     }
   }, [viewMode]);
+
+  useEffect(() => {
+    setExpandedIds(new Set());
+    setListDetailsIds(new Set());
+    setListBigExpandedIds(new Set());
+    listBigRestoreScrollYById.current.clear();
+  }, [focusResetNonce]);
 
   const minTileWidth = 180;
   const gridNumColumns = Math.max(2, Math.floor(width / minTileWidth));
@@ -340,6 +349,7 @@ export function DashboardScreen({
                     title={item.title}
                     difficultyScore={item.difficultyScore}
                     preparationTime={item.preparationTime}
+                    dimmed={isGrayedOut}
                   />
                 </WavePressable>
               )}

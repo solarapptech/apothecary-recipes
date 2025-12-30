@@ -8,11 +8,13 @@ type SecondaryFieldRowProps = {
   icon: IconName;
   label: string;
   value: string;
+  variant?: 'card' | 'grouped';
+  showDivider?: boolean;
 };
 
-export function SecondaryFieldRow({ icon, label, value }: SecondaryFieldRowProps) {
+export function SecondaryFieldRow({ icon, label, value, variant = 'card', showDivider = false }: SecondaryFieldRowProps) {
   return (
-    <View style={styles.container}>
+    <View style={[styles.container, variant === 'grouped' && styles.containerGrouped, showDivider && styles.containerDivider]}>
       <View style={styles.headerLine}>
         <View style={styles.iconBox}>
           <FieldIcon name={icon} size={18} />
@@ -31,6 +33,14 @@ const styles = StyleSheet.create({
     padding: 12,
     gap: 6,
   },
+  containerGrouped: {
+    backgroundColor: 'transparent',
+    borderRadius: 0,
+  },
+  containerDivider: {
+    borderBottomWidth: StyleSheet.hairlineWidth,
+    borderBottomColor: theme.colors.border.subtle,
+  },
   headerLine: {
     flexDirection: 'row',
     alignItems: 'center',
@@ -43,10 +53,11 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   labelText: {
-    fontSize: 11,
+    fontSize: 12,
     fontFamily: theme.typography.fontFamily.sans.semiBold,
+    fontWeight: '800',
     letterSpacing: 0.6,
-    color: theme.colors.ink.primary,
+    color: theme.colors.brand.primaryStrong,
     textTransform: 'uppercase',
   },
   valueText: {

@@ -230,6 +230,7 @@ export function AppShell({ deps, initialPage }: AppShellProps) {
   const [recipes, setRecipes] = useState<ListRecipesResult['rows']>([]);
   const [totalCount, setTotalCount] = useState(0);
   const [recipesRefreshNonce, setRecipesRefreshNonce] = useState(0);
+  const [focusResetNonce, setFocusResetNonce] = useState(0);
 
   const [isRecipesLoading, setIsRecipesLoading] = useState(false);
 
@@ -560,6 +561,7 @@ export function AppShell({ deps, initialPage }: AppShellProps) {
             : () => {
                 setRecipes([]);
                 setPage((prev) => Math.max(1, prev - 1));
+                setFocusResetNonce((value) => value + 1);
               }
         }
         onNext={
@@ -568,6 +570,7 @@ export function AppShell({ deps, initialPage }: AppShellProps) {
             : () => {
                 setRecipes([]);
                 setPage((prev) => Math.min(totalPages, prev + 1));
+                setFocusResetNonce((value) => value + 1);
               }
         }
         onSelectPage={
@@ -579,6 +582,7 @@ export function AppShell({ deps, initialPage }: AppShellProps) {
                 }
                 setRecipes([]);
                 setPage(nextPage);
+                setFocusResetNonce((value) => value + 1);
               }
         }
         onLoadMore={
@@ -839,6 +843,7 @@ if (route === 'settings') {
                     setInfinitePage(1);
                     setRecipes([]);
                     setSearchQuery('');
+                    setFocusResetNonce((value) => value + 1);
                   }}
                   sortMode={sortMode}
                   onChangeSortMode={async (mode) => {
@@ -846,6 +851,7 @@ if (route === 'settings') {
                     setPage(1);
                     setInfinitePage(1);
                     setSortMode(mode);
+                    setFocusResetNonce((value) => value + 1);
                     await resolved.setSortModeAsync(uiState.bootstrap.db, mode);
                   }}
                   onRandomize={async () => {
@@ -855,6 +861,7 @@ if (route === 'settings') {
                     setSortMode('random');
                     await resolved.setSortModeAsync(uiState.bootstrap.db, 'random');
                     setRandomSeed(resolved.createRandomSeed());
+                    setFocusResetNonce((value) => value + 1);
                   }}
                   viewMode={viewMode}
                   onChangeViewMode={async (mode) => {
@@ -868,6 +875,7 @@ if (route === 'settings') {
               recipes={recipes}
               totalCount={totalCount}
               viewMode={viewMode}
+              focusResetNonce={focusResetNonce}
               onEndReached={() => {
                 if (!infiniteScrollEnabled) {
                   return;

@@ -156,8 +156,14 @@ test('renders difficulty and preparation time in dedicated slots', () => {
   const difficultyNode = tree.root.findByProps({ testID: 'compact-recipe-row-difficulty-1' });
   const timeNode = tree.root.findByProps({ testID: 'compact-recipe-row-time-1' });
 
-  expect(textFromChildren(difficultyNode.props.children)).toContain('Difficulty 3');
-  expect(textFromChildren(timeNode.props.children)).toContain('10 min');
+  const difficultyIcons = difficultyNode.findAll(
+    (node: any) => node.props?.name === 'star' || node.props?.name === 'starOutline'
+  );
+  expect(difficultyIcons).toHaveLength(3);
+
+  const timeTextNodes = timeNode.findAllByType(require('react-native').Text);
+  expect(timeTextNodes.length).toBeGreaterThan(0);
+  expect(textFromChildren(timeTextNodes[0].props.children)).toContain('10 min');
 });
 
 test('renders list-big rows when viewMode is list-big', () => {
@@ -226,6 +232,52 @@ test('toggles inline expansion in list mode and allows multiple expanded items',
   expect(tree.root.findByProps({ testID: 'compact-recipe-row-thumb-1' })).toBeTruthy();
   expect(tree.root.findByProps({ testID: 'list-big-recipe-row-2' })).toBeTruthy();
   expect(tree.root.findAllByProps({ testID: 'list-big-recipe-row-1' })).toHaveLength(0);
+});
+
+test('clears grayout state when focusResetNonce changes', () => {
+  const DashboardScreen = loadDashboardScreenWithFlashListMock();
+  const recipes = createRecipes(2);
+
+  const tree = render(
+    <DashboardScreen
+      title="Apothecary Recipes"
+      headerRight={<View />}
+      controls={<View />}
+      footer={<View />}
+      recipes={recipes}
+      totalCount={2}
+      viewMode="list"
+      focusResetNonce={0}
+    />
+  );
+
+  act(() => {
+    tree.root.findByProps({ testID: 'dashboard-recipe-toggle-1' }).props.onPress({ nativeEvent: { locationX: 0, locationY: 0 } });
+  });
+
+  const compactRow2Before = tree.root.findByProps({ testID: 'compact-recipe-row-2' });
+  expect(Array.isArray(compactRow2Before.props.style)).toBe(true);
+  expect(compactRow2Before.props.style[1]).toBeTruthy();
+
+  act(() => {
+    tree.update(
+      <DashboardScreen
+        title="Apothecary Recipes"
+        headerRight={<View />}
+        controls={<View />}
+        footer={<View />}
+        recipes={recipes}
+        totalCount={2}
+        viewMode="list"
+        focusResetNonce={1}
+      />
+    );
+  });
+
+  const compactRow2After = tree.root.findByProps({ testID: 'compact-recipe-row-2' });
+  expect(Array.isArray(compactRow2After.props.style)).toBe(true);
+  expect(compactRow2After.props.style[1]).toBeFalsy();
+  expect(tree.root.findByProps({ testID: 'compact-recipe-row-thumb-1' })).toBeTruthy();
 });
 
 test('list view expanded items toggle details mode via + more info button', () => {

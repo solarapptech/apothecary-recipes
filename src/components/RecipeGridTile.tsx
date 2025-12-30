@@ -9,6 +9,7 @@ import { FieldIcon } from '../ui/icons';
 import { theme } from '../ui/theme';
 
 import { FieldRow } from './FieldRow';
+import { PreparationStepsValue } from './PreparationStepsValue';
 
 type RecipeGridTileProps = {
   recipeId: number;
@@ -111,7 +112,12 @@ export function RecipeGridTile({
           <FieldRow icon="region" label="Region" value={region} />
           <FieldRow icon="ingredients" label="Ingredients" value={ingredients} />
           <FieldRow icon="detailedMeasurements" label="Detailed Measurements" value={detailedMeasurements} />
-          <FieldRow icon="preparationSteps" label="Preparation Steps" value={preparationSteps} />
+          <FieldRow
+            icon="preparationSteps"
+            label="Preparation Steps"
+            value={preparationSteps}
+            valueNode={<PreparationStepsValue value={preparationSteps} />}
+          />
           <FieldRow icon="usage" label="Usage" value={usage} />
           <FieldRow icon="warning" label="Warning" value={warning} />
           <FieldRow icon="historical" label="Historical" value={historicalContext} />

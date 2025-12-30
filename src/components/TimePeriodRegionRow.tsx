@@ -11,19 +11,27 @@ type TimePeriodRegionRowProps = {
 export function TimePeriodRegionRow({ timePeriod, region }: TimePeriodRegionRowProps) {
   return (
     <View style={styles.container}>
-      <View style={styles.pill}>
-        <View style={styles.pillHeader}>
-          <FieldIcon name="timePeriod" size={12} color={theme.colors.ink.onBrand} />
-          <Text style={styles.pillLabel}>TIME PERIOD</Text>
+      <View style={styles.column}>
+        <View style={styles.headerRow}>
+          <FieldIcon name="timePeriod" size={18} color={theme.colors.ink.subtle} />
+          <View style={styles.headerChip}>
+            <Text style={styles.headerChipLabel}>TIME PERIOD</Text>
+          </View>
         </View>
-        <Text style={styles.pillValue} numberOfLines={2}>{timePeriod}</Text>
+        <Text style={styles.valueText} numberOfLines={2}>
+          {timePeriod}
+        </Text>
       </View>
-      <View style={styles.pill}>
-        <View style={styles.pillHeader}>
-          <FieldIcon name="region" size={12} color={theme.colors.ink.onBrand} />
-          <Text style={styles.pillLabel}>REGION</Text>
+      <View style={styles.column}>
+        <View style={styles.headerRow}>
+          <FieldIcon name="region" size={18} color={theme.colors.ink.subtle} />
+          <View style={styles.headerChip}>
+            <Text style={styles.headerChipLabel}>REGION</Text>
+          </View>
         </View>
-        <Text style={styles.pillValue} numberOfLines={2}>{region}</Text>
+        <Text style={styles.valueText} numberOfLines={2}>
+          {region}
+        </Text>
       </View>
     </View>
   );
@@ -34,30 +42,36 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     gap: 8,
   },
-  pill: {
+  column: {
     flex: 1,
-    backgroundColor: theme.colors.brand.prepTimeGreen,
-    borderRadius: 10,
-    paddingHorizontal: 12,
-    paddingVertical: 8,
-    gap: 4,
+    alignItems: 'center',
+    gap: 8,
   },
-  pillHeader: {
+  headerRow: {
     flexDirection: 'row',
     alignItems: 'center',
-    gap: 4,
+    justifyContent: 'center',
+    gap: 6,
   },
-  pillLabel: {
-    fontSize: 9,
+  headerChip: {
+    backgroundColor: theme.colors.brand.prepTimeGreen,
+    borderRadius: theme.radii.pill,
+    paddingHorizontal: 12,
+    paddingVertical: 2,
+  },
+  headerChipLabel: {
+    fontSize: 12,
     fontFamily: theme.typography.fontFamily.sans.semiBold,
+    fontWeight: '800',
     letterSpacing: 0.6,
     color: theme.colors.ink.onBrand,
     textTransform: 'uppercase',
   },
-  pillValue: {
-    fontSize: 11,
-    lineHeight: 14,
-    fontFamily: theme.typography.fontFamily.sans.medium,
-    color: theme.colors.ink.onBrand,
+  valueText: {
+    fontSize: 13,
+    lineHeight: 18,
+    fontFamily: theme.typography.fontFamily.sans.regular,
+    color: theme.colors.ink.primary,
+    textAlign: 'center',
   },
 });
