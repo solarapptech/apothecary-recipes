@@ -2,6 +2,7 @@ import {
   getAutoScrollEnabledAsync,
   getCloseAsYouTapEnabledAsync,
   getInfiniteScrollEnabledAsync,
+  getPageSizeAsync,
   getPlanAsync,
   getReduceMotionEnabledAsync,
   getPremiumBundleSha256Async,
@@ -16,6 +17,7 @@ import {
   setAutoScrollEnabledAsync,
   setCloseAsYouTapEnabledAsync,
   setInfiniteScrollEnabledAsync,
+  setPageSizeAsync,
   setPlanAsync,
   setReduceMotionEnabledAsync,
   setPremiumBundleSha256Async,
@@ -59,6 +61,7 @@ test('defaults: sortMode=random, infiniteScroll=false, viewMode=list, reduceMoti
   await expect(getPremiumDownloadProgressAsync(db)).resolves.toBeNull();
   await expect(getSortModeAsync(db)).resolves.toBe('random');
   await expect(getInfiniteScrollEnabledAsync(db)).resolves.toBe(false);
+  await expect(getPageSizeAsync(db)).resolves.toBe(50);
   await expect(getViewModeAsync(db)).resolves.toBe('list');
   await expect(getReduceMotionEnabledAsync(db)).resolves.toBe(false);
   await expect(getCloseAsYouTapEnabledAsync(db)).resolves.toBe(true);
@@ -74,6 +77,7 @@ test('set/get roundtrip for all preferences', async () => {
   await setPremiumBundleSha256Async(db, 'deadbeef');
   await setSortModeAsync(db, 'za');
   await setInfiniteScrollEnabledAsync(db, true);
+  await setPageSizeAsync(db, 25);
   await setViewModeAsync(db, 'grid');
   await setReduceMotionEnabledAsync(db, true);
   await setCloseAsYouTapEnabledAsync(db, false);
@@ -89,6 +93,7 @@ test('set/get roundtrip for all preferences', async () => {
   await expect(getPremiumDownloadProgressAsync(db)).resolves.toBe(42);
   await expect(getSortModeAsync(db)).resolves.toBe('za');
   await expect(getInfiniteScrollEnabledAsync(db)).resolves.toBe(true);
+  await expect(getPageSizeAsync(db)).resolves.toBe(25);
   await expect(getViewModeAsync(db)).resolves.toBe('grid');
   await expect(getReduceMotionEnabledAsync(db)).resolves.toBe(true);
   await expect(getCloseAsYouTapEnabledAsync(db)).resolves.toBe(false);
@@ -103,6 +108,7 @@ test('persistence simulated: values are read from stored key/value table', async
     premiumDownloadProgress: '100',
     sortMode: 'az',
     infiniteScrollEnabled: 'false',
+    pageSize: '25',
     viewMode: 'list-big',
     reduceMotionEnabled: 'true',
     closeAsYouTapEnabled: 'false',
@@ -115,6 +121,7 @@ test('persistence simulated: values are read from stored key/value table', async
   await expect(getPremiumDownloadProgressAsync(db)).resolves.toBe(100);
   await expect(getSortModeAsync(db)).resolves.toBe('az');
   await expect(getInfiniteScrollEnabledAsync(db)).resolves.toBe(false);
+  await expect(getPageSizeAsync(db)).resolves.toBe(25);
   await expect(getViewModeAsync(db)).resolves.toBe('list-big');
   await expect(getReduceMotionEnabledAsync(db)).resolves.toBe(true);
   await expect(getCloseAsYouTapEnabledAsync(db)).resolves.toBe(false);

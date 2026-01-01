@@ -1,5 +1,5 @@
-import { useEffect, type ReactNode } from 'react';
-import { ActivityIndicator, BackHandler, Pressable, StyleSheet, Switch, Text, View } from 'react-native';
+import { useEffect, useState, type ReactNode } from 'react';
+import { ActivityIndicator, BackHandler, Modal, Pressable, StyleSheet, Switch, Text, View } from 'react-native';
 
 import { ScreenFrame } from '../components/ScreenFrame';
 import { ENABLE_DEV_RESET } from '../config/devFlags';
@@ -12,6 +12,8 @@ type SettingsScreenProps = {
   onBackPress: () => void;
   footer?: ReactNode;
   plan: Plan;
+  pageSize: number;
+  onChangePageSize: (pageSize: number) => void | Promise<void>;
   reduceMotionEnabled: boolean;
   onToggleReduceMotionEnabled: (enabled: boolean) => void;
   closeAsYouTapEnabled: boolean;
@@ -34,6 +36,8 @@ export function SettingsScreen({
   onBackPress,
   footer,
   plan,
+  pageSize,
+  onChangePageSize,
   reduceMotionEnabled,
   onToggleReduceMotionEnabled,
   closeAsYouTapEnabled,
@@ -58,6 +62,8 @@ export function SettingsScreen({
     });
     return () => backHandler.remove();
   }, [onBackPress]);
+
+  const [pageSizeMenuVisible, setPageSizeMenuVisible] = useState(false);
 
   const masked = maskPremiumCode(premiumCode);
   const recipeCount = plan === 'premium' ? PLAN_RECIPE_COUNTS.premium : PLAN_RECIPE_COUNTS.free;
@@ -99,6 +105,7 @@ export function SettingsScreen({
         </View>
 
         <Text style={styles.sectionTitle}>Preferences</Text>
+
         <View style={styles.toggleRow} testID="settings-auto-scroll-row">
           <Text style={styles.body}>Auto-scroll</Text>
           <Switch
@@ -128,6 +135,18 @@ export function SettingsScreen({
             testID="settings-behavior-switch"
           />
         </View>
+        <Pressable
+          accessibilityRole="button"
+          accessibilityLabel="Results per page"
+          onPress={() => setPageSizeMenuVisible(true)}
+          style={styles.selectRow}
+          testID="settings-page-size-row"
+        >
+          <Text style={styles.body}>Results per page</Text>
+          <Text style={styles.selectValue} testID="settings-page-size-value">
+            {pageSize} recipes
+          </Text>
+        </Pressable>
 
         {masked ? (
           <Text style={styles.body} testID="settings-code-masked">
@@ -219,6 +238,42 @@ export function SettingsScreen({
           </View>
         ) : null}
       </View>
+
+      <Modal
+        transparent
+        visible={pageSizeMenuVisible}
+        animationType="fade"
+        onRequestClose={() => setPageSizeMenuVisible(false)}
+      >
+        <Pressable
+          style={styles.menuBackdrop}
+          onPress={() => setPageSizeMenuVisible(false)}
+          testID="settings-page-size-backdrop"
+        >
+          <Pressable style={styles.menu} onPress={() => undefined} testID="settings-page-size-modal">
+            {([50, 25] as const).map((value) => (
+              <Pressable
+                key={value}
+                accessibilityRole="button"
+                accessibilityLabel={`Show ${value} recipes per page`}
+                onPress={() => {
+                  if (value === pageSize) {
+                    return;
+                  }
+                  void onChangePageSize(value);
+                  setPageSizeMenuVisible(false);
+                }}
+                style={[styles.menuItem, value === pageSize ? styles.menuItemSelected : null]}
+                testID={`settings-page-size-item-${value}`}
+              >
+                <Text style={[styles.menuItemText, value === pageSize ? styles.menuItemTextSelected : null]}>
+                  {value} recipes
+                </Text>
+              </Pressable>
+            ))}
+          </Pressable>
+        </Pressable>
+      </Modal>
     </ScreenFrame>
   );
 }
@@ -245,6 +300,16 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
+  },
+  selectRow: {
+    minHeight: 44,
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+  },
+  selectValue: {
+    color: '#111',
+    fontWeight: '600',
   },
   planRow: {
     flexDirection: 'row',
@@ -285,6 +350,35 @@ const styles = StyleSheet.create({
   },
   body: {
     color: '#444',
+  },
+  menuBackdrop: {
+    flex: 1,
+    backgroundColor: 'rgba(0,0,0,0.2)',
+  },
+  menu: {
+    position: 'absolute',
+    left: 16,
+    right: 16,
+    top: 140,
+    backgroundColor: '#fff',
+    borderRadius: 10,
+    borderWidth: StyleSheet.hairlineWidth,
+    borderColor: '#ddd',
+    overflow: 'hidden',
+  },
+  menuItem: {
+    paddingHorizontal: 14,
+    paddingVertical: 12,
+  },
+  menuItemSelected: {
+    backgroundColor: '#f3f4f6',
+  },
+  menuItemText: {
+    fontSize: 16,
+    color: '#111',
+  },
+  menuItemTextSelected: {
+    fontWeight: '700',
   },
   actions: {
     marginTop: 10,

@@ -28,6 +28,7 @@ import {
   setPremiumDownloadStatusAsync as setPremiumDownloadStatusDefaultAsync,
   setAutoScrollEnabledAsync as setAutoScrollEnabledDefaultAsync,
   setCloseAsYouTapEnabledAsync as setCloseAsYouTapEnabledDefaultAsync,
+  setPageSizeAsync as setPageSizeDefaultAsync,
   setPlanAsync as setPlanDefaultAsync,
   setPremiumBundleSha256Async as setPremiumBundleSha256DefaultAsync,
   setPremiumBundleUrlAsync as setPremiumBundleUrlDefaultAsync,
@@ -74,6 +75,7 @@ type AppShellDeps = {
   setReduceMotionEnabledAsync: (db: LibraryBootstrap['db'], enabled: boolean) => Promise<void>;
   setCloseAsYouTapEnabledAsync: (db: LibraryBootstrap['db'], enabled: boolean) => Promise<void>;
   setAutoScrollEnabledAsync: (db: LibraryBootstrap['db'], enabled: boolean) => Promise<void>;
+  setPageSizeAsync: (db: LibraryBootstrap['db'], pageSize: number) => Promise<void>;
   setSortModeAsync: (db: LibraryBootstrap['db'], sortMode: SortMode) => Promise<void>;
   setViewModeAsync: (db: LibraryBootstrap['db'], viewMode: ViewMode) => Promise<void>;
   createPremiumBundleInstaller: (db: LibraryBootstrap['db'], bundleUrl: string) => PremiumBundleInstaller;
@@ -127,6 +129,7 @@ const defaultDeps: AppShellDeps = {
   setReduceMotionEnabledAsync: setReduceMotionEnabledDefaultAsync,
   setCloseAsYouTapEnabledAsync: setCloseAsYouTapEnabledDefaultAsync,
   setAutoScrollEnabledAsync: setAutoScrollEnabledDefaultAsync,
+  setPageSizeAsync: setPageSizeDefaultAsync,
   setSortModeAsync: setSortModeDefaultAsync,
   setViewModeAsync: setViewModeDefaultAsync,
   createPremiumBundleInstaller: (db, bundleUrl) => {
@@ -195,7 +198,7 @@ export function AppShell({ deps, initialPage }: AppShellProps) {
   const [menuVisible, setMenuVisible] = useState(false);
 
   const [page, setPage] = useState(() => Math.max(1, initialPage ?? 1));
-  const pageSize = PAGE_SIZE;
+  const [pageSize, setPageSize] = useState(PAGE_SIZE);
 
   const [infiniteScrollEnabled, setInfiniteScrollEnabled] = useState(false);
   const [infinitePage, setInfinitePage] = useState(1);
@@ -259,6 +262,7 @@ export function AppShell({ deps, initialPage }: AppShellProps) {
         setReduceMotionEnabled(bootstrap.preferences.reduceMotionEnabled);
         setCloseAsYouTapEnabled(bootstrap.preferences.closeAsYouTapEnabled);
         setAutoScrollEnabled(bootstrap.preferences.autoScrollEnabled);
+        setPageSize(bootstrap.preferences.pageSize);
         setRandomSeed(bootstrap.launchSeed);
 
         const installer = resolved.createPremiumBundleInstaller(
@@ -619,6 +623,18 @@ if (route === 'settings') {
                 setRoute('dashboard');
               }}
               plan={plan}
+              pageSize={pageSize}
+              onChangePageSize={async (nextPageSize: number) => {
+                const normalized = nextPageSize === 25 ? 25 : 50;
+                setPageSize(normalized);
+
+                setRecipes([]);
+                setPage(1);
+                setInfinitePage(1);
+                setFocusResetNonce((value) => value + 1);
+
+                await resolved.setPageSizeAsync(uiState.bootstrap.db, normalized);
+              }}
               reduceMotionEnabled={reduceMotionEnabled}
               onToggleReduceMotionEnabled={async (enabled) => {
                 setReduceMotionEnabled(enabled);

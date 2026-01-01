@@ -54,10 +54,9 @@ export function DashboardScreen({
   const [listBigExpandedIds, setListBigExpandedIds] = useState<Set<number>>(() => new Set());
   const { width } = useWindowDimensions();
   const listRef = useRef<FlashList<RecipeRow>>(null);
+  const pendingScrollToRecipeId = useRef<number | null>(null);
   const currentScrollY = useRef(0);
-  const restoreScrollY = useRef(0);
-  const listBigRestoreScrollYById = useRef<Map<number, number>>(new Map());
-  const collapseAnimDuration = motionDurationMs(reduceMotionEnabled, 200);
+  const collapseAnimDuration = motionDurationMs(reduceMotionEnabled, 300);
 
   useEffect(() => {
     setDidMount(true);
@@ -72,7 +71,6 @@ export function DashboardScreen({
     }
     if (viewMode !== 'list-big') {
       setListBigExpandedIds(new Set());
-      listBigRestoreScrollYById.current.clear();
     }
   }, [viewMode]);
 
@@ -80,8 +78,58 @@ export function DashboardScreen({
     setExpandedIds(new Set());
     setListDetailsIds(new Set());
     setListBigExpandedIds(new Set());
-    listBigRestoreScrollYById.current.clear();
+    pendingScrollToRecipeId.current = null;
   }, [focusResetNonce]);
+
+  useEffect(() => {
+    if (!autoScrollEnabled) {
+      return;
+    }
+
+    const recipeId = pendingScrollToRecipeId.current;
+    if (typeof recipeId !== 'number') {
+      return;
+    }
+
+    if (viewMode !== 'list' && viewMode !== 'list-big') {
+      pendingScrollToRecipeId.current = null;
+      return;
+    }
+
+    if (viewMode === 'list' && !expandedIds.has(recipeId)) {
+      return;
+    }
+
+    const index = recipes.findIndex((recipe) => recipe.id === recipeId);
+    if (index < 0) {
+      pendingScrollToRecipeId.current = null;
+      return;
+    }
+
+    pendingScrollToRecipeId.current = null;
+
+    // The list reflows with a Layout animation when items expand/collapse. If we scroll too early
+    // (mid-animation), the continued reflow can shift content after the scroll and make the target
+    // item appear mispositioned. We do a quick scroll, then a correction scroll after layout settles.
+    setTimeout(() => {
+      listRef.current?.scrollToIndex?.({ index, animated: true, viewPosition: 0.1 });
+    }, 50);
+
+    if (!reduceMotionEnabled) {
+      setTimeout(() => {
+        listRef.current?.scrollToIndex?.({ index, animated: false, viewPosition: 0.1 });
+      }, collapseAnimDuration + 60);
+    }
+  }, [
+    autoScrollEnabled,
+    collapseAnimDuration,
+    expandedIds,
+    listBigExpandedIds,
+    listDetailsIds,
+    recipes,
+    reduceMotionEnabled,
+    viewMode,
+  ]);
 
   const minTileWidth = 180;
   const gridNumColumns = Math.max(2, Math.floor(width / minTileWidth));
@@ -103,6 +151,9 @@ export function DashboardScreen({
         });
       } else {
         if (closeAsYouTapEnabled) {
+          if (next.size > 0) {
+            pendingScrollToRecipeId.current = recipeId;
+          }
           next.clear();
           setListDetailsIds(new Set());
         }
@@ -116,23 +167,12 @@ export function DashboardScreen({
     currentScrollY.current = event.nativeEvent.contentOffset.y;
   };
 
-  const handleShowDetails = () => {
-    restoreScrollY.current = currentScrollY.current;
-  };
-
-  const handleShowLess = () => {
-    if (!autoScrollEnabled) {
-      return;
-    }
-    // Small timeout to allow layout animation to start/finish collapsing before scrolling
-    setTimeout(() => {
-      listRef.current?.scrollToOffset({ offset: restoreScrollY.current, animated: true });
-    }, 50);
-  };
-
-  const handleListDetailsExpandedChange = (recipeId: number, nextDetailsMode: boolean) => {
+  const handleListDetailsExpandedChange = (
+    recipeId: number,
+    nextDetailsMode: boolean,
+    shouldRestoreScrollOnCollapse = true
+  ) => {
     if (nextDetailsMode) {
-      handleShowDetails();
       setListDetailsIds((prev) => {
         const updated = new Set(prev);
         updated.add(recipeId);
@@ -149,7 +189,34 @@ export function DashboardScreen({
       updated.delete(recipeId);
       return updated;
     });
-    handleShowLess();
+    if (autoScrollEnabled) {
+      pendingScrollToRecipeId.current = recipeId;
+    }
+  };
+
+  const handleListBigDetailsExpandedChange = (recipeId: number, nextDetailsMode: boolean) => {
+    setListBigExpandedIds((prev) => {
+      const updated = new Set(prev);
+      if (!nextDetailsMode) {
+        updated.delete(recipeId);
+
+        if (autoScrollEnabled) {
+          pendingScrollToRecipeId.current = recipeId;
+        }
+
+        return updated;
+      }
+
+      if (closeAsYouTapEnabled) {
+        if (updated.size > 0) {
+          pendingScrollToRecipeId.current = recipeId;
+        }
+        return new Set([recipeId]);
+      }
+
+      updated.add(recipeId);
+      return updated;
+    });
   };
 
   const listKey = viewMode === 'grid' ? `grid-${gridNumColumns}` : viewMode;
@@ -218,7 +285,6 @@ export function DashboardScreen({
               <Animated.View
                 key={`list-big-cell-${item.id}`}
                 layout={reduceMotionEnabled ? undefined : Layout.duration(collapseAnimDuration)}
-                style={isGrayedOutBig ? { opacity: 0.4 } : undefined}
               >
               <ListBigRecipeRow
                 recipeId={item.id}
@@ -236,37 +302,14 @@ export function DashboardScreen({
                 historicalContext={item.historicalContext}
                 scientificEvidence={item.scientificEvidence}
                 reduceMotionEnabled={reduceMotionEnabled}
+                dimmed={isGrayedOutBig}
                 expanded={isExpanded}
                 showDetailsButton={true}
-                onRequestSetExpanded={(next) => {
-                  setListBigExpandedIds((prev) => {
-                    const updated = new Set(prev);
-                    if (!next) {
-                      updated.delete(item.id);
-
-                      const restoreY = listBigRestoreScrollYById.current.get(item.id);
-                      listBigRestoreScrollYById.current.delete(item.id);
-                      if (autoScrollEnabled && typeof restoreY === 'number') {
-                        setTimeout(() => {
-                          listRef.current?.scrollToOffset({ offset: restoreY, animated: true });
-                        }, 50);
-                      }
-
-                      return updated;
-                    }
-
-                    if (autoScrollEnabled) {
-                      listBigRestoreScrollYById.current.set(item.id, currentScrollY.current);
-                    }
-
-                    if (closeAsYouTapEnabled) {
-                      return new Set([item.id]);
-                    }
-
-                    updated.add(item.id);
-                    return updated;
-                  });
+                allowDetailsToggle={false}
+                onPress={() => {
+                  handleListBigDetailsExpandedChange(item.id, !isExpanded);
                 }}
+                onRequestSetExpanded={(next) => handleListBigDetailsExpandedChange(item.id, next)}
               />
               </Animated.View>
             );
@@ -284,74 +327,87 @@ export function DashboardScreen({
               style={isGrayedOut ? { opacity: 0.4 } : undefined}
             >
               {isExpanded ? (
-                <ListBigRecipeRow
-                  recipeId={item.id}
-                  title={item.title}
-                  difficultyScore={item.difficultyScore}
-                  preparationTime={item.preparationTime}
-                  description={item.description}
-                  timePeriod={item.timePeriod}
-                  warning={item.warning}
-                  region={item.region}
-                  ingredients={item.ingredients}
-                  detailedMeasurements={item.detailedMeasurements}
-                  preparationSteps={item.preparationSteps}
-                  usage={item.usage}
-                  historicalContext={item.historicalContext}
-                  scientificEvidence={item.scientificEvidence}
-                  reduceMotionEnabled={reduceMotionEnabled}
-                  expanded={isDetailsMode}
-                  onRequestSetExpanded={(next) => handleListDetailsExpandedChange(item.id, next)}
-                  showDetailsButton={true}
-                  showMinimizeButton={true}
-                  onPressMinimize={() => {
-                    const collapseToCompact = () => {
-                      setExpandedIds((prev) => {
-                        if (!prev.has(item.id)) {
-                          return prev;
-                        }
-                        const updated = new Set(prev);
-                        updated.delete(item.id);
-                        return updated;
-                      });
-                      setListDetailsIds((prev) => {
-                        if (!prev.has(item.id)) {
-                          return prev;
-                        }
-                        const updated = new Set(prev);
-                        updated.delete(item.id);
-                        return updated;
-                      });
-                    };
-
-                    // If details mode is active, fold back to summary first so the user sees the text "retract" animation.
-                    if (isDetailsMode) {
-                      handleListDetailsExpandedChange(item.id, false);
-                      setTimeout(() => {
-                        collapseToCompact();
-                      }, reduceMotionEnabled ? 0 : collapseAnimDuration);
-                      return;
-                    }
-
-                    collapseToCompact();
-                  }}
-                />
-              ) : (
-                <WavePressable
-                  accessibilityRole="button"
-                  accessibilityLabel="Expand recipe"
-                  onPress={() => toggleExpanded(item.id)}
-                  testID={`dashboard-recipe-toggle-${item.id}`}
-                  reduceMotionEnabled={reduceMotionEnabled}
+                <Animated.View
+                  key={`list-expanded-${item.id}`}
                 >
-                  <CompactRecipeRow
+                  <ListBigRecipeRow
                     recipeId={item.id}
                     title={item.title}
                     difficultyScore={item.difficultyScore}
                     preparationTime={item.preparationTime}
-                    dimmed={isGrayedOut}
+                    description={item.description}
+                    timePeriod={item.timePeriod}
+                    warning={item.warning}
+                    region={item.region}
+                    ingredients={item.ingredients}
+                    detailedMeasurements={item.detailedMeasurements}
+                    preparationSteps={item.preparationSteps}
+                    usage={item.usage}
+                    historicalContext={item.historicalContext}
+                    scientificEvidence={item.scientificEvidence}
+                    reduceMotionEnabled={reduceMotionEnabled}
+                    expanded={isDetailsMode}
+                    onRequestSetExpanded={(next) => handleListDetailsExpandedChange(item.id, next)}
+                    allowDetailsToggle={false}
+                    onPress={() => {
+                      // Tapping the expanded card toggles details mode, but should NOT restore scroll.
+                      handleListDetailsExpandedChange(item.id, !isDetailsMode, false);
+                    }}
+                    showDetailsButton={true}
+                    showMinimizeButton={true}
+                    onPressMinimize={() => {
+                      const collapseToCompactNow = () => {
+                        setExpandedIds((prev) => {
+                          if (!prev.has(item.id)) {
+                            return prev;
+                          }
+                          const updated = new Set(prev);
+                          updated.delete(item.id);
+                          return updated;
+                        });
+                        setListDetailsIds((prev) => {
+                          if (!prev.has(item.id)) {
+                            return prev;
+                          }
+                          const updated = new Set(prev);
+                          updated.delete(item.id);
+                          return updated;
+                        });
+                      };
+
+                      // If details mode is active, fold back to summary first so the user sees the text "retract" animation.
+                      if (isDetailsMode) {
+                        handleListDetailsExpandedChange(item.id, false);
+                        setTimeout(() => {
+                          collapseToCompactNow();
+                        }, reduceMotionEnabled ? 0 : collapseAnimDuration);
+                        return;
+                      }
+
+                      collapseToCompactNow();
+                    }}
                   />
-                </WavePressable>
+                </Animated.View>
+              ) : (
+                <Animated.View
+                  key={`list-compact-${item.id}`}
+                >
+                  <WavePressable
+                    accessibilityRole="button"
+                    accessibilityLabel="Expand recipe"
+                    onPress={() => toggleExpanded(item.id)}
+                    testID={`dashboard-recipe-toggle-${item.id}`}
+                    reduceMotionEnabled={reduceMotionEnabled}
+                  >
+                    <CompactRecipeRow
+                      recipeId={item.id}
+                      title={item.title}
+                      difficultyScore={item.difficultyScore}
+                      preparationTime={item.preparationTime}
+                      dimmed={isGrayedOut}
+                    />
+                  </WavePressable>
+                </Animated.View>
               )}
             </Animated.View>
           );

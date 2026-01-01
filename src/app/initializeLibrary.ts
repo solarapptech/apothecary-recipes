@@ -6,6 +6,7 @@ import {
   getAutoScrollEnabledAsync,
   getCloseAsYouTapEnabledAsync,
   getInfiniteScrollEnabledAsync,
+  getPageSizeAsync,
   getPlanAsync,
   getPremiumBundleSha256Async,
   getPremiumBundleUrlAsync,
@@ -37,6 +38,7 @@ export type LibraryBootstrap = {
     premiumDownloadProgress: number | null;
     sortMode: SortMode;
     infiniteScrollEnabled: boolean;
+    pageSize: number;
     viewMode: ViewMode;
     reduceMotionEnabled: boolean;
     closeAsYouTapEnabled: boolean;
@@ -61,6 +63,7 @@ export type InitializeLibraryDeps = {
   getPremiumDownloadProgressAsync: (db: SQLiteDatabase) => Promise<number | null>;
   getSortModeAsync: (db: SQLiteDatabase) => Promise<SortMode>;
   getInfiniteScrollEnabledAsync: (db: SQLiteDatabase) => Promise<boolean>;
+  getPageSizeAsync: (db: SQLiteDatabase) => Promise<number>;
   getViewModeAsync: (db: SQLiteDatabase) => Promise<ViewMode>;
   getReduceMotionEnabledAsync: (db: SQLiteDatabase) => Promise<boolean>;
   getCloseAsYouTapEnabledAsync: (db: SQLiteDatabase) => Promise<boolean>;
@@ -80,6 +83,7 @@ const defaultDeps: InitializeLibraryDeps = {
   getPremiumDownloadProgressAsync,
   getSortModeAsync,
   getInfiniteScrollEnabledAsync,
+  getPageSizeAsync,
   getViewModeAsync,
   getReduceMotionEnabledAsync,
   getCloseAsYouTapEnabledAsync,
@@ -109,6 +113,7 @@ export async function initializeLibraryAsync(
     premiumDownloadProgress,
     sortMode,
     infiniteScrollEnabled,
+    pageSize,
     viewMode,
     reduceMotionEnabled,
     closeAsYouTapEnabled,
@@ -124,6 +129,7 @@ export async function initializeLibraryAsync(
     resolved.getPremiumDownloadProgressAsync(db),
     resolved.getSortModeAsync(db),
     resolved.getInfiniteScrollEnabledAsync(db),
+    resolved.getPageSizeAsync(db),
     resolved.getViewModeAsync(db),
     resolved.getReduceMotionEnabledAsync(db),
     resolved.getCloseAsYouTapEnabledAsync(db),
@@ -147,6 +153,7 @@ export async function initializeLibraryAsync(
       premiumDownloadProgress,
       sortMode,
       infiniteScrollEnabled,
+      pageSize,
       viewMode,
       reduceMotionEnabled,
       closeAsYouTapEnabled,

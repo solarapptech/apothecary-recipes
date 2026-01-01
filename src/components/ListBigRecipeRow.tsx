@@ -50,6 +50,7 @@ type ListBigRecipeRowProps = {
   historicalContext: string;
   scientificEvidence: string;
   reduceMotionEnabled?: boolean;
+  dimmed?: boolean;
   tinted?: boolean;
   expanded?: boolean;
   onRequestSetExpanded?: (expanded: boolean) => void;
@@ -78,6 +79,7 @@ export function ListBigRecipeRow({
   historicalContext,
   scientificEvidence,
   reduceMotionEnabled = false,
+  dimmed = false,
   tinted = false,
   expanded,
   onRequestSetExpanded,
@@ -92,6 +94,8 @@ export function ListBigRecipeRow({
   const [detailsModeInternal, setDetailsModeInternal] = useState(false);
   const [imageModalVisible, setImageModalVisible] = useState(false);
   const imageSource = getRecipeImageSource(recipeId);
+
+  const containerRef = useRef<any>(null);
 
   const minimizeFeedback = useSharedValue(0);
 
@@ -136,28 +140,52 @@ export function ListBigRecipeRow({
       return;
     }
 
-    const { width, height } = layoutRef.current;
-    if (width <= 0 || height <= 0) {
+    const { width: fallbackWidth, height: fallbackHeight } = layoutRef.current;
+
+    const startWave = (width: number, height: number, x: number, y: number) => {
+      if (width <= 0 || height <= 0) {
+        return;
+      }
+
+      const distTL = Math.hypot(x - 0, y - 0);
+      const distTR = Math.hypot(x - width, y - 0);
+      const distBL = Math.hypot(x - 0, y - height);
+      const distBR = Math.hypot(x - width, y - height);
+      const radius = Math.max(distTL, distTR, distBL, distBR);
+
+      originX.value = x;
+      originY.value = y;
+      diameter.value = radius * 2;
+
+      waveProgress.value = 0;
+      waveProgress.value = withTiming(1, { duration: motionDurationMs(reduceMotionEnabled, 320) }, () => {
+        waveProgress.value = 0;
+      });
+    };
+
+    const pageX = event?.nativeEvent?.pageX;
+    const pageY = event?.nativeEvent?.pageY;
+
+    if (typeof pageX === 'number' && typeof pageY === 'number' && containerRef.current?.measureInWindow) {
+      containerRef.current.measureInWindow((left: number, top: number, measuredWidth: number, measuredHeight: number) => {
+        const width = typeof measuredWidth === 'number' && measuredWidth > 0 ? measuredWidth : fallbackWidth;
+        const height = typeof measuredHeight === 'number' && measuredHeight > 0 ? measuredHeight : fallbackHeight;
+
+        const x = pageX - left;
+        const y = pageY - top;
+
+        startWave(width, height, x, y);
+      });
       return;
     }
+
+    const width = fallbackWidth;
+    const height = fallbackHeight;
 
     const x = typeof event?.nativeEvent?.locationX === 'number' ? event.nativeEvent.locationX : width / 2;
     const y = typeof event?.nativeEvent?.locationY === 'number' ? event.nativeEvent.locationY : height / 2;
 
-    const distTL = Math.hypot(x - 0, y - 0);
-    const distTR = Math.hypot(x - width, y - 0);
-    const distBL = Math.hypot(x - 0, y - height);
-    const distBR = Math.hypot(x - width, y - height);
-    const radius = Math.max(distTL, distTR, distBL, distBR);
-
-    originX.value = x;
-    originY.value = y;
-    diameter.value = radius * 2;
-
-    waveProgress.value = 0;
-    waveProgress.value = withTiming(1, { duration: motionDurationMs(reduceMotionEnabled, 320) }, () => {
-      waveProgress.value = 0;
-    });
+    startWave(width, height, x, y);
   };
 
   const waveStyle = useAnimatedStyle(() => {
@@ -185,11 +213,16 @@ export function ListBigRecipeRow({
   });
 
   const handleContainerPress = () => {
+    if (!allowDetailsToggle && onPress) {
+      onPress();
+      return;
+    }
+
     if (showDetailsButton && detailsMode) {
       return;
-    } else if (!allowDetailsToggle && onPress) {
-      onPress();
-    } else if (!showDetailsButton) {
+    }
+
+    if (!showDetailsButton) {
       setDetailsMode(!detailsMode);
     }
   };
@@ -214,7 +247,6 @@ export function ListBigRecipeRow({
 
   const headerContent = (
     <Animated.View
-      layout={reduceMotionEnabled ? undefined : Layout.duration(animDuration)}
       style={styles.headerRow}
     >
       {imageSource ? (
@@ -241,11 +273,9 @@ export function ListBigRecipeRow({
       )}
 
       <Animated.View
-        layout={reduceMotionEnabled ? undefined : Layout.duration(animDuration)}
         style={styles.headerContent}
       >
         <Animated.View
-          layout={reduceMotionEnabled ? undefined : Layout.duration(animDuration)}
           style={styles.titleRow}
         >
           <Animated.Text 
@@ -254,7 +284,6 @@ export function ListBigRecipeRow({
             numberOfLines={detailsMode ? undefined : 1} 
             ellipsizeMode="tail" 
             testID={`list-big-recipe-row-title-${recipeId}`}
-            layout={reduceMotionEnabled ? undefined : Layout.duration(animDuration)}
           >
             {displayTitle}
           </Animated.Text>
@@ -312,6 +341,7 @@ export function ListBigRecipeRow({
   return (
     <>
       <AnimatedPressable 
+        ref={containerRef}
         style={styles.container} 
         testID={`list-big-recipe-row-${recipeId}`}
         onLayout={(e) => {
@@ -329,71 +359,67 @@ export function ListBigRecipeRow({
         layout={reduceMotionEnabled ? undefined : Layout.duration(animDuration)}
       >
         <View pointerEvents="none" style={styles.accent} />
-        
+
         <View style={styles.decorativeLeavesContainer} pointerEvents="none">
           <Image source={require('../assets/leaves.png')} style={styles.leavesImage} />
         </View>
 
-        {headerContent}
+        <View style={[styles.contentWrapper, dimmed && styles.dimmedContent]}>
+          {headerContent}
 
-        <Animated.View
-          layout={reduceMotionEnabled ? undefined : Layout.duration(animDuration)}
-          style={styles.descriptionBlock}
-          testID={`list-big-recipe-row-description-block-${recipeId}`}
-        >
-          <DescriptionInline
-            value={description}
-            numberOfLines={detailsMode ? undefined : 3}
-          />
-        </Animated.View>
-
-        {detailsMode ? (
           <Animated.View
-            layout={reduceMotionEnabled ? undefined : Layout.duration(animDuration)}
-            style={[styles.detailsMode, styles.detailsModeClip]}
-            testID={`list-big-recipe-row-details-mode-${recipeId}`}
+            style={styles.descriptionBlock}
+            testID={`list-big-recipe-row-description-block-${recipeId}`}
           >
+            <DescriptionInline
+              value={description}
+              numberOfLines={detailsMode ? undefined : 3}
+            />
+          </Animated.View>
+
+          {detailsMode ? (
             <Animated.View
-              entering={reduceMotionEnabled ? undefined : FadeInDown.duration(animDuration).delay(0)}
-              exiting={enableExitAnimations ? FadeOut.duration(animDuration) : undefined}
-              layout={reduceMotionEnabled ? undefined : Layout.duration(animDuration)}
-              style={[styles.detailsField, styles.detailsFieldCentered, styles.ingredientsField]}
+              style={[styles.detailsMode, styles.detailsModeClip]}
+              testID={`list-big-recipe-row-details-mode-${recipeId}`}
             >
-              <View style={styles.centeredNarrowField}>
-                <FieldRow
-                  icon="ingredients"
-                  label="Ingredients"
-                  value={ingredients}
-                  align="center"
-                  hideIcon
-                  hideLabelChip
-                />
-              </View>
-            </Animated.View>
-            <Animated.View
-              entering={reduceMotionEnabled ? undefined : FadeInDown.duration(animDuration).delay(50)}
-              exiting={enableExitAnimations ? FadeOut.duration(animDuration) : undefined}
-              layout={reduceMotionEnabled ? undefined : Layout.duration(animDuration)}
-              style={[styles.detailsField, styles.detailsFieldCentered]}
-            >
-              <View style={styles.centeredNarrowField}>
-                <FieldRow
-                  icon="preparationSteps"
-                  label="Preparation Steps"
-                  value={preparationSteps}
-                  valueNode={<PreparationStepsValue value={preparationSteps} />}
-                  headerAlign="center"
-                  valueAlign="left"
-                  hideIcon
-                  hideLabelChip
-                />
-              </View>
-            </Animated.View>
+              <Animated.View
+                entering={reduceMotionEnabled ? undefined : FadeInDown.duration(animDuration).delay(0)}
+                exiting={enableExitAnimations ? FadeOut.duration(animDuration) : undefined}
+                style={[styles.detailsField, styles.detailsFieldCentered, styles.ingredientsField]}
+              >
+                <View style={styles.centeredNarrowField}>
+                  <FieldRow
+                    icon="ingredients"
+                    label="Ingredients"
+                    value={ingredients}
+                    align="center"
+                    hideIcon
+                    hideLabelChip
+                  />
+                </View>
+              </Animated.View>
+              <Animated.View
+                entering={reduceMotionEnabled ? undefined : FadeInDown.duration(animDuration).delay(50)}
+                exiting={enableExitAnimations ? FadeOut.duration(animDuration) : undefined}
+                style={[styles.detailsField, styles.detailsFieldCentered]}
+              >
+                <View style={styles.centeredNarrowField}>
+                  <FieldRow
+                    icon="preparationSteps"
+                    label="Preparation Steps"
+                    value={preparationSteps}
+                    valueNode={<PreparationStepsValue value={preparationSteps} />}
+                    headerAlign="center"
+                    valueAlign="left"
+                    hideIcon
+                    hideLabelChip
+                  />
+                </View>
+              </Animated.View>
 
             <Animated.View
               entering={reduceMotionEnabled ? undefined : FadeInDown.duration(animDuration).delay(100)}
               exiting={enableExitAnimations ? FadeOut.duration(animDuration) : undefined}
-              layout={reduceMotionEnabled ? undefined : Layout.duration(animDuration)}
               style={styles.secondaryFieldsGroup}
             >
               <SecondaryFieldRow icon="usage" label="Usage" value={usage} variant="grouped" />
@@ -414,7 +440,6 @@ export function ListBigRecipeRow({
             <Animated.View
               entering={reduceMotionEnabled ? undefined : FadeInDown.duration(animDuration).delay(300)}
               exiting={enableExitAnimations ? FadeOut.duration(animDuration) : undefined}
-              layout={reduceMotionEnabled ? undefined : Layout.duration(animDuration)}
               style={[styles.detailsField, styles.timePeriodRegionBlock]}
             >
               <TimePeriodRegionRow timePeriod={timePeriod} region={region} />
@@ -423,7 +448,6 @@ export function ListBigRecipeRow({
               <Animated.View
                 entering={reduceMotionEnabled ? undefined : FadeInDown.duration(animDuration).delay(350)}
                 exiting={enableExitAnimations ? FadeOut.duration(animDuration) : undefined}
-                layout={reduceMotionEnabled ? undefined : Layout.duration(animDuration)}
               >
                 <Pressable
                   accessibilityRole="button"
@@ -457,8 +481,9 @@ export function ListBigRecipeRow({
           </Animated.View>
         )}
 
-        <View style={styles.waveOverlay} pointerEvents="none">
-          <Animated.View style={[styles.wave, waveStyle]} />
+          <View style={styles.waveOverlay} pointerEvents="none">
+            <Animated.View style={[styles.wave, waveStyle]} />
+          </View>
         </View>
       </AnimatedPressable>
     
@@ -505,6 +530,13 @@ const styles = StyleSheet.create({
     elevation: 2,
     gap: 5,
   },
+  contentWrapper: {
+    width: '100%',
+    alignSelf: 'stretch',
+  },
+  dimmedContent: {
+    opacity: 0.4,
+  },
   containerOpened: {
     backgroundColor: theme.colors.surface.recipeOpened,
   },
@@ -534,6 +566,7 @@ const styles = StyleSheet.create({
   waveOverlay: {
     ...StyleSheet.absoluteFillObject,
     overflow: 'hidden',
+    borderRadius: theme.radii.lg,
   },
   wave: {
     position: 'absolute',
@@ -608,6 +641,7 @@ const styles = StyleSheet.create({
   },
   detailsMode: {
     gap: 8,
+    width: '100%',
   },
   detailsModeClip: {
     overflow: 'hidden',
@@ -649,6 +683,7 @@ const styles = StyleSheet.create({
     marginTop: 10,
     marginBottom: 6,
     gap: 4,
+    width: '100%',
   },
   readMore: {
     alignSelf: 'flex-start',

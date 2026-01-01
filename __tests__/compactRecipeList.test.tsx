@@ -10,11 +10,11 @@ jest.mock('../src/assets/getRecipeImageSource', () => ({
 }));
 
 const mockedGetRecipeImageSource = getRecipeImageSource as jest.MockedFunction<typeof getRecipeImageSource>;
-const mockScrollToOffset = jest.fn();
+const mockScrollToIndex = jest.fn();
 
 beforeEach(() => {
   mockedGetRecipeImageSource.mockImplementation((recipeId: number) => ({ uri: `test://recipe-${recipeId}` }));
-  mockScrollToOffset.mockClear();
+  mockScrollToIndex.mockClear();
 });
 
 afterEach(() => {
@@ -29,7 +29,7 @@ function loadDashboardScreenWithFlashListMock(): typeof import('../src/screens/D
 
     const FlashList = React.forwardRef(({ data, keyExtractor, renderItem, ...rest }: any, ref: any) => {
       React.useImperativeHandle(ref, () => ({
-        scrollToOffset: mockScrollToOffset,
+        scrollToIndex: mockScrollToIndex,
       }));
 
       return React.createElement(
@@ -191,6 +191,50 @@ test('renders list-big rows when viewMode is list-big', () => {
   expect(tree.root.findAllByProps({ testID: 'list-big-recipe-row-collapse-1' })).toHaveLength(0);
 });
 
+test('list-big view auto-scrolls to the newly opened recipe when switching focus collapses another expanded recipe', () => {
+  jest.useFakeTimers();
+  const DashboardScreen = loadDashboardScreenWithFlashListMock();
+  const recipes = createRecipes(2);
+
+  const tree = render(
+    <DashboardScreen
+      title="Apothecary Recipes"
+      headerRight={<View />}
+      controls={<View />}
+      footer={<View />}
+      recipes={recipes}
+      totalCount={2}
+      viewMode="list-big"
+      closeAsYouTapEnabled={true}
+      autoScrollEnabled={true}
+    />
+  );
+
+  // Expand recipe 1
+  act(() => {
+    tree.root.findByProps({ testID: 'list-big-recipe-row-1' }).props.onPress({
+      nativeEvent: { locationX: 0, locationY: 0 },
+    });
+  });
+
+  expect(tree.root.findByProps({ testID: 'list-big-recipe-row-details-mode-1' })).toBeTruthy();
+  expect(mockScrollToIndex).not.toHaveBeenCalled();
+
+  // Expand recipe 2 (closes 1, content shifts) -> should auto-scroll to 2
+  act(() => {
+    tree.root.findByProps({ testID: 'list-big-recipe-row-2' }).props.onPress({
+      nativeEvent: { locationX: 0, locationY: 0 },
+    });
+  });
+
+  act(() => {
+    jest.advanceTimersByTime(60);
+  });
+
+  expect(mockScrollToIndex).toHaveBeenCalledWith({ index: 1, animated: true, viewPosition: 0.1 });
+  jest.useRealTimers();
+});
+
 test('toggles inline expansion in list mode and allows multiple expanded items', () => {
   const DashboardScreen = loadDashboardScreenWithFlashListMock();
   const recipes = createRecipes(2);
@@ -333,6 +377,97 @@ test('list view expanded items toggle details mode via + more info button', () =
   expect(tree.root.findByProps({ testID: 'compact-recipe-row-thumb-1' })).toBeTruthy();
 });
 
+test('list view expanded items toggle details mode via tapping the expanded card (does not collapse to compact)', () => {
+  const DashboardScreen = loadDashboardScreenWithFlashListMock();
+  const recipes = createRecipes(1);
+
+  const tree = render(
+    <DashboardScreen
+      title="Apothecary Recipes"
+      headerRight={<View />}
+      controls={<View />}
+      footer={<View />}
+      recipes={recipes}
+      totalCount={1}
+      viewMode="list"
+    />
+  );
+
+  // First tap: expand from compact to list-big
+  act(() => {
+    tree.root.findByProps({ testID: 'dashboard-recipe-toggle-1' }).props.onPress();
+  });
+
+  expect(tree.root.findByProps({ testID: 'list-big-recipe-row-1' })).toBeTruthy();
+  expect(tree.root.findAllByProps({ testID: 'list-big-recipe-row-details-mode-1' })).toHaveLength(0);
+
+  // Second tap: toggle details mode ON (same as + more info)
+  act(() => {
+    tree.root.findByProps({ testID: 'list-big-recipe-row-1' }).props.onPress({
+      nativeEvent: { locationX: 0, locationY: 0 },
+    });
+  });
+
+  expect(tree.root.findByProps({ testID: 'list-big-recipe-row-details-mode-1' })).toBeTruthy();
+
+  // Third tap: toggle details mode OFF (back to 2-field summary), still expanded
+  act(() => {
+    tree.root.findByProps({ testID: 'list-big-recipe-row-1' }).props.onPress({
+      nativeEvent: { locationX: 0, locationY: 0 },
+    });
+  });
+
+  expect(tree.root.findAllByProps({ testID: 'list-big-recipe-row-details-mode-1' })).toHaveLength(0);
+  expect(tree.root.findByProps({ testID: 'list-big-recipe-row-1' })).toBeTruthy();
+  expect(tree.root.findAllByProps({ testID: 'compact-recipe-row-thumb-1' })).toHaveLength(0);
+});
+
+test('list view auto-scrolls to the recipe when collapsing details by tapping the expanded card', () => {
+  jest.useFakeTimers();
+  const DashboardScreen = loadDashboardScreenWithFlashListMock();
+  const recipes = createRecipes(1);
+
+  const tree = render(
+    <DashboardScreen
+      title="Apothecary Recipes"
+      headerRight={<View />}
+      controls={<View />}
+      footer={<View />}
+      recipes={recipes}
+      totalCount={1}
+      viewMode="list"
+      autoScrollEnabled={true}
+    />
+  );
+
+  // Expand from compact to list-big
+  act(() => {
+    tree.root.findByProps({ testID: 'dashboard-recipe-toggle-1' }).props.onPress();
+  });
+
+  // Enter details mode by tapping the expanded card
+  act(() => {
+    tree.root.findByProps({ testID: 'list-big-recipe-row-1' }).props.onPress({
+      nativeEvent: { locationX: 0, locationY: 0 },
+    });
+  });
+  expect(tree.root.findByProps({ testID: 'list-big-recipe-row-details-mode-1' })).toBeTruthy();
+
+  // Collapse details mode by tapping the expanded card again
+  act(() => {
+    tree.root.findByProps({ testID: 'list-big-recipe-row-1' }).props.onPress({
+      nativeEvent: { locationX: 0, locationY: 0 },
+    });
+  });
+
+  act(() => {
+    jest.advanceTimersByTime(60);
+  });
+
+  expect(mockScrollToIndex).toHaveBeenCalledWith({ index: 0, animated: true, viewPosition: 0.1 });
+  jest.useRealTimers();
+});
+
 test('list view minimize folds details back to summary first, then collapses to compact row', () => {
   jest.useFakeTimers();
   const DashboardScreen = loadDashboardScreenWithFlashListMock();
@@ -433,6 +568,44 @@ test('list view expanded items with details mode collapse back to 2-field summar
   });
 
   expect(tree.root.findByProps({ testID: 'compact-recipe-row-thumb-1' })).toBeTruthy();
+});
+
+test('list-big view items toggle details mode via tapping the card', () => {
+  const DashboardScreen = loadDashboardScreenWithFlashListMock();
+  const recipes = createRecipes(1);
+
+  const tree = render(
+    <DashboardScreen
+      title="Apothecary Recipes"
+      headerRight={<View />}
+      controls={<View />}
+      footer={<View />}
+      recipes={recipes}
+      totalCount={1}
+      viewMode="list-big"
+    />
+  );
+
+  expect(tree.root.findByProps({ testID: 'list-big-recipe-row-1' })).toBeTruthy();
+  expect(tree.root.findAllByProps({ testID: 'list-big-recipe-row-details-mode-1' })).toHaveLength(0);
+
+  // Tap card: enter details mode
+  act(() => {
+    tree.root.findByProps({ testID: 'list-big-recipe-row-1' }).props.onPress({
+      nativeEvent: { locationX: 0, locationY: 0 },
+    });
+  });
+
+  expect(tree.root.findByProps({ testID: 'list-big-recipe-row-details-mode-1' })).toBeTruthy();
+
+  // Tap card again: exit details mode
+  act(() => {
+    tree.root.findByProps({ testID: 'list-big-recipe-row-1' }).props.onPress({
+      nativeEvent: { locationX: 0, locationY: 0 },
+    });
+  });
+
+  expect(tree.root.findAllByProps({ testID: 'list-big-recipe-row-details-mode-1' })).toHaveLength(0);
 });
 
 test('grid tiles toggle expanded state and allow multiple expanded items', () => {
@@ -540,7 +713,7 @@ test('falls back to placeholder when recipe image source is missing', () => {
   expect(tree.root.findAllByProps({ accessibilityLabel: 'Recipe image placeholder' }).length).toBeGreaterThan(0);
 });
 
-test('restores scroll position when collapsing details', () => {
+test('auto-scrolls to the recipe when collapsing details via Show Less in list view (expanded row)', () => {
   jest.useFakeTimers();
   const DashboardScreen = loadDashboardScreenWithFlashListMock();
   const recipes = createRecipes(1);
@@ -572,25 +745,67 @@ test('restores scroll position when collapsing details', () => {
     tree.root.findByProps({ testID: 'dashboard-recipe-toggle-1' }).props.onPress({ nativeEvent: { locationX: 0, locationY: 0 } });
   });
 
-  // 3. Enter details mode via + more info button (captures scroll pos 150)
+  // 3. Enter details mode via + more info button
   act(() => {
     tree.root.findByProps({ testID: 'list-big-recipe-row-more-info-1' }).props.onPress({
       stopPropagation: () => {},
     });
   });
 
-  // 4. Exit details mode via Show Less (should restore scroll pos 150)
+  expect(tree.root.findByProps({ testID: 'list-big-recipe-row-details-mode-1' })).toBeTruthy();
+
+  // 4. Collapse details via Show Less -> should auto-scroll to keep this recipe visible
   act(() => {
     tree.root.findByProps({ testID: 'list-big-recipe-row-show-less-1' }).props.onPress({
       stopPropagation: () => {},
     });
   });
 
-  // Fast-forward timers for the setTimeout in handleShowLess
   act(() => {
-    jest.runAllTimers();
+    jest.advanceTimersByTime(60);
   });
 
-  expect(mockScrollToOffset).toHaveBeenCalledWith({ offset: 150, animated: true });
+  expect(mockScrollToIndex).toHaveBeenCalledWith({ index: 0, animated: true, viewPosition: 0.1 });
+  jest.useRealTimers();
+});
+
+test('auto-scrolls to the recipe when collapsing details by tapping the card in list-big view', () => {
+  jest.useFakeTimers();
+  const DashboardScreen = loadDashboardScreenWithFlashListMock();
+  const recipes = createRecipes(1);
+
+  const tree = render(
+    <DashboardScreen
+      title="Apothecary Recipes"
+      headerRight={<View />}
+      controls={<View />}
+      footer={<View />}
+      recipes={recipes}
+      totalCount={1}
+      viewMode="list-big"
+      autoScrollEnabled={true}
+    />
+  );
+
+  // Tap card: enter details mode
+  act(() => {
+    tree.root.findByProps({ testID: 'list-big-recipe-row-1' }).props.onPress({
+      nativeEvent: { locationX: 0, locationY: 0 },
+    });
+  });
+  expect(tree.root.findByProps({ testID: 'list-big-recipe-row-details-mode-1' })).toBeTruthy();
+
+  // Tap card again: exit details mode -> should auto-scroll to keep this recipe visible
+  act(() => {
+    tree.root.findByProps({ testID: 'list-big-recipe-row-1' }).props.onPress({
+      nativeEvent: { locationX: 0, locationY: 0 },
+    });
+  });
+
+  act(() => {
+    jest.advanceTimersByTime(60);
+  });
+
+  expect(mockScrollToIndex).toHaveBeenCalledWith({ index: 0, animated: true, viewPosition: 0.1 });
   jest.useRealTimers();
 });

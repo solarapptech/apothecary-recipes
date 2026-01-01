@@ -50,6 +50,10 @@ test('initializeLibraryAsync seeds, loads preferences, and returns launchSeed', 
       calls.push('getInfiniteScrollEnabled');
       return false;
     },
+    getPageSizeAsync: async () => {
+      calls.push('getPageSize');
+      return 50;
+    },
     getViewModeAsync: async () => {
       calls.push('getViewMode');
       return 'list';
@@ -86,6 +90,7 @@ test('initializeLibraryAsync seeds, loads preferences, and returns launchSeed', 
     premiumDownloadProgress: null,
     sortMode: 'random',
     infiniteScrollEnabled: false,
+    pageSize: 50,
     viewMode: 'list',
     reduceMotionEnabled: false,
     closeAsYouTapEnabled: true,
@@ -104,6 +109,7 @@ test('initializeLibraryAsync seeds, loads preferences, and returns launchSeed', 
     'getPremiumDownloadProgress',
     'getSortMode',
     'getInfiniteScrollEnabled',
+    'getPageSize',
     'getViewMode',
     'getReduceMotionEnabled',
     'getCloseAsYouTapEnabled',

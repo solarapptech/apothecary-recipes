@@ -87,6 +87,7 @@ function createBootstrap(): LibraryBootstrap {
       premiumDownloadProgress: null,
       sortMode: 'random',
       infiniteScrollEnabled: false,
+      pageSize: 50,
       viewMode: 'list',
       reduceMotionEnabled: false,
       closeAsYouTapEnabled: true,
@@ -159,10 +160,10 @@ test('renders dashboard header with overflow trigger', async () => {
   expect(footerLabels).toHaveLength(0);
 });
 
-test('uses pageSize 50 from config when listing recipes', async () => {
+test('uses pageSize from preferences when listing recipes', async () => {
   jest.useFakeTimers();
 
-  const bootstrap = createBootstrap();
+  const bootstrap = createBootstrapWith({ pageSize: 25 });
   const listRecipesAsync = jest.fn(async () => ({ rows: [], totalCount: 250 }));
   const { deps } = createAppShellDeps(bootstrap);
 
@@ -173,7 +174,7 @@ test('uses pageSize 50 from config when listing recipes', async () => {
   const first = listRecipesAsync.mock.calls[0];
   expect(first).toBeTruthy();
   const firstCall = (first as unknown as [any, ListRecipesInput])[1];
-  expect(firstCall.pageSize).toBe(50);
+  expect(firstCall.pageSize).toBe(25);
 });
 
 test('navigates to settings from overflow menu and back', async () => {
