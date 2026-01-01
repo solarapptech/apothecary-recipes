@@ -55,11 +55,22 @@ export function DashboardScreen({
   const { width } = useWindowDimensions();
   const listRef = useRef<FlashList<RecipeRow>>(null);
   const pendingScrollToRecipeId = useRef<number | null>(null);
+  const pendingScrollTimeouts = useRef<{ initial?: ReturnType<typeof setTimeout>; correction?: ReturnType<typeof setTimeout> }>({});
   const currentScrollY = useRef(0);
   const collapseAnimDuration = motionDurationMs(reduceMotionEnabled, 300);
 
   useEffect(() => {
     setDidMount(true);
+
+    return () => {
+      const { initial, correction } = pendingScrollTimeouts.current;
+      if (initial) {
+        clearTimeout(initial);
+      }
+      if (correction) {
+        clearTimeout(correction);
+      }
+    };
   }, []);
 
   useEffect(() => {
@@ -108,17 +119,37 @@ export function DashboardScreen({
 
     pendingScrollToRecipeId.current = null;
 
+    const { initial: existingInitial, correction: existingCorrection } = pendingScrollTimeouts.current;
+    if (existingInitial) {
+      clearTimeout(existingInitial);
+    }
+    if (existingCorrection) {
+      clearTimeout(existingCorrection);
+    }
+
     // The list reflows with a Layout animation when items expand/collapse. If we scroll too early
     // (mid-animation), the continued reflow can shift content after the scroll and make the target
     // item appear mispositioned. We do a quick scroll, then a correction scroll after layout settles.
-    setTimeout(() => {
-      listRef.current?.scrollToIndex?.({ index, animated: true, viewPosition: 0.1 });
-    }, 50);
+    const isListBig = viewMode === 'list-big';
+    const viewPosition = isListBig ? 0 : 0.1;
+    const listBigViewOffset = 12;
+    const scrollArgs = isListBig
+      ? { index, viewPosition, viewOffset: listBigViewOffset }
+      : { index, viewPosition };
+    const initialDelayMs = isListBig ? 120 : 50;
+    const correctionDelayMs = (reduceMotionEnabled ? 0 : collapseAnimDuration) + (isListBig ? 220 : 60);
 
-    if (!reduceMotionEnabled) {
-      setTimeout(() => {
-        listRef.current?.scrollToIndex?.({ index, animated: false, viewPosition: 0.1 });
-      }, collapseAnimDuration + 60);
+    pendingScrollTimeouts.current.initial = setTimeout(() => {
+      listRef.current?.scrollToIndex?.({ ...scrollArgs, animated: true });
+    }, initialDelayMs);
+
+    // In list-big we always do a correction scroll (even with reduce motion) because the cell height
+    // changes are larger and FlashList measurement can be temporarily off. Compact list already behaves
+    // well, so we keep the previous reduce-motion behavior there.
+    if (isListBig || !reduceMotionEnabled) {
+      pendingScrollTimeouts.current.correction = setTimeout(() => {
+        listRef.current?.scrollToIndex?.({ ...scrollArgs, animated: false });
+      }, correctionDelayMs);
     }
   }, [
     autoScrollEnabled,
@@ -208,10 +239,14 @@ export function DashboardScreen({
       }
 
       if (closeAsYouTapEnabled) {
-        if (updated.size > 0) {
+        if (autoScrollEnabled) {
           pendingScrollToRecipeId.current = recipeId;
         }
         return new Set([recipeId]);
+      }
+
+      if (autoScrollEnabled) {
+        pendingScrollToRecipeId.current = recipeId;
       }
 
       updated.add(recipeId);

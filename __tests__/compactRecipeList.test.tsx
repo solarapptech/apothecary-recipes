@@ -217,8 +217,14 @@ test('list-big view auto-scrolls to the newly opened recipe when switching focus
     });
   });
 
+  act(() => {
+    jest.advanceTimersByTime(140);
+  });
+
+  expect(mockScrollToIndex).toHaveBeenCalledWith({ index: 0, animated: true, viewPosition: 0, viewOffset: -12 });
+  mockScrollToIndex.mockClear();
+
   expect(tree.root.findByProps({ testID: 'list-big-recipe-row-details-mode-1' })).toBeTruthy();
-  expect(mockScrollToIndex).not.toHaveBeenCalled();
 
   // Expand recipe 2 (closes 1, content shifts) -> should auto-scroll to 2
   act(() => {
@@ -228,10 +234,50 @@ test('list-big view auto-scrolls to the newly opened recipe when switching focus
   });
 
   act(() => {
+    jest.advanceTimersByTime(140);
+  });
+
+  expect(mockScrollToIndex).toHaveBeenCalledWith({ index: 1, animated: true, viewPosition: 0, viewOffset: -12 });
+  jest.useRealTimers();
+});
+
+test('list-big view performs a correction scroll after layout settles', () => {
+  jest.useFakeTimers();
+  const DashboardScreen = loadDashboardScreenWithFlashListMock();
+  const recipes = createRecipes(1);
+
+  const tree = render(
+    <DashboardScreen
+      title="Apothecary Recipes"
+      headerRight={<View />}
+      controls={<View />}
+      footer={<View />}
+      recipes={recipes}
+      totalCount={1}
+      viewMode="list-big"
+      autoScrollEnabled={true}
+      reduceMotionEnabled={false}
+    />
+  );
+
+  act(() => {
+    tree.root.findByProps({ testID: 'list-big-recipe-row-1' }).props.onPress({
+      nativeEvent: { locationX: 0, locationY: 0 },
+    });
+  });
+
+  act(() => {
     jest.advanceTimersByTime(60);
   });
 
-  expect(mockScrollToIndex).toHaveBeenCalledWith({ index: 1, animated: true, viewPosition: 0.1 });
+  expect(mockScrollToIndex).toHaveBeenCalledWith({ index: 0, animated: true, viewPosition: 0, viewOffset: -12 });
+
+  act(() => {
+    jest.advanceTimersByTime(600);
+  });
+
+  expect(mockScrollToIndex).toHaveBeenCalledWith({ index: 0, animated: false, viewPosition: 0, viewOffset: -12 });
+
   jest.useRealTimers();
 });
 
