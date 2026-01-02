@@ -19,6 +19,7 @@ const KEY_PREMIUM_BUNDLE_VERSION = 'premiumBundleVersion';
 const KEY_PREMIUM_BUNDLE_SHA256 = 'premiumBundleSha256';
 const KEY_PREMIUM_DOWNLOAD_STATUS = 'premiumDownloadStatus';
 const KEY_PREMIUM_DOWNLOAD_PROGRESS = 'premiumDownloadProgress';
+const KEY_PREMIUM_DOWNLOAD_ERROR = 'premiumDownloadError';
 const KEY_PAGE_SIZE = 'pageSize';
 
 export type PremiumDownloadStatus = 'not-downloaded' | 'downloading' | 'paused' | 'failed' | 'ready';
@@ -161,6 +162,19 @@ export async function setPremiumDownloadProgressAsync(db: DbLike, progress: numb
 
   const clamped = Math.max(0, Math.min(100, Math.round(progress)));
   await setValueAsync(db, KEY_PREMIUM_DOWNLOAD_PROGRESS, String(clamped));
+}
+
+export async function getPremiumDownloadErrorAsync(db: DbLike): Promise<string | null> {
+  const value = await getValueAsync(db, KEY_PREMIUM_DOWNLOAD_ERROR);
+  const trimmed = value?.trim();
+  if (!trimmed) {
+    return null;
+  }
+  return trimmed;
+}
+
+export async function setPremiumDownloadErrorAsync(db: DbLike, message: string | null): Promise<void> {
+  await setValueAsync(db, KEY_PREMIUM_DOWNLOAD_ERROR, message?.trim() ?? '');
 }
 
 export async function getPageSizeAsync(db: DbLike): Promise<number> {

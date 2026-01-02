@@ -151,11 +151,22 @@ export function createExpoPremiumBundleInstaller(input: {
 
       jobInput.onProgress(1);
 
-      const base64Zip = await FileSystem.readAsStringAsync(downloaded.uri, {
-        encoding: FileSystem.EncodingType.Base64,
-      });
-
-      const zip = await JSZip.loadAsync(base64Zip, { base64: true });
+      // Avoid loading the entire zip into a base64 string (memory heavy / can truncate on device).
+      // Prefer reading the downloaded file as an ArrayBuffer.
+      let zip: JSZip;
+      try {
+        const response = await fetch(downloaded.uri);
+        if (!response.ok) {
+          throw new Error(`premium bundle fetch failed (${response.status})`);
+        }
+        const buffer = await response.arrayBuffer();
+        zip = await JSZip.loadAsync(buffer);
+      } catch (error) {
+        const base64Zip = await FileSystem.readAsStringAsync(downloaded.uri, {
+          encoding: FileSystem.EncodingType.Base64,
+        });
+        zip = await JSZip.loadAsync(base64Zip, { base64: true });
+      }
 
       const recipeFile = zip.file('recipes.json');
       if (!recipeFile) {
