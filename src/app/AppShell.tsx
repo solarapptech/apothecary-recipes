@@ -22,6 +22,7 @@ import { PREMIUM_BUNDLE_URL } from '../config/premiumBundle';
 import { initializeLibraryAsync, type LibraryBootstrap } from './initializeLibrary';
 import { createQueuedLoadGuard } from '../repositories/fetchGuard';
 import {
+  getPremiumDownloadErrorAsync as getPremiumDownloadErrorDefaultAsync,
   getPremiumDownloadProgressAsync as getPremiumDownloadProgressDefaultAsync,
   getPremiumDownloadStatusAsync as getPremiumDownloadStatusDefaultAsync,
   setPremiumDownloadProgressAsync as setPremiumDownloadProgressDefaultAsync,
@@ -64,6 +65,7 @@ type AppShellDeps = {
   listRecipesAsync: (db: LibraryBootstrap['db'], input: ListRecipesInput) => Promise<ListRecipesResult>;
   getPremiumDownloadStatusAsync: (db: LibraryBootstrap['db']) => Promise<PremiumDownloadStatus>;
   getPremiumDownloadProgressAsync: (db: LibraryBootstrap['db']) => Promise<number | null>;
+  getPremiumDownloadErrorAsync: (db: LibraryBootstrap['db']) => Promise<string | null>;
   setPremiumDownloadStatusAsync: (db: LibraryBootstrap['db'], status: PremiumDownloadStatus) => Promise<void>;
   setPremiumDownloadProgressAsync: (db: LibraryBootstrap['db'], progress: number | null) => Promise<void>;
   redeemCodeAsync: (code: string) => Promise<{ bundleUrl: string; bundleVersion: string; bundleSha256: string | null }>;
@@ -88,6 +90,7 @@ const defaultDeps: AppShellDeps = {
   listRecipesAsync: listRecipesDefaultAsync,
   getPremiumDownloadStatusAsync: getPremiumDownloadStatusDefaultAsync,
   getPremiumDownloadProgressAsync: getPremiumDownloadProgressDefaultAsync,
+  getPremiumDownloadErrorAsync: getPremiumDownloadErrorDefaultAsync,
   setPremiumDownloadStatusAsync: setPremiumDownloadStatusDefaultAsync,
   setPremiumDownloadProgressAsync: setPremiumDownloadProgressDefaultAsync,
   redeemCodeAsync: async (code) => {
@@ -215,6 +218,7 @@ export function AppShell({ deps, initialPage }: AppShellProps) {
 
   const [premiumDownloadStatus, setPremiumDownloadStatus] = useState<PremiumDownloadStatus>('not-downloaded');
   const [premiumDownloadProgress, setPremiumDownloadProgress] = useState<number | null>(null);
+  const [premiumDownloadError, setPremiumDownloadError] = useState<string | null>(null);
   const [premiumDownloadModalVisible, setPremiumDownloadModalVisible] = useState(false);
   const premiumDownloadServiceRef = useRef<PremiumBundleService | null>(null);
   const previousPremiumStatusRef = useRef<PremiumDownloadStatus>('not-downloaded');
@@ -259,6 +263,7 @@ export function AppShell({ deps, initialPage }: AppShellProps) {
         setPremiumBundleSha256(bootstrap.preferences.premiumBundleSha256);
         setPremiumDownloadStatus(bootstrap.preferences.premiumDownloadStatus);
         setPremiumDownloadProgress(bootstrap.preferences.premiumDownloadProgress);
+        setPremiumDownloadError(bootstrap.preferences.premiumDownloadError);
         setReduceMotionEnabled(bootstrap.preferences.reduceMotionEnabled);
         setCloseAsYouTapEnabled(bootstrap.preferences.closeAsYouTapEnabled);
         setAutoScrollEnabled(bootstrap.preferences.autoScrollEnabled);
@@ -372,11 +377,13 @@ export function AppShell({ deps, initialPage }: AppShellProps) {
     const refreshAsync = async () => {
       const nextStatus = await resolved.getPremiumDownloadStatusAsync(uiState.bootstrap.db);
       const nextProgress = await resolved.getPremiumDownloadProgressAsync(uiState.bootstrap.db);
+      const nextError = await resolved.getPremiumDownloadErrorAsync(uiState.bootstrap.db);
       if (cancelled) {
         return;
       }
       setPremiumDownloadStatus(nextStatus);
       setPremiumDownloadProgress(nextProgress);
+      setPremiumDownloadError(nextError);
     };
 
     void refreshAsync();
@@ -791,6 +798,7 @@ if (route === 'settings') {
           visible={premiumDownloadModalVisible}
           status={premiumDownloadStatus}
           progress={premiumDownloadProgress}
+          errorMessage={premiumDownloadError}
           onRequestClose={() => setPremiumDownloadModalVisible(false)}
           onPressStart={() => {
             if (uiState.status !== 'ready') {

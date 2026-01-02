@@ -85,6 +85,7 @@ function createBootstrap(): LibraryBootstrap {
       premiumBundleSha256: null,
       premiumDownloadStatus: 'not-downloaded',
       premiumDownloadProgress: null,
+      premiumDownloadError: null,
       sortMode: 'random',
       infiniteScrollEnabled: false,
       pageSize: 50,
@@ -126,6 +127,7 @@ function createAppShellDeps(bootstrap: LibraryBootstrap) {
       createPremiumBundleService: () => service,
       getPremiumDownloadStatusAsync: async () => bootstrap.preferences.premiumDownloadStatus,
       getPremiumDownloadProgressAsync: async () => bootstrap.preferences.premiumDownloadProgress,
+      getPremiumDownloadErrorAsync: async () => bootstrap.preferences.premiumDownloadError,
       redeemCodeAsync: async () => ({
         bundleUrl: 'https://example.com/premium.zip',
         bundleVersion: 'v1',

@@ -71,6 +71,7 @@ function createBootstrap(): LibraryBootstrap {
       premiumBundleSha256: null,
       premiumDownloadStatus: 'not-downloaded',
       premiumDownloadProgress: null,
+      premiumDownloadError: null,
       sortMode: 'random',
       infiniteScrollEnabled: false,
       pageSize: 50,
@@ -108,6 +109,7 @@ test('Settings Reduce motion toggle persists via setReduceMotionEnabledAsync', a
         createPremiumBundleService: () => service as any,
         getPremiumDownloadStatusAsync: async () => bootstrap.preferences.premiumDownloadStatus,
         getPremiumDownloadProgressAsync: async () => bootstrap.preferences.premiumDownloadProgress,
+        getPremiumDownloadErrorAsync: async () => bootstrap.preferences.premiumDownloadError,
         setReduceMotionEnabledAsync,
       }}
     />

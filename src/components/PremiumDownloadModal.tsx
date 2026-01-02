@@ -6,6 +6,7 @@ type PremiumDownloadModalProps = {
   visible: boolean;
   status: PremiumDownloadStatus;
   progress: number | null;
+  errorMessage?: string | null;
   onRequestClose: () => void;
   onPressStart: () => void;
   onPressPause: () => void;
@@ -40,6 +41,7 @@ export function PremiumDownloadModal({
   visible,
   status,
   progress,
+  errorMessage,
   onRequestClose,
   onPressStart,
   onPressPause,
@@ -47,6 +49,7 @@ export function PremiumDownloadModal({
   onPressRetry,
 }: PremiumDownloadModalProps) {
   const statusText = formatStatus(status, progress);
+  const trimmedError = errorMessage?.trim();
 
   return (
     <Modal transparent visible={visible} animationType="fade" onRequestClose={onRequestClose}>
@@ -62,6 +65,12 @@ export function PremiumDownloadModal({
           <Text style={styles.body} testID="premium-download-status-text">
             {statusText}
           </Text>
+
+          {status === 'failed' && trimmedError ? (
+            <Text style={styles.errorText} testID="premium-download-error-text">
+              {trimmedError}
+            </Text>
+          ) : null}
 
           <View style={styles.actions}>
             {status === 'not-downloaded' ? (
@@ -155,6 +164,12 @@ const styles = StyleSheet.create({
     fontSize: 14,
     color: '#444',
     lineHeight: 20,
+  },
+  errorText: {
+    marginTop: 10,
+    fontSize: 13,
+    color: '#8b0000',
+    lineHeight: 18,
   },
   actions: {
     marginTop: 14,

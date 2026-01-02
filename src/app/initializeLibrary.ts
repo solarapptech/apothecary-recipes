@@ -12,6 +12,7 @@ import {
   getPremiumBundleUrlAsync,
   getPremiumBundleVersionAsync,
   getPremiumCodeAsync,
+  getPremiumDownloadErrorAsync,
   getPremiumDownloadProgressAsync,
   getPremiumDownloadStatusAsync,
   getReduceMotionEnabledAsync,
@@ -36,6 +37,7 @@ export type LibraryBootstrap = {
     premiumBundleSha256: string | null;
     premiumDownloadStatus: PremiumDownloadStatus;
     premiumDownloadProgress: number | null;
+    premiumDownloadError: string | null;
     sortMode: SortMode;
     infiniteScrollEnabled: boolean;
     pageSize: number;
@@ -61,6 +63,7 @@ export type InitializeLibraryDeps = {
   getPremiumBundleSha256Async: (db: SQLiteDatabase) => Promise<string | null>;
   getPremiumDownloadStatusAsync: (db: SQLiteDatabase) => Promise<PremiumDownloadStatus>;
   getPremiumDownloadProgressAsync: (db: SQLiteDatabase) => Promise<number | null>;
+  getPremiumDownloadErrorAsync: (db: SQLiteDatabase) => Promise<string | null>;
   getSortModeAsync: (db: SQLiteDatabase) => Promise<SortMode>;
   getInfiniteScrollEnabledAsync: (db: SQLiteDatabase) => Promise<boolean>;
   getPageSizeAsync: (db: SQLiteDatabase) => Promise<number>;
@@ -81,6 +84,7 @@ const defaultDeps: InitializeLibraryDeps = {
   getPremiumBundleSha256Async,
   getPremiumDownloadStatusAsync,
   getPremiumDownloadProgressAsync,
+  getPremiumDownloadErrorAsync,
   getSortModeAsync,
   getInfiniteScrollEnabledAsync,
   getPageSizeAsync,
@@ -111,6 +115,7 @@ export async function initializeLibraryAsync(
     premiumBundleSha256,
     premiumDownloadStatus,
     premiumDownloadProgress,
+    premiumDownloadError,
     sortMode,
     infiniteScrollEnabled,
     pageSize,
@@ -127,6 +132,7 @@ export async function initializeLibraryAsync(
     resolved.getPremiumBundleSha256Async(db),
     resolved.getPremiumDownloadStatusAsync(db),
     resolved.getPremiumDownloadProgressAsync(db),
+    resolved.getPremiumDownloadErrorAsync(db),
     resolved.getSortModeAsync(db),
     resolved.getInfiniteScrollEnabledAsync(db),
     resolved.getPageSizeAsync(db),
@@ -151,6 +157,7 @@ export async function initializeLibraryAsync(
       premiumBundleSha256,
       premiumDownloadStatus,
       premiumDownloadProgress,
+      premiumDownloadError,
       sortMode,
       infiniteScrollEnabled,
       pageSize,

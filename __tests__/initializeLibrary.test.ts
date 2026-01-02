@@ -42,6 +42,10 @@ test('initializeLibraryAsync seeds, loads preferences, and returns launchSeed', 
       calls.push('getPremiumDownloadProgress');
       return null;
     },
+    getPremiumDownloadErrorAsync: async () => {
+      calls.push('getPremiumDownloadError');
+      return 'some error';
+    },
     getSortModeAsync: async () => {
       calls.push('getSortMode');
       return 'random';
@@ -88,6 +92,7 @@ test('initializeLibraryAsync seeds, loads preferences, and returns launchSeed', 
     premiumBundleSha256: null,
     premiumDownloadStatus: 'not-downloaded',
     premiumDownloadProgress: null,
+    premiumDownloadError: 'some error',
     sortMode: 'random',
     infiniteScrollEnabled: false,
     pageSize: 50,
@@ -107,6 +112,7 @@ test('initializeLibraryAsync seeds, loads preferences, and returns launchSeed', 
     'getPremiumBundleSha256',
     'getPremiumDownloadStatus',
     'getPremiumDownloadProgress',
+    'getPremiumDownloadError',
     'getSortMode',
     'getInfiniteScrollEnabled',
     'getPageSize',

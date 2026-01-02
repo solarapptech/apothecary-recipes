@@ -1,6 +1,10 @@
 import type { SQLiteDatabase } from 'expo-sqlite';
 
-import { setPremiumDownloadProgressAsync, setPremiumDownloadStatusAsync } from '../repositories/preferencesRepository';
+import {
+  setPremiumDownloadErrorAsync,
+  setPremiumDownloadProgressAsync,
+  setPremiumDownloadStatusAsync,
+} from '../repositories/preferencesRepository';
 import type { PremiumDownloadStatus } from '../repositories/preferencesRepository';
 import { createLoadGuard } from '../repositories/fetchGuard';
 import { setPremiumBundleVersionAsync } from '../db/seed';
@@ -33,6 +37,7 @@ type SleepAsync = (ms: number) => Promise<void>;
 export type CreatePremiumBundleServiceDeps = {
   setStatusAsync: (db: SQLiteDatabase, status: PremiumDownloadStatus) => Promise<void>;
   setProgressAsync: (db: SQLiteDatabase, progress: number | null) => Promise<void>;
+  setErrorAsync: (db: SQLiteDatabase, message: string | null) => Promise<void>;
   setInstalledVersionAsync: (db: SQLiteDatabase, version: string) => Promise<void>;
   sleepAsync: SleepAsync;
   createLoadGuard: typeof createLoadGuard;
@@ -55,6 +60,7 @@ export function createPremiumBundleService(
     createLoadGuard: deps.createLoadGuard ?? createLoadGuard,
     setStatusAsync: deps.setStatusAsync ?? setPremiumDownloadStatusAsync,
     setProgressAsync: deps.setProgressAsync ?? setPremiumDownloadProgressAsync,
+    setErrorAsync: deps.setErrorAsync ?? setPremiumDownloadErrorAsync,
     setInstalledVersionAsync:
       deps.setInstalledVersionAsync ?? (async (dbInstance, version) => setPremiumBundleVersionAsync(dbInstance as any, version)),
   };
@@ -73,6 +79,7 @@ export function createPremiumBundleService(
       throw new Error('premium bundle job already exists');
     }
 
+    await resolved.setErrorAsync(db, null);
     await resolved.setStatusAsync(db, 'downloading');
     await resolved.setProgressAsync(db, 0);
 
@@ -89,8 +96,13 @@ export function createPremiumBundleService(
       await resolved.setInstalledVersionAsync(db, result.version);
       await resolved.setProgressAsync(db, 100);
       await resolved.setStatusAsync(db, 'ready');
+      await resolved.setErrorAsync(db, null);
+      console.log('[premium] install success', { version: result.version, recipeCount: result.recipeCount });
       return result;
     } catch (error) {
+      const message = error instanceof Error ? error.message : String(error);
+      console.error('[premium] install failed', message);
+      await resolved.setErrorAsync(db, message);
       await resolved.setStatusAsync(db, 'failed');
       throw error;
     } finally {
