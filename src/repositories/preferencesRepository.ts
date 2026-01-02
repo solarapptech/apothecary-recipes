@@ -171,7 +171,7 @@ export async function getPageSizeAsync(db: DbLike): Promise<number> {
     return parsed;
   }
 
-  return 50;
+  return 25;
 }
 
 export async function setPageSizeAsync(db: DbLike, pageSize: number): Promise<void> {

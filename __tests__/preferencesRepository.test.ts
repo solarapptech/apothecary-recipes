@@ -61,7 +61,7 @@ test('defaults: sortMode=random, infiniteScroll=false, viewMode=list, reduceMoti
   await expect(getPremiumDownloadProgressAsync(db)).resolves.toBeNull();
   await expect(getSortModeAsync(db)).resolves.toBe('random');
   await expect(getInfiniteScrollEnabledAsync(db)).resolves.toBe(false);
-  await expect(getPageSizeAsync(db)).resolves.toBe(50);
+  await expect(getPageSizeAsync(db)).resolves.toBe(25);
   await expect(getViewModeAsync(db)).resolves.toBe('list');
   await expect(getReduceMotionEnabledAsync(db)).resolves.toBe(false);
   await expect(getCloseAsYouTapEnabledAsync(db)).resolves.toBe(true);

@@ -251,7 +251,7 @@ export function SettingsScreen({
           testID="settings-page-size-backdrop"
         >
           <Pressable style={styles.menu} onPress={() => undefined} testID="settings-page-size-modal">
-            {([50, 25] as const).map((value) => (
+            {([25, 50] as const).map((value) => (
               <Pressable
                 key={value}
                 accessibilityRole="button"
