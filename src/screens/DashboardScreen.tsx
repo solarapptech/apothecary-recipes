@@ -56,8 +56,22 @@ export function DashboardScreen({
   const listRef = useRef<FlashList<RecipeRow>>(null);
   const pendingScrollToRecipeId = useRef<number | null>(null);
   const pendingScrollTimeouts = useRef<{ initial?: ReturnType<typeof setTimeout>; correction?: ReturnType<typeof setTimeout> }>({});
+  const isUserScrolling = useRef(false);
+  const didUserDragSinceLastMomentum = useRef(false);
   const currentScrollY = useRef(0);
   const collapseAnimDuration = motionDurationMs(reduceMotionEnabled, 300);
+
+  const cancelPendingAutoScroll = () => {
+    pendingScrollToRecipeId.current = null;
+    const { initial, correction } = pendingScrollTimeouts.current;
+    if (initial) {
+      clearTimeout(initial);
+    }
+    if (correction) {
+      clearTimeout(correction);
+    }
+    pendingScrollTimeouts.current = {};
+  };
 
   useEffect(() => {
     setDidMount(true);
@@ -94,6 +108,10 @@ export function DashboardScreen({
 
   useEffect(() => {
     if (!autoScrollEnabled) {
+      return;
+    }
+
+    if (isUserScrolling.current) {
       return;
     }
 
@@ -188,6 +206,10 @@ export function DashboardScreen({
           next.clear();
           setListDetailsIds(new Set());
         }
+
+        if (autoScrollEnabled) {
+          pendingScrollToRecipeId.current = recipeId;
+        }
         next.add(recipeId);
       }
       return next;
@@ -196,6 +218,34 @@ export function DashboardScreen({
 
   const handleScroll = (event: any) => {
     currentScrollY.current = event.nativeEvent.contentOffset.y;
+  };
+
+  const handleScrollBeginDrag = () => {
+    isUserScrolling.current = true;
+    didUserDragSinceLastMomentum.current = true;
+    cancelPendingAutoScroll();
+  };
+
+  const handleScrollEnd = () => {
+    isUserScrolling.current = false;
+  };
+
+  const handleMomentumScrollBegin = () => {
+    // Momentum can be triggered by programmatic scrollToIndex (animated). Only treat it as
+    // user scrolling if it follows an actual user drag.
+    if (!didUserDragSinceLastMomentum.current) {
+      return;
+    }
+    isUserScrolling.current = true;
+    cancelPendingAutoScroll();
+  };
+
+  const handleMomentumScrollEnd = () => {
+    if (!didUserDragSinceLastMomentum.current) {
+      return;
+    }
+    didUserDragSinceLastMomentum.current = false;
+    isUserScrolling.current = false;
   };
 
   const handleListDetailsExpandedChange = (
@@ -262,6 +312,10 @@ export function DashboardScreen({
       <FlashList
         ref={listRef}
         onScroll={handleScroll}
+        onScrollBeginDrag={handleScrollBeginDrag}
+        onScrollEndDrag={handleScrollEnd}
+        onMomentumScrollBegin={handleMomentumScrollBegin}
+        onMomentumScrollEnd={handleMomentumScrollEnd}
         scrollEventThrottle={16}
         key={listKey}
         data={recipes}

@@ -281,6 +281,85 @@ test('list-big view performs a correction scroll after layout settles', () => {
   jest.useRealTimers();
 });
 
+test('manual scrolling cancels pending auto-scroll in list-big view', () => {
+  jest.useFakeTimers();
+  const DashboardScreen = loadDashboardScreenWithFlashListMock();
+  const recipes = createRecipes(1);
+
+  const tree = render(
+    <DashboardScreen
+      title="Apothecary Recipes"
+      headerRight={<View />}
+      controls={<View />}
+      footer={<View />}
+      recipes={recipes}
+      totalCount={1}
+      viewMode="list-big"
+      autoScrollEnabled={true}
+    />
+  );
+
+  act(() => {
+    tree.root.findByProps({ testID: 'list-big-recipe-row-1' }).props.onPress({
+      nativeEvent: { locationX: 0, locationY: 0 },
+    });
+  });
+
+  act(() => {
+    tree.root.findByProps({ testID: 'flash-list' }).props.onScrollBeginDrag();
+  });
+
+  act(() => {
+    jest.advanceTimersByTime(2000);
+  });
+
+  expect(mockScrollToIndex).not.toHaveBeenCalled();
+  jest.useRealTimers();
+});
+
+test('compact list correction scroll is not canceled by programmatic momentum events', () => {
+  jest.useFakeTimers();
+  const DashboardScreen = loadDashboardScreenWithFlashListMock();
+  const recipes = createRecipes(1);
+
+  const tree = render(
+    <DashboardScreen
+      title="Apothecary Recipes"
+      headerRight={<View />}
+      controls={<View />}
+      footer={<View />}
+      recipes={recipes}
+      totalCount={1}
+      viewMode="list"
+      autoScrollEnabled={true}
+      reduceMotionEnabled={false}
+    />
+  );
+
+  act(() => {
+    tree.root.findByProps({ testID: 'dashboard-recipe-toggle-1' }).props.onPress();
+  });
+
+  act(() => {
+    jest.advanceTimersByTime(60);
+  });
+
+  expect(mockScrollToIndex).toHaveBeenCalledWith({ index: 0, animated: true, viewPosition: 0.1 });
+
+  // Simulate a momentum begin event that might be emitted by the programmatic scroll.
+  act(() => {
+    tree.root.findByProps({ testID: 'flash-list' }).props.onMomentumScrollBegin?.();
+  });
+
+  act(() => {
+    jest.advanceTimersByTime(600);
+  });
+
+  expect(mockScrollToIndex).toHaveBeenCalledWith({ index: 0, animated: false, viewPosition: 0.1 });
+
+  jest.useRealTimers();
+});
+
 test('toggles inline expansion in list mode and allows multiple expanded items', () => {
   const DashboardScreen = loadDashboardScreenWithFlashListMock();
   const recipes = createRecipes(2);
@@ -322,6 +401,36 @@ test('toggles inline expansion in list mode and allows multiple expanded items',
   expect(tree.root.findByProps({ testID: 'compact-recipe-row-thumb-1' })).toBeTruthy();
   expect(tree.root.findByProps({ testID: 'list-big-recipe-row-2' })).toBeTruthy();
   expect(tree.root.findAllByProps({ testID: 'list-big-recipe-row-1' })).toHaveLength(0);
+});
+
+test('compact list auto-scrolls when expanding a recipe for the first time', () => {
+  jest.useFakeTimers();
+  const DashboardScreen = loadDashboardScreenWithFlashListMock();
+  const recipes = createRecipes(1);
+
+  const tree = render(
+    <DashboardScreen
+      title="Apothecary Recipes"
+      headerRight={<View />}
+      controls={<View />}
+      footer={<View />}
+      recipes={recipes}
+      totalCount={1}
+      viewMode="list"
+      autoScrollEnabled={true}
+    />
+  );
+
+  act(() => {
+    tree.root.findByProps({ testID: 'dashboard-recipe-toggle-1' }).props.onPress();
+  });
+
+  act(() => {
+    jest.advanceTimersByTime(60);
+  });
+
+  expect(mockScrollToIndex).toHaveBeenCalledWith({ index: 0, animated: true, viewPosition: 0.1 });
+  jest.useRealTimers();
 });
 
 test('clears grayout state when focusResetNonce changes', () => {
