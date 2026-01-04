@@ -68,6 +68,7 @@ function createBootstrap(reduceMotionEnabled = false): LibraryBootstrap {
       premiumDownloadProgress: null,
       premiumDownloadError: null,
       sortMode: 'random',
+      filterMode: 'all',
       infiniteScrollEnabled: false,
       pageSize: 50,
       viewMode: 'list',
@@ -104,7 +105,7 @@ function createAppShellDeps(bootstrap: LibraryBootstrap) {
   };
 }
 
-test('view mode toggle changes modes correctly (list -> list-big -> grid)', async () => {
+test('view mode toggle changes modes correctly (list -> list-big)', async () => {
   jest.useFakeTimers();
 
   const bootstrap = createBootstrap();
@@ -129,14 +130,6 @@ test('view mode toggle changes modes correctly (list -> list-big -> grid)', asyn
   await flushMicrotasks(2);
 
   expect(setViewModeAsync).toHaveBeenCalledWith(bootstrap.db, 'list-big');
-
-  act(() => {
-    tree.root.findByProps({ testID: 'controls-view-grid' }).props.onPress();
-  });
-
-  await flushMicrotasks(2);
-
-  expect(setViewModeAsync).toHaveBeenCalledWith(bootstrap.db, 'grid');
 });
 
 test('view mode toggle works with Reduce Motion enabled', async () => {

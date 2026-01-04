@@ -3,13 +3,13 @@ import { ImageBackground, StyleSheet, View } from 'react-native';
 
 import { theme } from '../ui/theme';
 
-const parchment = require('../../assets/apothecary-recipe-ref-img2.jpeg');
-
 type AppBackgroundProps = {
   children: ReactNode;
 };
 
 export function AppBackground({ children }: AppBackgroundProps) {
+  const parchment = require('../../assets/apothecary-recipe-ref-img2.jpeg');
+
   return (
     <ImageBackground source={parchment} resizeMode="cover" style={styles.background} imageStyle={styles.image}>
       <View style={styles.overlay}>{children}</View>

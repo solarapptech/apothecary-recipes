@@ -1,4 +1,6 @@
-import { Modal, Pressable, StyleSheet, Text, View } from 'react-native';
+import { Modal, Pressable, StyleSheet, Text } from 'react-native';
+import { ModalCardBackground } from './ModalCardBackground';
+import { ModalBackdrop } from './ModalBackdrop';
 
 type OverflowMenuProps = {
   visible: boolean;
@@ -13,7 +15,7 @@ export function OverflowMenu({
 }: OverflowMenuProps) {
   return (
     <Modal transparent visible={visible} animationType="fade" onRequestClose={onRequestClose}>
-      <Pressable
+      <ModalBackdrop
         accessibilityRole="button"
         accessibilityLabel="Close menu"
         onPress={onRequestClose}
@@ -21,20 +23,22 @@ export function OverflowMenu({
         testID="overflow-menu-backdrop"
       >
         <Pressable style={styles.menu} onPress={() => undefined}>
-          <Pressable
-            accessibilityRole="button"
-            accessibilityLabel="Settings"
-            onPress={() => {
-              onPressSettings();
-              onRequestClose();
-            }}
-            style={styles.item}
-            testID="overflow-menu-settings"
-          >
-            <Text style={styles.itemText}>Settings</Text>
-          </Pressable>
+          <ModalCardBackground style={styles.menuBackground}>
+            <Pressable
+              accessibilityRole="button"
+              accessibilityLabel="Settings"
+              onPress={() => {
+                onPressSettings();
+                onRequestClose();
+              }}
+              style={styles.item}
+              testID="overflow-menu-settings"
+            >
+              <Text style={styles.itemText}>Settings</Text>
+            </Pressable>
+          </ModalCardBackground>
         </Pressable>
-      </Pressable>
+      </ModalBackdrop>
     </Modal>
   );
 }
@@ -42,18 +46,19 @@ export function OverflowMenu({
 const styles = StyleSheet.create({
   backdrop: {
     flex: 1,
-    backgroundColor: 'rgba(0,0,0,0.2)',
   },
   menu: {
     position: 'absolute',
     top: 56,
     right: 12,
-    backgroundColor: '#fff',
     borderRadius: 10,
     minWidth: 160,
     borderWidth: StyleSheet.hairlineWidth,
     borderColor: '#ddd',
     overflow: 'hidden',
+  },
+  menuBackground: {
+    borderRadius: 10,
   },
   item: {
     paddingHorizontal: 14,

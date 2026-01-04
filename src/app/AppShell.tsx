@@ -12,6 +12,8 @@ import { AppBackground } from '../components/AppBackground';
 import { DashboardControlsRow } from '../components/DashboardControlsRow';
 import { PaginationBar } from '../components/PaginationBar';
 import { OverflowMenu } from '../components/OverflowMenu';
+import { ModalCardBackground } from '../components/ModalCardBackground';
+import { ModalBackdrop } from '../components/ModalBackdrop';
 import { PremiumCodeEntryModal } from '../components/PremiumCodeEntryModal';
 import { PremiumDownloadModal } from '../components/PremiumDownloadModal';
 import { PremiumPaywallModal } from '../components/PremiumPaywallModal';
@@ -29,6 +31,7 @@ import {
   setPremiumDownloadStatusAsync as setPremiumDownloadStatusDefaultAsync,
   setAutoScrollEnabledAsync as setAutoScrollEnabledDefaultAsync,
   setCloseAsYouTapEnabledAsync as setCloseAsYouTapEnabledDefaultAsync,
+  setFilterModeAsync as setFilterModeDefaultAsync,
   setPageSizeAsync as setPageSizeDefaultAsync,
   setPlanAsync as setPlanDefaultAsync,
   setPremiumBundleSha256Async as setPremiumBundleSha256DefaultAsync,
@@ -45,6 +48,10 @@ import {
   type ListRecipesInput,
   type ListRecipesResult,
 } from '../repositories/recipesRepository';
+import {
+  listFavoriteIdsAsync as listFavoriteIdsDefaultAsync,
+  setFavoriteAsync as setFavoriteDefaultAsync,
+} from '../repositories/favoritesRepository';
 import { createExpoPremiumBundleInstaller, deleteLocalPremiumBundleFilesAsync } from '../premium/expoPremiumBundleInstaller';
 import {
   createPremiumBundleService,
@@ -53,6 +60,7 @@ import {
 } from '../premium/premiumBundleService';
 import { DashboardScreen } from '../screens/DashboardScreen';
 import { SettingsScreen } from '../screens/SettingsScreen';
+import type { FilterMode } from '../types/filterMode';
 import type { Plan } from '../types/plan';
 import type { SortMode } from '../types/sortMode';
 import type { ViewMode } from '../types/viewMode';
@@ -63,6 +71,8 @@ type RouteName = 'dashboard' | 'settings';
 type AppShellDeps = {
   initializeLibraryAsync: () => Promise<LibraryBootstrap>;
   listRecipesAsync: (db: LibraryBootstrap['db'], input: ListRecipesInput) => Promise<ListRecipesResult>;
+  setFavoriteAsync: (db: LibraryBootstrap['db'], recipeId: number, isFavorite: boolean) => Promise<void>;
+  listFavoriteIdsAsync: (db: LibraryBootstrap['db']) => Promise<number[]>;
   getPremiumDownloadStatusAsync: (db: LibraryBootstrap['db']) => Promise<PremiumDownloadStatus>;
   getPremiumDownloadProgressAsync: (db: LibraryBootstrap['db']) => Promise<number | null>;
   getPremiumDownloadErrorAsync: (db: LibraryBootstrap['db']) => Promise<string | null>;
@@ -79,6 +89,7 @@ type AppShellDeps = {
   setAutoScrollEnabledAsync: (db: LibraryBootstrap['db'], enabled: boolean) => Promise<void>;
   setPageSizeAsync: (db: LibraryBootstrap['db'], pageSize: number) => Promise<void>;
   setSortModeAsync: (db: LibraryBootstrap['db'], sortMode: SortMode) => Promise<void>;
+  setFilterModeAsync: (db: LibraryBootstrap['db'], mode: FilterMode) => Promise<void>;
   setViewModeAsync: (db: LibraryBootstrap['db'], viewMode: ViewMode) => Promise<void>;
   createPremiumBundleInstaller: (db: LibraryBootstrap['db'], bundleUrl: string) => PremiumBundleInstaller;
   createPremiumBundleService: (db: LibraryBootstrap['db'], installer: PremiumBundleInstaller) => PremiumBundleService;
@@ -88,6 +99,8 @@ type AppShellDeps = {
 const defaultDeps: AppShellDeps = {
   initializeLibraryAsync,
   listRecipesAsync: listRecipesDefaultAsync,
+  setFavoriteAsync: setFavoriteDefaultAsync,
+  listFavoriteIdsAsync: listFavoriteIdsDefaultAsync,
   getPremiumDownloadStatusAsync: getPremiumDownloadStatusDefaultAsync,
   getPremiumDownloadProgressAsync: getPremiumDownloadProgressDefaultAsync,
   getPremiumDownloadErrorAsync: getPremiumDownloadErrorDefaultAsync,
@@ -134,6 +147,7 @@ const defaultDeps: AppShellDeps = {
   setAutoScrollEnabledAsync: setAutoScrollEnabledDefaultAsync,
   setPageSizeAsync: setPageSizeDefaultAsync,
   setSortModeAsync: setSortModeDefaultAsync,
+  setFilterModeAsync: setFilterModeDefaultAsync,
   setViewModeAsync: setViewModeDefaultAsync,
   createPremiumBundleInstaller: (db, bundleUrl) => {
     const safe = bundleUrl.trim().length > 0 ? bundleUrl : PREMIUM_BUNDLE_URL;
@@ -224,7 +238,9 @@ export function AppShell({ deps, initialPage }: AppShellProps) {
   const previousPremiumStatusRef = useRef<PremiumDownloadStatus>('not-downloaded');
 
   const [sortMode, setSortMode] = useState<SortMode>('random');
+  const [filterMode, setFilterMode] = useState<FilterMode>('all');
   const [viewMode, setViewMode] = useState<ViewMode>('list');
+  const [hasAnyFavorites, setHasAnyFavorites] = useState(false);
   const [reduceMotionEnabled, setReduceMotionEnabled] = useState(false);
   const [closeAsYouTapEnabled, setCloseAsYouTapEnabled] = useState(true);
   const [autoScrollEnabled, setAutoScrollEnabled] = useState(true);
@@ -254,6 +270,7 @@ export function AppShell({ deps, initialPage }: AppShellProps) {
         }
 
         setSortMode(bootstrap.preferences.sortMode);
+        setFilterMode(bootstrap.preferences.filterMode);
         setInfiniteScrollEnabled(bootstrap.preferences.infiniteScrollEnabled);
         setViewMode(bootstrap.preferences.viewMode);
         setPlan(bootstrap.preferences.plan);
@@ -293,6 +310,25 @@ export function AppShell({ deps, initialPage }: AppShellProps) {
       cancelled = true;
     };
   }, [resolved]);
+
+  useEffect(() => {
+    if (uiState.status !== 'ready') {
+      return;
+    }
+
+    let cancelled = false;
+    (async () => {
+      const ids = await resolved.listFavoriteIdsAsync(uiState.bootstrap.db);
+      if (cancelled) {
+        return;
+      }
+      setHasAnyFavorites(ids.length > 0);
+    })();
+
+    return () => {
+      cancelled = true;
+    };
+  }, [resolved, uiState]);
 
   useEffect(() => {
     const trimmed = searchInput.trim();
@@ -444,6 +480,7 @@ export function AppShell({ deps, initialPage }: AppShellProps) {
             pageSize,
             searchQuery: searchQuery.length > 0 ? searchQuery : undefined,
             sortMode,
+            filterMode,
             launchSeed: safeRandomSeed,
             plan,
           });
@@ -481,6 +518,7 @@ export function AppShell({ deps, initialPage }: AppShellProps) {
     recipesRefreshNonce,
     resolved,
     searchQuery,
+    filterMode,
     sortMode,
     uiState,
   ]);
@@ -887,6 +925,15 @@ if (route === 'settings') {
                     setRandomSeed(resolved.createRandomSeed());
                     setFocusResetNonce((value) => value + 1);
                   }}
+                  filterMode={filterMode}
+                  onChangeFilterMode={async (mode) => {
+                    setRecipes([]);
+                    setPage(1);
+                    setInfinitePage(1);
+                    setFilterMode(mode);
+                    setFocusResetNonce((value) => value + 1);
+                    await resolved.setFilterModeAsync(uiState.bootstrap.db, mode);
+                  }}
                   viewMode={viewMode}
                   onChangeViewMode={async (mode) => {
                     setViewMode(mode);
@@ -899,6 +946,48 @@ if (route === 'settings') {
               recipes={recipes}
               totalCount={totalCount}
               viewMode={viewMode}
+              filterMode={filterMode}
+              hasAnyFavorites={hasAnyFavorites}
+              onPressShowAllRecipes={async () => {
+                if (uiState.status !== 'ready') {
+                  return;
+                }
+                setRecipes([]);
+                setPage(1);
+                setInfinitePage(1);
+                setFilterMode('all');
+                setFocusResetNonce((value) => value + 1);
+                await resolved.setFilterModeAsync(uiState.bootstrap.db, 'all');
+              }}
+              onToggleFavorite={async (recipeId, nextIsFavorite) => {
+                if (uiState.status !== 'ready') {
+                  return;
+                }
+
+                try {
+                  await resolved.setFavoriteAsync(uiState.bootstrap.db, recipeId, nextIsFavorite);
+                  setRecipes((prev) => {
+                    if (filterMode === 'favorites' && !nextIsFavorite) {
+                      return prev.filter((row) => row.id !== recipeId);
+                    }
+                    return prev.map((row) => {
+                      if (row.id !== recipeId) {
+                        return row;
+                      }
+                      return {
+                        ...row,
+                        isFavorite: nextIsFavorite ? 1 : 0,
+                      };
+                    });
+                  });
+                  setRecipesRefreshNonce((value) => value + 1);
+                  const ids = await resolved.listFavoriteIdsAsync(uiState.bootstrap.db);
+                  setHasAnyFavorites(ids.length > 0);
+                } catch (error) {
+                  const message = error instanceof Error ? error.message : String(error);
+                  Alert.alert('Failed to update favorite', message);
+                }
+              }}
               focusResetNonce={focusResetNonce}
               onEndReached={() => {
                 if (!infiniteScrollEnabled) {
@@ -1004,35 +1093,41 @@ if (route === 'settings') {
         animationType={reduceMotionEnabled ? 'none' : 'fade'}
         onRequestClose={() => setExitConfirmVisible(false)}
       >
-        <Pressable style={styles.exitBackdrop} onPress={() => setExitConfirmVisible(false)} testID="exit-confirm-backdrop">
+        <ModalBackdrop
+          onPress={() => setExitConfirmVisible(false)}
+          style={styles.exitBackdrop}
+          testID="exit-confirm-backdrop"
+        >
           <Pressable style={styles.exitModal} onPress={() => undefined} testID="exit-confirm-modal">
-            <Text style={styles.exitTitle}>Exit the app?</Text>
-            <Text style={styles.exitBody}>Are you sure you want to close Apothecary Recipes?</Text>
-            <View style={styles.exitActions}>
-              <Pressable
-                accessibilityRole="button"
-                accessibilityLabel="Cancel exit"
-                onPress={() => setExitConfirmVisible(false)}
-                style={styles.exitSecondaryButton}
-                testID="exit-confirm-no"
-              >
-                <Text style={styles.exitSecondaryButtonText}>No</Text>
-              </Pressable>
-              <Pressable
-                accessibilityRole="button"
-                accessibilityLabel="Exit app"
-                onPress={() => {
-                  setExitConfirmVisible(false);
-                  BackHandler.exitApp();
-                }}
-                style={styles.exitPrimaryButton}
-                testID="exit-confirm-yes"
-              >
-                <Text style={styles.exitPrimaryButtonText}>Yes</Text>
-              </Pressable>
-            </View>
+            <ModalCardBackground style={styles.exitModalBackground}>
+              <Text style={styles.exitTitle}>Exit the app?</Text>
+              <Text style={styles.exitBody}>Are you sure you want to close Apothecary Recipes?</Text>
+              <View style={styles.exitActions}>
+                <Pressable
+                  accessibilityRole="button"
+                  accessibilityLabel="Cancel exit"
+                  onPress={() => setExitConfirmVisible(false)}
+                  style={styles.exitSecondaryButton}
+                  testID="exit-confirm-no"
+                >
+                  <Text style={styles.exitSecondaryButtonText}>No</Text>
+                </Pressable>
+                <Pressable
+                  accessibilityRole="button"
+                  accessibilityLabel="Exit app"
+                  onPress={() => {
+                    setExitConfirmVisible(false);
+                    BackHandler.exitApp();
+                  }}
+                  style={styles.exitPrimaryButton}
+                  testID="exit-confirm-yes"
+                >
+                  <Text style={styles.exitPrimaryButtonText}>Yes</Text>
+                </Pressable>
+              </View>
+            </ModalCardBackground>
           </Pressable>
-        </Pressable>
+        </ModalBackdrop>
       </Modal>
 
       <StatusBar style="auto" />
@@ -1123,7 +1218,6 @@ const styles = StyleSheet.create({
   },
   exitBackdrop: {
     flex: 1,
-    backgroundColor: theme.colors.backdrop.modal,
     alignItems: 'center',
     justifyContent: 'center',
     paddingHorizontal: 16,
@@ -1131,10 +1225,13 @@ const styles = StyleSheet.create({
   exitModal: {
     width: '100%',
     maxWidth: 420,
-    backgroundColor: theme.colors.surface.paperStrong,
     borderRadius: 14,
     borderWidth: StyleSheet.hairlineWidth,
     borderColor: theme.colors.border.subtle,
+    overflow: 'hidden',
+  },
+  exitModalBackground: {
+    borderRadius: 14,
     padding: 16,
     gap: 8,
   },

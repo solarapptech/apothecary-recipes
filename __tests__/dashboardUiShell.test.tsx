@@ -87,6 +87,7 @@ function createBootstrap(): LibraryBootstrap {
       premiumDownloadProgress: null,
       premiumDownloadError: null,
       sortMode: 'random',
+      filterMode: 'all',
       infiniteScrollEnabled: false,
       pageSize: 50,
       viewMode: 'list',
@@ -336,6 +337,7 @@ test('switching from A–Z to Random still yields results and always provides la
           randomKey: 1,
           isPremium: 0,
           imageLocalPath: null,
+          isFavorite: 0,
           title: `Recipe sort=${input.sortMode}`,
           difficultyScore: 1,
           preparationTime: '1 min',
@@ -343,6 +345,8 @@ test('switching from A–Z to Random still yields results and always provides la
           timePeriod: '',
           warning: '',
           region: '',
+          alternativeNames: '',
+          usedFor: '',
           ingredients: '',
           detailedMeasurements: '',
           preparationSteps: '',
@@ -390,7 +394,7 @@ test('switching from A–Z to Random still yields results and always provides la
   expect(tree.root.findByProps({ testID: 'header-overflow-button' })).toBeTruthy();
 });
 
-test('renders three view toggles (list, list-big, grid)', async () => {
+test('renders two view toggles (list, list-big)', async () => {
   jest.useFakeTimers();
 
   const bootstrap = createBootstrap();
@@ -405,11 +409,10 @@ test('renders three view toggles (list, list-big, grid)', async () => {
     />
   );
 
-  await flushMicrotasks(4);
+  await flushMicrotasks(3);
 
   expect(tree.root.findByProps({ testID: 'controls-view-list' })).toBeTruthy();
   expect(tree.root.findByProps({ testID: 'controls-view-list-big' })).toBeTruthy();
-  expect(tree.root.findByProps({ testID: 'controls-view-grid' })).toBeTruthy();
 });
 
 test('inline search clear is hidden when search is empty and appears when search has text', async () => {
@@ -492,14 +495,6 @@ test('search is debounced and clearable, view toggle persists', async () => {
   await flushMicrotasks(2);
 
   expect(setViewModeAsync).toHaveBeenCalledWith(bootstrap.db, 'list-big');
-
-  act(() => {
-    tree.root.findByProps({ testID: 'controls-view-grid' }).props.onPress();
-  });
-
-  await flushMicrotasks(2);
-
-  expect(setViewModeAsync).toHaveBeenCalledWith(bootstrap.db, 'grid');
 });
 
 test('sort dropdown stays open after selection and closes only when tapping outside', async () => {

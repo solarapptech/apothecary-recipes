@@ -1,5 +1,7 @@
 import { useMemo, useState } from 'react';
 import { ActivityIndicator, Modal, Pressable, StyleSheet, Text, TextInput, View } from 'react-native';
+import { ModalCardBackground } from './ModalCardBackground';
+import { ModalBackdrop } from './ModalBackdrop';
 
 function validatePremiumCode(code: string): string | null {
   const trimmed = code.trim();
@@ -50,7 +52,7 @@ export function PremiumCodeEntryModal({
 
   return (
     <Modal transparent visible={visible} animationType="fade" onRequestClose={handleRequestClose}>
-      <Pressable
+      <ModalBackdrop
         accessibilityRole="button"
         accessibilityLabel="Close code entry"
         onPress={handleRequestClose}
@@ -58,100 +60,102 @@ export function PremiumCodeEntryModal({
         testID="premium-code-entry-backdrop"
       >
         <Pressable style={styles.modal} onPress={() => undefined} testID="premium-code-entry-modal">
-          <Text style={styles.title}>Enter Premium Code</Text>
-          <Text style={styles.subtitle}>Unlock 1,000 recipes</Text>
+          <ModalCardBackground style={styles.modalBackground}>
+            <Text style={styles.title}>Enter Premium Code</Text>
+            <Text style={styles.subtitle}>Unlock 1,000 recipes</Text>
 
-          <TextInput
-            value={code}
-            onChangeText={(value) => {
-              setCode(value);
-              if (error) {
-                setError(null);
-              }
-              if (submitState === 'error') {
-                setSubmitState('idle');
-              }
-            }}
-            placeholder="e.g. PREMIUM2025"
-            autoCapitalize="characters"
-            accessibilityLabel="Premium code"
-            style={styles.input}
-            testID="premium-code-entry-input"
-          />
-
-          {submitState !== 'idle' ? (
-            <View style={styles.resultRow} testID="premium-code-entry-result">
-              {submitState === 'loading' ? <ActivityIndicator size="small" /> : null}
-              {submitState === 'success' ? (
-                <View style={[styles.resultBadge, styles.successBadge]}>
-                  <Text style={styles.resultBadgeText}>✓</Text>
-                </View>
-              ) : null}
-              {submitState === 'error' ? (
-                <View style={[styles.resultBadge, styles.errorBadge]}>
-                  <Text style={styles.resultBadgeText}>✕</Text>
-                </View>
-              ) : null}
-            </View>
-          ) : null}
-
-          {error ? (
-            <Text style={styles.error} testID="premium-code-entry-error">
-              {error}
-            </Text>
-          ) : null}
-
-          <View style={styles.actions}>
-            <Pressable
-              accessibilityRole="button"
-              accessibilityLabel="Submit code"
-              onPress={async () => {
-                if (submitState === 'loading' || submitState === 'success') {
-                  return;
-                }
-
-                const nextError = validatePremiumCode(sanitized);
-                if (nextError) {
-                  setError(nextError);
-                  return;
-                }
-
-                setError(null);
-                setSubmitState('loading');
-
-                try {
-                  await onSubmitCode(sanitized);
-                  setSubmitState('success');
-                  await new Promise<void>((resolve) => {
-                    setTimeout(resolve, 650);
-                  });
-                  setSubmitState('idle');
+            <TextInput
+              value={code}
+              onChangeText={(value) => {
+                setCode(value);
+                if (error) {
                   setError(null);
-                  onRequestClose();
-                } catch (e) {
-                  const message = e instanceof Error ? e.message : 'Failed to redeem code';
-                  setError(message);
-                  setSubmitState('error');
+                }
+                if (submitState === 'error') {
+                  setSubmitState('idle');
                 }
               }}
-              style={styles.primaryButton}
-              testID="premium-code-entry-submit"
-            >
-              <Text style={styles.primaryButtonText}>Unlock</Text>
-            </Pressable>
+              placeholder="e.g. PREMIUM2025"
+              autoCapitalize="characters"
+              accessibilityLabel="Premium code"
+              style={styles.input}
+              testID="premium-code-entry-input"
+            />
 
-            <Pressable
-              accessibilityRole="button"
-              accessibilityLabel="Cancel"
-              onPress={handleRequestClose}
-              style={styles.secondaryButton}
-              testID="premium-code-entry-cancel"
-            >
-              <Text style={styles.secondaryButtonText}>Cancel</Text>
-            </Pressable>
-          </View>
+            {submitState !== 'idle' ? (
+              <View style={styles.resultRow} testID="premium-code-entry-result">
+                {submitState === 'loading' ? <ActivityIndicator size="small" /> : null}
+                {submitState === 'success' ? (
+                  <View style={[styles.resultBadge, styles.successBadge]}>
+                    <Text style={styles.resultBadgeText}>✓</Text>
+                  </View>
+                ) : null}
+                {submitState === 'error' ? (
+                  <View style={[styles.resultBadge, styles.errorBadge]}>
+                    <Text style={styles.resultBadgeText}>✕</Text>
+                  </View>
+                ) : null}
+              </View>
+            ) : null}
+
+            {error ? (
+              <Text style={styles.error} testID="premium-code-entry-error">
+                {error}
+              </Text>
+            ) : null}
+
+            <View style={styles.actions}>
+              <Pressable
+                accessibilityRole="button"
+                accessibilityLabel="Submit code"
+                onPress={async () => {
+                  if (submitState === 'loading' || submitState === 'success') {
+                    return;
+                  }
+
+                  const nextError = validatePremiumCode(sanitized);
+                  if (nextError) {
+                    setError(nextError);
+                    return;
+                  }
+
+                  setError(null);
+                  setSubmitState('loading');
+
+                  try {
+                    await onSubmitCode(sanitized);
+                    setSubmitState('success');
+                    await new Promise<void>((resolve) => {
+                      setTimeout(resolve, 650);
+                    });
+                    setSubmitState('idle');
+                    setError(null);
+                    onRequestClose();
+                  } catch (e) {
+                    const message = e instanceof Error ? e.message : 'Failed to redeem code';
+                    setError(message);
+                    setSubmitState('error');
+                  }
+                }}
+                style={styles.primaryButton}
+                testID="premium-code-entry-submit"
+              >
+                <Text style={styles.primaryButtonText}>Unlock</Text>
+              </Pressable>
+
+              <Pressable
+                accessibilityRole="button"
+                accessibilityLabel="Cancel"
+                onPress={handleRequestClose}
+                style={styles.secondaryButton}
+                testID="premium-code-entry-cancel"
+              >
+                <Text style={styles.secondaryButtonText}>Cancel</Text>
+              </Pressable>
+            </View>
+          </ModalCardBackground>
         </Pressable>
-      </Pressable>
+      </ModalBackdrop>
     </Modal>
   );
 }
@@ -159,7 +163,6 @@ export function PremiumCodeEntryModal({
 const styles = StyleSheet.create({
   backdrop: {
     flex: 1,
-    backgroundColor: 'rgba(0,0,0,0.2)',
     alignItems: 'center',
     justifyContent: 'center',
     paddingHorizontal: 16,
@@ -167,10 +170,13 @@ const styles = StyleSheet.create({
   modal: {
     width: '100%',
     maxWidth: 420,
-    backgroundColor: '#fff',
     borderRadius: 12,
     borderWidth: StyleSheet.hairlineWidth,
     borderColor: '#ddd',
+    overflow: 'hidden',
+  },
+  modalBackground: {
+    borderRadius: 12,
     padding: 16,
   },
   title: {

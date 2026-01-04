@@ -20,6 +20,19 @@ export type DbLike = {
 export async function ensureSchemaAsync(db: DbLike): Promise<void> {
   await db.execAsync(SCHEMA_SQL);
 
+  try {
+    await db.runAsync(
+      'CREATE TABLE IF NOT EXISTS recipe_favorites (recipeId INTEGER PRIMARY KEY, createdAt INTEGER NOT NULL, FOREIGN KEY(recipeId) REFERENCES recipes(id) ON DELETE CASCADE)'
+    );
+  } catch (error) {
+    const message = error instanceof Error ? error.message : String(error);
+    const normalized = message.toLowerCase();
+    const isAlreadyExists = normalized.includes('already exists');
+    if (!isAlreadyExists) {
+      throw error;
+    }
+  }
+
   const migrations: Array<{ sql: string }> = [
     { sql: 'ALTER TABLE recipes ADD COLUMN isPremium INTEGER NOT NULL DEFAULT 0' },
     { sql: 'ALTER TABLE recipes ADD COLUMN imageLocalPath TEXT' },

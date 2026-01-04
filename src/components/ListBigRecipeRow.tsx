@@ -51,6 +51,8 @@ type ListBigRecipeRowProps = {
   usage: string;
   historicalContext: string;
   scientificEvidence: string;
+  isFavorite?: boolean;
+  onPressFavorite?: () => void;
   reduceMotionEnabled?: boolean;
   dimmed?: boolean;
   tinted?: boolean;
@@ -82,6 +84,8 @@ export function ListBigRecipeRow({
   usage,
   historicalContext,
   scientificEvidence,
+  isFavorite = false,
+  onPressFavorite,
   reduceMotionEnabled = false,
   dimmed = false,
   tinted = false,
@@ -443,6 +447,21 @@ export function ListBigRecipeRow({
       >
         <View pointerEvents="none" style={styles.accent} />
 
+        <Pressable
+          accessibilityRole="button"
+          accessibilityLabel={isFavorite ? 'Remove from favorites' : 'Add to favorites'}
+          onPress={(e) => {
+            e.stopPropagation();
+            onPressFavorite?.();
+          }}
+          style={[styles.favoriteButton, isFavorite ? styles.favoriteButtonActive : styles.favoriteButtonInactive]}
+          testID={`list-big-recipe-row-favorite-${recipeId}`}
+        >
+          <Text style={[styles.favoriteIcon, isFavorite ? styles.favoriteIconActive : styles.favoriteIconInactive]}>
+            {isFavorite ? '★' : '☆'}
+          </Text>
+        </Pressable>
+
         <View style={styles.decorativeLeavesContainer} pointerEvents="none">
           <Image source={require('../assets/leaves.png')} style={styles.leavesImage} />
         </View>
@@ -652,6 +671,35 @@ const styles = StyleSheet.create({
     borderBottomLeftRadius: theme.radii.lg,
     borderTopRightRadius: 6,
     borderBottomRightRadius: 6,
+  },
+  favoriteButton: {
+    position: 'absolute',
+    top: 10,
+    right: 10,
+    height: 30,
+    minWidth: 30,
+    paddingHorizontal: 8,
+    borderRadius: 15,
+    alignItems: 'center',
+    justifyContent: 'center',
+    zIndex: 10,
+  },
+  favoriteButtonInactive: {
+    backgroundColor: 'transparent',
+    opacity: 0.45,
+  },
+  favoriteButtonActive: {
+    backgroundColor: theme.colors.surface.popover,
+    opacity: 1,
+  },
+  favoriteIcon: {
+    fontSize: 18,
+  },
+  favoriteIconInactive: {
+    color: theme.colors.ink.primary,
+  },
+  favoriteIconActive: {
+    color: theme.colors.ink.primary,
   },
   decorativeLeavesContainer: {
     position: 'absolute',

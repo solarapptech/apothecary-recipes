@@ -5,6 +5,7 @@ import { seedDatabaseIfNeededAsync } from '../db/seed';
 import {
   getAutoScrollEnabledAsync,
   getCloseAsYouTapEnabledAsync,
+  getFilterModeAsync,
   getInfiniteScrollEnabledAsync,
   getPageSizeAsync,
   getPlanAsync,
@@ -20,6 +21,7 @@ import {
   getViewModeAsync,
 } from '../repositories/preferencesRepository';
 import type { Plan } from '../types/plan';
+import type { FilterMode } from '../types/filterMode';
 import type { SortMode } from '../types/sortMode';
 import type { ViewMode } from '../types/viewMode';
 import type { PremiumDownloadStatus } from '../repositories/preferencesRepository';
@@ -39,6 +41,7 @@ export type LibraryBootstrap = {
     premiumDownloadProgress: number | null;
     premiumDownloadError: string | null;
     sortMode: SortMode;
+    filterMode: FilterMode;
     infiniteScrollEnabled: boolean;
     pageSize: number;
     viewMode: ViewMode;
@@ -65,6 +68,7 @@ export type InitializeLibraryDeps = {
   getPremiumDownloadProgressAsync: (db: SQLiteDatabase) => Promise<number | null>;
   getPremiumDownloadErrorAsync: (db: SQLiteDatabase) => Promise<string | null>;
   getSortModeAsync: (db: SQLiteDatabase) => Promise<SortMode>;
+  getFilterModeAsync: (db: SQLiteDatabase) => Promise<FilterMode>;
   getInfiniteScrollEnabledAsync: (db: SQLiteDatabase) => Promise<boolean>;
   getPageSizeAsync: (db: SQLiteDatabase) => Promise<number>;
   getViewModeAsync: (db: SQLiteDatabase) => Promise<ViewMode>;
@@ -86,6 +90,7 @@ const defaultDeps: InitializeLibraryDeps = {
   getPremiumDownloadProgressAsync,
   getPremiumDownloadErrorAsync,
   getSortModeAsync,
+  getFilterModeAsync,
   getInfiniteScrollEnabledAsync,
   getPageSizeAsync,
   getViewModeAsync,
@@ -117,6 +122,7 @@ export async function initializeLibraryAsync(
     premiumDownloadProgress,
     premiumDownloadError,
     sortMode,
+    filterMode,
     infiniteScrollEnabled,
     pageSize,
     viewMode,
@@ -134,6 +140,7 @@ export async function initializeLibraryAsync(
     resolved.getPremiumDownloadProgressAsync(db),
     resolved.getPremiumDownloadErrorAsync(db),
     resolved.getSortModeAsync(db),
+    resolved.getFilterModeAsync(db),
     resolved.getInfiniteScrollEnabledAsync(db),
     resolved.getPageSizeAsync(db),
     resolved.getViewModeAsync(db),
@@ -159,6 +166,7 @@ export async function initializeLibraryAsync(
       premiumDownloadProgress,
       premiumDownloadError,
       sortMode,
+      filterMode,
       infiniteScrollEnabled,
       pageSize,
       viewMode,

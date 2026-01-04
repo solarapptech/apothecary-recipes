@@ -1,11 +1,16 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
 import { Modal, Pressable, StyleSheet, Text, TextInput, View } from 'react-native';
 import Animated, { useSharedValue, useAnimatedStyle, withTiming } from 'react-native-reanimated';
+import { Path, Svg } from 'react-native-svg';
+
+import { ModalCardBackground } from './ModalCardBackground';
+import { ModalBackdrop } from './ModalBackdrop';
 
 import { motionDurationMs } from '../app/motionPolicy';
 
 import { theme } from '../ui/theme';
 
+import type { FilterMode } from '../types/filterMode';
 import type { SortMode } from '../types/sortMode';
 import type { ViewMode } from '../types/viewMode';
 
@@ -16,6 +21,8 @@ type DashboardControlsRowProps = {
   sortMode: SortMode;
   onChangeSortMode: (mode: SortMode) => void;
   onRandomize: () => void;
+  filterMode: FilterMode;
+  onChangeFilterMode: (mode: FilterMode) => void;
   viewMode: ViewMode;
   onChangeViewMode: (mode: ViewMode) => void;
   reduceMotionEnabled?: boolean;
@@ -31,6 +38,25 @@ function sortLabel(mode: SortMode): string {
   return 'Z–A';
 }
 
+function filterLabel(mode: FilterMode): string {
+  return mode === 'favorites' ? 'Favorites' : 'All Recipes';
+}
+
+function FilterIcon({ color }: { color: string }) {
+  return (
+    <Svg width={20} height={20} viewBox="0 0 24 24">
+      <Path
+        d="M3 5h18l-7 8v6l-4 3v-9L3 5z"
+        fill="none"
+        stroke={color}
+        strokeWidth={2}
+        strokeLinejoin="round"
+        strokeLinecap="round"
+      />
+    </Svg>
+  );
+}
+
 export function DashboardControlsRow({
   searchInput,
   onChangeSearchInput,
@@ -38,15 +64,25 @@ export function DashboardControlsRow({
   sortMode,
   onChangeSortMode,
   onRandomize,
+  filterMode,
+  onChangeFilterMode,
   viewMode,
   onChangeViewMode,
   reduceMotionEnabled = false,
 }: DashboardControlsRowProps) {
   const searchInputRef = useRef<TextInput | null>(null);
   const sortButtonRef = useRef<View | null>(null);
+  const filterButtonRef = useRef<View | null>(null);
 
   const [sortMenuVisible, setSortMenuVisible] = useState(false);
   const [sortMenuAnchor, setSortMenuAnchor] = useState<{
+    x: number;
+    y: number;
+    width: number;
+    height: number;
+  } | null>(null);
+  const [filterMenuVisible, setFilterMenuVisible] = useState(false);
+  const [filterMenuAnchor, setFilterMenuAnchor] = useState<{
     x: number;
     y: number;
     width: number;
@@ -56,11 +92,11 @@ export function DashboardControlsRow({
 
   const hasSearchText = searchInput.trim().length > 0;
 
-  const viewModeIndex = viewMode === 'list' ? 0 : viewMode === 'list-big' ? 1 : 2;
+  const viewModeIndex = viewMode === 'list' ? 0 : 1;
   const pillPosition = useSharedValue(viewModeIndex);
 
   useEffect(() => {
-    const targetIndex = viewMode === 'list' ? 0 : viewMode === 'list-big' ? 1 : 2;
+    const targetIndex = viewMode === 'list' ? 0 : 1;
     if (reduceMotionEnabled) {
       pillPosition.value = targetIndex;
     } else {
@@ -107,6 +143,32 @@ export function DashboardControlsRow({
           (_x: number, _y: number, width: number, height: number, pageX: number, pageY: number) => {
             if (Number.isFinite(pageX) && Number.isFinite(pageY) && Number.isFinite(width) && Number.isFinite(height)) {
               setSortMenuAnchor({ x: pageX, y: pageY, width, height });
+            }
+          }
+        );
+      }
+    }, 0);
+  }, []);
+
+  const handleFilterPress = useCallback(() => {
+    setFilterMenuVisible(true);
+
+    const node = filterButtonRef.current as any;
+    setTimeout(() => {
+      if (typeof node?.measureInWindow === 'function') {
+        node.measureInWindow((x: number, y: number, width: number, height: number) => {
+          if (Number.isFinite(x) && Number.isFinite(y) && Number.isFinite(width) && Number.isFinite(height)) {
+            setFilterMenuAnchor({ x, y, width, height });
+          }
+        });
+        return;
+      }
+
+      if (typeof node?.measure === 'function') {
+        node.measure(
+          (_x: number, _y: number, width: number, height: number, pageX: number, pageY: number) => {
+            if (Number.isFinite(pageX) && Number.isFinite(pageY) && Number.isFinite(width) && Number.isFinite(height)) {
+              setFilterMenuAnchor({ x: pageX, y: pageY, width, height });
             }
           }
         );
@@ -194,13 +256,16 @@ export function DashboardControlsRow({
             <Text style={[styles.toggleIcon, styles.toggleIconLarger, viewMode === 'list-big' ? styles.toggleTextActive : null]}>▤</Text>
           </Pressable>
           <Pressable
+            ref={(node) => {
+              filterButtonRef.current = node;
+            }}
             accessibilityRole="button"
-            accessibilityLabel="Grid view"
-            onPress={() => onChangeViewMode('grid')}
-            style={styles.toggle}
-            testID="controls-view-grid"
+            accessibilityLabel="Filter"
+            onPress={handleFilterPress}
+            style={[styles.toggle, filterMode === 'favorites' ? styles.filterToggleActive : null]}
+            testID="controls-filter"
           >
-            <Text style={[styles.toggleIcon, styles.toggleIconLarger, viewMode === 'grid' ? styles.toggleTextActive : null]}>▦</Text>
+            <FilterIcon color={filterMode === 'favorites' ? theme.colors.brand.primaryStrong : theme.colors.ink.primary} />
           </Pressable>
         </View>
       </View>
@@ -211,9 +276,9 @@ export function DashboardControlsRow({
         animationType="fade"
         onRequestClose={() => setSortMenuVisible(false)}
       >
-        <Pressable
-          style={styles.menuBackdrop}
+        <ModalBackdrop
           onPress={() => setSortMenuVisible(false)}
+          style={styles.menuBackdrop}
           testID="sort-menu-backdrop"
         >
           <Pressable
@@ -229,31 +294,78 @@ export function DashboardControlsRow({
             ]}
             onPress={() => undefined}
           >
-            {(['random', 'az', 'za'] as const).map((mode) => (
-              <Pressable
-                key={mode}
-                accessibilityRole="button"
-                accessibilityLabel={`Sort ${sortLabel(mode)}`}
-                onPress={() => {
-                  if (mode === sortMode) {
-                    return;
-                  }
-                  onChangeSortMode(mode);
-                }}
-                style={[
-                  styles.menuItem,
-                  mode === sortMode ? styles.menuItemSelected : null
-                ]}
-                testID={`sort-menu-item-${mode}`}
-              >
-                <Text style={[
-                  styles.menuItemText,
-                  mode === sortMode ? styles.menuItemTextSelected : null
-                ]}>{sortLabel(mode)}</Text>
-              </Pressable>
-            ))}
+            <ModalCardBackground style={styles.menuBackground}>
+              {(['random', 'az', 'za'] as const).map((mode) => (
+                <Pressable
+                  key={mode}
+                  accessibilityRole="button"
+                  accessibilityLabel={`Sort ${sortLabel(mode)}`}
+                  onPress={() => {
+                    if (mode === sortMode) {
+                      return;
+                    }
+                    onChangeSortMode(mode);
+                  }}
+                  style={[styles.menuItem, mode === sortMode ? styles.menuItemSelected : null]}
+                  testID={`sort-menu-item-${mode}`}
+                >
+                  <Text style={[styles.menuItemText, mode === sortMode ? styles.menuItemTextSelected : null]}>
+                    {sortLabel(mode)}
+                  </Text>
+                </Pressable>
+              ))}
+            </ModalCardBackground>
           </Pressable>
-        </Pressable>
+        </ModalBackdrop>
+      </Modal>
+
+      <Modal
+        transparent
+        visible={filterMenuVisible}
+        animationType="fade"
+        onRequestClose={() => setFilterMenuVisible(false)}
+      >
+        <ModalBackdrop
+          onPress={() => setFilterMenuVisible(false)}
+          style={styles.menuBackdrop}
+          testID="filter-menu-backdrop"
+        >
+          <Pressable
+            style={[
+              styles.menu,
+              filterMenuAnchor
+                ? {
+                    top: filterMenuAnchor.y + filterMenuAnchor.height + 8,
+                    left: filterMenuAnchor.x,
+                    minWidth: filterMenuAnchor.width,
+                  }
+                : null,
+            ]}
+            onPress={() => undefined}
+          >
+            <ModalCardBackground style={styles.menuBackground}>
+              {(['all', 'favorites'] as const).map((mode) => (
+                <Pressable
+                  key={mode}
+                  accessibilityRole="button"
+                  accessibilityLabel={`Filter ${filterLabel(mode)}`}
+                  onPress={() => {
+                    if (mode === filterMode) {
+                      return;
+                    }
+                    onChangeFilterMode(mode);
+                  }}
+                  style={[styles.menuItem, mode === filterMode ? styles.menuItemSelected : null]}
+                  testID={`filter-menu-item-${mode}`}
+                >
+                  <Text style={[styles.menuItemText, mode === filterMode ? styles.menuItemTextSelected : null]}>
+                    {filterLabel(mode)}
+                  </Text>
+                </Pressable>
+              ))}
+            </ModalCardBackground>
+          </Pressable>
+        </ModalBackdrop>
       </Modal>
     </View>
   );
@@ -382,22 +494,26 @@ const styles = StyleSheet.create({
   toggleIconLarger: {
     fontSize: 22,
   },
+  filterToggleActive: {
+    backgroundColor: theme.colors.surface.popover,
+  },
   toggleTextActive: {
     color: theme.colors.ink.onBrand,
   },
   menuBackdrop: {
     flex: 1,
-    backgroundColor: theme.colors.backdrop.dim,
   },
   menu: {
     position: 'absolute',
     top: 130,
     left: 16,
-    backgroundColor: theme.colors.surface.paperStrong,
     borderRadius: 10,
     borderWidth: StyleSheet.hairlineWidth,
     borderColor: theme.colors.border.subtle,
     overflow: 'hidden',
+  },
+  menuBackground: {
+    borderRadius: 10,
   },
   menuItem: {
     paddingHorizontal: 14,

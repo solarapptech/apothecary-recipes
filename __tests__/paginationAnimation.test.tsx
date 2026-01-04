@@ -69,6 +69,7 @@ function createBootstrap(reduceMotionEnabled = false): LibraryBootstrap {
       premiumDownloadProgress: null,
       premiumDownloadError: null,
       sortMode: 'random',
+      filterMode: 'all',
       infiniteScrollEnabled: false,
       pageSize: 50,
       viewMode: 'list',

@@ -1,6 +1,7 @@
 import type { SQLiteDatabase } from 'expo-sqlite';
 
 import type { Plan } from '../types/plan';
+import type { FilterMode } from '../types/filterMode';
 import type { SortMode } from '../types/sortMode';
 import type { ViewMode } from '../types/viewMode';
 
@@ -21,6 +22,7 @@ const KEY_PREMIUM_DOWNLOAD_STATUS = 'premiumDownloadStatus';
 const KEY_PREMIUM_DOWNLOAD_PROGRESS = 'premiumDownloadProgress';
 const KEY_PREMIUM_DOWNLOAD_ERROR = 'premiumDownloadError';
 const KEY_PAGE_SIZE = 'pageSize';
+const KEY_FILTER_MODE = 'filterMode';
 
 export type PremiumDownloadStatus = 'not-downloaded' | 'downloading' | 'paused' | 'failed' | 'ready';
 
@@ -240,7 +242,7 @@ export async function setReduceMotionEnabledAsync(db: DbLike, enabled: boolean):
 
 export async function getViewModeAsync(db: DbLike): Promise<ViewMode> {
   const value = await getValueAsync(db, KEY_VIEW_MODE);
-  if (value === 'list' || value === 'grid' || value === 'list-big') {
+  if (value === 'list' || value === 'list-big') {
     return value;
   }
 
@@ -249,6 +251,19 @@ export async function getViewModeAsync(db: DbLike): Promise<ViewMode> {
 
 export async function setViewModeAsync(db: DbLike, viewMode: ViewMode): Promise<void> {
   await setValueAsync(db, KEY_VIEW_MODE, viewMode);
+}
+
+export async function getFilterModeAsync(db: DbLike): Promise<FilterMode> {
+  const value = await getValueAsync(db, KEY_FILTER_MODE);
+  if (value === 'all' || value === 'favorites') {
+    return value;
+  }
+
+  return 'all';
+}
+
+export async function setFilterModeAsync(db: DbLike, mode: FilterMode): Promise<void> {
+  await setValueAsync(db, KEY_FILTER_MODE, mode);
 }
 
 export async function getCloseAsYouTapEnabledAsync(db: DbLike): Promise<boolean> {

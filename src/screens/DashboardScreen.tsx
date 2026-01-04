@@ -1,8 +1,10 @@
 import type { ReactNode } from 'react';
 import { useEffect, useRef, useState } from 'react';
 import {
+  Pressable,
   StyleSheet,
-  useWindowDimensions,
+  Text,
+  View,
 } from 'react-native';
 import { FlashList } from '@shopify/flash-list';
 import Animated, {
@@ -13,10 +15,10 @@ import Animated, {
 import { motionDurationMs } from '../app/motionPolicy';
 import { CompactRecipeRow } from '../components/CompactRecipeRow';
 import { ListBigRecipeRow } from '../components/ListBigRecipeRow';
-import { RecipeGridTile } from '../components/RecipeGridTile';
 import { WavePressable } from '../components/WavePressable';
 import { ScreenFrame } from '../components/ScreenFrame';
 import type { RecipeRow } from '../repositories/recipesRepository';
+import type { FilterMode } from '../types/filterMode';
 import type { ViewMode } from '../types/viewMode';
 
 type DashboardScreenProps = {
@@ -27,6 +29,10 @@ type DashboardScreenProps = {
   recipes: RecipeRow[];
   totalCount: number;
   viewMode: ViewMode;
+  filterMode: FilterMode;
+  hasAnyFavorites?: boolean;
+  onPressShowAllRecipes?: () => void;
+  onToggleFavorite?: (recipeId: number, nextIsFavorite: boolean) => void;
   focusResetNonce?: number;
   onEndReached?: () => void;
   reduceMotionEnabled?: boolean;
@@ -42,6 +48,10 @@ export function DashboardScreen({
   recipes,
   totalCount,
   viewMode,
+  filterMode,
+  hasAnyFavorites = false,
+  onPressShowAllRecipes,
+  onToggleFavorite,
   focusResetNonce = 0,
   onEndReached,
   reduceMotionEnabled = false,
@@ -52,7 +62,6 @@ export function DashboardScreen({
   const [expandedIds, setExpandedIds] = useState<Set<number>>(() => new Set());
   const [listDetailsIds, setListDetailsIds] = useState<Set<number>>(() => new Set());
   const [listBigExpandedIds, setListBigExpandedIds] = useState<Set<number>>(() => new Set());
-  const { width } = useWindowDimensions();
   const listRef = useRef<FlashList<RecipeRow>>(null);
   const pendingScrollToRecipeId = useRef<number | null>(null);
   const pendingScrollTimeouts = useRef<{ initial?: ReturnType<typeof setTimeout>; correction?: ReturnType<typeof setTimeout> }>({});
@@ -88,7 +97,7 @@ export function DashboardScreen({
   }, []);
 
   useEffect(() => {
-    if (viewMode !== 'list' && viewMode !== 'grid') {
+    if (viewMode !== 'list') {
       setExpandedIds(new Set());
     }
     if (viewMode !== 'list') {
@@ -180,10 +189,7 @@ export function DashboardScreen({
     viewMode,
   ]);
 
-  const minTileWidth = 180;
-  const gridNumColumns = Math.max(2, Math.floor(width / minTileWidth));
-
-  const estimatedItemSize = viewMode === 'grid' ? 200 : viewMode === 'list-big' ? 220 : 100;
+  const estimatedItemSize = viewMode === 'list-big' ? 220 : 100;
 
   const toggleExpanded = (recipeId: number) => {
     setExpandedIds((prev) => {
@@ -304,7 +310,9 @@ export function DashboardScreen({
     });
   };
 
-  const listKey = viewMode === 'grid' ? `grid-${gridNumColumns}` : viewMode;
+  const listKey = viewMode;
+
+  const showFavoritesEmptyState = filterMode === 'favorites' && !hasAnyFavorites;
 
   return (
     <ScreenFrame title={title} headerRight={headerRight} controls={controls} footer={footer}>
@@ -327,47 +335,33 @@ export function DashboardScreen({
               : undefined
         }
         estimatedItemSize={estimatedItemSize}
-        numColumns={viewMode === 'grid' ? gridNumColumns : 1}
+        numColumns={1}
         onEndReached={onEndReached}
         onEndReachedThreshold={0.6}
         keyExtractor={(item: RecipeRow) => String(item.id)}
-        extraData={viewMode === 'list-big' ? listBigExpandedIds : { expandedIds, listDetailsIds }}
+        extraData={
+          viewMode === 'list-big'
+            ? listBigExpandedIds
+            : { expandedIds, listDetailsIds }
+        }
+        ListEmptyComponent={
+          showFavoritesEmptyState
+            ? () => (
+                <View style={styles.emptyState} testID="favorites-empty-state">
+                  <Text style={styles.emptyStateTitle}>No favorites yet</Text>
+                  <Pressable
+                    accessibilityRole="button"
+                    accessibilityLabel="Show all recipes"
+                    onPress={() => onPressShowAllRecipes?.()}
+                    testID="favorites-empty-state-show-all"
+                  >
+                    <Text style={styles.emptyStateLink}>Show all recipes</Text>
+                  </Pressable>
+                </View>
+              )
+            : null
+        }
         renderItem={({ item }: { item: RecipeRow }) => {
-          if (viewMode === 'grid') {
-            const isExpanded = expandedIds.has(item.id);
-            return (
-              <WavePressable
-                accessibilityRole="button"
-                accessibilityLabel="Toggle recipe"
-                style={styles.gridItem}
-                onPress={() => toggleExpanded(item.id)}
-                testID={`dashboard-grid-recipe-toggle-${item.id}`}
-                reduceMotionEnabled={reduceMotionEnabled}
-              >
-                <RecipeGridTile
-                  recipeId={item.id}
-                  title={item.title}
-                  difficultyScore={item.difficultyScore}
-                  preparationTime={item.preparationTime}
-                  description={item.description}
-                  timePeriod={item.timePeriod}
-                  warning={item.warning}
-                  region={item.region}
-                  alternativeNames={item.alternativeNames}
-                  usedFor={item.usedFor}
-                  ingredients={item.ingredients}
-                  detailedMeasurements={item.detailedMeasurements}
-                  preparationSteps={item.preparationSteps}
-                  usage={item.usage}
-                  historicalContext={item.historicalContext}
-                  scientificEvidence={item.scientificEvidence}
-                  expanded={isExpanded}
-                  reduceMotionEnabled={reduceMotionEnabled}
-                />
-              </WavePressable>
-            );
-          }
-
           if (viewMode === 'list-big') {
             const isExpanded = listBigExpandedIds.has(item.id);
             const hasAnyExpandedBig = listBigExpandedIds.size > 0;
@@ -394,6 +388,8 @@ export function DashboardScreen({
                 usage={item.usage}
                 historicalContext={item.historicalContext}
                 scientificEvidence={item.scientificEvidence}
+                isFavorite={item.isFavorite === 1}
+                onPressFavorite={() => onToggleFavorite?.(item.id, item.isFavorite !== 1)}
                 reduceMotionEnabled={reduceMotionEnabled}
                 dimmed={isGrayedOutBig}
                 expanded={isExpanded}
@@ -502,6 +498,8 @@ export function DashboardScreen({
                       title={item.title}
                       difficultyScore={item.difficultyScore}
                       preparationTime={item.preparationTime}
+                      isFavorite={item.isFavorite === 1}
+                      onPressFavorite={() => onToggleFavorite?.(item.id, item.isFavorite !== 1)}
                       dimmed={isGrayedOut}
                     />
                   </WavePressable>
@@ -517,13 +515,25 @@ export function DashboardScreen({
 }
 
 const styles = StyleSheet.create({
-  gridItem: {
-    flex: 1,
-  },
   listBigContentContainer: {
     paddingTop: 14,
   },
   listContentContainerWithExpanded: {
     paddingTop: 14,
+  },
+  emptyState: {
+    paddingHorizontal: 24,
+    paddingVertical: 24,
+    alignItems: 'center',
+    gap: 10,
+  },
+  emptyStateTitle: {
+    fontSize: 16,
+    color: '#111',
+  },
+  emptyStateLink: {
+    fontSize: 14,
+    color: '#111',
+    textDecorationLine: 'underline',
   },
 });

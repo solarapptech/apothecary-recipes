@@ -1,6 +1,8 @@
 import { useEffect, useState, type ReactNode } from 'react';
 import { ActivityIndicator, BackHandler, Modal, Pressable, StyleSheet, Switch, Text, View } from 'react-native';
 
+import { ModalCardBackground } from '../components/ModalCardBackground';
+import { ModalBackdrop } from '../components/ModalBackdrop';
 import { ScreenFrame } from '../components/ScreenFrame';
 import { ENABLE_DEV_RESET } from '../config/devFlags';
 import { PLAN_RECIPE_COUNTS } from '../config/plans';
@@ -245,34 +247,36 @@ export function SettingsScreen({
         animationType="fade"
         onRequestClose={() => setPageSizeMenuVisible(false)}
       >
-        <Pressable
-          style={styles.menuBackdrop}
+        <ModalBackdrop
           onPress={() => setPageSizeMenuVisible(false)}
+          style={styles.menuBackdrop}
           testID="settings-page-size-backdrop"
         >
           <Pressable style={styles.menu} onPress={() => undefined} testID="settings-page-size-modal">
-            {([25, 50] as const).map((value) => (
-              <Pressable
-                key={value}
-                accessibilityRole="button"
-                accessibilityLabel={`Show ${value} recipes per page`}
-                onPress={() => {
-                  if (value === pageSize) {
-                    return;
-                  }
-                  void onChangePageSize(value);
-                  setPageSizeMenuVisible(false);
-                }}
-                style={[styles.menuItem, value === pageSize ? styles.menuItemSelected : null]}
-                testID={`settings-page-size-item-${value}`}
-              >
-                <Text style={[styles.menuItemText, value === pageSize ? styles.menuItemTextSelected : null]}>
-                  {value} recipes
-                </Text>
-              </Pressable>
-            ))}
+            <ModalCardBackground style={styles.menuBackground}>
+              {([25, 50] as const).map((value) => (
+                <Pressable
+                  key={value}
+                  accessibilityRole="button"
+                  accessibilityLabel={`Show ${value} recipes per page`}
+                  onPress={() => {
+                    if (value === pageSize) {
+                      return;
+                    }
+                    void onChangePageSize(value);
+                    setPageSizeMenuVisible(false);
+                  }}
+                  style={[styles.menuItem, value === pageSize ? styles.menuItemSelected : null]}
+                  testID={`settings-page-size-item-${value}`}
+                >
+                  <Text style={[styles.menuItemText, value === pageSize ? styles.menuItemTextSelected : null]}>
+                    {value} recipes
+                  </Text>
+                </Pressable>
+              ))}
+            </ModalCardBackground>
           </Pressable>
-        </Pressable>
+        </ModalBackdrop>
       </Modal>
     </ScreenFrame>
   );
@@ -353,18 +357,19 @@ const styles = StyleSheet.create({
   },
   menuBackdrop: {
     flex: 1,
-    backgroundColor: 'rgba(0,0,0,0.2)',
   },
   menu: {
     position: 'absolute',
     left: 16,
     right: 16,
     top: 140,
-    backgroundColor: '#fff',
     borderRadius: 10,
     borderWidth: StyleSheet.hairlineWidth,
     borderColor: '#ddd',
     overflow: 'hidden',
+  },
+  menuBackground: {
+    borderRadius: 10,
   },
   menuItem: {
     paddingHorizontal: 14,

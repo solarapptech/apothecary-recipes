@@ -50,6 +50,10 @@ test('initializeLibraryAsync seeds, loads preferences, and returns launchSeed', 
       calls.push('getSortMode');
       return 'random';
     },
+    getFilterModeAsync: async () => {
+      calls.push('getFilterMode');
+      return 'all';
+    },
     getInfiniteScrollEnabledAsync: async () => {
       calls.push('getInfiniteScrollEnabled');
       return false;
@@ -94,6 +98,7 @@ test('initializeLibraryAsync seeds, loads preferences, and returns launchSeed', 
     premiumDownloadProgress: null,
     premiumDownloadError: 'some error',
     sortMode: 'random',
+    filterMode: 'all',
     infiniteScrollEnabled: false,
     pageSize: 50,
     viewMode: 'list',
@@ -114,6 +119,7 @@ test('initializeLibraryAsync seeds, loads preferences, and returns launchSeed', 
     'getPremiumDownloadProgress',
     'getPremiumDownloadError',
     'getSortMode',
+    'getFilterMode',
     'getInfiniteScrollEnabled',
     'getPageSize',
     'getViewMode',

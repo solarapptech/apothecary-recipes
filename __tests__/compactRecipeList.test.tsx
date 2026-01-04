@@ -73,6 +73,7 @@ function createRecipes(count = 1): RecipeRow[] {
       randomKey: id,
       isPremium: 0,
       imageLocalPath: null,
+      isFavorite: 0,
       title:
         id === 1
           ? 'Very Long Recipe Title That Should Shrink To Fit Instead Of Ellipsizing On Narrow Screens'
@@ -122,8 +123,12 @@ test('renders compact recipe rows inside FlashList and uses tail truncation for 
       controls={<View />}
       footer={<View />}
       recipes={recipes}
-      totalCount={1}
+      totalCount={recipes.length}
       viewMode="list"
+      filterMode="all"
+      hasAnyFavorites={false}
+      onPressShowAllRecipes={() => undefined}
+      onToggleFavorite={() => undefined}
     />
   );
 
@@ -149,8 +154,12 @@ test('renders difficulty and preparation time in dedicated slots', () => {
       controls={<View />}
       footer={<View />}
       recipes={recipes}
-      totalCount={1}
+      totalCount={recipes.length}
       viewMode="list"
+      filterMode="all"
+      hasAnyFavorites={false}
+      onPressShowAllRecipes={() => undefined}
+      onToggleFavorite={() => undefined}
     />
   );
 
@@ -177,8 +186,12 @@ test('renders list-big rows when viewMode is list-big', () => {
       controls={<View />}
       footer={<View />}
       recipes={recipes}
-      totalCount={1}
+      totalCount={recipes.length}
       viewMode="list-big"
+      filterMode="all"
+      hasAnyFavorites={false}
+      onPressShowAllRecipes={() => undefined}
+      onToggleFavorite={() => undefined}
     />
   );
 
@@ -203,10 +216,14 @@ test('list-big view auto-scrolls to the newly opened recipe when switching focus
       controls={<View />}
       footer={<View />}
       recipes={recipes}
-      totalCount={2}
+      totalCount={recipes.length}
       viewMode="list-big"
       closeAsYouTapEnabled={true}
       autoScrollEnabled={true}
+      filterMode="all"
+      hasAnyFavorites={false}
+      onPressShowAllRecipes={() => undefined}
+      onToggleFavorite={() => undefined}
     />
   );
 
@@ -253,10 +270,14 @@ test('list-big view performs a correction scroll after layout settles', () => {
       controls={<View />}
       footer={<View />}
       recipes={recipes}
-      totalCount={1}
+      totalCount={recipes.length}
       viewMode="list-big"
       autoScrollEnabled={true}
       reduceMotionEnabled={false}
+      filterMode="all"
+      hasAnyFavorites={false}
+      onPressShowAllRecipes={() => undefined}
+      onToggleFavorite={() => undefined}
     />
   );
 
@@ -293,9 +314,13 @@ test('manual scrolling cancels pending auto-scroll in list-big view', () => {
       controls={<View />}
       footer={<View />}
       recipes={recipes}
-      totalCount={1}
+      totalCount={recipes.length}
       viewMode="list-big"
       autoScrollEnabled={true}
+      filterMode="all"
+      hasAnyFavorites={false}
+      onPressShowAllRecipes={() => undefined}
+      onToggleFavorite={() => undefined}
     />
   );
 
@@ -329,10 +354,14 @@ test('compact list correction scroll is not canceled by programmatic momentum ev
       controls={<View />}
       footer={<View />}
       recipes={recipes}
-      totalCount={1}
+      totalCount={recipes.length}
       viewMode="list"
       autoScrollEnabled={true}
       reduceMotionEnabled={false}
+      filterMode="all"
+      hasAnyFavorites={false}
+      onPressShowAllRecipes={() => undefined}
+      onToggleFavorite={() => undefined}
     />
   );
 
@@ -371,8 +400,12 @@ test('toggles inline expansion in list mode and allows multiple expanded items',
       controls={<View />}
       footer={<View />}
       recipes={recipes}
-      totalCount={2}
+      totalCount={recipes.length}
       viewMode="list"
+      filterMode="all"
+      hasAnyFavorites={false}
+      onPressShowAllRecipes={() => undefined}
+      onToggleFavorite={() => undefined}
     />
   );
 
@@ -415,9 +448,13 @@ test('compact list auto-scrolls when expanding a recipe for the first time', () 
       controls={<View />}
       footer={<View />}
       recipes={recipes}
-      totalCount={1}
+      totalCount={recipes.length}
       viewMode="list"
       autoScrollEnabled={true}
+      filterMode="all"
+      hasAnyFavorites={false}
+      onPressShowAllRecipes={() => undefined}
+      onToggleFavorite={() => undefined}
     />
   );
 
@@ -444,8 +481,12 @@ test('clears grayout state when focusResetNonce changes', () => {
       controls={<View />}
       footer={<View />}
       recipes={recipes}
-      totalCount={2}
+      totalCount={recipes.length}
       viewMode="list"
+      filterMode="all"
+      hasAnyFavorites={false}
+      onPressShowAllRecipes={() => undefined}
+      onToggleFavorite={() => undefined}
       focusResetNonce={0}
     />
   );
@@ -466,8 +507,12 @@ test('clears grayout state when focusResetNonce changes', () => {
         controls={<View />}
         footer={<View />}
         recipes={recipes}
-        totalCount={2}
+        totalCount={recipes.length}
         viewMode="list"
+        filterMode="all"
+        hasAnyFavorites={false}
+        onPressShowAllRecipes={() => undefined}
+        onToggleFavorite={() => undefined}
         focusResetNonce={1}
       />
     );
@@ -490,8 +535,12 @@ test('list view expanded items toggle details mode via + more info button', () =
       controls={<View />}
       footer={<View />}
       recipes={recipes}
-      totalCount={1}
+      totalCount={recipes.length}
       viewMode="list"
+      filterMode="all"
+      hasAnyFavorites={false}
+      onPressShowAllRecipes={() => undefined}
+      onToggleFavorite={() => undefined}
     />
   );
 
@@ -547,6 +596,10 @@ test('list view collapses details via tapping the title zone (expanded row stays
       totalCount={1}
       viewMode="list"
       autoScrollEnabled={true}
+      filterMode="all"
+      hasAnyFavorites={false}
+      onPressShowAllRecipes={() => undefined}
+      onToggleFavorite={() => undefined}
     />
   );
 
@@ -592,6 +645,10 @@ test('list view minimize folds details back to summary first, then collapses to 
       recipes={recipes}
       totalCount={1}
       viewMode="list"
+      filterMode="all"
+      hasAnyFavorites={false}
+      onPressShowAllRecipes={() => undefined}
+      onToggleFavorite={() => undefined}
     />
   );
 
@@ -644,6 +701,10 @@ test('list view expanded items with details mode collapse back to 2-field summar
       recipes={recipes}
       totalCount={1}
       viewMode="list"
+      filterMode="all"
+      hasAnyFavorites={false}
+      onPressShowAllRecipes={() => undefined}
+      onToggleFavorite={() => undefined}
     />
   );
 
@@ -693,6 +754,10 @@ test('list-big view items enter details mode via tapping the card, but do not co
       recipes={recipes}
       totalCount={1}
       viewMode="list-big"
+      filterMode="all"
+      hasAnyFavorites={false}
+      onPressShowAllRecipes={() => undefined}
+      onToggleFavorite={() => undefined}
     />
   );
 
@@ -731,6 +796,10 @@ test('list-big view only allows expanding/closing the image when the recipe is f
       recipes={recipes}
       totalCount={1}
       viewMode="list-big"
+      filterMode="all"
+      hasAnyFavorites={false}
+      onPressShowAllRecipes={() => undefined}
+      onToggleFavorite={() => undefined}
     />
   );
 
@@ -765,67 +834,6 @@ test('list-big view only allows expanding/closing the image when the recipe is f
   expect(tree.root.findAllByProps({ testID: 'list-big-recipe-row-image-modal-overlay-1' })).toHaveLength(0);
 });
 
-test('grid tiles toggle expanded state and allow multiple expanded items', () => {
-  const DashboardScreen = loadDashboardScreenWithFlashListMock();
-  const recipes = createRecipes(2);
-
-  const tree = render(
-    <DashboardScreen
-      title="Apothecary Recipes"
-      headerRight={<View />}
-      controls={<View />}
-      footer={<View />}
-      recipes={recipes}
-      totalCount={2}
-      viewMode="grid"
-    />
-  );
-
-  act(() => {
-    tree.root.findByProps({ testID: 'dashboard-grid-recipe-toggle-1' }).props.onPress({ nativeEvent: { locationX: 0, locationY: 0 } });
-  });
-
-  expect(tree.root.findByProps({ testID: 'recipe-grid-tile-expanded-1' })).toBeTruthy();
-
-  act(() => {
-    tree.root.findByProps({ testID: 'dashboard-grid-recipe-toggle-2' }).props.onPress({ nativeEvent: { locationX: 0, locationY: 0 } });
-  });
-
-  expect(tree.root.findByProps({ testID: 'recipe-grid-tile-expanded-1' })).toBeTruthy();
-  expect(tree.root.findByProps({ testID: 'recipe-grid-tile-expanded-2' })).toBeTruthy();
-
-  act(() => {
-    tree.root.findByProps({ testID: 'dashboard-grid-recipe-toggle-1' }).props.onPress({ nativeEvent: { locationX: 0, locationY: 0 } });
-  });
-
-  expect(tree.root.findAllByProps({ testID: 'recipe-grid-tile-expanded-1' })).toHaveLength(0);
-  expect(tree.root.findByProps({ testID: 'recipe-grid-tile-expanded-2' })).toBeTruthy();
-});
-
-test('grid tiles pass responsive numColumns to FlashList', () => {
-  const DashboardScreen = loadDashboardScreenWithFlashListMock();
-  const recipes = createRecipes(1);
-
-  const tree = render(
-    <DashboardScreen
-      title="Apothecary Recipes"
-      headerRight={<View />}
-      controls={<View />}
-      footer={<View />}
-      recipes={recipes}
-      totalCount={1}
-      viewMode="grid"
-    />
-  );
-
-  const flashList = tree.root.findByProps({ testID: 'flash-list' });
-  expect(flashList.props.numColumns).toBe(2);
-  const thumbNode = tree.root.findByProps({ testID: 'recipe-grid-tile-thumb-1' });
-  expect(thumbNode).toBeTruthy();
-  expect(thumbNode.props.source).toBeTruthy();
-  expect(tree.root.findByProps({ testID: 'recipe-grid-tile-title-1' }).props.adjustsFontSizeToFit).toBeFalsy();
-});
-
 test('falls back to placeholder when recipe image source is missing', () => {
   mockedGetRecipeImageSource.mockReturnValue(null);
 
@@ -837,6 +845,7 @@ test('falls back to placeholder when recipe image source is missing', () => {
       randomKey: 999,
       isPremium: 0,
       imageLocalPath: null,
+      isFavorite: 0,
       title: 'Recipe 999',
       difficultyScore: 3,
       preparationTime: '10 min',
@@ -863,6 +872,10 @@ test('falls back to placeholder when recipe image source is missing', () => {
       recipes={recipes}
       totalCount={1}
       viewMode="list"
+      filterMode="all"
+      hasAnyFavorites={false}
+      onPressShowAllRecipes={() => undefined}
+      onToggleFavorite={() => undefined}
     />
   );
 
@@ -885,6 +898,10 @@ test('auto-scrolls to the recipe when collapsing details via Show Less in list v
       recipes={recipes}
       totalCount={1}
       viewMode="list"
+      filterMode="all"
+      hasAnyFavorites={false}
+      onPressShowAllRecipes={() => undefined}
+      onToggleFavorite={() => undefined}
     />
   );
 
@@ -942,6 +959,10 @@ test('auto-scrolls to the recipe when collapsing details via tapping the title z
       totalCount={1}
       viewMode="list-big"
       autoScrollEnabled={true}
+      filterMode="all"
+      hasAnyFavorites={false}
+      onPressShowAllRecipes={() => undefined}
+      onToggleFavorite={() => undefined}
     />
   );
 

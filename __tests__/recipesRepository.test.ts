@@ -1,4 +1,4 @@
-import { buildCountRecipesQuery, buildListRecipesQuery } from '../src/repositories/recipesRepository';
+import { buildCountRecipesQuery, buildCountRecipesQueryWithFilter, buildListRecipesQuery } from '../src/repositories/recipesRepository';
 
 test('buildListRecipesQuery builds A–Z query with search + pagination', () => {
   const { sql, params } = buildListRecipesQuery({
@@ -62,5 +62,27 @@ test('buildCountRecipesQuery adds Free plan filter', () => {
 
   expect(sql).toContain('FROM recipes');
   expect(sql).toContain('WHERE isPremium = 0');
+  expect(params).toEqual([]);
+});
+
+test('buildListRecipesQuery adds favorites filter clause and join', () => {
+  const { sql, params } = buildListRecipesQuery({
+    page: 1,
+    pageSize: 25,
+    sortMode: 'az',
+    filterMode: 'favorites',
+  });
+
+  expect(sql).toContain('LEFT JOIN recipe_favorites');
+  expect(sql).toContain('recipe_favorites.recipeId IS NOT NULL');
+  expect(params).toEqual([25, 0]);
+});
+
+test('buildCountRecipesQueryWithFilter uses INNER JOIN for favorites-only', () => {
+  const { sql, params } = buildCountRecipesQueryWithFilter({
+    filterMode: 'favorites',
+  });
+
+  expect(sql).toContain('INNER JOIN recipe_favorites');
   expect(params).toEqual([]);
 });

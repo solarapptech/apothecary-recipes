@@ -1,6 +1,8 @@
 import { Modal, Pressable, StyleSheet, Text, View } from 'react-native';
 
 import type { PremiumDownloadStatus } from '../repositories/preferencesRepository';
+import { ModalCardBackground } from './ModalCardBackground';
+import { ModalBackdrop } from './ModalBackdrop';
 
 type PremiumDownloadModalProps = {
   visible: boolean;
@@ -53,7 +55,7 @@ export function PremiumDownloadModal({
 
   return (
     <Modal transparent visible={visible} animationType="fade" onRequestClose={onRequestClose}>
-      <Pressable
+      <ModalBackdrop
         accessibilityRole="button"
         accessibilityLabel="Close download status"
         onPress={onRequestClose}
@@ -61,78 +63,80 @@ export function PremiumDownloadModal({
         testID="premium-download-backdrop"
       >
         <Pressable style={styles.modal} onPress={() => undefined} testID="premium-download-modal">
-          <Text style={styles.title}>Premium content download</Text>
-          <Text style={styles.body} testID="premium-download-status-text">
-            {statusText}
-          </Text>
-
-          {status === 'failed' && trimmedError ? (
-            <Text style={styles.errorText} testID="premium-download-error-text">
-              {trimmedError}
+          <ModalCardBackground style={styles.modalBackground}>
+            <Text style={styles.title}>Premium content download</Text>
+            <Text style={styles.body} testID="premium-download-status-text">
+              {statusText}
             </Text>
-          ) : null}
 
-          <View style={styles.actions}>
-            {status === 'not-downloaded' ? (
-              <Pressable
-                accessibilityRole="button"
-                accessibilityLabel="Start premium content download"
-                onPress={onPressStart}
-                style={styles.primaryButton}
-                testID="premium-download-start"
-              >
-                <Text style={styles.primaryButtonText}>Start download</Text>
-              </Pressable>
+            {status === 'failed' && trimmedError ? (
+              <Text style={styles.errorText} testID="premium-download-error-text">
+                {trimmedError}
+              </Text>
             ) : null}
 
-            {status === 'downloading' ? (
+            <View style={styles.actions}>
+              {status === 'not-downloaded' ? (
+                <Pressable
+                  accessibilityRole="button"
+                  accessibilityLabel="Start premium content download"
+                  onPress={onPressStart}
+                  style={styles.primaryButton}
+                  testID="premium-download-start"
+                >
+                  <Text style={styles.primaryButtonText}>Start download</Text>
+                </Pressable>
+              ) : null}
+
+              {status === 'downloading' ? (
+                <Pressable
+                  accessibilityRole="button"
+                  accessibilityLabel="Pause premium content download"
+                  onPress={onPressPause}
+                  style={styles.secondaryButton}
+                  testID="premium-download-pause"
+                >
+                  <Text style={styles.secondaryButtonText}>Pause</Text>
+                </Pressable>
+              ) : null}
+
+              {status === 'paused' ? (
+                <Pressable
+                  accessibilityRole="button"
+                  accessibilityLabel="Resume premium content download"
+                  onPress={onPressResume}
+                  style={styles.primaryButton}
+                  testID="premium-download-resume"
+                >
+                  <Text style={styles.primaryButtonText}>Resume</Text>
+                </Pressable>
+              ) : null}
+
+              {status === 'failed' ? (
+                <Pressable
+                  accessibilityRole="button"
+                  accessibilityLabel="Retry premium content download"
+                  onPress={onPressRetry}
+                  style={styles.primaryButton}
+                  testID="premium-download-retry"
+                >
+                  <Text style={styles.primaryButtonText}>Retry</Text>
+                </Pressable>
+              ) : null}
+
               <Pressable
                 accessibilityRole="button"
-                accessibilityLabel="Pause premium content download"
-                onPress={onPressPause}
+                accessibilityLabel="Close"
+                onPress={onRequestClose}
                 style={styles.secondaryButton}
-                testID="premium-download-pause"
+                testID="premium-download-close"
               >
-                <Text style={styles.secondaryButtonText}>Pause</Text>
+                <Text style={styles.secondaryButtonText}>Close</Text>
               </Pressable>
-            ) : null}
-
-            {status === 'paused' ? (
-              <Pressable
-                accessibilityRole="button"
-                accessibilityLabel="Resume premium content download"
-                onPress={onPressResume}
-                style={styles.primaryButton}
-                testID="premium-download-resume"
-              >
-                <Text style={styles.primaryButtonText}>Resume</Text>
-              </Pressable>
-            ) : null}
-
-            {status === 'failed' ? (
-              <Pressable
-                accessibilityRole="button"
-                accessibilityLabel="Retry premium content download"
-                onPress={onPressRetry}
-                style={styles.primaryButton}
-                testID="premium-download-retry"
-              >
-                <Text style={styles.primaryButtonText}>Retry</Text>
-              </Pressable>
-            ) : null}
-
-            <Pressable
-              accessibilityRole="button"
-              accessibilityLabel="Close"
-              onPress={onRequestClose}
-              style={styles.secondaryButton}
-              testID="premium-download-close"
-            >
-              <Text style={styles.secondaryButtonText}>Close</Text>
-            </Pressable>
-          </View>
+            </View>
+          </ModalCardBackground>
         </Pressable>
-      </Pressable>
+      </ModalBackdrop>
     </Modal>
   );
 }
@@ -140,7 +144,6 @@ export function PremiumDownloadModal({
 const styles = StyleSheet.create({
   backdrop: {
     flex: 1,
-    backgroundColor: 'rgba(0,0,0,0.2)',
     alignItems: 'center',
     justifyContent: 'center',
     paddingHorizontal: 16,
@@ -148,10 +151,13 @@ const styles = StyleSheet.create({
   modal: {
     width: '100%',
     maxWidth: 420,
-    backgroundColor: '#fff',
     borderRadius: 12,
     borderWidth: StyleSheet.hairlineWidth,
     borderColor: '#ddd',
+    overflow: 'hidden',
+  },
+  modalBackground: {
+    borderRadius: 12,
     padding: 16,
   },
   title: {

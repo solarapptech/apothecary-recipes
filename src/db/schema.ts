@@ -37,4 +37,10 @@ CREATE TABLE IF NOT EXISTS seed_meta (
   key TEXT PRIMARY KEY,
   value TEXT NOT NULL
 );
+
+CREATE TABLE IF NOT EXISTS recipe_favorites (
+  recipeId INTEGER PRIMARY KEY,
+  createdAt INTEGER NOT NULL,
+  FOREIGN KEY(recipeId) REFERENCES recipes(id) ON DELETE CASCADE
+);
 `;

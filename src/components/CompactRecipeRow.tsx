@@ -1,4 +1,4 @@
-import { Image, StyleSheet, Text, View } from 'react-native';
+import { Image, Pressable, StyleSheet, Text, View } from 'react-native';
  
 import { getRecipeImageSource } from '../assets/getRecipeImageSource';
 import { FieldIcon } from '../ui/icons';
@@ -11,6 +11,8 @@ type CompactRecipeRowProps = {
   title: string;
   difficultyScore: number;
   preparationTime: string;
+  isFavorite?: boolean;
+  onPressFavorite?: () => void;
   dimmed?: boolean;
 };
 
@@ -19,6 +21,8 @@ export function CompactRecipeRow({
   title,
   difficultyScore,
   preparationTime,
+  isFavorite = false,
+  onPressFavorite,
   dimmed = false,
 }: CompactRecipeRowProps) {
   const imageSource = getRecipeImageSource(recipeId);
@@ -37,6 +41,20 @@ export function CompactRecipeRow({
       testID={`compact-recipe-row-${recipeId}`}
     > 
       <View pointerEvents="none" style={styles.accent} />
+      <Pressable
+        accessibilityRole="button"
+        accessibilityLabel={isFavorite ? 'Remove from favorites' : 'Add to favorites'}
+        onPress={(e) => {
+          (e as any)?.stopPropagation?.();
+          onPressFavorite?.();
+        }}
+        style={[styles.favoriteButton, isFavorite ? styles.favoriteButtonActive : styles.favoriteButtonInactive]}
+        testID={`compact-recipe-row-favorite-${recipeId}`}
+      >
+        <Text style={[styles.favoriteIcon, isFavorite ? styles.favoriteIconActive : styles.favoriteIconInactive]}>
+          {isFavorite ? '★' : '☆'}
+        </Text>
+      </Pressable>
       {imageSource ? (
         <Image
           source={imageSource}
@@ -119,6 +137,35 @@ const styles = StyleSheet.create({
     borderBottomLeftRadius: theme.radii.lg,
     borderTopRightRadius: 6,
     borderBottomRightRadius: 6,
+  },
+  favoriteButton: {
+    position: 'absolute',
+    top: 10,
+    right: 10,
+    height: 26,
+    minWidth: 26,
+    paddingHorizontal: 6,
+    borderRadius: 13,
+    alignItems: 'center',
+    justifyContent: 'center',
+    zIndex: 5,
+  },
+  favoriteButtonInactive: {
+    backgroundColor: 'transparent',
+    opacity: 0.45,
+  },
+  favoriteButtonActive: {
+    backgroundColor: theme.colors.surface.popover,
+    opacity: 1,
+  },
+  favoriteIcon: {
+    fontSize: 16,
+  },
+  favoriteIconInactive: {
+    color: theme.colors.ink.primary,
+  },
+  favoriteIconActive: {
+    color: theme.colors.ink.primary,
   },
   thumbnail: {
     height: 48,

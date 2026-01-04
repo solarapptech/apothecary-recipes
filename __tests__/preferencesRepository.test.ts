@@ -1,6 +1,7 @@
 import {
   getAutoScrollEnabledAsync,
   getCloseAsYouTapEnabledAsync,
+  getFilterModeAsync,
   getInfiniteScrollEnabledAsync,
   getPageSizeAsync,
   getPlanAsync,
@@ -17,6 +18,7 @@ import {
   maskPremiumCode,
   setAutoScrollEnabledAsync,
   setCloseAsYouTapEnabledAsync,
+  setFilterModeAsync,
   setInfiniteScrollEnabledAsync,
   setPageSizeAsync,
   setPlanAsync,
@@ -52,7 +54,7 @@ function createFakePreferencesDb(initial?: Record<string, string>) {
   return db;
 }
 
-test('defaults: sortMode=random, infiniteScroll=false, viewMode=list, reduceMotion=false, behavior=true, autoScroll=true', async () => {
+test('defaults: sortMode=random, filterMode=all, infiniteScroll=false, viewMode=list, reduceMotion=false, behavior=true, autoScroll=true', async () => {
   const db = createFakePreferencesDb();
 
   await expect(getPlanAsync(db)).resolves.toBe('free');
@@ -63,6 +65,7 @@ test('defaults: sortMode=random, infiniteScroll=false, viewMode=list, reduceMoti
   await expect(getPremiumDownloadProgressAsync(db)).resolves.toBeNull();
   await expect(getPremiumDownloadErrorAsync(db)).resolves.toBeNull();
   await expect(getSortModeAsync(db)).resolves.toBe('random');
+  await expect(getFilterModeAsync(db)).resolves.toBe('all');
   await expect(getInfiniteScrollEnabledAsync(db)).resolves.toBe(false);
   await expect(getPageSizeAsync(db)).resolves.toBe(25);
   await expect(getViewModeAsync(db)).resolves.toBe('list');
@@ -79,9 +82,10 @@ test('set/get roundtrip for all preferences', async () => {
   await setPremiumBundleVersionAsync(db, 'v1');
   await setPremiumBundleSha256Async(db, 'deadbeef');
   await setSortModeAsync(db, 'za');
+  await setFilterModeAsync(db, 'favorites');
   await setInfiniteScrollEnabledAsync(db, true);
   await setPageSizeAsync(db, 25);
-  await setViewModeAsync(db, 'grid');
+  await setViewModeAsync(db, 'list-big');
   await setReduceMotionEnabledAsync(db, true);
   await setCloseAsYouTapEnabledAsync(db, false);
   await setAutoScrollEnabledAsync(db, false);
@@ -97,9 +101,10 @@ test('set/get roundtrip for all preferences', async () => {
   await expect(getPremiumDownloadProgressAsync(db)).resolves.toBe(42);
   await expect(getPremiumDownloadErrorAsync(db)).resolves.toBe('something went wrong');
   await expect(getSortModeAsync(db)).resolves.toBe('za');
+  await expect(getFilterModeAsync(db)).resolves.toBe('favorites');
   await expect(getInfiniteScrollEnabledAsync(db)).resolves.toBe(true);
   await expect(getPageSizeAsync(db)).resolves.toBe(25);
-  await expect(getViewModeAsync(db)).resolves.toBe('grid');
+  await expect(getViewModeAsync(db)).resolves.toBe('list-big');
   await expect(getReduceMotionEnabledAsync(db)).resolves.toBe(true);
   await expect(getCloseAsYouTapEnabledAsync(db)).resolves.toBe(false);
   await expect(getAutoScrollEnabledAsync(db)).resolves.toBe(false);
@@ -113,6 +118,7 @@ test('persistence simulated: values are read from stored key/value table', async
     premiumDownloadProgress: '100',
     premiumDownloadError: 'zip failed',
     sortMode: 'az',
+    filterMode: 'favorites',
     infiniteScrollEnabled: 'false',
     pageSize: '25',
     viewMode: 'list-big',
@@ -127,6 +133,7 @@ test('persistence simulated: values are read from stored key/value table', async
   await expect(getPremiumDownloadErrorAsync(db)).resolves.toBe('zip failed');
   await expect(getPremiumDownloadProgressAsync(db)).resolves.toBe(100);
   await expect(getSortModeAsync(db)).resolves.toBe('az');
+  await expect(getFilterModeAsync(db)).resolves.toBe('favorites');
   await expect(getInfiniteScrollEnabledAsync(db)).resolves.toBe(false);
   await expect(getPageSizeAsync(db)).resolves.toBe(25);
   await expect(getViewModeAsync(db)).resolves.toBe('list-big');
