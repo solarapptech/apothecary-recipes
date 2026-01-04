@@ -6,6 +6,7 @@ export type Recipe = {
   timePeriod: string;
   warning: string;
   region: string;
+  usedFor: string;
   ingredients: string;
   detailedMeasurements: string;
   preparationSteps: string;

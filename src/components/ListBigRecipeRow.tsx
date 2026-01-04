@@ -1,4 +1,4 @@
-import { useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { Image, Modal, Platform, Pressable, StyleSheet, Text, View } from 'react-native';
 import Animated, {
   Extrapolate,
@@ -43,6 +43,7 @@ type ListBigRecipeRowProps = {
   timePeriod: string;
   warning: string;
   region: string;
+  usedFor: string;
   ingredients: string;
   detailedMeasurements: string;
   preparationSteps: string;
@@ -69,9 +70,10 @@ export function ListBigRecipeRow({
   difficultyScore,
   preparationTime,
   description,
-  timePeriod,
+  timePeriod: _timePeriod,
   warning,
   region,
+  usedFor,
   ingredients,
   detailedMeasurements,
   preparationSteps,
@@ -108,6 +110,13 @@ export function ListBigRecipeRow({
   const detailsMode = expanded ?? detailsModeInternal;
   const displayTitle = detailsMode ? title : title.replace(/\s*\n\s*/g, ' ');
   const titleKey = detailsMode ? 'title-expanded' : 'title-collapsed';
+
+  useEffect(() => {
+    if (!detailsMode) {
+      setImageModalVisible(false);
+    }
+  }, [detailsMode]);
+
   const setDetailsMode = (next: boolean) => {
     if (onRequestSetExpanded) {
       onRequestSetExpanded(next);
@@ -250,9 +259,16 @@ export function ListBigRecipeRow({
       style={styles.headerRow}
     >
       {imageSource ? (
-        <Pressable 
+        <Pressable
+          testID={`list-big-recipe-row-thumb-pressable-${recipeId}`}
           onPress={(e) => {
             e.stopPropagation();
+
+            if (!detailsMode) {
+              onPress?.();
+              return;
+            }
+
             setImageModalVisible(true);
           }}
         >
@@ -442,7 +458,7 @@ export function ListBigRecipeRow({
               exiting={enableExitAnimations ? FadeOut.duration(animDuration) : undefined}
               style={[styles.detailsField, styles.timePeriodRegionBlock]}
             >
-              <TimePeriodRegionRow timePeriod={timePeriod} region={region} />
+              <TimePeriodRegionRow usedFor={usedFor} region={region} />
             </Animated.View>
             {showDetailsButton && (
               <Animated.View
@@ -494,6 +510,7 @@ export function ListBigRecipeRow({
       onRequestClose={() => setImageModalVisible(false)}
     >
       <Pressable
+        testID={`list-big-recipe-row-image-modal-overlay-${recipeId}`}
         style={styles.modalOverlay}
         onPress={() => setImageModalVisible(false)}
       >
@@ -502,6 +519,7 @@ export function ListBigRecipeRow({
             source={imageSource}
             style={styles.modalImage}
             resizeMode="contain"
+            testID={`list-big-recipe-row-image-modal-image-${recipeId}`}
           />
         ) : null}
       </Pressable>

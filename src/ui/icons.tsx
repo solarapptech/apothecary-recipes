@@ -10,6 +10,7 @@ export type IconName =
   | 'timePeriod'
   | 'region'
   | 'ingredients'
+  | 'usedFor'
   | 'detailedMeasurements'
   | 'preparationSteps'
   | 'usage'
@@ -117,7 +118,7 @@ export function FieldIcon({
     );
   }
 
-  if (name === 'usage') {
+  if (name === 'usage' || name === 'usedFor') {
     return (
       <Svg width={size} height={size} viewBox="0 0 24 24" {...rest}>
         <Path d="M8 12v-6a2 2 0 0 1 4 0v6" {...common} />

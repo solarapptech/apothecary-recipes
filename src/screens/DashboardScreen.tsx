@@ -353,6 +353,7 @@ export function DashboardScreen({
                   timePeriod={item.timePeriod}
                   warning={item.warning}
                   region={item.region}
+                  usedFor={item.usedFor}
                   ingredients={item.ingredients}
                   detailedMeasurements={item.detailedMeasurements}
                   preparationSteps={item.preparationSteps}
@@ -384,6 +385,7 @@ export function DashboardScreen({
                 timePeriod={item.timePeriod}
                 warning={item.warning}
                 region={item.region}
+                usedFor={item.usedFor}
                 ingredients={item.ingredients}
                 detailedMeasurements={item.detailedMeasurements}
                 preparationSteps={item.preparationSteps}
@@ -428,6 +430,7 @@ export function DashboardScreen({
                     timePeriod={item.timePeriod}
                     warning={item.warning}
                     region={item.region}
+                    usedFor={item.usedFor}
                     ingredients={item.ingredients}
                     detailedMeasurements={item.detailedMeasurements}
                     preparationSteps={item.preparationSteps}

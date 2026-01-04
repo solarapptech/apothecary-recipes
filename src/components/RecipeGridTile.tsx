@@ -20,6 +20,7 @@ type RecipeGridTileProps = {
   timePeriod: string;
   warning: string;
   region: string;
+  usedFor: string;
   ingredients: string;
   detailedMeasurements: string;
   preparationSteps: string;
@@ -36,9 +37,10 @@ export function RecipeGridTile({
   difficultyScore,
   preparationTime,
   description,
-  timePeriod,
+  timePeriod: _timePeriod,
   warning,
   region,
+  usedFor,
   ingredients,
   detailedMeasurements,
   preparationSteps,
@@ -50,6 +52,13 @@ export function RecipeGridTile({
 }: RecipeGridTileProps) {
   const imageSource = getRecipeImageSource(recipeId);
   const animDuration = motionDurationMs(reduceMotionEnabled, 150);
+
+  const usedForDisplay = usedFor
+    .split(',')
+    .map((value) => value.trim())
+    .filter(Boolean)
+    .map((value, index) => `${index + 1}. ${value}`)
+    .join('\n');
 
   return (
     <View
@@ -108,7 +117,7 @@ export function RecipeGridTile({
           testID={`recipe-grid-tile-expanded-fields-${recipeId}`}
         >
           <FieldRow icon="description" label="Description" value={description} />
-          <FieldRow icon="timePeriod" label="Time period" value={timePeriod} />
+          <FieldRow icon="timePeriod" label="Used for" value={usedForDisplay} />
           <FieldRow icon="region" label="Region" value={region} />
           <FieldRow icon="ingredients" label="Ingredients" value={ingredients} />
           <FieldRow icon="detailedMeasurements" label="Detailed Measurements" value={detailedMeasurements} />

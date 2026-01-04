@@ -88,6 +88,7 @@ function createRecipes(count = 1): RecipeRow[] {
       timePeriod: `time ${id}`,
       warning: `warn ${id}`,
       region: `region ${id}`,
+      usedFor: `usedFor ${id}`,
       historicalContext: `history ${id}`,
       scientificEvidence: `evidence ${id}`,
       ingredients: `ingredients ${id}`,
@@ -763,6 +764,53 @@ test('list-big view items toggle details mode via tapping the card', () => {
   expect(tree.root.findAllByProps({ testID: 'list-big-recipe-row-details-mode-1' })).toHaveLength(0);
 });
 
+test('list-big view only allows expanding/closing the image when the recipe is focused (details shown)', () => {
+  const DashboardScreen = loadDashboardScreenWithFlashListMock();
+  const recipes = createRecipes(1);
+
+  const tree = render(
+    <DashboardScreen
+      title="Apothecary Recipes"
+      headerRight={<View />}
+      controls={<View />}
+      footer={<View />}
+      recipes={recipes}
+      totalCount={1}
+      viewMode="list-big"
+    />
+  );
+
+  expect(tree.root.findAllByProps({ testID: 'list-big-recipe-row-details-mode-1' })).toHaveLength(0);
+  expect(tree.root.findAllByProps({ testID: 'list-big-recipe-row-image-modal-overlay-1' })).toHaveLength(0);
+
+  // Tap thumbnail while not focused -> should focus (enter details) but NOT open the image modal.
+  act(() => {
+    tree.root.findByProps({ testID: 'list-big-recipe-row-thumb-pressable-1' }).props.onPress({
+      stopPropagation: () => {},
+    });
+  });
+
+  expect(tree.root.findByProps({ testID: 'list-big-recipe-row-details-mode-1' })).toBeTruthy();
+  expect(tree.root.findAllByProps({ testID: 'list-big-recipe-row-image-modal-overlay-1' })).toHaveLength(0);
+
+  // Tap thumbnail again while focused -> should open the image modal.
+  act(() => {
+    tree.root.findByProps({ testID: 'list-big-recipe-row-thumb-pressable-1' }).props.onPress({
+      stopPropagation: () => {},
+    });
+  });
+
+  expect(tree.root.findByProps({ testID: 'list-big-recipe-row-image-modal-overlay-1' })).toBeTruthy();
+  expect(tree.root.findByProps({ testID: 'list-big-recipe-row-image-modal-image-1' })).toBeTruthy();
+
+  // While focused, tapping the overlay should close the modal.
+  act(() => {
+    tree.root.findByProps({ testID: 'list-big-recipe-row-image-modal-overlay-1' }).props.onPress();
+  });
+
+  expect(tree.root.findAllByProps({ testID: 'list-big-recipe-row-image-modal-overlay-1' })).toHaveLength(0);
+});
+
 test('grid tiles toggle expanded state and allow multiple expanded items', () => {
   const DashboardScreen = loadDashboardScreenWithFlashListMock();
   const recipes = createRecipes(2);
@@ -842,6 +890,7 @@ test('falls back to placeholder when recipe image source is missing', () => {
       timePeriod: 'time',
       warning: 'warn',
       region: 'region',
+      usedFor: 'usedFor',
       historicalContext: 'history',
       scientificEvidence: 'evidence',
       ingredients: 'ingredients',

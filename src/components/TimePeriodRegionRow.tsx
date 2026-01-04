@@ -4,23 +4,32 @@ import { FieldIcon } from '../ui/icons';
 import { theme } from '../ui/theme';
 
 type TimePeriodRegionRowProps = {
-  timePeriod: string;
+  usedFor: string;
   region: string;
 };
 
-export function TimePeriodRegionRow({ timePeriod, region }: TimePeriodRegionRowProps) {
+export function TimePeriodRegionRow({ usedFor, region }: TimePeriodRegionRowProps) {
+  const usedForItems = usedFor
+    .split(',')
+    .map((value) => value.trim())
+    .filter(Boolean);
+
   return (
     <View style={styles.container}>
       <View style={styles.column}>
         <View style={styles.headerRow}>
-          <FieldIcon name="timePeriod" size={18} color={theme.colors.ink.subtle} />
+          <FieldIcon name="usedFor" size={18} color={theme.colors.ink.subtle} />
           <View style={styles.headerChip}>
-            <Text style={styles.headerChipLabel}>TIME PERIOD</Text>
+            <Text style={styles.headerChipLabel}>USED FOR</Text>
           </View>
         </View>
-        <Text style={styles.valueText} numberOfLines={2}>
-          {timePeriod}
-        </Text>
+        <View style={styles.usedForValueContainer}>
+          {usedForItems.map((value, index) => (
+            <Text key={`${index}-${value}`} style={styles.usedForValueText}>
+              {`${index + 1}. ${value}`}
+            </Text>
+          ))}
+        </View>
       </View>
       <View style={styles.column}>
         <View style={styles.headerRow}>
@@ -73,5 +82,18 @@ const styles = StyleSheet.create({
     fontFamily: theme.typography.fontFamily.sans.regular,
     color: theme.colors.ink.primary,
     textAlign: 'center',
+  },
+  usedForValueContainer: {
+    alignSelf: 'stretch',
+    alignItems: 'flex-start',
+    gap: 2,
+    paddingLeft: 10,
+  },
+  usedForValueText: {
+    fontSize: 13,
+    lineHeight: 18,
+    fontFamily: theme.typography.fontFamily.sans.regular,
+    color: theme.colors.ink.primary,
+    textAlign: 'left',
   },
 });

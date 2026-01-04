@@ -6,7 +6,7 @@ import { SCHEMA_SQL } from './schema';
 const FREE_RECIPES_BASE: Recipe[] = require('../data/free-recipes.json');
 
 export const TARGET_FREE_RECIPE_COUNT = 250;
-export const CURRENT_SEED_VERSION = 'free-placeholder-250-v3';
+export const CURRENT_SEED_VERSION = 'free-placeholder-250-v4';
 
 type GetFirstResult<T> = T | null | undefined;
 
@@ -23,6 +23,7 @@ export async function ensureSchemaAsync(db: DbLike): Promise<void> {
   const migrations: Array<{ sql: string }> = [
     { sql: 'ALTER TABLE recipes ADD COLUMN isPremium INTEGER NOT NULL DEFAULT 0' },
     { sql: 'ALTER TABLE recipes ADD COLUMN imageLocalPath TEXT' },
+    { sql: 'ALTER TABLE recipes ADD COLUMN usedFor TEXT NOT NULL DEFAULT ""' },
     { sql: 'ALTER TABLE recipes ADD COLUMN ingredients TEXT NOT NULL DEFAULT ""' },
     { sql: 'ALTER TABLE recipes ADD COLUMN detailedMeasurements TEXT NOT NULL DEFAULT ""' },
     { sql: 'ALTER TABLE recipes ADD COLUMN preparationSteps TEXT NOT NULL DEFAULT ""' },
@@ -120,6 +121,7 @@ async function insertRecipeAsync(db: DbLike, recipe: Recipe): Promise<void> {
       timePeriod,
       warning,
       region,
+      usedFor,
       ingredients,
       detailedMeasurements,
       preparationSteps,
@@ -127,7 +129,7 @@ async function insertRecipeAsync(db: DbLike, recipe: Recipe): Promise<void> {
       historicalContext,
       scientificEvidence,
       randomKey
-    ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,
+    ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,
     recipe.title,
     recipe.difficultyScore,
     recipe.preparationTime,
@@ -135,6 +137,7 @@ async function insertRecipeAsync(db: DbLike, recipe: Recipe): Promise<void> {
     recipe.timePeriod,
     recipe.warning,
     recipe.region,
+    recipe.usedFor ?? '',
     recipe.ingredients,
     recipe.detailedMeasurements,
     recipe.preparationSteps,
