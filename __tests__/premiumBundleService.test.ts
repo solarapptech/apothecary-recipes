@@ -32,6 +32,9 @@ test('startAsync is single-flight guarded', async () => {
     setProgressAsync: async (_db, progress) => {
       calls.push(`progress:${String(progress)}`);
     },
+    setErrorAsync: async (_db, message) => {
+      calls.push(`error:${String(message)}`);
+    },
     setInstalledVersionAsync: async (_db, version) => {
       calls.push(`version:${version}`);
     },
@@ -74,6 +77,9 @@ test('progress updates and completion persists ready state', async () => {
     setProgressAsync: async (_db, progress) => {
       calls.push(`progress:${String(progress)}`);
     },
+    setErrorAsync: async (_db, message) => {
+      calls.push(`error:${String(message)}`);
+    },
     setInstalledVersionAsync: async (_db, version) => {
       calls.push(`version:${version}`);
     },
@@ -82,6 +88,7 @@ test('progress updates and completion persists ready state', async () => {
   await expect(service.startAsync()).resolves.toBe(true);
 
   expect(calls).toEqual([
+    'error:null',
     'status:downloading',
     'progress:0',
     'cleanup',
@@ -90,6 +97,7 @@ test('progress updates and completion persists ready state', async () => {
     'version:bundle-v2',
     'progress:100',
     'status:ready',
+    'error:null',
   ]);
 });
 
@@ -135,6 +143,9 @@ test('pause/resume updates status when supported by job', async () => {
     },
     setProgressAsync: async (_db, progress) => {
       calls.push(`progress:${String(progress)}`);
+    },
+    setErrorAsync: async (_db, message) => {
+      calls.push(`error:${String(message)}`);
     },
     setInstalledVersionAsync: async (_db, version) => {
       calls.push(`version:${version}`);
@@ -183,6 +194,9 @@ test('retryAsync uses backoff and retries after failure', async () => {
     },
     setProgressAsync: async (_db, progress) => {
       calls.push(`progress:${String(progress)}`);
+    },
+    setErrorAsync: async (_db, message) => {
+      calls.push(`error:${String(message)}`);
     },
     setInstalledVersionAsync: async (_db, version) => {
       calls.push(`version:${version}`);

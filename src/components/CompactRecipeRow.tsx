@@ -24,17 +24,12 @@ export function CompactRecipeRow({
   const imageSource = getRecipeImageSource(recipeId);
   const displayTitle = title.replace(/\s*\n\s*/g, ' ');
 
-  const stars = [];
-  for (let i = 1; i <= 3; i++) {
-    stars.push(
-      <FieldIcon
-        key={i}
-        name={i <= difficultyScore ? 'star' : 'starOutline'}
-        size={12}
-        color={theme.colors.brand.primary}
-      />
-    );
-  }
+  const difficultyLabel = (() => {
+    const safeScore = Math.max(1, Math.min(3, Math.round(difficultyScore)));
+    if (safeScore === 1) return 'Easy';
+    if (safeScore === 2) return 'Normal';
+    return 'Hard';
+  })();
 
   return (
     <View
@@ -69,8 +64,10 @@ export function CompactRecipeRow({
         </Text>
 
         <View style={styles.metaRow}>
-          <View style={styles.difficultyStars} testID={`compact-recipe-row-difficulty-${recipeId}`}>
-            {stars}
+          <View style={styles.difficultyContainer} testID={`compact-recipe-row-difficulty-${recipeId}`}>
+            <Text style={styles.difficultyText} numberOfLines={1} ellipsizeMode="tail">
+              {difficultyLabel}
+            </Text>
           </View>
           <View style={styles.timeRow} testID={`compact-recipe-row-time-${recipeId}`}>
             <FieldIcon name="prepTime" size={12} color={theme.colors.ink.muted} />
@@ -152,10 +149,13 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     gap: 12,
   },
-  difficultyStars: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    gap: 2,
+  difficultyContainer: {
+    flexShrink: 1,
+  },
+  difficultyText: {
+    color: theme.colors.brand.primary,
+    fontSize: 11,
+    fontFamily: theme.typography.fontFamily.sans.semiBold,
   },
   timeRow: {
     flexDirection: 'row',

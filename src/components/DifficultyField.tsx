@@ -1,6 +1,5 @@
 import { StyleSheet, Text, View } from 'react-native';
 
-import { FieldIcon } from '../ui/icons';
 import { theme } from '../ui/theme';
 
 type DifficultyFieldProps = {
@@ -9,22 +8,25 @@ type DifficultyFieldProps = {
 };
 
 export function DifficultyField({ score, maxScore = 3 }: DifficultyFieldProps) {
-  const stars = [];
-  for (let i = 1; i <= maxScore; i++) {
-    stars.push(
-      <FieldIcon
-        key={i}
-        name={i <= score ? 'star' : 'starOutline'}
-        size={14}
-        color={theme.colors.brand.primary}
-      />
-    );
-  }
+  const difficultyLabel = (() => {
+    const safeMax = Math.max(1, Math.round(maxScore));
+    const safeScore = Math.max(1, Math.min(safeMax, Math.round(score)));
+
+    if (safeMax === 3) {
+      if (safeScore === 1) return 'Easy';
+      if (safeScore === 2) return 'Normal';
+      return 'Hard';
+    }
+
+    if (safeScore <= safeMax / 3) return 'Easy';
+    if (safeScore <= (2 * safeMax) / 3) return 'Normal';
+    return 'Hard';
+  })();
 
   return (
     <View style={styles.container}>
       <Text style={styles.label}>DIFFICULTY</Text>
-      <View style={styles.starsRow}>{stars}</View>
+      <Text style={styles.value}>{difficultyLabel}</Text>
     </View>
   );
 }
@@ -41,8 +43,9 @@ const styles = StyleSheet.create({
     color: theme.colors.brand.primary,
     textTransform: 'uppercase',
   },
-  starsRow: {
-    flexDirection: 'row',
-    gap: 2,
+  value: {
+    fontSize: 12,
+    fontFamily: theme.typography.fontFamily.sans.semiBold,
+    color: theme.colors.brand.primary,
   },
 });

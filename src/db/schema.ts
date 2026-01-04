@@ -12,6 +12,7 @@ CREATE TABLE IF NOT EXISTS recipes (
   timePeriod TEXT NOT NULL,
   warning TEXT NOT NULL,
   region TEXT NOT NULL,
+  alternativeNames TEXT NOT NULL,
   usedFor TEXT NOT NULL,
   ingredients TEXT NOT NULL,
   detailedMeasurements TEXT NOT NULL,

@@ -43,6 +43,7 @@ type ListBigRecipeRowProps = {
   timePeriod: string;
   warning: string;
   region: string;
+  alternativeNames?: string;
   usedFor: string;
   ingredients: string;
   detailedMeasurements: string;
@@ -73,6 +74,7 @@ export function ListBigRecipeRow({
   timePeriod: _timePeriod,
   warning,
   region,
+  alternativeNames,
   usedFor,
   ingredients,
   detailedMeasurements,
@@ -222,6 +224,10 @@ export function ListBigRecipeRow({
   });
 
   const handleContainerPress = () => {
+    if (showDetailsButton && detailsMode) {
+      return;
+    }
+
     if (!allowDetailsToggle && onPress) {
       onPress();
       return;
@@ -252,6 +258,40 @@ export function ListBigRecipeRow({
     if (onShowLess) {
       onShowLess();
     }
+  };
+
+  const handleTitleZonePress = (e: any) => {
+    e.stopPropagation();
+    triggerWave(e);
+
+    if (!allowDetailsToggle && onPress) {
+      onPress();
+      return;
+    }
+
+    if (showDetailsButton && detailsMode) {
+      setDetailsMode(false);
+      if (onShowLess) {
+        onShowLess();
+      }
+      return;
+    }
+
+    if (!showDetailsButton) {
+      setDetailsMode(!detailsMode);
+    }
+  };
+
+  const handleHeaderChevronPress = (e: any) => {
+    e.stopPropagation();
+    triggerWave(e);
+
+    if (!allowDetailsToggle && onPress) {
+      onPress();
+      return;
+    }
+
+    setDetailsMode(!detailsMode);
   };
 
   const headerContent = (
@@ -291,18 +331,24 @@ export function ListBigRecipeRow({
       <Animated.View
         style={styles.headerContent}
       >
-        <Animated.View
-          style={styles.titleRow}
-        >
-          <Animated.Text 
-            key={titleKey}
-            style={styles.title}
-            numberOfLines={detailsMode ? undefined : 1} 
-            ellipsizeMode="tail" 
-            testID={`list-big-recipe-row-title-${recipeId}`}
+        <Animated.View style={styles.titleRow}>
+          <Pressable
+            testID={`list-big-recipe-row-title-pressable-${recipeId}`}
+            onPress={handleTitleZonePress}
+            style={styles.titlePressable}
+            accessibilityRole="button"
+            accessibilityLabel={detailsMode ? 'Collapse recipe details' : 'Expand recipe details'}
           >
-            {displayTitle}
-          </Animated.Text>
+            <Animated.Text
+              key={titleKey}
+              style={styles.title}
+              numberOfLines={detailsMode ? undefined : 1}
+              ellipsizeMode="tail"
+              testID={`list-big-recipe-row-title-${recipeId}`}
+            >
+              {displayTitle}
+            </Animated.Text>
+          </Pressable>
 
           {showMinimizeButton ? (
             <Pressable
@@ -323,17 +369,38 @@ export function ListBigRecipeRow({
               testID={`list-big-recipe-row-minimize-${recipeId}`}
             >
               <Animated.View style={minimizeIconStyle}>
+                <Svg width={24} height={24} viewBox="0 0 24 24">
+                  <AnimatedPath
+                    d="M7 14l5-5 5 5"
+                    fill="none"
+                    strokeWidth={2}
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    animatedProps={minimizePathProps}
+                  />
+                </Svg>
+              </Animated.View>
+            </Pressable>
+          ) : null}
+
+          {!showMinimizeButton && showDetailsButton ? (
+            <Pressable
+              accessibilityRole="button"
+              accessibilityLabel={detailsMode ? 'Collapse recipe details' : 'Expand recipe details'}
+              onPress={handleHeaderChevronPress}
+              style={styles.headerChevronButton}
+              testID={`list-big-recipe-row-header-chevron-${recipeId}`}
+            >
               <Svg width={24} height={24} viewBox="0 0 24 24">
-                <AnimatedPath
-                  d="M7 14l5-5 5 5"
+                <Path
+                  d={detailsMode ? 'M7 14l5-5 5 5' : 'M7 10l5 5 5-5'}
                   fill="none"
+                  stroke={theme.colors.brand.primaryStrong}
                   strokeWidth={2}
                   strokeLinecap="round"
                   strokeLinejoin="round"
-                  animatedProps={minimizePathProps}
                 />
               </Svg>
-              </Animated.View>
             </Pressable>
           ) : null}
         </Animated.View>
@@ -446,12 +513,28 @@ export function ListBigRecipeRow({
                 variant="grouped"
               />
               <SecondaryFieldRow
+                icon="historical"
+                label="Alternative names"
+                value={alternativeNames?.trim() ? alternativeNames : '—'}
+                variant="grouped"
+              />
+              <SecondaryFieldRow
                 icon="evidence"
                 label="Evidence"
                 value={scientificEvidence}
                 variant="grouped"
               />
-              <SecondaryFieldRow icon="warning" label="Warning" value={warning} variant="grouped" />
+              <SecondaryFieldRow
+                icon="warning"
+                label="Warning"
+                value={warning}
+                variant="grouped"
+                collapsible
+                defaultCollapsed
+                chevronColor={theme.colors.brand.primaryStrong}
+                toggleTestID={`list-big-recipe-row-warning-toggle-${recipeId}`}
+                valueTestID={`list-big-recipe-row-warning-value-${recipeId}`}
+              />
             </Animated.View>
             <Animated.View
               entering={reduceMotionEnabled ? undefined : FadeInDown.duration(animDuration).delay(300)}
@@ -607,15 +690,23 @@ const styles = StyleSheet.create({
     fontSize: 14,
     fontFamily: theme.typography.fontFamily.sans.semiBold,
   },
-  headerContent: {
-    flex: 1,
-    gap: 2,
-    marginTop: -8,
+  minimizeButton: {
+    padding: 6,
+    marginRight: -6,
+    marginTop: -2,
+  },
+  headerChevronButton: {
+    padding: 6,
+    marginRight: -6,
+    marginTop: -2,
   },
   titleRow: {
     flexDirection: 'row',
     alignItems: 'center',
     gap: 8,
+  },
+  titlePressable: {
+    flex: 1,
   },
   title: {
     fontSize: 14,
@@ -623,12 +714,6 @@ const styles = StyleSheet.create({
     fontFamily: theme.typography.fontFamily.sans.medium,
     color: theme.colors.ink.primary,
     flex: 1,
-  },
-  minimizeButton: {
-    height: 32,
-    width: 32,
-    alignItems: 'center',
-    justifyContent: 'center',
   },
   collapseButton: {
     height: 32,

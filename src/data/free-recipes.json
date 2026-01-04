@@ -14,7 +14,8 @@
     "historicalContext": "Developed and preserved within monastic herbal gardens (Hortus conclusus) where monks translated and expanded upon classical texts, often using common forest and field herbs.",
     "scientificEvidence": "Mullein is a known demulcent and expectorant. Pine resin (turpentine) is a traditional counter-irritant and decongestant. Traditional use supported by constituents.",
     "isPremium": 0,
-    "usedFor": "Respiratory System - Lungs & Chest, Musculoskeletal System - Muscle Pain & Spasm"
+    "usedFor": "Respiratory System - Lungs & Chest, Musculoskeletal System - Muscle Pain & Spasm",
+    "alternativeNames": "Monastery Salve, Herbal Chest Rub"
   },
   {
     "title": "Red Wine & Rue Cordial",
@@ -31,7 +32,8 @@
     "historicalContext": "Used extensively in Roman and Medieval medicine; popularized in England by herbalists who integrated classical texts with local plant knowledge, used especially to ward off plague and venom.",
     "scientificEvidence": "Traditional use only. Rue is studied for its antispasmodic properties, but its toxicity profile limits modern therapeutic use. Rosemary is a circulatory stimulant.",
     "isPremium": 0,
-    "usedFor": "Cardiovascular System, Nervous System & Sleep - Anxiety & Mood"
+    "usedFor": "Cardiovascular System, Nervous System & Sleep - Anxiety & Mood",
+    "alternativeNames": "Bitter Heart Tonic, Ruta Grappa"
   },
   {
     "title": "Comfrey Knitbone Liniment",
@@ -48,7 +50,8 @@
     "historicalContext": "A highly valued wound and bone-healing herb since Roman times. Its use was common in the apothecary well into the 19th century before PA toxicity was fully understood.",
     "scientificEvidence": "Modern studies confirm high Allantoin content, which promotes cell proliferation and tissue repair. The ban on internal use is widely upheld due to PA risks.",
     "isPremium": 0,
-    "usedFor": "Musculoskeletal System - Joints & Arthritis, Skin & Wounds - Topical Healing"
+    "usedFor": "Musculoskeletal System - Joints & Arthritis, Skin & Wounds - Topical Healing",
+    "alternativeNames": "Symphytum Bruise Oil, Bone-Set Tincture"
   },
   {
     "title": "Meadowsweet Spiritus (Aqua Mirabilis)",
@@ -65,7 +68,8 @@
     "historicalContext": "Known as the \"aspirin of the Middle Ages,\" it was a common strewing herb whose medicinal uses were extensively documented by herbalists for its ability to treat fever and stomach ailments without upsetting the digestion (unlike willow bark).",
     "scientificEvidence": "The presence of salicylates (precursors to aspirin) provides anti-inflammatory and analgesic effects. Traditional use as a stomachic is due to its tannins, which soothe the gut lining.",
     "isPremium": 0,
-    "usedFor": "Digestive System - Stomach & Upper GI, Nervous System & Sleep - Pain & Headache"
+    "usedFor": "Digestive System - Stomach & Upper GI, Nervous System & Sleep - Pain & Headache",
+    "alternativeNames": "Spirea Water, Queen of the Meadow Tincture"
   },
   {
     "title": "Hedge Mustard Syrup (for Singers)",
@@ -82,7 +86,8 @@
     "historicalContext": "Known in French folk medicine as the herbe aux chantres (singer's herb). Its use dates back to classical antiquity, praised by Dioscorides for its action on the voice box.",
     "scientificEvidence": "Rich in mucilage and sulfur compounds, it acts as a demulcent to coat and soothe irritated vocal cords. Traditional use for aphonia (loss of voice) is widespread in Europe.",
     "isPremium": 0,
-    "usedFor": "Respiratory System - Sinus & Upper Tract, Oral Health - Throat & Pharynx"
+    "usedFor": "Respiratory System - Sinus & Upper Tract, Oral Health - Throat & Pharynx",
+    "alternativeNames": "Sisymbrium Linctus, Singer's Remedy"
   },
   {
     "title": "Grave-Digger's Oil (Oil of Earthworms)",
@@ -99,7 +104,8 @@
     "historicalContext": "This preparation was a documented ingredient in European apothecaries, especially during the 16th and 17th centuries, highlighting the transition from purely plant-based remedies to those incorporating animal matter (zootherapy).",
     "scientificEvidence": "Traditional use only. Contains fats and phospholipids. The therapeutic effect is largely attributed to the counter-irritant warmth of the oil and the psychological component of the ritual.",
     "isPremium": 0,
-    "usedFor": "Musculoskeletal System - Muscle Pain & Spasm, Skin & Wounds - Topical Healing"
+    "usedFor": "Musculoskeletal System - Muscle Pain & Spasm, Skin & Wounds - Topical Healing",
+    "alternativeNames": "Oleum Vermium, Worm Oil"
   },
   {
     "title": "Dandelion Root Coffee (Taraxacum Infusion)",
@@ -116,7 +122,8 @@
     "historicalContext": "A ubiquitous folk remedy, particularly important in German and Austrian traditions for Frühlingskur (Spring Cleanses). Its diuretic action earned it the French nickname pissenlit ('wet the bed').",
     "scientificEvidence": "Well-supported traditional use. Studies confirm Dandelion's choleretic effects (increasing bile flow) and diuretic activity. Contains high levels of inulin, a prebiotic fiber.",
     "isPremium": 0,
-    "usedFor": "Liver & Detox - Hepatic Support, Digestive System - Stomach & Upper GI"
+    "usedFor": "Liver & Detox - Hepatic Support, Digestive System - Stomach & Upper GI",
+    "alternativeNames": "Poor Man's Tonic, Dandelion Decaf"
   },
   {
     "title": "Lavender Bath Bags (Soporific)",
@@ -133,7 +140,8 @@
     "historicalContext": "Lavender's use in bathing dates back to Roman times (from lavare, 'to wash'). Highly prized in English and French Renaissance perfumery and domestic medicine for its soothing properties.",
     "scientificEvidence": "Extensive scientific evidence supports the anxiolytic (anti-anxiety) and mild sedative effects of Lavender's primary constituent, Linalool, particularly via inhalation.",
     "isPremium": 0,
-    "usedFor": "Nervous System & Sleep - Anxiety & Mood, Skin & Wounds - Chronic Conditions (Eczema, etc.)"
+    "usedFor": "Nervous System & Sleep - Anxiety & Mood, Skin & Wounds - Chronic Conditions (Eczema, etc.)",
+    "alternativeNames": "Lavandula Soporific, Sleep Sachet"
   },
   {
     "title": "Borage Syrup for Melancholy",
@@ -150,7 +158,8 @@
     "historicalContext": "Highly praised by classical herbalists like Pliny and Dioscorides. Its use was championed by the Elizabethans who believed it banished sadness and brought boldness.",
     "scientificEvidence": "Traditional use only. Borage contains mucilage (soothing) and trace minerals. The belief in its anti-melancholy effect is largely traditional, though it contains minerals useful for adrenal support.",
     "isPremium": 0,
-    "usedFor": "Nervous System & Sleep - Anxiety & Mood, Endocrine System - Adrenals & Stress"
+    "usedFor": "Nervous System & Sleep - Anxiety & Mood, Endocrine System - Adrenals & Stress",
+    "alternativeNames": "Syrupus Boraginis, Courage Syrup"
   },
   {
     "title": "Sloe Gin (for Colic & Cramps)",
@@ -167,7 +176,8 @@
     "historicalContext": "A deeply ingrained folk remedy across the UK, typically made in the autumn and allowed to mature, originally considered a potent medicine before becoming solely a recreational drink.",
     "scientificEvidence": "Traditional use. Sloe berries are high in astringent tannins, which can help tone mucous membranes and reduce diarrhea, while the alcohol acts as a warming carminative and antispasmodic.",
     "isPremium": 0,
-    "usedFor": "Digestive System - Bowel & Lower GI, Women's Health - Menstruation & Hormones"
+    "usedFor": "Digestive System - Bowel & Lower GI, Women's Health - Menstruation & Hormones",
+    "alternativeNames": "Prunus Spinosa Tincture, Blackthorn Elixir"
   },
   {
     "title": "Elderberry and Anise Oxymel",
@@ -184,7 +194,8 @@
     "historicalContext": "The use of Elder (Sambucus) is almost universal in Northern European folk medicine. The oxymel (vinegar-honey) base is a very old preparation method dating back to Greek and Roman medicine.",
     "scientificEvidence": "Strong scientific evidence for Elderberry's antiviral activity (inhibiting viral replication and entry). Anise is a traditional expectorant (containing Anethole).",
     "isPremium": 0,
-    "usedFor": "Respiratory System - Lungs & Chest, Immune System - Acute Illness (Fever/Cold)"
+    "usedFor": "Respiratory System - Lungs & Chest, Immune System - Acute Illness (Fever/Cold)",
+    "alternativeNames": "Sambucus Syrup, Vinegar-Honey Elixir"
   },
   {
     "title": "Pennyroyal Tincture (Mentha pulegium)",
@@ -201,7 +212,8 @@
     "historicalContext": "Widely used but always carried a high risk. It was a common, though feared, remedy used for centuries, highlighting the risks inherent in forgotten powerful remedies.",
     "scientificEvidence": "Traditional use only. Contains Pulegone, which is the active but toxic compound. The therapeutic use is almost entirely obsolete due to toxicity risks.",
     "isPremium": 0,
-    "usedFor": "Women's Health - Menstruation & Hormones, Digestive System - Bowel & Lower GI"
+    "usedFor": "Women's Health - Menstruation & Hormones, Digestive System - Bowel & Lower GI",
+    "alternativeNames": "Pulegium Spirit, Mother's Friend Tonic"
   },
   {
     "title": "Rue and Wormwood Bitter Cordial",
@@ -218,7 +230,8 @@
     "historicalContext": "Rooted in classical medicine's use of intense bitters to 'fire up' the digestive organs (Agni). These bitter tonics were the precursor to modern aperitifs.",
     "scientificEvidence": "Bitter principles (Absinthin in Wormwood, various alkaloids in Rue) powerfully stimulate gastric acid, saliva, and bile secretion, improving digestion.",
     "isPremium": 0,
-    "usedFor": "Digestive System - Stomach & Upper GI, Immune System - General Support"
+    "usedFor": "Digestive System - Stomach & Upper GI, Immune System - General Support",
+    "alternativeNames": "Absinthe Minus Worms, Stomach Bitter"
   },
   {
     "title": "Oak Bark Decoction (Quercus robur)",
@@ -235,7 +248,8 @@
     "historicalContext": "A traditional remedy across Europe, the strong astringency of the bark has been used for tanning hides, which mirrors its medicinal use for 'toning' flabby or bleeding tissues.",
     "scientificEvidence": "Very high concentration of Tannins (up to 20%), which exert powerful astringent, antiseptic, and anti-diarrheal effects by binding to proteins in mucous membranes.",
     "isPremium": 0,
-    "usedFor": "Oral Health - Gums & Teeth, Digestive System - Bowel & Lower GI"
+    "usedFor": "Oral Health - Gums & Teeth, Digestive System - Bowel & Lower GI",
+    "alternativeNames": "Quercus Mouthwash, Tannin Gurgle"
   },
   {
     "title": "Mugwort Wine (Artemisia)",
@@ -252,7 +266,8 @@
     "historicalContext": "Deeply rooted in pre-Christian and Celtic traditions, Mugwort was revered as a protective herb for travelers and women, later adopted into monastic and folk medicine for its tonic properties.",
     "scientificEvidence": "Traditional use only. Contains volatile oils and bitter compounds. The emmenagogue effect is traditionally attributed to its circulatory stimulation in the pelvic area.",
     "isPremium": 0,
-    "usedFor": "Women's Health - Menstruation & Hormones, Nervous System & Sleep - Anxiety & Mood"
+    "usedFor": "Women's Health - Menstruation & Hormones, Nervous System & Sleep - Anxiety & Mood",
+    "alternativeNames": "Artemisia Elixir, Dream Wine"
   },
   {
     "title": "Betony Snuff (Stachys officinalis)",
@@ -269,7 +284,8 @@
     "historicalContext": "Highly praised in European herbalism; the Italian proverb states: 'Sell your coat and buy Betony.' Its use as a snuff was popular up through the 19th century.",
     "scientificEvidence": "Traditional use. The irritant quality of the fine powder mechanically stimulates sneezing, clearing the nasal passages, believed to 'expel humors' causing headache.",
     "isPremium": 0,
-    "usedFor": "Respiratory System - Sinus & Upper Tract, Nervous System & Sleep - Pain & Headache"
+    "usedFor": "Respiratory System - Sinus & Upper Tract, Nervous System & Sleep - Pain & Headache",
+    "alternativeNames": "Betonica Snuff, Nose-Clearing Powder"
   },
   {
     "title": "Rosemary Liniment (Spiritus Rosmarini)",
@@ -286,7 +302,8 @@
     "historicalContext": "An early, simplified version of the famous 'Queen of Hungary's Water' (the first documented alcohol-based perfume in Europe, 14th century), prized by royalty for its anti-aging and anti-rheumatic qualities.",
     "scientificEvidence": "Rosemary contains volatile oils (cineole, camphor) which are counter-irritants and rubefacients (increase local blood flow), providing warmth and temporary pain relief.",
     "isPremium": 0,
-    "usedFor": "Musculoskeletal System - Joints & Arthritis, Nervous System & Sleep - Pain & Headache"
+    "usedFor": "Musculoskeletal System - Joints & Arthritis, Nervous System & Sleep - Pain & Headache",
+    "alternativeNames": "Hungarian Water (early form), Queen of Hungary's Water"
   },
   {
     "title": "Elecampane Wine (Inula Wine)",
@@ -303,7 +320,8 @@
     "historicalContext": "The name inula may derive from Helen of Troy, suggesting its ancient medicinal importance. It was an essential herb in European monastic gardens for treating consumption (tuberculosis) and chronic coughs.",
     "scientificEvidence": "Contains Inulin (a prebiotic fiber), and sesquiterpene lactones (like alantolactone) which have known antiseptic and expectorant actions, loosening respiratory mucus.",
     "isPremium": 0,
-    "usedFor": "Respiratory System - Lungs & Chest, Immune System - General Support"
+    "usedFor": "Respiratory System - Lungs & Chest, Immune System - General Support",
+    "alternativeNames": "Inula Helenium Cordial, Scabwort Wine"
   },
   {
     "title": "Black Hellebore Tincture (Christmas Rose)",
@@ -320,7 +338,8 @@
     "historicalContext": "The name Melampodium comes from the legend of Melampus, who allegedly cured the daughters of the King of Argos of madness using Hellebore, highlighting its ancient association with psychiatric illness.",
     "scientificEvidence": "Traditional use. Its drastic effects are due to cardiotoxic glycosides, which act similarly to digitalis but with an unacceptably high safety risk, making it obsolete and dangerous.",
     "isPremium": 0,
-    "usedFor": "Nervous System & Sleep - Anxiety & Mood, Cardiovascular System"
+    "usedFor": "Nervous System & Sleep - Anxiety & Mood, Cardiovascular System",
+    "alternativeNames": "Melampodium Tincture, Christmas Hellebore"
   },
   {
     "title": "Balsam of Peru Salve",
@@ -337,7 +356,8 @@
     "historicalContext": "Introduced to Europe via colonial trade routes from South America (though the name refers to the port, not the origin). It became a staple in British and German pharmacopoeias for its documented antimicrobial action.",
     "scientificEvidence": "Proven antiseptic and parasiticide actions (due to Cinnamate and Benzoate esters). The modern risk is sensitization and contact allergy, limiting its contemporary use.",
     "isPremium": 0,
-    "usedFor": "Skin & Wounds - Topical Healing, Respiratory System - Lungs & Chest"
+    "usedFor": "Skin & Wounds - Topical Healing, Respiratory System - Lungs & Chest",
+    "alternativeNames": "Peruvian Bark Salve, Toluifera pereira Ointment"
   },
   {
     "title": "Sweet Flag Elixir (Calamus)",
@@ -354,7 +374,8 @@
     "historicalContext": "Highly valued by early herbalists and Norse settlers. It was one of the most common bitter herbs found in Northern European riverbanks and ditches.",
     "scientificEvidence": "Contains bitter principles and volatile oils (e.g., Acorone). Known spasmolytic (anti-spasmodic) action on the gut and mild sedative effect, supporting its traditional use.",
     "isPremium": 0,
-    "usedFor": "Digestive System - Stomach & Upper GI, Nervous System & Sleep - Anxiety & Mood"
+    "usedFor": "Digestive System - Stomach & Upper GI, Nervous System & Sleep - Anxiety & Mood",
+    "alternativeNames": "Acorus Stomachic, Calamus Root Chew"
   },
   {
     "title": "Horehound Candy (Marrubium vulgare)",
@@ -371,7 +392,8 @@
     "historicalContext": "A traditional candy form of medicine popular in the 18th and 19th centuries, widely available from chemists and confectioners before modern cough syrups took over.",
     "scientificEvidence": "The bitter compound Marrubiin stimulates mucus secretion (expectorant action) and gastric secretion (digestive tonic).",
     "isPremium": 0,
-    "usedFor": "Respiratory System - Lungs & Chest, Digestive System - Stomach & Upper GI"
+    "usedFor": "Respiratory System - Lungs & Chest, Digestive System - Stomach & Upper GI",
+    "alternativeNames": "White Horehound Pastille, Cough Drops"
   },
   {
     "title": "Valerian and Hops Pillow",
@@ -388,7 +410,8 @@
     "historicalContext": "Used extensively in Victorian nurseries and sickrooms. The smell of Valerian was notoriously strong, but its efficacy was highly regarded. Hops' use as a sedative is documented back to the 9th century.",
     "scientificEvidence": "Both herbs contain compounds that interact with GABA receptors in the brain. Valerenic acid (Valerian) and methylbutenol (Hops, released when slightly warmed) are established sedatives and anxiolytics.",
     "isPremium": 0,
-    "usedFor": "Nervous System & Sleep - Anxiety & Mood"
+    "usedFor": "Nervous System & Sleep - Anxiety & Mood",
+    "alternativeNames": "Dreamer's Sachet, Quietude Pillow"
   },
   {
     "title": "Marshmallow Root Decoction",
@@ -405,7 +428,8 @@
     "historicalContext": "The use of the root was ubiquitous in antiquity; the genus name Althaea means 'to heal.' It was a staple in every European herbalist's chest.",
     "scientificEvidence": "Contains up to 35% Mucilage (a polysaccharide), which coats and protects irritated tissues (demulcent action). Very well-supported mechanism.",
     "isPremium": 0,
-    "usedFor": "Digestive System - Stomach & Upper GI, Respiratory System - Lungs & Chest"
+    "usedFor": "Digestive System - Stomach & Upper GI, Respiratory System - Lungs & Chest",
+    "alternativeNames": "Althaea Demulcent, Mucilage Drink"
   },
   {
     "title": "Agrimony Tincture (Agrimonia eupatoria)",
@@ -422,7 +446,8 @@
     "historicalContext": "Referenced by Chaucer. Historically used to treat liver-related conditions and as an antidote to poison; its astringent quality made it a common gargle ingredient.",
     "scientificEvidence": "Contains high levels of Tannins (astringent) and bitter principles. Traditional uses for liver and gallbladder stimulation are supported by its cholagogue action.",
     "isPremium": 0,
-    "usedFor": "Liver & Detox - Hepatic Support, Oral Health - Gums & Teeth"
+    "usedFor": "Liver & Detox - Hepatic Support, Oral Health - Gums & Teeth",
+    "alternativeNames": "Liver Herb Tincture, Hepatic Tonic"
   },
   {
     "title": "Pellitory of the Wall Infusion",
@@ -439,7 +464,8 @@
     "historicalContext": "Highly valued by Nicholas Culpeper. It was a common remedy for kidney and bladder stones throughout Europe, often used in conjunction with other lithotriptic (stone-breaking) herbs.",
     "scientificEvidence": "Traditional use. Its action is attributed to mucilage and potassium salts, which provide both a soothing (demulcent) and diuretic effect, flushing the urinary system gently.",
     "isPremium": 0,
-    "usedFor": "Urinary System - Diuretics & Stones, Skin & Wounds - Topical Healing"
+    "usedFor": "Urinary System - Diuretics & Stones, Skin & Wounds - Topical Healing",
+    "alternativeNames": "Parietaria Diuretic, Stone Breaker Tea"
   },
   {
     "title": "Arctic Angelica Spirit (Archangelica)",
@@ -456,7 +482,8 @@
     "historicalContext": "The root was so important it was cultivated in monasteries and even given its own name in some old Norse laws. Its anti-plague use made it famous across Europe.",
     "scientificEvidence": "Contains furanocoumarins (photosensitizers) and volatile oils (monoterpenes), which are antispasmodic, carminative, and warming expectorants.",
     "isPremium": 0,
-    "usedFor": "Digestive System - Stomach & Upper GI, Respiratory System - Lungs & Chest"
+    "usedFor": "Digestive System - Stomach & Upper GI, Respiratory System - Lungs & Chest",
+    "alternativeNames": "Kvan Likør (Danish), Root Spirit"
   },
   {
     "title": "Reindeer Moss Decoction (Cetraria islandica)",
@@ -473,7 +500,8 @@
     "historicalContext": "A staple in the famine foods and medicine of Iceland, where it was dried and used as a source of soluble fiber (mucilage) and for lung health.",
     "scientificEvidence": "Contains high levels of bitter lichen acids (e.g., Fumarprotocetraric acid) and mucilaginous polysaccharides, acting as a demulcent and bitter tonic.",
     "isPremium": 0,
-    "usedFor": "Respiratory System - Lungs & Chest, Digestive System - Stomach & Upper GI"
+    "usedFor": "Respiratory System - Lungs & Chest, Digestive System - Stomach & Upper GI",
+    "alternativeNames": "Icelandic Moss Tea, Cetraria Broth"
   },
   {
     "title": "Cloudberry Conserve (Rubus chamaemorus)",
@@ -490,7 +518,8 @@
     "historicalContext": "A vital food and medicine source for the Sámi people and early Norse settlers, often consumed preserved in rendered animal fat or oil.",
     "scientificEvidence": "Extremely high in Vitamin C (ascorbic acid) and essential omega-3 fatty acids in the seeds, justifying its historical use as an anti-scurvy tonic.",
     "isPremium": 0,
-    "usedFor": "Immune System - General Support, Skin & Wounds - Topical Healing"
+    "usedFor": "Immune System - General Support, Skin & Wounds - Topical Healing",
+    "alternativeNames": "Arctic Gold Jam, Bakeapple Conserve"
   },
   {
     "title": "Burdock Root Ferment (Lopukhov Kvass)",
@@ -507,7 +536,8 @@
     "historicalContext": "Kvass is an ancient Slavic fermented drink. Burdock was widely incorporated into these tonics, prized for centuries as a 'blood purifier' in traditional medicine across Europe.",
     "scientificEvidence": "Contains inulin (prebiotic fiber) and polyacetylenes (antimicrobial). The ferment provides probiotics. Studies support its traditional use as a diuretic and hepatoprotective agent.",
     "isPremium": 0,
-    "usedFor": "Liver & Detox - Hepatic Support, Immune System - General Support"
+    "usedFor": "Liver & Detox - Hepatic Support, Immune System - General Support",
+    "alternativeNames": "Lopukhov Ferment, Burdock Kvass"
   },
   {
     "title": "Pine Needle Tincture (Pinus sylvestris)",
@@ -524,7 +554,8 @@
     "historicalContext": "Essential medicine for Sámi and forest-dwelling communities, where fresh sources of Vitamin C were nonexistent in winter. Its use as an inhalant/expectorant is ancient.",
     "scientificEvidence": "High in volatile oils (terpenes, pinene) which are stimulating expectorants and decongestants. Contains high levels of Vitamin C.",
     "isPremium": 0,
-    "usedFor": "Respiratory System - Lungs & Chest, Immune System - Acute Illness (Fever/Cold)"
+    "usedFor": "Respiratory System - Lungs & Chest, Immune System - Acute Illness (Fever/Cold)",
+    "alternativeNames": "Spruce Essence, Forest Spirit Tincture"
   },
   {
     "title": "Red Clover Salve (Trifolium pratense)",
@@ -541,7 +572,8 @@
     "historicalContext": "Used throughout Europe as a 'blood cleanser' for persistent skin eruptions, reflecting the old humoral link between internal health and skin conditions.",
     "scientificEvidence": "Contains phytoestrogens (isoflavones) which may help balance hormonal fluctuations linked to some skin conditions, along with anti-inflammatory compounds.",
     "isPremium": 0,
-    "usedFor": "Skin & Wounds - Chronic Conditions (Eczema, etc.), Women's Health - Menstruation & Hormones"
+    "usedFor": "Skin & Wounds - Chronic Conditions (Eczema, etc.), Women's Health - Menstruation & Hormones",
+    "alternativeNames": "Trifolium Ointment, Eczema Salve"
   },
   {
     "title": "Wild Thyme Linctus (Thymus serpyllum)",
@@ -558,7 +590,8 @@
     "historicalContext": "A common garden and field herb with a long history of use in peasant medicine for coughs, particularly useful for children due to its gentle nature.",
     "scientificEvidence": "Rich in volatile oils (Thymol, Carvacrol) which are proven anti-spasmodic (calms muscle spasm) and potent antiseptics for the respiratory tract.",
     "isPremium": 0,
-    "usedFor": "Respiratory System - Lungs & Chest, Nervous System & Sleep - Anxiety & Mood"
+    "usedFor": "Respiratory System - Lungs & Chest, Nervous System & Sleep - Anxiety & Mood",
+    "alternativeNames": "Serpyllum Cough Syrup, Field Thyme Honey"
   },
   {
     "title": "St. John's Wort Oil (Hypericum perforatum)",
@@ -575,7 +608,8 @@
     "historicalContext": "Historically gathered on St. John's Day (Midsummer). The deep red color was thought to represent the 'blood' of the Baptist, making it magically and medicinally potent.",
     "scientificEvidence": "Contains Hypericin (antiviral) and Hyperforin (anti-inflammatory). Highly effective for topical nerve pain due to its affinity for nerve tissue.",
     "isPremium": 0,
-    "usedFor": "Nervous System & Sleep - Anxiety & Mood, Skin & Wounds - Topical Healing"
+    "usedFor": "Nervous System & Sleep - Anxiety & Mood, Skin & Wounds - Topical Healing",
+    "alternativeNames": "Hypericum Tincture Oil, Solar Oil"
   },
   {
     "title": "Lungwort Decoction (Pulmonaria officinalis)",
@@ -592,7 +626,8 @@
     "historicalContext": "Highly prized in the Middle Ages, its name is a direct reference to its primary medicinal use. The Doctrine of Signatures heavily influenced its use.",
     "scientificEvidence": "Contains high levels of mucilage (demulcent) and allantoin (tissue healing), supporting its traditional use for soothing irritated and damaged lung tissue.",
     "isPremium": 0,
-    "usedFor": "Respiratory System - Lungs & Chest, Immune System - Acute Illness (Fever/Cold)"
+    "usedFor": "Respiratory System - Lungs & Chest, Immune System - Acute Illness (Fever/Cold)",
+    "alternativeNames": "Jerusalem Cowslip Tea, Spotted Lung Herb"
   },
   {
     "title": "Goat's Rue Tincture (Galega officinalis)",
@@ -609,7 +644,8 @@
     "historicalContext": "Its folk use led to the isolation of guanidine, which served as the chemical template for the modern synthetic biguanide anti-diabetic drug Metformin.",
     "scientificEvidence": "Contains galegine, a precursor to Metformin, which has a mild blood sugar lowering effect. Well-documented historical use for both lactation and diabetes.",
     "isPremium": 0,
-    "usedFor": "Endocrine System - Blood Sugar & Metabolism, Women's Health - Postpartum/Lactation"
+    "usedFor": "Endocrine System - Blood Sugar & Metabolism, Women's Health - Postpartum/Lactation",
+    "alternativeNames": "Galega Spirit, Diabetic's Tonic"
   },
   {
     "title": "Bilberry Wine (Vaccinium myrtillus)",
@@ -626,7 +662,8 @@
     "historicalContext": "Used extensively in folk medicine for diarrhea and eye conditions. Its modern fame arose from WWII British pilots consuming Bilberry jam to improve night vision.",
     "scientificEvidence": "Extremely high in anthocyanosides, which have strong antioxidant effects, regenerate Rhodopsin (the pigment needed for low-light vision), and strengthen blood vessel walls.",
     "isPremium": 0,
-    "usedFor": "Eye & Ear Health, Cardiovascular System"
+    "usedFor": "Eye & Ear Health, Cardiovascular System",
+    "alternativeNames": "Myrtillus Ophthalmic Tonic, European Blueberry Wine"
   },
   {
     "title": "Celandine Tincture (Chelidonium majus)",
@@ -643,7 +680,8 @@
     "historicalContext": "Used since the Middle Ages. Its yellow sap was linked to the color of bile and was thus used to treat jaundice (Doctrine of Signatures).",
     "scientificEvidence": "Contains toxic isoquinoline alkaloids. Its efficacy as a wart remover is due to its caustic, cytotoxic nature. Highly risky internal use is now mostly obsolete.",
     "isPremium": 0,
-    "usedFor": "Liver & Detox - Hepatic Support, Skin & Wounds - Topical Healing"
+    "usedFor": "Liver & Detox - Hepatic Support, Skin & Wounds - Topical Healing",
+    "alternativeNames": "Greater Celandine Spirit, Wart Killer"
   },
   {
     "title": "Lichen Cream (Cetraria & Usnea)",
@@ -660,7 +698,8 @@
     "historicalContext": "Lichens were a staple medicine in the far north. Usnea's use as a wound antiseptic and Cetraria's lung benefit were known to Viking-era settlers.",
     "scientificEvidence": "Usnea contains Usnic acid, a highly potent, broad-spectrum antibiotic and antifungal compound, supporting its traditional antiseptic use.",
     "isPremium": 0,
-    "usedFor": "Respiratory System - Lungs & Chest, Skin & Wounds - Chronic Conditions (Eczema, etc.)"
+    "usedFor": "Respiratory System - Lungs & Chest, Skin & Wounds - Chronic Conditions (Eczema, etc.)",
+    "alternativeNames": "Usnea Salve, Tree Lung Cream"
   },
   {
     "title": "Horsetail Field Plaster (Equisetum arvense)",
@@ -677,7 +716,8 @@
     "historicalContext": "Its extremely high silica content led to its use as a 'mineralizing' and 'strengthening' plaster, following the belief that like cures like.",
     "scientificEvidence": "Extremely high in soluble silica (silicic acid), which is essential for collagen formation and bone/cartilage repair, supporting its traditional use for tissue strength.",
     "isPremium": 0,
-    "usedFor": "Skin & Wounds - Topical Healing, Musculoskeletal System - Joints & Arthritis"
+    "usedFor": "Skin & Wounds - Topical Healing, Musculoskeletal System - Joints & Arthritis",
+    "alternativeNames": "Equisetum Compress, Silicea Skin Patch"
   },
   {
     "title": "Marsh Tea Tincture (Ledum palustre)",
@@ -694,7 +734,8 @@
     "historicalContext": "Used by indigenous people and northern settlers in minute doses. Known for its strong medicinal effect and high toxicity, demonstrating the fine line in folk medicine.",
     "scientificEvidence": "Contains the volatile oil Ledol, which is neurotoxic and narcotic in large doses, but acts as a powerful antispasmodic/expectorant in minute amounts.",
     "isPremium": 0,
-    "usedFor": "Respiratory System - Lungs & Chest, Nervous System & Sleep - Anxiety & Mood"
+    "usedFor": "Respiratory System - Lungs & Chest, Nervous System & Sleep - Anxiety & Mood",
+    "alternativeNames": "Wild Rosemary Spirit, Labrador Tea Tincture"
   },
   {
     "title": "Yarrow Sitz Bath (Achillea millefolium)",
@@ -711,7 +752,8 @@
     "historicalContext": "The herb was sacred to Achilles for stopping bleeding. Its use as an abdominal wash or sitz bath for 'female complaints' is ancient and ubiquitous across Europe.",
     "scientificEvidence": "Contains volatile oils and flavonoids that are anti-inflammatory, anti-spasmodic, and mild circulatory stimulants (improving pelvic blood flow).",
     "isPremium": 0,
-    "usedFor": "Women's Health - Menstruation & Hormones, Urinary System - Kidney & Bladder"
+    "usedFor": "Women's Health - Menstruation & Hormones, Urinary System - Kidney & Bladder",
+    "alternativeNames": "Millefolium Perineal Wash, Menstrual Pain Soak"
   },
   {
     "title": "Spelt Porridge (Hildegard's Cereal)",
@@ -728,7 +770,8 @@
     "historicalContext": "The foundation of Hildegard's medical system (12th Century). She wrote, \"Spelt is the best of all grains. It is rich and potent and easier to digest.\"",
     "scientificEvidence": "Traditional use. Spelt is an ancient grain with a high protein content and is often better tolerated by wheat-sensitive individuals (though it still contains gluten).",
     "isPremium": 0,
-    "usedFor": "Digestive System - Stomach & Upper GI, General Wellness/Tonics"
+    "usedFor": "Digestive System - Stomach & Upper GI, General Wellness/Tonics",
+    "alternativeNames": "Dinkel Porridge, Spelt Gruel"
   },
   {
     "title": "Calamint Infusion (Calamintha nepeta)",
@@ -745,7 +788,8 @@
     "historicalContext": "A gentle, widely used folk remedy for calming the nerves, often associated with promoting kindliness and good humor.",
     "scientificEvidence": "Contains volatile oils (pulegone, menthone) which are antispasmodic for the gut and possess mild sedative properties.",
     "isPremium": 0,
-    "usedFor": "Digestive System - Stomach & Upper GI, Nervous System & Sleep - Anxiety & Mood"
+    "usedFor": "Digestive System - Stomach & Upper GI, Nervous System & Sleep - Anxiety & Mood",
+    "alternativeNames": "Mountain Mint Tea, Nervous Digestant"
   },
   {
     "title": "Dittany and Honey Troches (Pastilles)",
@@ -762,7 +806,8 @@
     "historicalContext": "Troches (or pastilles) were a common medieval and Renaissance dosage form used to deliver medicine slowly to the respiratory and oral membranes.",
     "scientificEvidence": "Contains Carvacrol (highly antiseptic) and mucilaginous components (from honey/gum) which provide a protective coating for the throat.",
     "isPremium": 0,
-    "usedFor": "Oral Health - Throat & Pharynx, Respiratory System - Sinus & Upper Tract"
+    "usedFor": "Oral Health - Throat & Pharynx, Respiratory System - Sinus & Upper Tract",
+    "alternativeNames": "Origanum Pastilles, Throat Lozenge"
   },
   {
     "title": "Woundwort Tincture (Stachys sylvatica)",
@@ -779,7 +824,8 @@
     "historicalContext": "Used since ancient times for staunching blood flow. The name 'Woundwort' reflects its primary and historical use.",
     "scientificEvidence": "Contains significant amounts of astringent tannins and bitter principles, which act as a powerful styptic (stopping bleeding) by constricting local blood vessels.",
     "isPremium": 0,
-    "usedFor": "Skin & Wounds - Topical Healing, Cardiovascular System"
+    "usedFor": "Skin & Wounds - Topical Healing, Cardiovascular System",
+    "alternativeNames": "Forest Betony Spirit, Stachys Styptic"
   },
   {
     "title": "Mullein and Garlic Ear Oil",
@@ -796,7 +842,8 @@
     "historicalContext": "A ubiquitous folk remedy across Europe, combining Mullein's anti-inflammatory properties with Garlic's strong natural antibiotic action.",
     "scientificEvidence": "Contains volatile oils (Garlic) and mucilage/saponins (Mullein) that are locally analgesic, anti-inflammatory, and antimicrobial.",
     "isPremium": 0,
-    "usedFor": "Eye & Ear Health, Musculoskeletal System - Pain & Headache"
+    "usedFor": "Eye & Ear Health, Musculoskeletal System - Pain & Headache",
+    "alternativeNames": "Verbascum and Allium Auricular Drops"
   },
   {
     "title": "Meadowsweet Ointment (Spiraea)",
@@ -813,7 +860,8 @@
     "historicalContext": "Used throughout Europe for its pain-relieving action, particularly for rheumatic and arthritic conditions, due to its gentle effect on the stomach compared to Willow bark.",
     "scientificEvidence": "Contains Salicylates (natural Aspirin precursors) and strong anti-inflammatory flavonoids, providing topical pain relief.",
     "isPremium": 0,
-    "usedFor": "Musculoskeletal System - Joints & Arthritis, Skin & Wounds - Topical Healing"
+    "usedFor": "Musculoskeletal System - Joints & Arthritis, Skin & Wounds - Topical Healing",
+    "alternativeNames": "Filipendula Salve, Salicylate Cream"
   },
   {
     "title": "Horehound and Anise Wine",
@@ -830,7 +878,8 @@
     "historicalContext": "Monastic medicine often relied on medicated wines and ales to deliver herbs. The combination of bitters (Horehound) and aromatics (Anise) is classical.",
     "scientificEvidence": "Horehound's Marrubiin is a powerful bitter, stimulating digestive juices. Anise is a carminative. The alcohol aids extraction and absorption.",
     "isPremium": 0,
-    "usedFor": "Digestive System - Stomach & Upper GI, Respiratory System - Lungs & Chest"
+    "usedFor": "Digestive System - Stomach & Upper GI, Respiratory System - Lungs & Chest",
+    "alternativeNames": "Marrubium and Anisum Aperitif, Bitter Stomach Wine"
   },
   {
     "title": "Rosemary and Lavender Smudging Blend",
@@ -847,7 +896,8 @@
     "historicalContext": "Fumigation was an ancient practice (Roman/Greek) used to purify temples, homes, and sick rooms, relying on the antiseptic properties of the volatile oils.",
     "scientificEvidence": "Volatile oils (cineole, linalool) are proven environmental antiseptics. Inhalation of the aroma is traditionally used to reduce anxiety.",
     "isPremium": 0,
-    "usedFor": "Nervous System & Sleep - Anxiety & Mood, Immune System - General Support"
+    "usedFor": "Nervous System & Sleep - Anxiety & Mood, Immune System - General Support",
+    "alternativeNames": "Rosmarinus Incense, Purifying Smoke"
   },
   {
     "title": "Wild Lettuce Tincture (Lactuca virosa)",
@@ -864,7 +914,8 @@
     "historicalContext": "Highly prized in the 18th and 19th centuries as a safer alternative to opium for treating chronic pain, insomnia, and nervous coughs.",
     "scientificEvidence": "Contains sesquiterpene lactones (lactucin, lactucopicrin) which have documented sedative and analgesic properties, justifying its nickname \"Opium Lettuce.\"",
     "isPremium": 0,
-    "usedFor": "Nervous System & Sleep - Anxiety & Mood, Nervous System & Sleep - Pain & Headache"
+    "usedFor": "Nervous System & Sleep - Anxiety & Mood, Nervous System & Sleep - Pain & Headache",
+    "alternativeNames": "Lactus Sedative, Opium Lettuce Spirit"
   },
   {
     "title": "Black Currant Bud Conserve (Ribes nigrum)",
@@ -881,7 +932,8 @@
     "historicalContext": "A classic remedy in Russian and Polish folk medicine, where the leaves and buds were used extensively for their vitamin content and anti-inflammatory action.",
     "scientificEvidence": "High in bioflavonoids and gamma-linolenic acid (GLA), with powerful anti-inflammatory and anti-allergic actions, particularly supporting adrenal function.",
     "isPremium": 0,
-    "usedFor": "Immune System - General Support, Respiratory System - Sinus & Upper Tract"
+    "usedFor": "Immune System - General Support, Respiratory System - Sinus & Upper Tract",
+    "alternativeNames": "Bud Conserve, Ribes Gemmotherapy"
   },
   {
     "title": "Fig and Rue Purgative",
@@ -898,7 +950,8 @@
     "historicalContext": "Rue and Figs were common digestive herbs. The addition of Castor Oil elevates this to a drastic purge, a common practice in ancient medicine.",
     "scientificEvidence": "The combined irritant laxative action of Castor Oil (ricinoleic acid) with the stimulant action of Rue and the bulk of the Fig results in a powerful, dangerous purge.",
     "isPremium": 0,
-    "usedFor": "Digestive System - Bowel & Lower GI, Liver & Detox - Hepatic Support"
+    "usedFor": "Digestive System - Bowel & Lower GI, Liver & Detox - Hepatic Support",
+    "alternativeNames": "Ficus Ruta Drastic, Strong Bowel Cleanser"
   },
   {
     "title": "Broom Top Decoction (Cytisus scoparius)",
@@ -915,7 +968,8 @@
     "historicalContext": "Widely used since the Middle Ages. The presence of the alkaloid sparteine, a precursor to modern anti-arrhythmic drugs, made it a dangerous but potent heart remedy.",
     "scientificEvidence": "Contains sparteine (a mild cardiac stimulant and potent diuretic) and flavonoids (circulatory support). Highly effective but risky.",
     "isPremium": 0,
-    "usedFor": "Cardiovascular System, Urinary System - Diuretics & Stones"
+    "usedFor": "Cardiovascular System, Urinary System - Diuretics & Stones",
+    "alternativeNames": "Scoparium Diuretic, Broom Tea"
   },
   {
     "title": "Stonecrop Tincture (Sedum acre)",
@@ -932,7 +986,8 @@
     "historicalContext": "Named for its \"pepper-like\" pungent taste. Its caustic nature was employed in folk medicine for tough dermal conditions where a drawing/irritant action was required.",
     "scientificEvidence": "Contains alkaloids and mucilage. The caustic action is due to an irritant sap.",
     "isPremium": 0,
-    "usedFor": "Skin & Wounds - Topical Healing, Oral Health - Gums & Teeth"
+    "usedFor": "Skin & Wounds - Topical Healing, Oral Health - Gums & Teeth",
+    "alternativeNames": "Wall Pepper Spirit, Sedum Caustic"
   },
   {
     "title": "Cowslip Flower Syrup (Primula veris)",
@@ -949,7 +1004,8 @@
     "historicalContext": "The flowers were infused in wine or made into a syrup, valued by medieval apothecaries for their calmative properties.",
     "scientificEvidence": "Contains saponins (exhibit mild expectorant action) and trace amounts of sedative compounds that support its traditional use for anxiety and sleeplessness.",
     "isPremium": 0,
-    "usedFor": "Nervous System & Sleep - Anxiety & Mood, Respiratory System - Lungs & Chest"
+    "usedFor": "Nervous System & Sleep - Anxiety & Mood, Respiratory System - Lungs & Chest",
+    "alternativeNames": "Primula Syrup, Sleepy Cowslip"
   },
   {
     "title": "Tormentil Tincture (Potentilla erecta)",
@@ -966,7 +1022,8 @@
     "historicalContext": "The root was a powerful styptic and remedy for dysentery throughout the Middle Ages, often used when other remedies failed.",
     "scientificEvidence": "Extremely high in condensed tannins (up to 30%), which provide a powerful astringent, antiseptic, and anti-diarrheal action by toning and tightening mucous membranes.",
     "isPremium": 0,
-    "usedFor": "Digestive System - Bowel & Lower GI, Oral Health - Gums & Teeth"
+    "usedFor": "Digestive System - Bowel & Lower GI, Oral Health - Gums & Teeth",
+    "alternativeNames": "Potentilla Styptic, Sevenfold Root Spirit"
   },
   {
     "title": "Shepherd's Purse Tincture (Capsella)",
@@ -983,7 +1040,8 @@
     "historicalContext": "A ubiquitous weed whose highly specific use for hemorrhage was known across Europe, making it an essential, high-risk, high-reward remedy for midwives.",
     "scientificEvidence": "Contains tyramine, flavonoids, and peptides that promote uterine contraction and local hemostasis (stopping blood flow).",
     "isPremium": 0,
-    "usedFor": "Women's Health - Menstruation & Hormones, Cardiovascular System"
+    "usedFor": "Women's Health - Menstruation & Hormones, Cardiovascular System",
+    "alternativeNames": "Bursa Pastoris Hemostatic, Womb Bleeding Spirit"
   },
   {
     "title": "Mallow Root Poultice (Malva sylvestris)",
@@ -1000,7 +1058,8 @@
     "historicalContext": "Highly prized by the Romans (Malva was a staple vegetable) and used medicinally by the Greeks for its intensely demulcent properties.",
     "scientificEvidence": "Extremely high in mucilage (a polysaccharide), which coats, soothes, draws out inflammation, and softens hardened tissue.",
     "isPremium": 0,
-    "usedFor": "Skin & Wounds - Topical Healing, Oral Health - Gums & Teeth"
+    "usedFor": "Skin & Wounds - Topical Healing, Oral Health - Gums & Teeth",
+    "alternativeNames": "Cheeseweed Compress, Malva Emollient"
   },
   {
     "title": "Fenugreek Seed Gruel (Trigonella)",
@@ -1017,7 +1076,8 @@
     "historicalContext": "Used since ancient Egyptian times. Its use as a lactation aid and general restorative food spread across Europe via trade routes.",
     "scientificEvidence": "Contains alkaloids (trigonelline) and amino acids (4-hydroxyisoleucine) that have been shown to lower blood glucose and promote lactation.",
     "isPremium": 0,
-    "usedFor": "Women's Health - Postpartum/Lactation, Endocrine System - Blood Sugar & Metabolism"
+    "usedFor": "Women's Health - Postpartum/Lactation, Endocrine System - Blood Sugar & Metabolism",
+    "alternativeNames": "Foenum-graecum Porridge, Galactagogue Gruel"
   },
   {
     "title": "Agrimony and Sage Gargle",
@@ -1034,7 +1094,8 @@
     "historicalContext": "A classic folk and apothecary remedy for throat complaints, relying on the synergy of astringent tannins and antiseptic volatile oils.",
     "scientificEvidence": "Agrimony provides tannins (astringent). Sage provides volatile oils (Thujone, Cineole) which are potent local antiseptics and anti-inflammatories.",
     "isPremium": 0,
-    "usedFor": "Oral Health - Gums & Teeth, Respiratory System - Sinus & Upper Tract"
+    "usedFor": "Oral Health - Gums & Teeth, Respiratory System - Sinus & Upper Tract",
+    "alternativeNames": "Agrimonia Salvia Wash, Tonsil Tonic"
   },
   {
     "title": "Coltsfoot Tincture (Tussilago farfara)",
@@ -1051,7 +1112,8 @@
     "historicalContext": "The name Tussilago means 'cough-dispeller.' Used by Roman and Greek physicians, and later popularized in European herbalism for its specific action on the lungs.",
     "scientificEvidence": "Contains high levels of mucilage (demulcent) and flavonoids (anti-spasmodic), soothing the cough reflex. The PA risk limits modern internal use.",
     "isPremium": 0,
-    "usedFor": "Respiratory System - Lungs & Chest, Skin & Wounds - Topical Healing"
+    "usedFor": "Respiratory System - Lungs & Chest, Skin & Wounds - Topical Healing",
+    "alternativeNames": "Tussilago Linctus, Cough Stop Spirit"
   },
   {
     "title": "Chicory Root Coffee (Cichorium intybus)",
@@ -1068,7 +1130,8 @@
     "historicalContext": "Used widely during coffee shortages (e.g., Napoleonic Wars) and integrated into folk medicine due to the known hepatic action of the bitter root.",
     "scientificEvidence": "Contains high amounts of bitter sesquiterpene lactones (stimulate bile and digestive secretions) and inulin (a prebiotic fiber).",
     "isPremium": 0,
-    "usedFor": "Liver & Detox - Hepatic Support, Digestive System - Stomach & Upper GI"
+    "usedFor": "Liver & Detox - Hepatic Support, Digestive System - Stomach & Upper GI",
+    "alternativeNames": "Cichorium Hepatic Tonic, Roasted Root Brew"
   },
   {
     "title": "Motherwort Syrup (Leonurus cardiaca)",
@@ -1085,7 +1148,8 @@
     "historicalContext": "The name Cardiaca reflects its primary use for the heart. It was highly valued in medieval monasteries for its dual action on anxiety and the cardiac rhythm.",
     "scientificEvidence": "Contains Leonurine (mild uterine stimulant), bitter diterpenes, and flavonoids that act as mild sedatives and hypotensives (lowering blood pressure).",
     "isPremium": 0,
-    "usedFor": "Cardiovascular System, Nervous System & Sleep - Anxiety & Mood"
+    "usedFor": "Cardiovascular System, Nervous System & Sleep - Anxiety & Mood",
+    "alternativeNames": "Cardiaca Syrup, Calming Heart Tonic"
   },
   {
     "title": "Icelandic Moss and Licorice Lozenges",
@@ -1102,7 +1166,8 @@
     "historicalContext": "A classic apothecary confection, utilizing the demulcent properties of the lichen to coat the throat, made palatable by the addition of Licorice.",
     "scientificEvidence": "Combines the mucilage (soothing) from the moss with the glycyrrhizin (anti-inflammatory, antiviral) from the Licorice root.",
     "isPremium": 0,
-    "usedFor": "Respiratory System - Lungs & Chest, Oral Health - Throat & Pharynx"
+    "usedFor": "Respiratory System - Lungs & Chest, Oral Health - Throat & Pharynx",
+    "alternativeNames": "Cetraria Glycyrrhiza Pastilles, Throat Relief"
   },
   {
     "title": "Birch Leaf Infusion (Betula pendula)",
@@ -1119,7 +1184,8 @@
     "historicalContext": "The Birch tree is central to Nordic life (sap, bark, leaves). The leaf was traditionally used in spring to flush out winter toxins and treat chronic skin ailments.",
     "scientificEvidence": "Contains flavonoids (e.g., hyperoside, rutin) and potassium salts which provide a gentle, effective diuretic action, flushing uric acid and toxins.",
     "isPremium": 0,
-    "usedFor": "Urinary System - Diuretics & Stones, Skin & Wounds - Chronic Conditions (Eczema, etc.)"
+    "usedFor": "Urinary System - Diuretics & Stones, Skin & Wounds - Chronic Conditions (Eczema, etc.)",
+    "alternativeNames": "Betula Diuretic Tea, Scandinavian Spring Cleanse"
   },
   {
     "title": "Wild Pansy Decoction (Viola tricolor)",
@@ -1136,7 +1202,8 @@
     "historicalContext": "Known as 'Heart's Ease.' Its use for skin conditions was documented extensively in the 17th and 18th centuries, often combined with Sarsaparilla for stubborn eruptions.",
     "scientificEvidence": "Contains salicylic acid derivatives (anti-inflammatory), mucilage (soothing), and flavonoids. Traditional use for 'blood purifying' to clear skin is well-supported.",
     "isPremium": 0,
-    "usedFor": "Skin & Wounds - Chronic Conditions (Eczema, etc.), Respiratory System - Lungs & Chest"
+    "usedFor": "Skin & Wounds - Chronic Conditions (Eczema, etc.), Respiratory System - Lungs & Chest",
+    "alternativeNames": "Viola Tricolor Skin Tea, Heart's Ease"
   },
   {
     "title": "Thuja Tincture (Thuja occidentalis)",
@@ -1153,7 +1220,8 @@
     "historicalContext": "Introduced to Europe from North America, but quickly integrated into European and Homeopathic medicine for its potent action on growths and chronic damp conditions.",
     "scientificEvidence": "Contains Thujone, which is highly toxic but acts as a powerful local cytotoxic agent (cell-destroyer) for warts and growths.",
     "isPremium": 0,
-    "usedFor": "Skin & Wounds - Topical Healing, Respiratory System - Sinus & Upper Tract"
+    "usedFor": "Skin & Wounds - Topical Healing, Respiratory System - Sinus & Upper Tract",
+    "alternativeNames": "Arbor Vitae Spirit, Cedar Wart Tincture"
   },
   {
     "title": "Raspberry Leaf Decoction (Rubus idaeus)",
@@ -1170,7 +1238,8 @@
     "historicalContext": "A key remedy in traditional European midwifery, believed to strengthen and tone the uterine muscle without causing contractions (unlike certain emmenagogues).",
     "scientificEvidence": "Contains fragments of the alkaloid fragarine, which has a toning (not stimulating) effect on the smooth muscle of the uterus. High in essential minerals.",
     "isPremium": 0,
-    "usedFor": "Women's Health - Pregnancy & Birth, Digestive System - Bowel & Lower GI"
+    "usedFor": "Women's Health - Pregnancy & Birth, Digestive System - Bowel & Lower GI",
+    "alternativeNames": "Folium Rubi Uterine Tonic, Parturient Tea"
   },
   {
     "title": "Caraway and Chamomile Infusion",
@@ -1187,7 +1256,8 @@
     "historicalContext": "Chamomile and Caraway are among the oldest and safest remedies for infant and child digestive complaints, used for millennia across the continent.",
     "scientificEvidence": "Caraway provides volatile oils (carvone, limonene) that are strong carminatives (gas relievers). Chamomile provides anti-spasmodic and mild sedative actions.",
     "isPremium": 0,
-    "usedFor": "Digestive System - Stomach & Upper GI, Nervous System & Sleep - Anxiety & Mood"
+    "usedFor": "Digestive System - Stomach & Upper GI, Nervous System & Sleep - Anxiety & Mood",
+    "alternativeNames": "Carum and Matricaria Gripe Water, Colic Tea"
   },
   {
     "title": "Vervain Tincture (Verbena officinalis)",
@@ -1204,7 +1274,8 @@
     "historicalContext": "Sacred to the Druids and Romans. Valued in the Middle Ages for its use in treating nervous disorders and as a general protective amulet.",
     "scientificEvidence": "Contains iridoid glycosides and bitter compounds that act as a bitter tonic (digestive stimulant) and a nervine (calming but not sedating).",
     "isPremium": 0,
-    "usedFor": "Nervous System & Sleep - Anxiety & Mood, Digestive System - Stomach & Upper GI"
+    "usedFor": "Nervous System & Sleep - Anxiety & Mood, Digestive System - Stomach & Upper GI",
+    "alternativeNames": "Verbena Spirit, Head-Clearing Tonic"
   },
   {
     "title": "Marshmallow Syrup (Althaea officinalis)",
@@ -1221,7 +1292,8 @@
     "historicalContext": "A classical Roman and Greek remedy. This sweet syrup form made it palatable for treating children's coughs and gut irritation.",
     "scientificEvidence": "Contains up to 35% Mucilage, providing exceptional demulcent and anti-inflammatory action by physically coating irritated tissues.",
     "isPremium": 0,
-    "usedFor": "Respiratory System - Lungs & Chest, Digestive System - Stomach & Upper GI"
+    "usedFor": "Respiratory System - Lungs & Chest, Digestive System - Stomach & Upper GI",
+    "alternativeNames": "Althaea Root Linctus, Mucilage Syrup"
   },
   {
     "title": "Plantain Infusion (Plantago major)",
@@ -1238,7 +1310,8 @@
     "historicalContext": "Often called 'White Man's Foot' by Native Americans as it followed European settlers. Its use as a field dressing (chewed leaf) is universal in folk medicine.",
     "scientificEvidence": "Contains Aucubin (an iridoid glycoside with mild antiseptic properties) and mucilage (soothing/demulcent), supporting its traditional wound-healing use.",
     "isPremium": 0,
-    "usedFor": "Skin & Wounds - Topical Healing, Digestive System - Bowel & Lower GI"
+    "usedFor": "Skin & Wounds - Topical Healing, Digestive System - Bowel & Lower GI",
+    "alternativeNames": "Plantago Wound Wash, Traveller's Tonic"
   },
   {
     "title": "White Poplar Bud Tincture (Populus alba/nigra)",
@@ -1255,7 +1328,8 @@
     "historicalContext": "Used in Russian and Central European folk medicine for centuries, particularly for conditions that worsen with cold or dampness.",
     "scientificEvidence": "Contains Salicylates (pain-relieving and anti-inflammatory precursors to Aspirin) and volatile oils (antiseptic).",
     "isPremium": 0,
-    "usedFor": "Musculoskeletal System - Joints & Arthritis, Urinary System - Diuretics & Stones"
+    "usedFor": "Musculoskeletal System - Joints & Arthritis, Urinary System - Diuretics & Stones",
+    "alternativeNames": "Populus Balsam, Natural Salicylate Spirit"
   },
   {
     "title": "Juniper Berry Wine (Juniperus communis)",
@@ -1272,7 +1346,8 @@
     "historicalContext": "The origin of Gin and Genever. The medicinal use of the berries is ancient, documented by the Greeks and popularized in the Middle Ages by monks.",
     "scientificEvidence": "Contains volatile oils (terpinen-4-ol) which significantly increase glomerular filtration rate (diuretic) and act as a urinary antiseptic.",
     "isPremium": 0,
-    "usedFor": "Urinary System - Diuretics & Stones, Digestive System - Stomach & Upper GI"
+    "usedFor": "Urinary System - Diuretics & Stones, Digestive System - Stomach & Upper GI",
+    "alternativeNames": "Genievre Tonic, Diuretic Elixir"
   },
   {
     "title": "Rose Hip Syrup (Rosa canina)",
@@ -1289,7 +1364,8 @@
     "historicalContext": "Used universally during WWII (especially in Britain) when citrus fruits were unavailable, making it a critical government-sponsored tonic to prevent scurvy.",
     "scientificEvidence": "Extremely high in Vitamin C (ascorbic acid), carotenoids, and pectin, supporting its traditional use for immunity and tissue health.",
     "isPremium": 0,
-    "usedFor": "Immune System - General Support, Skin & Wounds - Topical Healing"
+    "usedFor": "Immune System - General Support, Skin & Wounds - Topical Healing",
+    "alternativeNames": "Rosa Fructus Syrup, Vitamin C Elixir"
   },
   {
     "title": "Betony and Rose Oil (Ear Drops)",
@@ -1306,7 +1382,8 @@
     "historicalContext": "A classic folk remedy combining Betony's headache-relieving properties with the soothing nature of Rose and Olive Oil.",
     "scientificEvidence": "Traditional use. The oil acts as a warming emollient, while Betony's compounds soothe local nerve endings.",
     "isPremium": 0,
-    "usedFor": "Eye & Ear Health, Nervous System & Sleep - Pain & Headache"
+    "usedFor": "Eye & Ear Health, Nervous System & Sleep - Pain & Headache",
+    "alternativeNames": "Betonica Rosmarinus Auricular Drops, Earache Oil"
   },
   {
     "title": "Hemp Agrimony Decoction (Eupatorium cannabinum)",
@@ -1323,7 +1400,8 @@
     "historicalContext": "Used throughout the Middle Ages as a powerful liver and fever remedy, particularly for high-mortality illnesses.",
     "scientificEvidence": "Contains bitter sesquiterpene lactones and PAs. The bitter compounds stimulate liver and immune function.",
     "isPremium": 0,
-    "usedFor": "Liver & Detox - Hepatic Support, Immune System - Acute Illness (Fever/Cold)"
+    "usedFor": "Liver & Detox - Hepatic Support, Immune System - Acute Illness (Fever/Cold)",
+    "alternativeNames": "Eupatorium Tea, Water Hemp Broth"
   },
   {
     "title": "Rest Harrow Root Decoction (Ononis spinosa)",
@@ -1340,7 +1418,8 @@
     "historicalContext": "Known for its ability to stop the plow (hence 'rest harrow'). Its medicinal use is documented by medieval herbalists for the urinary tract.",
     "scientificEvidence": "Contains triterpenes (onoceral), flavonoids, and essential oils, which act as a diuretic, antispasmodic, and anti-inflammatory in the urinary system.",
     "isPremium": 0,
-    "usedFor": "Urinary System - Diuretics & Stones, Skin & Wounds - Chronic Conditions"
+    "usedFor": "Urinary System - Diuretics & Stones, Skin & Wounds - Chronic Conditions",
+    "alternativeNames": "Spiny Rest Harrow Diuretic, Ononis Stone Tea"
   },
   {
     "title": "Oak Apple Decoction (Quercus gall)",
@@ -1357,7 +1436,8 @@
     "historicalContext": "Used for centuries for making ink (due to tannin content) and medicinally where the most powerful astringency was needed to stop bleeding or severe diarrhea.",
     "scientificEvidence": "Contains 50-70% Tannins (Gallic and Ellagic acid), providing unparalleled astringent, tissue-toning, and antiseptic action.",
     "isPremium": 0,
-    "usedFor": "Oral Health - Gums & Teeth, Digestive System - Bowel & Lower GI"
+    "usedFor": "Oral Health - Gums & Teeth, Digestive System - Bowel & Lower GI",
+    "alternativeNames": "Gall Nut Styptic, Acorn Galls Gargle"
   },
   {
     "title": "Silverweed Tincture (Potentilla anserina)",
@@ -1374,7 +1454,8 @@
     "historicalContext": "The name 'Goosegrass' reflects its traditional use as animal fodder. Its efficacy for cramps was a widespread secret of folk practitioners.",
     "scientificEvidence": "Contains potent anti-spasmodic flavonoids and tannins, which relax smooth muscle spasms in the gut and uterus, relieving cramping pain.",
     "isPremium": 0,
-    "usedFor": "Women's Health - Menstruation & Hormones, Digestive System - Stomach & Upper GI"
+    "usedFor": "Women's Health - Menstruation & Hormones, Digestive System - Stomach & Upper GI",
+    "alternativeNames": "Anserina Cramp Spirit, Goosegrass Tonic"
   },
   {
     "title": "Angelica Root Honey Paste (Archangelica)",
@@ -1391,7 +1472,8 @@
     "historicalContext": "Called the 'Angel's Herb,' it was one of the most widely cultivated and utilized anti-plague remedies across Europe due to its aromatic, pungent, and warming properties.",
     "scientificEvidence": "Contains volatile oils (monoterpenes) that are warming, carminative, and stimulating expectorants, alongside furanocoumarins (photosensitizers).",
     "isPremium": 0,
-    "usedFor": "Respiratory System - Lungs & Chest, Immune System - General Support"
+    "usedFor": "Respiratory System - Lungs & Chest, Immune System - General Support",
+    "alternativeNames": "Archangelica Confectio, Plague Paste"
   },
   {
     "title": "Red Poppy Syrup (Papaver rhoeas)",
@@ -1408,7 +1490,8 @@
     "historicalContext": "Often distinguished from the Opium Poppy. Its use was common in Victorian nurseries and apothecaries for its gentle, non-addictive sedative effects.",
     "scientificEvidence": "Contains mild alkaloids (rhoeadine) and mucilage, giving it a very mild sedative and demulcent action, far weaker than Opium.",
     "isPremium": 0,
-    "usedFor": "Nervous System & Sleep - Anxiety & Mood, Respiratory System - Lungs & Chest"
+    "usedFor": "Nervous System & Sleep - Anxiety & Mood, Respiratory System - Lungs & Chest",
+    "alternativeNames": "Rhoeas Calming Syrup, Field Poppy Linctus"
   },
   {
     "title": "White Horehound Decoction (Marrubium vulgare)",
@@ -1425,7 +1508,8 @@
     "historicalContext": "Referenced by Hippocrates. Its bitterness was key to its medicinal value, following the classical understanding that bitter tonics clear stagnant systems.",
     "scientificEvidence": "The bitter compound Marrubiin stimulates both mucus secretion (expectorant) and gastric secretion (digestive tonic).",
     "isPremium": 0,
-    "usedFor": "Respiratory System - Lungs & Chest, Digestive System - Stomach & Upper GI"
+    "usedFor": "Respiratory System - Lungs & Chest, Digestive System - Stomach & Upper GI",
+    "alternativeNames": "Marrubium Tea, Bitter Cough Broth"
   },
   {
     "title": "Mugwort Poultice (Artemisia vulgaris)",
@@ -1442,7 +1526,8 @@
     "historicalContext": "Revered by the Saxons and Celts. Its association with women's health led to its use as a warming, circulatory compress for painful cycles.",
     "scientificEvidence": "Contains volatile oils (cineole) and bitter compounds that increase local circulation and have an anti-spasmodic effect on the smooth muscles of the uterus and gut.",
     "isPremium": 0,
-    "usedFor": "Women's Health - Menstruation & Hormones, Musculoskeletal System - Muscle Pain & Spasm"
+    "usedFor": "Women's Health - Menstruation & Hormones, Musculoskeletal System - Muscle Pain & Spasm",
+    "alternativeNames": "Artemisia Warm Compress, Womb Stone"
   },
   {
     "title": "Horsetail Root Poultice",
@@ -1459,7 +1544,8 @@
     "historicalContext": "Combines the extreme silica content of Horsetail (for structure) with the extreme allantoin content of Comfrey (for cell proliferation).",
     "scientificEvidence": "Synergy of high Silica (structural support) and Allantoin (cell growth promoter) for enhanced tissue regeneration.",
     "isPremium": 0,
-    "usedFor": "Skin & Wounds - Topical Healing, Musculoskeletal System - Joints & Arthritis"
+    "usedFor": "Skin & Wounds - Topical Healing, Musculoskeletal System - Joints & Arthritis",
+    "alternativeNames": "Equisetum Compositum Paste, Deep Wound Compress"
   },
   {
     "title": "Wild Thyme Oil (Thymus serpyllum)",
@@ -1476,7 +1562,8 @@
     "historicalContext": "Used in the Balkans for its strong warming and anti-spasmodic properties, similar to common Thyme oil but often preferred for its milder nature.",
     "scientificEvidence": "Rich in volatile oils (Thymol, Carvacrol), which are excellent rubefacients (warming agents) and topical anti-spasmodics for the bronchial tubes.",
     "isPremium": 0,
-    "usedFor": "Respiratory System - Lungs & Chest, Musculoskeletal System - Muscle Pain & Spasm"
+    "usedFor": "Respiratory System - Lungs & Chest, Musculoskeletal System - Muscle Pain & Spasm",
+    "alternativeNames": "Serpyllum Massage Oil, Warming Chest Rub"
   },
   {
     "title": "Pine Bud Syrup (Pinus sylvestris)",
@@ -1493,7 +1580,8 @@
     "historicalContext": "Used extensively in Northern Europe where pine products were the local antiseptic and cough remedy.",
     "scientificEvidence": "Contains volatile oils and resins (turpentine compounds) which are stimulating expectorants, helping to thin and expel thick bronchial secretions.",
     "isPremium": 0,
-    "usedFor": "Respiratory System - Lungs & Chest, Immune System - Acute Illness (Fever/Cold)"
+    "usedFor": "Respiratory System - Lungs & Chest, Immune System - Acute Illness (Fever/Cold)",
+    "alternativeNames": "Pinus Expectorant, Bud Linctus"
   },
   {
     "title": "Sloe Berry and Rose Hip Cordial",
@@ -1510,7 +1598,8 @@
     "historicalContext": "A common country cordial, blending the medicinal properties of two high-antioxidant, late-harvest fruits into a warming winter tonic.",
     "scientificEvidence": "Combines the high Vitamin C/Antioxidants of Rose Hips with the astringent tannins and flavor of the Sloe Berry.",
     "isPremium": 0,
-    "usedFor": "Immune System - General Support, Cardiovascular System"
+    "usedFor": "Immune System - General Support, Cardiovascular System",
+    "alternativeNames": "Blackthorn and Rose Compound, Winter Immune Tonic"
   },
   {
     "title": "Swiss Arnica Tincture (Arnica montana)",
@@ -1527,7 +1616,8 @@
     "historicalContext": "Collected from high mountain meadows. Its highly specific use for trauma has made it a cornerstone of European folk and homeopathic medicine.",
     "scientificEvidence": "Contains sesquiterpene lactones (helenalin) which are potent anti-inflammatory agents. The strong effect necessitates external-only use.",
     "isPremium": 0,
-    "usedFor": "Musculoskeletal System - Muscle Pain & Spasm, Skin & Wounds - Topical Healing"
+    "usedFor": "Musculoskeletal System - Muscle Pain & Spasm, Skin & Wounds - Topical Healing",
+    "alternativeNames": "Mountain Daisy Spirit, Leopards Bane Liniment"
   },
   {
     "title": "Mullein Flower Infusion (Verbascum thapsus)",
@@ -1544,7 +1634,8 @@
     "historicalContext": "Used since the Middle Ages. The yellow flowers were traditionally infused into oil for earaches; the leaves were smoked for asthma.",
     "scientificEvidence": "High in mucilage (soothing/demulcent) and saponins (mild expectorant), supporting its use for irritating lung conditions.",
     "isPremium": 0,
-    "usedFor": "Respiratory System - Lungs & Chest, Eye & Ear Health"
+    "usedFor": "Respiratory System - Lungs & Chest, Eye & Ear Health",
+    "alternativeNames": "Velvet Plant Tea, Lungwort Tea"
   },
   {
     "title": "Elderflower Ointment (Sambucus nigra)",
@@ -1561,7 +1652,8 @@
     "historicalContext": "The Elder tree was considered a complete medicine chest. The flowers were prized for their cooling, anti-inflammatory properties for skin and fever.",
     "scientificEvidence": "Contains anti-inflammatory flavonoids (quercetin) and volatile oils, providing a gentle cooling and soothing topical effect.",
     "isPremium": 0,
-    "usedFor": "Skin & Wounds - Topical Healing, Nervous System & Sleep - Anxiety & Mood"
+    "usedFor": "Skin & Wounds - Topical Healing, Nervous System & Sleep - Anxiety & Mood",
+    "alternativeNames": "Sambucus Salve, Facial Calmer"
   },
   {
     "title": "Pine Resin Salve (Colophonium)",
@@ -1578,7 +1670,8 @@
     "historicalContext": "Pitch was a fundamental material, used for sealing boats and as a powerful antiseptic in folk medicine, particularly for stubborn infections.",
     "scientificEvidence": "Contains terpenes and resin acids which are warming, rubefacient (circulatory stimulant), and possess strong antiseptic properties.",
     "isPremium": 0,
-    "usedFor": "Skin & Wounds - Topical Healing, Musculoskeletal System - Muscle Pain & Spasm"
+    "usedFor": "Skin & Wounds - Topical Healing, Musculoskeletal System - Muscle Pain & Spasm",
+    "alternativeNames": "Spruce Pitch Salve, Drawing Ointment"
   },
   {
     "title": "Water Mint Oil (Mentha aquatica)",
@@ -1595,7 +1688,8 @@
     "historicalContext": "Used where it was locally abundant, often substituted for Peppermint for its milder flavor and action.",
     "scientificEvidence": "Contains volatile oils (pulegone, menthol, menthone) which are antispasmodic (muscle relaxing) and carminative (gas relieving).",
     "isPremium": 0,
-    "usedFor": "Digestive System - Stomach & Upper GI, Nervous System & Sleep - Anxiety & Mood"
+    "usedFor": "Digestive System - Stomach & Upper GI, Nervous System & Sleep - Anxiety & Mood",
+    "alternativeNames": "Aquatic Mint Drops, Digestive Antispasmodic"
   },
   {
     "title": "European Goldenrod Decoction (Solidago virgaurea)",
@@ -1612,7 +1706,8 @@
     "historicalContext": "Used as a 'Wound Herb' in the Middle Ages. Its specific action on the urinary system was formalized by German herbalists in the 20th century.",
     "scientificEvidence": "Contains flavonoids (rutin) and saponins which increase urinary volume (diuretic) and have anti-inflammatory and antispasmodic actions on the bladder.",
     "isPremium": 0,
-    "usedFor": "Urinary System - Diuretics & Stones, Skin & Wounds - Topical Healing"
+    "usedFor": "Urinary System - Diuretics & Stones, Skin & Wounds - Topical Healing",
+    "alternativeNames": "Virgaurea Stone Breaker, Wound Herb Tea"
   },
   {
     "title": "Horehound and Licorice Troches",
@@ -1629,7 +1724,8 @@
     "historicalContext": "The commercial origin of the popular horehound cough drop. The troche format ensured slow, topical delivery of the medicine.",
     "scientificEvidence": "Combines the bitter expectorant (Marrubiin) of Horehound with the soothing demulcent and anti-inflammatory properties (Glycyrrhizin) of Licorice.",
     "isPremium": 0,
-    "usedFor": "Respiratory System - Lungs & Chest, Oral Health - Throat & Pharynx"
+    "usedFor": "Respiratory System - Lungs & Chest, Oral Health - Throat & Pharynx",
+    "alternativeNames": "Marrubium Linctus, Cough Pastilles"
   },
   {
     "title": "Burnet Saxifrage Tincture (Pimpinella major/saxifraga)",
@@ -1646,7 +1742,8 @@
     "historicalContext": "Used throughout the Middle Ages as a warming tonic, especially in winter, and as a specific remedy for deeply set coughs and loss of appetite.",
     "scientificEvidence": "Contains volatile oils and bitter compounds (saponins, coumarins) which stimulate digestive juices and act as a stimulating expectorant.",
     "isPremium": 0,
-    "usedFor": "Digestive System - Stomach & Upper GI, Respiratory System - Lungs & Chest"
+    "usedFor": "Digestive System - Stomach & Upper GI, Respiratory System - Lungs & Chest",
+    "alternativeNames": "Pimpinella Digestive Spirit, Stomach Warmer"
   },
   {
     "title": "Yarrow Steam Inhalation (Achillea millefolium)",
@@ -1663,7 +1760,8 @@
     "historicalContext": "Used traditionally for colds and hay fever. The aromatic steam acts as a local antiseptic and promotes mucus drainage.",
     "scientificEvidence": "Contains volatile oils (cineole, azulenes) which are antiseptic and anti-inflammatory, delivered directly to the respiratory tract via steam.",
     "isPremium": 0,
-    "usedFor": "Respiratory System - Sinus & Upper Tract, Immune System - Acute Illness (Fever/Cold)"
+    "usedFor": "Respiratory System - Sinus & Upper Tract, Immune System - Acute Illness (Fever/Cold)",
+    "alternativeNames": "Millefolium Sinus Steam, Sinus Clearer"
   },
   {
     "title": "Larch Resin Balm (Larix decidua)",
@@ -1680,7 +1778,8 @@
     "historicalContext": "Larch turpentine has been used in European medicine for centuries as a wound healer and a strong rubefacient for chronic pain.",
     "scientificEvidence": "High in volatile oils (terpenes) which are strongly warming, stimulating blood flow, and easing deep muscular and joint pain.",
     "isPremium": 0,
-    "usedFor": "Musculoskeletal System - Joints & Arthritis, Respiratory System - Lungs & Chest"
+    "usedFor": "Musculoskeletal System - Joints & Arthritis, Respiratory System - Lungs & Chest",
+    "alternativeNames": "Larch Turpentine Ointment, Warming Liniment"
   },
   {
     "title": "Bogbean Infusion (Menyanthes trifoliata)",
@@ -1697,7 +1796,8 @@
     "historicalContext": "Used extensively in Northern Europe where it was recognized as a deep-acting bitter tonic for digestive stagnation and chronic conditions like rheumatism.",
     "scientificEvidence": "Contains extremely bitter secoiridoid glycosides (menyathin) that powerfully stimulate bile production and digestive enzyme secretion.",
     "isPremium": 0,
-    "usedFor": "Digestive System - Stomach & Upper GI, Musculoskeletal System - Joints & Arthritis"
+    "usedFor": "Digestive System - Stomach & Upper GI, Musculoskeletal System - Joints & Arthritis",
+    "alternativeNames": "Buckbean Bitter, Tri-leaf Tonic"
   },
   {
     "title": "Chervil Decoction (Anthriscus cerefolium)",
@@ -1714,7 +1814,8 @@
     "historicalContext": "Often used in soups and broths for convalescents. Its gentle diuretic action was a key part of spring cleansing rituals.",
     "scientificEvidence": "Contains volatile oils and flavonoids that possess a mild diuretic and carminative (gas-relieving) action.",
     "isPremium": 0,
-    "usedFor": "Digestive System - Stomach & Upper GI, Urinary System - Diuretics & Stones"
+    "usedFor": "Digestive System - Stomach & Upper GI, Urinary System - Diuretics & Stones",
+    "alternativeNames": "Chervil Diuretic Tea, Digestive Helper"
   },
   {
     "title": "Wild Carrot Seed Tincture (Daucus carota)",
@@ -1731,7 +1832,8 @@
     "historicalContext": "Used by the ancient Greeks for contraception. Its power as a urinary lithotriptic (stone dissolver) is also well-documented.",
     "scientificEvidence": "Contains volatile oils (pinene, carotol) that are strongly diuretic and antispasmodic, and is suspected to contain compounds with anti-implantation activity (contraceptive use).",
     "isPremium": 0,
-    "usedFor": "Women's Health - Contraception/Menses, Urinary System - Diuretics & Stones"
+    "usedFor": "Women's Health - Contraception/Menses, Urinary System - Diuretics & Stones",
+    "alternativeNames": "Queen Anne's Lace Spirit, Contraceptive Drops"
   },
   {
     "title": "Quince Seed Mucilage (Cydonia oblonga)",
@@ -1748,7 +1850,8 @@
     "historicalContext": "Quince was a staple fruit in the Roman Empire. The seed mucilage was a common, gentle eye and skin remedy.",
     "scientificEvidence": "Extremely high in highly viscous mucilage (polysaccharides) that physically coats and soothes irritated skin and mucous membranes.",
     "isPremium": 0,
-    "usedFor": "Eye & Ear Health, Skin & Wounds - Topical Healing"
+    "usedFor": "Eye & Ear Health, Skin & Wounds - Topical Healing",
+    "alternativeNames": "Cydonia Demulcent, Viscid Eye Drops"
   },
   {
     "title": "Calamus Root Tincture (Acorus calamus)",
@@ -1765,7 +1868,8 @@
     "historicalContext": "Brought to Europe via trade routes. It was highly valued in Russia and Poland as a warming carminative and general tonic.",
     "scientificEvidence": "Contains volatile oils (including β-asarone in some diploid varieties). It is a strong bitter and carminative.",
     "isPremium": 0,
-    "usedFor": "Digestive System - Stomach & Upper GI, Nervous System & Sleep - Anxiety & Mood"
+    "usedFor": "Digestive System - Stomach & Upper GI, Nervous System & Sleep - Anxiety & Mood",
+    "alternativeNames": "Sweet Flag Spirit, Brain Tonic"
   },
   {
     "title": "Lovage Root Decoction (Levisticum officinale)",
@@ -1782,7 +1886,8 @@
     "historicalContext": "Cultivated in monastery gardens. Its specific action on the kidneys and digestive system made it a common kitchen and medicine herb.",
     "scientificEvidence": "Contains volatile oils (phthalides) that are carminative (gas relieving), diuretic, and slightly antispasmodic.",
     "isPremium": 0,
-    "usedFor": "Urinary System - Diuretics & Stones, Digestive System - Stomach & Upper GI"
+    "usedFor": "Urinary System - Diuretics & Stones, Digestive System - Stomach & Upper GI",
+    "alternativeNames": "Levisticum Carminative, Belly Warmer"
   },
   {
     "title": "Wood Betony Snuff (Stachys officinalis)",
@@ -1799,7 +1904,8 @@
     "historicalContext": "Snuffs were common in the 17th and 18th centuries. Betony was singled out for its specific action on headache.",
     "scientificEvidence": "Contains mild irritants and volatile compounds that stimulate the nasal passages, inducing a powerful sneeze reflex to clear sinus pressure.",
     "isPremium": 0,
-    "usedFor": "Nervous System & Sleep - Pain & Headache, Respiratory System - Sinus & Upper Tract"
+    "usedFor": "Nervous System & Sleep - Pain & Headache, Respiratory System - Sinus & Upper Tract",
+    "alternativeNames": "Betonica Nasal Powder, Headache Relief"
   },
   {
     "title": "Wild Marjoram Oil (Origanum vulgare)",
@@ -1816,7 +1922,8 @@
     "historicalContext": "The wild form of Oregano/Marjoram has always been prized for its potent antiseptic volatile oils across Southern and Eastern Europe.",
     "scientificEvidence": "Rich in Carvacrol and Thymol (potent volatile oils) which are strong environmental and topical antiseptics and rubefacients (warming agents).",
     "isPremium": 0,
-    "usedFor": "Respiratory System - Lungs & Chest, Musculoskeletal System - Muscle Pain & Spasm"
+    "usedFor": "Respiratory System - Lungs & Chest, Musculoskeletal System - Muscle Pain & Spasm",
+    "alternativeNames": "Origanum Rub, Warming Liniment"
   },
   {
     "title": "Buckthorn Bark Syrup (Rhamnus frangula)",
@@ -1833,7 +1940,8 @@
     "historicalContext": "Used since the Middle Ages. Its potential to cause severe nausea if not aged or boiled correctly was well known.",
     "scientificEvidence": "Contains Anthraquinone glycosides (e.g., Frangulin) which are strong irritant laxatives. The fresh bark is too caustic.",
     "isPremium": 0,
-    "usedFor": "Digestive System - Bowel & Lower GI"
+    "usedFor": "Digestive System - Bowel & Lower GI",
+    "alternativeNames": "Frangula Purgative, Alder Buckthorn Laxative"
   },
   {
     "title": "Valerian Foot Bath (Valeriana officinalis)",
@@ -1850,7 +1958,8 @@
     "historicalContext": "Used since antiquity as a sedative. The foot bath was a common folk delivery method for highly aromatic nervines to induce relaxation.",
     "scientificEvidence": "Contains Valepotriates and volatile oils (valerenic acid) which are sedative and anti-spasmodic, absorbing through the skin to promote relaxation.",
     "isPremium": 0,
-    "usedFor": "Nervous System & Sleep - Anxiety & Mood, Musculoskeletal System - Muscle Pain & Spasm"
+    "usedFor": "Nervous System & Sleep - Anxiety & Mood, Musculoskeletal System - Muscle Pain & Spasm",
+    "alternativeNames": "Valeriana Pediluvium, Sleep Soak"
   },
   {
     "title": "Meadowsweet Cold Infusion (Filipendula ulmaria)",
@@ -1867,7 +1976,8 @@
     "historicalContext": "Cold infusion prevents the breakdown of the salicin compounds into methyl salicylate, resulting in a gentler, more soothing action.",
     "scientificEvidence": "Contains mucilage and tannins (soothing and toning) and gentler salicylates, offering anti-inflammatory action without gastric irritation.",
     "isPremium": 0,
-    "usedFor": "Musculoskeletal System - Joints & Arthritis, Digestive System - Stomach & Upper GI"
+    "usedFor": "Musculoskeletal System - Joints & Arthritis, Digestive System - Stomach & Upper GI",
+    "alternativeNames": "Bridewort Aspirin Tea, Astringent Tonic"
   },
   {
     "title": "Wild Thyme Vinegar (Thymus serpyllum)",
@@ -1884,7 +1994,8 @@
     "historicalContext": "Oxymels (oxymeli in Greek) were a major class of ancient medicine, combining the power of herbs, vinegar (extraction), and honey (preservation/soothing).",
     "scientificEvidence": "Combines the anti-spasmodic volatile oils of Thyme with the stimulating effect of vinegar and the demulcent nature of honey.",
     "isPremium": 0,
-    "usedFor": "Respiratory System - Lungs & Chest, Digestive System - Stomach & Upper GI"
+    "usedFor": "Respiratory System - Lungs & Chest, Digestive System - Stomach & Upper GI",
+    "alternativeNames": "Serpyllum Oxymel, Cough Shrub"
   },
   {
     "title": "European Ash Bark Decoction (Fraxinus excelsior)",
@@ -1901,7 +2012,8 @@
     "historicalContext": "Used throughout the Middle Ages. Its specific action on gout and rheumatism was considered powerful and reliable.",
     "scientificEvidence": "Contains Coumarins and Flavonoids. It is a diuretic and anti-inflammatory, specific for conditions linked to high uric acid levels.",
     "isPremium": 0,
-    "usedFor": "Musculoskeletal System - Joints & Arthritis, Urinary System - Diuretics & Stones"
+    "usedFor": "Musculoskeletal System - Joints & Arthritis, Urinary System - Diuretics & Stones",
+    "alternativeNames": "Fraxinus Diuretic, Gout and Rheumatism Tea"
   },
   {
     "title": "Lungwort and Honey Confectio (Pulmonaria officinalis)",
@@ -1918,7 +2030,8 @@
     "historicalContext": "Confections were a highly popular dosage form in medieval apothecaries, making bitter or bulky medicines palatable.",
     "scientificEvidence": "Combines the mucilage and allantoin of Lungwort (tissue healing/soothing) with the demulcent and antiseptic properties of honey.",
     "isPremium": 0,
-    "usedFor": "Respiratory System - Lungs & Chest, Immune System - Acute Illness (Fever/Cold)"
+    "usedFor": "Respiratory System - Lungs & Chest, Immune System - Acute Illness (Fever/Cold)",
+    "alternativeNames": "Pulmonaria Honey Paste, Lung Elixir"
   },
   {
     "title": "Horsetail Hair Rinse (Equisetum arvense)",
@@ -1935,7 +2048,8 @@
     "historicalContext": "Used historically for strengthening hair and nails due to its extremely high mineral content.",
     "scientificEvidence": "Extremely high in soluble silica (silicic acid), essential for collagen formation, hair structure, and connective tissue integrity.",
     "isPremium": 0,
-    "usedFor": "Skin & Wounds - Topical Healing, General Wellness/Tonics"
+    "usedFor": "Skin & Wounds - Topical Healing, General Wellness/Tonics",
+    "alternativeNames": "Equisetum Silicea Wash, Strengthening Rinse"
   },
   {
     "title": "Hemp Seed Milk (Cannabis sativa)",
@@ -1952,7 +2066,8 @@
     "historicalContext": "Hemp was a staple crop across Europe. The seeds were used to make milk or porridge, particularly important in regions with limited dairy access.",
     "scientificEvidence": "Excellent source of balanced Omega-3 and Omega-6 essential fatty acids and complete plant protein. Highly digestible.",
     "isPremium": 0,
-    "usedFor": "General Wellness/Tonics, Digestive System - Bowel & Lower GI"
+    "usedFor": "General Wellness/Tonics, Digestive System - Bowel & Lower GI",
+    "alternativeNames": "Cannabis Nutritional Beverage, Hemp Porridge Base"
   },
   {
     "title": "Water Pepper Tincture (Polygonum hydropiper)",
@@ -1969,7 +2084,8 @@
     "historicalContext": "Named for its biting, pepper-like taste. It was used in early medicine for its powerful astringent and heating qualities.",
     "scientificEvidence": "Contains high levels of powerful tannins (astringent) and pungent polygodial (irritant) which cause local vasoconstriction (stopping bleeding).",
     "isPremium": 0,
-    "usedFor": "Digestive System - Bowel & Lower GI, Cardiovascular System"
+    "usedFor": "Digestive System - Bowel & Lower GI, Cardiovascular System",
+    "alternativeNames": "Smartweed Spirit, Hemorrhoid Drops"
   },
   {
     "title": "Agrimony and Black Tea Eye Compress",
@@ -1986,7 +2102,8 @@
     "historicalContext": "Tea and Agrimony were commonly used as eye washes, combining their strong astringent properties (tannins) to 'tone up' the tissue.",
     "scientificEvidence": "High in tannins (from both) which have a powerful astringent, cooling, and tissue-toning effect on the delicate eye membranes.",
     "isPremium": 0,
-    "usedFor": "Eye & Ear Health, Skin & Wounds - Topical Healing"
+    "usedFor": "Eye & Ear Health, Skin & Wounds - Topical Healing",
+    "alternativeNames": "Agrimonia Ophthalmic Wash, Toning Compress"
   },
   {
     "title": "Tilia Flower Tea (Tilia cordata/platyphyllos)",
@@ -2003,7 +2120,8 @@
     "historicalContext": "The most popular tree in Europe for both shade and medicine. Used since the Middle Ages as a reliable remedy for fever and stress.",
     "scientificEvidence": "Contains volatile oils and mucilage (calming, demulcent) and flavonoids (diaphoretic/sudorific, hypotensive) which promote sweating and relaxation.",
     "isPremium": 0,
-    "usedFor": "Nervous System & Sleep - Anxiety & Mood, Immune System - Acute Illness (Fever/Cold)"
+    "usedFor": "Nervous System & Sleep - Anxiety & Mood, Immune System - Acute Illness (Fever/Cold)",
+    "alternativeNames": "Linden Blossom Sudorific, Lime Flower Relaxant"
   },
   {
     "title": "Rue and Honey Liniment (Ruta graveolens)",
@@ -2020,7 +2138,8 @@
     "historicalContext": "Used since Roman times. Its potent anti-spasmodic properties were valued, but its ability to cause phytophotodermatitis was also well known.",
     "scientificEvidence": "Contains Furanocoumarins (photosensitizers) and Rutin (anti-inflammatory), providing deep pain relief but requiring sun avoidance.",
     "isPremium": 0,
-    "usedFor": "Musculoskeletal System - Muscle Pain & Spasm, Nervous System & Sleep - Pain & Headache"
+    "usedFor": "Musculoskeletal System - Muscle Pain & Spasm, Nervous System & Sleep - Pain & Headache",
+    "alternativeNames": "Ruta Pain Oil, Anti-Spasmodic Rub"
   },
   {
     "title": "Flaxseed Poultice (Linum usitatissimum)",
@@ -2037,7 +2156,8 @@
     "historicalContext": "Flax was a staple crop for fiber and oil. Its seeds were used medicinally for their mucilage (internal) and their heat-retaining properties (external).",
     "scientificEvidence": "High in mucilage and heat-retaining oil. The heat increases local circulation, while the mucilage acts as a gentle drawing agent.",
     "isPremium": 0,
-    "usedFor": "Skin & Wounds - Topical Healing, Respiratory System - Lungs & Chest"
+    "usedFor": "Skin & Wounds - Topical Healing, Respiratory System - Lungs & Chest",
+    "alternativeNames": "Linseed Compress, Drawing Poultice"
   },
   {
     "title": "Black Currant Leaf Tea (Ribes nigrum)",
@@ -2054,7 +2174,8 @@
     "historicalContext": "Used widely in Slavic folk medicine, where the leaves were steeped for a nutritious, detoxifying tea throughout the year.",
     "scientificEvidence": "Contains flavonoids and high amounts of Vitamin C, acting as a diuretic, antioxidant, and mild adrenal/lymphatic tonic.",
     "isPremium": 0,
-    "usedFor": "Immune System - General Support, Urinary System - Diuretics & Stones"
+    "usedFor": "Immune System - General Support, Urinary System - Diuretics & Stones",
+    "alternativeNames": "Ribes Detox Tea, Lymphatic Flush"
   },
   {
     "title": "Chaste Tree Tincture (Vitex agnus-castus)",
@@ -2071,7 +2192,8 @@
     "historicalContext": "Named 'Monk's Pepper' because it was used by monks to suppress libido. Its effect on the female reproductive cycle is clinically proven.",
     "scientificEvidence": "Contains Iridoid Glycosides and Diterpenes that act on the pituitary gland, normalizing the balance between estrogen and progesterone (via Prolactin inhibition).",
     "isPremium": 0,
-    "usedFor": "Women's Health - Menstruation & Hormones"
+    "usedFor": "Women's Health - Menstruation & Hormones",
+    "alternativeNames": "Vitex Hormone Balancer, Monks Pepper Spirit"
   },
   {
     "title": "Frankincense Powder (Boswellia carteri/sacra)",
@@ -2088,7 +2210,8 @@
     "historicalContext": "Highly valued since antiquity (Ancient Egyptian, Roman, Islamic trade). Its use in Unani/Tibb medicine for inflammation is primary.",
     "scientificEvidence": "Contains Boswellic acids, which are powerful non-acidic, non-steroidal anti-inflammatory agents that target key inflammatory pathways.",
     "isPremium": 0,
-    "usedFor": "Musculoskeletal System - Joints & Arthritis, Respiratory System - Lungs & Chest"
+    "usedFor": "Musculoskeletal System - Joints & Arthritis, Respiratory System - Lungs & Chest",
+    "alternativeNames": "Luban Mastic, Olibanum Resin"
   },
   {
     "title": "Saffron Milk (Crocus sativus)",
@@ -2105,7 +2228,8 @@
     "historicalContext": "Cultivated in Persia since pre-Islamic times, highly prized in Tibb and Unani medicine as a cardiac tonic (strengthener) and nervine.",
     "scientificEvidence": "Contains Crocin (antioxidant, mood booster) and Safranal (mild sedative). Shown to be effective for mild-to-moderate depression.",
     "isPremium": 0,
-    "usedFor": "Nervous System & Sleep - Anxiety & Mood, General Wellness/Tonics"
+    "usedFor": "Nervous System & Sleep - Anxiety & Mood, General Wellness/Tonics",
+    "alternativeNames": "Kesar Tonic, Spirit Uplifter"
   },
   {
     "title": "Black Seed Oil Capsules (Nigella sativa)",
@@ -2122,7 +2246,8 @@
     "historicalContext": "Found in Tutankhamun's tomb. Used extensively in Unani and Prophetic Medicine (Sunnah) as a powerful general remedy.",
     "scientificEvidence": "Contains Thymoquinone, a potent anti-oxidant, anti-inflammatory, anti-histamine, and bronchodilator compound.",
     "isPremium": 0,
-    "usedFor": "Immune System - General Support, Respiratory System - Lungs & Chest"
+    "usedFor": "Immune System - General Support, Respiratory System - Lungs & Chest",
+    "alternativeNames": "Kalonji Oil, Habbatus Sauda Tonic"
   },
   {
     "title": "Henna Poultice (Lawsonia inermis)",
@@ -2139,7 +2264,8 @@
     "historicalContext": "Used for millennia as a dye. Medicinally, its use as a powerful coolant and anti-fungal is central to Tibb and Unani Dermatology.",
     "scientificEvidence": "Contains lawsone (dye and anti-fungal), tannins (astringent), and is a powerful topical coolant/anti-inflammatory.",
     "isPremium": 0,
-    "usedFor": "Skin & Wounds - Topical Healing, Musculoskeletal System - Joints & Arthritis"
+    "usedFor": "Skin & Wounds - Topical Healing, Musculoskeletal System - Joints & Arthritis",
+    "alternativeNames": "Mehndi Compress, Drawing Paste"
   },
   {
     "title": "Hyssop Infusion (Hyssopus officinalis)",
@@ -2156,7 +2282,8 @@
     "historicalContext": "Highly valued in Hebrew and Greek tradition for purification. Its use as a respiratory remedy is ancient and continuous.",
     "scientificEvidence": "Contains volatile oils (Pinocamphone, Isopinocamphone) which are stimulating expectorants and potent local antiseptics.",
     "isPremium": 0,
-    "usedFor": "Respiratory System - Lungs & Chest, Immune System - Acute Illness (Fever/Cold)"
+    "usedFor": "Respiratory System - Lungs & Chest, Immune System - Acute Illness (Fever/Cold)",
+    "alternativeNames": "Za'atar Tea, Mountain Hyssop"
   },
   {
     "title": "Galbanum Tincture (Ferula galbaniflua)",
@@ -2173,7 +2300,8 @@
     "historicalContext": "Used by the Ancient Egyptians for incense and embalming. Highly valued in Tibb medicine as an anti-spasmodic and expectorant.",
     "scientificEvidence": "Contains volatile oils and resin acids which are warming, strong antiseptics, and stimulating expectorants.",
     "isPremium": 0,
-    "usedFor": "Skin & Wounds - Topical Healing, Respiratory System - Lungs & Chest"
+    "usedFor": "Skin & Wounds - Topical Healing, Respiratory System - Lungs & Chest",
+    "alternativeNames": "Ferula Resin Spirit, Wound Sealer"
   },
   {
     "title": "Sesame Oil and Myrrh Mouthwash",
@@ -2190,7 +2318,8 @@
     "historicalContext": "Myrrh was a central antiseptic and wound healer. Sesame Oil was the staple oil for topical and internal use across the region.",
     "scientificEvidence": "Myrrh (Commiphora) provides antiseptic and astringent compounds. Sesame Oil acts as a demulcent and carrier for tissue repair.",
     "isPremium": 0,
-    "usedFor": "Oral Health - Gums & Teeth, Skin & Wounds - Topical Healing"
+    "usedFor": "Oral Health - Gums & Teeth, Skin & Wounds - Topical Healing",
+    "alternativeNames": "Simsim Murr Gargle, Gum Tonic"
   },
   {
     "title": "Fennel Seed Decoction (Foeniculum vulgare)",
@@ -2207,7 +2336,8 @@
     "historicalContext": "Used by the Romans and Greeks, and continuously throughout the Middle East as a fundamental carminative (gas reliever).",
     "scientificEvidence": "Contains volatile oils (anethole, fenchone) which are strong carminatives (relieving gas and spasms) and mild phytoestrogens (lactation aid).",
     "isPremium": 0,
-    "usedFor": "Digestive System - Stomach & Upper GI, Women's Health - Lactation"
+    "usedFor": "Digestive System - Stomach & Upper GI, Women's Health - Lactation",
+    "alternativeNames": "Foeniculum Colic Tea, Digestive Aid"
   },
   {
     "title": "Senna Leaf Infusion (Senna alexandrina)",
@@ -2224,7 +2354,8 @@
     "historicalContext": "Used for over 3,000 years, documented in the Ebers Papyrus. Central to Unani and Arabic medicine as a purgative.",
     "scientificEvidence": "Contains Anthraquinone Glycosides (Sennosides A and B) which are powerful irritant laxatives, stimulating the colon muscle.",
     "isPremium": 0,
-    "usedFor": "Digestive System - Bowel & Lower GI"
+    "usedFor": "Digestive System - Bowel & Lower GI",
+    "alternativeNames": "Senna Laxative Tea, Egyptian Purgative"
   },
   {
     "title": "Aloes and Myrrh Tooth Powder",
@@ -2241,7 +2372,8 @@
     "historicalContext": "Both Aloes and Myrrh were fundamental trade goods and antiseptic remedies across the region.",
     "scientificEvidence": "Both ingredients are extremely high in bitter compounds and tannins, acting as powerful local astringents and antiseptics.",
     "isPremium": 0,
-    "usedFor": "Oral Health - Gums & Teeth, Skin & Wounds - Topical Healing"
+    "usedFor": "Oral Health - Gums & Teeth, Skin & Wounds - Topical Healing",
+    "alternativeNames": "Sabr Murr Dentifrice, Gum Hardener"
   },
   {
     "title": "Tamarind Syrup (Tamarindus indica)",
@@ -2258,7 +2390,8 @@
     "historicalContext": "A staple food and medicine. Highly valued in Unani for its cooling (Bārid) properties to balance fevers (Hār/hot).",
     "scientificEvidence": "High in tartaric acid and malic acid, which provide a gentle, non-stimulant laxative effect and are cooling/refreshing.",
     "isPremium": 0,
-    "usedFor": "Digestive System - Bowel & Lower GI, Immune System - Acute Illness (Fever/Cold)"
+    "usedFor": "Digestive System - Bowel & Lower GI, Immune System - Acute Illness (Fever/Cold)",
+    "alternativeNames": "Tamar Hindi Sharbat, Cooling Aperient"
   },
   {
     "title": "Costus Root Oil (Saussurea costus)",
@@ -2275,7 +2408,8 @@
     "historicalContext": "A key ingredient in Prophetic Medicine. Used in Unani and Ayurvedic systems as a major warming, anti-spasmodic remedy.",
     "scientificEvidence": "Contains volatile oils (costunolide, dehydrocostus lactone) which are warming, stimulating, and possess anti-spasmodic effects on the bronchial tubes.",
     "isPremium": 0,
-    "usedFor": "Respiratory System - Lungs & Chest, General Wellness/Tonics"
+    "usedFor": "Respiratory System - Lungs & Chest, General Wellness/Tonics",
+    "alternativeNames": "Qust al-Hindi, Indian Costus Oil"
   },
   {
     "title": "Sandalwood and Rose Water Wash",
@@ -2292,7 +2426,8 @@
     "historicalContext": "Both ingredients are considered Bārid (cooling) and Latif (subtle) in Tibb theory, used to reduce excess Hār (heat/inflammation) in the body and skin.",
     "scientificEvidence": "Sandalwood provides anti-inflammatory alpha-santalol and is a strong astringent. Rose Water is a gentle, volatile oil-based coolant.",
     "isPremium": 0,
-    "usedFor": "Skin & Wounds - Topical Healing, Nervous System & Sleep - Anxiety & Mood"
+    "usedFor": "Skin & Wounds - Topical Healing, Nervous System & Sleep - Anxiety & Mood",
+    "alternativeNames": "Sandal Rose Facial Toner, Cooling Mask"
   },
   {
     "title": "Asafoetida Paste (Ferula assa-foetida)",
@@ -2309,7 +2444,8 @@
     "historicalContext": "Highly prized in Persian and Indian cuisine and medicine for its ability to cut through stagnation and relieve gas.",
     "scientificEvidence": "Contains complex sulfur compounds which are highly anti-spasmodic, strongly carminative, and mildly sedative.",
     "isPremium": 0,
-    "usedFor": "Digestive System - Stomach & Upper GI, Respiratory System - Lungs & Chest"
+    "usedFor": "Digestive System - Stomach & Upper GI, Respiratory System - Lungs & Chest",
+    "alternativeNames": "Devil's Dung Rub, Colic Paste"
   },
   {
     "title": "Licorice Root Chewing Stick (Glycyrrhiza glabra)",
@@ -2326,7 +2462,8 @@
     "historicalContext": "Used since ancient Egypt as a sweetener and medicine. The chewing stick method is ancient across the Middle East.",
     "scientificEvidence": "Contains Glycyrrhizin (50x sweeter than sugar, anti-inflammatory, antiviral) and is highly demulcent (soothing for the throat).",
     "isPremium": 0,
-    "usedFor": "Oral Health - Gums & Teeth, Respiratory System - Lungs & Chest"
+    "usedFor": "Oral Health - Gums & Teeth, Respiratory System - Lungs & Chest",
+    "alternativeNames": "Asl Sūs Stick, Sweet Flag Chew"
   },
   {
     "title": "Sumac Berry Infusion (Rhus coriaria)",
@@ -2343,7 +2480,8 @@
     "historicalContext": "Used as a culinary spice and medicinally since antiquity. Its high tannin content made it useful for toning tissues and stopping bleeding/diarrhea.",
     "scientificEvidence": "High in tannins (astringent) and organic acids, acting as a mild astringent for the gut and a cooling anti-inflammatory.",
     "isPremium": 0,
-    "usedFor": "Digestive System - Stomach & Upper GI, Urinary System - Diuretics & Stones"
+    "usedFor": "Digestive System - Stomach & Upper GI, Urinary System - Diuretics & Stones",
+    "alternativeNames": "Sumach Astringent Tea, Digestive Cooler"
   },
   {
     "title": "Saffron and Honey Eye Salve",
@@ -2360,7 +2498,8 @@
     "historicalContext": "Saffron was historically applied to the eyes in both cosmetic and medicinal preparations due to its nourishing carotenoids.",
     "scientificEvidence": "Saffron provides Carotenoids (Crocin, Picrocrocin) which are powerful ocular antioxidants. Honey and Ghee act as a demulcent carrier.",
     "isPremium": 0,
-    "usedFor": "Eye & Ear Health, Skin & Wounds - Topical Healing"
+    "usedFor": "Eye & Ear Health, Skin & Wounds - Topical Healing",
+    "alternativeNames": "Za'faran Collyrium, Vision Tonic"
   },
   {
     "title": "Syrian Rue Decoction (Peganum harmala)",
@@ -2377,7 +2516,8 @@
     "historicalContext": "Used for centuries across the region in folk rituals and as a potent medicine for parasites and menstrual issues.",
     "scientificEvidence": "Contains $\\beta$-carboline alkaloids (Harmine, Harmaline) which are reversible MAO inhibitors and potent anti-parasitics.",
     "isPremium": 0,
-    "usedFor": "Women's Health - Menses/Childbirth, General Wellness/Tonics"
+    "usedFor": "Women's Health - Menses/Childbirth, General Wellness/Tonics",
+    "alternativeNames": "Harmala Purgative, Wild Rue Broth"
   },
   {
     "title": "Nettle Seed Tincture (Urtica dioica)",
@@ -2394,7 +2534,8 @@
     "historicalContext": "Used widely in Arab folk medicine as a general vitality and kidney tonic, often powdered and mixed with honey.",
     "scientificEvidence": "Contains high concentrations of essential fatty acids and sterols that act as a restorative tonic, particularly for the kidneys and adrenal glands.",
     "isPremium": 0,
-    "usedFor": "Endocrine System - Adrenals & Metabolism, Urinary System - Diuretics & Stones"
+    "usedFor": "Endocrine System - Adrenals & Metabolism, Urinary System - Diuretics & Stones",
+    "alternativeNames": "Urtica Renal Tonic, Adrenal Drops"
   },
   {
     "title": "Dried Fig and Olive Oil Confectio",
@@ -2411,7 +2552,8 @@
     "historicalContext": "Figs and olives are the foundation of the region's diet and medicine, valued for their gentle digestive and cardiovascular benefits.",
     "scientificEvidence": "Figs provide fiber and simple sugars (bulking laxative). Olive Oil is a gentle lubricant for the intestinal tract.",
     "isPremium": 0,
-    "usedFor": "Digestive System - Bowel & Lower GI, General Wellness/Tonics"
+    "usedFor": "Digestive System - Bowel & Lower GI, General Wellness/Tonics",
+    "alternativeNames": "Tin and Zaytun Paste, Gentle Laxative"
   },
   {
     "title": "Sideritis (Mountain Tea) Infusion",
@@ -2428,7 +2570,8 @@
     "historicalContext": "Used since ancient Greek times (Dioscorides). It remains the most popular daily tonic and cold remedy in Greece and the Balkans.",
     "scientificEvidence": "High in anti-oxidant flavonoids (anti-inflammatory) and volatile oils (mildly antiseptic), making it an excellent general tonic.",
     "isPremium": 0,
-    "usedFor": "Respiratory System - Lungs & Chest, Immune System - Acute Illness (Fever/Cold)"
+    "usedFor": "Respiratory System - Lungs & Chest, Immune System - Acute Illness (Fever/Cold)",
+    "alternativeNames": "Ironwort Tea, Greek Shepherd's Tea"
   },
   {
     "title": "Cinnamon Oil Massage (Cinnamomum verum)",
@@ -2445,7 +2588,8 @@
     "historicalContext": "Cinnamon was a primary spice and medicine in the ancient trade routes, used in Unani as a powerful warming agent (Hār).",
     "scientificEvidence": "High in Cinnamaldehyde, a potent volatile oil that causes local vasodilation (increased blood flow) and acts as a strong rubefacient (warming agent).",
     "isPremium": 0,
-    "usedFor": "Musculoskeletal System - Muscle Pain & Spasm, Cardiovascular System"
+    "usedFor": "Musculoskeletal System - Muscle Pain & Spasm, Cardiovascular System",
+    "alternativeNames": "Dar Sini Rub, Warming Liniment"
   },
   {
     "title": "Pomegranate Peel Decoction (Punica granatum)",
@@ -2462,7 +2606,8 @@
     "historicalContext": "The Pomegranate is sacred in the region. The peel was used specifically because it contains significantly more tannins than the fruit.",
     "scientificEvidence": "Contains extremely high levels of hydrolyzable tannins (punicalagins) which are powerful astringents and antiseptics.",
     "isPremium": 0,
-    "usedFor": "Digestive System - Bowel & Lower GI, Oral Health - Gums & Teeth"
+    "usedFor": "Digestive System - Bowel & Lower GI, Oral Health - Gums & Teeth",
+    "alternativeNames": "Rūmān Astringent Wash, Tannin Rinse"
   },
   {
     "title": "Guggul Resin Paste (Commiphora wightii)",
@@ -2479,7 +2624,8 @@
     "historicalContext": "Although primarily Indian (Ayurvedic), Guggul was a key trade item and medicine in Tibb and Unani systems for arthritis and clearing blockages.",
     "scientificEvidence": "Contains Guggulsterones which act as potent anti-inflammatory agents and reduce elevated serum cholesterol and triglycerides.",
     "isPremium": 0,
-    "usedFor": "Musculoskeletal System - Joints & Arthritis, Cardiovascular System"
+    "usedFor": "Musculoskeletal System - Joints & Arthritis, Cardiovascular System",
+    "alternativeNames": "Muql Tonic, Guggulu Paste"
   },
   {
     "title": "Flaxseed Mucilage Drink (Linum usitatissimum)",
@@ -2496,7 +2642,8 @@
     "historicalContext": "Flax was a fundamental crop. Its use for internal demulcent purposes is documented in Ancient Egyptian medicine.",
     "scientificEvidence": "High in mucilage (polysaccharides) which coats and soothes inflamed mucous membranes, and fiber (gentle bulk laxative).",
     "isPremium": 0,
-    "usedFor": "Digestive System - Stomach & Upper GI, Digestive System - Bowel & Lower GI"
+    "usedFor": "Digestive System - Stomach & Upper GI, Digestive System - Bowel & Lower GI",
+    "alternativeNames": "Linseed Demulcent, Gut Soother"
   },
   {
     "title": "Gum Arabic Lozenges (Acacia senegal)",
@@ -2513,7 +2660,8 @@
     "historicalContext": "Gum Arabic was a major trade item. Its medicinal use as a demulcent and binder for pills/lozenge dates to the earliest Egyptian records.",
     "scientificEvidence": "Purely high in polysaccharides (mucilage) that physically coat, soothe, and protect the mucous membranes.",
     "isPremium": 0,
-    "usedFor": "Oral Health - Throat & Pharynx, Respiratory System - Lungs & Chest"
+    "usedFor": "Oral Health - Throat & Pharynx, Respiratory System - Lungs & Chest",
+    "alternativeNames": "Acacia Demulcent, Throat Soother"
   },
   {
     "title": "Garlic and Vinegar Liniment",
@@ -2530,7 +2678,8 @@
     "historicalContext": "Garlic has been a cornerstone of local medicine. The combination with oil and vinegar is ancient for external rubs.",
     "scientificEvidence": "Garlic contains sulfur compounds (allium) that are highly stimulating (rubefacient) and anti-inflammatory when applied topically.",
     "isPremium": 0,
-    "usedFor": "Musculoskeletal System - Muscle Pain & Spasm, Skin & Wounds - Topical Healing"
+    "usedFor": "Musculoskeletal System - Muscle Pain & Spasm, Skin & Wounds - Topical Healing",
+    "alternativeNames": "Thūm Rub, Warming Poultice"
   },
   {
     "title": "Juniper Berry Decoction (Juniperus communis)",
@@ -2547,7 +2696,8 @@
     "historicalContext": "Valued since antiquity. Used in Unani medicine as a heating, anti-septic diuretic for 'cold' (Bārid) conditions.",
     "scientificEvidence": "Contains volatile oils (Terpinen-4-ol) which are strongly diuretic and antiseptic, irritating the kidneys to increase urine flow.",
     "isPremium": 0,
-    "usedFor": "Urinary System - Diuretics & Stones, Digestive System - Stomach & Upper GI"
+    "usedFor": "Urinary System - Diuretics & Stones, Digestive System - Stomach & Upper GI",
+    "alternativeNames": "Gin Berry Tonic, Urinary Antiseptic"
   },
   {
     "title": "Cardamom and Ghee Tonic",
@@ -2564,7 +2714,8 @@
     "historicalContext": "Cardamom is a major spice and medicine in the region, highly prized for its ability to correct 'coldness' and stagnation in the gut.",
     "scientificEvidence": "Contains volatile oils (Cineole) which are potent carminatives (gas-relievers), antispasmodics, and gentle respiratory expectorants.",
     "isPremium": 0,
-    "usedFor": "Digestive System - Stomach & Upper GI, Respiratory System - Lungs & Chest"
+    "usedFor": "Digestive System - Stomach & Upper GI, Respiratory System - Lungs & Chest",
+    "alternativeNames": "Hayl and Samin Confectio, Warming Digestant"
   },
   {
     "title": "Acacia Catechu Mouth Paste (Acacia catechu)",
@@ -2581,7 +2732,8 @@
     "historicalContext": "Although source material is Indian, the extract was a fundamental, powerful astringent (Qābid) in Unani medicine.",
     "scientificEvidence": "Contains extremely high concentrations of condensed and hydrolyzable tannins which are powerful local vasoconstrictors and gut astringents.",
     "isPremium": 0,
-    "usedFor": "Oral Health - Gums & Teeth, Digestive System - Bowel & Lower GI"
+    "usedFor": "Oral Health - Gums & Teeth, Digestive System - Bowel & Lower GI",
+    "alternativeNames": "Kattha Astringent, Catechu Tannin Chew"
   },
   {
     "title": "Date Palm Pollen Paste (Phoenix dactylifera)",
@@ -2598,7 +2750,8 @@
     "historicalContext": "Used for millennia, the pollen is associated with the vitality and proliferation of the date palm itself. Highly valued in folk medicine for boosting energy and fertility.",
     "scientificEvidence": "Rich in amino acids, vitamins, minerals, and hormones (Estrone), traditionally believed to support endocrine and reproductive health.",
     "isPremium": 0,
-    "usedFor": "Men's Health, Women's Health - Fertility"
+    "usedFor": "Men's Health, Women's Health - Fertility",
+    "alternativeNames": "Nakhla Tonic, Fertility Booster"
   },
   {
     "title": "Cumin Seed Infusion (Cuminum cyminum)",
@@ -2615,7 +2768,8 @@
     "historicalContext": "Used since Ancient Egypt. It is a staple carminative spice in the Unani and Tibb systems.",
     "scientificEvidence": "Contains volatile oils (Cuminaldehyde) which are powerful carminatives (gas-relievers) and antispasmodics for the smooth muscle of the gut.",
     "isPremium": 0,
-    "usedFor": "Digestive System - Stomach & Upper GI, Digestive System - Bowel & Lower GI"
+    "usedFor": "Digestive System - Stomach & Upper GI, Digestive System - Bowel & Lower GI",
+    "alternativeNames": "Kamūn Digestive Tea, Anti-Gas Drink"
   },
   {
     "title": "Nile Acacia Gum Tincture (Acacia nilotica)",
@@ -2632,7 +2786,8 @@
     "historicalContext": "Used by Ancient Egyptians for wound healing. The high tannin content was prized for its ability to 'set' and seal tissue.",
     "scientificEvidence": "Extremely high in tannins which act as potent local astringents (vasoconstrictors) and antiseptics.",
     "isPremium": 0,
-    "usedFor": "Skin & Wounds - Topical Healing, Oral Health - Gums & Teeth"
+    "usedFor": "Skin & Wounds - Topical Healing, Oral Health - Gums & Teeth",
+    "alternativeNames": "Sant Gum Spirit, Wound Painter"
   },
   {
     "title": "Carob Pod Syrup (Ceratonia siliqua)",
@@ -2649,7 +2804,8 @@
     "historicalContext": "The Carob was a staple food since antiquity. Its sticky, fiber-rich nature made it ideal for both syrups and as a treatment for diarrhea (the powder).",
     "scientificEvidence": "Contains high levels of demulcent polysaccharides and insoluble fiber, providing both a soothing coat and a gentle bulk laxative.",
     "isPremium": 0,
-    "usedFor": "Digestive System - Bowel & Lower GI, Respiratory System - Lungs & Chest"
+    "usedFor": "Digestive System - Bowel & Lower GI, Respiratory System - Lungs & Chest",
+    "alternativeNames": "Kharūb Demulcent, Gentle Expectorant"
   },
   {
     "title": "Rue Seed Fumigation (Ruta graveolens)",
@@ -2666,7 +2822,8 @@
     "historicalContext": "Used since ancient times for purification. The strong aroma was believed to ward off 'evil' and stop the spread of contagion.",
     "scientificEvidence": "Contains volatile oils (including skimmianine and furanocoumarins) which are strong aromatic and mildly stimulating/purifying.",
     "isPremium": 0,
-    "usedFor": "Nervous System & Sleep - Anxiety & Mood, Respiratory System - Sinus & Upper Tract"
+    "usedFor": "Nervous System & Sleep - Anxiety & Mood, Respiratory System - Sinus & Upper Tract",
+    "alternativeNames": "Hadhā Fumigation, Evil Eye Smoke"
   },
   {
     "title": "Black Hellebore Plaster (Helleborus niger)",
@@ -2683,7 +2840,8 @@
     "historicalContext": "Used by the Greeks (Hippocrates) and in Unani medicine as a powerful purgative (vomiting/diarrhea) and external irritant (Vesicant).",
     "scientificEvidence": "Contains potent Cardiotonic Glycosides (Helleborin, Helleborein), making it extremely toxic internally and highly caustic externally.",
     "isPremium": 0,
-    "usedFor": "Skin & Wounds - Topical Healing, Musculoskeletal System - Muscle Pain & Spasm"
+    "usedFor": "Skin & Wounds - Topical Healing, Musculoskeletal System - Muscle Pain & Spasm",
+    "alternativeNames": "Helleborus Skin Irritant, Drawing Poultice"
   },
   {
     "title": "Slippery Elm Powder (Ulmus rubra)",
@@ -2700,7 +2858,8 @@
     "historicalContext": "Although North American, the similar properties of certain local Elms were known. The imported Slippery Elm was highly valued in apothecary shops for its specific demulcent action.",
     "scientificEvidence": "Contains extremely high levels of mucilage (polysaccharides) that form a highly viscous, protective coating on mucous membranes.",
     "isPremium": 0,
-    "usedFor": "Digestive System - Stomach & Upper GI, Oral Health - Throat & Pharynx"
+    "usedFor": "Digestive System - Stomach & Upper GI, Oral Health - Throat & Pharynx",
+    "alternativeNames": "Ulmus Mucilage, Gastro-Intestinal Coat"
   },
   {
     "title": "Ajwain Seed Decoction (Trachyspermum ammi)",
@@ -2717,7 +2876,8 @@
     "historicalContext": "Used throughout the region, particularly as a warming remedy post-childbirth and for stubborn digestive coldness/spasms.",
     "scientificEvidence": "High in Thymol (volatile oil) which is a powerful anti-spasmodic, local antiseptic, and intense carminative (gas-reliever).",
     "isPremium": 0,
-    "usedFor": "Digestive System - Stomach & Upper GI, Women's Health - Menses/Childbirth"
+    "usedFor": "Digestive System - Stomach & Upper GI, Women's Health - Menses/Childbirth",
+    "alternativeNames": "Ajowan Anti-Spasm Tea, Carom Seed"
   },
   {
     "title": "Damask Rose Honey (Rosa damascena)",
@@ -2734,7 +2894,8 @@
     "historicalContext": "Rose water and honey were central to Persian Tibb. Rose is considered a Mufrich-i-Qalb (cardiac exhilarant) and a cooling laxative.",
     "scientificEvidence": "Contains volatile oils and trace flavonoids, providing a gentle sedative effect and mild, cooling laxative action.",
     "isPremium": 0,
-    "usedFor": "Nervous System & Sleep - Anxiety & Mood, Digestive System - Bowel & Lower GI"
+    "usedFor": "Nervous System & Sleep - Anxiety & Mood, Digestive System - Bowel & Lower GI",
+    "alternativeNames": "Gulāb Mās Confectio, Rose Syrup"
   },
   {
     "title": "Almond Milk Emulsion (Prunus dulcis)",
@@ -2751,7 +2912,8 @@
     "historicalContext": "Almonds were a foundational food source. The milk was used therapeutically for coughs and kidney issues for millennia.",
     "scientificEvidence": "High in mucilage and nutritive oils, acting as a demulcent (soothing coat) and gentle, non-irritant diuretic.",
     "isPremium": 0,
-    "usedFor": "Respiratory System - Lungs & Chest, Urinary System - Diuretics & Stones"
+    "usedFor": "Respiratory System - Lungs & Chest, Urinary System - Diuretics & Stones",
+    "alternativeNames": "Loz Milk, Chest & Kidney Soother"
   },
   {
     "title": "Dried Orange Peel Tincture (Citrus sinensis)",
@@ -2768,7 +2930,8 @@
     "historicalContext": "Oranges, a major trade item, were integrated into local medicine. The bitter, volatile oil-rich peel was used as a digestive stimulant.",
     "scientificEvidence": "Contains bitter flavonoids and volatile oils (limonene) which stimulate the digestive processes and act as a mild nervine.",
     "isPremium": 0,
-    "usedFor": "Digestive System - Stomach & Upper GI, Nervous System & Sleep - Anxiety & Mood"
+    "usedFor": "Digestive System - Stomach & Upper GI, Nervous System & Sleep - Anxiety & Mood",
+    "alternativeNames": "Portaqal Digestive Spirit, Peel Bitter"
   },
   {
     "title": "Dried Pomegranate Flower Infusion (Punica granatum)",
@@ -2785,7 +2948,8 @@
     "historicalContext": "Used since antiquity. The flowers were known to be highly astringent but less intensely so than the rind, making them a gentler option.",
     "scientificEvidence": "High in tannins and flavonoids, providing a strong astringent (tissue-toning) effect on the gut lining.",
     "isPremium": 0,
-    "usedFor": "Digestive System - Bowel & Lower GI, Oral Health - Gums & Teeth"
+    "usedFor": "Digestive System - Bowel & Lower GI, Oral Health - Gums & Teeth",
+    "alternativeNames": "Gulnār Astringent Tea, Diarrhea Stopper"
   },
   {
     "title": "Pistachio Resin Chewing Gum (Pistacia vera/lentiscus)",
@@ -2802,7 +2966,8 @@
     "historicalContext": "Mastic from the Chios variety was a fundamental trade item. Its use as a digestive and oral tonic is millennia old.",
     "scientificEvidence": "Contains volatile oils and resin acids which are mildly antiseptic, astringent, and have specific anti-bacterial activity against H. pylori.",
     "isPremium": 0,
-    "usedFor": "Oral Health - Gums & Teeth, Digestive System - Stomach & Upper GI"
+    "usedFor": "Oral Health - Gums & Teeth, Digestive System - Stomach & Upper GI",
+    "alternativeNames": "Mastic Gum Chew, Oral Freshener"
   },
   {
     "title": "Calamint Infusion (Calamintha nepeta)",
@@ -2819,7 +2984,8 @@
     "historicalContext": "Used since antiquity as both a culinary herb and a gentle medicine for nerves and digestion.",
     "scientificEvidence": "Contains volatile oils (pulegone, menthone) which are antispasmodic, carminative, and possess a gentle sedative effect.",
     "isPremium": 0,
-    "usedFor": "Digestive System - Stomach & Upper GI, Nervous System & Sleep - Anxiety & Mood"
+    "usedFor": "Digestive System - Stomach & Upper GI, Nervous System & Sleep - Anxiety & Mood",
+    "alternativeNames": "Mountain Mint Tea, Nervous Digestant"
   },
   {
     "title": "Fig and Senna Electuary",
@@ -2836,7 +3002,8 @@
     "historicalContext": "Electuaries (confections made with honey) were a primary ancient and medieval dosage form, ensuring palatability and controlled dosing of powerful drugs like Senna.",
     "scientificEvidence": "Combines the strong anthraquinone glycosides of Senna (stimulant) with the fiber and demulcent properties of Figs and Honey (carrier/gentle bulk).",
     "isPremium": 0,
-    "usedFor": "Digestive System - Bowel & Lower GI"
+    "usedFor": "Digestive System - Bowel & Lower GI",
+    "alternativeNames": "Tin and Senna Purgative Paste, Strong Laxative"
   },
   {
     "title": "Alum and Salt Gargle (Potassium Aluminum Sulfate)",
@@ -2853,7 +3020,8 @@
     "historicalContext": "Alum was a fundamental mineral in ancient trade, used for dyeing and medicinally as a powerful, non-organic astringent and wound sealer.",
     "scientificEvidence": "Alum is a powerful inorganic astringent that causes local protein precipitation, rapidly contracting and sealing mucous membranes.",
     "isPremium": 0,
-    "usedFor": "Oral Health - Gums & Teeth, Oral Health - Throat & Pharynx"
+    "usedFor": "Oral Health - Gums & Teeth, Oral Health - Throat & Pharynx",
+    "alternativeNames": "Shabba Mouthwash, Astringent Rinse"
   },
   {
     "title": "Coriander Seed Infusion (Coriandrum sativum)",
@@ -2870,7 +3038,8 @@
     "historicalContext": "Used since ancient times. Unlike many spices, Coriander is classified as cooling (Bārid) in Unani medicine, making it unique for hot fevers.",
     "scientificEvidence": "Contains volatile oils (Linalool, Geranyl acetate) which are gentle carminatives and act as a subtle cooling diaphoretic (promoting slight sweating to cool).",
     "isPremium": 0,
-    "usedFor": "Digestive System - Stomach & Upper GI, Immune System - Acute Illness (Fever/Cold)"
+    "usedFor": "Digestive System - Stomach & Upper GI, Immune System - Acute Illness (Fever/Cold)",
+    "alternativeNames": "Kuzbara Cooling Tea, Anti-Flatulence"
   },
   {
     "title": "Henna and Vinegar Hair Rinse (Lawsonia inermis)",
@@ -2887,7 +3056,8 @@
     "historicalContext": "Henna was used not just as a dye but as a primary scalp and skin medicine for its anti-fungal and astringent properties.",
     "scientificEvidence": "Contains lawsone (dye/anti-fungal) and tannins (astringent). The vinegar enhances the anti-fungal action and provides an acidic rinse for the scalp.",
     "isPremium": 0,
-    "usedFor": "Skin & Wounds - Topical Healing, General Wellness/Tonics"
+    "usedFor": "Skin & Wounds - Topical Healing, General Wellness/Tonics",
+    "alternativeNames": "Henna Anti-Dandruff Wash, Scalp Toner"
   },
   {
     "title": "Poppy Seed and Honey Emulsion (Papaver somniferum)",
@@ -2904,7 +3074,8 @@
     "historicalContext": "The use of Poppy seed preparations for sleep is ancient. The seeds themselves contain only trace alkaloids, making them a gentle folk remedy.",
     "scientificEvidence": "Contains trace opium alkaloids and high levels of calming fatty oils, providing a gentle sedative and anti-spasmodic effect.",
     "isPremium": 0,
-    "usedFor": "Nervous System & Sleep - Anxiety & Mood, Musculoskeletal System - Muscle Pain & Spasm"
+    "usedFor": "Nervous System & Sleep - Anxiety & Mood, Musculoskeletal System - Muscle Pain & Spasm",
+    "alternativeNames": "Khashkhāsh Paste, Sedative Confectio"
   },
   {
     "title": "Blackthorn Fruit Syrup (Prunus spinosa)",
@@ -2921,7 +3092,8 @@
     "historicalContext": "The fruits were widely gathered and used in folk medicine for their high tannin content to stop bleeding and diarrhea.",
     "scientificEvidence": "High in tannins (astringent) and organic acids, acting as a gentle, non-irritant remedy for mild, chronic diarrhea.",
     "isPremium": 0,
-    "usedFor": "Digestive System - Bowel & Lower GI, Oral Health - Gums & Teeth"
+    "usedFor": "Digestive System - Bowel & Lower GI, Oral Health - Gums & Teeth",
+    "alternativeNames": "Sloe Berry Astringent, Tarfa Syrup"
   },
   {
     "title": "Wild Lettuce Tincture (Lactuca virosa)",
@@ -2938,7 +3110,8 @@
     "historicalContext": "Used since the Greeks for sleep and pain. The bitter latex (lactucarium) was known as 'Lettuce Opium' for its mild sedative effect.",
     "scientificEvidence": "Contains Lactucarium (a mixture of triterpenoid compounds, including Lactucin) which provides a mild sedative and analgesic effect.",
     "isPremium": 0,
-    "usedFor": "Nervous System & Sleep - Anxiety & Mood, Nervous System & Sleep - Pain & Headache"
+    "usedFor": "Nervous System & Sleep - Anxiety & Mood, Nervous System & Sleep - Pain & Headache",
+    "alternativeNames": "Lactus Sedative, Opium Lettuce Spirit"
   },
   {
     "title": "Ginseng and Honey Tonic (Panax ginseng)",
@@ -2955,7 +3128,8 @@
     "historicalContext": "Although source material is Asian, Ginseng was traded heavily and integrated into Unani formulas as a high-value restorative for the elderly and convalescents.",
     "scientificEvidence": "Contains Ginsenosides (triterpenoid saponins) which are adaptogens, helping the body manage stress and improving systemic energy and endocrine function.",
     "isPremium": 0,
-    "usedFor": "General Wellness/Tonics, Endocrine System - Adrenals & Metabolism"
+    "usedFor": "General Wellness/Tonics, Endocrine System - Adrenals & Metabolism",
+    "alternativeNames": "Jinsing Restorative, Vitality Paste"
   },
   {
     "title": "Salt Water Nasal Rinse (Neti)",
@@ -2972,7 +3146,8 @@
     "historicalContext": "Used across the ancient world. The saline solution helps thin mucus and wash away allergens and irritants.",
     "scientificEvidence": "The hypertonic/isotonic salt solution helps draw fluid out of inflamed sinus tissues (osmosis) and physically rinses out irritants.",
     "isPremium": 0,
-    "usedFor": "Respiratory System - Sinus & Upper Tract, Immune System - Acute Illness (Fever/Cold)"
+    "usedFor": "Respiratory System - Sinus & Upper Tract, Immune System - Acute Illness (Fever/Cold)",
+    "alternativeNames": "Saline Sinus Wash, Sea Salt Rinse"
   },
   {
     "title": "Black Pepper and Honey Paste",
@@ -2989,7 +3164,8 @@
     "historicalContext": "Black Pepper was a primary warming spice (Hār) in Tibb and Unani, used specifically to counteract cold and damp ailments.",
     "scientificEvidence": "Contains Piperine, a strong alkaloid that is warming, stimulates mucus secretion (expectorant), and enhances the absorption of other compounds.",
     "isPremium": 0,
-    "usedFor": "Respiratory System - Lungs & Chest, Digestive System - Stomach & Upper GI"
+    "usedFor": "Respiratory System - Lungs & Chest, Digestive System - Stomach & Upper GI",
+    "alternativeNames": "Filfil Murabba, Cough and Cold Rub"
   },
   {
     "title": "Ginger and Lemon Hot Drink",
@@ -3006,7 +3182,8 @@
     "historicalContext": "Ginger and Lemon have been used together for centuries for their synergistic effects in treating digestive and immune complaints.",
     "scientificEvidence": "Ginger contains Gingerols (warming, anti-nausea). Lemon provides Vitamin C and is a mild diaphoretic (fever reducer).",
     "isPremium": 0,
-    "usedFor": "Digestive System - Stomach & Upper GI, Immune System - Acute Illness (Fever/Cold)"
+    "usedFor": "Digestive System - Stomach & Upper GI, Immune System - Acute Illness (Fever/Cold)",
+    "alternativeNames": "Zanjabil Tonic, Stomach Settler"
   },
   {
     "title": "Feverfew Decoction (Tanacetum parthenium)",
@@ -3023,7 +3200,8 @@
     "historicalContext": "Used in the region since antiquity. Its specific use for headache and pain is well-documented in early European and Arab texts.",
     "scientificEvidence": "Contains Sesquiterpene Lactones (Parthenolide) which inhibit platelet aggregation and reduce the release of inflammatory mediators (anti-migraine action).",
     "isPremium": 0,
-    "usedFor": "Nervous System & Sleep - Pain & Headache, Musculoskeletal System - Joints & Arthritis"
+    "usedFor": "Nervous System & Sleep - Pain & Headache, Musculoskeletal System - Joints & Arthritis",
+    "alternativeNames": "Parthenium Headache Tea, Migraine Stopper"
   },
   {
     "title": "Ziziphus Seed Sedative (Ziziphus jujuba)",
@@ -3040,7 +3218,8 @@
     "historicalContext": "The Jujube fruit is a staple. The seeds were recognized in Tibb and Chinese medicine for their specific calming and sleep-inducing properties.",
     "scientificEvidence": "Contains triterpenoids and flavonoids which act as mild sedatives, calming the central nervous system and promoting sleep.",
     "isPremium": 0,
-    "usedFor": "Nervous System & Sleep - Anxiety & Mood, Digestive System - Stomach & Upper GI"
+    "usedFor": "Nervous System & Sleep - Anxiety & Mood, Digestive System - Stomach & Upper GI",
+    "alternativeNames": "Unnāb Sleep Tea, Jujube Calmer"
   },
   {
     "title": "Lentil Porridge (Lens culinaris)",
@@ -3057,7 +3236,8 @@
     "historicalContext": "Lentils are one of the world's oldest cultivated foods, a primary source of protein and nourishment across the ancient world.",
     "scientificEvidence": "Excellent source of plant protein, iron, and fiber. The long cooking time makes the protein highly bioavailable for those with weakened digestion.",
     "isPremium": 0,
-    "usedFor": "General Wellness/Tonics, Immune System - Acute Illness (Fever/Cold)"
+    "usedFor": "General Wellness/Tonics, Immune System - Acute Illness (Fever/Cold)",
+    "alternativeNames": "Adas Restorative, Convalescent Meal"
   },
   {
     "title": "Barberry Fruit Infusion (Berberis vulgaris)",
@@ -3074,7 +3254,8 @@
     "historicalContext": "Used extensively in Persian (Tibb) medicine for treating liver and biliary issues, often cited as a specific remedy for jaundice.",
     "scientificEvidence": "Contains Berberine (an alkaloid) in the root bark, which powerfully stimulates bile flow (cholagogue) and acts as an antiseptic.",
     "isPremium": 0,
-    "usedFor": "Digestive System - Liver & Gallbladder, Urinary System - Diuretics & Stones"
+    "usedFor": "Digestive System - Liver & Gallbladder, Urinary System - Diuretics & Stones",
+    "alternativeNames": "Berberis Jaundice Tea, Gallbladder Flush"
   },
   {
     "title": "Savory Infusion (Satureja hortensis)",
@@ -3091,7 +3272,8 @@
     "historicalContext": "Used since antiquity as a culinary herb and a medicine, often substituting for Thyme or Oregano in the Levant.",
     "scientificEvidence": "Contains volatile oils (Carvacrol, Thymol) which are strong anti-spasmodics, carminatives, and potent local antiseptics.",
     "isPremium": 0,
-    "usedFor": "Digestive System - Stomach & Upper GI, Respiratory System - Lungs & Chest"
+    "usedFor": "Digestive System - Stomach & Upper GI, Respiratory System - Lungs & Chest",
+    "alternativeNames": "Summer Savory Digestive Tea, Thyme Alternative"
   },
   {
     "title": "Rosemary and Olive Oil Hair Mask",
@@ -3108,7 +3290,8 @@
     "historicalContext": "Rosemary (Iklil as-Sahra - Desert Crown) was associated with memory and strengthening the head since Greek and Roman times.",
     "scientificEvidence": "Contains volatile oils (Cineole, Camphor) which are powerful circulatory stimulants (rubefacients) and mental stimulants.",
     "isPremium": 0,
-    "usedFor": "General Wellness/Tonics, Nervous System & Sleep - Memory & Focus"
+    "usedFor": "General Wellness/Tonics, Nervous System & Sleep - Memory & Focus",
+    "alternativeNames": "Iklil as-Sahra Scalp Rub, Memory Toner"
   },
   {
     "title": "Dried Thyme Powder Capsules (Thymus vulgaris)",
@@ -3125,7 +3308,8 @@
     "historicalContext": "Thyme (often part of the Za'atar spice blend) is a foundational medicine in the region for its heating and antiseptic properties.",
     "scientificEvidence": "High concentrations of Thymol and Carvacrol (volatile oils) which are potent, wide-spectrum internal antiseptics and stimulating expectorants.",
     "isPremium": 0,
-    "usedFor": "Respiratory System - Lungs & Chest, Immune System - Acute Illness (Fever/Cold)"
+    "usedFor": "Respiratory System - Lungs & Chest, Immune System - Acute Illness (Fever/Cold)",
+    "alternativeNames": "Za'atar Pills, Antiseptic Tonic"
   },
   {
     "title": "Nigella and Sesame Oil Ear Drops (Nigella sativa)",
@@ -3142,7 +3326,8 @@
     "historicalContext": "Black Seed Oil is renowned for its anti-inflammatory properties, combined with the gentle emollience of Sesame Oil.",
     "scientificEvidence": "Combines the anti-inflammatory Thymoquinone (Black Seed) with the gentle, warming carrier oil to soothe the middle and outer ear.",
     "isPremium": 0,
-    "usedFor": "Eye & Ear Health, Skin & Wounds - Topical Healing"
+    "usedFor": "Eye & Ear Health, Skin & Wounds - Topical Healing",
+    "alternativeNames": "Kalonji Ear Oil, Otitis Soother"
   },
   {
     "title": "Jambu Seed Powder (Syzygium cumini)",
@@ -3159,7 +3344,8 @@
     "historicalContext": "Used extensively in folk and Ayurvedic medicine as a specific 'anti-diabetic' herb (Pramehahara).",
     "scientificEvidence": "Contains active compounds (Jamboline and Oleanolic acid) that inhibit the conversion of starch to sugar (alpha-glucosidase inhibitor) and stimulate insulin secretion.",
     "isPremium": 0,
-    "usedFor": "Endocrine System - Blood Sugar & Diabetes, Digestive System - Stomach & Upper GI"
+    "usedFor": "Endocrine System - Blood Sugar & Diabetes, Digestive System - Stomach & Upper GI",
+    "alternativeNames": "Jamun Blood Sugar Regulator, Black Plum Seed"
   },
   {
     "title": "Shallaki Resin Tincture (Boswellia serrata)",
@@ -3176,7 +3362,8 @@
     "historicalContext": "A core Ayurvedic anti-inflammatory (Shothahara) used for all Vata and Kapha imbalances affecting the joints.",
     "scientificEvidence": "Contains Boswellic acids (especially AKBA) which are powerful inhibitors of the 5-Lipoxygenase enzyme, a key pathway in inflammation.",
     "isPremium": 0,
-    "usedFor": "Musculoskeletal System - Joints & Arthritis, General Wellness/Tonics"
+    "usedFor": "Musculoskeletal System - Joints & Arthritis, General Wellness/Tonics",
+    "alternativeNames": "Indian Frankincense Extract, Salai Guggul"
   },
   {
     "title": "Haritaki Confectio (Terminalia chebula)",
@@ -3193,7 +3380,8 @@
     "historicalContext": "One of the most important single herbs in Ayurveda. Known for having five of the six tastes, making it highly balancing (Tridoshic).",
     "scientificEvidence": "High in tannins (astringent), mucilage (demulcent), and anthraquinones (gentle laxative), providing simultaneous cleansing and toning.",
     "isPremium": 0,
-    "usedFor": "Digestive System - Bowel & Lower GI, General Wellness/Tonics"
+    "usedFor": "Digestive System - Bowel & Lower GI, General Wellness/Tonics",
+    "alternativeNames": "Chebulic Myrobalan Preserve, Bowel Purifier"
   },
   {
     "title": "Punarnava Root Decoction (Boerhavia diffusa)",
@@ -3210,7 +3398,8 @@
     "historicalContext": "A primary herb for treating fluid retention (Shothahara) and one of the best herbs for strengthening kidney function.",
     "scientificEvidence": "Contains Punarnavine alkaloids which are potent, non-irritant diuretics and also reduce inflammation in the urinary tract.",
     "isPremium": 0,
-    "usedFor": "Urinary System - Diuretics & Stones, Cardiovascular System"
+    "usedFor": "Urinary System - Diuretics & Stones, Cardiovascular System",
+    "alternativeNames": "Renewing Vine Fluid, Edema Reliever"
   },
   {
     "title": "Pippali and Milk Decoction (Piper longum)",
@@ -3227,7 +3416,8 @@
     "historicalContext": "The milk buffers the intense heat of Pippali, allowing it to be used in sensitive conditions like asthma.",
     "scientificEvidence": "Combines the anti-spasmodic and expectorant Piperine with the demulcent and nutritive properties of milk.",
     "isPremium": 0,
-    "usedFor": "Respiratory System - Lungs & Chest, General Wellness/Tonics"
+    "usedFor": "Respiratory System - Lungs & Chest, General Wellness/Tonics",
+    "alternativeNames": "Long Pepper Milk, Asthma Soother"
   },
   {
     "title": "Manjistha Decoction (Rubia cordifolia)",
@@ -3244,7 +3434,8 @@
     "historicalContext": "A primary Raktashodhana (blood purifier) herb. Used to correct excess Pitta (fire/heat) disorders in the blood.",
     "scientificEvidence": "Contains Rubianoids and Quinones which are lymphagogue (stimulate lymph flow), strong antioxidants, and anti-inflammatory.",
     "isPremium": 0,
-    "usedFor": "Skin & Wounds - Topical Healing, General Wellness/Tonics"
+    "usedFor": "Skin & Wounds - Topical Healing, General Wellness/Tonics",
+    "alternativeNames": "Indian Madder Blood Purifier, Raktashodhana"
   },
   {
     "title": "Ajmoda Seed Tincture (Apium graveolens)",
@@ -3261,7 +3452,8 @@
     "historicalContext": "Used in Ayurveda as a strong carminative (gas reliever) and antispasmodic, particularly for 'Vata' (wind) type pains.",
     "scientificEvidence": "Contains volatile oils (Limonene, Selinene) which relax smooth muscle, providing potent anti-spasmodic and carminative effects.",
     "isPremium": 0,
-    "usedFor": "Digestive System - Stomach & Upper GI, Women's Health - Menses/Childbirth"
+    "usedFor": "Digestive System - Stomach & Upper GI, Women's Health - Menses/Childbirth",
+    "alternativeNames": "Wild Celery Extract, Anti-Spasmodic Drop"
   },
   {
     "title": "Bilva Fruit Pulp (Aegle marmelos)",
@@ -3278,7 +3470,8 @@
     "historicalContext": "The Bael tree is sacred to Shiva. The fruit is a primary Ayurvedic remedy for chronic gut issues (Grahani).",
     "scientificEvidence": "High in tannins, mucilage, and coumarins, providing strong astringency and antiseptic effects that heal the gut lining.",
     "isPremium": 0,
-    "usedFor": "Digestive System - Bowel & Lower GI, General Wellness/Tonics"
+    "usedFor": "Digestive System - Bowel & Lower GI, General Wellness/Tonics",
+    "alternativeNames": "Bael Anti-Diarrheal, Stone Apple Pulp"
   },
   {
     "title": "Dashamula Decoction",
@@ -3295,7 +3488,8 @@
     "historicalContext": "A cornerstone of Ayurvedic practice. Used to balance Vata and Kapha, providing deep nourishment to nerve and muscle tissue.",
     "scientificEvidence": "The synergy of the ten roots provides comprehensive anti-inflammatory, analgesic, and nervine tonic properties.",
     "isPremium": 0,
-    "usedFor": "Musculoskeletal System - Muscle Pain & Spasm, Respiratory System - Lungs & Chest"
+    "usedFor": "Musculoskeletal System - Muscle Pain & Spasm, Respiratory System - Lungs & Chest",
+    "alternativeNames": "Ten Roots Broth, Vata-Kapha Tonic"
   },
   {
     "title": "Guduchi and Neem Decoction",
@@ -3312,7 +3506,8 @@
     "historicalContext": "A classic Ayurvedic combination for cooling and purifying the blood (Pitta pacification) during severe illness.",
     "scientificEvidence": "Combines Guduchi's immune-modulating power with Neem's profound anti-microbial and anti-pyretic (fever-reducing) bitterness.",
     "isPremium": 0,
-    "usedFor": "Immune System - Acute Illness (Fever/Cold), Digestive System - Liver & Gallbladder"
+    "usedFor": "Immune System - Acute Illness (Fever/Cold), Digestive System - Liver & Gallbladder",
+    "alternativeNames": "Amrita-Nimba Anti-Pitta Tea, Fever Fighter"
   },
   {
     "title": "Indian Valerian Root Tincture (Valeriana wallichii)",
@@ -3329,7 +3524,8 @@
     "historicalContext": "An Ayurvedic nervine tonic (Medhya Rasayana) prized for its profound ability to sedate and calm Vata (wind/nervousness).",
     "scientificEvidence": "Contains Valerianic Acid and volatile oils which are GABA-ergic (increase GABA activity), acting as strong central nervous system depressants.",
     "isPremium": 0,
-    "usedFor": "Nervous System & Sleep - Sleep Disorders, Nervous System & Sleep - Anxiety & Mood"
+    "usedFor": "Nervous System & Sleep - Sleep Disorders, Nervous System & Sleep - Anxiety & Mood",
+    "alternativeNames": "Tagar Sedative, Himalayan Valerian Extract"
   },
   {
     "title": "Ginger and Salt Chew",
@@ -3346,7 +3542,8 @@
     "historicalContext": "A classic Ayurvedic pre-meal practice (Deepana) to stoke the digestive fire (Agni) and ensure proper assimilation of food.",
     "scientificEvidence": "Ginger contains Gingerols (warming, stimulant). Salt enhances enzyme secretion. Together they act as a potent digestive kindler.",
     "isPremium": 0,
-    "usedFor": "Digestive System - Stomach & Upper GI, Oral Health - Gums & Teeth"
+    "usedFor": "Digestive System - Stomach & Upper GI, Oral Health - Gums & Teeth",
+    "alternativeNames": "Shunthi Lavana Mukhya, Digestive Bitters"
   },
   {
     "title": "Khadira Decoction (Acacia catechu)",
@@ -3363,7 +3560,8 @@
     "historicalContext": "Used in Ayurveda as a supreme astringent (Kashaya) for the mouth and gut, and specifically for correcting oral inflammation.",
     "scientificEvidence": "Contains extremely high concentrations of condensed tannins which are potent local vasoconstrictors and tissue toners.",
     "isPremium": 0,
-    "usedFor": "Oral Health - Gums & Teeth, Digestive System - Bowel & Lower GI"
+    "usedFor": "Oral Health - Gums & Teeth, Digestive System - Bowel & Lower GI",
+    "alternativeNames": "Catechu Wood Rinse, Gum Toner"
   },
   {
     "title": "Shatavari and Licorice Powder",
@@ -3380,7 +3578,8 @@
     "historicalContext": "A classic Ayurvedic combination (Madhura-Rasa) for soothing inflammation (Pitta) and dryness (Vata) with minimal risk of toxicity.",
     "scientificEvidence": "Combines the demulcent properties of Shatavari with the anti-inflammatory and demulcent action of Licorice (Glycyrrhizin).",
     "isPremium": 0,
-    "usedFor": "Respiratory System - Lungs & Chest, Digestive System - Stomach & Upper GI"
+    "usedFor": "Respiratory System - Lungs & Chest, Digestive System - Stomach & Upper GI",
+    "alternativeNames": "Madhura Demulcent, Sweet-Soothing Mix"
   },
   {
     "title": "Ginger and Honey Cough Paste",
@@ -3397,7 +3596,8 @@
     "historicalContext": "A fundamental household remedy for cold and flu, using the powerful thermogenic and expectorant properties of dried ginger.",
     "scientificEvidence": "Quick (Mixing)",
     "isPremium": 0,
-    "usedFor": "Respiratory System - Lungs & Chest, Immune System - Acute Illness (Fever/Cold)"
+    "usedFor": "Respiratory System - Lungs & Chest, Immune System - Acute Illness (Fever/Cold)",
+    "alternativeNames": "Sunthi Madhu Lehya, Warming Expectorant"
   },
   {
     "title": "Amla Fruit Preserve (Emblica officinalis)",
@@ -3414,7 +3614,8 @@
     "historicalContext": "The key ingredient in the famous Chyawanprash. A supreme Rasayana (rejuvenator) and the best Ayurvedic tonic for Pitta (fire).",
     "scientificEvidence": "Highest natural concentration of heat-stable Vitamin C, high in tannins and antioxidants, providing powerful free-radical scavenging and immune support.",
     "isPremium": 0,
-    "usedFor": "General Wellness/Tonics, Immune System - General Support"
+    "usedFor": "General Wellness/Tonics, Immune System - General Support",
+    "alternativeNames": "Amalaki Chyawanprash Base, Rejuvenation Jam"
   },
   {
     "title": "Katuki Root Powder (Picrorhiza kurroa)",
@@ -3431,7 +3632,8 @@
     "historicalContext": "A key hepatoprotective (liver protecting) herb used specifically for jaundice and chronic infectious fevers (Jvara).",
     "scientificEvidence": "Contains Iridoid Glycosides (Picrosides, Kutkosides) which are potent cholagogues (bile flow stimulants) and immunomodulators.",
     "isPremium": 0,
-    "usedFor": "Digestive System - Liver & Gallbladder, Immune System - Acute Illness (Fever/Cold)"
+    "usedFor": "Digestive System - Liver & Gallbladder, Immune System - Acute Illness (Fever/Cold)",
+    "alternativeNames": "Bitter Tonic, Liver and Bile Cleanser"
   },
   {
     "title": "Haridra Extract (Curcuma longa)",
@@ -3448,7 +3650,8 @@
     "historicalContext": "Turmeric has been used as a daily food and medicine for over 4,000 years. The tincture provides concentrated internal action.",
     "scientificEvidence": "Contains Curcuminoids which are potent anti-inflammatory agents, inhibiting inflammatory cytokines and acting as strong antioxidants.",
     "isPremium": 0,
-    "usedFor": "Musculoskeletal System - Joints & Arthritis, General Wellness/Tonics"
+    "usedFor": "Musculoskeletal System - Joints & Arthritis, General Wellness/Tonics",
+    "alternativeNames": "Turmeric Tincture, Anti-Inflammatory Drops"
   },
   {
     "title": "Vasa Leaf Decoction (Adhatoda vasica)",
@@ -3465,7 +3668,8 @@
     "historicalContext": "A foundational herb in Ayurvedic respiratory medicine. Used widely for easing coughs and asthma (Shwasa).",
     "scientificEvidence": "Contains Quinazoline Alkaloids (Vasicine, Vasicinone) which are potent bronchodilators (open air passages) and stimulating expectorants.",
     "isPremium": 0,
-    "usedFor": "Respiratory System - Lungs & Chest, Immune System - Acute Illness (Fever/Cold)"
+    "usedFor": "Respiratory System - Lungs & Chest, Immune System - Acute Illness (Fever/Cold)",
+    "alternativeNames": "Malabar Nut Expectorant, Cough Clearing Tea"
   },
   {
     "title": "Amalaki and Honey Confectio",
@@ -3482,7 +3686,8 @@
     "historicalContext": "A common home remedy to get children to consume Amla. Honey provides warmth and acts as a carrier (Anupana).",
     "scientificEvidence": "Quick (Mixing)",
     "isPremium": 0,
-    "usedFor": "General Wellness/Tonics, Immune System - Acute Illness (Fever/Cold)"
+    "usedFor": "General Wellness/Tonics, Immune System - Acute Illness (Fever/Cold)",
+    "alternativeNames": "Amla Lehya, Vitamin C Paste"
   },
   {
     "title": "Brahmi Oil Massage (Bacopa monnieri)",
@@ -3499,7 +3704,8 @@
     "historicalContext": "A primary Medhya Rasayana (mind rejuvenator) herb. The oil application (Shiro Abhyanga) is a classic therapeutic method.",
     "scientificEvidence": "Long (Oil Preparation)",
     "isPremium": 0,
-    "usedFor": "Nervous System & Sleep - Memory & Focus, Nervous System & Sleep - Anxiety & Mood"
+    "usedFor": "Nervous System & Sleep - Memory & Focus, Nervous System & Sleep - Anxiety & Mood",
+    "alternativeNames": "Memory Oil Rub, Scalp Nervine"
   },
   {
     "title": "Bibhitaki Seed Oil (Terminalia bellirica)",
@@ -3516,7 +3722,8 @@
     "historicalContext": "The seed kernel is known to be highly purgative and is used in specific, drastic purificatory treatments (Virechana).",
     "scientificEvidence": "Medium (2-hour Infusion)",
     "isPremium": 0,
-    "usedFor": "Digestive System - Bowel & Lower GI, Respiratory System - Lungs & Chest"
+    "usedFor": "Digestive System - Bowel & Lower GI, Respiratory System - Lungs & Chest",
+    "alternativeNames": "Belleric Purgative Oil, Intestinal Cleanser"
   },
   {
     "title": "Agnimantha Bark Decoction (Premna integrifolia)",
@@ -3533,7 +3740,8 @@
     "historicalContext": "The name means \"fire churning.\" It is a vital herb in the Dashamula formula, specifically for its highly warming, light, and stimulating action.",
     "scientificEvidence": "Medium (15-min Decoction)",
     "isPremium": 0,
-    "usedFor": "Digestive System - Stomach & Upper GI, Musculoskeletal System - Muscle Pain & Spasm"
+    "usedFor": "Digestive System - Stomach & Upper GI, Musculoskeletal System - Muscle Pain & Spasm",
+    "alternativeNames": "Fire-Stoker Tea, Digestive Stimulant"
   },
   {
     "title": "Lodhra Bark Powder (Symplocos racemosa)",
@@ -3550,7 +3758,8 @@
     "historicalContext": "A core herb in Ayurvedic women's medicine, known for its powerful anti-hemorrhagic (bleeding-stopping) and toning action.",
     "scientificEvidence": "Quick (Grinding/Mixing)",
     "isPremium": 0,
-    "usedFor": "Women's Health - Menstruation/Menses, Skin & Wounds - Topical Healing"
+    "usedFor": "Women's Health - Menstruation/Menses, Skin & Wounds - Topical Healing",
+    "alternativeNames": "Symplocos Astringent, Women's Bleeding Stopper"
   },
   {
     "title": "Daruharidra and Honey Eye Drops (Berberis aristata)",
@@ -3567,7 +3776,8 @@
     "historicalContext": "Used in Ayurvedic ocular medicine (Netra Chikitsa) for its strong anti-microbial and astringent properties.",
     "scientificEvidence": "Medium (Boiling/Filtering)",
     "isPremium": 0,
-    "usedFor": "Eye & Ear Health, Skin & Wounds - Topical Healing"
+    "usedFor": "Eye & Ear Health, Skin & Wounds - Topical Healing",
+    "alternativeNames": "Indian Barberry Collyrium, Eye Antiseptic"
   },
   {
     "title": "Musta Root Powder (Cyperus rotundus)",
@@ -3584,7 +3794,8 @@
     "historicalContext": "Considered one of the best herbs for the digestive system, used to correct Ama (toxins) and balance Pitta (fire/inflammation).",
     "scientificEvidence": "Quick (Grinding/Mixing)",
     "isPremium": 0,
-    "usedFor": "Digestive System - Stomach & Upper GI, General Wellness/Tonics"
+    "usedFor": "Digestive System - Stomach & Upper GI, General Wellness/Tonics",
+    "alternativeNames": "Nut Grass Digestive Aid, Anti-Pitta Powder"
   },
   {
     "title": "Gokshura and Honey Paste",
@@ -3601,7 +3812,8 @@
     "historicalContext": "A classic synergy formula for the urinary tract (Mutra Roga), widely used to promote healthy flow and dissolution of stones.",
     "scientificEvidence": "Quick (Mixing)",
     "isPremium": 0,
-    "usedFor": "Urinary System - Diuretics & Stones, General Wellness/Tonics"
+    "usedFor": "Urinary System - Diuretics & Stones, General Wellness/Tonics",
+    "alternativeNames": "Punar-Gokshura Confectio, Kidney Toner"
   },
   {
     "title": "Baobab Fruit Powder Drink (Adansonia digitata)",
@@ -3618,7 +3830,8 @@
     "historicalContext": "Used for millennia; the tree is sacred. The pulp is a vital source of vitamins in dry seasons.",
     "scientificEvidence": "Extremely high in Vitamin C, fiber (prebiotic), and antioxidants. Used clinically for its prebiotic effect and for rehydration (similar to ORS).",
     "isPremium": 0,
-    "usedFor": "General Wellness/Tonics, Digestive System - Bowel & Lower GI"
+    "usedFor": "General Wellness/Tonics, Digestive System - Bowel & Lower GI",
+    "alternativeNames": "Upside-Down Tree Tonic, Africa's Superfruit"
   },
   {
     "title": "Devil's Claw Decoction (Harpagophytum procumbens)",
@@ -3635,7 +3848,8 @@
     "historicalContext": "Used by the San and Khoisan people for pain relief and digestive issues for centuries. Now globally recognized.",
     "scientificEvidence": "Contains Iridoid Glycosides (Harpagoside) which are potent anti-inflammatory and mild analgesic agents.",
     "isPremium": 0,
-    "usedFor": "Musculoskeletal System - Joints & Arthritis, Nervous System & Sleep - Pain & Headache"
+    "usedFor": "Musculoskeletal System - Joints & Arthritis, Nervous System & Sleep - Pain & Headache",
+    "alternativeNames": "Harpagophytum Pain Tea, Grapple Plant"
   },
   {
     "title": "African Ginger Decoction (Siphonochilus aethiopicus)",
@@ -3652,7 +3866,8 @@
     "historicalContext": "A primary remedy in Zulu and Xhosa traditional medicine for influenza and respiratory disease.",
     "scientificEvidence": "Contains volatile oils (cineole) and pungent compounds similar to ginger, acting as a warming expectorant and powerful anti-inflammatory.",
     "isPremium": 0,
-    "usedFor": "Respiratory System - Lungs & Chest, Immune System - Acute Illness (Fever/Cold)"
+    "usedFor": "Respiratory System - Lungs & Chest, Immune System - Acute Illness (Fever/Cold)",
+    "alternativeNames": "Natal Ginger, Wild Ginger Tonic"
   },
   {
     "title": "Kigelia Africana Fruit Ointment",
@@ -3669,7 +3884,8 @@
     "historicalContext": "Used by numerous tribes. The fruit's unique properties for treating skin problems, including traditional skin cancers, are widely documented.",
     "scientificEvidence": "Contains powerful anti-microbial naphthoquinones (Kigelione, Lapachol) and potent anti-inflammatory compounds.",
     "isPremium": 0,
-    "usedFor": "Skin & Wounds - Topical Healing, Women's Health - Breast/Skin"
+    "usedFor": "Skin & Wounds - Topical Healing, Women's Health - Breast/Skin",
+    "alternativeNames": "Sausage Tree Balm, Skin Cancer Cream"
   },
   {
     "title": "African Wormwood Infusion (Artemisia afra)",
@@ -3686,7 +3902,8 @@
     "historicalContext": "A foundational herb in South African traditional medicine (Muti). Used for nearly every affliction, especially fevers and respiratory issues.",
     "scientificEvidence": "Contains volatile oils (Thujone in trace amounts, Cineole) which are anti-microbial, strongly bitter, and anti-spasmodic.",
     "isPremium": 0,
-    "usedFor": "Immune System - Acute Illness (Fever/Cold), Digestive System - Stomach & Upper GI"
+    "usedFor": "Immune System - Acute Illness (Fever/Cold), Digestive System - Stomach & Upper GI",
+    "alternativeNames": "Wildeals Tea, Lengana Tonic"
   },
   {
     "title": "Marula Seed Oil (Sclerocarya birrea)",
@@ -3703,7 +3920,8 @@
     "historicalContext": "The Marula tree is essential. The oil, rich in oleic acid, is used for food, cosmetics, and treating skin conditions.",
     "scientificEvidence": "Rich in anti-oxidants (Vitamin E, C) and high levels of Oleic Acid (Omega-9), providing excellent skin hydration and nourishment.",
     "isPremium": 0,
-    "usedFor": "Skin & Wounds - Topical Healing, General Wellness/Tonics"
+    "usedFor": "Skin & Wounds - Topical Healing, General Wellness/Tonics",
+    "alternativeNames": "Morula Oil, African Beauty Oil"
   },
   {
     "title": "Hoodia Gordonii Decoction",
@@ -3720,7 +3938,8 @@
     "historicalContext": "Used by the San and Khoisan hunter-gatherers. Became globally famous in the 2000s for its appetite-suppressant properties.",
     "scientificEvidence": "Contains steroidal glycosides (P57) which are believed to act on the hypothalamus to mimic the feeling of satiety (fullness).",
     "isPremium": 0,
-    "usedFor": "General Wellness/Tonics, Digestive System - Stomach & Upper GI"
+    "usedFor": "General Wellness/Tonics, Digestive System - Stomach & Upper GI",
+    "alternativeNames": "Hoodia Appetite Suppressant, Bushman's Hunger Quencher"
   },
   {
     "title": "Spirostachys Africana (Tamboti) Smoke",
@@ -3737,7 +3956,8 @@
     "historicalContext": "Used widely by tribes (e.g., Venda, Shangaan). The wood oil is also used for massage, but the smoke is the key medicinal use.",
     "scientificEvidence": "Contains resinous compounds and volatile oils which, when burned, act as strong aromatic psycho-stimulants/decongestants.",
     "isPremium": 0,
-    "usedFor": "Nervous System & Sleep - Pain & Headache, Respiratory System - Sinus & Upper Tract"
+    "usedFor": "Nervous System & Sleep - Pain & Headache, Respiratory System - Sinus & Upper Tract",
+    "alternativeNames": "Tambootie Fumigation, Headache Smoke"
   },
   {
     "title": "Voacanga Africana Bark Decoction",
@@ -3754,7 +3974,8 @@
     "historicalContext": "Used in traditional rituals and medicine for its stimulating properties and effects on the nervous and cardiac systems.",
     "scientificEvidence": "Contains Iboga-type alkaloids (Voacangine, Vobasine) which are potent psychoactive and cardiotonic agents. Requires extreme caution.",
     "isPremium": 0,
-    "usedFor": "Cardiovascular System, Nervous System & Sleep - Anxiety & Mood"
+    "usedFor": "Cardiovascular System, Nervous System & Sleep - Anxiety & Mood",
+    "alternativeNames": "Voacanga Heart Tonic, African Dogbane"
   },
   {
     "title": "Ximenia Caffra Oil",
@@ -3771,7 +3992,8 @@
     "historicalContext": "The fruit is eaten, and the seed oil is used widely for cosmetic and medicinal purposes, particularly for its ability to soften rough skin.",
     "scientificEvidence": "Rich in Ximenynic Acid, a rare fatty acid with potent anti-inflammatory properties, making it excellent for skin and joint pain.",
     "isPremium": 0,
-    "usedFor": "Skin & Wounds - Topical Healing, Musculoskeletal System - Joints & Arthritis"
+    "usedFor": "Skin & Wounds - Topical Healing, Musculoskeletal System - Joints & Arthritis",
+    "alternativeNames": "Sour Plum Oil, African Sandalwood Oil"
   },
   {
     "title": "Griffonia Seed Tincture (Griffonia simplicifolia)",
@@ -3788,7 +4010,8 @@
     "historicalContext": "Traditionally used in Ivory Coast and Ghana. Its active compound was isolated and is now a global supplement.",
     "scientificEvidence": "Contains high concentrations of 5-Hydroxytryptophan (5-HTP), the immediate precursor to Serotonin, directly impacting mood and sleep regulation.",
     "isPremium": 0,
-    "usedFor": "Nervous System & Sleep - Anxiety & Mood, Nervous System & Sleep - Sleep Disorders"
+    "usedFor": "Nervous System & Sleep - Anxiety & Mood, Nervous System & Sleep - Sleep Disorders",
+    "alternativeNames": "5-HTP Spirit, Mood Regulator"
   },
   {
     "title": "Colocynth Fruit Poultice (Citrullus colocynthis)",
@@ -3805,7 +4028,8 @@
     "historicalContext": "Used since antiquity (Egypt, Greece). Known as a violent purgative but employed topically for deep lumps in folk medicine.",
     "scientificEvidence": "Contains cucurbitacin glycosides which are intensely bitter, inflammatory, and strongly purgative/vesicant.",
     "isPremium": 0,
-    "usedFor": "Skin & Wounds - Topical Healing, Musculoskeletal System - Joints & Arthritis"
+    "usedFor": "Skin & Wounds - Topical Healing, Musculoskeletal System - Joints & Arthritis",
+    "alternativeNames": "Tumbleweed Gourd Poultice, Drawing Agent"
   },
   {
     "title": "Buchu Infusion (Agathosma betulina)",
@@ -3822,7 +4046,8 @@
     "historicalContext": "Used for centuries by the Khoisan people. Became a major international botanical export in the 18th and 19th centuries.",
     "scientificEvidence": "Contains volatile oils (Diosphenol) which are strongly antiseptic, anti-inflammatory, and diuretic, specific for urinary tract conditions.",
     "isPremium": 0,
-    "usedFor": "Urinary System - Diuretics & Stones, Digestive System - Stomach & Upper GI"
+    "usedFor": "Urinary System - Diuretics & Stones, Digestive System - Stomach & Upper GI",
+    "alternativeNames": "Agathosma Urinary Tea, South African Aspalathus"
   },
   {
     "title": "Sceletium Tortuosum (Kanna) Chew",
@@ -3839,7 +4064,8 @@
     "historicalContext": "Used by the San and Khoisan for centuries in ritual and daily life. It is the primary traditional remedy for stress and depression.",
     "scientificEvidence": "Contains Mesembrine alkaloids which are potent serotonin reuptake inhibitors (SRIs), acting to elevate mood and reduce anxiety.",
     "isPremium": 0,
-    "usedFor": "Nervous System & Sleep - Anxiety & Mood, Nervous System & Sleep - Pain & Headache"
+    "usedFor": "Nervous System & Sleep - Anxiety & Mood, Nervous System & Sleep - Pain & Headache",
+    "alternativeNames": "Kanna Lift, African Valium"
   },
   {
     "title": "Eucalyptus Leaf Steam (Eucalyptus globulus)",
@@ -3856,7 +4082,8 @@
     "historicalContext": "Introduced primarily from Australia but became integral to South African medicine for respiratory conditions due to its potency.",
     "scientificEvidence": "Contains high levels of Cineole (Eucalyptol), a potent mucolytic (mucus thinner), anti-microbial, and bronchodilator.",
     "isPremium": 0,
-    "usedFor": "Respiratory System - Sinus & Upper Tract, Respiratory System - Lungs & Chest"
+    "usedFor": "Respiratory System - Sinus & Upper Tract, Respiratory System - Lungs & Chest",
+    "alternativeNames": "Blue Gum Sinus Clearer, Koala Breath"
   },
   {
     "title": "Combretum Woodii Decoction",
@@ -3873,7 +4100,8 @@
     "historicalContext": "A common remedy in Zulu and Venda traditional healing for fever, pain, and infectious diseases.",
     "scientificEvidence": "Contains triterpenoids and flavonoids which exhibit analgesic (pain-relieving) and anti-inflammatory activities.",
     "isPremium": 0,
-    "usedFor": "Nervous System & Sleep - Pain & Headache, Musculoskeletal System - Joints & Arthritis"
+    "usedFor": "Nervous System & Sleep - Pain & Headache, Musculoskeletal System - Joints & Arthritis",
+    "alternativeNames": "Combretum Pain Killer, Bush Willow Bark"
   },
   {
     "title": "Rooibos Tea (Aspalathus linearis)",
@@ -3890,7 +4118,8 @@
     "historicalContext": "Used by the Khoisan people for centuries. It gained global recognition in the 20th century as a safe, healthy tea.",
     "scientificEvidence": "Extremely high in polyphenols and flavonoids (Aspalathin, Nothofagin), providing strong antioxidant, anti-inflammatory, and anti-allergic effects.",
     "isPremium": 0,
-    "usedFor": "General Wellness/Tonics, Skin & Wounds - Topical Healing"
+    "usedFor": "General Wellness/Tonics, Skin & Wounds - Topical Healing",
+    "alternativeNames": "Red Bush Tea, African Red Tea"
   },
   {
     "title": "African Potato Tuber Tincture (Hypoxis hemerocallidea)",
@@ -3907,7 +4136,8 @@
     "historicalContext": "A key ingredient in Muti (traditional medicine). Gained notoriety in the AIDS crisis for its immune-supporting properties.",
     "scientificEvidence": "Contains phytosterols and sterolins which regulate and enhance immune cell function (T-cells, NK cells).",
     "isPremium": 0,
-    "usedFor": "Immune System - General Support, Immune System - Cancer Support"
+    "usedFor": "Immune System - General Support, Immune System - Cancer Support",
+    "alternativeNames": "Hypoxis Tonic, Star Lily Extract"
   },
   {
     "title": "Pterocarpus Angolensis (Kiaat) Decoction",
@@ -3924,7 +4154,8 @@
     "historicalContext": "Known as 'Bloodwood' due to the sap. Used extensively in Southern African medicine for blood disorders and severe tissue trauma.",
     "scientificEvidence": "Contains high concentrations of tannins (astringent) and phenolic compounds, providing strong tissue-toning and antiseptic effects.",
     "isPremium": 0,
-    "usedFor": "Skin & Wounds - Topical Healing, Digestive System - Bowel & Lower GI"
+    "usedFor": "Skin & Wounds - Topical Healing, Digestive System - Bowel & Lower GI",
+    "alternativeNames": "Bloodwood Bark Tea, Wound Healer"
   },
   {
     "title": "Spirogira Algae Paste (Spirulina/Chlorella)",
@@ -3941,7 +4172,8 @@
     "historicalContext": "Spirulina (from Lake Chad) has been a traditional food source for local tribes for centuries.",
     "scientificEvidence": "Extremely high in protein, B-vitamins (B12), iron, and phytonutrients (Chlorophyll, Phycocyanin) which are powerful immune modulators.",
     "isPremium": 0,
-    "usedFor": "General Wellness/Tonics, Immune System - General Support"
+    "usedFor": "General Wellness/Tonics, Immune System - General Support",
+    "alternativeNames": "Blue-Green Algae Tonic, Aquatic Food"
   },
   {
     "title": "Boscia Senegalensis Root Decoction",
@@ -3958,7 +4190,8 @@
     "historicalContext": "Used widely across the Sahel for fevers and gastrointestinal issues. The bark is a strong medicine in local practice.",
     "scientificEvidence": "Contains bitter alkaloids and saponins which are febrifuge (fever reducing), bitter stimulants, and possess anti-parasitic activity.",
     "isPremium": 0,
-    "usedFor": "Digestive System - Stomach & Upper GI, Immune System - Acute Illness (Fever/Cold)"
+    "usedFor": "Digestive System - Stomach & Upper GI, Immune System - Acute Illness (Fever/Cold)",
+    "alternativeNames": "Aizen Root Tonic, Desert Tea"
   },
   {
     "title": "Cassia Sieberiana Pod Poultice",
@@ -3975,7 +4208,8 @@
     "historicalContext": "A widely used medicinal tree. The pulp is a strong purgative internally and a highly active drawing agent externally.",
     "scientificEvidence": "Contains anthraquinone glycosides and irritant compounds that stimulate local tissue and increase blood flow, facilitating the 'drawing' action.",
     "isPremium": 0,
-    "usedFor": "Skin & Wounds - Topical Healing, Musculoskeletal System - Joints & Arthritis"
+    "usedFor": "Skin & Wounds - Topical Healing, Musculoskeletal System - Joints & Arthritis",
+    "alternativeNames": "African Laburnum Paste, Drawing Agent"
   },
   {
     "title": "Pelargonium Sidoides Root Tincture",
@@ -3992,7 +4226,8 @@
     "historicalContext": "A key medicine in traditional Xhosa healing. Became a global, clinically recognized treatment for respiratory infections in the 20th century.",
     "scientificEvidence": "Contains unique Coumarins and Polyphenols which exhibit anti-microbial, immune-modulating, and mucolytic (mucus thinning) activity.",
     "isPremium": 0,
-    "usedFor": "Respiratory System - Lungs & Chest, Immune System - Acute Illness (Fever/Cold)"
+    "usedFor": "Respiratory System - Lungs & Chest, Immune System - Acute Illness (Fever/Cold)",
+    "alternativeNames": "Umckaloabo Drops, African Geranium Extract"
   },
   {
     "title": "Shea Butter and Camwood Paste",
@@ -4009,7 +4244,8 @@
     "historicalContext": "Shea butter is a staple fat. Camwood is a traditional cosmetic and medicinal dye used for skin and ritual purposes.",
     "scientificEvidence": "Shea Butter provides high levels of essential fatty acids and unsaponifiables. Camwood adds astringent and anti-inflammatory compounds.",
     "isPremium": 0,
-    "usedFor": "Skin & Wounds - Topical Healing, General Wellness/Tonics"
+    "usedFor": "Skin & Wounds - Topical Healing, General Wellness/Tonics",
+    "alternativeNames": "Ori and Osun Rub, Skin Protector"
   },
   {
     "title": "Cola Nut Chewing (Cola acuminata)",
@@ -4026,7 +4262,8 @@
     "historicalContext": "Continuous Tradition",
     "scientificEvidence": "Beginner",
     "isPremium": 0,
-    "usedFor": "Nervous System & Sleep - Memory & Focus, General Wellness/Tonics"
+    "usedFor": "Nervous System & Sleep - Memory & Focus, General Wellness/Tonics",
+    "alternativeNames": "Obi Chew, Vigilance Aid"
   },
   {
     "title": "Prunus Africana Bark Decoction",
@@ -4043,7 +4280,8 @@
     "historicalContext": "Used locally for centuries, it became one of the first African herbal remedies to gain global clinical use for prostate issues.",
     "scientificEvidence": "Contains phytosterols (Beta-sitosterol) and triterpenes that inhibit the production of inflammatory prostaglandins and reduce edema in the prostate gland.",
     "isPremium": 0,
-    "usedFor": "Men's Health, Urinary System - Diuretics & Stones"
+    "usedFor": "Men's Health, Urinary System - Diuretics & Stones",
+    "alternativeNames": "Pygeum Tea, African Plum Bark"
   },
   {
     "title": "Khat Leaf Chew (Catha Edulis)",
@@ -4060,7 +4298,8 @@
     "historicalContext": "Continuous Tradition",
     "scientificEvidence": "Advanced",
     "isPremium": 0,
-    "usedFor": "Nervous System & Sleep - Memory & Focus, General Wellness/Tonics"
+    "usedFor": "Nervous System & Sleep - Memory & Focus, General Wellness/Tonics",
+    "alternativeNames": "Qat Stimulant, Abyssinian Tea"
   },
   {
     "title": "Euphorbia Resin Plaster (Euphorbia resinifera)",
@@ -4077,7 +4316,8 @@
     "historicalContext": "Used by Berber tribes and in traditional medicine for its extreme purgative and counter-irritant properties.",
     "scientificEvidence": "Contains Diterpene Esters (Resiniferatoxin), one of the hottest substances known, causing intense, agonizing local inflammation/pain.",
     "isPremium": 0,
-    "usedFor": "Skin & Wounds - Topical Healing, Musculoskeletal System - Joints & Arthritis"
+    "usedFor": "Skin & Wounds - Topical Healing, Musculoskeletal System - Joints & Arthritis",
+    "alternativeNames": "Dar-el-Aassal Plaster, Caustic Rub"
   },
   {
     "title": "Aloe Ferox Sap Swallow",
@@ -4094,7 +4334,8 @@
     "historicalContext": "Used by the Khoisan people for centuries. It became a global pharmaceutical laxative.",
     "scientificEvidence": "Contains Anthraquinone Glycosides (Aloin) which are powerful, irritant laxatives and cholagogues (bile flow stimulants).",
     "isPremium": 0,
-    "usedFor": "Digestive System - Bowel & Lower GI, Digestive System - Liver & Gallbladder"
+    "usedFor": "Digestive System - Bowel & Lower GI, Digestive System - Liver & Gallbladder",
+    "alternativeNames": "Cape Aloe Bitter, Bile Stimulant"
   },
   {
     "title": "Adhatoda Infusion (Justicia adhatoda)",
@@ -4111,7 +4352,8 @@
     "historicalContext": "Although primarily South Asian, it was widely traded and integrated into East African and Arab medicine for its superior respiratory action.",
     "scientificEvidence": "Contains Quinazoline Alkaloids (Vasicine, Vasicinone) which are potent bronchodilators, expectorants, and uterine stimulants.",
     "isPremium": 0,
-    "usedFor": "Respiratory System - Lungs & Chest, Immune System - Acute Illness (Fever/Cold)"
+    "usedFor": "Respiratory System - Lungs & Chest, Immune System - Acute Illness (Fever/Cold)",
+    "alternativeNames": "Malabar Nut Tea, Vasaka Respiratory Tonic"
   },
   {
     "title": "Harungana Madagascariensis Decoction",
@@ -4128,7 +4370,8 @@
     "historicalContext": "Used in traditional healing for liver and skin diseases. The orange sap is sometimes applied directly to skin lesions.",
     "scientificEvidence": "Contains high levels of hypericin-like compounds, anthraquinones, and tannins, providing cholagogue (bile flow stimulant) and antiseptic effects.",
     "isPremium": 0,
-    "usedFor": "Digestive System - Liver & Gallbladder, Skin & Wounds - Topical Healing"
+    "usedFor": "Digestive System - Liver & Gallbladder, Skin & Wounds - Topical Healing",
+    "alternativeNames": "Orange-Milk Tree Tonic, Liver Herb"
   },
   {
     "title": "Ginseng Root Chewing Stick (Fadogia agrestis)",
@@ -4145,7 +4388,8 @@
     "historicalContext": "Used in local systems for increasing male strength and performance. Gained modern recognition for its hormonal effects.",
     "scientificEvidence": "Contains alkaloids and saponins that enhance physical endurance and are shown to significantly boost testosterone levels in traditional animal models.",
     "isPremium": 0,
-    "usedFor": "Men's Health, General Wellness/Tonics"
+    "usedFor": "Men's Health, General Wellness/Tonics",
+    "alternativeNames": "African Ginseng Chew, Performance Booster"
   },
   {
     "title": "Wild Basil Infusion (Ocimum gratissimum)",
@@ -4162,7 +4406,8 @@
     "historicalContext": "Used widely across Africa for fevers, respiratory issues, and intestinal parasites. The leaves are also rubbed on skin as a mosquito repellent.",
     "scientificEvidence": "High in volatile oils (Eugenol, Thymol) which are warming, strongly antiseptic, and febrifuge (fever-reducing).",
     "isPremium": 0,
-    "usedFor": "Immune System - Acute Illness (Fever/Cold), Digestive System - Stomach & Upper GI"
+    "usedFor": "Immune System - Acute Illness (Fever/Cold), Digestive System - Stomach & Upper GI",
+    "alternativeNames": "Fever Plant Tea, Mosquito Basil"
   },
   {
     "title": "Ginseng Root Decoction (Panax ginseng)",
@@ -4179,7 +4424,8 @@
     "historicalContext": "The central herb in TCM. Its history of use as a superior tonic dates back over 5,000 years.",
     "scientificEvidence": "Contains Ginsenosides (triterpenoid saponins) which are potent adaptogens, modulating the HPA axis (stress response) and enhancing cellular energy production.",
     "isPremium": 0,
-    "usedFor": "General Wellness/Tonics, Endocrine System - Adrenals & Metabolism"
+    "usedFor": "General Wellness/Tonics, Endocrine System - Adrenals & Metabolism",
+    "alternativeNames": "Ren Shen Tonic, Human Root Decoction"
   },
   {
     "title": "Dang Gui Tincture (Angelica sinensis)",
@@ -4196,7 +4442,8 @@
     "historicalContext": "A cornerstone of almost all TCM gynecological formulas. Used to regulate the entire menstrual cycle.",
     "scientificEvidence": "Contains Ligustilide (anti-spasmodic) and Coumarins (mild blood thinning). The combination nourishes blood and invigorates circulation.",
     "isPremium": 0,
-    "usedFor": "Women's Health - Menstruation/Menses, General Wellness/Tonics"
+    "usedFor": "Women's Health - Menstruation/Menses, General Wellness/Tonics",
+    "alternativeNames": "Dong Quai Blood Tonic, Female Ginseng Extract"
   },
   {
     "title": "Gingko Biloba Leaf Tea",
@@ -4213,7 +4460,8 @@
     "historicalContext": "Used in TCM for asthma and circulation issues. Modern research focuses on its vascular effects.",
     "scientificEvidence": "Contains Flavonoid Glycosides and Terpene Lactones (Ginkgolides) which are potent antioxidants and platelet-activating factor inhibitors (improving blood viscosity).",
     "isPremium": 0,
-    "usedFor": "Nervous System & Sleep - Memory & Focus, Cardiovascular System"
+    "usedFor": "Nervous System & Sleep - Memory & Focus, Cardiovascular System",
+    "alternativeNames": "Bai Guo Ye Infusion, Memory Leaf"
   },
   {
     "title": "Shiitake Mushroom Decoction (Lentinula edodes)",
@@ -4230,7 +4478,8 @@
     "historicalContext": "A major food-as-medicine in East Asia. Used for \"strengthening the protective Qi\" (Wei Qi).",
     "scientificEvidence": "Contains Beta-glucans (Lentinan) which are powerful polysaccharide compounds that stimulate the innate immune system (macrophages, NK cells).",
     "isPremium": 0,
-    "usedFor": "Immune System - General Support, General Wellness/Tonics"
+    "usedFor": "Immune System - General Support, General Wellness/Tonics",
+    "alternativeNames": "Dong Gu Soup, Immune Mushroom"
   },
   {
     "title": "Chuan Xiong Tincture (Ligusticum chuanxiong)",
@@ -4247,6 +4496,7 @@
     "historicalContext": "A classic TCM herb for moving Qi and Blood and one of the primary herbs for treating all forms of headache.",
     "scientificEvidence": "Contains Ligustilide and Ferulic Acid, which are highly effective at relaxing vascular smooth muscle and inhibiting platelet aggregation.",
     "isPremium": 0,
-    "usedFor": "Nervous System & Sleep - Pain & Headache, Women's Health - Menstruation/Menses"
+    "usedFor": "Nervous System & Sleep - Pain & Headache, Women's Health - Menstruation/Menses",
+    "alternativeNames": "Sichuan Lovage Extract, Headache Herb"
   }
 ]

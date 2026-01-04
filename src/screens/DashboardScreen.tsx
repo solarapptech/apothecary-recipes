@@ -353,6 +353,7 @@ export function DashboardScreen({
                   timePeriod={item.timePeriod}
                   warning={item.warning}
                   region={item.region}
+                  alternativeNames={item.alternativeNames}
                   usedFor={item.usedFor}
                   ingredients={item.ingredients}
                   detailedMeasurements={item.detailedMeasurements}
@@ -385,6 +386,7 @@ export function DashboardScreen({
                 timePeriod={item.timePeriod}
                 warning={item.warning}
                 region={item.region}
+                alternativeNames={item.alternativeNames}
                 usedFor={item.usedFor}
                 ingredients={item.ingredients}
                 detailedMeasurements={item.detailedMeasurements}
@@ -430,6 +432,7 @@ export function DashboardScreen({
                     timePeriod={item.timePeriod}
                     warning={item.warning}
                     region={item.region}
+                    alternativeNames={item.alternativeNames}
                     usedFor={item.usedFor}
                     ingredients={item.ingredients}
                     detailedMeasurements={item.detailedMeasurements}
@@ -438,12 +441,16 @@ export function DashboardScreen({
                     historicalContext={item.historicalContext}
                     scientificEvidence={item.scientificEvidence}
                     reduceMotionEnabled={reduceMotionEnabled}
+                    dimmed={isGrayedOut}
                     expanded={isDetailsMode}
                     onRequestSetExpanded={(next) => handleListDetailsExpandedChange(item.id, next)}
                     allowDetailsToggle={false}
                     onPress={() => {
-                      // Tapping the expanded card toggles details mode, but should NOT restore scroll.
-                      handleListDetailsExpandedChange(item.id, !isDetailsMode, false);
+                      // In list (compact) view, tapping the expanded card should open details.
+                      // Once details are already visible, ListBigRecipeRow ignores card-body presses.
+                      if (!isDetailsMode) {
+                        handleListDetailsExpandedChange(item.id, true, false);
+                      }
                     }}
                     showDetailsButton={true}
                     showMinimizeButton={true}
@@ -467,12 +474,11 @@ export function DashboardScreen({
                         });
                       };
 
-                      // If details mode is active, fold back to summary first so the user sees the text "retract" animation.
+                      // Two-stage behavior:
+                      // - If details are open, first tap folds back to summary only.
+                      // - If already in summary, second tap collapses to compact.
                       if (isDetailsMode) {
                         handleListDetailsExpandedChange(item.id, false);
-                        setTimeout(() => {
-                          collapseToCompactNow();
-                        }, reduceMotionEnabled ? 0 : collapseAnimDuration);
                         return;
                       }
 

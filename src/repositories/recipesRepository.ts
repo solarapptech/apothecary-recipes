@@ -61,7 +61,7 @@ export function buildListRecipesQuery(input: ListRecipesInput): { sql: string; p
     params.push(input.launchSeed);
   }
 
-  const sql = `SELECT id, title, difficultyScore, preparationTime, description, timePeriod, warning, region, usedFor, ingredients, detailedMeasurements, preparationSteps, usage, historicalContext, scientificEvidence, randomKey, isPremium, imageLocalPath
+  const sql = `SELECT id, title, difficultyScore, preparationTime, description, timePeriod, warning, region, alternativeNames, usedFor, ingredients, detailedMeasurements, preparationSteps, usage, historicalContext, scientificEvidence, randomKey, isPremium, imageLocalPath
 FROM recipes
 ${whereClause}
 ${orderClause}

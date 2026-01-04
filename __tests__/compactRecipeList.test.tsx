@@ -157,10 +157,9 @@ test('renders difficulty and preparation time in dedicated slots', () => {
   const difficultyNode = tree.root.findByProps({ testID: 'compact-recipe-row-difficulty-1' });
   const timeNode = tree.root.findByProps({ testID: 'compact-recipe-row-time-1' });
 
-  const difficultyIcons = difficultyNode.findAll(
-    (node: any) => node.props?.name === 'star' || node.props?.name === 'starOutline'
-  );
-  expect(difficultyIcons).toHaveLength(3);
+  const difficultyTextNodes = difficultyNode.findAllByType(require('react-native').Text);
+  expect(difficultyTextNodes.length).toBeGreaterThan(0);
+  expect(textFromChildren(difficultyTextNodes[0].props.children)).toContain('Hard');
 
   const timeTextNodes = timeNode.findAllByType(require('react-native').Text);
   expect(timeTextNodes.length).toBeGreaterThan(0);
@@ -222,7 +221,7 @@ test('list-big view auto-scrolls to the newly opened recipe when switching focus
     jest.advanceTimersByTime(140);
   });
 
-  expect(mockScrollToIndex).toHaveBeenCalledWith({ index: 0, animated: true, viewPosition: 0, viewOffset: -12 });
+  expect(mockScrollToIndex).toHaveBeenCalledWith({ index: 0, animated: true, viewPosition: 0, viewOffset: 12 });
   mockScrollToIndex.mockClear();
 
   expect(tree.root.findByProps({ testID: 'list-big-recipe-row-details-mode-1' })).toBeTruthy();
@@ -238,7 +237,7 @@ test('list-big view auto-scrolls to the newly opened recipe when switching focus
     jest.advanceTimersByTime(140);
   });
 
-  expect(mockScrollToIndex).toHaveBeenCalledWith({ index: 1, animated: true, viewPosition: 0, viewOffset: -12 });
+  expect(mockScrollToIndex).toHaveBeenCalledWith({ index: 1, animated: true, viewPosition: 0, viewOffset: 12 });
   jest.useRealTimers();
 });
 
@@ -268,16 +267,16 @@ test('list-big view performs a correction scroll after layout settles', () => {
   });
 
   act(() => {
-    jest.advanceTimersByTime(60);
+    jest.advanceTimersByTime(140);
   });
 
-  expect(mockScrollToIndex).toHaveBeenCalledWith({ index: 0, animated: true, viewPosition: 0, viewOffset: -12 });
+  expect(mockScrollToIndex).toHaveBeenCalledWith({ index: 0, animated: true, viewPosition: 0, viewOffset: 12 });
 
   act(() => {
     jest.advanceTimersByTime(600);
   });
 
-  expect(mockScrollToIndex).toHaveBeenCalledWith({ index: 0, animated: false, viewPosition: 0, viewOffset: -12 });
+  expect(mockScrollToIndex).toHaveBeenCalledWith({ index: 0, animated: false, viewPosition: 0, viewOffset: 12 });
 
   jest.useRealTimers();
 });
@@ -427,7 +426,7 @@ test('compact list auto-scrolls when expanding a recipe for the first time', () 
   });
 
   act(() => {
-    jest.advanceTimersByTime(60);
+    jest.advanceTimersByTime(140);
   });
 
   expect(mockScrollToIndex).toHaveBeenCalledWith({ index: 0, animated: true, viewPosition: 0.1 });
@@ -533,52 +532,7 @@ test('list view expanded items toggle details mode via + more info button', () =
   expect(tree.root.findByProps({ testID: 'compact-recipe-row-thumb-1' })).toBeTruthy();
 });
 
-test('list view expanded items toggle details mode via tapping the expanded card (does not collapse to compact)', () => {
-  const DashboardScreen = loadDashboardScreenWithFlashListMock();
-  const recipes = createRecipes(1);
-
-  const tree = render(
-    <DashboardScreen
-      title="Apothecary Recipes"
-      headerRight={<View />}
-      controls={<View />}
-      footer={<View />}
-      recipes={recipes}
-      totalCount={1}
-      viewMode="list"
-    />
-  );
-
-  // First tap: expand from compact to list-big
-  act(() => {
-    tree.root.findByProps({ testID: 'dashboard-recipe-toggle-1' }).props.onPress();
-  });
-
-  expect(tree.root.findByProps({ testID: 'list-big-recipe-row-1' })).toBeTruthy();
-  expect(tree.root.findAllByProps({ testID: 'list-big-recipe-row-details-mode-1' })).toHaveLength(0);
-
-  // Second tap: toggle details mode ON (same as + more info)
-  act(() => {
-    tree.root.findByProps({ testID: 'list-big-recipe-row-1' }).props.onPress({
-      nativeEvent: { locationX: 0, locationY: 0 },
-    });
-  });
-
-  expect(tree.root.findByProps({ testID: 'list-big-recipe-row-details-mode-1' })).toBeTruthy();
-
-  // Third tap: toggle details mode OFF (back to 2-field summary), still expanded
-  act(() => {
-    tree.root.findByProps({ testID: 'list-big-recipe-row-1' }).props.onPress({
-      nativeEvent: { locationX: 0, locationY: 0 },
-    });
-  });
-
-  expect(tree.root.findAllByProps({ testID: 'list-big-recipe-row-details-mode-1' })).toHaveLength(0);
-  expect(tree.root.findByProps({ testID: 'list-big-recipe-row-1' })).toBeTruthy();
-  expect(tree.root.findAllByProps({ testID: 'compact-recipe-row-thumb-1' })).toHaveLength(0);
-});
-
-test('list view auto-scrolls to the recipe when collapsing details by tapping the expanded card', () => {
+test('list view collapses details via tapping the title zone (expanded row stays expanded)', () => {
   jest.useFakeTimers();
   const DashboardScreen = loadDashboardScreenWithFlashListMock();
   const recipes = createRecipes(1);
@@ -601,23 +555,24 @@ test('list view auto-scrolls to the recipe when collapsing details by tapping th
     tree.root.findByProps({ testID: 'dashboard-recipe-toggle-1' }).props.onPress();
   });
 
-  // Enter details mode by tapping the expanded card
+  // Enter details mode via + more info button
   act(() => {
-    tree.root.findByProps({ testID: 'list-big-recipe-row-1' }).props.onPress({
-      nativeEvent: { locationX: 0, locationY: 0 },
+    tree.root.findByProps({ testID: 'list-big-recipe-row-more-info-1' }).props.onPress({
+      stopPropagation: () => {},
     });
   });
   expect(tree.root.findByProps({ testID: 'list-big-recipe-row-details-mode-1' })).toBeTruthy();
 
-  // Collapse details mode by tapping the expanded card again
+  // Collapse details mode by tapping the title zone
   act(() => {
-    tree.root.findByProps({ testID: 'list-big-recipe-row-1' }).props.onPress({
+    tree.root.findByProps({ testID: 'list-big-recipe-row-title-pressable-1' }).props.onPress({
+      stopPropagation: () => {},
       nativeEvent: { locationX: 0, locationY: 0 },
     });
   });
 
   act(() => {
-    jest.advanceTimersByTime(60);
+    jest.advanceTimersByTime(140);
   });
 
   expect(mockScrollToIndex).toHaveBeenCalledWith({ index: 0, animated: true, viewPosition: 0.1 });
@@ -625,7 +580,6 @@ test('list view auto-scrolls to the recipe when collapsing details by tapping th
 });
 
 test('list view minimize folds details back to summary first, then collapses to compact row', () => {
-  jest.useFakeTimers();
   const DashboardScreen = loadDashboardScreenWithFlashListMock();
   const recipes = createRecipes(1);
 
@@ -666,15 +620,15 @@ test('list view minimize folds details back to summary first, then collapses to 
   expect(tree.root.findByProps({ testID: 'list-big-recipe-row-1' })).toBeTruthy();
   expect(tree.root.findAllByProps({ testID: 'compact-recipe-row-thumb-1' })).toHaveLength(0);
 
-  // After the collapse animation duration, it should collapse to the compact row
+  // Second minimize tap: should now collapse to the compact row
   act(() => {
-    jest.advanceTimersByTime(250);
+    tree.root.findByProps({ testID: 'list-big-recipe-row-minimize-1' }).props.onPress({
+      stopPropagation: () => {},
+    });
   });
 
   expect(tree.root.findByProps({ testID: 'compact-recipe-row-thumb-1' })).toBeTruthy();
   expect(tree.root.findAllByProps({ testID: 'list-big-recipe-row-1' })).toHaveLength(0);
-
-  jest.useRealTimers();
 });
 
 test('list view expanded items with details mode collapse back to 2-field summary via Show Less (and minimize collapses to compact row)', () => {
@@ -726,7 +680,7 @@ test('list view expanded items with details mode collapse back to 2-field summar
   expect(tree.root.findByProps({ testID: 'compact-recipe-row-thumb-1' })).toBeTruthy();
 });
 
-test('list-big view items toggle details mode via tapping the card', () => {
+test('list-big view items enter details mode via tapping the card, but do not collapse when already showing details', () => {
   const DashboardScreen = loadDashboardScreenWithFlashListMock();
   const recipes = createRecipes(1);
 
@@ -754,14 +708,14 @@ test('list-big view items toggle details mode via tapping the card', () => {
 
   expect(tree.root.findByProps({ testID: 'list-big-recipe-row-details-mode-1' })).toBeTruthy();
 
-  // Tap card again: exit details mode
+  // Tap card again: should NOT exit details mode
   act(() => {
     tree.root.findByProps({ testID: 'list-big-recipe-row-1' }).props.onPress({
       nativeEvent: { locationX: 0, locationY: 0 },
     });
   });
 
-  expect(tree.root.findAllByProps({ testID: 'list-big-recipe-row-details-mode-1' })).toHaveLength(0);
+  expect(tree.root.findByProps({ testID: 'list-big-recipe-row-details-mode-1' })).toBeTruthy();
 });
 
 test('list-big view only allows expanding/closing the image when the recipe is focused (details shown)', () => {
@@ -973,7 +927,7 @@ test('auto-scrolls to the recipe when collapsing details via Show Less in list v
   jest.useRealTimers();
 });
 
-test('auto-scrolls to the recipe when collapsing details by tapping the card in list-big view', () => {
+test('auto-scrolls to the recipe when collapsing details via tapping the title zone in list-big view', () => {
   jest.useFakeTimers();
   const DashboardScreen = loadDashboardScreenWithFlashListMock();
   const recipes = createRecipes(1);
@@ -999,17 +953,18 @@ test('auto-scrolls to the recipe when collapsing details by tapping the card in 
   });
   expect(tree.root.findByProps({ testID: 'list-big-recipe-row-details-mode-1' })).toBeTruthy();
 
-  // Tap card again: exit details mode -> should auto-scroll to keep this recipe visible
+  // Tap title zone: exit details mode -> should auto-scroll to keep this recipe visible
   act(() => {
-    tree.root.findByProps({ testID: 'list-big-recipe-row-1' }).props.onPress({
+    tree.root.findByProps({ testID: 'list-big-recipe-row-title-pressable-1' }).props.onPress({
+      stopPropagation: () => {},
       nativeEvent: { locationX: 0, locationY: 0 },
     });
   });
 
   act(() => {
-    jest.advanceTimersByTime(60);
+    jest.advanceTimersByTime(140);
   });
 
-  expect(mockScrollToIndex).toHaveBeenCalledWith({ index: 0, animated: true, viewPosition: 0.1 });
+  expect(mockScrollToIndex).toHaveBeenCalledWith({ index: 0, animated: true, viewPosition: 0, viewOffset: 12 });
   jest.useRealTimers();
 });

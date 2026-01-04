@@ -10,6 +10,7 @@ import { theme } from '../ui/theme';
 
 import { FieldRow } from './FieldRow';
 import { PreparationStepsValue } from './PreparationStepsValue';
+import { SecondaryFieldRow } from './SecondaryFieldRow';
 
 type RecipeGridTileProps = {
   recipeId: number;
@@ -20,6 +21,7 @@ type RecipeGridTileProps = {
   timePeriod: string;
   warning: string;
   region: string;
+  alternativeNames?: string;
   usedFor: string;
   ingredients: string;
   detailedMeasurements: string;
@@ -40,6 +42,7 @@ export function RecipeGridTile({
   timePeriod: _timePeriod,
   warning,
   region,
+  alternativeNames,
   usedFor,
   ingredients,
   detailedMeasurements,
@@ -59,6 +62,13 @@ export function RecipeGridTile({
     .filter(Boolean)
     .map((value, index) => `${index + 1}. ${value}`)
     .join('\n');
+
+  const difficultyLabel = (() => {
+    const safeScore = Math.max(1, Math.min(3, Math.round(difficultyScore)));
+    if (safeScore === 1) return 'Easy';
+    if (safeScore === 2) return 'Normal';
+    return 'Hard';
+  })();
 
   return (
     <View
@@ -98,7 +108,7 @@ export function RecipeGridTile({
         <View style={styles.metaItem} testID={`recipe-grid-tile-difficulty-${recipeId}`}>
           <FieldIcon name="difficulty" size={14} color={theme.colors.brand.primary} />
           <Text style={styles.metaText} numberOfLines={1}>
-            Difficulty {difficultyScore}
+            {difficultyLabel}
           </Text>
         </View>
         <View style={styles.metaItem} testID={`recipe-grid-tile-time-${recipeId}`}>
@@ -128,8 +138,18 @@ export function RecipeGridTile({
             valueNode={<PreparationStepsValue value={preparationSteps} />}
           />
           <FieldRow icon="usage" label="Usage" value={usage} />
-          <FieldRow icon="warning" label="Warning" value={warning} />
+          <SecondaryFieldRow
+            icon="warning"
+            label="Warning"
+            value={warning}
+            collapsible
+            defaultCollapsed
+            chevronColor={theme.colors.brand.primaryStrong}
+            toggleTestID={`recipe-grid-tile-warning-toggle-${recipeId}`}
+            valueTestID={`recipe-grid-tile-warning-value-${recipeId}`}
+          />
           <FieldRow icon="historical" label="Historical" value={historicalContext} />
+          <FieldRow icon="historical" label="Alternative names" value={alternativeNames?.trim() ? alternativeNames : '—'} />
           <FieldRow icon="evidence" label="Evidence" value={scientificEvidence} />
         </Animated.View>
       ) : null}
