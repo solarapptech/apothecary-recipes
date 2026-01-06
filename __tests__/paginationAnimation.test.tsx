@@ -44,7 +44,7 @@ async function flushMicrotasks(times: number) {
 
     act(() => {
       try {
-        jest.runOnlyPendingTimers();
+        jest.advanceTimersByTime(1500);
       } catch {
         // ignore when not using fake timers
       }

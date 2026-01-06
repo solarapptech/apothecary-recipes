@@ -470,7 +470,7 @@ test('search is debounced and clearable, view toggle persists', async () => {
   });
 
   act(() => {
-    jest.advanceTimersByTime(250);
+    jest.advanceTimersByTime(1000);
   });
 
   await flushMicrotasks(5);

@@ -1,12 +1,13 @@
 import type { Recipe } from '../types/recipe';
 
 import { computeDeterministicRandomKey } from './hash';
+import { buildRecipeSearchTextNormalized } from './searchText';
 import { SCHEMA_SQL } from './schema';
 
 const FREE_RECIPES_BASE: Recipe[] = require('../data/free-recipes.json');
 
 export const TARGET_FREE_RECIPE_COUNT = 250;
-export const CURRENT_SEED_VERSION = 'free-placeholder-250-v5';
+export const CURRENT_SEED_VERSION = 'free-placeholder-250-v6-search-normalized';
 
 type GetFirstResult<T> = T | null | undefined;
 
@@ -42,6 +43,7 @@ export async function ensureSchemaAsync(db: DbLike): Promise<void> {
     { sql: 'ALTER TABLE recipes ADD COLUMN detailedMeasurements TEXT NOT NULL DEFAULT ""' },
     { sql: 'ALTER TABLE recipes ADD COLUMN preparationSteps TEXT NOT NULL DEFAULT ""' },
     { sql: 'ALTER TABLE recipes ADD COLUMN usage TEXT NOT NULL DEFAULT ""' },
+    { sql: 'ALTER TABLE recipes ADD COLUMN searchTextNormalized TEXT NOT NULL DEFAULT ""' },
   ];
 
   for (const migration of migrations) {
@@ -55,6 +57,38 @@ export async function ensureSchemaAsync(db: DbLike): Promise<void> {
         throw error;
       }
     }
+  }
+
+  try {
+    await db.runAsync(
+      'CREATE INDEX IF NOT EXISTS idx_recipes_searchTextNormalized_nocase ON recipes(searchTextNormalized COLLATE NOCASE)'
+    );
+  } catch (error) {
+    const message = error instanceof Error ? error.message : String(error);
+    const normalized = message.toLowerCase();
+    const isAlreadyExists = normalized.includes('already exists');
+    if (!isAlreadyExists) {
+      throw error;
+    }
+  }
+
+  // Backfill for existing DBs where the column exists but older rows have an empty value.
+  try {
+    await db.runAsync(
+      `UPDATE recipes
+SET searchTextNormalized = (
+  lower(
+    trim(
+      replace(replace(replace(replace(replace(replace(replace(replace(
+        title || ' ' || description || ' ' || ingredients || ' ' || preparationSteps || ' ' || usedFor || ' ' || usage || ' ' || region || ' ' || alternativeNames,
+        '.', ' '), ',', ' '), ':', ' '), ';', ' '), '(', ' '), ')', ' '), '-', ' '), '/', ' ')
+    )
+  )
+)
+WHERE (searchTextNormalized IS NULL OR searchTextNormalized = '')`
+    );
+  } catch (error) {
+    // If the column doesn't exist yet (older schema), ignore. It will be populated on reseed.
   }
 }
 
@@ -125,6 +159,16 @@ async function clearRecipesAsync(db: DbLike): Promise<void> {
 
 async function insertRecipeAsync(db: DbLike, recipe: Recipe): Promise<void> {
   const randomKey = computeDeterministicRandomKey(recipe);
+  const searchTextNormalized = buildRecipeSearchTextNormalized({
+    title: recipe.title,
+    description: recipe.description,
+    ingredients: recipe.ingredients,
+    preparationSteps: recipe.preparationSteps,
+    usedFor: recipe.usedFor ?? '',
+    usage: recipe.usage,
+    region: recipe.region,
+    alternativeNames: recipe.alternativeNames ?? '',
+  });
 
   await db.runAsync(
     `INSERT INTO recipes (
@@ -143,8 +187,9 @@ async function insertRecipeAsync(db: DbLike, recipe: Recipe): Promise<void> {
       usage,
       historicalContext,
       scientificEvidence,
+      searchTextNormalized,
       randomKey
-    ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,
+    ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,
     recipe.title,
     recipe.difficultyScore,
     recipe.preparationTime,
@@ -160,6 +205,7 @@ async function insertRecipeAsync(db: DbLike, recipe: Recipe): Promise<void> {
     recipe.usage,
     recipe.historicalContext,
     recipe.scientificEvidence,
+    searchTextNormalized,
     randomKey
   );
 }

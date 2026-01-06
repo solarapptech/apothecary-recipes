@@ -31,6 +31,14 @@ function createFakeDb(initial?: Partial<DbState>) {
         return;
       }
 
+      if (source.startsWith('CREATE INDEX IF NOT EXISTS idx_recipes_searchTextNormalized_nocase')) {
+        return;
+      }
+
+      if (source.startsWith('UPDATE recipes')) {
+        return;
+      }
+
       if (source.startsWith('DELETE FROM recipes')) {
         state.recipesCount = 0;
         return;

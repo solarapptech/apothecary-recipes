@@ -6,6 +6,8 @@ import type { Recipe } from '../types/recipe';
 import type { FilterMode } from '../types/filterMode';
 import type { SortMode } from '../types/sortMode';
 
+import { normalizeSearchText, parseSearchQueryParts } from '../db/searchText';
+
 export type RecipeRow = Recipe & {
   id: number;
   randomKey: number;
@@ -32,6 +34,30 @@ export type ListRecipesResult = {
 
 function escapeLikeValue(value: string): string {
   return value.replace(/[\\%_]/g, (match) => `\\${match}`);
+}
+
+function buildSearchQueryClauses(input: { searchQuery?: string; params: any[] }): string[] {
+  const raw = input.searchQuery?.trim();
+  if (!raw) {
+    return [];
+  }
+
+  const parts = parseSearchQueryParts(raw);
+  if (parts.length === 0) {
+    return [];
+  }
+
+  const clauses: string[] = [];
+  for (const part of parts) {
+    const normalized = normalizeSearchText(part);
+    if (!normalized) {
+      continue;
+    }
+    clauses.push("searchTextNormalized LIKE ? ESCAPE '\\'");
+    input.params.push(`%${escapeLikeValue(normalized)}%`);
+  }
+
+  return clauses;
 }
 
 function buildAdvancedFilterClauses(input: {
@@ -103,11 +129,7 @@ export function buildListRecipesQuery(input: ListRecipesInput): { sql: string; p
 
   const clauses: string[] = [];
 
-  const searchQuery = input.searchQuery?.trim();
-  if (searchQuery) {
-    clauses.push('title LIKE ? COLLATE NOCASE');
-    params.push(`%${searchQuery}%`);
-  }
+  clauses.push(...buildSearchQueryClauses({ searchQuery: input.searchQuery, params }));
 
   clauses.push(...buildAdvancedFilterClauses({ advancedFilters: input.advancedFilters, params }));
 
@@ -154,11 +176,7 @@ export function buildCountRecipesQuery(input?: { searchQuery?: string; plan?: Pl
   const params: any[] = [];
   const clauses: string[] = [];
 
-  const query = input?.searchQuery?.trim();
-  if (query) {
-    clauses.push('title LIKE ? COLLATE NOCASE');
-    params.push(`%${query}%`);
-  }
+  clauses.push(...buildSearchQueryClauses({ searchQuery: input?.searchQuery, params }));
 
   if (input?.plan === 'free') {
     clauses.push('isPremium = 0');
@@ -181,11 +199,7 @@ export function buildCountRecipesQueryWithFilter(input?: {
   const params: any[] = [];
   const clauses: string[] = [];
 
-  const query = input?.searchQuery?.trim();
-  if (query) {
-    clauses.push('title LIKE ? COLLATE NOCASE');
-    params.push(`%${query}%`);
-  }
+  clauses.push(...buildSearchQueryClauses({ searchQuery: input?.searchQuery, params }));
 
   if (input?.plan === 'free') {
     clauses.push('isPremium = 0');

@@ -20,6 +20,7 @@ CREATE TABLE IF NOT EXISTS recipes (
   usage TEXT NOT NULL,
   historicalContext TEXT NOT NULL,
   scientificEvidence TEXT NOT NULL,
+  searchTextNormalized TEXT NOT NULL,
   randomKey INTEGER NOT NULL,
   isPremium INTEGER NOT NULL DEFAULT 0,
   imageLocalPath TEXT

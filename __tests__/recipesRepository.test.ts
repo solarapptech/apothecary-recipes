@@ -8,7 +8,7 @@ test('buildListRecipesQuery builds A–Z query with search + pagination', () => 
     sortMode: 'az',
   });
 
-  expect(sql).toContain('WHERE title LIKE ? COLLATE NOCASE');
+  expect(sql).toContain("WHERE searchTextNormalized LIKE ? ESCAPE");
   expect(sql).toContain('ORDER BY title COLLATE NOCASE ASC');
   expect(sql).toContain('LIMIT ? OFFSET ?');
   expect(params).toEqual(['%ginger%', 50, 50]);
@@ -53,7 +53,7 @@ test('buildCountRecipesQuery includes WHERE when search is present', () => {
   const { sql, params } = buildCountRecipesQuery({ searchQuery: 'peppermint' });
 
   expect(sql).toContain('FROM recipes');
-  expect(sql).toContain('WHERE title LIKE ? COLLATE NOCASE');
+  expect(sql).toContain("WHERE searchTextNormalized LIKE ? ESCAPE");
   expect(params).toEqual(['%peppermint%']);
 });
 

@@ -378,7 +378,7 @@ export function AppShell({ deps, initialPage }: AppShellProps) {
       setInfinitePage(1);
       setRecipes([]);
       setSearchQuery(trimmed);
-    }, 250);
+    }, 500);
 
     return () => {
       clearTimeout(handle);

@@ -4,6 +4,7 @@ import JSZip from 'jszip';
 import { Platform } from 'react-native';
 
 import { computeDeterministicRandomKey } from '../db/hash';
+import { buildRecipeSearchTextNormalized } from '../db/searchText';
 import type { Recipe } from '../types/recipe';
 
 import type { PremiumBundleInstaller, PremiumBundleJob, PremiumBundleInstallResult } from './premiumBundleService';
@@ -59,6 +60,16 @@ async function writePremiumRecipesToDbAsync(db: SQLiteDatabase, recipes: Install
     for (const recipe of recipes) {
       const randomKey = computeDeterministicRandomKey(recipe);
       const imageLocalPath = recipe.imageFileName ? `${imagesDir}${recipe.imageFileName}` : null;
+      const searchTextNormalized = buildRecipeSearchTextNormalized({
+        title: recipe.title,
+        description: recipe.description,
+        ingredients: recipe.ingredients,
+        preparationSteps: recipe.preparationSteps,
+        usedFor: recipe.usedFor ?? '',
+        usage: recipe.usage,
+        region: recipe.region,
+        alternativeNames: recipe.alternativeNames ?? '',
+      });
 
       await db.runAsync(
         `INSERT INTO recipes (
@@ -77,10 +88,11 @@ async function writePremiumRecipesToDbAsync(db: SQLiteDatabase, recipes: Install
           usage,
           historicalContext,
           scientificEvidence,
+          searchTextNormalized,
           randomKey,
           isPremium,
           imageLocalPath
-        ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,
+        ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,
         recipe.title,
         recipe.difficultyScore,
         recipe.preparationTime,
@@ -96,6 +108,7 @@ async function writePremiumRecipesToDbAsync(db: SQLiteDatabase, recipes: Install
         recipe.usage,
         recipe.historicalContext,
         recipe.scientificEvidence,
+        searchTextNormalized,
         randomKey,
         1,
         imageLocalPath
