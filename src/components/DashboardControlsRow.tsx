@@ -1,5 +1,5 @@
-import { useCallback, useEffect, useRef, useState } from 'react';
-import { Modal, Pressable, StyleSheet, Text, TextInput, View } from 'react-native';
+import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
+import { Modal, Pressable, ScrollView, StyleSheet, Text, TextInput, View, useWindowDimensions } from 'react-native';
 import Animated, { useSharedValue, useAnimatedStyle, withTiming } from 'react-native-reanimated';
 import { Path, Svg } from 'react-native-svg';
 
@@ -10,9 +10,12 @@ import { motionDurationMs } from '../app/motionPolicy';
 
 import { theme } from '../ui/theme';
 
+import { EMPTY_ADVANCED_FILTERS, type AdvancedFilters } from '../types/advancedFilters';
 import type { FilterMode } from '../types/filterMode';
 import type { SortMode } from '../types/sortMode';
 import type { ViewMode } from '../types/viewMode';
+
+import type { FilterCatalog } from '../repositories/filterCatalogRepository';
 
 type DashboardControlsRowProps = {
   searchInput: string;
@@ -23,6 +26,10 @@ type DashboardControlsRowProps = {
   onRandomize: () => void;
   filterMode: FilterMode;
   onChangeFilterMode: (mode: FilterMode) => void;
+  filterCatalog?: FilterCatalog;
+  advancedFilters?: AdvancedFilters;
+  onChangeAdvancedFilters?: (filters: AdvancedFilters) => void;
+  onPressClearFilters?: () => void;
   viewMode: ViewMode;
   onChangeViewMode: (mode: ViewMode) => void;
   reduceMotionEnabled?: boolean;
@@ -40,6 +47,21 @@ function sortLabel(mode: SortMode): string {
 
 function filterLabel(mode: FilterMode): string {
   return mode === 'favorites' ? 'Favorites' : 'All Recipes';
+}
+
+function toggleValue(values: string[], value: string): string[] {
+  const exists = values.includes(value);
+  if (exists) {
+    return values.filter((item) => item !== value);
+  }
+  return [...values, value];
+}
+
+function isAnyAdvancedFilterActive(filters: AdvancedFilters | null | undefined): boolean {
+  if (!filters) {
+    return false;
+  }
+  return filters.productTypes.length > 0 || filters.conditions.length > 0 || filters.ingredients.length > 0;
 }
 
 function FilterIcon({ color }: { color: string }) {
@@ -66,10 +88,15 @@ export function DashboardControlsRow({
   onRandomize,
   filterMode,
   onChangeFilterMode,
+  filterCatalog,
+  advancedFilters,
+  onChangeAdvancedFilters,
+  onPressClearFilters,
   viewMode,
   onChangeViewMode,
   reduceMotionEnabled = false,
 }: DashboardControlsRowProps) {
+  const window = useWindowDimensions();
   const searchInputRef = useRef<TextInput | null>(null);
   const sortButtonRef = useRef<View | null>(null);
   const filterButtonRef = useRef<View | null>(null);
@@ -89,6 +116,123 @@ export function DashboardControlsRow({
     height: number;
   } | null>(null);
   const [isRandomizing, setIsRandomizing] = useState(false);
+
+  const resolvedCatalog: FilterCatalog = filterCatalog ?? {
+    productTypes: [],
+    conditions: [],
+    ingredients: [],
+  };
+  const resolvedAdvancedFilters: AdvancedFilters = advancedFilters ?? EMPTY_ADVANCED_FILTERS;
+
+  const [ingredientSearch, setIngredientSearch] = useState('');
+  const filteredIngredients = useMemo(() => {
+    const query = ingredientSearch.trim().toLowerCase();
+    if (!query) {
+      return resolvedCatalog.ingredients;
+    }
+    return resolvedCatalog.ingredients.filter((item) => item.toLowerCase().includes(query));
+  }, [ingredientSearch, resolvedCatalog.ingredients]);
+
+  const [expandedSection, setExpandedSection] = useState<'productTypes' | 'conditions' | 'ingredients' | null>(null);
+  const productTypesProgress = useSharedValue(0);
+  const conditionsProgress = useSharedValue(0);
+  const ingredientsProgress = useSharedValue(0);
+
+  useEffect(() => {
+    const toValue = (open: boolean) => (open ? 1 : 0);
+    const duration = motionDurationMs(reduceMotionEnabled, 180);
+
+    const product = toValue(expandedSection === 'productTypes');
+    const conditions = toValue(expandedSection === 'conditions');
+    const ingredients = toValue(expandedSection === 'ingredients');
+
+    productTypesProgress.value = reduceMotionEnabled ? product : withTiming(product, { duration });
+    conditionsProgress.value = reduceMotionEnabled ? conditions : withTiming(conditions, { duration });
+    ingredientsProgress.value = reduceMotionEnabled ? ingredients : withTiming(ingredients, { duration });
+  }, [conditionsProgress, expandedSection, ingredientsProgress, productTypesProgress, reduceMotionEnabled]);
+
+  const productTypesStyle = useAnimatedStyle(() => {
+    return {
+      maxHeight: 280 * productTypesProgress.value,
+      opacity: productTypesProgress.value,
+    };
+  });
+  const conditionsStyle = useAnimatedStyle(() => {
+    return {
+      maxHeight: 280 * conditionsProgress.value,
+      opacity: conditionsProgress.value,
+    };
+  });
+  const ingredientsStyle = useAnimatedStyle(() => {
+    return {
+      maxHeight: 360 * ingredientsProgress.value,
+      opacity: ingredientsProgress.value,
+    };
+  });
+
+  const anyFiltersActive = filterMode === 'favorites' || isAnyAdvancedFilterActive(resolvedAdvancedFilters);
+
+  const toggleSection = (section: 'productTypes' | 'conditions' | 'ingredients') => {
+    setExpandedSection((prev) => (prev === section ? null : section));
+  };
+
+  const updateAdvancedFilters = (next: AdvancedFilters) => {
+    onChangeAdvancedFilters?.(next);
+  };
+
+  const renderMultiSelectRow = (input: {
+    label: string;
+    selected: boolean;
+    onPress: () => void;
+    testID: string;
+  }) => {
+    return (
+      <Pressable
+        key={input.label}
+        accessibilityRole="button"
+        accessibilityLabel={input.label}
+        onPress={input.onPress}
+        style={[styles.menuItem, input.selected ? styles.menuItemSelected : null, styles.filterOptionRow]}
+        testID={input.testID}
+      >
+        <Text style={[styles.menuItemText, input.selected ? styles.menuItemTextSelected : null, styles.filterOptionText]}>
+          {input.label}
+        </Text>
+        <Text style={[styles.checkmark, input.selected ? styles.checkmarkSelected : null]}>{input.selected ? '✓' : ''}</Text>
+      </Pressable>
+    );
+  };
+
+  const getMenuLayout = useCallback(
+    (anchor: { x: number; y: number; width: number; height: number } | null) => {
+      if (!anchor) {
+        return null;
+      }
+
+      const gutter = 8;
+      const minWidth = Math.max(180, anchor.width);
+      const maxWidth = Math.max(120, window.width - gutter * 2);
+      const width = Math.min(minWidth, maxWidth);
+
+      // Prefer showing below the anchor; if there's not enough space, flip above.
+      const belowTop = anchor.y + anchor.height + gutter;
+      const belowMaxHeight = window.height - belowTop - gutter;
+      const aboveMaxHeight = anchor.y - gutter * 2;
+
+      const canShowBelow = belowMaxHeight >= 160;
+      const maxHeight = Math.max(140, canShowBelow ? belowMaxHeight : aboveMaxHeight);
+
+      const left = Math.min(Math.max(gutter, anchor.x), window.width - width - gutter);
+
+      return {
+        top: canShowBelow ? belowTop : Math.max(gutter, anchor.y - maxHeight - gutter),
+        left,
+        width,
+        maxHeight,
+      };
+    },
+    [window.height, window.width]
+  );
 
   const hasSearchText = searchInput.trim().length > 0;
 
@@ -262,10 +406,10 @@ export function DashboardControlsRow({
             accessibilityRole="button"
             accessibilityLabel="Filter"
             onPress={handleFilterPress}
-            style={[styles.toggle, filterMode === 'favorites' ? styles.filterToggleActive : null]}
+            style={[styles.toggle, anyFiltersActive ? styles.filterToggleActive : null]}
             testID="controls-filter"
           >
-            <FilterIcon color={filterMode === 'favorites' ? theme.colors.brand.primaryStrong : theme.colors.ink.primary} />
+            <FilterIcon color={anyFiltersActive ? theme.colors.brand.primaryStrong : theme.colors.ink.primary} />
           </Pressable>
         </View>
       </View>
@@ -284,36 +428,42 @@ export function DashboardControlsRow({
           <Pressable
             style={[
               styles.menu,
-              sortMenuAnchor
-                ? {
-                    top: sortMenuAnchor.y + sortMenuAnchor.height + 8,
-                    left: sortMenuAnchor.x,
-                    minWidth: sortMenuAnchor.width,
-                  }
-                : null,
+              (() => {
+                const layout = getMenuLayout(sortMenuAnchor);
+                return layout
+                  ? {
+                      top: layout.top,
+                      left: layout.left,
+                      width: layout.width,
+                      maxHeight: layout.maxHeight,
+                    }
+                  : null;
+              })(),
             ]}
             onPress={() => undefined}
           >
             <ModalCardBackground style={styles.menuBackground}>
-              {(['random', 'az', 'za'] as const).map((mode) => (
-                <Pressable
-                  key={mode}
-                  accessibilityRole="button"
-                  accessibilityLabel={`Sort ${sortLabel(mode)}`}
-                  onPress={() => {
-                    if (mode === sortMode) {
-                      return;
-                    }
-                    onChangeSortMode(mode);
-                  }}
-                  style={[styles.menuItem, mode === sortMode ? styles.menuItemSelected : null]}
-                  testID={`sort-menu-item-${mode}`}
-                >
-                  <Text style={[styles.menuItemText, mode === sortMode ? styles.menuItemTextSelected : null]}>
-                    {sortLabel(mode)}
-                  </Text>
-                </Pressable>
-              ))}
+              <ScrollView bounces={false} contentContainerStyle={styles.menuContent}>
+                {(['random', 'az', 'za'] as const).map((mode) => (
+                  <Pressable
+                    key={mode}
+                    accessibilityRole="button"
+                    accessibilityLabel={`Sort ${sortLabel(mode)}`}
+                    onPress={() => {
+                      if (mode === sortMode) {
+                        return;
+                      }
+                      onChangeSortMode(mode);
+                    }}
+                    style={[styles.menuItem, mode === sortMode ? styles.menuItemSelected : null]}
+                    testID={`sort-menu-item-${mode}`}
+                  >
+                    <Text style={[styles.menuItemText, mode === sortMode ? styles.menuItemTextSelected : null]}>
+                      {sortLabel(mode)}
+                    </Text>
+                  </Pressable>
+                ))}
+              </ScrollView>
             </ModalCardBackground>
           </Pressable>
         </ModalBackdrop>
@@ -333,36 +483,148 @@ export function DashboardControlsRow({
           <Pressable
             style={[
               styles.menu,
-              filterMenuAnchor
-                ? {
-                    top: filterMenuAnchor.y + filterMenuAnchor.height + 8,
-                    left: filterMenuAnchor.x,
-                    minWidth: filterMenuAnchor.width,
-                  }
-                : null,
+              (() => {
+                const layout = getMenuLayout(filterMenuAnchor);
+                return layout
+                  ? {
+                      top: layout.top,
+                      left: layout.left,
+                      width: layout.width,
+                      maxHeight: layout.maxHeight,
+                    }
+                  : null;
+              })(),
             ]}
             onPress={() => undefined}
           >
             <ModalCardBackground style={styles.menuBackground}>
-              {(['all', 'favorites'] as const).map((mode) => (
+              <ScrollView bounces={false} contentContainerStyle={styles.menuContent}>
+                {(['all', 'favorites'] as const).map((mode) => (
+                  <Pressable
+                    key={mode}
+                    accessibilityRole="button"
+                    accessibilityLabel={`Filter ${filterLabel(mode)}`}
+                    onPress={() => {
+                      if (mode === filterMode) {
+                        return;
+                      }
+                      onChangeFilterMode(mode);
+                    }}
+                    style={[styles.menuItem, mode === filterMode ? styles.menuItemSelected : null]}
+                    testID={`filter-menu-item-${mode}`}
+                  >
+                    <Text style={[styles.menuItemText, mode === filterMode ? styles.menuItemTextSelected : null]}>
+                      {filterLabel(mode)}
+                    </Text>
+                  </Pressable>
+                ))}
+
+                <View style={styles.sectionDivider} />
+
                 <Pressable
-                  key={mode}
                   accessibilityRole="button"
-                  accessibilityLabel={`Filter ${filterLabel(mode)}`}
-                  onPress={() => {
-                    if (mode === filterMode) {
-                      return;
-                    }
-                    onChangeFilterMode(mode);
-                  }}
-                  style={[styles.menuItem, mode === filterMode ? styles.menuItemSelected : null]}
-                  testID={`filter-menu-item-${mode}`}
+                  accessibilityLabel="Product Type"
+                  onPress={() => toggleSection('productTypes')}
+                  style={styles.accordionHeader}
+                  testID="filter-accordion-productTypes"
                 >
-                  <Text style={[styles.menuItemText, mode === filterMode ? styles.menuItemTextSelected : null]}>
-                    {filterLabel(mode)}
-                  </Text>
+                  <Text style={styles.accordionHeaderText}>Product Type</Text>
+                  <Text style={styles.accordionChevron}>{expandedSection === 'productTypes' ? '▾' : '▸'}</Text>
                 </Pressable>
-              ))}
+                <Animated.View style={[styles.accordionBody, productTypesStyle]}>
+                  {resolvedCatalog.productTypes.map((label) =>
+                    renderMultiSelectRow({
+                      label,
+                      selected: resolvedAdvancedFilters.productTypes.includes(label),
+                      onPress: () => {
+                        updateAdvancedFilters({
+                          ...resolvedAdvancedFilters,
+                          productTypes: toggleValue(resolvedAdvancedFilters.productTypes, label),
+                        });
+                      },
+                      testID: `filter-productType-${label}`,
+                    })
+                  )}
+                </Animated.View>
+
+                <Pressable
+                  accessibilityRole="button"
+                  accessibilityLabel="Condition/Use"
+                  onPress={() => toggleSection('conditions')}
+                  style={styles.accordionHeader}
+                  testID="filter-accordion-conditions"
+                >
+                  <Text style={styles.accordionHeaderText}>Condition/Use</Text>
+                  <Text style={styles.accordionChevron}>{expandedSection === 'conditions' ? '▾' : '▸'}</Text>
+                </Pressable>
+                <Animated.View style={[styles.accordionBody, conditionsStyle]}>
+                  {resolvedCatalog.conditions.map((label) =>
+                    renderMultiSelectRow({
+                      label,
+                      selected: resolvedAdvancedFilters.conditions.includes(label),
+                      onPress: () => {
+                        updateAdvancedFilters({
+                          ...resolvedAdvancedFilters,
+                          conditions: toggleValue(resolvedAdvancedFilters.conditions, label),
+                        });
+                      },
+                      testID: `filter-condition-${label}`,
+                    })
+                  )}
+                </Animated.View>
+
+                <Pressable
+                  accessibilityRole="button"
+                  accessibilityLabel="Ingredients"
+                  onPress={() => toggleSection('ingredients')}
+                  style={styles.accordionHeader}
+                  testID="filter-accordion-ingredients"
+                >
+                  <Text style={styles.accordionHeaderText}>Ingredients</Text>
+                  <Text style={styles.accordionChevron}>{expandedSection === 'ingredients' ? '▾' : '▸'}</Text>
+                </Pressable>
+                <Animated.View style={[styles.accordionBody, ingredientsStyle]}>
+                  <View style={styles.ingredientSearchContainer}>
+                    <TextInput
+                      value={ingredientSearch}
+                      onChangeText={setIngredientSearch}
+                      placeholder="Search ingredients"
+                      placeholderTextColor={theme.colors.ink.subtle}
+                      style={styles.ingredientSearchInput}
+                      testID="filter-ingredient-search"
+                    />
+                  </View>
+                  {filteredIngredients.map((label) =>
+                    renderMultiSelectRow({
+                      label,
+                      selected: resolvedAdvancedFilters.ingredients.includes(label),
+                      onPress: () => {
+                        updateAdvancedFilters({
+                          ...resolvedAdvancedFilters,
+                          ingredients: toggleValue(resolvedAdvancedFilters.ingredients, label),
+                        });
+                      },
+                      testID: `filter-ingredient-${label}`,
+                    })
+                  )}
+                </Animated.View>
+
+                <View style={styles.sectionDivider} />
+
+                <Pressable
+                  accessibilityRole="button"
+                  accessibilityLabel="Clear filters"
+                  onPress={() => {
+                    setIngredientSearch('');
+                    setExpandedSection(null);
+                    onPressClearFilters?.();
+                  }}
+                  style={[styles.menuItem, styles.clearFiltersRow]}
+                  testID="filter-clear"
+                >
+                  <Text style={[styles.menuItemText, styles.clearFiltersText]}>Clear filters</Text>
+                </Pressable>
+              </ScrollView>
             </ModalCardBackground>
           </Pressable>
         </ModalBackdrop>
@@ -505,8 +767,6 @@ const styles = StyleSheet.create({
   },
   menu: {
     position: 'absolute',
-    top: 130,
-    left: 16,
     borderRadius: 10,
     borderWidth: StyleSheet.hairlineWidth,
     borderColor: theme.colors.border.subtle,
@@ -514,6 +774,9 @@ const styles = StyleSheet.create({
   },
   menuBackground: {
     borderRadius: 10,
+  },
+  menuContent: {
+    paddingVertical: 4,
   },
   menuItem: {
     paddingHorizontal: 14,
@@ -528,6 +791,71 @@ const styles = StyleSheet.create({
     fontFamily: theme.typography.fontFamily.sans.regular,
   },
   menuItemTextSelected: {
+    fontFamily: theme.typography.fontFamily.sans.semiBold,
+  },
+  sectionDivider: {
+    height: StyleSheet.hairlineWidth,
+    backgroundColor: theme.colors.border.subtle,
+    marginVertical: 6,
+  },
+  accordionHeader: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    paddingHorizontal: 14,
+    paddingVertical: 10,
+  },
+  accordionHeaderText: {
+    fontSize: 13,
+    color: theme.colors.ink.primary,
+    fontFamily: theme.typography.fontFamily.sans.semiBold,
+  },
+  accordionChevron: {
+    fontSize: 14,
+    color: theme.colors.ink.subtle,
+  },
+  accordionBody: {
+    overflow: 'hidden',
+  },
+  filterOptionRow: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+  },
+  filterOptionText: {
+    flex: 1,
+    paddingRight: 10,
+  },
+  checkmark: {
+    width: 18,
+    textAlign: 'right',
+    color: theme.colors.ink.subtle,
+    fontSize: 14,
+  },
+  checkmarkSelected: {
+    color: theme.colors.brand.primaryStrong,
+  },
+  ingredientSearchContainer: {
+    paddingHorizontal: 14,
+    paddingTop: 8,
+    paddingBottom: 6,
+  },
+  ingredientSearchInput: {
+    borderWidth: StyleSheet.hairlineWidth,
+    borderColor: theme.colors.border.subtle,
+    borderRadius: 10,
+    paddingHorizontal: 10,
+    paddingVertical: 8,
+    fontSize: 12,
+    fontFamily: theme.typography.fontFamily.sans.regular,
+    color: theme.colors.ink.primary,
+    backgroundColor: theme.colors.surface.paperStrong,
+  },
+  clearFiltersRow: {
+    alignItems: 'center',
+  },
+  clearFiltersText: {
+    color: theme.colors.brand.primaryStrong,
     fontFamily: theme.typography.fontFamily.sans.semiBold,
   },
 });

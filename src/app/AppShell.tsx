@@ -24,6 +24,7 @@ import { PREMIUM_BUNDLE_URL } from '../config/premiumBundle';
 import { initializeLibraryAsync, type LibraryBootstrap } from './initializeLibrary';
 import { createQueuedLoadGuard } from '../repositories/fetchGuard';
 import {
+  setAdvancedFiltersAsync as setAdvancedFiltersDefaultAsync,
   getPremiumDownloadErrorAsync as getPremiumDownloadErrorDefaultAsync,
   getPremiumDownloadProgressAsync as getPremiumDownloadProgressDefaultAsync,
   getPremiumDownloadStatusAsync as getPremiumDownloadStatusDefaultAsync,
@@ -49,6 +50,10 @@ import {
   type ListRecipesResult,
 } from '../repositories/recipesRepository';
 import {
+  listFilterCatalogAsync as listFilterCatalogDefaultAsync,
+  type FilterCatalog,
+} from '../repositories/filterCatalogRepository';
+import {
   listFavoriteIdsAsync as listFavoriteIdsDefaultAsync,
   setFavoriteAsync as setFavoriteDefaultAsync,
 } from '../repositories/favoritesRepository';
@@ -60,6 +65,7 @@ import {
 } from '../premium/premiumBundleService';
 import { DashboardScreen } from '../screens/DashboardScreen';
 import { SettingsScreen } from '../screens/SettingsScreen';
+import { EMPTY_ADVANCED_FILTERS, type AdvancedFilters } from '../types/advancedFilters';
 import type { FilterMode } from '../types/filterMode';
 import type { Plan } from '../types/plan';
 import type { SortMode } from '../types/sortMode';
@@ -71,6 +77,7 @@ type RouteName = 'dashboard' | 'settings';
 type AppShellDeps = {
   initializeLibraryAsync: () => Promise<LibraryBootstrap>;
   listRecipesAsync: (db: LibraryBootstrap['db'], input: ListRecipesInput) => Promise<ListRecipesResult>;
+  listFilterCatalogAsync: (db: LibraryBootstrap['db'], input: { plan: Plan }) => Promise<FilterCatalog>;
   setFavoriteAsync: (db: LibraryBootstrap['db'], recipeId: number, isFavorite: boolean) => Promise<void>;
   listFavoriteIdsAsync: (db: LibraryBootstrap['db']) => Promise<number[]>;
   getPremiumDownloadStatusAsync: (db: LibraryBootstrap['db']) => Promise<PremiumDownloadStatus>;
@@ -90,6 +97,7 @@ type AppShellDeps = {
   setPageSizeAsync: (db: LibraryBootstrap['db'], pageSize: number) => Promise<void>;
   setSortModeAsync: (db: LibraryBootstrap['db'], sortMode: SortMode) => Promise<void>;
   setFilterModeAsync: (db: LibraryBootstrap['db'], mode: FilterMode) => Promise<void>;
+  setAdvancedFiltersAsync: (db: LibraryBootstrap['db'], filters: AdvancedFilters) => Promise<void>;
   setViewModeAsync: (db: LibraryBootstrap['db'], viewMode: ViewMode) => Promise<void>;
   createPremiumBundleInstaller: (db: LibraryBootstrap['db'], bundleUrl: string) => PremiumBundleInstaller;
   createPremiumBundleService: (db: LibraryBootstrap['db'], installer: PremiumBundleInstaller) => PremiumBundleService;
@@ -99,6 +107,7 @@ type AppShellDeps = {
 const defaultDeps: AppShellDeps = {
   initializeLibraryAsync,
   listRecipesAsync: listRecipesDefaultAsync,
+  listFilterCatalogAsync: listFilterCatalogDefaultAsync,
   setFavoriteAsync: setFavoriteDefaultAsync,
   listFavoriteIdsAsync: listFavoriteIdsDefaultAsync,
   getPremiumDownloadStatusAsync: getPremiumDownloadStatusDefaultAsync,
@@ -148,6 +157,7 @@ const defaultDeps: AppShellDeps = {
   setPageSizeAsync: setPageSizeDefaultAsync,
   setSortModeAsync: setSortModeDefaultAsync,
   setFilterModeAsync: setFilterModeDefaultAsync,
+  setAdvancedFiltersAsync: setAdvancedFiltersDefaultAsync,
   setViewModeAsync: setViewModeDefaultAsync,
   createPremiumBundleInstaller: (db, bundleUrl) => {
     const safe = bundleUrl.trim().length > 0 ? bundleUrl : PREMIUM_BUNDLE_URL;
@@ -239,6 +249,7 @@ export function AppShell({ deps, initialPage }: AppShellProps) {
 
   const [sortMode, setSortMode] = useState<SortMode>('random');
   const [filterMode, setFilterMode] = useState<FilterMode>('all');
+  const [advancedFilters, setAdvancedFilters] = useState<AdvancedFilters>(EMPTY_ADVANCED_FILTERS);
   const [viewMode, setViewMode] = useState<ViewMode>('list');
   const [hasAnyFavorites, setHasAnyFavorites] = useState(false);
   const [reduceMotionEnabled, setReduceMotionEnabled] = useState(false);
@@ -247,6 +258,12 @@ export function AppShell({ deps, initialPage }: AppShellProps) {
 
   const [searchInput, setSearchInput] = useState('');
   const [searchQuery, setSearchQuery] = useState('');
+
+  const [filterCatalog, setFilterCatalog] = useState<FilterCatalog>({
+    productTypes: [],
+    conditions: [],
+    ingredients: [],
+  });
 
   const [randomSeed, setRandomSeed] = useState<number>(1);
 
@@ -271,6 +288,7 @@ export function AppShell({ deps, initialPage }: AppShellProps) {
 
         setSortMode(bootstrap.preferences.sortMode);
         setFilterMode(bootstrap.preferences.filterMode);
+        setAdvancedFilters(bootstrap.preferences.advancedFilters);
         setInfiniteScrollEnabled(bootstrap.preferences.infiniteScrollEnabled);
         setViewMode(bootstrap.preferences.viewMode);
         setPlan(bootstrap.preferences.plan);
@@ -310,6 +328,25 @@ export function AppShell({ deps, initialPage }: AppShellProps) {
       cancelled = true;
     };
   }, [resolved]);
+
+  useEffect(() => {
+    if (uiState.status !== 'ready') {
+      return;
+    }
+
+    let cancelled = false;
+    (async () => {
+      const catalog = await resolved.listFilterCatalogAsync(uiState.bootstrap.db, { plan });
+      if (cancelled) {
+        return;
+      }
+      setFilterCatalog(catalog);
+    })();
+
+    return () => {
+      cancelled = true;
+    };
+  }, [plan, premiumDownloadStatus, resolved, uiState]);
 
   useEffect(() => {
     if (uiState.status !== 'ready') {
@@ -933,6 +970,26 @@ if (route === 'settings') {
                     setFilterMode(mode);
                     setFocusResetNonce((value) => value + 1);
                     await resolved.setFilterModeAsync(uiState.bootstrap.db, mode);
+                  }}
+                  filterCatalog={filterCatalog}
+                  advancedFilters={advancedFilters}
+                  onChangeAdvancedFilters={async (next) => {
+                    setRecipes([]);
+                    setPage(1);
+                    setInfinitePage(1);
+                    setAdvancedFilters(next);
+                    setFocusResetNonce((value) => value + 1);
+                    await resolved.setAdvancedFiltersAsync(uiState.bootstrap.db, next);
+                  }}
+                  onPressClearFilters={async () => {
+                    setRecipes([]);
+                    setPage(1);
+                    setInfinitePage(1);
+                    setFilterMode('all');
+                    setAdvancedFilters(EMPTY_ADVANCED_FILTERS);
+                    setFocusResetNonce((value) => value + 1);
+                    await resolved.setFilterModeAsync(uiState.bootstrap.db, 'all');
+                    await resolved.setAdvancedFiltersAsync(uiState.bootstrap.db, EMPTY_ADVANCED_FILTERS);
                   }}
                   viewMode={viewMode}
                   onChangeViewMode={async (mode) => {

@@ -74,6 +74,7 @@ function createBootstrap(): LibraryBootstrap {
       premiumDownloadError: null,
       sortMode: 'random',
       filterMode: 'all',
+      advancedFilters: { productTypes: [], conditions: [], ingredients: [] },
       infiniteScrollEnabled: false,
       pageSize: 50,
       viewMode: 'list',

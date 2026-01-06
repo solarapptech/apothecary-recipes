@@ -1,6 +1,7 @@
 import {
   getAutoScrollEnabledAsync,
   getCloseAsYouTapEnabledAsync,
+  getAdvancedFiltersAsync,
   getFilterModeAsync,
   getInfiniteScrollEnabledAsync,
   getPageSizeAsync,
@@ -18,6 +19,7 @@ import {
   maskPremiumCode,
   setAutoScrollEnabledAsync,
   setCloseAsYouTapEnabledAsync,
+  setAdvancedFiltersAsync,
   setFilterModeAsync,
   setInfiniteScrollEnabledAsync,
   setPageSizeAsync,
@@ -66,6 +68,7 @@ test('defaults: sortMode=random, filterMode=all, infiniteScroll=false, viewMode=
   await expect(getPremiumDownloadErrorAsync(db)).resolves.toBeNull();
   await expect(getSortModeAsync(db)).resolves.toBe('random');
   await expect(getFilterModeAsync(db)).resolves.toBe('all');
+  await expect(getAdvancedFiltersAsync(db)).resolves.toEqual({ productTypes: [], conditions: [], ingredients: [] });
   await expect(getInfiniteScrollEnabledAsync(db)).resolves.toBe(false);
   await expect(getPageSizeAsync(db)).resolves.toBe(25);
   await expect(getViewModeAsync(db)).resolves.toBe('list');
@@ -83,6 +86,7 @@ test('set/get roundtrip for all preferences', async () => {
   await setPremiumBundleSha256Async(db, 'deadbeef');
   await setSortModeAsync(db, 'za');
   await setFilterModeAsync(db, 'favorites');
+  await setAdvancedFiltersAsync(db, { productTypes: ['Tincture'], conditions: ['Sleep'], ingredients: ['Lavender'] });
   await setInfiniteScrollEnabledAsync(db, true);
   await setPageSizeAsync(db, 25);
   await setViewModeAsync(db, 'list-big');
@@ -102,6 +106,11 @@ test('set/get roundtrip for all preferences', async () => {
   await expect(getPremiumDownloadErrorAsync(db)).resolves.toBe('something went wrong');
   await expect(getSortModeAsync(db)).resolves.toBe('za');
   await expect(getFilterModeAsync(db)).resolves.toBe('favorites');
+  await expect(getAdvancedFiltersAsync(db)).resolves.toEqual({
+    productTypes: ['Tincture'],
+    conditions: ['Sleep'],
+    ingredients: ['Lavender'],
+  });
   await expect(getInfiniteScrollEnabledAsync(db)).resolves.toBe(true);
   await expect(getPageSizeAsync(db)).resolves.toBe(25);
   await expect(getViewModeAsync(db)).resolves.toBe('list-big');
@@ -119,6 +128,11 @@ test('persistence simulated: values are read from stored key/value table', async
     premiumDownloadError: 'zip failed',
     sortMode: 'az',
     filterMode: 'favorites',
+    advancedFilters: JSON.stringify({
+      productTypes: ['Elixir'],
+      conditions: ['Cold'],
+      ingredients: ['Honey'],
+    }),
     infiniteScrollEnabled: 'false',
     pageSize: '25',
     viewMode: 'list-big',
@@ -134,6 +148,11 @@ test('persistence simulated: values are read from stored key/value table', async
   await expect(getPremiumDownloadProgressAsync(db)).resolves.toBe(100);
   await expect(getSortModeAsync(db)).resolves.toBe('az');
   await expect(getFilterModeAsync(db)).resolves.toBe('favorites');
+  await expect(getAdvancedFiltersAsync(db)).resolves.toEqual({
+    productTypes: ['Elixir'],
+    conditions: ['Cold'],
+    ingredients: ['Honey'],
+  });
   await expect(getInfiniteScrollEnabledAsync(db)).resolves.toBe(false);
   await expect(getPageSizeAsync(db)).resolves.toBe(25);
   await expect(getViewModeAsync(db)).resolves.toBe('list-big');

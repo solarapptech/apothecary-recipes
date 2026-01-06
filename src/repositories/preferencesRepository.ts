@@ -1,5 +1,6 @@
 import type { SQLiteDatabase } from 'expo-sqlite';
 
+import { EMPTY_ADVANCED_FILTERS, type AdvancedFilters } from '../types/advancedFilters';
 import type { Plan } from '../types/plan';
 import type { FilterMode } from '../types/filterMode';
 import type { SortMode } from '../types/sortMode';
@@ -23,6 +24,7 @@ const KEY_PREMIUM_DOWNLOAD_PROGRESS = 'premiumDownloadProgress';
 const KEY_PREMIUM_DOWNLOAD_ERROR = 'premiumDownloadError';
 const KEY_PAGE_SIZE = 'pageSize';
 const KEY_FILTER_MODE = 'filterMode';
+const KEY_ADVANCED_FILTERS = 'advancedFilters';
 
 export type PremiumDownloadStatus = 'not-downloaded' | 'downloading' | 'paused' | 'failed' | 'ready';
 
@@ -33,6 +35,51 @@ async function getValueAsync(db: DbLike, key: string): Promise<string | null> {
 
 async function setValueAsync(db: DbLike, key: string, value: string): Promise<void> {
   await db.runAsync('INSERT OR REPLACE INTO user_preferences (key, value) VALUES (?, ?)', key, value);
+}
+
+function toStringArray(value: unknown): string[] {
+  if (!Array.isArray(value)) {
+    return [];
+  }
+
+  const normalized = value
+    .map((item) => (typeof item === 'string' ? item.trim() : ''))
+    .filter((item) => item.length > 0);
+
+  // Unique + stable order.
+  return Array.from(new Set(normalized));
+}
+
+function parseAdvancedFiltersJson(value: string | null): AdvancedFilters {
+  const trimmed = value?.trim();
+  if (!trimmed) {
+    return EMPTY_ADVANCED_FILTERS;
+  }
+
+  try {
+    const parsed = JSON.parse(trimmed) as any;
+    return {
+      productTypes: toStringArray(parsed?.productTypes),
+      conditions: toStringArray(parsed?.conditions),
+      ingredients: toStringArray(parsed?.ingredients),
+    };
+  } catch {
+    return EMPTY_ADVANCED_FILTERS;
+  }
+}
+
+export async function getAdvancedFiltersAsync(db: DbLike): Promise<AdvancedFilters> {
+  const value = await getValueAsync(db, KEY_ADVANCED_FILTERS);
+  return parseAdvancedFiltersJson(value);
+}
+
+export async function setAdvancedFiltersAsync(db: DbLike, filters: AdvancedFilters): Promise<void> {
+  const normalized: AdvancedFilters = {
+    productTypes: toStringArray(filters.productTypes),
+    conditions: toStringArray(filters.conditions),
+    ingredients: toStringArray(filters.ingredients),
+  };
+  await setValueAsync(db, KEY_ADVANCED_FILTERS, JSON.stringify(normalized));
 }
 
 export function maskPremiumCode(code: string | null): string | null {

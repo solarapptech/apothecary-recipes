@@ -41,6 +41,14 @@ async function flushMicrotasks(times: number) {
     await act(async () => {
       await Promise.resolve();
     });
+
+    act(() => {
+      try {
+        jest.runOnlyPendingTimers();
+      } catch {
+        // ignore when not using fake timers
+      }
+    });
   }
 }
 
@@ -70,6 +78,7 @@ function createBootstrap(reduceMotionEnabled = false): LibraryBootstrap {
       premiumDownloadError: null,
       sortMode: 'random',
       filterMode: 'all',
+      advancedFilters: { productTypes: [], conditions: [], ingredients: [] },
       infiniteScrollEnabled: false,
       pageSize: 50,
       viewMode: 'list',
