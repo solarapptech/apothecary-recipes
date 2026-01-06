@@ -168,7 +168,7 @@ test('pause/resume updates status when supported by job', async () => {
   expect(calls).toContain('status:downloading');
 });
 
-test('retryAsync uses backoff and retries after failure', async () => {
+test('retryAsync does not auto-retry after failure', async () => {
   const db = createFakeDb();
   const calls: string[] = [];
 
@@ -178,15 +178,10 @@ test('retryAsync uses backoff and retries after failure', async () => {
     createJob: () => ({
       runAsync: async () => {
         attempt += 1;
-        if (attempt === 1) {
-          throw new Error('fail');
-        }
-        return { version: 'v2', recipeCount: 1 };
+        throw new Error('fail');
       },
     }),
   };
-
-  const sleepCalls: number[] = [];
 
   const service = createPremiumBundleService(db, installer as any, {
     setStatusAsync: async (_db, status) => {
@@ -201,15 +196,10 @@ test('retryAsync uses backoff and retries after failure', async () => {
     setInstalledVersionAsync: async (_db, version) => {
       calls.push(`version:${version}`);
     },
-    sleepAsync: async (ms) => {
-      sleepCalls.push(ms);
-    },
   });
 
-  await expect(service.retryAsync()).resolves.toBe(true);
+  await expect(service.retryAsync()).rejects.toThrow('fail');
 
-  expect(attempt).toBe(2);
-  expect(sleepCalls).toEqual([500]);
+  expect(attempt).toBe(1);
   expect(calls).toContain('status:failed');
-  expect(calls).toContain('status:ready');
 });

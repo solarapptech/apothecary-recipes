@@ -175,6 +175,34 @@ test('renders difficulty and preparation time in dedicated slots', () => {
   expect(textFromChildren(timeTextNodes[0].props.children)).toContain('10 min');
 });
 
+test('expanded compact list row shows favorite state on the list-big card', () => {
+  const DashboardScreen = loadDashboardScreenWithFlashListMock();
+  const recipes = createRecipes(1).map((row) => ({ ...row, isFavorite: 1 }));
+
+  const tree = render(
+    <DashboardScreen
+      title="Apothecary Recipes"
+      headerRight={<View />}
+      controls={<View />}
+      footer={<View />}
+      recipes={recipes}
+      totalCount={recipes.length}
+      viewMode="list"
+      filterMode="all"
+      hasAnyFavorites={true}
+      onPressShowAllRecipes={() => undefined}
+      onToggleFavorite={() => undefined}
+    />
+  );
+
+  act(() => {
+    tree.root.findByProps({ testID: 'dashboard-recipe-toggle-1' }).props.onPress({ nativeEvent: { locationX: 0, locationY: 0 } });
+  });
+
+  const favoriteIconNode = tree.root.findByProps({ testID: 'list-big-recipe-row-favorite-1' }).findByType(require('react-native').Text);
+  expect(textFromChildren(favoriteIconNode.props.children)).toBe('★');
+});
+
 test('renders list-big rows when viewMode is list-big', () => {
   const DashboardScreen = loadDashboardScreenWithFlashListMock();
   const recipes = createRecipes();

@@ -436,6 +436,8 @@ export function DashboardScreen({
                     usage={item.usage}
                     historicalContext={item.historicalContext}
                     scientificEvidence={item.scientificEvidence}
+                    isFavorite={item.isFavorite === 1}
+                    onPressFavorite={() => onToggleFavorite?.(item.id, item.isFavorite !== 1)}
                     reduceMotionEnabled={reduceMotionEnabled}
                     dimmed={isGrayedOut}
                     expanded={isDetailsMode}

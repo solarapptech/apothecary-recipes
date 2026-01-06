@@ -32,21 +32,12 @@ export type PremiumBundleService = {
   retryAsync: () => Promise<boolean>;
 };
 
-type SleepAsync = (ms: number) => Promise<void>;
-
 export type CreatePremiumBundleServiceDeps = {
   setStatusAsync: (db: SQLiteDatabase, status: PremiumDownloadStatus) => Promise<void>;
   setProgressAsync: (db: SQLiteDatabase, progress: number | null) => Promise<void>;
   setErrorAsync: (db: SQLiteDatabase, message: string | null) => Promise<void>;
   setInstalledVersionAsync: (db: SQLiteDatabase, version: string) => Promise<void>;
-  sleepAsync: SleepAsync;
   createLoadGuard: typeof createLoadGuard;
-};
-
-const defaultSleepAsync: SleepAsync = async (ms) => {
-  await new Promise<void>((resolve) => {
-    setTimeout(resolve, ms);
-  });
 };
 
 export function createPremiumBundleService(
@@ -56,7 +47,6 @@ export function createPremiumBundleService(
 ): PremiumBundleService {
   const resolved: CreatePremiumBundleServiceDeps = {
     ...deps,
-    sleepAsync: deps.sleepAsync ?? defaultSleepAsync,
     createLoadGuard: deps.createLoadGuard ?? createLoadGuard,
     setStatusAsync: deps.setStatusAsync ?? setPremiumDownloadStatusAsync,
     setProgressAsync: deps.setProgressAsync ?? setPremiumDownloadProgressAsync,
@@ -110,24 +100,6 @@ export function createPremiumBundleService(
     }
   };
 
-  const attemptWithBackoffAsync = async (): Promise<PremiumBundleInstallResult> => {
-    const delaysMs = [500, 1000, 2000];
-    let lastError: unknown;
-
-    for (let attempt = 0; attempt < delaysMs.length + 1; attempt += 1) {
-      try {
-        return await runOnceAsync();
-      } catch (error) {
-        lastError = error;
-        if (attempt < delaysMs.length) {
-          await resolved.sleepAsync(delaysMs[attempt]);
-        }
-      }
-    }
-
-    throw lastError;
-  };
-
   const startAsync = async (): Promise<boolean> => {
     const result = await runIfIdle(async () => {
       await runOnceAsync();
@@ -139,7 +111,7 @@ export function createPremiumBundleService(
 
   const retryAsync = async (): Promise<boolean> => {
     const result = await runIfIdle(async () => {
-      await attemptWithBackoffAsync();
+      await runOnceAsync();
       return true;
     });
 

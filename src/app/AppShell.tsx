@@ -244,6 +244,7 @@ export function AppShell({ deps, initialPage }: AppShellProps) {
   const [premiumDownloadProgress, setPremiumDownloadProgress] = useState<number | null>(null);
   const [premiumDownloadError, setPremiumDownloadError] = useState<string | null>(null);
   const [premiumDownloadModalVisible, setPremiumDownloadModalVisible] = useState(false);
+  const [bannerDismissed, setBannerDismissed] = useState(false);
   const premiumDownloadServiceRef = useRef<PremiumBundleService | null>(null);
   const previousPremiumStatusRef = useRef<PremiumDownloadStatus>('not-downloaded');
 
@@ -484,6 +485,10 @@ export function AppShell({ deps, initialPage }: AppShellProps) {
   }, [premiumDownloadStatus]);
 
   useEffect(() => {
+    setBannerDismissed(false);
+  }, [premiumDownloadStatus]);
+
+  useEffect(() => {
     if (uiState.status !== 'ready') {
       return;
     }
@@ -600,36 +605,67 @@ export function AppShell({ deps, initialPage }: AppShellProps) {
   const transitionDuration = motionDurationMs(reduceMotionEnabled, 220);
 
   const bannerProgress = typeof premiumDownloadProgress === 'number' ? premiumDownloadProgress : 0;
-  const bannerVisible = plan === 'premium' && premiumCode !== null && premiumDownloadStatus !== 'ready';
-  const bannerText =
-    premiumDownloadStatus === 'downloading'
-      ? `Downloading ${bannerProgress}%`
-      : premiumDownloadStatus === 'paused'
-        ? 'Download paused'
-        : premiumDownloadStatus === 'failed'
-          ? 'Download failed'
-          : premiumDownloadStatus === 'not-downloaded'
-            ? 'Premium not downloaded'
-            : 'Premium content';
+
+  const bannerEligible = plan === 'premium' && premiumCode !== null;
+  const bannerVisible =
+    bannerEligible &&
+    !bannerDismissed &&
+    (premiumDownloadStatus === 'downloading' || premiumDownloadStatus === 'failed');
 
   const banner = bannerVisible ? (
-    <Pressable
-      accessibilityRole="button"
-      accessibilityLabel="Show premium download progress"
-      onPress={() => setPremiumDownloadModalVisible(true)}
+    <View
       style={[styles.premiumBanner, androidTopInset > 0 ? { paddingTop: androidTopInset } : null]}
       testID="premium-download-banner"
     >
-      <View style={styles.premiumBannerRow}>
-        {premiumDownloadStatus === 'downloading' ? (
-          <ActivityIndicator color={theme.colors.ink.onBrand} size="small" />
-        ) : null}
-        <Text style={styles.premiumBannerText}>{bannerText}</Text>
-      </View>
-      <View style={styles.premiumBannerTrack}>
-        <View style={[styles.premiumBannerFill, { width: `${Math.max(0, Math.min(100, bannerProgress))}%` }]} />
-      </View>
-    </Pressable>
+      {premiumDownloadStatus === 'failed' ? (
+        <View style={styles.premiumBannerErrorRow}>
+          <View style={styles.premiumBannerRowLeft}>
+            <Text style={styles.premiumBannerErrorIcon}>!</Text>
+            <Text style={styles.premiumBannerText}>An error occur</Text>
+          </View>
+          <View style={styles.premiumBannerRowRight}>
+            <Pressable
+              accessibilityRole="button"
+              accessibilityLabel="Retry premium download"
+              onPress={() => {
+                setPremiumDownloadModalVisible(true);
+                setPremiumDownloadStatus('downloading');
+                setPremiumDownloadProgress(0);
+                void premiumDownloadServiceRef.current?.retryAsync();
+              }}
+              style={styles.premiumBannerRetryButton}
+              testID="premium-download-banner-retry"
+            >
+              <Text style={styles.premiumBannerRetryText}>Retry</Text>
+            </Pressable>
+            <Pressable
+              accessibilityRole="button"
+              accessibilityLabel="Dismiss premium download error"
+              onPress={() => setBannerDismissed(true)}
+              style={styles.premiumBannerCloseButton}
+              testID="premium-download-banner-close"
+            >
+              <Text style={styles.premiumBannerCloseText}>✕</Text>
+            </Pressable>
+          </View>
+        </View>
+      ) : (
+        <Pressable
+          accessibilityRole="button"
+          accessibilityLabel="Show premium download progress"
+          onPress={() => setPremiumDownloadModalVisible(true)}
+          testID="premium-download-banner-progress"
+        >
+          <View style={styles.premiumBannerRow}>
+            <ActivityIndicator color={theme.colors.ink.onBrand} size="small" />
+            <Text style={styles.premiumBannerText}>{`Downloading ${bannerProgress}%`}</Text>
+          </View>
+          <View style={styles.premiumBannerTrack}>
+            <View style={[styles.premiumBannerFill, { width: `${Math.max(0, Math.min(100, bannerProgress))}%` }]} />
+          </View>
+        </Pressable>
+      )}
+    </View>
   ) : null;
 
   const footer = (
@@ -1245,6 +1281,48 @@ const styles = StyleSheet.create({
   premiumBannerFill: {
     height: 4,
     backgroundColor: theme.colors.brand.primaryStrong,
+  },
+  premiumBannerErrorRow: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    paddingBottom: 8,
+    paddingTop: 8,
+  },
+  premiumBannerRowLeft: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 10,
+  },
+  premiumBannerRowRight: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 10,
+  },
+  premiumBannerErrorIcon: {
+    color: theme.colors.status.danger,
+    fontFamily: theme.typography.fontFamily.sans.semiBold,
+  },
+  premiumBannerRetryButton: {
+    borderWidth: StyleSheet.hairlineWidth,
+    borderColor: theme.colors.ink.onBrand,
+    paddingHorizontal: 12,
+    paddingVertical: 6,
+    borderRadius: 10,
+  },
+  premiumBannerRetryText: {
+    color: theme.colors.ink.onBrand,
+    fontFamily: theme.typography.fontFamily.sans.semiBold,
+  },
+  premiumBannerCloseButton: {
+    paddingHorizontal: 6,
+    paddingVertical: 6,
+  },
+  premiumBannerCloseText: {
+    color: theme.colors.ink.onBrand,
+    fontFamily: theme.typography.fontFamily.sans.semiBold,
+    fontSize: 16,
+    lineHeight: 16,
   },
   centered: {
     flex: 1,
