@@ -518,6 +518,7 @@ export function AppShell({ deps, initialPage }: AppShellProps) {
             searchQuery: searchQuery.length > 0 ? searchQuery : undefined,
             sortMode,
             filterMode,
+            advancedFilters,
             launchSeed: safeRandomSeed,
             plan,
           });
@@ -556,6 +557,7 @@ export function AppShell({ deps, initialPage }: AppShellProps) {
     resolved,
     searchQuery,
     filterMode,
+    advancedFilters,
     sortMode,
     uiState,
   ]);

@@ -1,5 +1,6 @@
 import type { SQLiteDatabase } from 'expo-sqlite';
 
+import type { AdvancedFilters } from '../types/advancedFilters';
 import type { Plan } from '../types/plan';
 import type { Recipe } from '../types/recipe';
 import type { FilterMode } from '../types/filterMode';
@@ -19,6 +20,7 @@ export type ListRecipesInput = {
   searchQuery?: string;
   sortMode: SortMode;
   filterMode?: FilterMode;
+  advancedFilters?: AdvancedFilters;
   launchSeed?: number;
   plan?: Plan;
 };
@@ -27,6 +29,70 @@ export type ListRecipesResult = {
   rows: RecipeRow[];
   totalCount: number;
 };
+
+function escapeLikeValue(value: string): string {
+  return value.replace(/[\\%_]/g, (match) => `\\${match}`);
+}
+
+function buildAdvancedFilterClauses(input: {
+  advancedFilters?: AdvancedFilters;
+  params: any[];
+}): string[] {
+  const filters = input.advancedFilters;
+  if (!filters) {
+    return [];
+  }
+
+  const clauses: string[] = [];
+
+  const productTypeMap: Record<string, string> = {
+    Tincture: 'tincture',
+    Elixir: 'elixir',
+    Salve: 'salve',
+    Balm: 'balm',
+    Oil: 'oil',
+    Syrup: 'syrup',
+    Tea: 'tea',
+    Infusion: 'infusion',
+    Decoction: 'decoction',
+    Tonic: 'tonic',
+    Poultice: 'poultice',
+    Liniment: 'liniment',
+    Compress: 'compress',
+    Steam: 'steam',
+    Gargle: 'gargle',
+    Bath: 'bath',
+  };
+
+  for (const label of filters.productTypes) {
+    const token = productTypeMap[label];
+    if (!token) {
+      continue;
+    }
+    clauses.push("title LIKE ? ESCAPE '\\' COLLATE NOCASE");
+    input.params.push(`%${escapeLikeValue(token)}%`);
+  }
+
+  for (const token of filters.conditions) {
+    const trimmed = token.trim();
+    if (!trimmed) {
+      continue;
+    }
+    clauses.push("usedFor LIKE ? ESCAPE '\\' COLLATE NOCASE");
+    input.params.push(`%${escapeLikeValue(trimmed)}%`);
+  }
+
+  for (const token of filters.ingredients) {
+    const trimmed = token.trim();
+    if (!trimmed) {
+      continue;
+    }
+    clauses.push("ingredients LIKE ? ESCAPE '\\' COLLATE NOCASE");
+    input.params.push(`%${escapeLikeValue(trimmed)}%`);
+  }
+
+  return clauses;
+}
 
 export function buildListRecipesQuery(input: ListRecipesInput): { sql: string; params: any[] } {
   const page = Math.max(1, input.page);
@@ -42,6 +108,8 @@ export function buildListRecipesQuery(input: ListRecipesInput): { sql: string; p
     clauses.push('title LIKE ? COLLATE NOCASE');
     params.push(`%${searchQuery}%`);
   }
+
+  clauses.push(...buildAdvancedFilterClauses({ advancedFilters: input.advancedFilters, params }));
 
   if (input.plan === 'free') {
     clauses.push('isPremium = 0');
@@ -108,6 +176,7 @@ export function buildCountRecipesQueryWithFilter(input?: {
   searchQuery?: string;
   plan?: Plan;
   filterMode?: FilterMode;
+  advancedFilters?: AdvancedFilters;
 }): { sql: string; params: any[] } {
   const params: any[] = [];
   const clauses: string[] = [];
@@ -121,6 +190,8 @@ export function buildCountRecipesQueryWithFilter(input?: {
   if (input?.plan === 'free') {
     clauses.push('isPremium = 0');
   }
+
+  clauses.push(...buildAdvancedFilterClauses({ advancedFilters: input?.advancedFilters, params }));
 
   const filterMode = input?.filterMode ?? 'all';
   const fromClause =
@@ -145,6 +216,7 @@ export async function listRecipesAsync(
     searchQuery: input.searchQuery,
     plan: input.plan,
     filterMode: input.filterMode,
+    advancedFilters: input.advancedFilters,
   });
 
   const [rows, countRow] = await Promise.all([

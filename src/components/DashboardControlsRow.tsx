@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
-import { Modal, Pressable, ScrollView, StyleSheet, Text, TextInput, View, useWindowDimensions } from 'react-native';
+import { ActivityIndicator, Modal, Pressable, ScrollView, StyleSheet, Text, TextInput, View, useWindowDimensions } from 'react-native';
 import Animated, { useSharedValue, useAnimatedStyle, withTiming } from 'react-native-reanimated';
 import { Path, Svg } from 'react-native-svg';
 
@@ -125,10 +125,14 @@ export function DashboardControlsRow({
   const resolvedAdvancedFilters: AdvancedFilters = advancedFilters ?? EMPTY_ADVANCED_FILTERS;
 
   const [ingredientSearch, setIngredientSearch] = useState('');
+  const [ingredientsRenderEnabled, setIngredientsRenderEnabled] = useState(false);
   const filteredIngredients = useMemo(() => {
     const query = ingredientSearch.trim().toLowerCase();
     if (!query) {
-      return resolvedCatalog.ingredients;
+      const maxInitial = 200;
+      return resolvedCatalog.ingredients.length > maxInitial
+        ? resolvedCatalog.ingredients.slice(0, maxInitial)
+        : resolvedCatalog.ingredients;
     }
     return resolvedCatalog.ingredients.filter((item) => item.toLowerCase().includes(query));
   }, [ingredientSearch, resolvedCatalog.ingredients]);
@@ -150,6 +154,20 @@ export function DashboardControlsRow({
     conditionsProgress.value = reduceMotionEnabled ? conditions : withTiming(conditions, { duration });
     ingredientsProgress.value = reduceMotionEnabled ? ingredients : withTiming(ingredients, { duration });
   }, [conditionsProgress, expandedSection, ingredientsProgress, productTypesProgress, reduceMotionEnabled]);
+
+  useEffect(() => {
+    if (expandedSection !== 'ingredients') {
+      setIngredientsRenderEnabled(false);
+      return;
+    }
+
+    setIngredientsRenderEnabled(false);
+    const handle = setTimeout(() => {
+      setIngredientsRenderEnabled(true);
+    }, 0);
+
+    return () => clearTimeout(handle);
+  }, [expandedSection]);
 
   const productTypesStyle = useAnimatedStyle(() => {
     return {
@@ -532,19 +550,25 @@ export function DashboardControlsRow({
                   <Text style={styles.accordionChevron}>{expandedSection === 'productTypes' ? '▾' : '▸'}</Text>
                 </Pressable>
                 <Animated.View style={[styles.accordionBody, productTypesStyle]}>
-                  {resolvedCatalog.productTypes.map((label) =>
-                    renderMultiSelectRow({
-                      label,
-                      selected: resolvedAdvancedFilters.productTypes.includes(label),
-                      onPress: () => {
-                        updateAdvancedFilters({
-                          ...resolvedAdvancedFilters,
-                          productTypes: toggleValue(resolvedAdvancedFilters.productTypes, label),
-                        });
-                      },
-                      testID: `filter-productType-${label}`,
-                    })
-                  )}
+                  {expandedSection === 'productTypes'
+                    ? (
+                        <ScrollView bounces={false} nestedScrollEnabled style={styles.accordionList}>
+                          {resolvedCatalog.productTypes.map((label) =>
+                            renderMultiSelectRow({
+                              label,
+                              selected: resolvedAdvancedFilters.productTypes.includes(label),
+                              onPress: () => {
+                                updateAdvancedFilters({
+                                  ...resolvedAdvancedFilters,
+                                  productTypes: toggleValue(resolvedAdvancedFilters.productTypes, label),
+                                });
+                              },
+                              testID: `filter-productType-${label}`,
+                            })
+                          )}
+                        </ScrollView>
+                      )
+                    : null}
                 </Animated.View>
 
                 <Pressable
@@ -558,19 +582,25 @@ export function DashboardControlsRow({
                   <Text style={styles.accordionChevron}>{expandedSection === 'conditions' ? '▾' : '▸'}</Text>
                 </Pressable>
                 <Animated.View style={[styles.accordionBody, conditionsStyle]}>
-                  {resolvedCatalog.conditions.map((label) =>
-                    renderMultiSelectRow({
-                      label,
-                      selected: resolvedAdvancedFilters.conditions.includes(label),
-                      onPress: () => {
-                        updateAdvancedFilters({
-                          ...resolvedAdvancedFilters,
-                          conditions: toggleValue(resolvedAdvancedFilters.conditions, label),
-                        });
-                      },
-                      testID: `filter-condition-${label}`,
-                    })
-                  )}
+                  {expandedSection === 'conditions'
+                    ? (
+                        <ScrollView bounces={false} nestedScrollEnabled style={styles.accordionList}>
+                          {resolvedCatalog.conditions.map((label) =>
+                            renderMultiSelectRow({
+                              label,
+                              selected: resolvedAdvancedFilters.conditions.includes(label),
+                              onPress: () => {
+                                updateAdvancedFilters({
+                                  ...resolvedAdvancedFilters,
+                                  conditions: toggleValue(resolvedAdvancedFilters.conditions, label),
+                                });
+                              },
+                              testID: `filter-condition-${label}`,
+                            })
+                          )}
+                        </ScrollView>
+                      )
+                    : null}
                 </Animated.View>
 
                 <Pressable
@@ -584,29 +614,42 @@ export function DashboardControlsRow({
                   <Text style={styles.accordionChevron}>{expandedSection === 'ingredients' ? '▾' : '▸'}</Text>
                 </Pressable>
                 <Animated.View style={[styles.accordionBody, ingredientsStyle]}>
-                  <View style={styles.ingredientSearchContainer}>
-                    <TextInput
-                      value={ingredientSearch}
-                      onChangeText={setIngredientSearch}
-                      placeholder="Search ingredients"
-                      placeholderTextColor={theme.colors.ink.subtle}
-                      style={styles.ingredientSearchInput}
-                      testID="filter-ingredient-search"
-                    />
-                  </View>
-                  {filteredIngredients.map((label) =>
-                    renderMultiSelectRow({
-                      label,
-                      selected: resolvedAdvancedFilters.ingredients.includes(label),
-                      onPress: () => {
-                        updateAdvancedFilters({
-                          ...resolvedAdvancedFilters,
-                          ingredients: toggleValue(resolvedAdvancedFilters.ingredients, label),
-                        });
-                      },
-                      testID: `filter-ingredient-${label}`,
-                    })
-                  )}
+                  {expandedSection === 'ingredients' ? (
+                    <>
+                      <View style={styles.ingredientSearchContainer}>
+                        <TextInput
+                          value={ingredientSearch}
+                          onChangeText={setIngredientSearch}
+                          placeholder="Search ingredients"
+                          placeholderTextColor={theme.colors.ink.subtle}
+                          style={styles.ingredientSearchInput}
+                          testID="filter-ingredient-search"
+                        />
+                      </View>
+                      {!ingredientsRenderEnabled ? (
+                        <View style={styles.ingredientsLoadingRow} testID="filter-ingredient-loading">
+                          <ActivityIndicator size="small" />
+                        </View>
+                      ) : null}
+                      {ingredientsRenderEnabled ? (
+                        <ScrollView bounces={false} nestedScrollEnabled style={styles.accordionList}>
+                          {filteredIngredients.map((label) =>
+                            renderMultiSelectRow({
+                              label,
+                              selected: resolvedAdvancedFilters.ingredients.includes(label),
+                              onPress: () => {
+                                updateAdvancedFilters({
+                                  ...resolvedAdvancedFilters,
+                                  ingredients: toggleValue(resolvedAdvancedFilters.ingredients, label),
+                                });
+                              },
+                              testID: `filter-ingredient-${label}`,
+                            })
+                          )}
+                        </ScrollView>
+                      ) : null}
+                    </>
+                  ) : null}
                 </Animated.View>
 
                 <View style={styles.sectionDivider} />
@@ -850,6 +893,15 @@ const styles = StyleSheet.create({
     fontFamily: theme.typography.fontFamily.sans.regular,
     color: theme.colors.ink.primary,
     backgroundColor: theme.colors.surface.paperStrong,
+  },
+  accordionList: {
+    maxHeight: 220,
+  },
+  ingredientsLoadingRow: {
+    paddingHorizontal: 14,
+    paddingBottom: 10,
+    alignItems: 'center',
+    justifyContent: 'center',
   },
   clearFiltersRow: {
     alignItems: 'center',
