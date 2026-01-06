@@ -68,7 +68,12 @@ test('defaults: sortMode=random, filterMode=all, infiniteScroll=false, viewMode=
   await expect(getPremiumDownloadErrorAsync(db)).resolves.toBeNull();
   await expect(getSortModeAsync(db)).resolves.toBe('random');
   await expect(getFilterModeAsync(db)).resolves.toBe('all');
-  await expect(getAdvancedFiltersAsync(db)).resolves.toEqual({ productTypes: [], conditions: [], ingredients: [] });
+  await expect(getAdvancedFiltersAsync(db)).resolves.toEqual({
+    productTypes: [],
+    conditions: [],
+    ingredients: [],
+    regions: [],
+  });
   await expect(getInfiniteScrollEnabledAsync(db)).resolves.toBe(false);
   await expect(getPageSizeAsync(db)).resolves.toBe(25);
   await expect(getViewModeAsync(db)).resolves.toBe('list');
@@ -86,7 +91,12 @@ test('set/get roundtrip for all preferences', async () => {
   await setPremiumBundleSha256Async(db, 'deadbeef');
   await setSortModeAsync(db, 'za');
   await setFilterModeAsync(db, 'favorites');
-  await setAdvancedFiltersAsync(db, { productTypes: ['Tincture'], conditions: ['Sleep'], ingredients: ['Lavender'] });
+  await setAdvancedFiltersAsync(db, {
+    productTypes: ['Tincture'],
+    conditions: ['Sleep'],
+    ingredients: ['Lavender'],
+    regions: ['North America'],
+  });
   await setInfiniteScrollEnabledAsync(db, true);
   await setPageSizeAsync(db, 25);
   await setViewModeAsync(db, 'list-big');
@@ -110,6 +120,7 @@ test('set/get roundtrip for all preferences', async () => {
     productTypes: ['Tincture'],
     conditions: ['Sleep'],
     ingredients: ['Lavender'],
+    regions: ['North America'],
   });
   await expect(getInfiniteScrollEnabledAsync(db)).resolves.toBe(true);
   await expect(getPageSizeAsync(db)).resolves.toBe(25);
@@ -132,6 +143,7 @@ test('persistence simulated: values are read from stored key/value table', async
       productTypes: ['Elixir'],
       conditions: ['Cold'],
       ingredients: ['Honey'],
+      regions: ['Other / Global'],
     }),
     infiniteScrollEnabled: 'false',
     pageSize: '25',
@@ -152,6 +164,7 @@ test('persistence simulated: values are read from stored key/value table', async
     productTypes: ['Elixir'],
     conditions: ['Cold'],
     ingredients: ['Honey'],
+    regions: ['Other / Global'],
   });
   await expect(getInfiniteScrollEnabledAsync(db)).resolves.toBe(false);
   await expect(getPageSizeAsync(db)).resolves.toBe(25);

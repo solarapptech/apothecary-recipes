@@ -398,7 +398,7 @@ test('compact list correction scroll is not canceled by programmatic momentum ev
   });
 
   act(() => {
-    jest.advanceTimersByTime(60);
+    jest.advanceTimersByTime(400);
   });
 
   expect(mockScrollToIndex).toHaveBeenCalledWith({ index: 0, animated: true, viewPosition: 0.1 });
@@ -412,7 +412,7 @@ test('compact list correction scroll is not canceled by programmatic momentum ev
     jest.advanceTimersByTime(600);
   });
 
-  expect(mockScrollToIndex).toHaveBeenCalledWith({ index: 0, animated: false, viewPosition: 0.1 });
+  expect(mockScrollToIndex).toHaveBeenCalledTimes(1);
 
   jest.useRealTimers();
 });
@@ -491,7 +491,7 @@ test('compact list auto-scrolls when expanding a recipe for the first time', () 
   });
 
   act(() => {
-    jest.advanceTimersByTime(140);
+    jest.advanceTimersByTime(400);
   });
 
   expect(mockScrollToIndex).toHaveBeenCalledWith({ index: 0, animated: true, viewPosition: 0.1 });
@@ -653,7 +653,7 @@ test('list view collapses details via tapping the title zone (expanded row stays
   });
 
   act(() => {
-    jest.advanceTimersByTime(140);
+    jest.advanceTimersByTime(400);
   });
 
   expect(mockScrollToIndex).toHaveBeenCalledWith({ index: 0, animated: true, viewPosition: 0.1 });
@@ -801,14 +801,49 @@ test('list-big view items enter details mode via tapping the card, but do not co
 
   expect(tree.root.findByProps({ testID: 'list-big-recipe-row-details-mode-1' })).toBeTruthy();
 
-  // Tap card again: should NOT exit details mode
+  // Once details are open, the card body becomes inert (no collapse, no wave)
+  expect(tree.root.findByProps({ testID: 'list-big-recipe-row-1' }).props.onPress).toBeUndefined();
+
+  expect(tree.root.findByProps({ testID: 'list-big-recipe-row-details-mode-1' })).toBeTruthy();
+});
+
+test('list-big view collapses details via tapping the header zone (card body stays inert)', () => {
+  const DashboardScreen = loadDashboardScreenWithFlashListMock();
+  const recipes = createRecipes(1);
+
+  const tree = render(
+    <DashboardScreen
+      title="Apothecary Recipes"
+      headerRight={<View />}
+      controls={<View />}
+      footer={<View />}
+      recipes={recipes}
+      totalCount={1}
+      viewMode="list-big"
+      filterMode="all"
+      hasAnyFavorites={false}
+      onPressShowAllRecipes={() => undefined}
+      onToggleFavorite={() => undefined}
+    />
+  );
+
+  // Tap card: enter details mode
   act(() => {
     tree.root.findByProps({ testID: 'list-big-recipe-row-1' }).props.onPress({
       nativeEvent: { locationX: 0, locationY: 0 },
     });
   });
-
   expect(tree.root.findByProps({ testID: 'list-big-recipe-row-details-mode-1' })).toBeTruthy();
+
+  // Tap the header zone: should collapse details (like pressing the chevron)
+  act(() => {
+    tree.root.findByProps({ testID: 'list-big-recipe-row-header-zone-1' }).props.onPress({
+      stopPropagation: () => {},
+      nativeEvent: { locationX: 0, locationY: 0 },
+    });
+  });
+
+  expect(tree.root.findAllByProps({ testID: 'list-big-recipe-row-details-mode-1' })).toHaveLength(0);
 });
 
 test('list-big view only allows expanding/closing the image when the recipe is focused (details shown)', () => {
@@ -965,7 +1000,7 @@ test('auto-scrolls to the recipe when collapsing details via Show Less in list v
   });
 
   act(() => {
-    jest.advanceTimersByTime(60);
+    jest.advanceTimersByTime(100);
   });
 
   expect(mockScrollToIndex).toHaveBeenCalledWith({ index: 0, animated: true, viewPosition: 0.1 });

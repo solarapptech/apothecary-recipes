@@ -17,6 +17,7 @@ type SecondaryFieldRowProps = {
   chevronColor?: string;
   toggleTestID?: string;
   valueTestID?: string;
+  onTogglePress?: (e: any) => void;
 };
 
 export function SecondaryFieldRow({
@@ -30,6 +31,7 @@ export function SecondaryFieldRow({
   chevronColor,
   toggleTestID,
   valueTestID,
+  onTogglePress,
 }: SecondaryFieldRowProps) {
   const [collapsed, setCollapsed] = useState(defaultCollapsed);
 
@@ -41,6 +43,7 @@ export function SecondaryFieldRow({
         <Pressable
           testID={toggleTestID}
           onPress={(e) => {
+            onTogglePress?.(e);
             (e as any).stopPropagation?.();
             setCollapsed((prev) => !prev);
           }}

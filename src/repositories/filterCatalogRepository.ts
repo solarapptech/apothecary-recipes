@@ -5,6 +5,22 @@ import type { Plan } from '../types/plan';
 
 export type FilterCatalog = AdvancedFilters;
 
+const REGION_OPTIONS: string[] = [
+  'North America',
+  'Central America & Caribbean',
+  'South America',
+  'Western & Southern Europe',
+  'Northern & Eastern Europe',
+  'North Africa & Middle East (MENA)',
+  'West Africa',
+  'Sub-Saharan Africa (General)',
+  'Southern Africa',
+  'East Asia',
+  'South Asia (India/Subcontinent)',
+  'Oceania (Australia & Pacific Islands)',
+  'Other / Global',
+];
+
 type RecipeTagRow = {
   title: string;
   usedFor: string | null;
@@ -76,7 +92,7 @@ export async function listFilterCatalogAsync(
   }
 ): Promise<FilterCatalog> {
   if (typeof (db as any)?.getAllAsync !== 'function') {
-    return { productTypes: [], conditions: [], ingredients: [] };
+    return { productTypes: [], conditions: [], ingredients: [], regions: REGION_OPTIONS };
   }
 
   const params: any[] = [];
@@ -110,5 +126,6 @@ export async function listFilterCatalogAsync(
     productTypes: sortStrings(productTypes),
     conditions: sortStrings(conditions),
     ingredients: sortStrings(ingredients),
+    regions: REGION_OPTIONS,
   };
 }

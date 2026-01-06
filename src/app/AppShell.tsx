@@ -264,6 +264,7 @@ export function AppShell({ deps, initialPage }: AppShellProps) {
     productTypes: [],
     conditions: [],
     ingredients: [],
+    regions: [],
   });
 
   const [randomSeed, setRandomSeed] = useState<number>(1);

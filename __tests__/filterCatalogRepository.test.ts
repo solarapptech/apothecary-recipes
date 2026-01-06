@@ -1,5 +1,21 @@
 import { listFilterCatalogAsync } from '../src/repositories/filterCatalogRepository';
 
+const REGION_OPTIONS: string[] = [
+  'North America',
+  'Central America & Caribbean',
+  'South America',
+  'Western & Southern Europe',
+  'Northern & Eastern Europe',
+  'North Africa & Middle East (MENA)',
+  'West Africa',
+  'Sub-Saharan Africa (General)',
+  'Southern Africa',
+  'East Asia',
+  'South Asia (India/Subcontinent)',
+  'Oceania (Australia & Pacific Islands)',
+  'Other / Global',
+];
+
 function createFakeDb(rows: Array<{ title: string; usedFor: string | null; ingredients: string; isPremium: number }>) {
   const db = {
     getAllAsync: async <T>(sql: string) => {
@@ -17,6 +33,7 @@ test('listFilterCatalogAsync returns empty arrays when db lacks getAllAsync', as
     productTypes: [],
     conditions: [],
     ingredients: [],
+    regions: REGION_OPTIONS,
   });
 });
 
@@ -40,6 +57,7 @@ test('listFilterCatalogAsync derives productTypes, conditions, and ingredients f
     productTypes: ['Tea', 'Tincture'],
     conditions: ['Anxiety', 'Digestion', 'Nausea', 'Sleep'],
     ingredients: ['Ginger', 'Honey', 'Lavender', 'Lemon'],
+    regions: REGION_OPTIONS,
   });
 });
 
@@ -63,5 +81,6 @@ test('listFilterCatalogAsync includes premium rows when plan is premium', async 
     productTypes: ['Syrup', 'Tincture'],
     conditions: ['Cold', 'Sleep'],
     ingredients: ['Elderberry', 'Lavender'],
+    regions: REGION_OPTIONS,
   });
 });

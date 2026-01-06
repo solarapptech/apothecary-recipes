@@ -246,6 +246,30 @@ export function ListBigRecipeRow({
     }
   };
 
+  const handleHeaderZonePress = (e: any) => {
+    e.stopPropagation();
+    triggerWave(e);
+
+    // When details are visible, the header zone behaves like the chevron: collapse.
+    if (detailsMode) {
+      setDetailsMode(false);
+      if (onShowLess) {
+        onShowLess();
+      }
+      return;
+    }
+
+    if (!allowDetailsToggle && onPress) {
+      onPress();
+      return;
+    }
+
+    // When details are hidden, header zone toggles only if we're in "tap to toggle" mode.
+    if (!showDetailsButton) {
+      setDetailsMode(true);
+    }
+  };
+
   const handleShowDetailsPress = (e: any) => {
     e.stopPropagation();
     triggerWave(e);
@@ -265,25 +289,8 @@ export function ListBigRecipeRow({
   };
 
   const handleTitleZonePress = (e: any) => {
-    e.stopPropagation();
-    triggerWave(e);
-
-    if (!allowDetailsToggle && onPress) {
-      onPress();
-      return;
-    }
-
-    if (showDetailsButton && detailsMode) {
-      setDetailsMode(false);
-      if (onShowLess) {
-        onShowLess();
-      }
-      return;
-    }
-
-    if (!showDetailsButton) {
-      setDetailsMode(!detailsMode);
-    }
+    // Title is part of the header zone.
+    handleHeaderZonePress(e);
   };
 
   const handleHeaderChevronPress = (e: any) => {
@@ -437,10 +444,15 @@ export function ListBigRecipeRow({
             height: e.nativeEvent.layout.height,
           };
         }}
-        onPress={(e) => {
-          triggerWave(e);
-          handleContainerPress();
-        }}
+        onPress={
+          // When details are visible, the card body becomes inert (no collapse, no wave).
+          detailsMode
+            ? undefined
+            : (e) => {
+                triggerWave(e);
+                handleContainerPress();
+              }
+        }
         accessibilityRole="button"
         accessibilityLabel={detailsMode ? "Collapse recipe details" : "Expand recipe details"}
         layout={reduceMotionEnabled ? undefined : Layout.duration(animDuration)}
@@ -467,23 +479,35 @@ export function ListBigRecipeRow({
         </View>
 
         <View style={[styles.contentWrapper, dimmed && styles.dimmedContent]}>
-          {headerContent}
-
-          <Animated.View
-            style={styles.descriptionBlock}
-            testID={`list-big-recipe-row-description-block-${recipeId}`}
+          <Pressable
+            testID={`list-big-recipe-row-header-zone-${recipeId}`}
+            onPress={handleHeaderZonePress}
+            accessibilityRole="button"
+            accessibilityLabel={detailsMode ? 'Collapse recipe details' : 'Expand recipe details'}
           >
-            <DescriptionInline
-              value={description}
-              numberOfLines={detailsMode ? undefined : 3}
-            />
-          </Animated.View>
+            {headerContent}
+
+            <Animated.View
+              style={styles.descriptionBlock}
+              testID={`list-big-recipe-row-description-block-${recipeId}`}
+            >
+              <DescriptionInline
+                value={description}
+                numberOfLines={detailsMode ? undefined : 3}
+              />
+            </Animated.View>
+          </Pressable>
 
           {detailsMode ? (
-            <Animated.View
-              style={[styles.detailsMode, styles.detailsModeClip]}
-              testID={`list-big-recipe-row-details-mode-${recipeId}`}
+            <View
+              // In details mode, the metadata area should not be tappable (no wave) except for
+              // explicit controls (Warning dropdown, Show Less).
+              pointerEvents="box-none"
             >
+              <Animated.View
+                style={[styles.detailsMode, styles.detailsModeClip]}
+                testID={`list-big-recipe-row-details-mode-${recipeId}`}
+              >
               <Animated.View
                 entering={reduceMotionEnabled ? undefined : FadeInDown.duration(animDuration).delay(0)}
                 exiting={enableExitAnimations ? FadeOut.duration(animDuration) : undefined}
@@ -553,6 +577,9 @@ export function ListBigRecipeRow({
                 chevronColor={theme.colors.brand.primaryStrong}
                 toggleTestID={`list-big-recipe-row-warning-toggle-${recipeId}`}
                 valueTestID={`list-big-recipe-row-warning-value-${recipeId}`}
+                onTogglePress={(e) => {
+                  triggerWave(e);
+                }}
               />
             </Animated.View>
             <Animated.View
@@ -578,7 +605,8 @@ export function ListBigRecipeRow({
                 </Pressable>
               </Animated.View>
             )}
-          </Animated.View>
+              </Animated.View>
+            </View>
         ) : null}
 
         {!detailsMode && showDetailsButton && (
@@ -674,8 +702,8 @@ const styles = StyleSheet.create({
   },
   favoriteButton: {
     position: 'absolute',
-    top: 10,
-    right: 10,
+    top: 0,
+    right: 0,
     height: 30,
     minWidth: 30,
     paddingHorizontal: 8,
@@ -689,7 +717,7 @@ const styles = StyleSheet.create({
     opacity: 0.45,
   },
   favoriteButtonActive: {
-    backgroundColor: theme.colors.surface.popover,
+    backgroundColor: 'transparent',
     opacity: 1,
   },
   favoriteIcon: {
@@ -724,6 +752,9 @@ const styles = StyleSheet.create({
   headerRow: {
     flexDirection: 'row',
     gap: 12,
+  },
+  headerContent: {
+    flex: 1,
   },
   thumbnail: {
     height: 128,

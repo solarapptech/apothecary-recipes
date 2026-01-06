@@ -62,6 +62,7 @@ function parseAdvancedFiltersJson(value: string | null): AdvancedFilters {
       productTypes: toStringArray(parsed?.productTypes),
       conditions: toStringArray(parsed?.conditions),
       ingredients: toStringArray(parsed?.ingredients),
+      regions: toStringArray(parsed?.regions),
     };
   } catch {
     return EMPTY_ADVANCED_FILTERS;
@@ -78,6 +79,7 @@ export async function setAdvancedFiltersAsync(db: DbLike, filters: AdvancedFilte
     productTypes: toStringArray(filters.productTypes),
     conditions: toStringArray(filters.conditions),
     ingredients: toStringArray(filters.ingredients),
+    regions: toStringArray(filters.regions),
   };
   await setValueAsync(db, KEY_ADVANCED_FILTERS, JSON.stringify(normalized));
 }

@@ -39,8 +39,51 @@ export function CompactRecipeRow({
     <View
       style={[styles.container, dimmed && styles.containerDimmed]}
       testID={`compact-recipe-row-${recipeId}`}
-    > 
-      <View pointerEvents="none" style={styles.accent} />
+    >
+      <View style={styles.contentClip}>
+        <View pointerEvents="none" style={styles.accent} />
+        {imageSource ? (
+          <Image
+            source={imageSource}
+            style={styles.thumbnail}
+            resizeMode="cover"
+            testID={`compact-recipe-row-thumb-${recipeId}`}
+            accessibilityLabel="Recipe image"
+          />
+        ) : (
+          <View style={styles.thumbnail} testID={`compact-recipe-row-thumb-${recipeId}`}>
+            <Text style={styles.thumbnailText} accessibilityLabel="Recipe image placeholder">
+              IMG
+            </Text>
+          </View>
+        )}
+
+        <View style={styles.textContainer}>
+          <Text
+            style={styles.title}
+            numberOfLines={1}
+            ellipsizeMode="tail"
+            testID={`compact-recipe-row-title-${recipeId}`}
+          >
+            {displayTitle}
+          </Text>
+
+          <View style={styles.metaRow}>
+            <View style={styles.difficultyContainer} testID={`compact-recipe-row-difficulty-${recipeId}`}>
+              <Text style={styles.difficultyText} numberOfLines={1} ellipsizeMode="tail">
+                {difficultyLabel}
+              </Text>
+            </View>
+            <View style={styles.timeRow} testID={`compact-recipe-row-time-${recipeId}`}>
+              <FieldIcon name="prepTime" size={12} color={theme.colors.ink.muted} />
+              <Text style={styles.metaText} numberOfLines={1}>
+                {preparationTime}
+              </Text>
+            </View>
+          </View>
+        </View>
+      </View>
+
       <Pressable
         accessibilityRole="button"
         accessibilityLabel={isFavorite ? 'Remove from favorites' : 'Add to favorites'}
@@ -55,46 +98,6 @@ export function CompactRecipeRow({
           {isFavorite ? '★' : '☆'}
         </Text>
       </Pressable>
-      {imageSource ? (
-        <Image
-          source={imageSource}
-          style={styles.thumbnail}
-          resizeMode="cover"
-          testID={`compact-recipe-row-thumb-${recipeId}`}
-          accessibilityLabel="Recipe image"
-        />
-      ) : (
-        <View style={styles.thumbnail} testID={`compact-recipe-row-thumb-${recipeId}`}>
-          <Text style={styles.thumbnailText} accessibilityLabel="Recipe image placeholder">
-            IMG
-          </Text>
-        </View>
-      )}
-
-      <View style={styles.textContainer}>
-        <Text
-          style={styles.title}
-          numberOfLines={1}
-          ellipsizeMode="tail"
-          testID={`compact-recipe-row-title-${recipeId}`}
-        >
-          {displayTitle}
-        </Text>
-
-        <View style={styles.metaRow}>
-          <View style={styles.difficultyContainer} testID={`compact-recipe-row-difficulty-${recipeId}`}>
-            <Text style={styles.difficultyText} numberOfLines={1} ellipsizeMode="tail">
-              {difficultyLabel}
-            </Text>
-          </View>
-          <View style={styles.timeRow} testID={`compact-recipe-row-time-${recipeId}`}>
-            <FieldIcon name="prepTime" size={12} color={theme.colors.ink.muted} />
-            <Text style={styles.metaText} numberOfLines={1}>
-              {preparationTime}
-            </Text>
-          </View>
-        </View>
-      </View>
     </View>
   );
 }
@@ -102,16 +105,11 @@ export function CompactRecipeRow({
 const styles = StyleSheet.create({
   container: {
     position: 'relative',
-    flexDirection: 'row',
-    alignItems: 'center',
     marginHorizontal: theme.spacing.md,
     marginBottom: theme.spacing.md,
-    paddingRight: theme.spacing.md,
-    paddingVertical: theme.spacing.md,
-    paddingLeft: theme.spacing.md + ACCENT_WIDTH,
     backgroundColor: theme.colors.surface.paper,
     borderRadius: theme.radii.lg,
-    overflow: 'hidden',
+    overflow: 'visible',
     borderWidth: StyleSheet.hairlineWidth,
     borderColor: theme.colors.border.subtle,
     shadowColor: '#000',
@@ -138,10 +136,20 @@ const styles = StyleSheet.create({
     borderTopRightRadius: 6,
     borderBottomRightRadius: 6,
   },
+  contentClip: {
+    position: 'relative',
+    flexDirection: 'row',
+    alignItems: 'center',
+    paddingRight: theme.spacing.md,
+    paddingVertical: theme.spacing.md,
+    paddingLeft: theme.spacing.md + ACCENT_WIDTH,
+    borderRadius: theme.radii.lg,
+    overflow: 'hidden',
+  },
   favoriteButton: {
     position: 'absolute',
-    top: 10,
-    right: 10,
+    top: 0,
+    right: 0,
     height: 26,
     minWidth: 26,
     paddingHorizontal: 6,
@@ -155,7 +163,7 @@ const styles = StyleSheet.create({
     opacity: 0.45,
   },
   favoriteButtonActive: {
-    backgroundColor: theme.colors.surface.popover,
+    backgroundColor: 'transparent',
     opacity: 1,
   },
   favoriteIcon: {

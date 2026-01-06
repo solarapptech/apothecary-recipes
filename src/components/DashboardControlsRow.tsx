@@ -61,7 +61,12 @@ function isAnyAdvancedFilterActive(filters: AdvancedFilters | null | undefined):
   if (!filters) {
     return false;
   }
-  return filters.productTypes.length > 0 || filters.conditions.length > 0 || filters.ingredients.length > 0;
+  return (
+    filters.productTypes.length > 0 ||
+    filters.conditions.length > 0 ||
+    filters.ingredients.length > 0 ||
+    (filters.regions?.length ?? 0) > 0
+  );
 }
 
 function FilterIcon({ color }: { color: string }) {
@@ -121,8 +126,13 @@ export function DashboardControlsRow({
     productTypes: [],
     conditions: [],
     ingredients: [],
+    regions: [],
   };
-  const resolvedAdvancedFilters: AdvancedFilters = advancedFilters ?? EMPTY_ADVANCED_FILTERS;
+  const resolvedAdvancedFilters: AdvancedFilters = {
+    ...EMPTY_ADVANCED_FILTERS,
+    ...(advancedFilters ?? {}),
+    regions: advancedFilters?.regions ?? [],
+  };
 
   const [ingredientSearch, setIngredientSearch] = useState('');
   const [ingredientsRenderEnabled, setIngredientsRenderEnabled] = useState(false);
@@ -137,10 +147,13 @@ export function DashboardControlsRow({
     return resolvedCatalog.ingredients.filter((item) => item.toLowerCase().includes(query));
   }, [ingredientSearch, resolvedCatalog.ingredients]);
 
-  const [expandedSection, setExpandedSection] = useState<'productTypes' | 'conditions' | 'ingredients' | null>(null);
+  const [expandedSection, setExpandedSection] = useState<
+    'productTypes' | 'conditions' | 'ingredients' | 'regions' | null
+  >(null);
   const productTypesProgress = useSharedValue(0);
   const conditionsProgress = useSharedValue(0);
   const ingredientsProgress = useSharedValue(0);
+  const regionsProgress = useSharedValue(0);
 
   useEffect(() => {
     const toValue = (open: boolean) => (open ? 1 : 0);
@@ -149,11 +162,20 @@ export function DashboardControlsRow({
     const product = toValue(expandedSection === 'productTypes');
     const conditions = toValue(expandedSection === 'conditions');
     const ingredients = toValue(expandedSection === 'ingredients');
+    const regions = toValue(expandedSection === 'regions');
 
     productTypesProgress.value = reduceMotionEnabled ? product : withTiming(product, { duration });
     conditionsProgress.value = reduceMotionEnabled ? conditions : withTiming(conditions, { duration });
     ingredientsProgress.value = reduceMotionEnabled ? ingredients : withTiming(ingredients, { duration });
-  }, [conditionsProgress, expandedSection, ingredientsProgress, productTypesProgress, reduceMotionEnabled]);
+    regionsProgress.value = reduceMotionEnabled ? regions : withTiming(regions, { duration });
+  }, [
+    conditionsProgress,
+    expandedSection,
+    ingredientsProgress,
+    productTypesProgress,
+    reduceMotionEnabled,
+    regionsProgress,
+  ]);
 
   useEffect(() => {
     if (expandedSection !== 'ingredients') {
@@ -188,9 +210,16 @@ export function DashboardControlsRow({
     };
   });
 
+  const regionsStyle = useAnimatedStyle(() => {
+    return {
+      maxHeight: 260 * regionsProgress.value,
+      opacity: regionsProgress.value,
+    };
+  });
+
   const anyFiltersActive = filterMode === 'favorites' || isAnyAdvancedFilterActive(resolvedAdvancedFilters);
 
-  const toggleSection = (section: 'productTypes' | 'conditions' | 'ingredients') => {
+  const toggleSection = (section: 'productTypes' | 'conditions' | 'ingredients' | 'regions') => {
     setExpandedSection((prev) => (prev === section ? null : section));
   };
 
@@ -649,6 +678,36 @@ export function DashboardControlsRow({
                         </ScrollView>
                       ) : null}
                     </>
+                  ) : null}
+                </Animated.View>
+
+                <Pressable
+                  accessibilityRole="button"
+                  accessibilityLabel="Region"
+                  onPress={() => toggleSection('regions')}
+                  style={styles.accordionHeader}
+                  testID="filter-accordion-regions"
+                >
+                  <Text style={styles.accordionHeaderText}>Region</Text>
+                  <Text style={styles.accordionChevron}>{expandedSection === 'regions' ? '▾' : '▸'}</Text>
+                </Pressable>
+                <Animated.View style={[styles.accordionBody, regionsStyle]}>
+                  {expandedSection === 'regions' ? (
+                    <ScrollView bounces={false} nestedScrollEnabled style={styles.accordionList}>
+                      {resolvedCatalog.regions.map((label) =>
+                        renderMultiSelectRow({
+                          label,
+                          selected: resolvedAdvancedFilters.regions.includes(label),
+                          onPress: () => {
+                            updateAdvancedFilters({
+                              ...resolvedAdvancedFilters,
+                              regions: toggleValue(resolvedAdvancedFilters.regions, label),
+                            });
+                          },
+                          testID: `filter-region-${label}`,
+                        })
+                      )}
+                    </ScrollView>
                   ) : null}
                 </Animated.View>
 

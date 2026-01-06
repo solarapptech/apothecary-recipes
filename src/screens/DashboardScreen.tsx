@@ -163,21 +163,30 @@ export function DashboardScreen({
     const scrollArgs = isListBig
       ? { index, viewPosition, viewOffset: listBigViewOffset }
       : { index, viewPosition };
-    const initialDelayMs = isListBig ? 120 : 50;
-    const correctionDelayMs = (reduceMotionEnabled ? 0 : collapseAnimDuration) + (isListBig ? 220 : 60);
+    const initialDelayMs = isListBig ? 120 : 0;
+    const listBigCorrectionDelayMs = (reduceMotionEnabled ? 0 : collapseAnimDuration) + 220;
+    // Compact list: aim to scroll promptly, but still wait a bit for the layout animation so
+    // FlashList measurements have a chance to settle.
+    const compactScrollDelayMs = (reduceMotionEnabled ? 0 : Math.min(collapseAnimDuration, 80)) + 10;
 
-    pendingScrollTimeouts.current.initial = setTimeout(() => {
-      listRef.current?.scrollToIndex?.({ ...scrollArgs, animated: true });
-    }, initialDelayMs);
+    // List-big: keep the two-stage scroll. Large height changes can temporarily confuse FlashList
+    // measurements, so the correction helps keep the focused card in a stable spot.
+    if (isListBig) {
+      pendingScrollTimeouts.current.initial = setTimeout(() => {
+        listRef.current?.scrollToIndex?.({ ...scrollArgs, animated: !reduceMotionEnabled });
+      }, initialDelayMs);
 
-    // In list-big we always do a correction scroll (even with reduce motion) because the cell height
-    // changes are larger and FlashList measurement can be temporarily off. Compact list already behaves
-    // well, so we keep the previous reduce-motion behavior there.
-    if (isListBig || !reduceMotionEnabled) {
       pendingScrollTimeouts.current.correction = setTimeout(() => {
         listRef.current?.scrollToIndex?.({ ...scrollArgs, animated: false });
-      }, correctionDelayMs);
+      }, listBigCorrectionDelayMs);
+      return;
     }
+
+    // Compact list: do a single scroll after the layout animation settles.
+    // This avoids the visible "jump" caused by an initial scroll followed by a correction.
+    pendingScrollTimeouts.current.initial = setTimeout(() => {
+      listRef.current?.scrollToIndex?.({ ...scrollArgs, animated: !reduceMotionEnabled });
+    }, compactScrollDelayMs);
   }, [
     autoScrollEnabled,
     collapseAnimDuration,
