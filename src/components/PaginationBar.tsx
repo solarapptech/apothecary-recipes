@@ -1,6 +1,6 @@
-import { useEffect, useMemo, useState } from 'react';
-import { Pressable, StyleSheet, Text, TextInput, View } from 'react-native';
-import Animated, { useSharedValue, useAnimatedStyle, withTiming, interpolateColor } from 'react-native-reanimated';
+import { useEffect, useMemo, useRef, useState } from 'react';
+import { ImageBackground, Keyboard, Pressable, StyleSheet, Text, TextInput, View } from 'react-native';
+import Animated, { useSharedValue, useAnimatedStyle, withTiming, interpolate, interpolateColor } from 'react-native-reanimated';
 
 import { motionDurationMs } from '../app/motionPolicy';
 
@@ -152,12 +152,64 @@ export function PaginationBar({
   const [jumpInput, setJumpInput] = useState('');
   const [jumpError, setJumpError] = useState<string | null>(null);
   const [jumpVisible, setJumpVisible] = useState(false);
+  const [jumpMounted, setJumpMounted] = useState(false);
+  const jumpCloseTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+
+  const keyboardHeight = useSharedValue(0);
+  const jumpOpenProgress = useSharedValue(0);
 
   useEffect(() => {
     setJumpVisible(false);
+    setJumpMounted(false);
     setJumpError(null);
     setJumpInput('');
   }, [mode, totalPages]);
+
+  useEffect(() => {
+    return () => {
+      if (jumpCloseTimeoutRef.current) {
+        clearTimeout(jumpCloseTimeoutRef.current);
+      }
+    };
+  }, []);
+
+  useEffect(() => {
+    const showSub = Keyboard.addListener('keyboardDidShow', (event) => {
+      const height = event.endCoordinates?.height ?? 0;
+      const duration = reduceMotionEnabled ? 0 : 250;
+      keyboardHeight.value = withTiming(height, { duration });
+    });
+    const hideSub = Keyboard.addListener('keyboardDidHide', () => {
+      const duration = reduceMotionEnabled ? 0 : 250;
+      keyboardHeight.value = withTiming(0, { duration });
+    });
+
+    return () => {
+      showSub.remove();
+      hideSub.remove();
+    };
+  }, [keyboardHeight, reduceMotionEnabled]);
+
+  useEffect(() => {
+    const duration = reduceMotionEnabled ? 0 : 500;
+
+    if (jumpCloseTimeoutRef.current) {
+      clearTimeout(jumpCloseTimeoutRef.current);
+      jumpCloseTimeoutRef.current = null;
+    }
+
+    if (jumpVisible) {
+      setJumpMounted(true);
+      jumpOpenProgress.value = withTiming(1, { duration });
+      return;
+    }
+
+    jumpOpenProgress.value = withTiming(0, { duration });
+    jumpCloseTimeoutRef.current = setTimeout(() => {
+      setJumpMounted(false);
+      jumpCloseTimeoutRef.current = null;
+    }, duration);
+  }, [jumpOpenProgress, jumpVisible, reduceMotionEnabled]);
 
   const pageItems = useMemo(() => {
     if (mode !== 'paged') {
@@ -173,6 +225,13 @@ export function PaginationBar({
 
   const prevDisabled = mode !== 'paged' || page <= 1;
   const nextDisabled = mode !== 'paged' || page >= totalPages;
+
+  const closeJump = () => {
+    Keyboard.dismiss();
+    setJumpError(null);
+    setJumpInput('');
+    setJumpVisible(false);
+  };
 
   const submitJump = () => {
     const trimmed = jumpInput.trim();
@@ -192,6 +251,7 @@ export function PaginationBar({
       return;
     }
 
+    Keyboard.dismiss();
     setJumpError(null);
     setJumpInput('');
     setJumpVisible(false);
@@ -200,8 +260,80 @@ export function PaginationBar({
 
   const showEllipsisToggle = mode === 'paged' && totalPages > 6 && !jumpVisible;
 
+  const fullBleedPadding = 16;
+  const footerBottomPadding = 0;
+
+  const barLiftStyle = useAnimatedStyle(() => {
+    const lift = keyboardHeight.value > 0 ? -(keyboardHeight.value + footerBottomPadding) : 0;
+    return {
+      transform: [{ translateY: lift }],
+    };
+  });
+
+  const barChromeStyle = useAnimatedStyle(() => {
+    const keyboardProgress = Math.min(1, Math.max(0, keyboardHeight.value / 260));
+    const active = jumpMounted ? keyboardProgress : 0;
+    const bleed = interpolate(active, [0, 1], [0, -fullBleedPadding]);
+    const chromePadding = interpolate(active, [0, 1], [0, fullBleedPadding]);
+    const extraTopPadding = interpolate(active, [0, 1], [0, 10]);
+    const extraBottomPadding = interpolate(active, [0, 1], [0, 10]);
+    const bottomMargin = interpolate(active, [0, 1], [styles.container.marginBottom ?? 0, 0]);
+    return {
+      marginLeft: bleed,
+      marginRight: bleed,
+      paddingLeft: chromePadding,
+      paddingRight: chromePadding,
+      paddingTop: extraTopPadding,
+      paddingBottom: extraBottomPadding,
+      marginBottom: bottomMargin,
+    };
+  }, [jumpMounted]);
+
+  const keyboardBackgroundProgress = useAnimatedStyle(() => {
+    const keyboardProgress = Math.min(1, Math.max(0, keyboardHeight.value / 260));
+    const active = jumpMounted ? keyboardProgress : 0;
+    return {
+      opacity: active,
+    };
+  }, [jumpMounted]);
+
+  const normalBackgroundProgress = useAnimatedStyle(() => {
+    const keyboardProgress = Math.min(1, Math.max(0, keyboardHeight.value / 260));
+    const active = jumpMounted ? keyboardProgress : 0;
+    return {
+      opacity: 1 - active,
+    };
+  }, [jumpMounted]);
+
+  const jumpAnimatedStyle = useAnimatedStyle(() => {
+    const openOffsetY = (1 - jumpOpenProgress.value) * 14;
+    return {
+      opacity: jumpOpenProgress.value,
+      transform: [{ translateY: openOffsetY }],
+    };
+  });
+
+  const parchment = require('../../assets/apothecary-recipe-ref-img2.jpeg');
+
   return (
-    <View style={styles.container} testID="pagination-bar">
+    <Animated.View style={[styles.container, barLiftStyle, barChromeStyle]} testID="pagination-bar">
+      <Animated.View style={[styles.backgroundWrap, normalBackgroundProgress]} pointerEvents="none">
+        <ImageBackground source={parchment} resizeMode="cover" style={styles.backgroundFill} imageStyle={styles.backgroundImage}>
+          <View style={styles.backgroundOverlay} />
+        </ImageBackground>
+      </Animated.View>
+
+      <Animated.View style={[styles.backgroundWrap, keyboardBackgroundProgress]} pointerEvents="none">
+        <ImageBackground
+          source={parchment}
+          resizeMode="cover"
+          style={styles.backgroundFill}
+          imageStyle={styles.keyboardBackgroundImage}
+        >
+          <View style={styles.keyboardBackgroundOverlay} />
+        </ImageBackground>
+      </Animated.View>
+
       <Text style={styles.rangeText} testID="pagination-range">
         {rangeText}
       </Text>
@@ -272,39 +404,55 @@ export function PaginationBar({
         </View>
       )}
 
-      {mode === 'paged' && jumpVisible ? (
-        <View style={styles.jumpRow}>
-          <TextInput
-            value={jumpInput}
-            onChangeText={(value) => {
-              setJumpInput(value);
-              setJumpError(null);
-            }}
-            placeholder="Page"
-            keyboardType="number-pad"
-            returnKeyType="go"
-            onSubmitEditing={submitJump}
-            accessibilityLabel="Jump to page"
-            style={styles.jumpInput}
-            testID="pagination-jump-input"
-          />
-          <Pressable
-            accessibilityRole="button"
-            accessibilityLabel="Go to page"
-            onPress={submitJump}
-            style={styles.button}
-            testID="pagination-jump-go"
-          >
-            <Text style={styles.buttonText}>Go</Text>
-          </Pressable>
-          {jumpError ? (
-            <Text style={styles.errorText} testID="pagination-jump-error">
-              {jumpError}
-            </Text>
-          ) : null}
-        </View>
+      {mode === 'paged' && jumpMounted ? (
+        <Animated.View style={[styles.jumpAnimatedWrap, jumpAnimatedStyle]}>
+          <View style={styles.jumpRow}>
+            <View style={styles.jumpControlsRow}>
+              <Pressable
+                accessibilityRole="button"
+                accessibilityLabel="Close jump to page"
+                onPress={closeJump}
+                style={styles.closeButton}
+                testID="pagination-jump-close"
+              >
+                <Text style={styles.closeButtonText}>✕</Text>
+              </Pressable>
+
+              <TextInput
+                value={jumpInput}
+                onChangeText={(value) => {
+                  setJumpInput(value);
+                  setJumpError(null);
+                }}
+                placeholder="Page"
+                keyboardType="number-pad"
+                returnKeyType="go"
+                onSubmitEditing={submitJump}
+                accessibilityLabel="Jump to page"
+                style={styles.jumpInput}
+                testID="pagination-jump-input"
+              />
+
+              <Pressable
+                accessibilityRole="button"
+                accessibilityLabel="Go to page"
+                onPress={submitJump}
+                style={styles.button}
+                testID="pagination-jump-go"
+              >
+                <Text style={styles.buttonText}>Go</Text>
+              </Pressable>
+            </View>
+
+            {jumpError ? (
+              <Text style={styles.errorText} testID="pagination-jump-error">
+                {jumpError}
+              </Text>
+            ) : null}
+          </View>
+        </Animated.View>
       ) : null}
-    </View>
+    </Animated.View>
   );
 }
 
@@ -312,6 +460,26 @@ const styles = StyleSheet.create({
   container: {
     gap: 10,
     marginBottom: 14,
+  },
+  backgroundWrap: {
+    ...StyleSheet.absoluteFillObject,
+  },
+  backgroundFill: {
+    flex: 1,
+  },
+  backgroundImage: {
+    opacity: 0.8,
+  },
+  keyboardBackgroundImage: {
+    opacity: 1,
+  },
+  backgroundOverlay: {
+    flex: 1,
+    backgroundColor: 'rgba(240,240,239,0.50)',
+  },
+  keyboardBackgroundOverlay: {
+    flex: 1,
+    backgroundColor: 'rgba(240,240,239,0.20)',
   },
   rangeText: {
     color: '#444',
@@ -380,11 +548,36 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
+  jumpAnimatedWrap: {
+    alignSelf: 'stretch',
+  },
   jumpRow: {
+    alignSelf: 'stretch',
+    alignItems: 'center',
+    justifyContent: 'center',
+    gap: 8,
+  },
+  jumpControlsRow: {
     flexDirection: 'row',
     alignItems: 'center',
+    justifyContent: 'center',
     gap: 10,
     flexWrap: 'wrap',
+  },
+  closeButton: {
+    minHeight: 36,
+    minWidth: 36,
+    alignItems: 'center',
+    justifyContent: 'center',
+    borderWidth: StyleSheet.hairlineWidth,
+    borderColor: '#ddd',
+    borderRadius: 10,
+  },
+  closeButtonText: {
+    fontSize: 16,
+    color: '#111',
+    fontWeight: '600',
+    lineHeight: 18,
   },
   jumpInput: {
     minHeight: 36,
@@ -395,9 +588,11 @@ const styles = StyleSheet.create({
     paddingHorizontal: 10,
     paddingVertical: 8,
     fontSize: 14,
+    textAlign: 'center',
   },
   errorText: {
     color: '#b00020',
     fontSize: 12,
+    textAlign: 'center',
   },
 });

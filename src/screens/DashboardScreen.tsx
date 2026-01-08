@@ -23,6 +23,9 @@ import type { ViewMode } from '../types/viewMode';
 
 type DashboardScreenProps = {
   title: string;
+  onTitlePress?: () => void;
+  headerTopBannerText?: string;
+  onPressHeaderTopBanner?: () => void;
   headerRight: ReactNode;
   controls: ReactNode;
   footer?: ReactNode;
@@ -42,6 +45,9 @@ type DashboardScreenProps = {
 
 export function DashboardScreen({
   title,
+  onTitlePress,
+  headerTopBannerText,
+  onPressHeaderTopBanner,
   headerRight,
   controls,
   footer,
@@ -324,7 +330,15 @@ export function DashboardScreen({
   const showFavoritesEmptyState = filterMode === 'favorites' && !hasAnyFavorites;
 
   return (
-    <ScreenFrame title={title} headerRight={headerRight} controls={controls} footer={footer}>
+    <ScreenFrame
+      title={title}
+      onTitlePress={onTitlePress}
+      headerTopBannerText={headerTopBannerText}
+      onPressHeaderTopBanner={onPressHeaderTopBanner}
+      headerRight={headerRight}
+      controls={controls}
+      footer={footer}
+    >
       <LayoutAnimationConfig skipEntering={!didMount} skipExiting={viewMode !== 'list'}>
       <FlashList
         ref={listRef}

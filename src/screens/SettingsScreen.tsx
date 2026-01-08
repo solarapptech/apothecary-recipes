@@ -9,6 +9,7 @@ import { PLAN_RECIPE_COUNTS } from '../config/plans';
 import { maskPremiumCode } from '../repositories/preferencesRepository';
 import type { PremiumDownloadStatus } from '../repositories/preferencesRepository';
 import type { Plan } from '../types/plan';
+import { theme } from '../ui/theme';
 
 type SettingsScreenProps = {
   onBackPress: () => void;
@@ -26,6 +27,7 @@ type SettingsScreenProps = {
   premiumDownloadStatus: PremiumDownloadStatus;
   premiumDownloadProgress: number | null;
   onPressUpgrade: () => void;
+  onPressPurchasePlan: () => void;
   onPressStartPremiumDownload: () => void;
   onPressPausePremiumDownload: () => void;
   onPressResumePremiumDownload: () => void;
@@ -50,6 +52,7 @@ export function SettingsScreen({
   premiumDownloadStatus,
   premiumDownloadProgress,
   onPressUpgrade,
+  onPressPurchasePlan,
   onPressStartPremiumDownload,
   onPressPausePremiumDownload,
   onPressResumePremiumDownload,
@@ -149,6 +152,46 @@ export function SettingsScreen({
             {pageSize} recipes
           </Text>
         </Pressable>
+
+        {plan === 'free' ? (
+          <View style={styles.purchaseSection} testID="settings-plan-purchase-section">
+            <Text style={styles.sectionTitle}>Plan purchase</Text>
+            <View style={styles.purchaseCard}>
+              <Text style={styles.purchasePrice} testID="settings-plan-purchase-price">
+                $9.99
+              </Text>
+
+              <View style={styles.purchaseRow}>
+                <View style={styles.purchaseCrossedCount} testID="settings-plan-purchase-crossed-100">
+                  <Text style={styles.purchaseCrossedCountText}>100</Text>
+                  <View style={styles.purchaseSlash} />
+                </View>
+
+                <Text style={styles.purchaseArrow} accessibilityLabel="to">
+                  →
+                </Text>
+
+                <Text style={styles.purchaseUnlockedText} testID="settings-plan-purchase-1000">
+                  1000 Recipes!
+                </Text>
+              </View>
+
+              <Text style={styles.purchaseSubtitle} testID="settings-plan-purchase-subtitle">
+                Obtain 1000 Recipes
+              </Text>
+
+              <Pressable
+                accessibilityRole="button"
+                accessibilityLabel="Purchase"
+                onPress={onPressPurchasePlan}
+                style={styles.upgradeButton}
+                testID="settings-purchase-button"
+              >
+                <Text style={styles.upgradeButtonText}>Purchase</Text>
+              </Pressable>
+            </View>
+          </View>
+        ) : null}
 
         {masked ? (
           <Text style={styles.body} testID="settings-code-masked">
@@ -286,6 +329,70 @@ const styles = StyleSheet.create({
   container: {
     padding: 16,
     gap: 10,
+  },
+  purchaseSection: {
+    marginTop: 10,
+    gap: 10,
+  },
+  purchaseCard: {
+    borderRadius: 14,
+    borderWidth: StyleSheet.hairlineWidth,
+    borderColor: theme.colors.border.subtle,
+    backgroundColor: theme.colors.surface.paperStrong,
+    padding: 16,
+    alignItems: 'center',
+    gap: 12,
+  },
+  purchasePrice: {
+    fontSize: 22,
+    lineHeight: 26,
+    fontFamily: theme.typography.fontFamily.sans.semiBold,
+    color: theme.colors.ink.primary,
+  },
+  purchaseRow: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
+    gap: 12,
+  },
+  purchaseCrossedCount: {
+    width: 64,
+    height: 40,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  purchaseCrossedCountText: {
+    fontSize: 18,
+    lineHeight: 22,
+    fontFamily: theme.typography.fontFamily.sans.semiBold,
+    color: theme.colors.ink.primary,
+  },
+  purchaseSlash: {
+    position: 'absolute',
+    width: 56,
+    height: 3,
+    backgroundColor: '#b91c1c',
+    transform: [{ rotate: '-28deg' }],
+    borderRadius: 999,
+  },
+  purchaseArrow: {
+    fontSize: 20,
+    lineHeight: 24,
+    color: theme.colors.ink.muted,
+    fontFamily: theme.typography.fontFamily.sans.semiBold,
+  },
+  purchaseUnlockedText: {
+    fontSize: 18,
+    lineHeight: 22,
+    fontFamily: theme.typography.fontFamily.sans.semiBold,
+    color: theme.colors.brand.primary,
+  },
+  purchaseSubtitle: {
+    fontSize: 14,
+    lineHeight: 20,
+    color: theme.colors.ink.muted,
+    fontFamily: theme.typography.fontFamily.sans.medium,
+    textAlign: 'center',
   },
   dangerButton: {
     minHeight: 44,

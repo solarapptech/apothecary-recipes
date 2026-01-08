@@ -217,6 +217,11 @@ export function DashboardControlsRow({
     };
   });
 
+  const productTypesCount = resolvedAdvancedFilters.productTypes.length;
+  const conditionsCount = resolvedAdvancedFilters.conditions.length;
+  const ingredientsCount = resolvedAdvancedFilters.ingredients.length;
+  const regionsCount = resolvedAdvancedFilters.regions.length;
+
   const anyFiltersActive = filterMode === 'favorites' || isAnyAdvancedFilterActive(resolvedAdvancedFilters);
 
   const toggleSection = (section: 'productTypes' | 'conditions' | 'ingredients' | 'regions') => {
@@ -242,7 +247,7 @@ export function DashboardControlsRow({
         style={[styles.menuItem, input.selected ? styles.menuItemSelected : null, styles.filterOptionRow]}
         testID={input.testID}
       >
-        <Text style={[styles.menuItemText, input.selected ? styles.menuItemTextSelected : null, styles.filterOptionText]}>
+        <Text style={[styles.menuItemText, styles.filterOptionMenuItemText, styles.filterOptionText]}>
           {input.label}
         </Text>
         <Text style={[styles.checkmark, input.selected ? styles.checkmarkSelected : null]}>{input.selected ? '✓' : ''}</Text>
@@ -259,7 +264,8 @@ export function DashboardControlsRow({
       const gutter = 8;
       const minWidth = Math.max(180, anchor.width);
       const maxWidth = Math.max(120, window.width - gutter * 2);
-      const width = Math.min(minWidth, maxWidth);
+      const baseWidth = Math.min(minWidth, maxWidth);
+      const width = Math.min(Math.round(baseWidth * 1.15), maxWidth);
 
       // Prefer showing below the anchor; if there's not enough space, flip above.
       const belowTop = anchor.y + anchor.height + gutter;
@@ -269,7 +275,9 @@ export function DashboardControlsRow({
       const canShowBelow = belowMaxHeight >= 160;
       const maxHeight = Math.max(140, canShowBelow ? belowMaxHeight : aboveMaxHeight);
 
-      const left = Math.min(Math.max(gutter, anchor.x), window.width - width - gutter);
+      const baseLeft = Math.min(Math.max(gutter, anchor.x), window.width - baseWidth - gutter);
+      const baseRight = baseLeft + baseWidth;
+      const left = Math.min(Math.max(gutter, baseRight - width), window.width - width - gutter);
 
       return {
         top: canShowBelow ? belowTop : Math.max(gutter, anchor.y - maxHeight - gutter),
@@ -576,7 +584,14 @@ export function DashboardControlsRow({
                   testID="filter-accordion-productTypes"
                 >
                   <Text style={styles.accordionHeaderText}>Product Type</Text>
-                  <Text style={styles.accordionChevron}>{expandedSection === 'productTypes' ? '▾' : '▸'}</Text>
+                  <View style={styles.accordionHeaderRight}>
+                    {productTypesCount > 0 ? (
+                      <Text style={styles.accordionHeaderCount} testID="filter-accordion-count-productTypes">
+                        {productTypesCount}
+                      </Text>
+                    ) : null}
+                    <Text style={styles.accordionChevron}>{expandedSection === 'productTypes' ? '▾' : '▸'}</Text>
+                  </View>
                 </Pressable>
                 <Animated.View style={[styles.accordionBody, productTypesStyle]}>
                   {expandedSection === 'productTypes'
@@ -608,7 +623,14 @@ export function DashboardControlsRow({
                   testID="filter-accordion-conditions"
                 >
                   <Text style={styles.accordionHeaderText}>Condition/Use</Text>
-                  <Text style={styles.accordionChevron}>{expandedSection === 'conditions' ? '▾' : '▸'}</Text>
+                  <View style={styles.accordionHeaderRight}>
+                    {conditionsCount > 0 ? (
+                      <Text style={styles.accordionHeaderCount} testID="filter-accordion-count-conditions">
+                        {conditionsCount}
+                      </Text>
+                    ) : null}
+                    <Text style={styles.accordionChevron}>{expandedSection === 'conditions' ? '▾' : '▸'}</Text>
+                  </View>
                 </Pressable>
                 <Animated.View style={[styles.accordionBody, conditionsStyle]}>
                   {expandedSection === 'conditions'
@@ -640,7 +662,14 @@ export function DashboardControlsRow({
                   testID="filter-accordion-ingredients"
                 >
                   <Text style={styles.accordionHeaderText}>Ingredients</Text>
-                  <Text style={styles.accordionChevron}>{expandedSection === 'ingredients' ? '▾' : '▸'}</Text>
+                  <View style={styles.accordionHeaderRight}>
+                    {ingredientsCount > 0 ? (
+                      <Text style={styles.accordionHeaderCount} testID="filter-accordion-count-ingredients">
+                        {ingredientsCount}
+                      </Text>
+                    ) : null}
+                    <Text style={styles.accordionChevron}>{expandedSection === 'ingredients' ? '▾' : '▸'}</Text>
+                  </View>
                 </Pressable>
                 <Animated.View style={[styles.accordionBody, ingredientsStyle]}>
                   {expandedSection === 'ingredients' ? (
@@ -689,7 +718,14 @@ export function DashboardControlsRow({
                   testID="filter-accordion-regions"
                 >
                   <Text style={styles.accordionHeaderText}>Region</Text>
-                  <Text style={styles.accordionChevron}>{expandedSection === 'regions' ? '▾' : '▸'}</Text>
+                  <View style={styles.accordionHeaderRight}>
+                    {regionsCount > 0 ? (
+                      <Text style={styles.accordionHeaderCount} testID="filter-accordion-count-regions">
+                        {regionsCount}
+                      </Text>
+                    ) : null}
+                    <Text style={styles.accordionChevron}>{expandedSection === 'regions' ? '▾' : '▸'}</Text>
+                  </View>
                 </Pressable>
                 <Animated.View style={[styles.accordionBody, regionsStyle]}>
                   {expandedSection === 'regions' ? (
@@ -912,6 +948,16 @@ const styles = StyleSheet.create({
     color: theme.colors.ink.primary,
     fontFamily: theme.typography.fontFamily.sans.semiBold,
   },
+  accordionHeaderRight: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 12,
+  },
+  accordionHeaderCount: {
+    fontSize: 13,
+    color: theme.colors.ink.primary,
+    fontFamily: theme.typography.fontFamily.sans.semiBold,
+  },
   accordionChevron: {
     fontSize: 14,
     color: theme.colors.ink.subtle,
@@ -923,13 +969,19 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
+    paddingLeft: 14,
+    paddingRight: 10,
+  },
+  filterOptionMenuItemText: {
+    fontSize: 13,
+    fontFamily: theme.typography.fontFamily.sans.regular,
   },
   filterOptionText: {
     flex: 1,
-    paddingRight: 10,
+    paddingRight: 6,
   },
   checkmark: {
-    width: 18,
+    width: 14,
     textAlign: 'right',
     color: theme.colors.ink.subtle,
     fontSize: 14,

@@ -1,6 +1,6 @@
 import { StatusBar } from 'expo-status-bar';
 import { useEffect, useMemo, useRef, useState } from 'react';
-import { ActivityIndicator, Alert, BackHandler, Modal, Platform, Pressable, StatusBar as RNStatusBar, StyleSheet, Text, View } from 'react-native';
+import { ActivityIndicator, Alert, BackHandler, Keyboard, Modal, Platform, Pressable, StatusBar as RNStatusBar, StyleSheet, Text, View } from 'react-native';
 import { useFonts } from 'expo-font';
 import { Inter_400Regular, Inter_500Medium, Inter_600SemiBold } from '@expo-google-fonts/inter';
 import { PlayfairDisplay_600SemiBold, PlayfairDisplay_700Bold } from '@expo-google-fonts/playfair-display';
@@ -14,6 +14,7 @@ import { PaginationBar } from '../components/PaginationBar';
 import { OverflowMenu } from '../components/OverflowMenu';
 import { ModalCardBackground } from '../components/ModalCardBackground';
 import { ModalBackdrop } from '../components/ModalBackdrop';
+import { PurchasePlanModal } from '../components/PurchasePlanModal';
 import { PremiumCodeEntryModal } from '../components/PremiumCodeEntryModal';
 import { PremiumDownloadModal } from '../components/PremiumDownloadModal';
 import { PremiumPaywallModal } from '../components/PremiumPaywallModal';
@@ -204,6 +205,28 @@ export function AppShell({ deps, initialPage }: AppShellProps) {
   const [uiState, setUiState] = useState<UiState>({ status: 'loading' });
   const [route, setRoute] = useState<RouteName>('dashboard');
 
+  const refreshDashboard = () => {
+    if (uiState.status !== 'ready') {
+      return;
+    }
+
+    setMenuVisible(false);
+    setPremiumDownloadModalVisible(false);
+    setCodeEntryVisible(false);
+    setPurchasePlanVisible(false);
+    setPaywallVisible(false);
+    setExitConfirmVisible(false);
+
+    setSearchInput('');
+    setSearchQuery('');
+    setRecipes([]);
+    setPage(1);
+    setInfinitePage(1);
+    setFocusResetNonce((value) => value + 1);
+    setRandomSeed(resolved.createRandomSeed());
+    setRecipesRefreshNonce((value) => value + 1);
+  };
+
   const isMountedRef = useRef(true);
   useEffect(() => {
     return () => {
@@ -238,6 +261,7 @@ export function AppShell({ deps, initialPage }: AppShellProps) {
   const [premiumBundleSha256, setPremiumBundleSha256] = useState<string | null>(null);
   const [paywallVisible, setPaywallVisible] = useState(false);
   const [codeEntryVisible, setCodeEntryVisible] = useState(false);
+  const [purchasePlanVisible, setPurchasePlanVisible] = useState(false);
   const [exitConfirmVisible, setExitConfirmVisible] = useState(false);
 
   const [premiumDownloadStatus, setPremiumDownloadStatus] = useState<PremiumDownloadStatus>('not-downloaded');
@@ -741,6 +765,7 @@ if (route === 'settings') {
           >
             <SettingsScreen
               onBackPress={() => {
+                Keyboard.dismiss();
                 setRoute('dashboard');
               }}
               plan={plan}
@@ -775,6 +800,7 @@ if (route === 'settings') {
               premiumDownloadStatus={premiumDownloadStatus}
               premiumDownloadProgress={premiumDownloadProgress}
               onPressUpgrade={() => setCodeEntryVisible(true)}
+              onPressPurchasePlan={() => setPurchasePlanVisible(true)}
               onPressStartPremiumDownload={() => {
                 setPremiumDownloadModalVisible(true);
                 setPremiumDownloadStatus('downloading');
@@ -875,6 +901,11 @@ if (route === 'settings') {
         }}
       />
 
+      <PurchasePlanModal
+        visible={purchasePlanVisible}
+        onRequestClose={() => setPurchasePlanVisible(false)}
+      />
+
         <PremiumCodeEntryModal
           visible={codeEntryVisible}
           onRequestClose={() => setCodeEntryVisible(false)}
@@ -960,6 +991,23 @@ if (route === 'settings') {
             ) : null}
             <DashboardScreen
               title="Forgotten Home Apothecary"
+              onTitlePress={() => {
+                if (route !== 'dashboard') {
+                  setRoute('dashboard');
+                  return;
+                }
+                refreshDashboard();
+              }}
+              headerTopBannerText={plan === 'free' ? 'Purchase a plan to unlock 1000 recipes' : undefined}
+              onPressHeaderTopBanner={
+                plan === 'free'
+                  ? () => {
+                      Keyboard.dismiss();
+                      setRoute('settings');
+                      setPurchasePlanVisible(true);
+                    }
+                  : undefined
+              }
               headerRight={
                 <Pressable
                   accessibilityRole="button"
@@ -1109,6 +1157,7 @@ if (route === 'settings') {
         visible={menuVisible}
         onRequestClose={() => setMenuVisible(false)}
         onPressSettings={() => {
+          Keyboard.dismiss();
           setRoute('settings');
         }}
       />
@@ -1225,6 +1274,11 @@ if (route === 'settings') {
           </Pressable>
         </ModalBackdrop>
       </Modal>
+
+      <PurchasePlanModal
+        visible={purchasePlanVisible}
+        onRequestClose={() => setPurchasePlanVisible(false)}
+      />
 
       <StatusBar style="auto" />
     </>

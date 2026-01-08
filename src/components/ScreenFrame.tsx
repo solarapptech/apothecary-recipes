@@ -1,5 +1,5 @@
-import type { ReactNode } from 'react';
-import { Keyboard, Platform, Pressable, SafeAreaView, StatusBar, StyleSheet, Text, View } from 'react-native';
+import { useRef, useState, type ReactNode } from 'react';
+import { Keyboard, Platform, Pressable, SafeAreaView, StatusBar, StyleSheet, Text, View, useWindowDimensions } from 'react-native';
 import Svg, { Path } from 'react-native-svg';
 
 import { theme } from '../ui/theme';
@@ -9,6 +9,9 @@ const HEADER_HEIGHT = 56;
 type ScreenFrameProps = {
   title: string;
   onBackPress?: () => void;
+  onTitlePress?: () => void;
+  headerTopBannerText?: string;
+  onPressHeaderTopBanner?: () => void;
   headerRight?: ReactNode;
   controls?: ReactNode;
   footer?: ReactNode;
@@ -18,6 +21,9 @@ type ScreenFrameProps = {
 export function ScreenFrame({
   title,
   onBackPress,
+  onTitlePress,
+  headerTopBannerText,
+  onPressHeaderTopBanner,
   headerRight,
   controls,
   footer,
@@ -26,15 +32,40 @@ export function ScreenFrame({
   const androidTopInset = Platform.OS === 'android' ? StatusBar.currentHeight ?? 0 : 0;
   const bottomSafeSpace = Platform.OS === 'android' ? 16 : 0;
 
+  const headerAndroidTopInset = headerTopBannerText ? 0 : androidTopInset;
+
+  const window = useWindowDimensions();
+  const headerTopBannerHeight = Math.max(36, Math.round(window.height * 0.05));
+
+  const [headerTitleFlashVisible, setHeaderTitleFlashVisible] = useState(false);
+  const headerTitleFlashTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+
   return (
     <SafeAreaView style={styles.container}>
+      {headerTopBannerText ? (
+        <Pressable
+          accessibilityRole={onPressHeaderTopBanner ? 'button' : 'none'}
+          accessibilityLabel={onPressHeaderTopBanner ? headerTopBannerText : undefined}
+          onPress={onPressHeaderTopBanner}
+          disabled={!onPressHeaderTopBanner}
+          style={[
+            styles.headerTopBanner,
+            androidTopInset > 0 ? { paddingTop: androidTopInset, height: headerTopBannerHeight + androidTopInset } : { height: headerTopBannerHeight },
+          ]}
+          testID="header-top-banner"
+        >
+          <Text style={styles.headerTopBannerText} numberOfLines={2}>
+            {headerTopBannerText}
+          </Text>
+        </Pressable>
+      ) : null}
       <View
         style={[
           styles.header,
-          androidTopInset > 0
+          headerAndroidTopInset > 0
             ? {
-                paddingTop: androidTopInset,
-                height: HEADER_HEIGHT + androidTopInset,
+                paddingTop: headerAndroidTopInset,
+                height: HEADER_HEIGHT + headerAndroidTopInset,
               }
             : null,
         ]}
@@ -47,7 +78,30 @@ export function ScreenFrame({
           style={styles.headerBackdrop}
           testID="header-dismiss-keyboard"
         />
-        <View style={styles.headerLeft}>
+        <Pressable
+          accessibilityRole={onTitlePress ? 'button' : 'none'}
+          accessibilityLabel={onTitlePress ? 'Go to dashboard' : undefined}
+          onPress={() => {
+            if (!onTitlePress) {
+              return;
+            }
+
+            setHeaderTitleFlashVisible(true);
+            if (headerTitleFlashTimeoutRef.current) {
+              clearTimeout(headerTitleFlashTimeoutRef.current);
+            }
+            headerTitleFlashTimeoutRef.current = setTimeout(() => {
+              setHeaderTitleFlashVisible(false);
+              headerTitleFlashTimeoutRef.current = null;
+            }, 160);
+
+            Keyboard.dismiss();
+            onTitlePress();
+          }}
+          style={styles.headerLeft}
+          disabled={!onTitlePress}
+          testID={onTitlePress ? 'header-title-button' : undefined}
+        >
           {onBackPress ? (
             <Pressable
               accessibilityRole="button"
@@ -74,10 +128,10 @@ export function ScreenFrame({
               />
             </Svg>
           </View>
-          <Text style={styles.title} numberOfLines={1}>
+          <Text style={[styles.title, headerTitleFlashVisible ? styles.titleFlash : null]} numberOfLines={1}>
             {title}
           </Text>
-        </View>
+        </Pressable>
 
         <View style={styles.headerRight}>{headerRight}</View>
       </View>
@@ -99,6 +153,20 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: 'transparent',
+  },
+  headerTopBanner: {
+    width: '100%',
+    backgroundColor: theme.colors.brand.primary,
+    alignItems: 'center',
+    justifyContent: 'center',
+    paddingHorizontal: 16,
+  },
+  headerTopBannerText: {
+    fontFamily: theme.typography.fontFamily.sans.medium,
+    fontSize: 16,
+    lineHeight: 20,
+    color: theme.colors.ink.onBrand,
+    textAlign: 'center',
   },
   header: {
     height: HEADER_HEIGHT,
@@ -124,6 +192,9 @@ const styles = StyleSheet.create({
   title: {
     ...theme.typography.headerTitle,
     flexShrink: 1,
+  },
+  titleFlash: {
+    color: 'rgba(107, 112, 91, 0.47)',
   },
   headerRight: {
     flexDirection: 'row',
