@@ -9,6 +9,8 @@ import type { Recipe } from '../types/recipe';
 
 import type { PremiumBundleInstaller, PremiumBundleJob, PremiumBundleInstallResult } from './premiumBundleService';
 
+const FREE_RECIPES_BASE: Recipe[] = require('../data/free-recipes.json');
+
 type InstallRecipeInput = Recipe & {
   imageFileName?: string | null;
 };
@@ -45,6 +47,41 @@ async function loadZipArrayBufferAsync(uri: string): Promise<ArrayBuffer> {
 
 function stripFileScheme(uri: string): string {
   return uri.startsWith('file://') ? uri.slice('file://'.length) : uri;
+}
+
+function normalizeTitleKey(title: string): string {
+  return title
+    .replace(/\s*[\r\n]+\s*/g, ' ')
+    .replace(/\s+/g, ' ')
+    .trim()
+    .toLowerCase();
+}
+
+function makePremiumTitlesUnique(input: InstallRecipeInput[]): { recipes: InstallRecipeInput[]; renamedCount: number } {
+  const used = new Set<string>();
+  for (const recipe of FREE_RECIPES_BASE) {
+    used.add(normalizeTitleKey(recipe.title));
+  }
+
+  const output: InstallRecipeInput[] = [];
+  let renamedCount = 0;
+
+  for (const recipe of input) {
+    const baseTitle = recipe.title;
+    let nextTitle = baseTitle;
+    let suffix = 2;
+
+    while (used.has(normalizeTitleKey(nextTitle))) {
+      renamedCount += 1;
+      nextTitle = `${baseTitle} (${suffix})`;
+      suffix += 1;
+    }
+
+    used.add(normalizeTitleKey(nextTitle));
+    output.push(nextTitle === baseTitle ? recipe : { ...recipe, title: nextTitle });
+  }
+
+  return { recipes: output, renamedCount };
 }
 
 async function writePremiumRecipesToDbAsync(db: SQLiteDatabase, recipes: InstallRecipeInput[], imagesDir: string): Promise<void> {
@@ -203,8 +240,10 @@ export function createExpoPremiumBundleInstaller(input: {
 
         const recipesJson = await FileSystem.readAsStringAsync(`${baseDir}recipes.json`);
         const parsed = JSON.parse(recipesJson);
-        const recipes: InstallRecipeInput[] = Array.isArray(parsed) ? parsed : [];
-        console.log('[premium] installer parsed recipes', { count: recipes.length });
+        const rawRecipes: InstallRecipeInput[] = Array.isArray(parsed) ? parsed : [];
+        console.log('[premium] installer parsed recipes', { count: rawRecipes.length });
+        const { recipes, renamedCount } = makePremiumTitlesUnique(rawRecipes);
+        console.log('[premium] installer unique titles', { renamedCount });
 
         const metadataText = await FileSystem.getInfoAsync(`${baseDir}metadata.json`).then((info) =>
           info.exists ? FileSystem.readAsStringAsync(`${baseDir}metadata.json`) : ''
@@ -255,8 +294,10 @@ export function createExpoPremiumBundleInstaller(input: {
 
       const recipesJson = await recipeFile.async('string');
       const parsed = JSON.parse(recipesJson);
-      const recipes: InstallRecipeInput[] = Array.isArray(parsed) ? parsed : [];
-      console.log('[premium] installer parsed recipes', { count: recipes.length });
+      const rawRecipes: InstallRecipeInput[] = Array.isArray(parsed) ? parsed : [];
+      console.log('[premium] installer parsed recipes', { count: rawRecipes.length });
+      const { recipes, renamedCount } = makePremiumTitlesUnique(rawRecipes);
+      console.log('[premium] installer unique titles', { renamedCount });
 
       const versionText = zip.file('version.txt') ? await zip.file('version.txt')!.async('string') : '';
       const metadataText = zip.file('metadata.json') ? await zip.file('metadata.json')!.async('string') : '';

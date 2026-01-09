@@ -1,18 +1,26 @@
-import { Modal, Pressable, StyleSheet, Text } from 'react-native';
+import { Modal, Pressable, StyleSheet, Text, useWindowDimensions } from 'react-native';
 import { ModalCardBackground } from './ModalCardBackground';
 import { ModalBackdrop } from './ModalBackdrop';
 
 type OverflowMenuProps = {
   visible: boolean;
+  anchor?: { x: number; y: number; width: number; height: number } | null;
   onRequestClose: () => void;
   onPressSettings: () => void;
 };
 
 export function OverflowMenu({
   visible,
+  anchor,
   onRequestClose,
   onPressSettings,
 }: OverflowMenuProps) {
+  const window = useWindowDimensions();
+
+  const gutter = 12;
+  const menuTop = (anchor?.y ?? 56) + (anchor?.height ?? 0) + 8;
+  const menuRight = anchor ? Math.max(gutter, window.width - (anchor.x + anchor.width) - gutter) : gutter;
+
   return (
     <Modal transparent visible={visible} animationType="fade" onRequestClose={onRequestClose}>
       <ModalBackdrop
@@ -22,7 +30,7 @@ export function OverflowMenu({
         style={styles.backdrop}
         testID="overflow-menu-backdrop"
       >
-        <Pressable style={styles.menu} onPress={() => undefined}>
+        <Pressable style={[styles.menu, { top: menuTop, right: menuRight }]} onPress={() => undefined}>
           <ModalCardBackground style={styles.menuBackground}>
             <Pressable
               accessibilityRole="button"
@@ -49,8 +57,6 @@ const styles = StyleSheet.create({
   },
   menu: {
     position: 'absolute',
-    top: 56,
-    right: 12,
     borderRadius: 10,
     minWidth: 160,
     borderWidth: StyleSheet.hairlineWidth,

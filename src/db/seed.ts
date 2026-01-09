@@ -6,8 +6,8 @@ import { SCHEMA_SQL } from './schema';
 
 const FREE_RECIPES_BASE: Recipe[] = require('../data/free-recipes.json');
 
-export const TARGET_FREE_RECIPE_COUNT = 250;
-export const CURRENT_SEED_VERSION = 'free-placeholder-250-v6-search-normalized';
+export const TARGET_FREE_RECIPE_COUNT = 100;
+export const CURRENT_SEED_VERSION = 'free-100-v1-search-normalized';
 
 type GetFirstResult<T> = T | null | undefined;
 
@@ -98,25 +98,7 @@ function buildFreeRecipesForSeeding(): Recipe[] {
     return [];
   }
 
-  if (base.length >= TARGET_FREE_RECIPE_COUNT) {
-    return base;
-  }
-
-  const result: Recipe[] = [];
-  let i = 0;
-  while (result.length < TARGET_FREE_RECIPE_COUNT) {
-    const recipe = base[i % base.length];
-    const index = result.length + 1;
-
-    result.push({
-      ...recipe,
-      title: `${recipe.title} #${String(index).padStart(3, '0')}`,
-    });
-
-    i += 1;
-  }
-
-  return result;
+  return base.slice(0, TARGET_FREE_RECIPE_COUNT);
 }
 
 async function getMetaValueAsync(db: DbLike, key: string): Promise<string | null> {
@@ -217,13 +199,16 @@ export async function seedDatabaseIfNeededAsync(db: DbLike): Promise<{ didSeed: 
   const freeRecipes = buildFreeRecipesForSeeding();
   const expectedCount = freeRecipes.length;
 
-  if (existingSeedVersion === CURRENT_SEED_VERSION) {
-    const recipeCount = await getRecipeCountAsync(db);
-    return { didSeed: false, recipeCount };
+  const existingCount = await getRecipeCountAsync(db);
+
+  // If we already have the expected seed version AND the expected count, we can skip.
+  // If the count doesn't match, reseed to correct legacy/placeholder DBs.
+  if (existingSeedVersion === CURRENT_SEED_VERSION && existingCount === expectedCount) {
+    return { didSeed: false, recipeCount: existingCount };
   }
 
-  const existingCount = await getRecipeCountAsync(db);
-  if (!existingSeedVersion && existingCount >= expectedCount) {
+  // Legacy DBs may not have a seedVersion. Only skip reseeding if the count matches.
+  if (!existingSeedVersion && existingCount === expectedCount) {
     return { didSeed: false, recipeCount: existingCount };
   }
 

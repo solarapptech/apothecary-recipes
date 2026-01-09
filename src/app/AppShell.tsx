@@ -1,5 +1,5 @@
 import { StatusBar } from 'expo-status-bar';
-import { useEffect, useMemo, useRef, useState } from 'react';
+import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { ActivityIndicator, Alert, BackHandler, Keyboard, Modal, Platform, Pressable, StatusBar as RNStatusBar, StyleSheet, Text, View } from 'react-native';
 import { useFonts } from 'expo-font';
 import { Inter_400Regular, Inter_500Medium, Inter_600SemiBold } from '@expo-google-fonts/inter';
@@ -246,6 +246,8 @@ export function AppShell({ deps, initialPage }: AppShellProps) {
   }, [fontsLoaded, uiState.status]);
 
   const [menuVisible, setMenuVisible] = useState(false);
+  const [menuAnchor, setMenuAnchor] = useState<{ x: number; y: number; width: number; height: number } | null>(null);
+  const overflowButtonRef = useRef<any>(null);
 
   const [page, setPage] = useState(() => Math.max(1, initialPage ?? 1));
   const [pageSize, setPageSize] = useState(PAGE_SIZE);
@@ -1010,9 +1012,20 @@ if (route === 'settings') {
               }
               headerRight={
                 <Pressable
+                  ref={overflowButtonRef as any}
                   accessibilityRole="button"
                   accessibilityLabel="Menu"
-                  onPress={() => setMenuVisible(true)}
+                  onPress={() => {
+                    setMenuVisible(true);
+                    const node = overflowButtonRef.current as any;
+                    if (node && typeof node.measureInWindow === 'function') {
+                      node.measureInWindow((x: number, y: number, width: number, height: number) => {
+                        setMenuAnchor({ x, y, width, height });
+                      });
+                      return;
+                    }
+                    setMenuAnchor(null);
+                  }}
                   style={styles.overflowButton}
                   testID="header-overflow-button"
                 >
@@ -1155,7 +1168,11 @@ if (route === 'settings') {
 
       <OverflowMenu
         visible={menuVisible}
-        onRequestClose={() => setMenuVisible(false)}
+        anchor={menuAnchor}
+        onRequestClose={() => {
+          setMenuVisible(false);
+          setMenuAnchor(null);
+        }}
         onPressSettings={() => {
           Keyboard.dismiss();
           setRoute('settings');

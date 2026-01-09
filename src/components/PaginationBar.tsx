@@ -264,7 +264,7 @@ export function PaginationBar({
   const footerBottomPadding = 0;
 
   const barLiftStyle = useAnimatedStyle(() => {
-    const lift = keyboardHeight.value > 0 ? -(keyboardHeight.value + footerBottomPadding) : 0;
+    const lift = jumpMounted && keyboardHeight.value > 0 ? -(keyboardHeight.value + footerBottomPadding) : 0;
     return {
       transform: [{ translateY: lift }],
     };

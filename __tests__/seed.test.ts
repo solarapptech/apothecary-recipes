@@ -115,6 +115,31 @@ test('does not reseed if no seed version but expected count already present', as
   expect(db.__state.insertCalls).toBe(0);
 });
 
+test('reseeds when seed version matches but recipe count is wrong (legacy placeholder DB)', async () => {
+  const expectedCount = getBundledFreeRecipesCount();
+  const db = createFakeDb({
+    recipesCount: 250,
+    meta: new Map<string, string>([['seedVersion', CURRENT_SEED_VERSION]]),
+  });
+
+  const result = await seedDatabaseIfNeededAsync(db);
+
+  expect(result.didSeed).toBe(true);
+  expect(result.recipeCount).toBe(expectedCount);
+  expect(db.__state.insertCalls).toBe(expectedCount);
+});
+
+test('reseeds when no seed version exists but recipe count is wrong (legacy placeholder DB)', async () => {
+  const expectedCount = getBundledFreeRecipesCount();
+  const db = createFakeDb({ recipesCount: 250 });
+
+  const result = await seedDatabaseIfNeededAsync(db);
+
+  expect(result.didSeed).toBe(true);
+  expect(result.recipeCount).toBe(expectedCount);
+  expect(db.__state.insertCalls).toBe(expectedCount);
+});
+
 test('premium bundle version meta roundtrip supports clearing', async () => {
   const db = createFakeDb();
 
