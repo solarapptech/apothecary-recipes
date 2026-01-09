@@ -19,15 +19,13 @@ import { motionDurationMs } from '../app/motionPolicy';
 
 import { getRecipeImageSource } from '../assets/getRecipeImageSource';
 
+import { FieldIcon } from '../ui/icons';
 import { theme } from '../ui/theme';
 
 import { DescriptionInline } from './DescriptionInline';
-import { DifficultyField } from './DifficultyField';
 import { FieldRow } from './FieldRow';
 import { PreparationStepsValue } from './PreparationStepsValue';
-import { PrepTimeField } from './PrepTimeField';
 import { SecondaryFieldRow } from './SecondaryFieldRow';
-import { TimePeriodRegionRow } from './TimePeriodRegionRow';
 
 const AnimatedPressable = Animated.createAnimatedComponent(Pressable);
 const AnimatedPath = Animated.createAnimatedComponent(Path);
@@ -37,8 +35,6 @@ const AnimatedPath = Animated.createAnimatedComponent(Path);
 type ListBigRecipeRowProps = {
   recipeId: number;
   title: string;
-  difficultyScore: number;
-  preparationTime: string;
   description: string;
   timePeriod: string;
   warning: string;
@@ -70,8 +66,6 @@ type ListBigRecipeRowProps = {
 export function ListBigRecipeRow({
   recipeId,
   title,
-  difficultyScore,
-  preparationTime,
   description,
   timePeriod: _timePeriod,
   warning,
@@ -114,8 +108,16 @@ export function ListBigRecipeRow({
   const waveProgress = useSharedValue(0);
 
   const detailsMode = expanded ?? detailsModeInternal;
-  const displayTitle = detailsMode ? title : title.replace(/\s*\n\s*/g, ' ');
+  const summaryAllowsTitleWrap = showMinimizeButton && !detailsMode;
+  const displayTitle = detailsMode || summaryAllowsTitleWrap ? title : title.replace(/\s*[\r\n]+\s*/g, ' ');
   const titleKey = detailsMode ? 'title-expanded' : 'title-collapsed';
+
+  const usedForValue = usedFor
+    .replace(/\s*[\r\n]+\s*/g, ' ')
+    .split(',')
+    .map((value) => value.trim())
+    .filter(Boolean)
+    .join(', ');
 
   useEffect(() => {
     if (!detailsMode) {
@@ -353,7 +355,7 @@ export function ListBigRecipeRow({
             <Animated.Text
               key={titleKey}
               style={styles.title}
-              numberOfLines={detailsMode ? undefined : 1}
+              numberOfLines={detailsMode ? undefined : summaryAllowsTitleWrap ? 2 : 1}
               ellipsizeMode="tail"
               testID={`list-big-recipe-row-title-${recipeId}`}
             >
@@ -421,11 +423,15 @@ export function ListBigRecipeRow({
           exiting={enableExitAnimations ? FadeOut.duration(animDuration) : undefined}
           style={styles.collapsedFieldsRow}
         >
-          <View testID={`list-big-recipe-row-field-difficulty-${recipeId}`}>
-            <DifficultyField score={difficultyScore} />
-          </View>
-          <View testID={`list-big-recipe-row-field-prep-time-${recipeId}`}>
-            <PrepTimeField value={preparationTime} />
+          <View testID={`list-big-recipe-row-field-used-for-${recipeId}`}>
+            <View style={styles.usedForField}>
+              <Text style={styles.usedForLabel}>USED FOR</Text>
+              <View style={styles.usedForValueRow}>
+                <Text style={styles.usedForValue}>
+                  {usedForValue || '—'}
+                </Text>
+              </View>
+            </View>
           </View>
         </Animated.View>
       </Animated.View>
@@ -556,6 +562,12 @@ export function ListBigRecipeRow({
                 variant="grouped"
               />
               <SecondaryFieldRow
+                icon="region"
+                label="Region"
+                value={region}
+                variant="grouped"
+              />
+              <SecondaryFieldRow
                 icon="historical"
                 label="Alternative names"
                 value={alternativeNames?.trim() ? alternativeNames : '—'}
@@ -581,13 +593,6 @@ export function ListBigRecipeRow({
                   triggerWave(e);
                 }}
               />
-            </Animated.View>
-            <Animated.View
-              entering={reduceMotionEnabled ? undefined : FadeInDown.duration(animDuration).delay(300)}
-              exiting={enableExitAnimations ? FadeOut.duration(animDuration) : undefined}
-              style={[styles.detailsField, styles.timePeriodRegionBlock]}
-            >
-              <TimePeriodRegionRow usedFor={usedFor} region={region} />
             </Animated.View>
             {showDetailsButton && (
               <Animated.View
@@ -665,7 +670,7 @@ const styles = StyleSheet.create({
     marginBottom: theme.spacing.md,
     paddingRight: theme.spacing.md,
     paddingLeft: theme.spacing.sm + ACCENT_WIDTH,
-    paddingTop: 20,
+    paddingTop: 24,
     paddingBottom: 20,
     backgroundColor: theme.colors.surface.paperStrong,
     borderRadius: theme.radii.lg,
@@ -775,21 +780,23 @@ const styles = StyleSheet.create({
     marginTop: -2,
   },
   headerChevronButton: {
-    padding: 6,
-    marginRight: -6,
-    marginTop: -2,
+    paddingVertical: 2,
+    paddingHorizontal: 0,
+    marginRight: 0,
+    marginTop: -5,
+    alignSelf: 'flex-start',
   },
   titleRow: {
     flexDirection: 'row',
-    alignItems: 'center',
-    gap: 8,
+    alignItems: 'flex-start',
+    gap: 4,
   },
   titlePressable: {
     flex: 1,
   },
   title: {
-    fontSize: 14,
-    lineHeight: 18,
+    fontSize: 12,
+    lineHeight: 16,
     fontFamily: theme.typography.fontFamily.sans.medium,
     color: theme.colors.ink.primary,
     flex: 1,
@@ -808,6 +815,36 @@ const styles = StyleSheet.create({
     fontSize: 16,
     color: theme.colors.ink.subtle,
     fontFamily: theme.typography.fontFamily.sans.semiBold,
+  },
+  usedForField: {
+    alignItems: 'flex-start',
+    gap: 4,
+    marginLeft: 0,
+    maxWidth: '100%',
+  },
+  usedForLabel: {
+    fontSize: 11,
+    fontFamily: theme.typography.fontFamily.sans.semiBold,
+    fontWeight: '900',
+    letterSpacing: 0.8,
+    color: theme.colors.ink.onBrand,
+    textTransform: 'uppercase',
+    backgroundColor: theme.colors.brand.prepTimeGreen,
+    borderRadius: 999,
+    paddingHorizontal: 10,
+    paddingVertical: 1,
+    overflow: 'hidden',
+  },
+  usedForValueRow: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 4,
+  },
+  usedForValue: {
+    fontSize: 12,
+    fontFamily: theme.typography.fontFamily.sans.medium,
+    color: theme.colors.brand.primary,
+    flexShrink: 1,
   },
   fieldsGrid: {
     flexDirection: 'row',
@@ -851,9 +888,6 @@ const styles = StyleSheet.create({
     backgroundColor: theme.colors.surface.secondaryField,
     borderRadius: 10,
     overflow: 'hidden',
-  },
-  timePeriodRegionBlock: {
-    marginTop: 16,
   },
   field: {
     flexGrow: 1,

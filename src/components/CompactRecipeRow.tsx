@@ -9,8 +9,7 @@ import { theme } from '../ui/theme';
 type CompactRecipeRowProps = {
   recipeId: number;
   title: string;
-  difficultyScore: number;
-  preparationTime: string;
+  usedFor: string;
   isFavorite?: boolean;
   onPressFavorite?: () => void;
   dimmed?: boolean;
@@ -19,21 +18,20 @@ type CompactRecipeRowProps = {
 export function CompactRecipeRow({
   recipeId,
   title,
-  difficultyScore,
-  preparationTime,
+  usedFor,
   isFavorite = false,
   onPressFavorite,
   dimmed = false,
 }: CompactRecipeRowProps) {
   const imageSource = getRecipeImageSource(recipeId);
-  const displayTitle = title.replace(/\s*\n\s*/g, ' ');
+  const displayTitle = title.replace(/\s*[\r\n]+\s*/g, ' ');
 
-  const difficultyLabel = (() => {
-    const safeScore = Math.max(1, Math.min(3, Math.round(difficultyScore)));
-    if (safeScore === 1) return 'Easy';
-    if (safeScore === 2) return 'Normal';
-    return 'Hard';
-  })();
+  const usedForValue = usedFor
+    .replace(/\s*[\r\n]+\s*/g, ' ')
+    .split(',')
+    .map((value) => value.trim())
+    .filter(Boolean)
+    .join(', ');
 
   return (
     <View
@@ -69,15 +67,10 @@ export function CompactRecipeRow({
           </Text>
 
           <View style={styles.metaRow}>
-            <View style={styles.difficultyContainer} testID={`compact-recipe-row-difficulty-${recipeId}`}>
-              <Text style={styles.difficultyText} numberOfLines={1} ellipsizeMode="tail">
-                {difficultyLabel}
-              </Text>
-            </View>
-            <View style={styles.timeRow} testID={`compact-recipe-row-time-${recipeId}`}>
-              <FieldIcon name="prepTime" size={12} color={theme.colors.ink.muted} />
-              <Text style={styles.metaText} numberOfLines={1}>
-                {preparationTime}
+            <View style={styles.usedForRow} testID={`compact-recipe-row-used-for-${recipeId}`}>
+              <FieldIcon name="info" size={12} color={theme.colors.ink.muted} />
+              <Text style={styles.metaText} numberOfLines={1} ellipsizeMode="tail">
+                {usedForValue}
               </Text>
             </View>
           </View>
@@ -139,7 +132,7 @@ const styles = StyleSheet.create({
   contentClip: {
     position: 'relative',
     flexDirection: 'row',
-    alignItems: 'center',
+    alignItems: 'flex-start',
     paddingRight: theme.spacing.md,
     paddingVertical: theme.spacing.md,
     paddingLeft: theme.spacing.md + ACCENT_WIDTH,
@@ -201,21 +194,14 @@ const styles = StyleSheet.create({
   metaRow: {
     marginTop: 6,
     flexDirection: 'row',
-    justifyContent: 'space-between',
+    justifyContent: 'flex-start',
     gap: 12,
   },
-  difficultyContainer: {
-    flexShrink: 1,
-  },
-  difficultyText: {
-    color: theme.colors.brand.primary,
-    fontSize: 11,
-    fontFamily: theme.typography.fontFamily.sans.semiBold,
-  },
-  timeRow: {
+  usedForRow: {
     flexDirection: 'row',
     alignItems: 'center',
     gap: 4,
+    flexShrink: 1,
   },
   metaText: {
     color: theme.colors.ink.muted,

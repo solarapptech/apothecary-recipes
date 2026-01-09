@@ -397,8 +397,6 @@ export function DashboardScreen({
               <ListBigRecipeRow
                 recipeId={item.id}
                 title={item.title}
-                difficultyScore={item.difficultyScore}
-                preparationTime={item.preparationTime}
                 description={item.description}
                 timePeriod={item.timePeriod}
                 warning={item.warning}
@@ -445,8 +443,6 @@ export function DashboardScreen({
                   <ListBigRecipeRow
                     recipeId={item.id}
                     title={item.title}
-                    difficultyScore={item.difficultyScore}
-                    preparationTime={item.preparationTime}
                     description={item.description}
                     timePeriod={item.timePeriod}
                     warning={item.warning}
@@ -521,8 +517,7 @@ export function DashboardScreen({
                     <CompactRecipeRow
                       recipeId={item.id}
                       title={item.title}
-                      difficultyScore={item.difficultyScore}
-                      preparationTime={item.preparationTime}
+                      usedFor={item.usedFor}
                       isFavorite={item.isFavorite === 1}
                       onPressFavorite={() => onToggleFavorite?.(item.id, item.isFavorite !== 1)}
                       dimmed={isGrayedOut}

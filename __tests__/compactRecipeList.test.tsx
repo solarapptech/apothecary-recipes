@@ -143,7 +143,7 @@ test('renders compact recipe rows inside FlashList and uses tail truncation for 
   expect(titleNode.props.ellipsizeMode).toBe('tail');
 });
 
-test('renders difficulty and preparation time in dedicated slots', () => {
+test('renders usedFor metadata in compact rows with tail truncation', () => {
   const DashboardScreen = loadDashboardScreenWithFlashListMock();
   const recipes = createRecipes();
 
@@ -163,16 +163,12 @@ test('renders difficulty and preparation time in dedicated slots', () => {
     />
   );
 
-  const difficultyNode = tree.root.findByProps({ testID: 'compact-recipe-row-difficulty-1' });
-  const timeNode = tree.root.findByProps({ testID: 'compact-recipe-row-time-1' });
+  const usedForNode = tree.root.findByProps({ testID: 'compact-recipe-row-used-for-1' });
+  const usedForTextNodes = usedForNode.findAllByType(require('react-native').Text);
+  expect(usedForTextNodes.length).toBeGreaterThan(0);
 
-  const difficultyTextNodes = difficultyNode.findAllByType(require('react-native').Text);
-  expect(difficultyTextNodes.length).toBeGreaterThan(0);
-  expect(textFromChildren(difficultyTextNodes[0].props.children)).toContain('Hard');
-
-  const timeTextNodes = timeNode.findAllByType(require('react-native').Text);
-  expect(timeTextNodes.length).toBeGreaterThan(0);
-  expect(textFromChildren(timeTextNodes[0].props.children)).toContain('10 min');
+  const usedForText = textFromChildren(usedForTextNodes[0].props.children);
+  expect(usedForText).toContain('usedFor 1');
 });
 
 test('expanded compact list row shows favorite state on the list-big card', () => {
@@ -227,8 +223,7 @@ test('renders list-big rows when viewMode is list-big', () => {
   const thumbNode = tree.root.findByProps({ testID: 'list-big-recipe-row-thumb-1' });
   expect(thumbNode).toBeTruthy();
   expect(thumbNode.props.source).toBeTruthy();
-  expect(tree.root.findAllByProps({ testID: 'list-big-recipe-row-field-difficulty-1' }).length).toBeGreaterThan(0);
-  expect(tree.root.findAllByProps({ testID: 'list-big-recipe-row-field-prep-time-1' }).length).toBeGreaterThan(0);
+  expect(tree.root.findAllByProps({ testID: 'list-big-recipe-row-field-used-for-1' }).length).toBeGreaterThan(0);
   expect(tree.root.findAllByProps({ testID: 'list-big-recipe-row-collapse-1' })).toHaveLength(0);
 });
 

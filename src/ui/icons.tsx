@@ -6,6 +6,7 @@ import { theme } from './theme';
 export type IconName =
   | 'leaf'
   | 'difficulty'
+  | 'info'
   | 'prepTime'
   | 'timePeriod'
   | 'region'
@@ -59,6 +60,16 @@ export function FieldIcon({
     return (
       <Svg width={size} height={size} viewBox="0 0 24 24" {...rest}>
         <Path d="M12 3l2.2 6.1L21 12l-6.8 2.9L12 21l-2.2-6.1L3 12l6.8-2.9L12 3Z" {...common} />
+      </Svg>
+    );
+  }
+
+  if (name === 'info') {
+    return (
+      <Svg width={size} height={size} viewBox="0 0 24 24" {...rest}>
+        <Circle cx="12" cy="12" r="9" {...common} />
+        <Path d="M12 10.5v5" {...common} />
+        <Circle cx="12" cy="7.5" r="1" fill={color} stroke="none" />
       </Svg>
     );
   }
