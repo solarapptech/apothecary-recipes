@@ -216,9 +216,9 @@ const styles = StyleSheet.create({
   },
   controls: {
     paddingHorizontal: 16,
-    paddingVertical: 12,
+    paddingVertical: 8,
     marginTop: 8,
-    marginBottom: 16,
+    marginBottom: 0,
   },
   content: {
     flex: 1,

@@ -96,6 +96,7 @@ test('buildListRecipesQuery adds advancedFilters with strict AND semantics', () 
       productTypes: ['Tincture', 'Tea'],
       conditions: ['Cold'],
       ingredients: ['Ginger'],
+      regions: [],
     },
   });
 
@@ -104,6 +105,31 @@ test('buildListRecipesQuery adds advancedFilters with strict AND semantics', () 
   expect(sql).toContain('ingredients LIKE ? ESCAPE');
   expect(sql).toContain('WHERE');
   expect(params).toEqual(['%tincture%', '%tea%', '%Cold%', '%Ginger%', 25, 0]);
+});
+
+test('buildListRecipesQuery adds category clause (broad usedFor LIKE)', () => {
+  const { sql, params } = buildListRecipesQuery({
+    page: 1,
+    pageSize: 25,
+    sortMode: 'az',
+    category: 'respiratory',
+  });
+
+  expect(sql).toContain('usedFor LIKE ? ESCAPE');
+  expect(params).toEqual(['%Respiratory System%', 25, 0]);
+});
+
+test('buildListRecipesQuery supports pain category with OR semantics', () => {
+  const { sql, params } = buildListRecipesQuery({
+    page: 1,
+    pageSize: 25,
+    sortMode: 'az',
+    category: 'pain',
+  });
+
+  expect(sql).toContain('(usedFor LIKE ? ESCAPE');
+  expect(sql).toContain(' OR usedFor LIKE ? ESCAPE');
+  expect(params).toEqual(['%Musculoskeletal System%', '%Pain & Headache%', 25, 0]);
 });
 
 test('buildListRecipesQuery keeps random seed param before advanced filters and paging params', () => {
@@ -116,6 +142,7 @@ test('buildListRecipesQuery keeps random seed param before advanced filters and 
       productTypes: ['Salve'],
       conditions: [],
       ingredients: ['Honey'],
+      regions: [],
     },
   });
 
@@ -137,4 +164,15 @@ test('buildCountRecipesQueryWithFilter includes advancedFilters clauses', () => 
   expect(sql).toContain('title LIKE ? ESCAPE');
   expect(sql).toContain('usedFor LIKE ? ESCAPE');
   expect(params).toEqual(['%elixir%', '%Sleep%']);
+});
+
+test('buildCountRecipesQueryWithFilter includes category clause', () => {
+  const { sql, params } = buildCountRecipesQueryWithFilter({
+    filterMode: 'favorites',
+    category: 'immune',
+  });
+
+  expect(sql).toContain('INNER JOIN recipe_favorites');
+  expect(sql).toContain('usedFor LIKE ? ESCAPE');
+  expect(params).toEqual(['%Immune System%']);
 });

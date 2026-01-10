@@ -277,6 +277,7 @@ export function AppShell({ deps, initialPage }: AppShellProps) {
   const [sortMode, setSortMode] = useState<SortMode>('random');
   const [filterMode, setFilterMode] = useState<FilterMode>('all');
   const [advancedFilters, setAdvancedFilters] = useState<AdvancedFilters>(EMPTY_ADVANCED_FILTERS);
+  const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
   const [viewMode, setViewMode] = useState<ViewMode>('list');
   const [hasAnyFavorites, setHasAnyFavorites] = useState(false);
   const [reduceMotionEnabled, setReduceMotionEnabled] = useState(false);
@@ -551,6 +552,7 @@ export function AppShell({ deps, initialPage }: AppShellProps) {
             sortMode,
             filterMode,
             advancedFilters,
+            category: selectedCategory ?? undefined,
             launchSeed: safeRandomSeed,
             plan,
           });
@@ -590,6 +592,7 @@ export function AppShell({ deps, initialPage }: AppShellProps) {
     searchQuery,
     filterMode,
     advancedFilters,
+    selectedCategory,
     sortMode,
     uiState,
   ]);
@@ -1081,12 +1084,34 @@ if (route === 'settings') {
                     setFocusResetNonce((value) => value + 1);
                     await resolved.setAdvancedFiltersAsync(uiState.bootstrap.db, next);
                   }}
+                  category={selectedCategory}
+                  onChangeCategory={async (nextCategory) => {
+                    setRecipes([]);
+                    setPage(1);
+                    setInfinitePage(1);
+                    setSelectedCategory(nextCategory);
+                    setFocusResetNonce((value) => value + 1);
+
+                    if (uiState.status !== 'ready') {
+                      return;
+                    }
+
+                    if (nextCategory && advancedFilters.conditions.length > 0) {
+                      const cleared: AdvancedFilters = {
+                        ...advancedFilters,
+                        conditions: [],
+                      };
+                      setAdvancedFilters(cleared);
+                      await resolved.setAdvancedFiltersAsync(uiState.bootstrap.db, cleared);
+                    }
+                  }}
                   onPressClearFilters={async () => {
                     setRecipes([]);
                     setPage(1);
                     setInfinitePage(1);
                     setFilterMode('all');
                     setAdvancedFilters(EMPTY_ADVANCED_FILTERS);
+                    setSelectedCategory(null);
                     setFocusResetNonce((value) => value + 1);
                     await resolved.setFilterModeAsync(uiState.bootstrap.db, 'all');
                     await resolved.setAdvancedFiltersAsync(uiState.bootstrap.db, EMPTY_ADVANCED_FILTERS);

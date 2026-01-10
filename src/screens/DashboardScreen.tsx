@@ -536,7 +536,7 @@ export function DashboardScreen({
 
 const styles = StyleSheet.create({
   listBigContentContainer: {
-    paddingTop: 14,
+    paddingTop: 6,
   },
   listContentContainerWithExpanded: {
     paddingTop: 14,

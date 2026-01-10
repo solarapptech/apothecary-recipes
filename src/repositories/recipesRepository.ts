@@ -23,6 +23,7 @@ export type ListRecipesInput = {
   sortMode: SortMode;
   filterMode?: FilterMode;
   advancedFilters?: AdvancedFilters;
+  category?: string;
   launchSeed?: number;
   plan?: Plan;
 };
@@ -167,6 +168,68 @@ function buildSearchQueryClauses(input: { searchQuery?: string; params: any[] })
   return clauses;
 }
 
+function buildCategoryClauses(input: { category?: string; params: any[] }): string[] {
+  const category = input.category?.trim();
+  if (!category) {
+    return [];
+  }
+
+  const clauses: string[] = [];
+  const like = "usedFor LIKE ? ESCAPE '\\' COLLATE NOCASE";
+
+  const pushLike = (token: string) => {
+    clauses.push(like);
+    input.params.push(`%${escapeLikeValue(token)}%`);
+  };
+
+  if (category === 'respiratory') {
+    pushLike('Respiratory System');
+    return clauses;
+  }
+  if (category === 'digestive') {
+    pushLike('Digestive System');
+    return clauses;
+  }
+  if (category === 'immune') {
+    pushLike('Immune System');
+    return clauses;
+  }
+  if (category === 'skin') {
+    pushLike('Skin & Wounds');
+    return clauses;
+  }
+  if (category === 'sleep') {
+    pushLike('Nervous System & Sleep');
+    return clauses;
+  }
+  if (category === 'women') {
+    pushLike("Women's Health");
+    return clauses;
+  }
+  if (category === 'heart') {
+    pushLike('Cardiovascular System');
+    return clauses;
+  }
+  if (category === 'urinary') {
+    pushLike('Urinary System');
+    return clauses;
+  }
+  if (category === 'tonics') {
+    pushLike('General Wellness/Tonics');
+    return clauses;
+  }
+
+  if (category === 'pain') {
+    // Broad category with OR semantics.
+    clauses.push(`(${like} OR ${like})`);
+    input.params.push(`%${escapeLikeValue('Musculoskeletal System')}%`);
+    input.params.push(`%${escapeLikeValue('Pain & Headache')}%`);
+    return clauses;
+  }
+
+  return [];
+}
+
 function buildAdvancedFilterClauses(input: {
   advancedFilters?: AdvancedFilters;
   params: any[];
@@ -248,6 +311,8 @@ export function buildListRecipesQuery(input: ListRecipesInput): { sql: string; p
 
   clauses.push(...buildAdvancedFilterClauses({ advancedFilters: input.advancedFilters, params }));
 
+  clauses.push(...buildCategoryClauses({ category: input.category, params }));
+
   if (input.plan === 'free') {
     clauses.push('isPremium = 0');
   }
@@ -310,6 +375,7 @@ export function buildCountRecipesQueryWithFilter(input?: {
   plan?: Plan;
   filterMode?: FilterMode;
   advancedFilters?: AdvancedFilters;
+  category?: string;
 }): { sql: string; params: any[] } {
   const params: any[] = [];
   const clauses: string[] = [];
@@ -321,6 +387,8 @@ export function buildCountRecipesQueryWithFilter(input?: {
   }
 
   clauses.push(...buildAdvancedFilterClauses({ advancedFilters: input?.advancedFilters, params }));
+
+  clauses.push(...buildCategoryClauses({ category: input?.category, params }));
 
   const filterMode = input?.filterMode ?? 'all';
   const fromClause =
@@ -346,6 +414,7 @@ export async function listRecipesAsync(
     plan: input.plan,
     filterMode: input.filterMode,
     advancedFilters: input.advancedFilters,
+    category: input.category,
   });
 
   const [rows, countRow] = await Promise.all([

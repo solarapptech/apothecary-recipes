@@ -29,6 +29,8 @@ type DashboardControlsRowProps = {
   filterCatalog?: FilterCatalog;
   advancedFilters?: AdvancedFilters;
   onChangeAdvancedFilters?: (filters: AdvancedFilters) => void;
+  category?: string | null;
+  onChangeCategory?: (category: string | null) => void;
   onPressClearFilters?: () => void;
   viewMode: ViewMode;
   onChangeViewMode: (mode: ViewMode) => void;
@@ -96,6 +98,8 @@ export function DashboardControlsRow({
   filterCatalog,
   advancedFilters,
   onChangeAdvancedFilters,
+  category,
+  onChangeCategory,
   onPressClearFilters,
   viewMode,
   onChangeViewMode,
@@ -469,6 +473,54 @@ export function DashboardControlsRow({
         </View>
       </View>
 
+      <View style={[styles.categoryRow, viewMode === 'list-big' ? styles.categoryRowListBig : null]} testID="category-row">
+        <ScrollView
+          horizontal
+          showsHorizontalScrollIndicator={false}
+          contentContainerStyle={[
+            styles.categoryRowContent,
+            viewMode === 'list-big' ? styles.categoryRowContentListBig : null,
+          ]}
+        >
+          {(
+            [
+              { key: null as string | null, label: 'All' },
+              { key: 'respiratory', label: 'Respiratory' },
+              { key: 'digestive', label: 'Digestive' },
+              { key: 'immune', label: 'Immune' },
+              { key: 'skin', label: 'Skin & Wounds' },
+              { key: 'sleep', label: 'Sleep & Mood' },
+              { key: 'pain', label: 'Pain / Musculoskeletal' },
+              { key: 'women', label: "Women’s Health" },
+              { key: 'heart', label: 'Heart / Cardiovascular' },
+              { key: 'urinary', label: 'Urinary' },
+              { key: 'tonics', label: 'General / Tonics' },
+            ] as const
+          ).map((item) => {
+            const selected = (category ?? null) === item.key;
+            return (
+              <Pressable
+                key={item.key ?? 'all'}
+                accessibilityRole="button"
+                accessibilityLabel={`Category ${item.label}`}
+                onPress={() => {
+                  if (!onChangeCategory) {
+                    return;
+                  }
+                  onChangeCategory(selected ? null : item.key);
+                }}
+                style={[styles.categoryChip, selected ? styles.categoryChipSelected : null]}
+                testID={`category-chip-${item.key ?? 'all'}`}
+              >
+                <Text style={[styles.categoryChipText, selected ? styles.categoryChipTextSelected : null]}>
+                  {item.label}
+                </Text>
+              </Pressable>
+            );
+          })}
+        </ScrollView>
+      </View>
+
       <Modal
         transparent
         visible={sortMenuVisible}
@@ -773,6 +825,40 @@ export function DashboardControlsRow({
 
 const styles = StyleSheet.create({
   container: {},
+  categoryRow: {
+    marginTop: 24,
+    justifyContent: 'center',
+  },
+  categoryRowListBig: {
+    marginTop: 24,
+  },
+  categoryRowContent: {
+    paddingHorizontal: 2,
+    paddingVertical: 6,
+    gap: 8,
+    alignItems: 'center',
+  },
+  categoryRowContentListBig: {
+    paddingTop: 6,
+    paddingBottom: 0,
+  },
+  categoryChip: {
+    backgroundColor: 'hsla(113, 72%, 29%, 0.10)',
+    paddingHorizontal: 12,
+    paddingVertical: 8,
+    borderRadius: 8,
+  },
+  categoryChipSelected: {
+    backgroundColor: 'rgba(46, 96, 67, 1)',
+  },
+  categoryChipText: {
+    fontSize: 12,
+    fontFamily: theme.typography.fontFamily.sans.regular,
+    color: theme.colors.ink.primary,
+  },
+  categoryChipTextSelected: {
+    color: theme.colors.ink.onBrand,
+  },
   searchInput: {
     flex: 1,
     paddingLeft: 10,
