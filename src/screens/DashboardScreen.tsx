@@ -414,6 +414,7 @@ export function DashboardScreen({
                 reduceMotionEnabled={reduceMotionEnabled}
                 dimmed={isGrayedOutBig}
                 expanded={isExpanded}
+                showDecorativeLeaves={isExpanded}
                 showDetailsButton={true}
                 allowDetailsToggle={false}
                 onPress={() => {
@@ -460,6 +461,7 @@ export function DashboardScreen({
                     reduceMotionEnabled={reduceMotionEnabled}
                     dimmed={isGrayedOut}
                     expanded={isDetailsMode}
+                    showDecorativeLeaves={isExpanded}
                     onRequestSetExpanded={(next) => handleListDetailsExpandedChange(item.id, next)}
                     allowDetailsToggle={false}
                     onPress={() => {

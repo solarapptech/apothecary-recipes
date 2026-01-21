@@ -61,6 +61,7 @@ type ListBigRecipeRowProps = {
   onShowDetails?: () => void;
   showMinimizeButton?: boolean;
   onPressMinimize?: () => void;
+  showDecorativeLeaves?: boolean;
 };
 
 export function ListBigRecipeRow({
@@ -92,6 +93,7 @@ export function ListBigRecipeRow({
   onShowDetails,
   showMinimizeButton = false,
   onPressMinimize,
+  showDecorativeLeaves = false,
 }: ListBigRecipeRowProps) {
   const [detailsModeInternal, setDetailsModeInternal] = useState(false);
   const [imageModalVisible, setImageModalVisible] = useState(false);
@@ -480,9 +482,11 @@ export function ListBigRecipeRow({
           </Text>
         </Pressable>
 
-        <View style={styles.decorativeLeavesContainer} pointerEvents="none">
-          <Image source={require('../assets/leaves.png')} style={styles.leavesImage} />
-        </View>
+        {showDecorativeLeaves ? (
+          <View style={styles.decorativeLeavesContainer} pointerEvents="none">
+            <Image source={require('../assets/leaves.png')} style={styles.leavesImage} />
+          </View>
+        ) : null}
 
         <View style={[styles.contentWrapper, dimmed && styles.dimmedContent]}>
           <Pressable
