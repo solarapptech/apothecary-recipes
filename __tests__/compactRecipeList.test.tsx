@@ -13,7 +13,9 @@ const mockedGetRecipeImageSource = getRecipeImageSource as jest.MockedFunction<t
 const mockScrollToIndex = jest.fn();
 
 beforeEach(() => {
-  mockedGetRecipeImageSource.mockImplementation((recipeId: number) => ({ uri: `test://recipe-${recipeId}` }));
+  mockedGetRecipeImageSource.mockImplementation((recipeId: number) => ([
+    { source: { uri: `test://recipe-${recipeId}` }, kind: 'ai' },
+  ]));
   mockScrollToIndex.mockClear();
 });
 
@@ -882,7 +884,7 @@ test('list-big view only allows expanding/closing the image when the recipe is f
   });
 
   expect(tree.root.findByProps({ testID: 'list-big-recipe-row-image-modal-overlay-1' })).toBeTruthy();
-  expect(tree.root.findByProps({ testID: 'list-big-recipe-row-image-modal-image-1' })).toBeTruthy();
+  expect(tree.root.findByProps({ testID: 'list-big-recipe-row-image-modal-image-1-0' })).toBeTruthy();
 
   // While focused, tapping the overlay should close the modal.
   act(() => {

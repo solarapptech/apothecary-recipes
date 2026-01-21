@@ -1,5 +1,5 @@
-import { useEffect, useRef, useState } from 'react';
-import { Image, Modal, Platform, Pressable, StyleSheet, Text, View } from 'react-native';
+import { useEffect, useMemo, useRef, useState } from 'react';
+import { Image, Modal, Platform, Pressable, ScrollView, StyleSheet, Text, View } from 'react-native';
 import Animated, {
   Extrapolate,
   FadeIn,
@@ -18,12 +18,15 @@ import { Path, Svg } from 'react-native-svg';
 import { motionDurationMs } from '../app/motionPolicy';
 
 import { getRecipeImageSource } from '../assets/getRecipeImageSource';
+import type { RecipeImageEntry } from '../assets/recipeImageManifest';
 
 import { FieldIcon } from '../ui/icons';
 import { theme } from '../ui/theme';
 
 import { DescriptionInline } from './DescriptionInline';
 import { FieldRow } from './FieldRow';
+import { ModalBackdrop } from './ModalBackdrop';
+import { ModalCardBackground } from './ModalCardBackground';
 import { PreparationStepsValue } from './PreparationStepsValue';
 import { SecondaryFieldRow } from './SecondaryFieldRow';
 
@@ -31,6 +34,28 @@ const AnimatedPressable = Animated.createAnimatedComponent(Pressable);
 const AnimatedPath = Animated.createAnimatedComponent(Path);
 
  const ACCENT_WIDTH = 8;
+
+type AttributionImage = {
+  imageNumber: number;
+  title?: string;
+  creator?: string;
+  source?: string;
+  license?: string;
+  licenseUrl?: string;
+  changes?: string;
+};
+
+type AttributionRecipe = {
+  recipeNumber: number;
+  name: string;
+  images: AttributionImage[];
+};
+
+type AttributionData = {
+  recipes: AttributionRecipe[];
+};
+
+const attributionData = require('../../assets/herbs/image-attributions.json') as AttributionData;
 
 type ListBigRecipeRowProps = {
   recipeId: number;
@@ -97,9 +122,16 @@ export function ListBigRecipeRow({
 }: ListBigRecipeRowProps) {
   const [detailsModeInternal, setDetailsModeInternal] = useState(false);
   const [imageModalVisible, setImageModalVisible] = useState(false);
-  const imageSource = getRecipeImageSource(recipeId);
+  const [attributionVisible, setAttributionVisible] = useState(false);
+  const [imageIndex, setImageIndex] = useState(0);
+  const [carouselWidth, setCarouselWidth] = useState(0);
+  const imageEntries = getRecipeImageSource(recipeId);
+  const imageCount = imageEntries?.length ?? 0;
+  const activeImageEntry = imageEntries?.[Math.min(imageIndex, Math.max(imageCount - 1, 0))] ?? null;
+  const activeImageSource = activeImageEntry?.source ?? null;
 
   const containerRef = useRef<any>(null);
+  const carouselRef = useRef<ScrollView>(null);
 
   const minimizeFeedback = useSharedValue(0);
 
@@ -124,8 +156,24 @@ export function ListBigRecipeRow({
   useEffect(() => {
     if (!detailsMode) {
       setImageModalVisible(false);
+      setAttributionVisible(false);
     }
   }, [detailsMode]);
+
+  useEffect(() => {
+    setImageIndex(0);
+  }, [recipeId]);
+
+  useEffect(() => {
+    if (!imageEntries || imageEntries.length === 0) {
+      setImageIndex(0);
+      return;
+    }
+
+    if (imageIndex >= imageEntries.length) {
+      setImageIndex(0);
+    }
+  }, [imageEntries, imageIndex]);
 
   const setDetailsMode = (next: boolean) => {
     if (onRequestSetExpanded) {
@@ -250,6 +298,40 @@ export function ListBigRecipeRow({
     }
   };
 
+  const attributionEntry = useMemo(() => {
+    if (!activeImageEntry || activeImageEntry.kind !== 'herb') {
+      return null;
+    }
+
+    const recipeAttribution = attributionData.recipes.find((recipe) => recipe.recipeNumber === recipeId);
+    if (!recipeAttribution) {
+      return null;
+    }
+
+    const targetImageNumber = activeImageEntry.imageNumber ?? 1;
+    return recipeAttribution.images.find((image) => image.imageNumber === targetImageNumber) ?? null;
+  }, [activeImageEntry, recipeId]);
+
+  const handleCarouselNav = (direction: -1 | 1) => {
+    if (!imageEntries || imageEntries.length === 0) {
+      return;
+    }
+
+    const nextIndex = (imageIndex + direction + imageEntries.length) % imageEntries.length;
+    setImageIndex(nextIndex);
+
+    if (carouselWidth > 0) {
+      carouselRef.current?.scrollTo({ x: carouselWidth * nextIndex, animated: true });
+    }
+  };
+
+  const renderAttributionRow = (label: string, value?: string) => (
+    <View key={label} style={styles.attributionRow}>
+      <Text style={styles.attributionLabel}>{label}</Text>
+      <Text style={styles.attributionValue}>{value?.trim() ? value : '—'}</Text>
+    </View>
+  );
+
   const handleHeaderZonePress = (e: any) => {
     e.stopPropagation();
     triggerWave(e);
@@ -313,7 +395,7 @@ export function ListBigRecipeRow({
     <Animated.View
       style={styles.headerRow}
     >
-      {imageSource ? (
+      {activeImageSource ? (
         <Pressable
           testID={`list-big-recipe-row-thumb-pressable-${recipeId}`}
           onPress={(e) => {
@@ -324,11 +406,12 @@ export function ListBigRecipeRow({
               return;
             }
 
+            setAttributionVisible(false);
             setImageModalVisible(true);
           }}
         >
           <Image
-            source={imageSource}
+            source={activeImageSource}
             style={styles.thumbnail}
             resizeMode="cover"
             testID={`list-big-recipe-row-thumb-${recipeId}`}
@@ -646,22 +729,148 @@ export function ListBigRecipeRow({
       visible={imageModalVisible}
       transparent={true}
       animationType={reduceMotionEnabled ? "none" : "fade"}
-      onRequestClose={() => setImageModalVisible(false)}
+      onRequestClose={() => {
+        setImageModalVisible(false);
+        setAttributionVisible(false);
+      }}
     >
-      <Pressable
+      <ModalBackdrop
         testID={`list-big-recipe-row-image-modal-overlay-${recipeId}`}
-        style={styles.modalOverlay}
-        onPress={() => setImageModalVisible(false)}
+        onPress={() => {
+          setImageModalVisible(false);
+          setAttributionVisible(false);
+        }}
       >
-        {imageSource ? (
-          <Image
-            source={imageSource}
-            style={styles.modalImage}
-            resizeMode="contain"
-            testID={`list-big-recipe-row-image-modal-image-${recipeId}`}
-          />
-        ) : null}
-      </Pressable>
+        <Pressable
+          onPress={(event) => event.stopPropagation()}
+          style={styles.modalCardWrapper}
+        >
+          <ModalCardBackground style={styles.modalCard}>
+            <View
+              style={styles.modalContent}
+              onLayout={(event) => {
+                const width = event.nativeEvent.layout.width;
+                if (width > 0 && width !== carouselWidth) {
+                  setCarouselWidth(width);
+                  carouselRef.current?.scrollTo({ x: width * imageIndex, animated: false });
+                }
+              }}
+            >
+              <View style={styles.carouselContainer}>
+                {imageEntries ? (
+                  <ScrollView
+                    ref={carouselRef}
+                    horizontal
+                    pagingEnabled
+                    showsHorizontalScrollIndicator={false}
+                    onMomentumScrollEnd={(event) => {
+                      if (!carouselWidth) {
+                        return;
+                      }
+                      const nextIndex = Math.round(event.nativeEvent.contentOffset.x / carouselWidth);
+                      setImageIndex(nextIndex);
+                    }}
+                  >
+                    {imageEntries.map((entry: RecipeImageEntry, entryIndex: number) => (
+                      <View
+                        key={`${recipeId}-image-${entry.kind}-${entryIndex}`}
+                        style={[styles.carouselSlide, { width: Math.max(carouselWidth, 1) }]}
+                      >
+                        <Image
+                          source={entry.source}
+                          style={styles.modalImage}
+                          resizeMode="contain"
+                          testID={`list-big-recipe-row-image-modal-image-${recipeId}-${entryIndex}`}
+                        />
+                      </View>
+                    ))}
+                  </ScrollView>
+                ) : null}
+
+                {imageCount > 1 ? (
+                  <>
+                    <Pressable
+                      accessibilityRole="button"
+                      accessibilityLabel="Previous image"
+                      style={[styles.carouselNavButton, styles.carouselNavLeft]}
+                      onPress={() => handleCarouselNav(-1)}
+                    >
+                      <Text style={styles.carouselNavText}>‹</Text>
+                    </Pressable>
+                    <Pressable
+                      accessibilityRole="button"
+                      accessibilityLabel="Next image"
+                      style={[styles.carouselNavButton, styles.carouselNavRight]}
+                      onPress={() => handleCarouselNav(1)}
+                    >
+                      <Text style={styles.carouselNavText}>›</Text>
+                    </Pressable>
+                  </>
+                ) : null}
+              </View>
+
+              <View style={styles.modalActionsRow}>
+                {imageCount > 0 ? (
+                  <Text style={styles.imageCounter}>{`${Math.min(imageIndex + 1, imageCount)}/${imageCount}`}</Text>
+                ) : null}
+                <Pressable
+                  accessibilityRole="button"
+                  accessibilityLabel="Show image attribution"
+                  style={styles.attributionButton}
+                  onPress={() => setAttributionVisible(true)}
+                >
+                  <Text style={styles.attributionButtonText}>Attribution</Text>
+                </Pressable>
+              </View>
+            </View>
+          </ModalCardBackground>
+        </Pressable>
+      </ModalBackdrop>
+    </Modal>
+
+    <Modal
+      visible={attributionVisible}
+      transparent={true}
+      animationType={reduceMotionEnabled ? "none" : "fade"}
+      onRequestClose={() => setAttributionVisible(false)}
+    >
+      <ModalBackdrop
+        onPress={() => setAttributionVisible(false)}
+        testID={`list-big-recipe-row-attribution-modal-overlay-${recipeId}`}
+      >
+        <Pressable
+          onPress={(event) => event.stopPropagation()}
+          style={styles.attributionCardWrapper}
+        >
+          <ModalCardBackground style={styles.attributionCard}>
+            <View style={styles.attributionContent}
+              testID={`list-big-recipe-row-attribution-modal-${recipeId}`}
+            >
+              <Text style={styles.attributionTitle}>Image Attribution</Text>
+              {activeImageEntry?.kind === 'ai' ? (
+                <Text style={styles.attributionValue}>AI-generated image (no attribution required).</Text>
+              ) : (
+                <>
+                  {renderAttributionRow('Title', attributionEntry?.title)}
+                  {renderAttributionRow('Creator', attributionEntry?.creator)}
+                  {renderAttributionRow('Source', attributionEntry?.source)}
+                  {renderAttributionRow('License', attributionEntry?.license)}
+                  {renderAttributionRow('License URL', attributionEntry?.licenseUrl)}
+                  {renderAttributionRow('Changes', attributionEntry?.changes)}
+                </>
+              )}
+              <Pressable
+                accessibilityRole="button"
+                accessibilityLabel="Close attribution"
+                onPress={() => setAttributionVisible(false)}
+                style={styles.attributionCloseButton}
+              >
+                <Text style={styles.attributionCloseText}>Close</Text>
+              </Pressable>
+            </View>
+          </ModalCardBackground>
+        </Pressable>
+      </ModalBackdrop>
     </Modal>
     </>
   );
@@ -952,15 +1161,119 @@ const styles = StyleSheet.create({
     color: theme.colors.brand.primary,
     fontFamily: theme.typography.fontFamily.sans.semiBold,
   },
-  modalOverlay: {
-    flex: 1,
-    backgroundColor: theme.colors.backdrop.imageZoom,
-    justifyContent: 'center',
+  modalCardWrapper: {
+    width: '90%',
+    maxWidth: 480,
+    alignSelf: 'center',
+  },
+  modalCard: {
+    borderRadius: 20,
+    padding: theme.spacing.md,
+    backgroundColor: theme.colors.surface.paperStrong,
+  },
+  modalContent: {
+    gap: 12,
+  },
+  carouselContainer: {
+    position: 'relative',
     alignItems: 'center',
+    justifyContent: 'center',
+  },
+  carouselSlide: {
+    alignItems: 'center',
+    justifyContent: 'center',
+    paddingVertical: 8,
   },
   modalImage: {
-    width: '90%',
-    height: '90%',
-    borderRadius: 8,
+    width: '100%',
+    height: 320,
+    borderRadius: 12,
+  },
+  carouselNavButton: {
+    position: 'absolute',
+    top: '50%',
+    marginTop: -22,
+    width: 44,
+    height: 44,
+    borderRadius: 22,
+    backgroundColor: 'rgba(22, 18, 10, 0.55)',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  carouselNavLeft: {
+    left: 8,
+  },
+  carouselNavRight: {
+    right: 8,
+  },
+  carouselNavText: {
+    fontSize: 24,
+    color: theme.colors.ink.onBrand,
+    fontFamily: theme.typography.fontFamily.sans.semiBold,
+  },
+  modalActionsRow: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    gap: 12,
+  },
+  imageCounter: {
+    fontSize: 12,
+    fontFamily: theme.typography.fontFamily.sans.semiBold,
+    color: theme.colors.ink.subtle,
+  },
+  attributionButton: {
+    borderRadius: theme.radii.pill,
+    paddingVertical: 6,
+    paddingHorizontal: 14,
+    backgroundColor: theme.colors.brand.primaryStrong,
+  },
+  attributionButtonText: {
+    color: theme.colors.ink.onBrand,
+    fontSize: 12,
+    fontFamily: theme.typography.fontFamily.sans.semiBold,
+    letterSpacing: 0.3,
+  },
+  attributionCardWrapper: {
+    width: '92%',
+    maxWidth: 480,
+    alignSelf: 'center',
+  },
+  attributionCard: {
+    borderRadius: 18,
+    padding: theme.spacing.md,
+    backgroundColor: theme.colors.surface.paperStrong,
+  },
+  attributionContent: {
+    gap: 8,
+  },
+  attributionTitle: {
+    fontSize: 14,
+    fontFamily: theme.typography.fontFamily.sans.semiBold,
+    color: theme.colors.ink.primary,
+  },
+  attributionRow: {
+    gap: 2,
+  },
+  attributionLabel: {
+    fontSize: 11,
+    fontFamily: theme.typography.fontFamily.sans.semiBold,
+    color: theme.colors.ink.muted,
+    textTransform: 'uppercase',
+    letterSpacing: 0.8,
+  },
+  attributionValue: {
+    fontSize: 12,
+    fontFamily: theme.typography.fontFamily.sans.medium,
+    color: theme.colors.ink.primary,
+  },
+  attributionCloseButton: {
+    alignSelf: 'flex-end',
+    marginTop: 8,
+  },
+  attributionCloseText: {
+    fontSize: 12,
+    fontFamily: theme.typography.fontFamily.sans.semiBold,
+    color: theme.colors.brand.primary,
   },
 });

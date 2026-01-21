@@ -23,7 +23,8 @@ export function CompactRecipeRow({
   onPressFavorite,
   dimmed = false,
 }: CompactRecipeRowProps) {
-  const imageSource = getRecipeImageSource(recipeId);
+  const imageEntries = getRecipeImageSource(recipeId);
+  const imageSource = imageEntries?.[0]?.source ?? null;
   const displayTitle = title.replace(/\s*[\r\n]+\s*/g, ' ');
 
   const usedForValue = usedFor

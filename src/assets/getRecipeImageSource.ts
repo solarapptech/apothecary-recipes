@@ -1,7 +1,7 @@
-import type { ImageSourcePropType } from 'react-native';
+import type { RecipeImageEntry } from './recipeImageManifest';
 
 import { recipeImageManifest } from './recipeImageManifest';
 
-export function getRecipeImageSource(recipeId: number): ImageSourcePropType | null {
+export function getRecipeImageSource(recipeId: number): RecipeImageEntry[] | null {
   return recipeImageManifest[recipeId] ?? null;
 }
