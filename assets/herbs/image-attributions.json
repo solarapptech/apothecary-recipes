@@ -1,0 +1,1757 @@
+{
+  "recipes": [
+    {
+      "recipeNumber": 1,
+      "index": 0,
+      "name": "Monk's Balm (Balsamum Monachi)",
+      "images": [
+        {
+          "imageNumber": 1,
+          "title": "Flowers of multi-stemmed mullein plant, Verbascum thapsus - geograph.org.uk - 965483.jpg",
+          "creator": "Andrew Hill",
+          "source": "https://commons.wikimedia.org/wiki/File:Flowers_of_multi-stemmed_mullein_plant,_Verbascum_thapsus_-_geograph.org.uk_-_965483.jpg",
+          "license": "CC BY-SA 2.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0/",
+          "changes": "None"
+        },
+        {
+          "imageNumber": 2,
+          "title": "Leskenlehti, Luolala, Naantali, 24.4.2010.JPG",
+          "creator": "Markus Rantala (Makele-90)",
+          "source": "https://commons.wikimedia.org/wiki/File:Leskenlehti,_Luolala,_Naantali,_24.4.2010.JPG",
+          "license": "CC BY-SA 3.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0/",
+          "changes": "None"
+        }
+      ]
+    },
+    {
+      "recipeNumber": 2,
+      "index": 1,
+      "name": "Red Wine & Rue Cordial",
+      "images": [
+        {
+          "imageNumber": 1,
+          "title": "Ruta graveolens Ruta zwyczajna 2023-06-08 02.jpg",
+          "creator": "Agnieszka Kwiecień, Nova",
+          "source": "https://commons.wikimedia.org/wiki/File:Ruta_graveolens_Ruta_zwyczajna_2023-06-08_02.jpg",
+          "license": "CC BY-SA 4.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+          "changes": "None"
+        }
+      ]
+    },
+    {
+      "recipeNumber": 3,
+      "index": 2,
+      "name": "Comfrey Knitbone Liniment",
+      "images": [
+        {
+          "imageNumber": 1,
+          "title": "Comfrey (Symphytum officinale) - geograph.org.uk - 472623.jpg",
+          "creator": "Kate Jewell",
+          "source": "https://commons.wikimedia.org/wiki/File:Comfrey_(Symphytum_officinale)_-_geograph.org.uk_-_472623.jpg",
+          "license": "CC BY-SA 2.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0/",
+          "changes": "None"
+        }
+      ]
+    },
+    {
+      "recipeNumber": 4,
+      "index": 3,
+      "name": "Meadowsweet Spiritus (Aqua Mirabilis)",
+      "images": [
+        {
+          "imageNumber": 1,
+          "title": "Meadowsweet by Lysekil Line in Brastad 7.jpg",
+          "creator": "W.carter",
+          "source": "https://commons.wikimedia.org/wiki/File:Meadowsweet_by_Lysekil_Line_in_Brastad_7.jpg",
+          "license": "CC BY-SA 4.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+          "changes": "None"
+        }
+      ]
+    },
+    {
+      "recipeNumber": 5,
+      "index": 4,
+      "name": "Hedge Mustard Syrup (for Singers)",
+      "images": [
+        {
+          "imageNumber": 1,
+          "title": "Sisymbrium officinale kz04.jpg",
+          "creator": "Krzysztof Ziarnek, Kenraiz",
+          "source": "https://commons.wikimedia.org/wiki/File:Sisymbrium_officinale_kz04.jpg",
+          "license": "CC BY-SA 4.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+          "changes": "None"
+        }
+      ]
+    },
+    {
+      "recipeNumber": 6,
+      "index": 5,
+      "name": "Grave-Digger's Oil (Oil of Earthworms)",
+      "images": [
+        {
+          "imageNumber": 1,
+          "title": "Lumbricus terrestris R.H (4).JPG",
+          "creator": "Rob Hille",
+          "source": "https://commons.wikimedia.org/wiki/File:Lumbricus_terrestris_R.H_(4).JPG",
+          "license": "CC BY-SA 3.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0/",
+          "changes": "None"
+        }
+      ]
+    },
+    {
+      "recipeNumber": 7,
+      "index": 6,
+      "name": "Dandelion Root Coffee (Taraxacum Infusion)",
+      "images": [
+        {
+          "imageNumber": 1,
+          "title": "Taraxacum officinale 003.JPG",
+          "creator": "Llez",
+          "source": "https://commons.wikimedia.org/wiki/File:Taraxacum_officinale_003.JPG",
+          "license": "CC BY-SA 3.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0/",
+          "changes": "None"
+        }
+      ]
+    },
+    {
+      "recipeNumber": 8,
+      "index": 7,
+      "name": "Lavender Bath Bags (Soporific)",
+      "images": [
+        {
+          "imageNumber": 1,
+          "title": "Lavandula angustifolia in Sedovo 1.jpg",
+          "creator": "Andrey (Andrew) Butko",
+          "source": "https://commons.wikimedia.org/wiki/File:Lavandula_angustifolia_in_Sedovo_1.jpg",
+          "license": "CC BY-SA 3.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0/",
+          "changes": "None"
+        }
+      ]
+    },
+    {
+      "recipeNumber": 9,
+      "index": 8,
+      "name": "Borage Syrup for Melancholy",
+      "images": [
+        {
+          "imageNumber": 1,
+          "title": "Borago officinalis Ogórecznik lekarski 2023-02-22 02.jpg",
+          "creator": "Agnieszka Kwiecień, Nova",
+          "source": "https://commons.wikimedia.org/wiki/File:Borago_officinalis_Og%C3%B3recznik_lekarski_2023-02-22_02.jpg",
+          "license": "CC BY-SA 4.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+          "changes": "None"
+        }
+      ]
+    },
+    {
+      "recipeNumber": 10,
+      "index": 9,
+      "name": "Sloe Gin (for Colic & Cramps)",
+      "images": [
+        {
+          "imageNumber": 1,
+          "title": "Hand Made Sloe Gin.jpg",
+          "creator": "Smifff",
+          "source": "https://commons.wikimedia.org/wiki/File:Hand_Made_Sloe_Gin.jpg",
+          "license": "CC BY-SA 4.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+          "changes": "None"
+        },
+        {
+          "imageNumber": 2,
+          "title": "Sloe berries - geograph.org.uk - 6573938.jpg",
+          "creator": "Stephen McKay",
+          "source": "https://commons.wikimedia.org/wiki/File:Sloe_berries_-_geograph.org.uk_-_6573938.jpg",
+          "license": "CC BY-SA 2.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0/",
+          "changes": "None"
+        }
+      ]
+    },
+    {
+      "recipeNumber": 11,
+      "index": 10,
+      "name": "Elderberry and Anise Oxymel",
+      "images": [
+        {
+          "imageNumber": 1,
+          "title": "Sambucus nigra-fruit001.jpg",
+          "creator": "Nova",
+          "source": "https://commons.wikimedia.org/wiki/File:Sambucus_nigra-fruit001.jpg",
+          "license": "CC BY-SA 3.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0/",
+          "changes": "None"
+        },
+        {
+          "imageNumber": 2,
+          "title": "Dried Star Anise Fruit Seeds.jpg",
+          "creator": "Sanjay Acharya",
+          "source": "https://commons.wikimedia.org/wiki/File:Dried_Star_Anise_Fruit_Seeds.jpg",
+          "license": "CC BY-SA 4.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+          "changes": "None"
+        }
+      ]
+    },
+    {
+      "recipeNumber": 12,
+      "index": 11,
+      "name": "Pennyroyal Tincture (Mentha pulegium)",
+      "images": [
+        {
+          "imageNumber": 1,
+          "title": "Mentha pulegium kz05.jpg",
+          "creator": "Krzysztof Ziarnek, Kenraiz",
+          "source": "https://commons.wikimedia.org/wiki/File:Mentha_pulegium_kz05.jpg",
+          "license": "CC BY-SA 4.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+          "changes": "None"
+        }
+      ]
+    },
+    {
+      "recipeNumber": 13,
+      "index": 12,
+      "name": "Rue and Wormwood Bitter Cordial",
+      "images": [
+        {
+          "imageNumber": 1,
+          "title": "Ruta graveolens3.jpg",
+          "creator": "Kurt Stüber",
+          "source": "https://commons.wikimedia.org/wiki/File:Ruta_graveolens3.jpg",
+          "license": "CC BY-SA 3.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0/",
+          "changes": "None"
+        },
+        {
+          "imageNumber": 2,
+          "title": "Artemisia absinthium in Aveyron (2).jpg",
+          "creator": "Tournasol7",
+          "source": "https://commons.wikimedia.org/wiki/File:Artemisia_absinthium_in_Aveyron_(2).jpg",
+          "license": "CC BY 4.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+          "changes": "None"
+        },
+        {
+          "imageNumber": 3,
+          "title": "Angelica archangelica subsp. archangelica Dzięgiel litwor 2019-06-07 04.jpg",
+          "creator": "Agnieszka Kwiecień, Nova",
+          "source": "https://commons.wikimedia.org/wiki/File:Angelica_archangelica_subsp._archangelica_Dzi%C4%99giel_litwor_2019-06-07_04.jpg",
+          "license": "CC BY-SA 4.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+          "changes": "None"
+        }
+      ]
+    },
+    {
+      "recipeNumber": 14,
+      "index": 13,
+      "name": "Oak Bark Decoction (Quercus robur)",
+      "images": [
+        {
+          "imageNumber": 1,
+          "title": "Quercus robur Dąb szypułkowy 2015-04-19 Wrocław Las Sołtysowicki 07.jpg",
+          "creator": "Agnieszka Kwiecień, Nova",
+          "source": "https://commons.wikimedia.org/wiki/File:Quercus_robur_D%C4%85b_szypu%C5%82kowy_2015-04-19_Wroc%C5%82aw_Las_So%C5%82tysowicki_07.jpg",
+          "license": "CC BY-SA 4.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+          "changes": "None"
+        }
+      ]
+    },
+    {
+      "recipeNumber": 15,
+      "index": 14,
+      "name": "Mugwort Wine (Artemisia)",
+      "images": [
+        {
+          "imageNumber": 1,
+          "title": "Artemisia vulgaris 2018-05-05 1062.jpg",
+          "creator": "Salicyna",
+          "source": "https://commons.wikimedia.org/wiki/File:Artemisia_vulgaris_2018-05-05_1062.jpg",
+          "license": "CC BY-SA 4.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+          "changes": "None"
+        }
+      ]
+    },
+    {
+      "recipeNumber": 16,
+      "index": 15,
+      "name": "Betony Snuff (Stachys officinalis)",
+      "images": [
+        {
+          "imageNumber": 1,
+          "title": "Betonica officinalis kz.jpg",
+          "creator": "Krzysztof Ziarnek, Kenraiz",
+          "source": "https://commons.wikimedia.org/wiki/File:Betonica_officinalis_kz.jpg",
+          "license": "CC BY-SA 4.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+          "changes": "None"
+        },
+        {
+          "imageNumber": 2,
+          "title": "Stachys officinalis RF.jpg",
+          "creator": "Robert Flogaus-Faust",
+          "source": "https://commons.wikimedia.org/wiki/File:Stachys_officinalis_RF.jpg",
+          "license": "CC BY 4.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+          "changes": "None"
+        }
+      ]
+    },
+    {
+      "recipeNumber": 17,
+      "index": 16,
+      "name": "Rosemary Liniment",
+      "images": [
+        {
+          "imageNumber": 1,
+          "title": "P1090247(4x3)-Rosmarinus officinalis (41960388224).jpg",
+          "creator": "Miguel Angel Masegosa Martínez",
+          "source": "https://commons.wikimedia.org/wiki/File:P1090247(4x3)-Rosmarinus_officinalis_(41960388224).jpg",
+          "license": "CC BY 2.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by/2.0/",
+          "changes": "None"
+        }
+      ]
+    },
+    {
+      "recipeNumber": 18,
+      "index": 17,
+      "name": "Elecampane Wine (Inula Wine)",
+      "images": [
+        {
+          "imageNumber": 1,
+          "title": "Inula helenium 002.JPG",
+          "creator": "H. Zell (Llez)",
+          "source": "https://commons.wikimedia.org/wiki/File:Inula_helenium_002.JPG",
+          "license": "CC BY-SA 3.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0/",
+          "changes": "None"
+        }
+      ]
+    },
+    {
+      "recipeNumber": 19,
+      "index": 18,
+      "name": "Black Hellebore Tincture (Christmas Rose)",
+      "images": [
+        {
+          "imageNumber": 1,
+          "title": "Bloem van een kerstroos (Helleborus niger) 16-12-2021. (d.j.b) 01.jpg",
+          "creator": "Dominicus Johannes Bergsma",
+          "source": "https://commons.wikimedia.org/wiki/File:Bloem_van_een_kerstroos_(Helleborus_niger)_16-12-2021._(d.j.b)_01.jpg",
+          "license": "CC BY-SA 4.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+          "changes": "None"
+        }
+      ]
+    },
+    {
+      "recipeNumber": 20,
+      "index": 19,
+      "name": "Balsam of Peru Salve",
+      "images": [
+        {
+          "imageNumber": 1,
+          "title": "Myroxylon balsamum Seeds on Fallen Tree in Udawattakele 1.jpg",
+          "creator": "Nyanatusita",
+          "source": "https://commons.wikimedia.org/wiki/File:Myroxylon_balsamum_Seeds_on_Fallen_Tree_in_Udawattakele_1.jpg",
+          "license": "CC BY-SA 3.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0/",
+          "changes": "None"
+        }
+      ]
+    },
+    {
+      "recipeNumber": 21,
+      "index": 20,
+      "name": "Sweet Flag Elixir (Calamus)",
+      "images": [
+        {
+          "imageNumber": 1,
+          "title": "Acorus calamus kz05.jpg",
+          "creator": "Krzysztof Ziarnek, Kenraiz",
+          "source": "https://commons.wikimedia.org/wiki/File:Acorus_calamus_kz05.jpg",
+          "license": "CC BY-SA 4.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+          "changes": "None"
+        }
+      ]
+    },
+    {
+      "recipeNumber": 22,
+      "index": 21,
+      "name": "Horehound Candy (Marrubium vulgare)",
+      "images": [
+        {
+          "imageNumber": 1,
+          "title": "Marrubium vulgare kz05.jpg",
+          "creator": "Krzysztof Ziarnek, Kenraiz",
+          "source": "https://commons.wikimedia.org/wiki/File:Marrubium_vulgare_kz05.jpg",
+          "license": "CC BY-SA 4.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+          "changes": "None"
+        }
+      ]
+    },
+    {
+      "recipeNumber": 23,
+      "index": 22,
+      "name": "Valerian and Hops Pillow",
+      "images": [
+        {
+          "imageNumber": 1,
+          "title": "Valeriana officinalis kz06.jpg",
+          "creator": "Krzysztof Ziarnek, Kenraiz",
+          "source": "https://commons.wikimedia.org/wiki/File:Valeriana_officinalis_kz06.jpg",
+          "license": "CC BY-SA 4.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+          "changes": "None"
+        },
+        {
+          "imageNumber": 2,
+          "title": "Humulus lupulus, Montour Trail, 2024-09-19-1.jpg",
+          "creator": "Cbaile19",
+          "source": "https://commons.wikimedia.org/wiki/File:Humulus_lupulus,_Montour_Trail,_2024-09-19-1.jpg",
+          "license": "CC0 1.0",
+          "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/",
+          "changes": "None"
+        }
+      ]
+    },
+    {
+      "recipeNumber": 24,
+      "index": 23,
+      "name": "Marshmallow Root Decoction",
+      "images": [
+        {
+          "imageNumber": 1,
+          "title": "Althaea officinalis, Carnegie, 2025-07-02-4.jpg",
+          "creator": "Cbaile19",
+          "source": "https://commons.wikimedia.org/wiki/File:Althaea_officinalis,_Carnegie,_2025-07-02-4.jpg",
+          "license": "CC0 1.0",
+          "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/",
+          "changes": "None"
+        }
+      ]
+    },
+    {
+      "recipeNumber": 25,
+      "index": 24,
+      "name": "Agrimony Tincture (Agrimonia eupatoria)",
+      "images": [
+        {
+          "imageNumber": 1,
+          "title": "Agrimonia eupatoria01.jpg",
+          "creator": "Pethan",
+          "source": "https://commons.wikimedia.org/wiki/File:Agrimonia_eupatoria01.jpg",
+          "license": "CC BY-SA 3.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0/",
+          "changes": "None"
+        }
+      ]
+    },
+    {
+      "recipeNumber": 26,
+      "index": 25,
+      "name": "Pellitory of the Wall Infusion",
+      "images": [
+        {
+          "imageNumber": 1,
+          "title": "Parietaria judaica 2 RF.jpg",
+          "creator": "Robert Flogaus-Faust",
+          "source": "https://commons.wikimedia.org/wiki/File:Parietaria_judaica_2_RF.jpg",
+          "license": "CC BY 4.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+          "changes": "None"
+        }
+      ]
+    },
+    {
+      "recipeNumber": 27,
+      "index": 26,
+      "name": "Arctic Angelica Spirit (Archangelica)",
+      "images": [
+        {
+          "imageNumber": 1,
+          "title": "Angelica archangelica 2 RF.jpg",
+          "creator": "Robert Flogaus-Faust",
+          "source": "https://commons.wikimedia.org/wiki/File:Angelica_archangelica_2_RF.jpg",
+          "license": "CC BY 4.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+          "changes": "None"
+        }
+      ]
+    },
+    {
+      "recipeNumber": 28,
+      "index": 27,
+      "name": "Reindeer Moss Decoction (Cetraria islandica)",
+      "images": [
+        {
+          "imageNumber": 1,
+          "title": "Cetraria islandica 105670174.jpg",
+          "creator": "jensu",
+          "source": "https://commons.wikimedia.org/wiki/File:Cetraria_islandica_105670174.jpg",
+          "license": "CC0 1.0",
+          "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/",
+          "changes": "None"
+        }
+      ]
+    },
+    {
+      "recipeNumber": 29,
+      "index": 28,
+      "name": "Cloudberry Conserve (Rubus chamaemorus)",
+      "images": [
+        {
+          "imageNumber": 1,
+          "title": "Rubus chamaemorus close-up.JPG",
+          "creator": "Veli Holopainen",
+          "source": "https://commons.wikimedia.org/wiki/File:Rubus_chamaemorus_close-up.JPG",
+          "license": "Public domain",
+          "licenseUrl": "https://en.wikipedia.org/wiki/Public_domain",
+          "changes": "None"
+        }
+      ]
+    },
+    {
+      "recipeNumber": 30,
+      "index": 29,
+      "name": "Burdock Root Ferment (Lopukhov Kvass)",
+      "images": [
+        {
+          "imageNumber": 1,
+          "title": "Burdock root 2.jpg",
+          "creator": "Bjh21",
+          "source": "https://commons.wikimedia.org/wiki/File:Burdock_root_2.jpg",
+          "license": "CC BY-SA 2.0 KR",
+          "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0/kr/",
+          "changes": "None"
+        }
+      ]
+    },
+    {
+      "recipeNumber": 31,
+      "index": 30,
+      "name": "Pine Needle Tincture (Pinus sylvestris)",
+      "images": [
+        {
+          "imageNumber": 1,
+          "title": "Pinus sylvestris MHNT.BOT.2005.0.971.jpg",
+          "creator": "Didier Descouens",
+          "source": "https://commons.wikimedia.org/wiki/File:Pinus_sylvestris_MHNT.BOT.2005.0.971.jpg",
+          "license": "CC BY-SA 4.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+          "changes": "None"
+        }
+      ]
+    },
+    {
+      "recipeNumber": 32,
+      "index": 31,
+      "name": "Red Clover Salve (Trifolium pratense)",
+      "images": [
+        {
+          "imageNumber": 1,
+          "title": "Trifolium pratense - Keila2.jpg",
+          "creator": "Ivar Leidus (Iifar)",
+          "source": "https://commons.wikimedia.org/wiki/File:Trifolium_pratense_-_Keila2.jpg",
+          "license": "CC BY-SA 4.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+          "changes": "None"
+        }
+      ]
+    },
+    {
+      "recipeNumber": 33,
+      "index": 32,
+      "name": "Wild Thyme Linctus (Thymus serpyllum)",
+      "images": [
+        {
+          "imageNumber": 1,
+          "title": "Breckland Thyme Thymus serpyllum (6169103649).jpg",
+          "creator": "Len Worthington",
+          "source": "https://commons.wikimedia.org/wiki/File:Breckland_Thyme_Thymus_serpyllum_(6169103649).jpg",
+          "license": "CC BY-SA 2.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0/",
+          "changes": "None"
+        }
+      ]
+    },
+    {
+      "recipeNumber": 34,
+      "index": 33,
+      "name": "St. John's Wort Oil (Hypericum perforatum)",
+      "images": [
+        {
+          "imageNumber": 1,
+          "title": "Hypericum perforatum kz07.jpg",
+          "creator": "Krzysztof Ziarnek, Kenraiz",
+          "source": "https://commons.wikimedia.org/wiki/File:Hypericum_perforatum_kz07.jpg",
+          "license": "CC BY-SA 4.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+          "changes": "None"
+        }
+      ]
+    },
+    {
+      "recipeNumber": 35,
+      "index": 34,
+      "name": "Lungwort Decoction (Pulmonaria officinalis)",
+      "images": [
+        {
+          "imageNumber": 1,
+          "title": "Pulmonaria obscura20230424 19451.jpg",
+          "creator": "Bff",
+          "source": "https://commons.wikimedia.org/wiki/File:Pulmonaria_obscura20230424_19451.jpg",
+          "license": "CC BY-SA 4.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+          "changes": "None"
+        }
+      ]
+    },
+    {
+      "recipeNumber": 36,
+      "index": 35,
+      "name": "Goat's Rue Tincture (Galega officinalis)",
+      "images": [
+        {
+          "imageNumber": 1,
+          "title": "Goat's rue, Faversham - geograph.org.uk - 8073267.jpg",
+          "creator": "pam fray",
+          "source": "https://commons.wikimedia.org/wiki/File:Goat%27s_rue,_Faversham_-_geograph.org.uk_-_8073267.jpg",
+          "license": "CC BY-SA 2.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0/",
+          "changes": "None"
+        }
+      ]
+    },
+    {
+      "recipeNumber": 37,
+      "index": 36,
+      "name": "Bilberry Wine (Vaccinium myrtillus)",
+      "images": [
+        {
+          "imageNumber": 1,
+          "title": "Heidelbeeren auf dem Ast IMG 3415WI2.jpg",
+          "creator": "Kora27",
+          "source": "https://commons.wikimedia.org/wiki/File:Heidelbeeren_auf_dem_Ast_IMG_3415WI2.jpg",
+          "license": "CC BY-SA 4.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+          "changes": "None"
+        }
+      ]
+    },
+    {
+      "recipeNumber": 38,
+      "index": 37,
+      "name": "Celandine Tincture (Chelidonium majus)",
+      "images": [
+        {
+          "imageNumber": 1,
+          "title": "Chelidonium majus bgiu.jpg",
+          "creator": "Bogdan",
+          "source": "https://commons.wikimedia.org/wiki/File:Chelidonium_majus_bgiu.jpg",
+          "license": "CC BY-SA 3.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0/",
+          "changes": "None"
+        }
+      ]
+    },
+    {
+      "recipeNumber": 39,
+      "index": 38,
+      "name": "Lichen Cream (Cetraria & Usnea)",
+      "images": [
+        {
+          "imageNumber": 1,
+          "title": "Usnea barbata 112027480.jpg",
+          "creator": "Christian Grenier (krisskinou)",
+          "source": "https://commons.wikimedia.org/wiki/File:Usnea_barbata_112027480.jpg",
+          "license": "CC0 1.0",
+          "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/",
+          "changes": "None"
+        },
+        {
+          "imageNumber": 2,
+          "title": "Cladonia rangiferina 205412.jpg",
+          "creator": "Jason Hollinger",
+          "source": "https://commons.wikimedia.org/wiki/File:Cladonia_rangiferina_205412.jpg",
+          "license": "CC BY-SA 3.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0/",
+          "changes": "None"
+        }
+      ]
+    },
+    {
+      "recipeNumber": 40,
+      "index": 39,
+      "name": "Horsetail Field Plaster (Equisetum arvense)",
+      "images": [
+        {
+          "imageNumber": 1,
+          "title": "Equisetum arvense 126536963.jpg",
+          "creator": "botany08",
+          "source": "https://commons.wikimedia.org/wiki/File:Equisetum_arvense_126536963.jpg",
+          "license": "CC BY 4.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+          "changes": "None"
+        }
+      ]
+    },
+    {
+      "recipeNumber": 41,
+      "index": 40,
+      "name": "Marsh Tea Tincture (Ledum palustre)",
+      "images": [
+        {
+          "imageNumber": 1,
+          "title": "Ledum groenlandicum 001.jpg",
+          "creator": "Nichole Ouellette",
+          "source": "https://commons.wikimedia.org/wiki/File:Ledum_groenlandicum_001.jpg",
+          "license": "CC BY 4.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+          "changes": "None"
+        },
+        {
+          "imageNumber": 2,
+          "title": "Wild Rosemary - Flickr - treegrow (1).jpg",
+          "creator": "Katja Schulz",
+          "source": "https://commons.wikimedia.org/wiki/File:Wild_Rosemary_-_Flickr_-_treegrow_(1).jpg",
+          "license": "CC BY 2.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by/2.0/",
+          "changes": "None"
+        }
+      ]
+    },
+    {
+      "recipeNumber": 42,
+      "index": 41,
+      "name": "Yarrow Sitz Bath (Achillea millefolium)",
+      "images": [
+        {
+          "imageNumber": 1,
+          "title": "Yarrow (Achillea millefolium).jpg",
+          "creator": "Petar Milošević",
+          "source": "https://commons.wikimedia.org/wiki/File:Yarrow_(Achillea_millefolium).jpg",
+          "license": "CC BY-SA 4.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+          "changes": "None"
+        }
+      ]
+    },
+    {
+      "recipeNumber": 43,
+      "index": 42,
+      "name": "Spelt Porridge (Hildegard's Cereal)",
+      "images": [
+        {
+          "imageNumber": 1,
+          "title": "Gruenkern.jpg",
+          "creator": "Elya",
+          "source": "https://commons.wikimedia.org/wiki/File:Gruenkern.jpg",
+          "license": "CC BY-SA 3.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0/",
+          "changes": "None"
+        }
+      ]
+    },
+    {
+      "recipeNumber": 44,
+      "index": 43,
+      "name": "Calamint Infusion (Calamintha nepeta)",
+      "images": [
+        {
+          "imageNumber": 1,
+          "title": "Calamintha nepeta 1652.jpg",
+          "creator": "Buendia22",
+          "source": "https://commons.wikimedia.org/wiki/File:Calamintha_nepeta_1652.jpg",
+          "license": "CC BY-SA 4.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+          "changes": "None"
+        }
+      ]
+    },
+    {
+      "recipeNumber": 45,
+      "index": 44,
+      "name": "Dittany and Honey Troches (Pastilles)",
+      "images": [
+        {
+          "imageNumber": 1,
+          "title": "Origanum dictamnus kz09.jpg",
+          "creator": "Krzysztof Ziarnek, Kenraiz",
+          "source": "https://commons.wikimedia.org/wiki/File:Origanum_dictamnus_kz09.jpg",
+          "license": "CC BY-SA 4.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+          "changes": "None"
+        }
+      ]
+    },
+    {
+      "recipeNumber": 46,
+      "index": 45,
+      "name": "Woundwort Tincture (Stachys sylvatica)",
+      "images": [
+        {
+          "imageNumber": 1,
+          "title": "Stachys sylvatica Czyściec leśny 2022-06-26 02.jpg",
+          "creator": "Agnieszka Kwiecień, Nova",
+          "source": "https://commons.wikimedia.org/wiki/File:Stachys_sylvatica_Czy%C5%9Bciec_le%C5%9Bny_2022-06-26_02.jpg",
+          "license": "CC BY-SA 4.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+          "changes": "None"
+        }
+      ]
+    },
+    {
+      "recipeNumber": 47,
+      "index": 46,
+      "name": "Mullein and Garlic Ear Oil",
+      "images": [
+        {
+          "imageNumber": 1,
+          "title": "Verbascum thapsus 2024 Jun, July ON Canada Laslovarga (8).jpg",
+          "creator": "Laslovarga",
+          "source": "https://commons.wikimedia.org/wiki/File:Verbascum_thapsus_2024_Jun,_July_ON_Canada_Laslovarga_(8).jpg",
+          "license": "CC BY-SA 4.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+          "changes": "None"
+        }
+      ]
+    },
+    {
+      "recipeNumber": 48,
+      "index": 47,
+      "name": "Meadowsweet Ointment (Spiraea)",
+      "images": [
+        {
+          "imageNumber": 1,
+          "title": "Meadowsweet by Lysekil Line in Brastad 7.jpg",
+          "creator": "W.carter",
+          "source": "https://commons.wikimedia.org/wiki/File:Meadowsweet_by_Lysekil_Line_in_Brastad_7.jpg",
+          "license": "CC BY-SA 4.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+          "changes": "None"
+        }
+      ]
+    },
+    {
+      "recipeNumber": 49,
+      "index": 48,
+      "name": "Horehound and Anise Wine",
+      "images": [
+        {
+          "imageNumber": 1,
+          "title": "Marrubium vulgare leaf Jenene Kidston (14453015387).jpg",
+          "creator": "Harry Rose",
+          "source": "https://commons.wikimedia.org/wiki/File:Marrubium_vulgare_leaf_Jenene_Kidston_(14453015387).jpg",
+          "license": "CC BY 2.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by/2.0/",
+          "changes": "None"
+        }
+      ]
+    },
+    {
+      "recipeNumber": 50,
+      "index": 49,
+      "name": "Rosemary and Lavender Smudging Blend",
+      "images": [
+        {
+          "imageNumber": 1,
+          "title": "P1090247(4x3)-Rosmarinus officinalis (41960388224).jpg",
+          "creator": "Miguel Angel Masegosa Martínez",
+          "source": "https://commons.wikimedia.org/wiki/File:P1090247(4x3)-Rosmarinus_officinalis_(41960388224).jpg",
+          "license": "CC BY 2.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by/2.0/",
+          "changes": "None"
+        },
+        {
+          "imageNumber": 2,
+          "title": "Lavender dry.JPG",
+          "creator": "Booksworm",
+          "source": "https://commons.wikimedia.org/wiki/File:Lavender_dry.JPG",
+          "license": "Public domain",
+          "licenseUrl": "https://en.wikipedia.org/wiki/Public_domain",
+          "changes": "None"
+        }
+      ]
+    },
+    {
+      "recipeNumber": 51,
+      "index": 50,
+      "name": "Wild Lettuce Tincture (Lactuca virosa)",
+      "images": [
+        {
+          "imageNumber": 1,
+          "title": "Lactuca virosa, repousse printanière.jpg",
+          "creator": "David Ebro",
+          "source": "https://commons.wikimedia.org/wiki/File:Lactuca_virosa,_repousse_printani%C3%A8re.jpg",
+          "license": "CC BY-SA 4.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+          "changes": "None"
+        }
+      ]
+    },
+    {
+      "recipeNumber": 52,
+      "index": 51,
+      "name": "Black Currant Bud Conserve (Ribes nigrum)",
+      "images": [
+        {
+          "imageNumber": 1,
+          "title": "Schwarzejohannisbeere.jpg",
+          "creator": "Saxo",
+          "source": "https://commons.wikimedia.org/wiki/File:Schwarzejohannisbeere.jpg",
+          "license": "Public domain",
+          "licenseUrl": "https://en.wikipedia.org/wiki/Public_domain",
+          "changes": "None"
+        }
+      ]
+    },
+    {
+      "recipeNumber": 53,
+      "index": 52,
+      "name": "Fig and Rue Purgative",
+      "images": [
+        {
+          "imageNumber": 1,
+          "title": "Dried figs (1).jpg",
+          "creator": "Fumikas Sagisavas",
+          "source": "https://commons.wikimedia.org/wiki/File:Dried_figs_(1).jpg",
+          "license": "CC BY 2.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by/2.0/",
+          "changes": "None"
+        },
+        {
+          "imageNumber": 2,
+          "title": "Rue-Anemone Thalictrum thalictroides Pink Form Leaf 2323px.jpg",
+          "creator": "Ram-Man",
+          "source": "https://commons.wikimedia.org/wiki/File:Rue-Anemone_Thalictrum_thalictroides_Pink_Form_Leaf_2323px.jpg",
+          "license": "CC BY-SA 2.5",
+          "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.5/",
+          "changes": "None"
+        }
+      ]
+    },
+    {
+      "recipeNumber": 54,
+      "index": 53,
+      "name": "Broom Top Decoction (Cytisus scoparius)",
+      "images": [
+        {
+          "imageNumber": 1,
+          "title": "Fiori di ginestra.jpg",
+          "creator": "Anna.Massini",
+          "source": "https://commons.wikimedia.org/wiki/File:Fiori_di_ginestra.jpg",
+          "license": "CC BY 4.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+          "changes": "None"
+        }
+      ]
+    },
+    {
+      "recipeNumber": 55,
+      "index": 54,
+      "name": "Stonecrop Tincture (Sedum acre)",
+      "images": [
+        {
+          "imageNumber": 1,
+          "title": "Sedum acre 139527554.jpg",
+          "creator": "Loup BT",
+          "source": "https://commons.wikimedia.org/wiki/File:Sedum_acre_139527554.jpg",
+          "license": "CC BY 4.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+          "changes": "None"
+        }
+      ]
+    },
+    {
+      "recipeNumber": 56,
+      "index": 55,
+      "name": "Cowslip Flower Syrup (Primula veris)",
+      "images": [
+        {
+          "imageNumber": 1,
+          "title": "Primula veris. jfg edit.jpg",
+          "creator": "Tournachon (Jeffdelonge)",
+          "source": "https://commons.wikimedia.org/wiki/File:Primula_veris._jfg_edit.jpg",
+          "license": "CC BY-SA 3.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0/",
+          "changes": "None"
+        }
+      ]
+    },
+    {
+      "recipeNumber": 57,
+      "index": 56,
+      "name": "Tormentil Tincture (Potentilla erecta)",
+      "images": [
+        {
+          "imageNumber": 1,
+          "title": "Potentilla erecta (trebol-a).jpg",
+          "creator": "Alberto Garcia Quesada",
+          "source": "https://commons.wikimedia.org/wiki/File:Potentilla_erecta_(trebol-a).jpg",
+          "license": "CC BY-SA 2.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0/",
+          "changes": "None"
+        }
+      ]
+    },
+    {
+      "recipeNumber": 58,
+      "index": 57,
+      "name": "Shepherd's Purse Tincture (Capsella)",
+      "images": [
+        {
+          "imageNumber": 1,
+          "title": "Capsella bursa-pastoris 179138593.jpg",
+          "creator": "Michel Langeveld",
+          "source": "https://commons.wikimedia.org/wiki/File:Capsella_bursa-pastoris_179138593.jpg",
+          "license": "CC BY-SA 4.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+          "changes": "None"
+        }
+      ]
+    },
+    {
+      "recipeNumber": 59,
+      "index": 58,
+      "name": "Mallow Root Poultice (Malva sylvestris)",
+      "images": [
+        {
+          "imageNumber": 1,
+          "title": "Malva sylvestris (Grande mauve) rue des Gravelles (Saint-Maurice-de-Beynost) en juin 2019 (cropped).jpg",
+          "creator": "Benoît Prieur",
+          "source": "https://commons.wikimedia.org/wiki/File:Malva_sylvestris_(Grande_mauve)_rue_des_Gravelles_(Saint-Maurice-de-Beynost)_en_juin_2019_(cropped).jpg",
+          "license": "CC0 1.0",
+          "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/",
+          "changes": "None"
+        }
+      ]
+    },
+    {
+      "recipeNumber": 60,
+      "index": 59,
+      "name": "Fenugreek Seed Gruel (Trigonella)",
+      "images": [
+        {
+          "imageNumber": 1,
+          "title": "Fenugreek seed.JPG",
+          "creator": "Miansari66",
+          "source": "https://commons.wikimedia.org/wiki/File:Fenugreek_seed.JPG",
+          "license": "Public domain",
+          "licenseUrl": "https://en.wikipedia.org/wiki/Public_domain",
+          "changes": "None"
+        }
+      ]
+    },
+    {
+      "recipeNumber": 61,
+      "index": 60,
+      "name": "Agrimony and Sage Gargle",
+      "images": [
+        {
+          "imageNumber": 1,
+          "title": "Salvia officinalis Szałwia lekarska 2023-07-21 02.jpg",
+          "creator": "Agnieszka Kwiecień, Nova",
+          "source": "https://commons.wikimedia.org/wiki/File:Salvia_officinalis_Sza%C5%82wia_lekarska_2023-07-21_02.jpg",
+          "license": "CC BY-SA 4.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+          "changes": "None"
+        }
+      ]
+    },
+    {
+      "recipeNumber": 62,
+      "index": 61,
+      "name": "Coltsfoot Tincture (Tussilago farfara)",
+      "images": [
+        {
+          "imageNumber": 1,
+          "title": "Coltsfoot and flower beetles (EDL) (26015175700).jpg",
+          "creator": "David Short",
+          "source": "https://commons.wikimedia.org/wiki/File:Coltsfoot_and_flower_beetles_(EDL)_(26015175700).jpg",
+          "license": "CC BY 2.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by/2.0/",
+          "changes": "None"
+        }
+      ]
+    },
+    {
+      "recipeNumber": 63,
+      "index": 62,
+      "name": "Chicory Root Coffee (Cichorium intybus)",
+      "images": [
+        {
+          "imageNumber": 1,
+          "title": "Cichorium intybus, la Cellera de Ter.jpg",
+          "creator": "Josep Gesti",
+          "source": "https://commons.wikimedia.org/wiki/File:Cichorium_intybus,_la_Cellera_de_Ter.jpg",
+          "license": "CC BY-SA 4.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+          "changes": "None"
+        }
+      ]
+    },
+    {
+      "recipeNumber": 64,
+      "index": 63,
+      "name": "Motherwort Syrup (Leonurus cardiaca)",
+      "images": [
+        {
+          "imageNumber": 1,
+          "title": "Leonurus cardiaca kz13.jpg",
+          "creator": "Krzysztof Ziarnek, Kenraiz",
+          "source": "https://commons.wikimedia.org/wiki/File:Leonurus_cardiaca_kz13.jpg",
+          "license": "CC BY-SA 4.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+          "changes": "None"
+        }
+      ]
+    },
+    {
+      "recipeNumber": 65,
+      "index": 64,
+      "name": "Icelandic Moss and Licorice Lozenges",
+      "images": [
+        {
+          "imageNumber": 1,
+          "title": "Cetraria islandica 105670174.jpg",
+          "creator": "jensu",
+          "source": "https://commons.wikimedia.org/wiki/File:Cetraria_islandica_105670174.jpg",
+          "license": "CC0 1.0",
+          "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/",
+          "changes": "None"
+        },
+        {
+          "imageNumber": 2,
+          "title": "Glycyrrhiza glabra Y01.jpg",
+          "creator": "Yuriy75 (Юрий Данилевский)",
+          "source": "https://commons.wikimedia.org/wiki/File:Glycyrrhiza_glabra_Y01.jpg",
+          "license": "CC BY-SA 4.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+          "changes": "None"
+        }
+      ]
+    },
+    {
+      "recipeNumber": 66,
+      "index": 65,
+      "name": "Birch Leaf Infusion (Betula pendula)",
+      "images": [
+        {
+          "imageNumber": 1,
+          "title": "Young Birch Leaves, Trent Park, Enfield - geograph.org.uk - 5343740.jpg",
+          "creator": "Christine Matthews",
+          "source": "https://commons.wikimedia.org/wiki/File:Young_Birch_Leaves,_Trent_Park,_Enfield_-_geograph.org.uk_-_5343740.jpg",
+          "license": "CC BY-SA 2.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0/",
+          "changes": "None"
+        }
+      ]
+    },
+    {
+      "recipeNumber": 67,
+      "index": 66,
+      "name": "Wild Pansy Decoction (Viola tricolor)",
+      "images": [
+        {
+          "imageNumber": 1,
+          "title": "Viola tricolor subsp. curtisii kz02.jpg",
+          "creator": "Krzysztof Ziarnek, Kenraiz",
+          "source": "https://commons.wikimedia.org/wiki/File:Viola_tricolor_subsp._curtisii_kz02.jpg",
+          "license": "CC BY-SA 4.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+          "changes": "None"
+        }
+      ]
+    },
+    {
+      "recipeNumber": 68,
+      "index": 67,
+      "name": "Thuja Tincture (Thuja occidentalis)",
+      "images": [
+        {
+          "imageNumber": 1,
+          "title": "Thuja occidentalis - cone 1 (aka).jpg",
+          "creator": "André Karwath (Aka)",
+          "source": "https://commons.wikimedia.org/wiki/File:Thuja_occidentalis_-_cone_1_(aka).jpg",
+          "license": "CC BY-SA 2.5",
+          "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.5/",
+          "changes": "None"
+        }
+      ]
+    },
+    {
+      "recipeNumber": 69,
+      "index": 68,
+      "name": "Raspberry Leaf Decoction (Rubus idaeus)",
+      "images": [
+        {
+          "imageNumber": 1,
+          "title": "Raspberry leaf.jpg",
+          "creator": "Свифт",
+          "source": "https://commons.wikimedia.org/wiki/File:Raspberry_leaf.jpg",
+          "license": "Public domain",
+          "licenseUrl": "https://en.wikipedia.org/wiki/Public_domain",
+          "changes": "None"
+        }
+      ]
+    },
+    {
+      "recipeNumber": 70,
+      "index": 69,
+      "name": "Caraway and Chamomile Infusion",
+      "images": [
+        {
+          "imageNumber": 1,
+          "title": "Nahrungsmittel 2012-07-08-9519.jpg",
+          "creator": "Slick",
+          "source": "https://commons.wikimedia.org/wiki/File:Nahrungsmittel_2012-07-08-9519.jpg",
+          "license": "CC0 1.0",
+          "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/",
+          "changes": "None"
+        }
+      ]
+    },
+    {
+      "recipeNumber": 71,
+      "index": 70,
+      "name": "Vervain Tincture (Verbena officinalis)",
+      "images": [
+        {
+          "imageNumber": 1,
+          "title": "Vervain (Verbena officinalis) - geograph.org.uk - 4156848.jpg",
+          "creator": "Anne Burgess",
+          "source": "https://commons.wikimedia.org/wiki/File:Vervain_(Verbena_officinalis)_-_geograph.org.uk_-_4156848.jpg",
+          "license": "CC BY-SA 2.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0/",
+          "changes": "None"
+        }
+      ]
+    },
+    {
+      "recipeNumber": 72,
+      "index": 71,
+      "name": "Marshmallow Syrup (Althaea officinalis)",
+      "images": [
+        {
+          "imageNumber": 1,
+          "title": "Althaea officinalis, 2020-10-04, Carnegie, 03.jpg",
+          "creator": "Cbaile19",
+          "source": "https://commons.wikimedia.org/wiki/File:Althaea_officinalis,_2020-10-04,_Carnegie,_03.jpg",
+          "license": "CC0 1.0",
+          "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/",
+          "changes": "None"
+        }
+      ]
+    },
+    {
+      "recipeNumber": 73,
+      "index": 72,
+      "name": "Plantain Infusion (Plantago major)",
+      "images": [
+        {
+          "imageNumber": 1,
+          "title": "Plantago major RF.jpg",
+          "creator": "Robert Flogaus-Faust",
+          "source": "https://commons.wikimedia.org/wiki/File:Plantago_major_RF.jpg",
+          "license": "CC BY 4.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+          "changes": "None"
+        }
+      ]
+    },
+    {
+      "recipeNumber": 74,
+      "index": 73,
+      "name": "White Poplar Bud Tincture (Populus alba/nigra)",
+      "images": [
+        {
+          "imageNumber": 1,
+          "title": "Populus nigra sl18.jpg",
+          "creator": "Stefan.lefnaer",
+          "source": "https://commons.wikimedia.org/wiki/File:Populus_nigra_sl18.jpg",
+          "license": "CC BY-SA 4.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+          "changes": "None"
+        }
+      ]
+    },
+    {
+      "recipeNumber": 75,
+      "index": 74,
+      "name": "Juniper Berry Wine (Juniperus communis)",
+      "images": [
+        {
+          "imageNumber": 1,
+          "title": "Juniper berries - geograph.org.uk - 1593558.jpg",
+          "creator": "John Tustin",
+          "source": "https://commons.wikimedia.org/wiki/File:Juniper_berries_-_geograph.org.uk_-_1593558.jpg",
+          "license": "CC BY-SA 2.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0/",
+          "changes": "None"
+        }
+      ]
+    },
+    {
+      "recipeNumber": 76,
+      "index": 75,
+      "name": "Rose Hip Syrup (Rosa canina)",
+      "images": [
+        {
+          "imageNumber": 1,
+          "title": "Rose hip in Rind village.jpg",
+          "creator": "Ավետիսյան91",
+          "source": "https://commons.wikimedia.org/wiki/File:Rose_hip_in_Rind_village.jpg",
+          "license": "CC BY-SA 4.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+          "changes": "None"
+        }
+      ]
+    },
+    {
+      "recipeNumber": 77,
+      "index": 76,
+      "name": "Betony and Rose Oil (Ear Drops)",
+      "images": [
+        {
+          "imageNumber": 1,
+          "title": "Stachys officinalis Bukwica zwyczajna 2020-05-31 01.jpg",
+          "creator": "Agnieszka Kwiecień, Nova",
+          "source": "https://commons.wikimedia.org/wiki/File:Stachys_officinalis_Bukwica_zwyczajna_2020-05-31_01.jpg",
+          "license": "CC BY-SA 4.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+          "changes": "None"
+        },
+        {
+          "imageNumber": 2,
+          "title": "Red Rose Petals (4386388455).jpg",
+          "creator": "THOR",
+          "source": "https://commons.wikimedia.org/wiki/File:Red_Rose_Petals_(4386388455).jpg",
+          "license": "CC BY 2.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by/2.0/",
+          "changes": "None"
+        }
+      ]
+    },
+    {
+      "recipeNumber": 78,
+      "index": 77,
+      "name": "Hemp Agrimony Decoction (Eupatorium cannabinum)",
+      "images": [
+        {
+          "imageNumber": 1,
+          "title": "Eupatorium cannabinum DSCN2417-01.jpg",
+          "creator": "Jaana Siitonen",
+          "source": "https://commons.wikimedia.org/wiki/File:Eupatorium_cannabinum_DSCN2417-01.jpg",
+          "license": "CC BY 4.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+          "changes": "None"
+        }
+      ]
+    },
+    {
+      "recipeNumber": 79,
+      "index": 78,
+      "name": "Rest Harrow Root Decoction (Ononis spinosa)",
+      "images": [
+        {
+          "imageNumber": 1,
+          "title": "Ononis spinosa 1.jpg",
+          "creator": "Stemonitis",
+          "source": "https://commons.wikimedia.org/wiki/File:Ononis_spinosa_1.jpg",
+          "license": "CC BY-SA 3.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0/",
+          "changes": "None"
+        }
+      ]
+    },
+    {
+      "recipeNumber": 80,
+      "index": 79,
+      "name": "Oak Apple Decoction (Quercus gall)",
+      "images": [
+        {
+          "imageNumber": 1,
+          "title": "Oak apples - Keila.jpg",
+          "creator": "Ivar Leidus (Iifar)",
+          "source": "https://commons.wikimedia.org/wiki/File:Oak_apples_-_Keila.jpg",
+          "license": "CC BY-SA 4.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+          "changes": "None"
+        }
+      ]
+    },
+    {
+      "recipeNumber": 81,
+      "index": 80,
+      "name": "Silverweed Tincture (Potentilla anserina)",
+      "images": [
+        {
+          "imageNumber": 1,
+          "title": "Potentilla anserina RF.jpg",
+          "creator": "Robert Flogaus-Faust",
+          "source": "https://commons.wikimedia.org/wiki/File:Potentilla_anserina_RF.jpg",
+          "license": "CC BY 4.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+          "changes": "None"
+        }
+      ]
+    },
+    {
+      "recipeNumber": 82,
+      "index": 81,
+      "name": "Angelica Root Honey Paste (Archangelica)",
+      "images": [
+        {
+          "imageNumber": 1,
+          "title": "Angelica archangelica subsp. archangelica Dzięgiel litwor 2019-05-24 06.jpg",
+          "creator": "Agnieszka Kwiecień, Nova",
+          "source": "https://commons.wikimedia.org/wiki/File:Angelica_archangelica_subsp._archangelica_Dzi%C4%99giel_litwor_2019-05-24_06.jpg",
+          "license": "CC BY-SA 4.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+          "changes": "None"
+        }
+      ]
+    },
+    {
+      "recipeNumber": 83,
+      "index": 82,
+      "name": "Red Poppy Syrup (Papaver rhoeas)",
+      "images": [
+        {
+          "imageNumber": 1,
+          "title": "Papaver rhoeas in June.jpg",
+          "creator": "Ввласенко",
+          "source": "https://commons.wikimedia.org/wiki/File:Papaver_rhoeas_in_June.jpg",
+          "license": "CC BY-SA 3.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0/",
+          "changes": "None"
+        }
+      ]
+    },
+    {
+      "recipeNumber": 84,
+      "index": 83,
+      "name": "White Horehound Decoction (Marrubium vulgare)",
+      "images": [
+        {
+          "imageNumber": 1,
+          "title": "Marrubium vulgare sl2.jpg",
+          "creator": "Stefan.lefnaer",
+          "source": "https://commons.wikimedia.org/wiki/File:Marrubium_vulgare_sl2.jpg",
+          "license": "CC BY-SA 4.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+          "changes": "None"
+        }
+      ]
+    },
+    {
+      "recipeNumber": 85,
+      "index": 84,
+      "name": "Mugwort Poultice (Artemisia vulgaris)",
+      "images": [
+        {
+          "imageNumber": 1,
+          "title": "Artemisia vulgaris adaxial leaf surface.jpg",
+          "creator": "Alex Abair",
+          "source": "https://commons.wikimedia.org/wiki/File:Artemisia_vulgaris_adaxial_leaf_surface.jpg",
+          "license": "CC BY 4.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+          "changes": "None"
+        }
+      ]
+    },
+    {
+      "recipeNumber": 86,
+      "index": 85,
+      "name": "Horsetail Root Poultice",
+      "images": [
+        {
+          "imageNumber": 1,
+          "title": "Equisetum arvense 117578468.jpg",
+          "creator": "Oleg Kosterin",
+          "source": "https://commons.wikimedia.org/wiki/File:Equisetum_arvense_117578468.jpg",
+          "license": "CC BY 4.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+          "changes": "None"
+        },
+        {
+          "imageNumber": 2,
+          "title": "Symphytum officinale 108596007.jpg",
+          "creator": "Maria (natteheks)",
+          "source": "https://commons.wikimedia.org/wiki/File:Symphytum_officinale_108596007.jpg",
+          "license": "CC BY 4.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+          "changes": "None"
+        }
+      ]
+    },
+    {
+      "recipeNumber": 87,
+      "index": 86,
+      "name": "Wild Thyme Oil (Thymus serpyllum)",
+      "images": [
+        {
+          "imageNumber": 1,
+          "title": "Wild Thyme (Thymus praecox subsp. britannicus) - geograph.org.uk - 819871.jpg",
+          "creator": "Anne Burgess",
+          "source": "https://commons.wikimedia.org/wiki/File:Wild_Thyme_(Thymus_praecox_subsp._britannicus)_-_geograph.org.uk_-_819871.jpg",
+          "license": "CC BY-SA 2.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0/",
+          "changes": "None"
+        }
+      ]
+    },
+    {
+      "recipeNumber": 88,
+      "index": 87,
+      "name": "Pine Bud Syrup (Pinus sylvestris)",
+      "images": [
+        {
+          "imageNumber": 1,
+          "title": "Ponderosa Pine cones, Idaho Panhandle National Forest.jpg",
+          "creator": "Forest Service Northern Region",
+          "source": "https://commons.wikimedia.org/wiki/File:Ponderosa_Pine_cones,_Idaho_Panhandle_National_Forest.jpg",
+          "license": "Public domain (US Federal)",
+          "licenseUrl": "https://en.wikipedia.org/wiki/United_States_government_work",
+          "changes": "None"
+        }
+      ]
+    },
+    {
+      "recipeNumber": 89,
+      "index": 88,
+      "name": "Sloe Berry and Rose Hip Cordial",
+      "images": [
+        {
+          "imageNumber": 1,
+          "title": "Sloe berries - geograph.org.uk - 3651002.jpg",
+          "creator": "David P Howard",
+          "source": "https://commons.wikimedia.org/wiki/File:Sloe_berries_-_geograph.org.uk_-_3651002.jpg",
+          "license": "CC BY-SA 2.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0/",
+          "changes": "None"
+        },
+        {
+          "imageNumber": 2,
+          "title": "Rose hips by Sixscore Road - geograph.org.uk - 589040.jpg",
+          "creator": "Kate Jewell",
+          "source": "https://commons.wikimedia.org/wiki/File:Rose_hips_by_Sixscore_Road_-_geograph.org.uk_-_589040.jpg",
+          "license": "CC BY-SA 2.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0/",
+          "changes": "None"
+        }
+      ]
+    },
+    {
+      "recipeNumber": 90,
+      "index": 89,
+      "name": "Swiss Arnica Tincture (Arnica montana)",
+      "images": [
+        {
+          "imageNumber": 1,
+          "title": "Arnica amplexicaulis kz03.jpg",
+          "creator": "Krzysztof Ziarnek, Kenraiz",
+          "source": "https://commons.wikimedia.org/wiki/File:Arnica_amplexicaulis_kz03.jpg",
+          "license": "CC BY-SA 4.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+          "changes": "None"
+        }
+      ]
+    },
+    {
+      "recipeNumber": 91,
+      "index": 90,
+      "name": "Mullein Flower Infusion (Verbascum thapsus)",
+      "images": [
+        {
+          "imageNumber": 1,
+          "title": "Verbascum thapsus 2024 Jun, July ON Canada Laslovarga (8).jpg",
+          "creator": "Laslovarga",
+          "source": "https://commons.wikimedia.org/wiki/File:Verbascum_thapsus_2024_Jun,_July_ON_Canada_Laslovarga_(8).jpg",
+          "license": "CC BY-SA 4.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+          "changes": "None"
+        }
+      ]
+    },
+    {
+      "recipeNumber": 92,
+      "index": 91,
+      "name": "Elderflower Ointment (Sambucus nigra)",
+      "images": [
+        {
+          "imageNumber": 1,
+          "title": "00 3775 Schwarzer Hollunder (Sambucus nigra).jpg",
+          "creator": "W. Bulach",
+          "source": "https://commons.wikimedia.org/wiki/File:00_3775_Schwarzer_Hollunder_(Sambucus_nigra).jpg",
+          "license": "CC BY-SA 4.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+          "changes": "None"
+        }
+      ]
+    },
+    {
+      "recipeNumber": 93,
+      "index": 92,
+      "name": "Pine Resin Salve (Colophonium)",
+      "images": [
+        {
+          "imageNumber": 1,
+          "title": "Rosin.JPG",
+          "creator": "Jibi44",
+          "source": "https://commons.wikimedia.org/wiki/File:Rosin.JPG",
+          "license": "CC BY-SA 3.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0/",
+          "changes": "None"
+        }
+      ]
+    },
+    {
+      "recipeNumber": 94,
+      "index": 93,
+      "name": "Water Mint Oil (Mentha aquatica)",
+      "images": [
+        {
+          "imageNumber": 1,
+          "title": "Mentha aquatica bluete.jpeg",
+          "creator": "Fabelfroh",
+          "source": "https://commons.wikimedia.org/wiki/File:Mentha_aquatica_bluete.jpeg",
+          "license": "CC BY-SA 3.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0/",
+          "changes": "None"
+        }
+      ]
+    },
+    {
+      "recipeNumber": 95,
+      "index": 94,
+      "name": "European Goldenrod Decoction (Solidago virgaurea)",
+      "images": [
+        {
+          "imageNumber": 1,
+          "title": "Solidago virgaurea kz12.jpg",
+          "creator": "Krzysztof Ziarnek, Kenraiz",
+          "source": "https://commons.wikimedia.org/wiki/File:Solidago_virgaurea_kz12.jpg",
+          "license": "CC BY-SA 4.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+          "changes": "None"
+        }
+      ]
+    },
+    {
+      "recipeNumber": 96,
+      "index": 95,
+      "name": "Horehound and Licorice Troches",
+      "images": [
+        {
+          "imageNumber": 1,
+          "title": "Marrubium vulgare leaf Jenene Kidston (14453015387).jpg",
+          "creator": "Harry Rose",
+          "source": "https://commons.wikimedia.org/wiki/File:Marrubium_vulgare_leaf_Jenene_Kidston_(14453015387).jpg",
+          "license": "CC BY 2.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by/2.0/",
+          "changes": "None"
+        },
+        {
+          "imageNumber": 2,
+          "title": "Glycyrrhiza lepidota Wild licorice close.jpg",
+          "creator": "Dcrjsr",
+          "source": "https://commons.wikimedia.org/wiki/File:Glycyrrhiza_lepidota_Wild_licorice_close.jpg",
+          "license": "CC BY 4.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+          "changes": "None"
+        }
+      ]
+    },
+    {
+      "recipeNumber": 97,
+      "index": 96,
+      "name": "Burnet Saxifrage Tincture (Pimpinella major/saxifraga)",
+      "images": [
+        {
+          "imageNumber": 1,
+          "title": "Apiaceae - Pimpinella major-1.JPG",
+          "creator": "Hectonichus",
+          "source": "https://commons.wikimedia.org/wiki/File:Apiaceae_-_Pimpinella_major-1.JPG",
+          "license": "CC BY-SA 3.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0/",
+          "changes": "None"
+        },
+        {
+          "imageNumber": 2,
+          "title": "Saxifraga asiatica.jpg",
+          "creator": "Avustfel",
+          "source": "https://commons.wikimedia.org/wiki/File:Saxifraga_asiatica.jpg",
+          "license": "CC BY-SA 4.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+          "changes": "None"
+        }
+      ]
+    },
+    {
+      "recipeNumber": 98,
+      "index": 97,
+      "name": "Yarrow Steam Inhalation (Achillea millefolium)",
+      "images": [
+        {
+          "imageNumber": 1,
+          "title": "Achillea millefolium 139228692.jpg",
+          "creator": "Allen Browne",
+          "source": "https://commons.wikimedia.org/wiki/File:Achillea_millefolium_139228692.jpg",
+          "license": "CC BY 4.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+          "changes": "None"
+        }
+      ]
+    },
+    {
+      "recipeNumber": 99,
+      "index": 98,
+      "name": "Larch Resin Balm (Larix decidua)",
+      "images": [
+        {
+          "imageNumber": 1,
+          "title": "Larix x marschlinsii cones.jpg",
+          "creator": "Pudelek",
+          "source": "https://commons.wikimedia.org/wiki/File:Larix_x_marschlinsii_cones.jpg",
+          "license": "CC BY-SA 4.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+          "changes": "None"
+        }
+      ]
+    },
+    {
+      "recipeNumber": 100,
+      "index": 99,
+      "name": "Bogbean Infusion (Menyanthes trifoliata)",
+      "images": [
+        {
+          "imageNumber": 1,
+          "title": "Menyanthes trifoliata Bobrek trójlistkowy Rezerwat przyrody Łazy 2022-06-21 08.jpg",
+          "creator": "Agnieszka Kwiecień, Nova",
+          "source": "https://commons.wikimedia.org/wiki/File:Menyanthes_trifoliata_Bobrek_tr%C3%B3jlistkowy_Rezerwat_przyrody_%C5%81azy_2022-06-21_08.jpg",
+          "license": "CC BY-SA 4.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+          "changes": "None"
+        }
+      ]
+    }
+  ]
+}

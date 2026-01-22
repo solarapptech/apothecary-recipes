@@ -113,6 +113,10 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'space-between',
     minHeight: 22,
+    backgroundColor: theme.colors.surface.dropdownHighlight,
+    borderRadius: 8,
+    paddingVertical: 6,
+    paddingHorizontal: 8,
   },
   iconBox: {
     width: 20,

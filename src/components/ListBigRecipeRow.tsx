@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useRef, useState } from 'react';
-import { Image, Modal, Platform, Pressable, ScrollView, StyleSheet, Text, View } from 'react-native';
+import { Image, Linking, Modal, Platform, Pressable, ScrollView, StyleSheet, Text, View } from 'react-native';
 import Animated, {
   Extrapolate,
   FadeIn,
@@ -175,6 +175,14 @@ export function ListBigRecipeRow({
     }
   }, [imageEntries, imageIndex]);
 
+  useEffect(() => {
+    if (!imageModalVisible || !carouselWidth) {
+      return;
+    }
+
+    carouselRef.current?.scrollTo({ x: carouselWidth * imageIndex, animated: false });
+  }, [carouselWidth, imageIndex, imageModalVisible]);
+
   const setDetailsMode = (next: boolean) => {
     if (onRequestSetExpanded) {
       onRequestSetExpanded(next);
@@ -325,12 +333,46 @@ export function ListBigRecipeRow({
     }
   };
 
-  const renderAttributionRow = (label: string, value?: string) => (
-    <View key={label} style={styles.attributionRow}>
-      <Text style={styles.attributionLabel}>{label}</Text>
-      <Text style={styles.attributionValue}>{value?.trim() ? value : '—'}</Text>
-    </View>
-  );
+  const isLinkValue = (value?: string) => Boolean(value?.trim() && /^https?:\/\//i.test(value.trim()));
+
+  const handleOpenLink = async (url?: string) => {
+    const trimmedUrl = url?.trim();
+    if (!trimmedUrl) {
+      return;
+    }
+
+    const canOpen = await Linking.canOpenURL(trimmedUrl);
+    if (canOpen) {
+      await Linking.openURL(trimmedUrl);
+    }
+  };
+
+  const renderAttributionRow = (label: string, value?: string, link?: string) => {
+    const trimmedValue = value?.trim();
+    const linkValue = link?.trim();
+
+    return (
+      <View key={label} style={styles.attributionRow}>
+        <Text style={styles.attributionLabel}>{label}</Text>
+        {trimmedValue ? (
+          linkValue ? (
+            <Pressable
+              accessibilityRole="link"
+              onPress={() => {
+                void handleOpenLink(linkValue);
+              }}
+            >
+              <Text style={styles.attributionLink}>{trimmedValue}</Text>
+            </Pressable>
+          ) : (
+            <Text style={styles.attributionValue}>{trimmedValue}</Text>
+          )
+        ) : (
+          <Text style={styles.attributionValue}>—</Text>
+        )}
+      </View>
+    );
+  };
 
   const handleHeaderZonePress = (e: any) => {
     e.stopPropagation();
@@ -440,8 +482,7 @@ export function ListBigRecipeRow({
             <Animated.Text
               key={titleKey}
               style={styles.title}
-              numberOfLines={detailsMode ? undefined : summaryAllowsTitleWrap ? 2 : 1}
-              ellipsizeMode="tail"
+              numberOfLines={undefined}
               testID={`list-big-recipe-row-title-${recipeId}`}
             >
               {displayTitle}
@@ -762,7 +803,11 @@ export function ListBigRecipeRow({
                     ref={carouselRef}
                     horizontal
                     pagingEnabled
+                    decelerationRate="fast"
+                    snapToInterval={carouselWidth || 1}
+                    snapToAlignment="start"
                     showsHorizontalScrollIndicator={false}
+                    scrollEventThrottle={16}
                     onMomentumScrollEnd={(event) => {
                       if (!carouselWidth) {
                         return;
@@ -813,14 +858,18 @@ export function ListBigRecipeRow({
                 {imageCount > 0 ? (
                   <Text style={styles.imageCounter}>{`${Math.min(imageIndex + 1, imageCount)}/${imageCount}`}</Text>
                 ) : null}
-                <Pressable
-                  accessibilityRole="button"
-                  accessibilityLabel="Show image attribution"
-                  style={styles.attributionButton}
-                  onPress={() => setAttributionVisible(true)}
-                >
-                  <Text style={styles.attributionButtonText}>Attribution</Text>
-                </Pressable>
+                {activeImageEntry?.kind === 'ai' ? (
+                  <Text style={styles.aiAttributionText}>AI Representation</Text>
+                ) : (
+                  <Pressable
+                    accessibilityRole="button"
+                    accessibilityLabel="Show image attribution"
+                    style={styles.attributionButton}
+                    onPress={() => setAttributionVisible(true)}
+                  >
+                    <Text style={styles.attributionButtonText}>Attribution</Text>
+                  </Pressable>
+                )}
               </View>
             </View>
           </ModalCardBackground>
@@ -853,9 +902,17 @@ export function ListBigRecipeRow({
                 <>
                   {renderAttributionRow('Title', attributionEntry?.title)}
                   {renderAttributionRow('Creator', attributionEntry?.creator)}
-                  {renderAttributionRow('Source', attributionEntry?.source)}
+                  {renderAttributionRow(
+                    'Source',
+                    attributionEntry?.source,
+                    isLinkValue(attributionEntry?.source) ? attributionEntry?.source : undefined
+                  )}
                   {renderAttributionRow('License', attributionEntry?.license)}
-                  {renderAttributionRow('License URL', attributionEntry?.licenseUrl)}
+                  {renderAttributionRow(
+                    'License URL',
+                    attributionEntry?.licenseUrl,
+                    isLinkValue(attributionEntry?.licenseUrl) ? attributionEntry?.licenseUrl : undefined
+                  )}
                   {renderAttributionRow('Changes', attributionEntry?.changes)}
                 </>
               )}
@@ -1168,11 +1225,11 @@ const styles = StyleSheet.create({
   },
   modalCard: {
     borderRadius: 20,
-    padding: theme.spacing.md,
+    padding: theme.spacing.sm,
     backgroundColor: theme.colors.surface.paperStrong,
   },
   modalContent: {
-    gap: 12,
+    gap: 8,
   },
   carouselContainer: {
     position: 'relative',
@@ -1182,21 +1239,22 @@ const styles = StyleSheet.create({
   carouselSlide: {
     alignItems: 'center',
     justifyContent: 'center',
-    paddingVertical: 8,
+    paddingVertical: 2,
   },
   modalImage: {
     width: '100%',
-    height: 320,
+    height: 360,
     borderRadius: 12,
   },
   carouselNavButton: {
     position: 'absolute',
     top: '50%',
-    marginTop: -22,
-    width: 44,
-    height: 44,
-    borderRadius: 22,
-    backgroundColor: 'rgba(22, 18, 10, 0.55)',
+    marginTop: -18,
+    width: 36,
+    height: 36,
+    borderRadius: 18,
+    backgroundColor: 'rgba(22, 18, 10, 0.35)',
+    opacity: 0.75,
     alignItems: 'center',
     justifyContent: 'center',
   },
@@ -1207,7 +1265,7 @@ const styles = StyleSheet.create({
     right: 8,
   },
   carouselNavText: {
-    fontSize: 24,
+    fontSize: 20,
     color: theme.colors.ink.onBrand,
     fontFamily: theme.typography.fontFamily.sans.semiBold,
   },
@@ -1233,6 +1291,13 @@ const styles = StyleSheet.create({
     fontSize: 12,
     fontFamily: theme.typography.fontFamily.sans.semiBold,
     letterSpacing: 0.3,
+  },
+  aiAttributionText: {
+    fontSize: 11,
+    fontFamily: theme.typography.fontFamily.sans.medium,
+    color: theme.colors.ink.muted,
+    textTransform: 'uppercase',
+    letterSpacing: 0.6,
   },
   attributionCardWrapper: {
     width: '92%',
@@ -1266,6 +1331,12 @@ const styles = StyleSheet.create({
     fontSize: 12,
     fontFamily: theme.typography.fontFamily.sans.medium,
     color: theme.colors.ink.primary,
+  },
+  attributionLink: {
+    fontSize: 12,
+    fontFamily: theme.typography.fontFamily.sans.medium,
+    color: theme.colors.brand.primary,
+    textDecorationLine: 'underline',
   },
   attributionCloseButton: {
     alignSelf: 'flex-end',

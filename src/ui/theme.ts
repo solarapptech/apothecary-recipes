@@ -18,6 +18,7 @@ export const colors = {
     popover: 'rgba(231,230,228,0.96)',
     recipeOpened: 'rgba(121, 84, 44, 0.02)',
     secondaryField: '#f5f3ef',
+    dropdownHighlight: '#f4e2a2',
     wave: 'rgba(121, 84, 44, 0.22)',
   },
   border: {

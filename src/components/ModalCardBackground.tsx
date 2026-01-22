@@ -18,7 +18,7 @@ export function ModalCardBackground({ style, children }: ModalCardBackgroundProp
       style={[styles.container, style]}
       imageStyle={[styles.image, radius != null ? { borderRadius: radius } : null]}
     >
-      <View style={styles.overlay} pointerEvents="none" />
+      <View style={[styles.overlay, radius != null ? { borderRadius: radius } : null]} pointerEvents="none" />
       <View style={styles.content}>{children}</View>
     </ImageBackground>
   );
@@ -27,6 +27,7 @@ export function ModalCardBackground({ style, children }: ModalCardBackgroundProp
 const styles = StyleSheet.create({
   container: {
     backgroundColor: '#f0f0ef',
+    overflow: 'hidden',
   },
   image: {
     opacity: 0.8,
