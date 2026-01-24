@@ -5,7 +5,7 @@ from collections import defaultdict
 from pathlib import Path
 from urllib.parse import quote
 
-BASE_DIR = Path(r"c:\Users\Antonio\Documents\GitHub\Apothecary Recipes\images\manual images")
+BASE_DIR = Path(r"c:\Users\Antonio\Documents\GitHub\Apothecary Recipes\apothecary-recipes\assets\herbs")
 SOURCE_FILE = BASE_DIR / "image-attributions.md"
 OUTPUT_JSON = BASE_DIR / "image-attributions.json"
 OUTPUT_COMPACT = BASE_DIR / "image-attributions-compact.md"
