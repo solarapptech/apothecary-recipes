@@ -857,185 +857,6 @@ export function ListBigRecipeRow({
                 testID={`list-big-recipe-row-details-mode-${recipeId}`}
               >
               <Animated.View
-                entering={reduceMotionEnabled ? undefined : FadeInDown.duration(animDuration).delay(0)}
-                exiting={enableExitAnimations ? FadeOut.duration(animDuration) : undefined}
-                style={[styles.detailsField, styles.detailsFieldCentered, styles.ingredientsField]}
-              >
-                <View style={styles.centeredNarrowField}>
-                  <Animated.View
-                    layout={reduceMotionEnabled ? undefined : Layout.duration(ingredientAnimDuration)}
-                    style={styles.ingredientsCard}
-                  >
-                    <Pressable
-                      accessibilityRole="button"
-                      accessibilityLabel={ingredientsExpanded ? 'Hide ingredients' : 'Show ingredients'}
-                      onPress={handleIngredientsToggle}
-                      style={styles.ingredientsHeader}
-                      testID={`list-big-recipe-row-ingredients-toggle-${recipeId}`}
-                    >
-                      <View style={styles.ingredientsHeaderLeft}>
-                        <FieldIcon name="ingredients" size={18} />
-                        <Text style={styles.ingredientsHeaderLabel}>Ingredients</Text>
-                      </View>
-                      <View style={styles.ingredientsHeaderRight}>
-                        <Text style={styles.ingredientsHeaderCount}>
-                          {ingredientRows.length ? `${ingredientRows.length} items` : '0 items'}
-                        </Text>
-                        <Svg width={18} height={18} viewBox="0 0 24 24">
-                          <Path
-                            d={ingredientsExpanded ? 'M7 14l5-5 5 5' : 'M7 10l5 5 5-5'}
-                            fill="none"
-                            stroke={theme.colors.brand.primaryStrong}
-                            strokeWidth={2}
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                          />
-                        </Svg>
-                      </View>
-                    </Pressable>
-
-                    {!ingredientsExpanded ? (
-                      <Text style={styles.ingredientsSummaryText}>{ingredientsSummary}</Text>
-                    ) : (
-                      <Animated.View
-                        layout={reduceMotionEnabled ? undefined : Layout.duration(ingredientAnimDuration)}
-                        style={styles.ingredientsList}
-                      >
-                        {ingredientRows.length === 0 ? (
-                          <Text style={styles.ingredientsEmptyText}>No ingredients listed.</Text>
-                        ) : (
-                          ingredientRows.map((row) => {
-                            const isActive = activeIngredientId === row.id;
-
-                            return (
-                              <Animated.View
-                                key={row.id}
-                                layout={reduceMotionEnabled ? undefined : Layout.duration(ingredientAnimDuration)}
-                                style={styles.ingredientRow}
-                              >
-                                <Pressable
-                                  accessibilityRole="button"
-                                  accessibilityLabel={isActive ? `Hide ${row.raw} details` : `Show ${row.raw} details`}
-                                  onPress={(event) => handleIngredientPress(row.id, event)}
-                                  style={[styles.ingredientRowHeader, isActive && styles.ingredientRowHeaderActive]}
-                                  testID={`list-big-recipe-row-ingredient-${recipeId}-${row.id}`}
-                                >
-                                  <View style={styles.ingredientRowText}>
-                                    <Text style={styles.ingredientRowTitle}>{row.raw}</Text>
-                                    {row.detail.scientificName?.trim() ? (
-                                      <Text style={styles.ingredientRowSubtitle}>{row.detail.scientificName}</Text>
-                                    ) : null}
-                                  </View>
-                                  <Svg width={18} height={18} viewBox="0 0 24 24">
-                                    <Path
-                                      d={isActive ? 'M7 14l5-5 5 5' : 'M7 10l5 5 5-5'}
-                                      fill="none"
-                                      stroke={theme.colors.brand.primaryStrong}
-                                      strokeWidth={2}
-                                      strokeLinecap="round"
-                                      strokeLinejoin="round"
-                                    />
-                                  </Svg>
-                                </Pressable>
-
-                                {isActive ? (
-                                  <Animated.View
-                                    entering={reduceMotionEnabled ? undefined : FadeInDown.duration(ingredientAnimDuration)}
-                                    exiting={enableExitAnimations ? FadeOut.duration(ingredientAnimDuration) : undefined}
-                                    layout={reduceMotionEnabled ? undefined : Layout.duration(ingredientAnimDuration)}
-                                    style={styles.ingredientDetailPanel}
-                                  >
-                                    <SecondaryFieldRow
-                                      icon="description"
-                                      label="Profile"
-                                      value={formatIngredientValue(row.detail.description)}
-                                      variant="grouped"
-                                      showDivider
-                                      collapsible
-                                      defaultCollapsed={false}
-                                      onTogglePress={(e) => triggerWave(e)}
-                                    />
-                                    <SecondaryFieldRow
-                                      icon="usage"
-                                      label="Medicinal language"
-                                      value={formatIngredientValue(row.detail.ml)}
-                                      variant="grouped"
-                                      showDivider
-                                      collapsible
-                                      defaultCollapsed
-                                      onTogglePress={(e) => triggerWave(e)}
-                                    />
-                                    <SecondaryFieldRow
-                                      icon="leaf"
-                                      label="Family"
-                                      value={formatIngredientValue(row.detail.family)}
-                                      variant="grouped"
-                                      showDivider
-                                      collapsible
-                                      defaultCollapsed
-                                      onTogglePress={(e) => triggerWave(e)}
-                                    />
-                                    <SecondaryFieldRow
-                                      icon="historical"
-                                      label="Scientific name"
-                                      value={formatIngredientValue(row.detail.scientificName)}
-                                      variant="grouped"
-                                      showDivider
-                                      collapsible
-                                      defaultCollapsed
-                                      onTogglePress={(e) => triggerWave(e)}
-                                    />
-                                    <SecondaryFieldRow
-                                      icon="usage"
-                                      label="Therapeutic actions"
-                                      value={formatIngredientValue(row.detail.usages)}
-                                      variant="grouped"
-                                      showDivider
-                                      collapsible
-                                      defaultCollapsed
-                                      onTogglePress={(e) => triggerWave(e)}
-                                    />
-                                    <SecondaryFieldRow
-                                      icon="evidence"
-                                      label="Active constituents"
-                                      value={formatIngredientValue(row.detail.activeConstituents)}
-                                      variant="grouped"
-                                      showDivider
-                                      collapsible
-                                      defaultCollapsed
-                                      onTogglePress={(e) => triggerWave(e)}
-                                    />
-                                    <SecondaryFieldRow
-                                      icon="warning"
-                                      label="Safety classification"
-                                      value={formatIngredientValue(row.detail.safetyClassification)}
-                                      variant="grouped"
-                                      showDivider
-                                      collapsible
-                                      defaultCollapsed
-                                      onTogglePress={(e) => triggerWave(e)}
-                                    />
-                                    <SecondaryFieldRow
-                                      icon="usage"
-                                      label="Dosage guidelines"
-                                      value={formatIngredientValue(row.detail.dosageGuidelines)}
-                                      variant="grouped"
-                                      collapsible
-                                      defaultCollapsed
-                                      onTogglePress={(e) => triggerWave(e)}
-                                    />
-                                  </Animated.View>
-                                ) : null}
-                              </Animated.View>
-                            );
-                          })
-                        )}
-                      </Animated.View>
-                    )}
-                  </Animated.View>
-                </View>
-              </Animated.View>
-              <Animated.View
                 entering={reduceMotionEnabled ? undefined : FadeInDown.duration(animDuration).delay(50)}
                 exiting={enableExitAnimations ? FadeOut.duration(animDuration) : undefined}
                 style={[styles.detailsField, styles.detailsFieldCentered]}
@@ -1059,6 +880,177 @@ export function ListBigRecipeRow({
               exiting={enableExitAnimations ? FadeOut.duration(animDuration) : undefined}
               style={styles.secondaryFieldsGroup}
             >
+              <Animated.View
+                layout={reduceMotionEnabled ? undefined : Layout.duration(ingredientAnimDuration)}
+                style={styles.ingredientsGroupRow}
+              >
+                <Pressable
+                  accessibilityRole="button"
+                  accessibilityLabel={ingredientsExpanded ? 'Hide ingredients' : 'Show ingredients'}
+                  onPress={handleIngredientsToggle}
+                  style={styles.ingredientsHeader}
+                  testID={`list-big-recipe-row-ingredients-toggle-${recipeId}`}
+                >
+                  <View style={styles.ingredientsHeaderLeft}>
+                    <FieldIcon name="ingredients" size={18} />
+                    <Text style={styles.ingredientsHeaderLabel}>Ingredients</Text>
+                  </View>
+                  <View style={styles.ingredientsHeaderRight}>
+                    <Text style={styles.ingredientsHeaderCount}>
+                      {ingredientRows.length ? `${ingredientRows.length} items` : '0 items'}
+                    </Text>
+                    <Svg width={18} height={18} viewBox="0 0 24 24">
+                      <Path
+                        d={ingredientsExpanded ? 'M7 14l5-5 5 5' : 'M7 10l5 5 5-5'}
+                        fill="none"
+                        stroke={theme.colors.brand.primaryStrong}
+                        strokeWidth={2}
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                      />
+                    </Svg>
+                  </View>
+                </Pressable>
+
+                {!ingredientsExpanded ? (
+                  <Text style={styles.ingredientsSummaryText}>{ingredientsSummary}</Text>
+                ) : (
+                  <Animated.View
+                    layout={reduceMotionEnabled ? undefined : Layout.duration(ingredientAnimDuration)}
+                    style={styles.ingredientsList}
+                  >
+                    {ingredientRows.length === 0 ? (
+                      <Text style={styles.ingredientsEmptyText}>No ingredients listed.</Text>
+                    ) : (
+                      ingredientRows.map((row) => {
+                        const isActive = activeIngredientId === row.id;
+
+                        return (
+                          <Animated.View
+                            key={row.id}
+                            layout={reduceMotionEnabled ? undefined : Layout.duration(ingredientAnimDuration)}
+                            style={styles.ingredientRow}
+                          >
+                            <Pressable
+                              accessibilityRole="button"
+                              accessibilityLabel={isActive ? `Hide ${row.raw} details` : `Show ${row.raw} details`}
+                              onPress={(event) => handleIngredientPress(row.id, event)}
+                              style={[styles.ingredientRowHeader, isActive && styles.ingredientRowHeaderActive]}
+                              testID={`list-big-recipe-row-ingredient-${recipeId}-${row.id}`}
+                            >
+                              <View style={styles.ingredientRowText}>
+                                <Text style={styles.ingredientRowTitle}>{row.raw}</Text>
+                                {row.detail.scientificName?.trim() ? (
+                                  <Text style={styles.ingredientRowSubtitle}>{row.detail.scientificName}</Text>
+                                ) : null}
+                              </View>
+                              <Svg width={18} height={18} viewBox="0 0 24 24">
+                                <Path
+                                  d={isActive ? 'M7 14l5-5 5 5' : 'M7 10l5 5 5-5'}
+                                  fill="none"
+                                  stroke={theme.colors.brand.primaryStrong}
+                                  strokeWidth={2}
+                                  strokeLinecap="round"
+                                  strokeLinejoin="round"
+                                />
+                              </Svg>
+                            </Pressable>
+
+                            {isActive ? (
+                              <Animated.View
+                                entering={reduceMotionEnabled ? undefined : FadeInDown.duration(ingredientAnimDuration)}
+                                exiting={enableExitAnimations ? FadeOut.duration(ingredientAnimDuration) : undefined}
+                                layout={reduceMotionEnabled ? undefined : Layout.duration(ingredientAnimDuration)}
+                                style={styles.ingredientDetailPanel}
+                              >
+                                <SecondaryFieldRow
+                                  icon="description"
+                                  label="Profile"
+                                  value={formatIngredientValue(row.detail.description)}
+                                  variant="grouped"
+                                  showDivider
+                                  collapsible
+                                  defaultCollapsed={false}
+                                  onTogglePress={(e) => triggerWave(e)}
+                                />
+                                <SecondaryFieldRow
+                                  icon="usage"
+                                  label="Medicinal language"
+                                  value={formatIngredientValue(row.detail.ml)}
+                                  variant="grouped"
+                                  showDivider
+                                  collapsible
+                                  defaultCollapsed
+                                  onTogglePress={(e) => triggerWave(e)}
+                                />
+                                <SecondaryFieldRow
+                                  icon="leaf"
+                                  label="Family"
+                                  value={formatIngredientValue(row.detail.family)}
+                                  variant="grouped"
+                                  showDivider
+                                  collapsible
+                                  defaultCollapsed
+                                  onTogglePress={(e) => triggerWave(e)}
+                                />
+                                <SecondaryFieldRow
+                                  icon="historical"
+                                  label="Scientific name"
+                                  value={formatIngredientValue(row.detail.scientificName)}
+                                  variant="grouped"
+                                  showDivider
+                                  collapsible
+                                  defaultCollapsed
+                                  onTogglePress={(e) => triggerWave(e)}
+                                />
+                                <SecondaryFieldRow
+                                  icon="usage"
+                                  label="Therapeutic actions"
+                                  value={formatIngredientValue(row.detail.usages)}
+                                  variant="grouped"
+                                  showDivider
+                                  collapsible
+                                  defaultCollapsed
+                                  onTogglePress={(e) => triggerWave(e)}
+                                />
+                                <SecondaryFieldRow
+                                  icon="evidence"
+                                  label="Active constituents"
+                                  value={formatIngredientValue(row.detail.activeConstituents)}
+                                  variant="grouped"
+                                  showDivider
+                                  collapsible
+                                  defaultCollapsed
+                                  onTogglePress={(e) => triggerWave(e)}
+                                />
+                                <SecondaryFieldRow
+                                  icon="warning"
+                                  label="Safety classification"
+                                  value={formatIngredientValue(row.detail.safetyClassification)}
+                                  variant="grouped"
+                                  showDivider
+                                  collapsible
+                                  defaultCollapsed
+                                  onTogglePress={(e) => triggerWave(e)}
+                                />
+                                <SecondaryFieldRow
+                                  icon="usage"
+                                  label="Dosage guidelines"
+                                  value={formatIngredientValue(row.detail.dosageGuidelines)}
+                                  variant="grouped"
+                                  collapsible
+                                  defaultCollapsed
+                                  onTogglePress={(e) => triggerWave(e)}
+                                />
+                              </Animated.View>
+                            ) : null}
+                          </Animated.View>
+                        );
+                      })
+                    )}
+                  </Animated.View>
+                )}
+              </Animated.View>
               <SecondaryFieldRow
                 icon="usage"
                 label="Usage"
@@ -1538,11 +1530,23 @@ const styles = StyleSheet.create({
     borderWidth: StyleSheet.hairlineWidth,
     borderColor: theme.colors.border.subtle,
   },
+  ingredientsGroupRow: {
+    paddingHorizontal: 12,
+    paddingTop: 10,
+    paddingBottom: 8,
+    gap: 8,
+    borderBottomWidth: StyleSheet.hairlineWidth,
+    borderBottomColor: theme.colors.border.subtle,
+  },
   ingredientsHeader: {
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
     gap: 12,
+    paddingVertical: 6,
+    paddingHorizontal: 8,
+    borderRadius: 8,
+    backgroundColor: theme.colors.surface.dropdownHighlight,
   },
   ingredientsHeaderLeft: {
     flexDirection: 'row',
@@ -1571,6 +1575,7 @@ const styles = StyleSheet.create({
     lineHeight: 18,
     fontFamily: theme.typography.fontFamily.sans.regular,
     color: theme.colors.ink.muted,
+    textAlign: 'left',
   },
   ingredientsList: {
     gap: 10,
