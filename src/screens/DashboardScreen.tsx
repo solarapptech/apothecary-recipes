@@ -407,6 +407,8 @@ export function DashboardScreen({
                 detailedMeasurements={item.detailedMeasurements}
                 preparationSteps={item.preparationSteps}
                 usage={item.usage}
+                storage={item.storage}
+                equipmentNeeded={item.equipmentNeeded}
                 historicalContext={item.historicalContext}
                 scientificEvidence={item.scientificEvidence}
                 isFavorite={item.isFavorite === 1}
@@ -454,6 +456,8 @@ export function DashboardScreen({
                     detailedMeasurements={item.detailedMeasurements}
                     preparationSteps={item.preparationSteps}
                     usage={item.usage}
+                    storage={item.storage}
+                    equipmentNeeded={item.equipmentNeeded}
                     historicalContext={item.historicalContext}
                     scientificEvidence={item.scientificEvidence}
                     isFavorite={item.isFavorite === 1}

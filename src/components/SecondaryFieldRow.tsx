@@ -1,10 +1,11 @@
 import { useState } from 'react';
-import { Pressable, StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, View } from 'react-native';
 import { Path, Svg } from 'react-native-svg';
 
 import type { IconName } from '../ui/icons';
 import { FieldIcon } from '../ui/icons';
 import { theme } from '../ui/theme';
+import { WavePressable } from './WavePressable';
 
 type SecondaryFieldRowProps = {
   icon: IconName;
@@ -18,6 +19,7 @@ type SecondaryFieldRowProps = {
   toggleTestID?: string;
   valueTestID?: string;
   onTogglePress?: (e: any) => void;
+  reduceMotionEnabled?: boolean;
 };
 
 export function SecondaryFieldRow({
@@ -32,60 +34,79 @@ export function SecondaryFieldRow({
   toggleTestID,
   valueTestID,
   onTogglePress,
+  reduceMotionEnabled = false,
 }: SecondaryFieldRowProps) {
   const [collapsed, setCollapsed] = useState(defaultCollapsed);
 
   const resolvedChevronColor = chevronColor ?? theme.colors.brand.primaryStrong;
 
-  return (
-    <View style={[styles.container, variant === 'grouped' && styles.containerGrouped, showDivider && styles.containerDivider]}>
-      {collapsible ? (
-        <Pressable
-          testID={toggleTestID}
-          onPress={(e) => {
-            onTogglePress?.(e);
-            (e as any).stopPropagation?.();
-            setCollapsed((prev) => !prev);
-          }}
-          style={styles.headerLinePressable}
-          accessibilityRole="button"
-          accessibilityLabel={collapsed ? `Show ${label}` : `Hide ${label}`}
-        >
-          <View style={styles.headerLine}>
-            <View style={styles.iconBox}>
-              <FieldIcon name={icon} size={18} />
-            </View>
-            <Text style={styles.labelText}>{label}</Text>
-          </View>
-          <View style={styles.chevronBox}>
-            <Svg width={20} height={20} viewBox="0 0 24 24">
-              <Path
-                d={collapsed ? 'M7 10l5 5 5-5' : 'M7 14l5-5 5 5'}
-                fill="none"
-                stroke={resolvedChevronColor}
-                strokeWidth={2}
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              />
-            </Svg>
-          </View>
-        </Pressable>
-      ) : (
-        <View style={styles.headerLine}>
-          <View style={styles.iconBox}>
-            <FieldIcon name={icon} size={18} />
-          </View>
-          <Text style={styles.labelText}>{label}</Text>
-        </View>
-      )}
+  const containerStyles = [
+    styles.container,
+    variant === 'grouped' && styles.containerGrouped,
+    showDivider && styles.containerDivider,
+  ];
 
+  const headerContent = collapsible ? (
+    <View style={styles.headerLinePressable}>
+      <View style={styles.headerLine}>
+        <View style={styles.iconBox}>
+          <FieldIcon name={icon} size={18} />
+        </View>
+        <Text style={styles.labelText}>{label}</Text>
+      </View>
+      <View style={styles.chevronBox}>
+        <Svg width={20} height={20} viewBox="0 0 24 24">
+          <Path
+            d={collapsed ? 'M7 10l5 5 5-5' : 'M7 14l5-5 5 5'}
+            fill="none"
+            stroke={resolvedChevronColor}
+            strokeWidth={2}
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          />
+        </Svg>
+      </View>
+    </View>
+  ) : (
+    <View style={styles.headerLine}>
+      <View style={styles.iconBox}>
+        <FieldIcon name={icon} size={18} />
+      </View>
+      <Text style={styles.labelText}>{label}</Text>
+    </View>
+  );
+
+  const content = (
+    <>
+      {headerContent}
       {!collapsible || !collapsed ? (
         <Text testID={valueTestID} style={styles.valueText}>
           {value}
         </Text>
       ) : null}
-    </View>
+    </>
   );
+
+  if (collapsible) {
+    return (
+      <WavePressable
+        testID={toggleTestID}
+        onPress={(e) => {
+          onTogglePress?.(e);
+          (e as any).stopPropagation?.();
+          setCollapsed((prev) => !prev);
+        }}
+        style={[containerStyles, styles.containerPressable]}
+        accessibilityRole="button"
+        accessibilityLabel={collapsed ? `Show ${label}` : `Hide ${label}`}
+        reduceMotionEnabled={reduceMotionEnabled}
+      >
+        {content}
+      </WavePressable>
+    );
+  }
+
+  return <View style={containerStyles}>{content}</View>;
 }
 
 const styles = StyleSheet.create({
@@ -94,6 +115,9 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     padding: 12,
     gap: 6,
+  },
+  containerPressable: {
+    overflow: 'hidden',
   },
   containerGrouped: {
     backgroundColor: 'transparent',

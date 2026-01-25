@@ -23,7 +23,7 @@ import type { RecipeImageEntry } from '../assets/recipeImageManifest';
 import { FieldIcon } from '../ui/icons';
 import { theme } from '../ui/theme';
 
-import type { RecipeUsage } from '../types/recipe';
+import type { RecipeUsage, RecipeStorage } from '../types/recipe';
 
 import { DescriptionInline } from './DescriptionInline';
 import { FieldRow } from './FieldRow';
@@ -31,6 +31,7 @@ import { ModalBackdrop } from './ModalBackdrop';
 import { ModalCardBackground } from './ModalCardBackground';
 import { PreparationStepsValue } from './PreparationStepsValue';
 import { SecondaryFieldRow } from './SecondaryFieldRow';
+import { WavePressable } from './WavePressable';
 
 const AnimatedPressable = Animated.createAnimatedComponent(Pressable);
 const AnimatedPath = Animated.createAnimatedComponent(Path);
@@ -240,6 +241,8 @@ type ListBigRecipeRowProps = {
   detailedMeasurements: string;
   preparationSteps: string;
   usage: RecipeUsage;
+  storage: RecipeStorage;
+  equipmentNeeded: string[];
   historicalContext: string;
   scientificEvidence: string;
   isFavorite?: boolean;
@@ -272,6 +275,8 @@ export function ListBigRecipeRow({
   detailedMeasurements,
   preparationSteps,
   usage,
+  storage,
+  equipmentNeeded,
   historicalContext,
   scientificEvidence,
   isFavorite = false,
@@ -297,6 +302,9 @@ export function ListBigRecipeRow({
   const [carouselWidth, setCarouselWidth] = useState(0);
   const [ingredientsExpanded, setIngredientsExpanded] = useState(false);
   const [activeIngredientId, setActiveIngredientId] = useState<string | null>(null);
+  const [usageExpanded, setUsageExpanded] = useState(false);
+  const [storageExpanded, setStorageExpanded] = useState(false);
+  const [equipmentExpanded, setEquipmentExpanded] = useState(false);
   const imageEntries = getRecipeImageSource(recipeId);
   const imageCount = imageEntries?.length ?? 0;
   const activeImageEntry = imageEntries?.[Math.min(imageIndex, Math.max(imageCount - 1, 0))] ?? null;
@@ -361,8 +369,7 @@ export function ListBigRecipeRow({
     setActiveIngredientId(null);
   }, [recipeId]);
 
-  const handleIngredientsToggle = (event?: any) => {
-    triggerWave(event);
+  const handleIngredientsToggle = () => {
     setIngredientsExpanded((prev) => {
       const next = !prev;
       if (!next) {
@@ -372,8 +379,7 @@ export function ListBigRecipeRow({
     });
   };
 
-  const handleIngredientPress = (rowId: string, event?: any) => {
-    triggerWave(event);
+  const handleIngredientPress = (rowId: string) => {
     setActiveIngredientId((prev) => (prev === rowId ? null : rowId));
   };
 
@@ -884,24 +890,239 @@ export function ListBigRecipeRow({
                 layout={reduceMotionEnabled ? undefined : Layout.duration(ingredientAnimDuration)}
                 style={styles.ingredientsGroupRow}
               >
-                <Pressable
+                {!ingredientsExpanded ? (
+                  <WavePressable
+                    accessibilityRole="button"
+                    accessibilityLabel="Show ingredients"
+                    onPress={handleIngredientsToggle}
+                    style={styles.ingredientsTogglePressable}
+                    testID={`list-big-recipe-row-ingredients-toggle-${recipeId}`}
+                    reduceMotionEnabled={reduceMotionEnabled}
+                  >
+                    <View style={styles.ingredientsHeader}>
+                      <View style={styles.ingredientsHeaderLeft}>
+                        <FieldIcon name="ingredients" size={18} />
+                        <Text style={styles.ingredientsHeaderLabel}>Ingredients</Text>
+                      </View>
+                      <View style={styles.ingredientsHeaderRight}>
+                        <Text style={styles.ingredientsHeaderCount}>
+                          {ingredientRows.length ? `${ingredientRows.length} items` : '0 items'}
+                        </Text>
+                        <Svg width={18} height={18} viewBox="0 0 24 24">
+                          <Path
+                            d="M7 10l5 5 5-5"
+                            fill="none"
+                            stroke={theme.colors.brand.primaryStrong}
+                            strokeWidth={2}
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                          />
+                        </Svg>
+                      </View>
+                    </View>
+                    <Text style={styles.ingredientsSummaryText}>{ingredientsSummary}</Text>
+                  </WavePressable>
+                ) : (
+                  <>
+                    <WavePressable
+                      accessibilityRole="button"
+                      accessibilityLabel="Hide ingredients"
+                      onPress={handleIngredientsToggle}
+                      style={styles.ingredientsTogglePressable}
+                      testID={`list-big-recipe-row-ingredients-toggle-${recipeId}`}
+                      reduceMotionEnabled={reduceMotionEnabled}
+                    >
+                      <View style={styles.ingredientsHeader}>
+                        <View style={styles.ingredientsHeaderLeft}>
+                          <FieldIcon name="ingredients" size={18} />
+                          <Text style={styles.ingredientsHeaderLabel}>Ingredients</Text>
+                        </View>
+                        <View style={styles.ingredientsHeaderRight}>
+                          <Text style={styles.ingredientsHeaderCount}>
+                            {ingredientRows.length ? `${ingredientRows.length} items` : '0 items'}
+                          </Text>
+                          <Svg width={18} height={18} viewBox="0 0 24 24">
+                            <Path
+                              d="M7 14l5-5 5 5"
+                              fill="none"
+                              stroke={theme.colors.brand.primaryStrong}
+                              strokeWidth={2}
+                              strokeLinecap="round"
+                              strokeLinejoin="round"
+                            />
+                          </Svg>
+                        </View>
+                      </View>
+                    </WavePressable>
+                    <Animated.View
+                      layout={reduceMotionEnabled ? undefined : Layout.duration(ingredientAnimDuration)}
+                      style={styles.ingredientsList}
+                    >
+                      {ingredientRows.length === 0 ? (
+                        <Text style={styles.ingredientsEmptyText}>No ingredients listed.</Text>
+                      ) : (
+                        ingredientRows.map((row) => {
+                          const isActive = activeIngredientId === row.id;
+
+                          return (
+                            <Animated.View
+                              key={row.id}
+                              layout={reduceMotionEnabled ? undefined : Layout.duration(ingredientAnimDuration)}
+                              style={styles.ingredientRow}
+                            >
+                              <WavePressable
+                                accessibilityRole="button"
+                                accessibilityLabel={isActive ? `Hide ${row.raw} details` : `Show ${row.raw} details`}
+                                onPress={() => handleIngredientPress(row.id)}
+                                style={[
+                                  styles.ingredientRowHeader,
+                                  styles.ingredientRowPressable,
+                                  isActive && styles.ingredientRowHeaderActive,
+                                ]}
+                                testID={`list-big-recipe-row-ingredient-${recipeId}-${row.id}`}
+                                reduceMotionEnabled={reduceMotionEnabled}
+                              >
+                                <View style={styles.ingredientRowText}>
+                                  <Text style={styles.ingredientRowTitle}>{row.raw}</Text>
+                                  {row.detail.scientificName?.trim() ? (
+                                    <Text style={styles.ingredientRowSubtitle}>{row.detail.scientificName}</Text>
+                                  ) : null}
+                                  {!isActive && row.detail.description?.trim() ? (
+                                    <Text style={styles.ingredientRowDescription}>{row.detail.description}</Text>
+                                  ) : null}
+                                  {!isActive ? (
+                                    <Text style={styles.ingredientRowHint}>Tap to view herb details →</Text>
+                                  ) : null}
+                                </View>
+                                <Svg width={18} height={18} viewBox="0 0 24 24">
+                                  <Path
+                                    d={isActive ? 'M7 14l5-5 5 5' : 'M7 10l5 5 5-5'}
+                                    fill="none"
+                                    stroke={theme.colors.brand.primaryStrong}
+                                    strokeWidth={2}
+                                    strokeLinecap="round"
+                                    strokeLinejoin="round"
+                                  />
+                                </Svg>
+                              </WavePressable>
+
+                              {isActive ? (
+                                <Animated.View
+                                  entering={reduceMotionEnabled ? undefined : FadeInDown.duration(ingredientAnimDuration)}
+                                  exiting={enableExitAnimations ? FadeOut.duration(ingredientAnimDuration) : undefined}
+                                  layout={reduceMotionEnabled ? undefined : Layout.duration(ingredientAnimDuration)}
+                                  style={styles.ingredientDetailPanel}
+                                >
+                                  <SecondaryFieldRow
+                                    icon="description"
+                                    label="Profile"
+                                    value={formatIngredientValue(row.detail.description)}
+                                    variant="grouped"
+                                    showDivider
+                                    collapsible
+                                    defaultCollapsed={false}
+                                    reduceMotionEnabled={reduceMotionEnabled}
+                                  />
+                                  <SecondaryFieldRow
+                                    icon="usage"
+                                    label="Medicinal language"
+                                    value={formatIngredientValue(row.detail.ml)}
+                                    variant="grouped"
+                                    showDivider
+                                    collapsible
+                                    defaultCollapsed
+                                    reduceMotionEnabled={reduceMotionEnabled}
+                                  />
+                                  <SecondaryFieldRow
+                                    icon="leaf"
+                                    label="Family"
+                                    value={formatIngredientValue(row.detail.family)}
+                                    variant="grouped"
+                                    showDivider
+                                    collapsible
+                                    defaultCollapsed
+                                    reduceMotionEnabled={reduceMotionEnabled}
+                                  />
+                                  <SecondaryFieldRow
+                                    icon="historical"
+                                    label="Scientific name"
+                                    value={formatIngredientValue(row.detail.scientificName)}
+                                    variant="grouped"
+                                    showDivider
+                                    collapsible
+                                    defaultCollapsed
+                                    reduceMotionEnabled={reduceMotionEnabled}
+                                  />
+                                  <SecondaryFieldRow
+                                    icon="usage"
+                                    label="Therapeutic actions"
+                                    value={formatIngredientValue(row.detail.usages)}
+                                    variant="grouped"
+                                    showDivider
+                                    collapsible
+                                    defaultCollapsed
+                                    reduceMotionEnabled={reduceMotionEnabled}
+                                  />
+                                  <SecondaryFieldRow
+                                    icon="evidence"
+                                    label="Active constituents"
+                                    value={formatIngredientValue(row.detail.activeConstituents)}
+                                    variant="grouped"
+                                    showDivider
+                                    collapsible
+                                    defaultCollapsed
+                                    reduceMotionEnabled={reduceMotionEnabled}
+                                  />
+                                  <SecondaryFieldRow
+                                    icon="warning"
+                                    label="Safety classification"
+                                    value={formatIngredientValue(row.detail.safetyClassification)}
+                                    variant="grouped"
+                                    showDivider
+                                    collapsible
+                                    defaultCollapsed
+                                    reduceMotionEnabled={reduceMotionEnabled}
+                                  />
+                                  <SecondaryFieldRow
+                                    icon="usage"
+                                    label="Dosage guidelines"
+                                    value={formatIngredientValue(row.detail.dosageGuidelines)}
+                                    variant="grouped"
+                                    collapsible
+                                    defaultCollapsed
+                                    reduceMotionEnabled={reduceMotionEnabled}
+                                  />
+                                </Animated.View>
+                              ) : null}
+                            </Animated.View>
+                          );
+                        })
+                      )}
+                    </Animated.View>
+                  </>
+                )}
+              </Animated.View>
+              {/* Usage Instructions Section */}
+              <Animated.View
+                layout={reduceMotionEnabled ? undefined : Layout.duration(ingredientAnimDuration)}
+                style={styles.usageGroupRow}
+              >
+                <WavePressable
                   accessibilityRole="button"
-                  accessibilityLabel={ingredientsExpanded ? 'Hide ingredients' : 'Show ingredients'}
-                  onPress={handleIngredientsToggle}
-                  style={styles.ingredientsHeader}
-                  testID={`list-big-recipe-row-ingredients-toggle-${recipeId}`}
+                  accessibilityLabel={usageExpanded ? 'Hide usage instructions' : 'Show usage instructions'}
+                  onPress={() => setUsageExpanded((prev) => !prev)}
+                  style={styles.usageTogglePressable}
+                  testID={`list-big-recipe-row-usage-toggle-${recipeId}`}
+                  reduceMotionEnabled={reduceMotionEnabled}
                 >
-                  <View style={styles.ingredientsHeaderLeft}>
-                    <FieldIcon name="ingredients" size={18} />
-                    <Text style={styles.ingredientsHeaderLabel}>Ingredients</Text>
-                  </View>
-                  <View style={styles.ingredientsHeaderRight}>
-                    <Text style={styles.ingredientsHeaderCount}>
-                      {ingredientRows.length ? `${ingredientRows.length} items` : '0 items'}
-                    </Text>
+                  <View style={styles.usageHeader}>
+                    <View style={styles.usageHeaderLeft}>
+                      <FieldIcon name="usage" size={18} />
+                      <Text style={styles.usageHeaderLabel}>Usage Instructions</Text>
+                    </View>
                     <Svg width={18} height={18} viewBox="0 0 24 24">
                       <Path
-                        d={ingredientsExpanded ? 'M7 14l5-5 5 5' : 'M7 10l5 5 5-5'}
+                        d={usageExpanded ? 'M7 14l5-5 5 5' : 'M7 10l5 5 5-5'}
                         fill="none"
                         stroke={theme.colors.brand.primaryStrong}
                         strokeWidth={2}
@@ -910,153 +1131,181 @@ export function ListBigRecipeRow({
                       />
                     </Svg>
                   </View>
-                </Pressable>
-
-                {!ingredientsExpanded ? (
-                  <Text style={styles.ingredientsSummaryText}>{ingredientsSummary}</Text>
-                ) : (
+                  {!usageExpanded && usage.summary?.trim() ? (
+                    <Text style={styles.usageSummaryText} numberOfLines={2}>{usage.summary}</Text>
+                  ) : null}
+                </WavePressable>
+                {usageExpanded ? (
                   <Animated.View
+                    entering={reduceMotionEnabled ? undefined : FadeInDown.duration(ingredientAnimDuration)}
+                    exiting={enableExitAnimations ? FadeOut.duration(ingredientAnimDuration) : undefined}
                     layout={reduceMotionEnabled ? undefined : Layout.duration(ingredientAnimDuration)}
-                    style={styles.ingredientsList}
+                    style={styles.usageDetailPanel}
                   >
-                    {ingredientRows.length === 0 ? (
-                      <Text style={styles.ingredientsEmptyText}>No ingredients listed.</Text>
-                    ) : (
-                      ingredientRows.map((row) => {
-                        const isActive = activeIngredientId === row.id;
-
-                        return (
-                          <Animated.View
-                            key={row.id}
-                            layout={reduceMotionEnabled ? undefined : Layout.duration(ingredientAnimDuration)}
-                            style={styles.ingredientRow}
-                          >
-                            <Pressable
-                              accessibilityRole="button"
-                              accessibilityLabel={isActive ? `Hide ${row.raw} details` : `Show ${row.raw} details`}
-                              onPress={(event) => handleIngredientPress(row.id, event)}
-                              style={[styles.ingredientRowHeader, isActive && styles.ingredientRowHeaderActive]}
-                              testID={`list-big-recipe-row-ingredient-${recipeId}-${row.id}`}
-                            >
-                              <View style={styles.ingredientRowText}>
-                                <Text style={styles.ingredientRowTitle}>{row.raw}</Text>
-                                {row.detail.scientificName?.trim() ? (
-                                  <Text style={styles.ingredientRowSubtitle}>{row.detail.scientificName}</Text>
-                                ) : null}
-                              </View>
-                              <Svg width={18} height={18} viewBox="0 0 24 24">
-                                <Path
-                                  d={isActive ? 'M7 14l5-5 5 5' : 'M7 10l5 5 5-5'}
-                                  fill="none"
-                                  stroke={theme.colors.brand.primaryStrong}
-                                  strokeWidth={2}
-                                  strokeLinecap="round"
-                                  strokeLinejoin="round"
-                                />
-                              </Svg>
-                            </Pressable>
-
-                            {isActive ? (
-                              <Animated.View
-                                entering={reduceMotionEnabled ? undefined : FadeInDown.duration(ingredientAnimDuration)}
-                                exiting={enableExitAnimations ? FadeOut.duration(ingredientAnimDuration) : undefined}
-                                layout={reduceMotionEnabled ? undefined : Layout.duration(ingredientAnimDuration)}
-                                style={styles.ingredientDetailPanel}
-                              >
-                                <SecondaryFieldRow
-                                  icon="description"
-                                  label="Profile"
-                                  value={formatIngredientValue(row.detail.description)}
-                                  variant="grouped"
-                                  showDivider
-                                  collapsible
-                                  defaultCollapsed={false}
-                                  onTogglePress={(e) => triggerWave(e)}
-                                />
-                                <SecondaryFieldRow
-                                  icon="usage"
-                                  label="Medicinal language"
-                                  value={formatIngredientValue(row.detail.ml)}
-                                  variant="grouped"
-                                  showDivider
-                                  collapsible
-                                  defaultCollapsed
-                                  onTogglePress={(e) => triggerWave(e)}
-                                />
-                                <SecondaryFieldRow
-                                  icon="leaf"
-                                  label="Family"
-                                  value={formatIngredientValue(row.detail.family)}
-                                  variant="grouped"
-                                  showDivider
-                                  collapsible
-                                  defaultCollapsed
-                                  onTogglePress={(e) => triggerWave(e)}
-                                />
-                                <SecondaryFieldRow
-                                  icon="historical"
-                                  label="Scientific name"
-                                  value={formatIngredientValue(row.detail.scientificName)}
-                                  variant="grouped"
-                                  showDivider
-                                  collapsible
-                                  defaultCollapsed
-                                  onTogglePress={(e) => triggerWave(e)}
-                                />
-                                <SecondaryFieldRow
-                                  icon="usage"
-                                  label="Therapeutic actions"
-                                  value={formatIngredientValue(row.detail.usages)}
-                                  variant="grouped"
-                                  showDivider
-                                  collapsible
-                                  defaultCollapsed
-                                  onTogglePress={(e) => triggerWave(e)}
-                                />
-                                <SecondaryFieldRow
-                                  icon="evidence"
-                                  label="Active constituents"
-                                  value={formatIngredientValue(row.detail.activeConstituents)}
-                                  variant="grouped"
-                                  showDivider
-                                  collapsible
-                                  defaultCollapsed
-                                  onTogglePress={(e) => triggerWave(e)}
-                                />
-                                <SecondaryFieldRow
-                                  icon="warning"
-                                  label="Safety classification"
-                                  value={formatIngredientValue(row.detail.safetyClassification)}
-                                  variant="grouped"
-                                  showDivider
-                                  collapsible
-                                  defaultCollapsed
-                                  onTogglePress={(e) => triggerWave(e)}
-                                />
-                                <SecondaryFieldRow
-                                  icon="usage"
-                                  label="Dosage guidelines"
-                                  value={formatIngredientValue(row.detail.dosageGuidelines)}
-                                  variant="grouped"
-                                  collapsible
-                                  defaultCollapsed
-                                  onTogglePress={(e) => triggerWave(e)}
-                                />
-                              </Animated.View>
-                            ) : null}
-                          </Animated.View>
-                        );
-                      })
-                    )}
+                    {usage.summary?.trim() ? (
+                      <Text style={styles.usageFullSummary}>{usage.summary}</Text>
+                    ) : null}
+                    <View style={styles.usageGrid}>
+                      {usage.dosage?.trim() ? (
+                        <View style={styles.usageGridItem}>
+                          <Text style={styles.usageGridLabel}>Dosage</Text>
+                          <Text style={styles.usageGridValue}>{usage.dosage}</Text>
+                        </View>
+                      ) : null}
+                      {usage.frequency?.trim() ? (
+                        <View style={styles.usageGridItem}>
+                          <Text style={styles.usageGridLabel}>Frequency</Text>
+                          <Text style={styles.usageGridValue}>{usage.frequency}</Text>
+                        </View>
+                      ) : null}
+                      {usage.maxDuration?.trim() ? (
+                        <View style={styles.usageGridItem}>
+                          <Text style={styles.usageGridLabel}>Max Duration</Text>
+                          <Text style={styles.usageGridValue}>{usage.maxDuration}</Text>
+                        </View>
+                      ) : null}
+                      {usage.applicationAreas?.trim() ? (
+                        <View style={styles.usageGridItem}>
+                          <Text style={styles.usageGridLabel}>Application Areas</Text>
+                          <Text style={styles.usageGridValue}>{usage.applicationAreas}</Text>
+                        </View>
+                      ) : null}
+                    </View>
+                    {usage.bestPractices?.trim() ? (
+                      <View style={styles.usageBestPractices}>
+                        <Text style={styles.usageBestPracticesLabel}>Best Practices</Text>
+                        {usage.bestPractices.split('\n').filter(Boolean).map((line, idx) => (
+                          <Text key={idx} style={styles.usageBestPracticesItem}>• {line.replace(/^[-•]\s*/, '')}</Text>
+                        ))}
+                      </View>
+                    ) : null}
                   </Animated.View>
-                )}
+                ) : null}
               </Animated.View>
-              <SecondaryFieldRow
-                icon="usage"
-                label="Usage"
-                value={formatUsage(usage)}
-                variant="grouped"
-              />
+
+              {/* Yield & Storage Section */}
+              <Animated.View
+                layout={reduceMotionEnabled ? undefined : Layout.duration(ingredientAnimDuration)}
+                style={styles.storageGroupRow}
+              >
+                <WavePressable
+                  accessibilityRole="button"
+                  accessibilityLabel={storageExpanded ? 'Hide yield and storage' : 'Show yield and storage'}
+                  onPress={() => setStorageExpanded((prev) => !prev)}
+                  style={styles.storageTogglePressable}
+                  testID={`list-big-recipe-row-storage-toggle-${recipeId}`}
+                  reduceMotionEnabled={reduceMotionEnabled}
+                >
+                  <View style={styles.storageHeader}>
+                    <View style={styles.storageHeaderLeft}>
+                      <FieldIcon name="storage" size={18} />
+                      <Text style={styles.storageHeaderLabel}>Yield & Storage</Text>
+                    </View>
+                    <Svg width={18} height={18} viewBox="0 0 24 24">
+                      <Path
+                        d={storageExpanded ? 'M7 14l5-5 5 5' : 'M7 10l5 5 5-5'}
+                        fill="none"
+                        stroke={theme.colors.brand.primaryStrong}
+                        strokeWidth={2}
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                      />
+                    </Svg>
+                  </View>
+                </WavePressable>
+                {storageExpanded ? (
+                  <Animated.View
+                    entering={reduceMotionEnabled ? undefined : FadeInDown.duration(ingredientAnimDuration)}
+                    exiting={enableExitAnimations ? FadeOut.duration(ingredientAnimDuration) : undefined}
+                    layout={reduceMotionEnabled ? undefined : Layout.duration(ingredientAnimDuration)}
+                    style={styles.storageDetailPanel}
+                  >
+                    <View style={styles.storageGrid}>
+                      {storage.yield?.trim() ? (
+                        <View style={styles.storageGridItem}>
+                          <Text style={styles.storageGridLabel}>Yield</Text>
+                          <Text style={styles.storageGridValue}>{storage.yield}</Text>
+                        </View>
+                      ) : null}
+                      {storage.shelfLife?.trim() ? (
+                        <View style={styles.storageGridItem}>
+                          <Text style={styles.storageGridLabel}>Shelf Life</Text>
+                          <Text style={styles.storageGridValue}>{storage.shelfLife}</Text>
+                        </View>
+                      ) : null}
+                      {storage.costEstimate?.trim() ? (
+                        <View style={styles.storageGridItem}>
+                          <Text style={styles.storageGridLabel}>Cost Estimate</Text>
+                          <Text style={styles.storageGridValue}>{storage.costEstimate}</Text>
+                        </View>
+                      ) : null}
+                      {storage.storageTemp?.trim() ? (
+                        <View style={styles.storageGridItem}>
+                          <Text style={styles.storageGridLabel}>Storage Temp</Text>
+                          <Text style={styles.storageGridValue}>{storage.storageTemp}</Text>
+                        </View>
+                      ) : null}
+                    </View>
+                    {storage.spoilageIndicators?.trim() ? (
+                      <View style={styles.storageSpoilage}>
+                        <Text style={styles.storageSpoilageLabel}>Spoilage Indicators</Text>
+                        <Text style={styles.storageSpoilageValue}>{storage.spoilageIndicators}</Text>
+                      </View>
+                    ) : null}
+                  </Animated.View>
+                ) : null}
+              </Animated.View>
+
+              {/* Equipment Needed Section */}
+              {equipmentNeeded && equipmentNeeded.length > 0 ? (
+                <Animated.View
+                  layout={reduceMotionEnabled ? undefined : Layout.duration(ingredientAnimDuration)}
+                  style={styles.equipmentGroupRow}
+                >
+                  <WavePressable
+                    accessibilityRole="button"
+                    accessibilityLabel={equipmentExpanded ? 'Hide equipment needed' : 'Show equipment needed'}
+                    onPress={() => setEquipmentExpanded((prev) => !prev)}
+                    style={styles.equipmentTogglePressable}
+                    testID={`list-big-recipe-row-equipment-toggle-${recipeId}`}
+                    reduceMotionEnabled={reduceMotionEnabled}
+                  >
+                    <View style={styles.equipmentHeader}>
+                      <View style={styles.equipmentHeaderLeft}>
+                        <FieldIcon name="equipment" size={18} />
+                        <Text style={styles.equipmentHeaderLabel}>Equipment Needed</Text>
+                      </View>
+                      <Svg width={18} height={18} viewBox="0 0 24 24">
+                        <Path
+                          d={equipmentExpanded ? 'M7 14l5-5 5 5' : 'M7 10l5 5 5-5'}
+                          fill="none"
+                          stroke={theme.colors.brand.primaryStrong}
+                          strokeWidth={2}
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                        />
+                      </Svg>
+                    </View>
+                  </WavePressable>
+                  {equipmentExpanded ? (
+                    <Animated.View
+                      entering={reduceMotionEnabled ? undefined : FadeInDown.duration(ingredientAnimDuration)}
+                      exiting={enableExitAnimations ? FadeOut.duration(ingredientAnimDuration) : undefined}
+                      layout={reduceMotionEnabled ? undefined : Layout.duration(ingredientAnimDuration)}
+                      style={styles.equipmentDetailPanel}
+                    >
+                      <View style={styles.equipmentChips}>
+                        {equipmentNeeded.map((item, idx) => (
+                          <View key={idx} style={styles.equipmentChip}>
+                            <Text style={styles.equipmentChipText}>{item}</Text>
+                          </View>
+                        ))}
+                      </View>
+                    </Animated.View>
+                  ) : null}
+                </Animated.View>
+              ) : null}
+
               <SecondaryFieldRow
                 icon="historical"
                 label="Historical"
@@ -1091,9 +1340,7 @@ export function ListBigRecipeRow({
                 chevronColor={theme.colors.brand.primaryStrong}
                 toggleTestID={`list-big-recipe-row-warning-toggle-${recipeId}`}
                 valueTestID={`list-big-recipe-row-warning-value-${recipeId}`}
-                onTogglePress={(e) => {
-                  triggerWave(e);
-                }}
+                reduceMotionEnabled={reduceMotionEnabled}
               />
             </Animated.View>
             {showDetailsButton && (
@@ -1538,15 +1785,20 @@ const styles = StyleSheet.create({
     borderBottomWidth: StyleSheet.hairlineWidth,
     borderBottomColor: theme.colors.border.subtle,
   },
+  ingredientsTogglePressable: {
+    gap: 6,
+    borderRadius: 10,
+    overflow: 'hidden',
+  },
   ingredientsHeader: {
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
     gap: 12,
     paddingVertical: 6,
-    paddingHorizontal: 8,
+    paddingHorizontal: 0,
     borderRadius: 8,
-    backgroundColor: theme.colors.surface.dropdownHighlight,
+    backgroundColor: 'transparent',
   },
   ingredientsHeaderLeft: {
     flexDirection: 'row',
@@ -1559,11 +1811,12 @@ const styles = StyleSheet.create({
     gap: 6,
   },
   ingredientsHeaderLabel: {
-    fontSize: 13,
-    letterSpacing: 0.8,
-    textTransform: 'uppercase',
+    fontSize: 12,
     fontFamily: theme.typography.fontFamily.sans.semiBold,
+    fontWeight: '800',
+    letterSpacing: 0.6,
     color: theme.colors.brand.primaryStrong,
+    textTransform: 'uppercase',
   },
   ingredientsHeaderCount: {
     fontSize: 11,
@@ -1576,6 +1829,7 @@ const styles = StyleSheet.create({
     fontFamily: theme.typography.fontFamily.sans.regular,
     color: theme.colors.ink.muted,
     textAlign: 'left',
+    paddingHorizontal: 0,
   },
   ingredientsList: {
     gap: 10,
@@ -1601,6 +1855,9 @@ const styles = StyleSheet.create({
     borderColor: theme.colors.border.subtle,
     backgroundColor: theme.colors.surface.paper,
   },
+  ingredientRowPressable: {
+    overflow: 'hidden',
+  },
   ingredientRowHeaderActive: {
     backgroundColor: theme.colors.surface.dropdownHighlight,
     borderColor: theme.colors.brand.primaryStrong,
@@ -1618,6 +1875,17 @@ const styles = StyleSheet.create({
     fontSize: 12,
     fontFamily: theme.typography.fontFamily.sans.regular,
     color: theme.colors.ink.subtle,
+  },
+  ingredientRowDescription: {
+    fontSize: 12,
+    lineHeight: 16,
+    fontFamily: theme.typography.fontFamily.sans.regular,
+    color: theme.colors.ink.muted,
+  },
+  ingredientRowHint: {
+    fontSize: 11,
+    fontFamily: theme.typography.fontFamily.sans.medium,
+    color: theme.colors.brand.primary,
   },
   ingredientDetailPanel: {
     backgroundColor: theme.colors.surface.paper,
@@ -1822,5 +2090,244 @@ const styles = StyleSheet.create({
     fontSize: 12,
     fontFamily: theme.typography.fontFamily.sans.semiBold,
     color: theme.colors.brand.primary,
+  },
+  // Usage section styles
+  usageGroupRow: {
+    paddingHorizontal: 12,
+    paddingTop: 10,
+    paddingBottom: 8,
+    gap: 8,
+    borderBottomWidth: StyleSheet.hairlineWidth,
+    borderBottomColor: theme.colors.border.subtle,
+  },
+  usageTogglePressable: {
+    gap: 6,
+    borderRadius: 10,
+    overflow: 'hidden',
+  },
+  usageHeader: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    gap: 12,
+    paddingVertical: 6,
+    paddingHorizontal: 0,
+    borderRadius: 8,
+  },
+  usageHeaderLeft: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 8,
+  },
+  usageHeaderLabel: {
+    fontSize: 12,
+    fontFamily: theme.typography.fontFamily.sans.semiBold,
+    fontWeight: '800',
+    letterSpacing: 0.6,
+    color: theme.colors.brand.primaryStrong,
+    textTransform: 'uppercase',
+  },
+  usageSummaryText: {
+    fontSize: 13,
+    lineHeight: 18,
+    fontFamily: theme.typography.fontFamily.sans.regular,
+    color: theme.colors.ink.muted,
+    paddingHorizontal: 0,
+  },
+  usageDetailPanel: {
+    paddingHorizontal: 0,
+    paddingTop: 8,
+    paddingBottom: 4,
+    gap: 12,
+  },
+  usageFullSummary: {
+    fontSize: 13,
+    lineHeight: 20,
+    fontFamily: theme.typography.fontFamily.sans.regular,
+    color: theme.colors.ink.primary,
+  },
+  usageGrid: {
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+    gap: 8,
+  },
+  usageGridItem: {
+    flexBasis: '48%',
+    flexGrow: 1,
+    backgroundColor: theme.colors.surface.paper,
+    borderRadius: 10,
+    padding: 12,
+    gap: 4,
+  },
+  usageGridLabel: {
+    fontSize: 10,
+    letterSpacing: 0.6,
+    textTransform: 'uppercase',
+    fontFamily: theme.typography.fontFamily.sans.semiBold,
+    color: theme.colors.ink.muted,
+  },
+  usageGridValue: {
+    fontSize: 14,
+    fontFamily: theme.typography.fontFamily.sans.semiBold,
+    color: theme.colors.ink.primary,
+  },
+  usageBestPractices: {
+    gap: 6,
+  },
+  usageBestPracticesLabel: {
+    fontSize: 10,
+    letterSpacing: 0.6,
+    textTransform: 'uppercase',
+    fontFamily: theme.typography.fontFamily.sans.semiBold,
+    color: theme.colors.ink.muted,
+  },
+  usageBestPracticesItem: {
+    fontSize: 13,
+    lineHeight: 18,
+    fontFamily: theme.typography.fontFamily.sans.regular,
+    color: theme.colors.ink.primary,
+    paddingLeft: 4,
+  },
+  // Storage section styles
+  storageGroupRow: {
+    paddingHorizontal: 12,
+    paddingTop: 10,
+    paddingBottom: 8,
+    gap: 8,
+    borderBottomWidth: StyleSheet.hairlineWidth,
+    borderBottomColor: theme.colors.border.subtle,
+  },
+  storageTogglePressable: {
+    gap: 6,
+    borderRadius: 10,
+    overflow: 'hidden',
+  },
+  storageHeader: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    gap: 12,
+    paddingVertical: 6,
+    paddingHorizontal: 0,
+    borderRadius: 8,
+  },
+  storageHeaderLeft: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 8,
+  },
+  storageHeaderLabel: {
+    fontSize: 12,
+    fontFamily: theme.typography.fontFamily.sans.semiBold,
+    fontWeight: '800',
+    letterSpacing: 0.6,
+    color: theme.colors.brand.primaryStrong,
+    textTransform: 'uppercase',
+  },
+  storageDetailPanel: {
+    paddingHorizontal: 0,
+    paddingTop: 8,
+    paddingBottom: 4,
+    gap: 12,
+  },
+  storageGrid: {
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+    gap: 8,
+  },
+  storageGridItem: {
+    flexBasis: '48%',
+    flexGrow: 1,
+    backgroundColor: theme.colors.surface.paper,
+    borderRadius: 10,
+    padding: 12,
+    gap: 4,
+  },
+  storageGridLabel: {
+    fontSize: 10,
+    letterSpacing: 0.6,
+    textTransform: 'uppercase',
+    fontFamily: theme.typography.fontFamily.sans.semiBold,
+    color: theme.colors.ink.muted,
+  },
+  storageGridValue: {
+    fontSize: 14,
+    fontFamily: theme.typography.fontFamily.sans.semiBold,
+    color: theme.colors.ink.primary,
+  },
+  storageSpoilage: {
+    gap: 4,
+  },
+  storageSpoilageLabel: {
+    fontSize: 10,
+    letterSpacing: 0.6,
+    textTransform: 'uppercase',
+    fontFamily: theme.typography.fontFamily.sans.semiBold,
+    color: theme.colors.ink.muted,
+  },
+  storageSpoilageValue: {
+    fontSize: 13,
+    lineHeight: 18,
+    fontFamily: theme.typography.fontFamily.sans.regular,
+    color: theme.colors.ink.primary,
+  },
+  // Equipment section styles
+  equipmentGroupRow: {
+    paddingHorizontal: 12,
+    paddingTop: 10,
+    paddingBottom: 8,
+    gap: 8,
+    borderBottomWidth: StyleSheet.hairlineWidth,
+    borderBottomColor: theme.colors.border.subtle,
+  },
+  equipmentTogglePressable: {
+    gap: 6,
+    borderRadius: 10,
+    overflow: 'hidden',
+  },
+  equipmentHeader: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    gap: 12,
+    paddingVertical: 6,
+    paddingHorizontal: 0,
+    borderRadius: 8,
+  },
+  equipmentHeaderLeft: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 8,
+  },
+  equipmentHeaderLabel: {
+    fontSize: 12,
+    fontFamily: theme.typography.fontFamily.sans.semiBold,
+    fontWeight: '800',
+    letterSpacing: 0.6,
+    color: theme.colors.brand.primaryStrong,
+    textTransform: 'uppercase',
+  },
+  equipmentDetailPanel: {
+    paddingHorizontal: 0,
+    paddingTop: 8,
+    paddingBottom: 4,
+  },
+  equipmentChips: {
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+    gap: 8,
+  },
+  equipmentChip: {
+    backgroundColor: theme.colors.surface.paper,
+    borderRadius: 16,
+    paddingVertical: 6,
+    paddingHorizontal: 12,
+    borderWidth: StyleSheet.hairlineWidth,
+    borderColor: theme.colors.border.subtle,
+  },
+  equipmentChipText: {
+    fontSize: 12,
+    fontFamily: theme.typography.fontFamily.sans.medium,
+    color: theme.colors.ink.primary,
   },
 });
