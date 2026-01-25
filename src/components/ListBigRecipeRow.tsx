@@ -23,6 +23,8 @@ import type { RecipeImageEntry } from '../assets/recipeImageManifest';
 import { FieldIcon } from '../ui/icons';
 import { theme } from '../ui/theme';
 
+import type { RecipeUsage } from '../types/recipe';
+
 import { DescriptionInline } from './DescriptionInline';
 import { FieldRow } from './FieldRow';
 import { ModalBackdrop } from './ModalBackdrop';
@@ -57,6 +59,174 @@ type AttributionData = {
 
 const attributionData = require('../../assets/herbs/image-attributions.json') as AttributionData;
 
+const EMPTY_TEXT = '—';
+
+type IngredientDefaults = {
+  description: string;
+  ml: string;
+  family: string;
+  scientificName: string;
+  usages: string;
+  activeConstituents: string;
+  safetyClassification: string;
+  dosageGuidelines: string;
+};
+
+type IngredientDetail = IngredientDefaults & {
+  title: string;
+};
+
+type IngredientMetadata = {
+  ingredientDefaults: IngredientDefaults;
+  ingredientKeys: string[];
+  ingredients: Array<Partial<IngredientDetail> & { title: string }>;
+  recipes: Record<string, { ingredientIndexes: number[] }>;
+};
+
+type IngredientRow = {
+  id: string;
+  raw: string;
+  normalizedKey: string;
+  detail: IngredientDetail;
+};
+
+const ingredientMetadata = require('../data/ingredient-metadata.json') as IngredientMetadata;
+const ingredientKeyIndex = new Map(ingredientMetadata.ingredientKeys.map((key, index) => [key, index]));
+
+const INGREDIENT_ADJECTIVES = new Set([
+  'fresh',
+  'dried',
+  'dry',
+  'powdered',
+  'powder',
+  'ground',
+  'crushed',
+  'chopped',
+  'sliced',
+  'finely',
+  'coarsely',
+  'whole',
+  'raw',
+  'wild',
+  'organic',
+  'clean',
+  'purified',
+  'filtered',
+  'distilled',
+  'warm',
+  'hot',
+  'cold',
+]);
+
+const INGREDIENT_FORMS = new Set([
+  'root',
+  'roots',
+  'leaf',
+  'leaves',
+  'flower',
+  'flowers',
+  'stem',
+  'stems',
+  'bark',
+  'berry',
+  'berries',
+  'seed',
+  'seeds',
+  'rhizome',
+  'bulb',
+  'bulbs',
+  'peel',
+  'rind',
+  'zest',
+  'fruit',
+  'fruits',
+  'pod',
+  'pods',
+  'resin',
+  'sap',
+  'gum',
+  'bud',
+  'buds',
+  'cone',
+  'cones',
+  'needle',
+  'needles',
+  'sclerotium',
+  'clove',
+  'cloves',
+  'wood',
+  'frond',
+  'fronds',
+]);
+
+const normalizeIngredientKey = (raw: string): string => {
+  const tokens = raw
+    .split(/\s+/)
+    .map((token) => token.trim())
+    .filter(Boolean);
+
+  const kept = tokens.filter((token) => {
+    if (token.includes('(') || token.includes(')')) {
+      return true;
+    }
+    const cleaned = token.toLowerCase().replace(/[^a-z]/g, '');
+    if (!cleaned) {
+      return false;
+    }
+    if (INGREDIENT_ADJECTIVES.has(cleaned) || INGREDIENT_FORMS.has(cleaned)) {
+      return false;
+    }
+    return true;
+  });
+
+  const normalized = kept.join(' ').replace(/\s+/g, ' ').trim();
+  return (normalized || raw).toLowerCase();
+};
+
+const splitIngredientList = (value: string): string[] => {
+  if (!value?.trim()) {
+    return [];
+  }
+
+  return value
+    .split(',')
+    .map((item) => item.trim())
+    .filter(Boolean);
+};
+
+const resolveIngredientDetail = (index: number | undefined, fallbackTitle: string): IngredientDetail => {
+  const base = ingredientMetadata.ingredientDefaults;
+  const detail = typeof index === 'number' ? ingredientMetadata.ingredients[index] : undefined;
+
+  return {
+    ...base,
+    ...detail,
+    title: detail?.title ?? fallbackTitle,
+  };
+};
+
+const formatIngredientValue = (value?: string): string => {
+  const trimmed = value?.trim();
+  return trimmed ? trimmed : EMPTY_TEXT;
+};
+
+function formatUsage(usage: RecipeUsage): string {
+  const summary = usage.summary?.trim();
+  if (summary) {
+    return summary;
+  }
+
+  const lines = [
+    usage.dosage ? `Dosage: ${usage.dosage}` : '',
+    usage.frequency ? `Frequency: ${usage.frequency}` : '',
+    usage.maxDuration ? `Max Duration: ${usage.maxDuration}` : '',
+    usage.applicationAreas ? `Application Areas: ${usage.applicationAreas}` : '',
+    usage.bestPractices ? `Best Practices: ${usage.bestPractices}` : '',
+  ].filter((line) => line.trim());
+
+  return lines.length > 0 ? lines.join('\n') : EMPTY_TEXT;
+}
+
 type ListBigRecipeRowProps = {
   recipeId: number;
   title: string;
@@ -69,7 +239,7 @@ type ListBigRecipeRowProps = {
   ingredients: string;
   detailedMeasurements: string;
   preparationSteps: string;
-  usage: string;
+  usage: RecipeUsage;
   historicalContext: string;
   scientificEvidence: string;
   isFavorite?: boolean;
@@ -125,6 +295,8 @@ export function ListBigRecipeRow({
   const [attributionVisible, setAttributionVisible] = useState(false);
   const [imageIndex, setImageIndex] = useState(0);
   const [carouselWidth, setCarouselWidth] = useState(0);
+  const [ingredientsExpanded, setIngredientsExpanded] = useState(false);
+  const [activeIngredientId, setActiveIngredientId] = useState<string | null>(null);
   const imageEntries = getRecipeImageSource(recipeId);
   const imageCount = imageEntries?.length ?? 0;
   const activeImageEntry = imageEntries?.[Math.min(imageIndex, Math.max(imageCount - 1, 0))] ?? null;
@@ -153,16 +325,57 @@ export function ListBigRecipeRow({
     .filter(Boolean)
     .join(', ');
 
+  const ingredientsSummary = ingredients?.trim() ? ingredients.trim() : EMPTY_TEXT;
+
+  const ingredientRows = useMemo<IngredientRow[]>(() => {
+    const items = splitIngredientList(ingredients);
+
+    return items.map((raw, index) => {
+      const trimmed = raw.trim();
+      const normalizedKey = normalizeIngredientKey(trimmed);
+      const fallbackKey = trimmed.toLowerCase();
+      const lookupKey = normalizedKey || fallbackKey;
+      const metadataIndex = ingredientKeyIndex.get(lookupKey) ?? ingredientKeyIndex.get(fallbackKey);
+
+      return {
+        id: `${lookupKey || 'ingredient'}-${index}`,
+        raw: trimmed,
+        normalizedKey: lookupKey,
+        detail: resolveIngredientDetail(metadataIndex, trimmed),
+      };
+    });
+  }, [ingredients]);
+
   useEffect(() => {
     if (!detailsMode) {
       setImageModalVisible(false);
       setAttributionVisible(false);
+      setIngredientsExpanded(false);
+      setActiveIngredientId(null);
     }
   }, [detailsMode]);
 
   useEffect(() => {
     setImageIndex(0);
+    setIngredientsExpanded(false);
+    setActiveIngredientId(null);
   }, [recipeId]);
+
+  const handleIngredientsToggle = (event?: any) => {
+    triggerWave(event);
+    setIngredientsExpanded((prev) => {
+      const next = !prev;
+      if (!next) {
+        setActiveIngredientId(null);
+      }
+      return next;
+    });
+  };
+
+  const handleIngredientPress = (rowId: string, event?: any) => {
+    triggerWave(event);
+    setActiveIngredientId((prev) => (prev === rowId ? null : rowId));
+  };
 
   useEffect(() => {
     if (!imageEntries || imageEntries.length === 0) {
@@ -192,6 +405,7 @@ export function ListBigRecipeRow({
   };
 
   const animDuration = motionDurationMs(reduceMotionEnabled, 150);
+  const ingredientAnimDuration = motionDurationMs(reduceMotionEnabled, 300);
   const enableExitAnimations = !reduceMotionEnabled && Platform.OS !== 'android';
 
   const minimizeIconStyle = useAnimatedStyle(() => {
@@ -648,14 +862,177 @@ export function ListBigRecipeRow({
                 style={[styles.detailsField, styles.detailsFieldCentered, styles.ingredientsField]}
               >
                 <View style={styles.centeredNarrowField}>
-                  <FieldRow
-                    icon="ingredients"
-                    label="Ingredients"
-                    value={ingredients}
-                    align="center"
-                    hideIcon
-                    hideLabelChip
-                  />
+                  <Animated.View
+                    layout={reduceMotionEnabled ? undefined : Layout.duration(ingredientAnimDuration)}
+                    style={styles.ingredientsCard}
+                  >
+                    <Pressable
+                      accessibilityRole="button"
+                      accessibilityLabel={ingredientsExpanded ? 'Hide ingredients' : 'Show ingredients'}
+                      onPress={handleIngredientsToggle}
+                      style={styles.ingredientsHeader}
+                      testID={`list-big-recipe-row-ingredients-toggle-${recipeId}`}
+                    >
+                      <View style={styles.ingredientsHeaderLeft}>
+                        <FieldIcon name="ingredients" size={18} />
+                        <Text style={styles.ingredientsHeaderLabel}>Ingredients</Text>
+                      </View>
+                      <View style={styles.ingredientsHeaderRight}>
+                        <Text style={styles.ingredientsHeaderCount}>
+                          {ingredientRows.length ? `${ingredientRows.length} items` : '0 items'}
+                        </Text>
+                        <Svg width={18} height={18} viewBox="0 0 24 24">
+                          <Path
+                            d={ingredientsExpanded ? 'M7 14l5-5 5 5' : 'M7 10l5 5 5-5'}
+                            fill="none"
+                            stroke={theme.colors.brand.primaryStrong}
+                            strokeWidth={2}
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                          />
+                        </Svg>
+                      </View>
+                    </Pressable>
+
+                    {!ingredientsExpanded ? (
+                      <Text style={styles.ingredientsSummaryText}>{ingredientsSummary}</Text>
+                    ) : (
+                      <Animated.View
+                        layout={reduceMotionEnabled ? undefined : Layout.duration(ingredientAnimDuration)}
+                        style={styles.ingredientsList}
+                      >
+                        {ingredientRows.length === 0 ? (
+                          <Text style={styles.ingredientsEmptyText}>No ingredients listed.</Text>
+                        ) : (
+                          ingredientRows.map((row) => {
+                            const isActive = activeIngredientId === row.id;
+
+                            return (
+                              <Animated.View
+                                key={row.id}
+                                layout={reduceMotionEnabled ? undefined : Layout.duration(ingredientAnimDuration)}
+                                style={styles.ingredientRow}
+                              >
+                                <Pressable
+                                  accessibilityRole="button"
+                                  accessibilityLabel={isActive ? `Hide ${row.raw} details` : `Show ${row.raw} details`}
+                                  onPress={(event) => handleIngredientPress(row.id, event)}
+                                  style={[styles.ingredientRowHeader, isActive && styles.ingredientRowHeaderActive]}
+                                  testID={`list-big-recipe-row-ingredient-${recipeId}-${row.id}`}
+                                >
+                                  <View style={styles.ingredientRowText}>
+                                    <Text style={styles.ingredientRowTitle}>{row.raw}</Text>
+                                    {row.detail.scientificName?.trim() ? (
+                                      <Text style={styles.ingredientRowSubtitle}>{row.detail.scientificName}</Text>
+                                    ) : null}
+                                  </View>
+                                  <Svg width={18} height={18} viewBox="0 0 24 24">
+                                    <Path
+                                      d={isActive ? 'M7 14l5-5 5 5' : 'M7 10l5 5 5-5'}
+                                      fill="none"
+                                      stroke={theme.colors.brand.primaryStrong}
+                                      strokeWidth={2}
+                                      strokeLinecap="round"
+                                      strokeLinejoin="round"
+                                    />
+                                  </Svg>
+                                </Pressable>
+
+                                {isActive ? (
+                                  <Animated.View
+                                    entering={reduceMotionEnabled ? undefined : FadeInDown.duration(ingredientAnimDuration)}
+                                    exiting={enableExitAnimations ? FadeOut.duration(ingredientAnimDuration) : undefined}
+                                    layout={reduceMotionEnabled ? undefined : Layout.duration(ingredientAnimDuration)}
+                                    style={styles.ingredientDetailPanel}
+                                  >
+                                    <SecondaryFieldRow
+                                      icon="description"
+                                      label="Profile"
+                                      value={formatIngredientValue(row.detail.description)}
+                                      variant="grouped"
+                                      showDivider
+                                      collapsible
+                                      defaultCollapsed={false}
+                                      onTogglePress={(e) => triggerWave(e)}
+                                    />
+                                    <SecondaryFieldRow
+                                      icon="usage"
+                                      label="Medicinal language"
+                                      value={formatIngredientValue(row.detail.ml)}
+                                      variant="grouped"
+                                      showDivider
+                                      collapsible
+                                      defaultCollapsed
+                                      onTogglePress={(e) => triggerWave(e)}
+                                    />
+                                    <SecondaryFieldRow
+                                      icon="leaf"
+                                      label="Family"
+                                      value={formatIngredientValue(row.detail.family)}
+                                      variant="grouped"
+                                      showDivider
+                                      collapsible
+                                      defaultCollapsed
+                                      onTogglePress={(e) => triggerWave(e)}
+                                    />
+                                    <SecondaryFieldRow
+                                      icon="historical"
+                                      label="Scientific name"
+                                      value={formatIngredientValue(row.detail.scientificName)}
+                                      variant="grouped"
+                                      showDivider
+                                      collapsible
+                                      defaultCollapsed
+                                      onTogglePress={(e) => triggerWave(e)}
+                                    />
+                                    <SecondaryFieldRow
+                                      icon="usage"
+                                      label="Therapeutic actions"
+                                      value={formatIngredientValue(row.detail.usages)}
+                                      variant="grouped"
+                                      showDivider
+                                      collapsible
+                                      defaultCollapsed
+                                      onTogglePress={(e) => triggerWave(e)}
+                                    />
+                                    <SecondaryFieldRow
+                                      icon="evidence"
+                                      label="Active constituents"
+                                      value={formatIngredientValue(row.detail.activeConstituents)}
+                                      variant="grouped"
+                                      showDivider
+                                      collapsible
+                                      defaultCollapsed
+                                      onTogglePress={(e) => triggerWave(e)}
+                                    />
+                                    <SecondaryFieldRow
+                                      icon="warning"
+                                      label="Safety classification"
+                                      value={formatIngredientValue(row.detail.safetyClassification)}
+                                      variant="grouped"
+                                      showDivider
+                                      collapsible
+                                      defaultCollapsed
+                                      onTogglePress={(e) => triggerWave(e)}
+                                    />
+                                    <SecondaryFieldRow
+                                      icon="usage"
+                                      label="Dosage guidelines"
+                                      value={formatIngredientValue(row.detail.dosageGuidelines)}
+                                      variant="grouped"
+                                      collapsible
+                                      defaultCollapsed
+                                      onTogglePress={(e) => triggerWave(e)}
+                                    />
+                                  </Animated.View>
+                                ) : null}
+                              </Animated.View>
+                            );
+                          })
+                        )}
+                      </Animated.View>
+                    )}
+                  </Animated.View>
                 </View>
               </Animated.View>
               <Animated.View
@@ -682,7 +1059,12 @@ export function ListBigRecipeRow({
               exiting={enableExitAnimations ? FadeOut.duration(animDuration) : undefined}
               style={styles.secondaryFieldsGroup}
             >
-              <SecondaryFieldRow icon="usage" label="Usage" value={usage} variant="grouped" />
+              <SecondaryFieldRow
+                icon="usage"
+                label="Usage"
+                value={formatUsage(usage)}
+                variant="grouped"
+              />
               <SecondaryFieldRow
                 icon="historical"
                 label="Historical"
@@ -1147,6 +1529,95 @@ const styles = StyleSheet.create({
   },
   ingredientsField: {
     marginBottom: 12,
+  },
+  ingredientsCard: {
+    backgroundColor: theme.colors.surface.secondaryField,
+    borderRadius: 14,
+    padding: 14,
+    gap: 10,
+    borderWidth: StyleSheet.hairlineWidth,
+    borderColor: theme.colors.border.subtle,
+  },
+  ingredientsHeader: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    gap: 12,
+  },
+  ingredientsHeaderLeft: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 8,
+  },
+  ingredientsHeaderRight: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 6,
+  },
+  ingredientsHeaderLabel: {
+    fontSize: 13,
+    letterSpacing: 0.8,
+    textTransform: 'uppercase',
+    fontFamily: theme.typography.fontFamily.sans.semiBold,
+    color: theme.colors.brand.primaryStrong,
+  },
+  ingredientsHeaderCount: {
+    fontSize: 11,
+    fontFamily: theme.typography.fontFamily.sans.medium,
+    color: theme.colors.ink.subtle,
+  },
+  ingredientsSummaryText: {
+    fontSize: 13,
+    lineHeight: 18,
+    fontFamily: theme.typography.fontFamily.sans.regular,
+    color: theme.colors.ink.muted,
+  },
+  ingredientsList: {
+    gap: 10,
+    paddingTop: 4,
+  },
+  ingredientsEmptyText: {
+    fontSize: 12,
+    fontFamily: theme.typography.fontFamily.sans.medium,
+    color: theme.colors.ink.subtle,
+  },
+  ingredientRow: {
+    gap: 8,
+  },
+  ingredientRowHeader: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    gap: 12,
+    paddingVertical: 10,
+    paddingHorizontal: 12,
+    borderRadius: 12,
+    borderWidth: StyleSheet.hairlineWidth,
+    borderColor: theme.colors.border.subtle,
+    backgroundColor: theme.colors.surface.paper,
+  },
+  ingredientRowHeaderActive: {
+    backgroundColor: theme.colors.surface.dropdownHighlight,
+    borderColor: theme.colors.brand.primaryStrong,
+  },
+  ingredientRowText: {
+    flex: 1,
+    gap: 4,
+  },
+  ingredientRowTitle: {
+    fontSize: 14,
+    fontFamily: theme.typography.fontFamily.sans.semiBold,
+    color: theme.colors.ink.primary,
+  },
+  ingredientRowSubtitle: {
+    fontSize: 12,
+    fontFamily: theme.typography.fontFamily.sans.regular,
+    color: theme.colors.ink.subtle,
+  },
+  ingredientDetailPanel: {
+    backgroundColor: theme.colors.surface.paper,
+    borderRadius: 12,
+    overflow: 'hidden',
   },
   centeredNarrowField: {
     width: '100%',

@@ -97,7 +97,22 @@ function createRecipes(count = 1): RecipeRow[] {
       ingredients: `ingredients ${id}`,
       detailedMeasurements: `detailedMeasurements ${id}`,
       preparationSteps: `preparationSteps ${id}`,
-      usage: `usage ${id}`,
+      usage: {
+        summary: `usage ${id}`,
+        dosage: '',
+        frequency: '',
+        maxDuration: '',
+        applicationAreas: '',
+        bestPractices: '',
+      },
+      storage: {
+        yield: '',
+        shelfLife: '',
+        costEstimate: '',
+        storageTemp: '',
+        spoilageIndicators: '',
+      },
+      equipmentNeeded: [],
     };
   });
 }
@@ -919,7 +934,22 @@ test('falls back to placeholder when recipe image source is missing', () => {
       ingredients: 'ingredients',
       detailedMeasurements: 'measurements',
       preparationSteps: 'steps',
-      usage: 'usage',
+      usage: {
+        summary: 'usage',
+        dosage: '',
+        frequency: '',
+        maxDuration: '',
+        applicationAreas: '',
+        bestPractices: '',
+      },
+      storage: {
+        yield: '',
+        shelfLife: '',
+        costEstimate: '',
+        storageTemp: '',
+        spoilageIndicators: '',
+      },
+      equipmentNeeded: [],
     },
   ];
 

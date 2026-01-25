@@ -2,7 +2,7 @@ import type { SQLiteDatabase } from 'expo-sqlite';
 
 import type { AdvancedFilters } from '../types/advancedFilters';
 import type { Plan } from '../types/plan';
-import type { Recipe } from '../types/recipe';
+import type { Recipe, RecipeStorage, RecipeUsage } from '../types/recipe';
 import type { FilterMode } from '../types/filterMode';
 import type { SortMode } from '../types/sortMode';
 
@@ -15,6 +15,92 @@ export type RecipeRow = Recipe & {
   imageLocalPath: string | null;
   isFavorite: number;
 };
+
+type RawRecipeRow = Omit<RecipeRow, 'usage' | 'storage' | 'equipmentNeeded'> & {
+  usage: RecipeUsage | string | null;
+  storage: RecipeStorage | string | null;
+  equipmentNeeded: string[] | string | null;
+};
+
+const EMPTY_USAGE: RecipeUsage = {
+  summary: '',
+  dosage: '',
+  frequency: '',
+  maxDuration: '',
+  applicationAreas: '',
+  bestPractices: '',
+};
+
+const EMPTY_STORAGE: RecipeStorage = {
+  yield: '',
+  shelfLife: '',
+  costEstimate: '',
+  storageTemp: '',
+  spoilageIndicators: '',
+};
+
+function parseUsage(value: RawRecipeRow['usage']): RecipeUsage {
+  if (!value) {
+    return { ...EMPTY_USAGE };
+  }
+
+  if (typeof value !== 'string') {
+    return { ...EMPTY_USAGE, ...value };
+  }
+
+  try {
+    const parsed = JSON.parse(value) as Partial<RecipeUsage> | null;
+    if (parsed && typeof parsed === 'object') {
+      return { ...EMPTY_USAGE, ...parsed };
+    }
+  } catch (error) {
+    // fall through to summary fallback
+  }
+
+  return { ...EMPTY_USAGE, summary: value };
+}
+
+function parseStorage(value: RawRecipeRow['storage']): RecipeStorage {
+  if (!value) {
+    return { ...EMPTY_STORAGE };
+  }
+
+  if (typeof value !== 'string') {
+    return { ...EMPTY_STORAGE, ...value };
+  }
+
+  try {
+    const parsed = JSON.parse(value) as Partial<RecipeStorage> | null;
+    if (parsed && typeof parsed === 'object') {
+      return { ...EMPTY_STORAGE, ...parsed };
+    }
+  } catch (error) {
+    // fall through to empty
+  }
+
+  return { ...EMPTY_STORAGE };
+}
+
+function parseEquipmentNeeded(value: RawRecipeRow['equipmentNeeded']): string[] {
+  if (!value) {
+    return [];
+  }
+
+  if (Array.isArray(value)) {
+    return value;
+  }
+
+  try {
+    const parsed = JSON.parse(value) as string[] | null;
+    if (Array.isArray(parsed)) {
+      return parsed;
+    }
+  } catch (error) {
+    // fall through to empty
+  }
+
+  return [];
+}
 
 export type ListRecipesInput = {
   page: number;
@@ -339,7 +425,7 @@ export function buildListRecipesQuery(input: ListRecipesInput): { sql: string; p
     params.push(input.launchSeed);
   }
 
-  const sql = `SELECT recipes.id, title, difficultyScore, preparationTime, description, timePeriod, warning, region, alternativeNames, usedFor, ingredients, detailedMeasurements, preparationSteps, usage, historicalContext, scientificEvidence, randomKey, isPremium, imageLocalPath,
+  const sql = `SELECT recipes.id, title, difficultyScore, preparationTime, description, timePeriod, warning, region, alternativeNames, usedFor, ingredients, detailedMeasurements, preparationSteps, usage, storage, equipmentNeeded, historicalContext, scientificEvidence, randomKey, isPremium, imageLocalPath,
 CASE WHEN recipe_favorites.recipeId IS NULL THEN 0 ELSE 1 END AS isFavorite
 FROM recipes
 LEFT JOIN recipe_favorites ON recipe_favorites.recipeId = recipes.id
@@ -418,12 +504,19 @@ export async function listRecipesAsync(
   });
 
   const [rows, countRow] = await Promise.all([
-    db.getAllAsync<RecipeRow>(sql, ...params),
+    db.getAllAsync<RawRecipeRow>(sql, ...params),
     db.getFirstAsync<{ count: number }>(countSql, ...countParams),
   ]);
 
+  const parsedRows: RecipeRow[] = rows.map((row) => ({
+    ...row,
+    usage: parseUsage(row.usage),
+    storage: parseStorage(row.storage),
+    equipmentNeeded: parseEquipmentNeeded(row.equipmentNeeded),
+  }));
+
   return {
-    rows,
+    rows: parsedRows,
     totalCount: countRow?.count ?? 0,
   };
 }

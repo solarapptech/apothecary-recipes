@@ -10,16 +10,43 @@ export function normalizeSearchText(input: string): string {
   return punctuationAsSpace.trim().replace(/\s+/g, ' ').toLowerCase();
 }
 
+type UsageInput = {
+  summary: string;
+  dosage: string;
+  frequency: string;
+  maxDuration: string;
+  applicationAreas: string;
+  bestPractices: string;
+} | string;
+
+export function buildUsageSearchText(input: UsageInput): string {
+  if (typeof input === 'string') {
+    return input;
+  }
+
+  return [
+    input.summary,
+    input.dosage,
+    input.frequency,
+    input.maxDuration,
+    input.applicationAreas,
+    input.bestPractices,
+  ]
+    .filter((value) => value?.trim())
+    .join(' ');
+}
+
 export function buildRecipeSearchTextNormalized(input: {
   title: string;
   description: string;
   ingredients: string;
   preparationSteps: string;
   usedFor: string;
-  usage: string;
+  usage: UsageInput;
   region: string;
   alternativeNames?: string | null;
 }): string {
+  const usageText = buildUsageSearchText(input.usage);
   return normalizeSearchText(
     [
       input.title,
@@ -27,7 +54,7 @@ export function buildRecipeSearchTextNormalized(input: {
       input.ingredients,
       input.preparationSteps,
       input.usedFor,
-      input.usage,
+      usageText,
       input.region,
       input.alternativeNames ?? '',
     ].join(' ')

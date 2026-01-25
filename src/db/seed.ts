@@ -7,7 +7,7 @@ import { SCHEMA_SQL } from './schema';
 const FREE_RECIPES_BASE: Recipe[] = require('../data/free-recipes.json');
 
 export const TARGET_FREE_RECIPE_COUNT = 100;
-export const CURRENT_SEED_VERSION = 'free-100-v1-search-normalized';
+export const CURRENT_SEED_VERSION = 'free-100-v2-usage-storage-equipment';
 
 type GetFirstResult<T> = T | null | undefined;
 
@@ -43,6 +43,8 @@ export async function ensureSchemaAsync(db: DbLike): Promise<void> {
     { sql: 'ALTER TABLE recipes ADD COLUMN detailedMeasurements TEXT NOT NULL DEFAULT ""' },
     { sql: 'ALTER TABLE recipes ADD COLUMN preparationSteps TEXT NOT NULL DEFAULT ""' },
     { sql: 'ALTER TABLE recipes ADD COLUMN usage TEXT NOT NULL DEFAULT ""' },
+    { sql: 'ALTER TABLE recipes ADD COLUMN storage TEXT NOT NULL DEFAULT ""' },
+    { sql: 'ALTER TABLE recipes ADD COLUMN equipmentNeeded TEXT NOT NULL DEFAULT "[]"' },
     { sql: 'ALTER TABLE recipes ADD COLUMN searchTextNormalized TEXT NOT NULL DEFAULT ""' },
   ];
 
@@ -141,6 +143,9 @@ async function clearRecipesAsync(db: DbLike): Promise<void> {
 
 async function insertRecipeAsync(db: DbLike, recipe: Recipe): Promise<void> {
   const randomKey = computeDeterministicRandomKey(recipe);
+  const usageJson = JSON.stringify(recipe.usage ?? {});
+  const storageJson = JSON.stringify(recipe.storage ?? {});
+  const equipmentNeededJson = JSON.stringify(recipe.equipmentNeeded ?? []);
   const searchTextNormalized = buildRecipeSearchTextNormalized({
     title: recipe.title,
     description: recipe.description,
@@ -167,11 +172,13 @@ async function insertRecipeAsync(db: DbLike, recipe: Recipe): Promise<void> {
       detailedMeasurements,
       preparationSteps,
       usage,
+      storage,
+      equipmentNeeded,
       historicalContext,
       scientificEvidence,
       searchTextNormalized,
       randomKey
-    ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,
+    ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,
     recipe.title,
     recipe.difficultyScore,
     recipe.preparationTime,
@@ -184,7 +191,9 @@ async function insertRecipeAsync(db: DbLike, recipe: Recipe): Promise<void> {
     recipe.ingredients,
     recipe.detailedMeasurements,
     recipe.preparationSteps,
-    recipe.usage,
+    usageJson,
+    storageJson,
+    equipmentNeededJson,
     recipe.historicalContext,
     recipe.scientificEvidence,
     searchTextNormalized,

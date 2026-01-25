@@ -1,0 +1,10785 @@
+{
+  "generatedAt": "2026-01-24T22:28:24.440Z",
+  "ingredientDefaults": {
+    "description": "",
+    "ml": "",
+    "family": "",
+    "scientificName": "",
+    "usages": "",
+    "activeConstituents": "",
+    "safetyClassification": "",
+    "dosageGuidelines": ""
+  },
+  "ingredientKeys": [
+    "(e.g.",
+    "(optional)",
+    "absinthe herb",
+    "acacia",
+    "acacia (powdered)",
+    "activated charcoal",
+    "adhatoda",
+    "african ginger",
+    "african pepper",
+    "african pepper (crushed)",
+    "african pepper (finely powdered)",
+    "african pepper (whole)",
+    "african pepper seeds/pods",
+    "african potato",
+    "african potato corm (chopped)",
+    "african potato tuber (powdered)",
+    "african wormwood aerial parts",
+    "agave nectar (from agave americana or tequilana)",
+    "aged tangerine/mandarin",
+    "agnimantha (chopped)",
+    "agnimantha)",
+    "agrimony aerial parts (flowering)",
+    "agrimony leaf/flower",
+    "aguaymanto husks/leaves",
+    "ajmoda (crushed)",
+    "ajwain",
+    "ajwain (carom)",
+    "ají panca chili",
+    "akee (ground)",
+    "alcohol",
+    "alcohol (e.g.",
+    "alcohol (grappa or grain spirit)",
+    "alcohol (optional)",
+    "alcohol (or high-proof vodka)",
+    "alcohol (vodka or grain spirit)",
+    "alcohol/water",
+    "algae",
+    "aloe (sabr) (powdered)",
+    "aloe ferox (yellow/brown gum)",
+    "aloe vera",
+    "aloe vera gel",
+    "aloe vera inner gel",
+    "aloe vera juice (kumari)",
+    "aloe vera juice/herbal juices",
+    "alpaca/llama dung",
+    "alum (potassium aluminum sulfate)",
+    "alum (shabba)",
+    "amaranth",
+    "american ginseng",
+    "amla",
+    "amla (indian gooseberry)",
+    "amla (powdered)",
+    "and sutherlandia leaves/stems",
+    "angelic",
+    "angelica",
+    "angelica (archangelica officinalis)",
+    "angelica (minced)",
+    "angelica archangelica",
+    "angelica dahurica",
+    "anise",
+    "anise (lightly crushed)",
+    "anise (pimpinella anisum)",
+    "annatto",
+    "apple cider vinegar",
+    "apple cider vinegar (acv)",
+    "aquavit)",
+    "arabic",
+    "arabic (as binder)",
+    "arabic (powdered)",
+    "arjuna (powdered)",
+    "arnica",
+    "arnica (mexican species)",
+    "arnica heads",
+    "aronia",
+    "artemisia annua leaves/flowers",
+    "asafoetida",
+    "asafoetida (hing)",
+    "asafoetida (powdered)",
+    "asanté (shredded)",
+    "ashoka",
+    "ashwagandha",
+    "ashwagandha (powdered)",
+    "astragalus (sliced)",
+    "astragalus slices",
+    "atractylodes (finely powdered)",
+    "ayahuasca vine",
+    "baking soda (food grade)",
+    "bala",
+    "bala)",
+    "balsam of peru (myroxylon balsamum)",
+    "balsam pear (mashed)",
+    "bamboo",
+    "bamboo manna (vamshalochana)",
+    "bamboo sap/silica (tian zhu huang powder)",
+    "baobab",
+    "baobab (crushed)",
+    "baobab pulp (powdered)",
+    "barberry fruit/root",
+    "bark/root mucilaginous (e.g.",
+    "basil",
+    "basil (crushed)",
+    "bay",
+    "bayberry (powdered)",
+    "bearberry",
+    "bee balm leaves/flowers",
+    "beeswax",
+    "beets (diced)",
+    "belladonna leaves/root (dried)",
+    "benzoin",
+    "betony",
+    "betony (powdered)",
+    "betony and flowering top (stachys officinalis)",
+    "bhringraj juice",
+    "bibhitaki (1:2:4 or ratio)",
+    "bibhitaki (deshelled)",
+    "bilberries",
+    "bilberry",
+    "bilberry and",
+    "bilva",
+    "bilva pulp (powdered)",
+    "biota (lightly crushed)",
+    "birch",
+    "birch (boiled down)",
+    "birch (shredded)",
+    "birch (tapped from tree)",
+    "birch extract",
+    "birch tar oil",
+    "birch tar oil (distilled)",
+    "bitter (crushed/juiced)",
+    "bitter kola nut",
+    "bitter melon (juiced)",
+    "bitter melon vine/leaf/fruit (chopped)",
+    "black",
+    "black (ground)",
+    "black cohosh",
+    "black cohosh (chopped)",
+    "black currant",
+    "black currants",
+    "black haw",
+    "black hellebore (helleborus niger)",
+    "black hellebore (mashed)",
+    "black oil",
+    "black pepper",
+    "black pepper (freshly ground)",
+    "black sesame",
+    "black tea bags",
+    "black walnut green hulls",
+    "blackthorn (sloes)",
+    "blanched almonds (ground)",
+    "bloodroot",
+    "blue cohosh",
+    "bog rosemary",
+    "bogbean",
+    "boiling water",
+    "boldo",
+    "boneset leaves/flowers",
+    "borage and (borago officinalis)",
+    "borax (suhaga/tankana)",
+    "boscia (chopped)",
+    "brahmi (bacopa) juice/paste",
+    "brahmi (gotu kola) juice/paste",
+    "brahmi (mashed)",
+    "brandy or spirit)",
+    "brandy)",
+    "brandy/vodka",
+    "brandy/wine",
+    "breadfruit (chopped)",
+    "broom tops (flowering parts)",
+    "broth base (optional)",
+    "buchu",
+    "buckthorn (aged year)",
+    "bulbine gel/sap",
+    "burdock (arctium lappa)",
+    "burdock (crushed)",
+    "burdock (local species)",
+    "burdock (sliced)",
+    "burnet saxifrage",
+    "bushwillow",
+    "cabbage (shredded)",
+    "cacao paste (unsweetened)",
+    "calamint and",
+    "calamint leaf/flower",
+    "calamus (acorus calamus)",
+    "calamus (rhizome)",
+    "calcined gypsum (shi gao)",
+    "calendula (fresh/dried)",
+    "california poppy aerial parts",
+    "camphor",
+    "camphor essential oil/crystals",
+    "camwood (osun)",
+    "cane sugar",
+    "cane sugar (or honey)",
+    "caraway",
+    "caraway (carum carvi)",
+    "caraway (crushed)",
+    "caraway (lightly crushed)",
+    "cardamom",
+    "cardamom (ground)",
+    "carob (crushed)",
+    "carob (ground into powder)",
+    "carrier oil",
+    "carrier oil (e.g.",
+    "carrier oil (olive)",
+    "carrier oil (olive/almond)",
+    "carrier oil (olive/sunflower)",
+    "carrier oil (optional)",
+    "carrier oil (shea butter/palm oil)",
+    "carrier oil/fat",
+    "carrier oil/petroleum jelly",
+    "carrot",
+    "cascara (aged year)",
+    "cassava (crushed)",
+    "cassia sieberiana pulp (mashed)",
+    "castor oil",
+    "castor oil (cold pressed)",
+    "cat's claw inner (chopped)",
+    "catechu heartwood extract (powdered)",
+    "cattail (ground)",
+    "cayenne",
+    "cedar nuts (siberian pine)",
+    "celandine aerial parts/root",
+    "chaga",
+    "chaga chunks (crushed)",
+    "chaga chunks (or powder)",
+    "chaga mushroom chunks",
+    "chamomile",
+    "chamomile (matricaria chamomilla)",
+    "chanca piedra aerial parts",
+    "chaparral leaf/stem",
+    "charcoal or ember",
+    "charcoal/ember",
+    "chaste tree",
+    "chañar (chopped)",
+    "cherry",
+    "cherry (dried/shredded)",
+    "chewed or khat",
+    "chia",
+    "chicory",
+    "chile de árbol",
+    "chili (cayenne)",
+    "chirata",
+    "chitrak",
+    "chrysanthemum",
+    "chuan xiong (sliced)",
+    "chuchuhuasi",
+    "chuchuhuasi (chopped)",
+    "cinchona",
+    "cinchona (local species)",
+    "cinnamon",
+    "cinnamon essential oil",
+    "cinnamon)",
+    "cistus leaves/flowers",
+    "claret)",
+    "clarified butter (ghee)",
+    "clay",
+    "cloudberries",
+    "cloudberry",
+    "cloudberry and",
+    "cloudberry leaves/root",
+    "clove",
+    "cloves",
+    "coarse rock salt (warmed)",
+    "coarse sea salt",
+    "coca",
+    "coca (whole/crushed)",
+    "cocklebur (crushed)",
+    "cocoa butter)",
+    "coconut oil",
+    "coconut oil)",
+    "coconut)",
+    "coconut/olive oil",
+    "codonopsis slices",
+    "colchicum seed/corm (powdered)",
+    "cold-pressed baobab",
+    "cold-pressed black oil",
+    "cold-pressed macadamia nut oil",
+    "cold-pressed marula oil",
+    "cold-pressed moringa (clarified oil)",
+    "cold-pressed safflower",
+    "cold-pressed sea buckthorn (pulp/seed)",
+    "cold-pressed sesame oil",
+    "cold-pressed siberian pine nuts",
+    "cold-pressed ximenia",
+    "cold-pressed ximenia oil",
+    "colloidal oatmeal (finely ground)",
+    "colocynth pulp (mashed)",
+    "colocynth pulp (powdered)",
+    "coltsfoot",
+    "coltsfoot (mashed)",
+    "coltsfoot and",
+    "coltsfoot flower/leaf",
+    "coltsfoot leaves/flowers",
+    "combretum (powdered)",
+    "comfrey (crushed)",
+    "comfrey (powdered)",
+    "comfrey (symphytum officinale)",
+    "cooked rice",
+    "copal (small chips)",
+    "copal pieces (white or gold)",
+    "copper (tamra)",
+    "coptis (crushed)",
+    "coral (praval)",
+    "cordyceps fruiting body",
+    "cordyceps mushrooms/powder",
+    "coriander (lightly crushed)",
+    "costus (powdered)",
+    "cotton/linen fabric",
+    "cowslip",
+    "cramp (shredded)",
+    "cranberries (fresh or frozen)",
+    "cranberry",
+    "cream of tartar (food grade)",
+    "cretan dittany (origanum dictamnus)",
+    "culver's (powdered)",
+    "cumin",
+    "dagga leaves/flowers",
+    "damask rose petals",
+    "damiana",
+    "dandelion (roasted)",
+    "dang gui (sliced/chopped)",
+    "dark brown sugar",
+    "daruharidra (powdered)",
+    "dashamula",
+    "dashamula)",
+    "date palm pollen",
+    "date pits (roasted and ground)",
+    "dates (pitted)",
+    "decoction of (e.g.",
+    "deer (maral/red) antler velvet",
+    "devil's claw",
+    "devil's claw (chopped)",
+    "devil's claw (sliced/chopped)",
+    "devil's claw extract",
+    "dhataki",
+    "dhataki (fermentation starter)",
+    "different herbs (e.g.",
+    "dogwood",
+    "dong quai slices",
+    "dried",
+    "earthworms (lumbricus terrestris)",
+    "echinacea",
+    "echinacea (chopped)",
+    "echinacea (sliced)",
+    "egg white (as binder)",
+    "egg white/water",
+    "elderberries (dried or fresh)",
+    "elderberry (sambucus nigra)",
+    "elecampane",
+    "elecampane (inula helenium)",
+    "eleuthero",
+    "eleuthero (sliced)",
+    "epazote",
+    "epazote leaves/seeds",
+    "ephedra (chopped)",
+    "etc. (8 total)",
+    "etc.)",
+    "eucalyptus (crushed) or essential oil",
+    "eucalyptus oil (optional)",
+    "euphorbia (milky latex)",
+    "euphorbia (powdered)",
+    "euphorbia hirta herb",
+    "euphorbia tirucalli latex (sap)",
+    "european ash",
+    "fennel",
+    "fennel (crushed)",
+    "fennel (roasted/raw)",
+    "fennel (shatapushpi)",
+    "fenugreek",
+    "fenugreek (ground)",
+    "fenugreek (powdered)",
+    "fermented black soybeans (paste form)",
+    "fermented ume plums (paste)",
+    "fermenting agent (e.g.",
+    "ferric oxide (calamine)",
+    "fever tea",
+    "feverfew",
+    "feverfew leaf/flower",
+    "ficus benghalensis)",
+    "figs",
+    "figs (chopped)",
+    "fir/spruce",
+    "fire",
+    "fireweed (fermented)",
+    "flannel cloth",
+    "flaxseed (linseed)",
+    "flaxseed (meal)",
+    "flaxseed)",
+    "flaxseeds",
+    "flour",
+    "flour/honey binder",
+    "forest woundwort",
+    "frankincense (powdered)",
+    "fresh",
+    "fresh/dried epazote",
+    "fresh/frozen cranberries",
+    "freshly black pepper",
+    "fringe tree",
+    "fu ling (finely powdered)",
+    "galbanum (gum)",
+    "garlic",
+    "garlic (crushed)",
+    "garlic (mashed)",
+    "garlic (peeled)",
+    "ghee",
+    "ghee (clarified butter)",
+    "ghee/butter",
+    "ghee/honey",
+    "gin (or strong vodka)",
+    "ginger",
+    "ginger (crushed)",
+    "ginger (grated)",
+    "ginger (optional)",
+    "ginger (slice)",
+    "ginger (sliced)",
+    "ginger (small piece)",
+    "ginger slices",
+    "gingko (chopped)",
+    "ginkgo",
+    "ginseng",
+    "ginseng (powdered)",
+    "ginseng extract (tincture)",
+    "glehnia (finely powdered)",
+    "glycerin",
+    "glycerin (or sugar)",
+    "goat's rue aerial parts",
+    "goji",
+    "goji and chrysanthemum",
+    "gokshura",
+    "gold (swarna)",
+    "golden seal",
+    "goldenrod aerial parts",
+    "goldenseal",
+    "goldenseal (powdered)",
+    "gotu kola (mashed)",
+    "grain alcohol (vodka)",
+    "grain spirit (optional)",
+    "green black walnut hulls",
+    "green tea powder/leaves",
+    "griffonia (crushed)",
+    "guacatonga",
+    "guaco",
+    "guaco (fresh or dried)",
+    "guarana",
+    "guarana (ground to paste)",
+    "guduchi",
+    "guduchi (chopped)",
+    "guduchi (juiced)",
+    "guggul",
+    "guggul (powdered)",
+    "gypsum (godanti)",
+    "hadjod (bone setter)",
+    "hardened acacia pieces",
+    "haritaki",
+    "haritaki (abhaya)",
+    "harungana",
+    "hawthorn berries/slices",
+    "heat source",
+    "heather",
+    "hedge mustard (sisymbrium officinale) aerial parts",
+    "hellebore (finely powdered)",
+    "hemlock (mashed)",
+    "hemp (hulled or whole)",
+    "hemp agrimony aerial parts",
+    "henna",
+    "henna (crushed)",
+    "herbal juices",
+    "hercules' club (small piece)",
+    "hibiscus",
+    "hibiscus (calyxes)",
+    "hibiscus calyxes",
+    "hierba del sapo aerial parts",
+    "hierba mora",
+    "high umf (unique manuka factor) manuka honey",
+    "high-proof alcohol (vodka/brandy)",
+    "high-quality",
+    "highly grape alcohol (95% ethanol)",
+    "himsra root/bark (chopped)",
+    "honey",
+    "honey (optional emulsifier)",
+    "honey (optional)",
+    "honey (or sugar)",
+    "honey or water",
+    "honey)",
+    "honey/milk",
+    "honey/piloncillo",
+    "honey/piloncillo (optional)",
+    "honey/sugar",
+    "honey/wax (optional)",
+    "honeysuckle",
+    "honeysuckle (jin yin hua) and forsythia (lian qiao)",
+    "hoodia (chopped)",
+    "hop",
+    "hops (humulus lupulus)",
+    "horehound herb",
+    "horehound herb (decocted)",
+    "horehound leaves/flowers",
+    "horseradish (grated)",
+    "horsetail aerial parts",
+    "horsetail aerial parts (dried/powdered)",
+    "horsetail herb",
+    "horsetail root/rhizome (powdered)",
+    "houttuynia",
+    "huamanpinta flowers/leaves",
+    "hundreds of ingredients (e.g.",
+    "hyssop and",
+    "hyssop leaves/flowers",
+    "ice",
+    "iceland moss",
+    "iceland moss (lichen)",
+    "icelandic moss",
+    "icelandic moss lichen",
+    "iron (loha)",
+    "iron oxide (mandur)",
+    "isatis (ban lan gen) and (da qing ye)",
+    "isatis slices",
+    "jaggery (sugar)",
+    "jaggery (unrefined sugar)",
+    "jambu (finely powdered)",
+    "japanese knotweed (chopped)",
+    "japanese knotweed slices",
+    "jasmine",
+    "jatamamsi",
+    "jewelweed stems/leaves",
+    "jewelweed stems/leaves (mashed)",
+    "joe pye weed",
+    "jujube dates (optional)",
+    "jujube dates (pitted)",
+    "juniper",
+    "juniper (crushed)",
+    "juniper (lightly crushed)",
+    "kapikachhu (powdered)",
+    "karanja oil (cold-pressed)",
+    "katuki",
+    "katuki (finely powdered)",
+    "kawakawa (crushed)",
+    "kawakawa sap/gum",
+    "khadira (acacia catechu) heartwood decoction",
+    "khadira heartwood (chopped)",
+    "khat leaves/tender shoots",
+    "kiaat (chopped)",
+    "kigelia (powdered)",
+    "kigelia (pulp)",
+    "kigelia pulp",
+    "kinkéliba",
+    "koji starter (aspergillus oryzae)",
+    "kombu/kelp seaweed",
+    "korean mint (mashed)",
+    "korean mint leaves/flowers",
+    "koromiko (crushed)",
+    "kudzu",
+    "kutaja",
+    "kutaja (shredded)",
+    "kutjera (desert raisins)",
+    "kutki root/rhizome (powdered)",
+    "kuzu (starch)",
+    "kuzu slices/powder",
+    "kuzu starch/powder",
+    "kōwhai (inner layer)",
+    "labrador tea",
+    "larch (inner bark)",
+    "larch (turpentine)",
+    "larch tree (crude)",
+    "lard",
+    "lard (or olive oil)",
+    "lard or olive oil)",
+    "lard/beeswax",
+    "lard/fat",
+    "lard/oil",
+    "lard/olive oil",
+    "lard/tallow (or shea butter)",
+    "lavender",
+    "lavender (lavandula angustifolia)",
+    "lavender (ustukhuddus)",
+    "lemon",
+    "lemon juice",
+    "lemon myrtle",
+    "lemon or lime juice",
+    "lemon slice",
+    "lettuce herb (decocted)",
+    "lettuce leaf/stem",
+    "lettuce leaves/flowering tops",
+    "licorice",
+    "licorice (fresh or dried)",
+    "licorice (powdered)",
+    "licorice (section of root)",
+    "licorice (shredded)",
+    "licorice (yashtimadhu) paste/powder",
+    "licorice pieces",
+    "licorice slices",
+    "lime juice",
+    "lime water",
+    "lime/lemon juice",
+    "linden (lipa)",
+    "linden (tilia)",
+    "lingonberries",
+    "lippia alba leaves/flowers",
+    "live saccharomyces boulardii yeast (capsule/powder)",
+    "lobelia herb (leaves/seeds)",
+    "lodhra (finely powdered)",
+    "long pepper (pippali)",
+    "longan (flesh)",
+    "lotus",
+    "lovage (rhizome)",
+    "lungwort",
+    "lungwort (powdered)",
+    "maca (finely powdered)",
+    "maca (yellow",
+    "magnolia (finely powdered)",
+    "mahanarayana thailam)",
+    "mallow (or leaf)",
+    "mallow leaves/flowers",
+    "mandrake (sliced)",
+    "mango",
+    "manjistha",
+    "manjistha (chopped)",
+    "maral (rhaponticum carthamoides)",
+    "marigold flowers/leaves",
+    "marjoram leaf/flower",
+    "marjoram leaves/flowers",
+    "marsh tea/wild rosemary",
+    "marshmallow",
+    "marshmallow (althaea officinalis)",
+    "marshmallow (chopped)",
+    "marshmallow (decocted)",
+    "marula",
+    "mastic (tears) or tincture",
+    "mayapple (powdered resin)",
+    "mayapple (powdered)",
+    "maypop pulp",
+    "maytenus",
+    "meadowsweet and",
+    "meadowsweet flowers/leaves",
+    "meadowsweet flowers/leaves (finely powdered)",
+    "meadowsweet leaf/flower",
+    "meadowsweet tops (filipendula ulmaria)",
+    "medicated oil (e.g.",
+    "mercury",
+    "mercury (parada)",
+    "mexican cinnamon sticks (cinnamomum verum)",
+    "mezcal/tequila (100% agave)",
+    "milk",
+    "milk (optional)",
+    "milk or water",
+    "milk/water",
+    "millet grain",
+    "mint",
+    "mint essential oil",
+    "mint/lemon",
+    "mint/raisins",
+    "molasses (black treacle)",
+    "moringa",
+    "motherwort aerial parts",
+    "mugwort",
+    "mugwort (artemisia vulgaris) flowering tops",
+    "mugwort and",
+    "mugwort floss (lit) or compress",
+    "mugwort leaves/stems",
+    "mullein",
+    "mullein and",
+    "mullein oil",
+    "mullein oil (verbascum thapsus)",
+    "musta (finely powdered)",
+    "musta root/rhizome (chopped)",
+    "musta root/rhizome (powdered)",
+    "musta)",
+    "mustard",
+    "mustard (or powder)",
+    "muña",
+    "myrrh",
+    "myrrh (powdered)",
+    "myrrh tears (crushed)",
+    "myrrh tincture",
+    "māmaku pith/sap",
+    "neem",
+    "neem (chopped)",
+    "neem (crushed)",
+    "neem (mashed)",
+    "nettle",
+    "nettle (ripe and dried)",
+    "nettle leaves/roots",
+    "nettle leaves/stems",
+    "nettle slices",
+    "neutral grain spirit (e.g.",
+    "nile acacia (resin)",
+    "non-iodized salt",
+    "nopal cactus pads (inner pulp)",
+    "nutmeg (freshly grated)",
+    "oak (inner bark)",
+    "oak (quercus robur)",
+    "oak galls (oak apples)",
+    "oat straw/green tops",
+    "oatmeal",
+    "oil (e.g.",
+    "oil/lard",
+    "olive (crushed)",
+    "olive oil",
+    "olive oil (extra virgin)",
+    "olive oil (or lard)",
+    "olive oil (or sunflower oil)",
+    "olive oil)",
+    "olive oil/lard",
+    "olive oil/linseed oil",
+    "olive or sunflower)",
+    "onion (red or white)",
+    "opium",
+    "opium latex (from p. somniferum)",
+    "or african ginger (rhizome)",
+    "or birch",
+    "or calamus (small piece)",
+    "or chamomile",
+    "or chervil",
+    "or cola nut (chunk)",
+    "or cola nut piece",
+    "or dandelion (taraxacum officinale)",
+    "or elderberries",
+    "or elderflowers",
+    "or eucalyptus",
+    "or fadogia (section of root)",
+    "or figs (mashed)",
+    "or frozen bilberries",
+    "or frozen lingonberries",
+    "or hawthorn",
+    "or kakadu plum",
+    "or kava (finely powdered)",
+    "or khat leaves/shoots",
+    "or latex/sap",
+    "or lemongrass",
+    "or lettuce",
+    "or plantain",
+    "or red)",
+    "or rhodiola (small slice)",
+    "or rose hips (rosa canina/rugosa)",
+    "or steamed red ginseng (sliced)",
+    "or sumac (drupes)",
+    "or sweet flag (small piece)",
+    "or white poplar",
+    "orange",
+    "oregano leaves/flowers",
+    "origanum",
+    "osha (chopped)",
+    "osha slices",
+    "other herbs",
+    "other herbs (anise)",
+    "over complex ingredients (e.g.",
+    "over herbs",
+    "over herbs (e.g.",
+    "over other herbs (e.g.",
+    "palm (naturally fermented)",
+    "palm oil",
+    "palo azul chips",
+    "palo santo shavings",
+    "panax ginseng",
+    "panax ginseng slices",
+    "pansy aerial parts",
+    "papaya (ground)",
+    "passionflower aerial parts",
+    "patala",
+    "pau d'arco inner",
+    "pau d'arco inner (chopped)",
+    "pelargonium",
+    "pelargonium (powdered)",
+    "pellitory of the wall (parietaria officinalis) aerial parts",
+    "pennyroyal",
+    "pennyroyal (mentha pulegium)",
+    "pennyroyal leaves/flowers",
+    "perilla",
+    "persimmon calyx (stem base)",
+    "peruvian balsam",
+    "pharmaceutical grade epsom salts (magnesium sulfate)",
+    "piloncillo/honey",
+    "pimento and (crushed)",
+    "pine",
+    "pine (crushed)",
+    "pine (scots pine or cedar)",
+    "pine (scots pine or spruce)",
+    "pine (spring harvest)",
+    "pine/spruce (pitch)",
+    "pine/spruce buds/tips",
+    "pineapple (optional)",
+    "pineapple/quince",
+    "pippali",
+    "pippali (crushed)",
+    "pistachio (mastic gum)",
+    "plain",
+    "plain sesame oil (lukewarm)",
+    "plantain",
+    "plantain (whole)",
+    "pleurisy (sliced)",
+    "poke (finely mashed)",
+    "poke (mashed)",
+    "poke (sliced)",
+    "pomegranate",
+    "pomegranate (petals)",
+    "pomegranate juice",
+    "pomegranate seed/rind",
+    "poppy (ground)",
+    "poria (finely powdered)",
+    "powdered",
+    "prepared (cured) fo-ti",
+    "prepared (steamed/dried) red ginseng",
+    "prepared he shou wu (cooked)",
+    "prepared rehmannia (cooked in wine)",
+    "press",
+    "prickly pear pulp (strained)",
+    "processed (calcined) oyster shell",
+    "processed oyster shell (finely powdered)",
+    "propolis",
+    "prunus (powdered)",
+    "psyllium husk powder/whole husks",
+    "pulque (fermented agave sap)",
+    "punarnava",
+    "punarnava (chopped)",
+    "punarnava root/herb",
+    "pure",
+    "pure australian sandalwood essential oil",
+    "pure cod liver oil",
+    "pure essential oil",
+    "pure frankincense (powdered)",
+    "pure frankincense tears (medium-sized)",
+    "pure kunzea essential oil",
+    "pure medicinal clay (food grade)",
+    "pure mustard oil (cold-pressed)",
+    "pure rose water",
+    "pure rose water (distillate)",
+    "pure rose water (edible grade)",
+    "pure tea tree essential oil",
+    "pure turpentine oil",
+    "pure unrefined shea butter",
+    "pure virgin olive oil",
+    "purple corn cobs",
+    "pygeum (shredded)",
+    "quality red wine (e.g.",
+    "quassia chips",
+    "quebracho (chopped)",
+    "queen anne's lace (crushed)",
+    "queen of the meadow",
+    "quince",
+    "quinoa grain",
+    "quisqualis (pounded)",
+    "raspberries",
+    "raspberry",
+    "rauwiri seaweed (karengo)",
+    "raw",
+    "red clay brick",
+    "red clover",
+    "red clover blossoms (dried)",
+    "red dates (jujube fruit)",
+    "red lentils",
+    "red poppy petals (corn poppy)",
+    "red wine",
+    "reindeer lichen",
+    "reindeer moss (cetraria)",
+    "reindeer moss (icelandic moss)",
+    "reishi mushroom (finely powdered)",
+    "reishi slices",
+    "reishi slices/powder",
+    "rendered llama or alpaca fat",
+    "rest harrow",
+    "rhenish/rhine wine)",
+    "rhodiola",
+    "rhodiola rosea",
+    "riesling)",
+    "rimu sap/gum",
+    "ripe cloudberries",
+    "ripe noni",
+    "roasted and chicory",
+    "rock salt",
+    "rock salt (pinch)",
+    "rock sugar",
+    "rock sugar (mishri)",
+    "rock sugar (sitopala)",
+    "roman chamomile",
+    "rooibos leaf/stem",
+    "rooibos leaves/stems",
+    "rose hips",
+    "rose hips (crushed)",
+    "rose hips (mashed)",
+    "rose petals",
+    "rose water",
+    "rose water (distillate)",
+    "rose water/herbal juice",
+    "rosemary",
+    "rosemary sprigs",
+    "rowan (cooked/processed)",
+    "rue",
+    "rue (ruta graveolens)",
+    "rue (ruta graveolens) leaves/stems",
+    "rue (small amount)",
+    "rue and",
+    "rye bread",
+    "rye bread (dried/toasted)",
+    "sabadilla",
+    "sabadilla (ground)",
+    "saffron",
+    "saffron threads",
+    "saffron threads (powdered)",
+    "sage",
+    "sage (salvia officinalis)",
+    "salt",
+    "salt (optional)",
+    "salt (water/brine)",
+    "sandalwood",
+    "sandalwood (santalum album)",
+    "sapo skin mucus (from gland secretion)",
+    "sariva (anantmool)",
+    "sarsaparilla",
+    "sarsaparilla (sliced)",
+    "sarsaparilla slices",
+    "sassafras",
+    "savory",
+    "sceletium leaf/stem (fermented or dried)",
+    "sceletium leaves/roots",
+    "sceletium leaves/roots (fermented/crushed)",
+    "schisandra",
+    "sea buckthorn",
+    "senna",
+    "senna and",
+    "sesame",
+    "sesame oil",
+    "sesame oil (carrier)",
+    "sesame oil (taila)",
+    "sesame oil (warm)",
+    "shallaki (boswellia)",
+    "shallaki (crushed)",
+    "shatavari",
+    "shatavari (paste/juice)",
+    "shea butter",
+    "shea butter (ori)",
+    "shea butter/palm oil",
+    "shepherd's purse aerial parts",
+    "shepherd's purse herb",
+    "shiitake",
+    "shiitake mushrooms",
+    "shiitake mushrooms (sliced)",
+    "shilajit",
+    "shilajit (mineral pitch)",
+    "shirish bark/seed",
+    "shyonaka",
+    "siberian fir",
+    "siberian motherwort herb",
+    "sichuan peppercorns (ground)",
+    "sideritis (ironwort) aerial parts",
+    "silverweed aerial parts",
+    "simple syrup",
+    "skullcap herb (leaves/stems)",
+    "skunk cabbage (finely mashed)",
+    "skunk cabbage leaves/root (mashed)",
+    "slippery elm",
+    "slippery elm (finely powdered)",
+    "slippery elm inner",
+    "sloe",
+    "sloe (prunus spinosa)",
+    "soap/shampoo",
+    "solomon's seal",
+    "solomon's seal (powdered)",
+    "sorrel/hibiscus calyces",
+    "sourdough starter or a few raisins)",
+    "spelt grain (hildegard's preferred grain)",
+    "spicebush (crushed)",
+    "spicebush twigs/berries (crushed)",
+    "spices (cumin",
+    "spikenard (sliced/chopped)",
+    "spirulina",
+    "sprouted corn (jora)",
+    "spruce tips/needles",
+    "squaw vine leaves/stems",
+    "st. john's wort",
+    "star anise",
+    "steam distillation",
+    "stillingia",
+    "stone pine (crude)",
+    "stonecrop (sedum acre) aerial parts",
+    "strong alcohol (95% neutral spirit)",
+    "strong alcohol (vodka/grain spirit)",
+    "strong goldenseal decoction (strained)",
+    "strong rooibos tea",
+    "strong rosemary infusion",
+    "strong sage infusion (cooled)",
+    "strong sumac decoction (cooled)",
+    "sublimed sulfur (purified)",
+    "sugar",
+    "sugar (optional)",
+    "sugar (or honey)",
+    "sugar (or rock candy)",
+    "sugar cane juice",
+    "sugar syrup",
+    "sugar/honey",
+    "sugar/honey (optional)",
+    "sugar/jaggery",
+    "sugar/pectin",
+    "sugar/piloncillo",
+    "sugar/sweetener",
+    "sulfur",
+    "sulfur (gandhaka)",
+    "sumac (crushed)",
+    "sumac berries/powder",
+    "sumac)",
+    "sunflower or olive)",
+    "suranjan (colchicum)",
+    "sutherlandia leaves/stems",
+    "sweet gale leaves/catkins",
+    "sweet marigold leaves/flowers",
+    "sweet marjoram leaves/flowers",
+    "syrian rue",
+    "szechuan lovage slices",
+    "table salt",
+    "tagar (crushed)",
+    "talispatra (himalayan fir leaf)",
+    "tamarind pulp",
+    "tamboti chips",
+    "tangerine (sliced)",
+    "tarata leaves/bark",
+    "tejocote (cooked)",
+    "thuja twigs (leaves)",
+    "thyme",
+    "thyme (dried)",
+    "thyme and",
+    "thyme leaf/flower",
+    "thyme leaf/flower (powdered)",
+    "thyme leaves/flowers",
+    "ti kouka (inner core)",
+    "ti tree",
+    "toasted black sesame (ground)",
+    "tobacco (mashed/chewed)",
+    "toloache",
+    "tolu balsam",
+    "tormentil (rhizome)",
+    "trikatu",
+    "triphala",
+    "triphala decoction",
+    "turmeric",
+    "turmeric (grated)",
+    "turmeric slices (or powder)",
+    "turmeric)",
+    "tītoki (crushed)",
+    "umckaloabo",
+    "unpasteurized honey",
+    "unrefined red palm oil",
+    "unsweetened cranberry juice",
+    "usnea lichen (usnea barbata)",
+    "uziza seeds/leaves",
+    "vacha",
+    "vacha (sweet flag)",
+    "valerian",
+    "valerian (fresh or dried)",
+    "valerian (mashed) or",
+    "valerian (valeriana officinalis)",
+    "vamshalochana",
+    "vanilla bean",
+    "vasa (chopped)",
+    "vasaka (juiced)",
+    "vegetable glycerin",
+    "vervain and",
+    "vidanga",
+    "vinegar",
+    "virgin coconut oil (solid or liquid)",
+    "virgin olive oil",
+    "virgin olive oil (warmed)",
+    "voacanga (powdered)",
+    "vodka",
+    "vodka/brandy (50% alcohol minimum)",
+    "vodka/ethanol",
+    "warburgia",
+    "water",
+    "water (below boiling)",
+    "water (cooked to a paste)",
+    "water (hot)",
+    "water (not boiling)",
+    "water (often combined with dmt source)",
+    "water (optional)",
+    "water mint",
+    "water pepper aerial parts",
+    "water/alcohol",
+    "water/broth",
+    "water/honey",
+    "water/juice",
+    "water/milk",
+    "water/oil",
+    "water/rice",
+    "water/vinegar",
+    "watermelon",
+    "wattle (lightly crushed)",
+    "wax (beeswax or shea butter)",
+    "wax/honey binder",
+    "white ash",
+    "white fungus",
+    "white horehound",
+    "white horehound (marrubium vulgare)",
+    "white horehound (powdered)",
+    "white horehound leaf/stem",
+    "white lily petals",
+    "white oak",
+    "white peony (sliced)",
+    "white peony slices",
+    "white pine (crushed)",
+    "white pine bark/needles",
+    "white pine inner (shredded)",
+    "white poplar (shredded)",
+    "white sage bundles",
+    "white sage leaves/bundles",
+    "white willow (chopped)",
+    "white willow shreds",
+    "white willow shreds (local species)",
+    "white willow/poplar slices",
+    "white wine",
+    "white wine (e.g.",
+    "whole clove buds",
+    "willow (white willow)",
+    "wine",
+    "wine yeast",
+    "wine/brandy",
+    "witch hazel leaves/bark",
+    "witch hazel leaves/bark (mashed/extracted)",
+    "wormwood",
+    "wormwood (artemisia absinthium)",
+    "yacon (juiced and reduced)",
+    "yam",
+    "yam (chopped)",
+    "yam (sliced)",
+    "yam (sliced/chopped)",
+    "yarrow (chewed/crushed)",
+    "yarrow aerial parts (leaf/flower)",
+    "yarrow and",
+    "yarrow flower/leaf",
+    "yarrow flowers/leaves",
+    "yarrow leaves/flowers",
+    "yarrow leaves/flowers (finely powdered)",
+    "yaupon holly (lightly roasted)",
+    "yeast",
+    "yeast (or rye bread starter)",
+    "yeast/starter",
+    "yellow dock",
+    "yerba mansa",
+    "yerba maté",
+    "yerba maté leaves/stems",
+    "yerba santa",
+    "yohimbe shreds",
+    "young birch",
+    "za'atar mix (thyme",
+    "zinc (yashad)",
+    "zinc oxide",
+    "ziziphus (lightly crushed)"
+  ],
+  "ingredients": [
+    {
+      "title": "(e.g."
+    },
+    {
+      "title": "(optional)"
+    },
+    {
+      "title": "Absinthe Herb"
+    },
+    {
+      "title": "Acacia"
+    },
+    {
+      "title": "Acacia (powdered)"
+    },
+    {
+      "title": "Activated Charcoal"
+    },
+    {
+      "title": "Adhatoda"
+    },
+    {
+      "title": "African Ginger"
+    },
+    {
+      "title": "African Pepper"
+    },
+    {
+      "title": "African Pepper (crushed)"
+    },
+    {
+      "title": "African Pepper (finely powdered)"
+    },
+    {
+      "title": "African Pepper (whole)"
+    },
+    {
+      "title": "African Pepper Seeds/Pods"
+    },
+    {
+      "title": "African Potato"
+    },
+    {
+      "title": "African Potato Corm (chopped)"
+    },
+    {
+      "title": "African Potato Tuber (powdered)"
+    },
+    {
+      "title": "African Wormwood Aerial Parts"
+    },
+    {
+      "title": "Agave Nectar (from Agave Americana or tequilana)"
+    },
+    {
+      "title": "Aged Tangerine/Mandarin"
+    },
+    {
+      "title": "Agnimantha (chopped)"
+    },
+    {
+      "title": "Agnimantha)"
+    },
+    {
+      "title": "Agrimony Aerial Parts (flowering)"
+    },
+    {
+      "title": "Agrimony Leaf/Flower"
+    },
+    {
+      "title": "Aguaymanto Husks/Leaves"
+    },
+    {
+      "title": "Ajmoda (crushed)"
+    },
+    {
+      "title": "Ajwain"
+    },
+    {
+      "title": "Ajwain (Carom)"
+    },
+    {
+      "title": "Ají Panca Chili"
+    },
+    {
+      "title": "Akee (ground)"
+    },
+    {
+      "title": "Alcohol"
+    },
+    {
+      "title": "Alcohol (e.g."
+    },
+    {
+      "title": "Alcohol (Grappa or Grain Spirit)"
+    },
+    {
+      "title": "Alcohol (optional)"
+    },
+    {
+      "title": "Alcohol (or high-proof Vodka)"
+    },
+    {
+      "title": "Alcohol (Vodka or Grain Spirit)"
+    },
+    {
+      "title": "Alcohol/Water"
+    },
+    {
+      "title": "Algae"
+    },
+    {
+      "title": "Aloe (Sabr) (powdered)"
+    },
+    {
+      "title": "Aloe Ferox (yellow/brown gum)"
+    },
+    {
+      "title": "Aloe Vera"
+    },
+    {
+      "title": "Aloe Vera Gel"
+    },
+    {
+      "title": "Aloe Vera Inner Gel"
+    },
+    {
+      "title": "Aloe Vera Juice (Kumari)"
+    },
+    {
+      "title": "Aloe Vera Juice/Herbal Juices"
+    },
+    {
+      "title": "Alpaca/Llama Dung"
+    },
+    {
+      "title": "Alum (Potassium Aluminum Sulfate)"
+    },
+    {
+      "title": "Alum (Shabba)"
+    },
+    {
+      "title": "Amaranth"
+    },
+    {
+      "title": "American Ginseng"
+    },
+    {
+      "title": "Amla"
+    },
+    {
+      "title": "Amla (Indian Gooseberry)"
+    },
+    {
+      "title": "Amla (powdered)"
+    },
+    {
+      "title": "and Sutherlandia Leaves/Stems"
+    },
+    {
+      "title": "Angelic"
+    },
+    {
+      "title": "Angelica"
+    },
+    {
+      "title": "Angelica (Archangelica officinalis)"
+    },
+    {
+      "title": "Angelica (minced)"
+    },
+    {
+      "title": "Angelica Archangelica"
+    },
+    {
+      "title": "Angelica Dahurica"
+    },
+    {
+      "title": "Anise"
+    },
+    {
+      "title": "Anise (lightly crushed)"
+    },
+    {
+      "title": "Anise (Pimpinella anisum)"
+    },
+    {
+      "title": "Annatto"
+    },
+    {
+      "title": "Apple Cider Vinegar"
+    },
+    {
+      "title": "Apple Cider Vinegar (ACV)"
+    },
+    {
+      "title": "Aquavit)"
+    },
+    {
+      "title": "Arabic"
+    },
+    {
+      "title": "Arabic (as binder)"
+    },
+    {
+      "title": "Arabic (powdered)"
+    },
+    {
+      "title": "Arjuna (powdered)"
+    },
+    {
+      "title": "Arnica"
+    },
+    {
+      "title": "Arnica (Mexican species)"
+    },
+    {
+      "title": "Arnica Heads"
+    },
+    {
+      "title": "Aronia"
+    },
+    {
+      "title": "Artemisia Annua Leaves/Flowers"
+    },
+    {
+      "title": "Asafoetida"
+    },
+    {
+      "title": "Asafoetida (Hing)"
+    },
+    {
+      "title": "Asafoetida (powdered)"
+    },
+    {
+      "title": "Asanté (shredded)"
+    },
+    {
+      "title": "Ashoka"
+    },
+    {
+      "title": "Ashwagandha"
+    },
+    {
+      "title": "Ashwagandha (powdered)"
+    },
+    {
+      "title": "Astragalus (sliced)"
+    },
+    {
+      "title": "Astragalus Slices"
+    },
+    {
+      "title": "Atractylodes (finely powdered)"
+    },
+    {
+      "title": "Ayahuasca Vine"
+    },
+    {
+      "title": "Baking Soda (food grade)"
+    },
+    {
+      "title": "Bala"
+    },
+    {
+      "title": "Bala)"
+    },
+    {
+      "title": "Balsam of Peru (Myroxylon balsamum)"
+    },
+    {
+      "title": "Balsam Pear (mashed)"
+    },
+    {
+      "title": "Bamboo"
+    },
+    {
+      "title": "Bamboo Manna (Vamshalochana)"
+    },
+    {
+      "title": "Bamboo Sap/Silica (Tian Zhu Huang powder)"
+    },
+    {
+      "title": "Baobab"
+    },
+    {
+      "title": "Baobab (crushed)"
+    },
+    {
+      "title": "Baobab Pulp (powdered)"
+    },
+    {
+      "title": "Barberry Fruit/Root"
+    },
+    {
+      "title": "Bark/Root Mucilaginous (e.g."
+    },
+    {
+      "title": "Basil"
+    },
+    {
+      "title": "Basil (crushed)"
+    },
+    {
+      "title": "Bay"
+    },
+    {
+      "title": "Bayberry (powdered)"
+    },
+    {
+      "title": "Bearberry"
+    },
+    {
+      "title": "Bee Balm Leaves/Flowers"
+    },
+    {
+      "title": "Beeswax"
+    },
+    {
+      "title": "Beets (diced)"
+    },
+    {
+      "title": "Belladonna Leaves/Root (dried)"
+    },
+    {
+      "title": "Benzoin"
+    },
+    {
+      "title": "Betony"
+    },
+    {
+      "title": "Betony (powdered)"
+    },
+    {
+      "title": "Betony and Flowering Top (Stachys officinalis)"
+    },
+    {
+      "title": "Bhringraj Juice"
+    },
+    {
+      "title": "Bibhitaki (1:2:4 or ratio)"
+    },
+    {
+      "title": "Bibhitaki (deshelled)"
+    },
+    {
+      "title": "Bilberries"
+    },
+    {
+      "title": "Bilberry"
+    },
+    {
+      "title": "Bilberry and"
+    },
+    {
+      "title": "Bilva"
+    },
+    {
+      "title": "Bilva Pulp (powdered)"
+    },
+    {
+      "title": "Biota (lightly crushed)"
+    },
+    {
+      "title": "Birch"
+    },
+    {
+      "title": "Birch (boiled down)"
+    },
+    {
+      "title": "Birch (shredded)"
+    },
+    {
+      "title": "Birch (Tapped from tree)"
+    },
+    {
+      "title": "Birch Extract"
+    },
+    {
+      "title": "Birch Tar Oil"
+    },
+    {
+      "title": "Birch Tar Oil (distilled)"
+    },
+    {
+      "title": "Bitter (crushed/juiced)"
+    },
+    {
+      "title": "Bitter Kola Nut"
+    },
+    {
+      "title": "Bitter Melon (juiced)"
+    },
+    {
+      "title": "Bitter Melon Vine/Leaf/Fruit (chopped)"
+    },
+    {
+      "title": "black"
+    },
+    {
+      "title": "Black (ground)"
+    },
+    {
+      "title": "Black Cohosh"
+    },
+    {
+      "title": "Black Cohosh (chopped)"
+    },
+    {
+      "title": "Black Currant"
+    },
+    {
+      "title": "Black Currants"
+    },
+    {
+      "title": "Black Haw"
+    },
+    {
+      "title": "Black Hellebore (Helleborus niger)"
+    },
+    {
+      "title": "Black Hellebore (mashed)"
+    },
+    {
+      "title": "Black Oil"
+    },
+    {
+      "title": "Black Pepper"
+    },
+    {
+      "title": "Black Pepper (freshly ground)"
+    },
+    {
+      "title": "Black Sesame"
+    },
+    {
+      "title": "Black Tea Bags"
+    },
+    {
+      "title": "Black Walnut Green Hulls"
+    },
+    {
+      "title": "Blackthorn (Sloes)"
+    },
+    {
+      "title": "Blanched Almonds (ground)"
+    },
+    {
+      "title": "Bloodroot"
+    },
+    {
+      "title": "Blue Cohosh"
+    },
+    {
+      "title": "Bog Rosemary"
+    },
+    {
+      "title": "Bogbean"
+    },
+    {
+      "title": "Boiling Water"
+    },
+    {
+      "title": "Boldo"
+    },
+    {
+      "title": "Boneset Leaves/Flowers"
+    },
+    {
+      "title": "Borage and (Borago officinalis)"
+    },
+    {
+      "title": "Borax (Suhaga/Tankana)"
+    },
+    {
+      "title": "Boscia (chopped)"
+    },
+    {
+      "title": "Brahmi (Bacopa) Juice/Paste"
+    },
+    {
+      "title": "Brahmi (Gotu Kola) Juice/Paste"
+    },
+    {
+      "title": "Brahmi (mashed)"
+    },
+    {
+      "title": "Brandy or Spirit)"
+    },
+    {
+      "title": "Brandy)"
+    },
+    {
+      "title": "Brandy/Vodka"
+    },
+    {
+      "title": "Brandy/Wine"
+    },
+    {
+      "title": "Breadfruit (chopped)"
+    },
+    {
+      "title": "Broom Tops (flowering parts)"
+    },
+    {
+      "title": "Broth Base (optional)"
+    },
+    {
+      "title": "Buchu"
+    },
+    {
+      "title": "Buckthorn (Aged year)"
+    },
+    {
+      "title": "Bulbine Gel/Sap"
+    },
+    {
+      "title": "Burdock (Arctium lappa)"
+    },
+    {
+      "title": "Burdock (crushed)"
+    },
+    {
+      "title": "Burdock (local species)"
+    },
+    {
+      "title": "Burdock (sliced)"
+    },
+    {
+      "title": "Burnet Saxifrage"
+    },
+    {
+      "title": "Bushwillow"
+    },
+    {
+      "title": "Cabbage (shredded)"
+    },
+    {
+      "title": "Cacao paste (Unsweetened)"
+    },
+    {
+      "title": "Calamint and"
+    },
+    {
+      "title": "Calamint Leaf/Flower"
+    },
+    {
+      "title": "Calamus (Acorus calamus)"
+    },
+    {
+      "title": "Calamus (rhizome)"
+    },
+    {
+      "title": "Calcined Gypsum (Shi Gao)"
+    },
+    {
+      "title": "Calendula (fresh/dried)"
+    },
+    {
+      "title": "California Poppy Aerial Parts"
+    },
+    {
+      "title": "Camphor"
+    },
+    {
+      "title": "Camphor Essential Oil/Crystals"
+    },
+    {
+      "title": "Camwood (Osun)"
+    },
+    {
+      "title": "Cane Sugar"
+    },
+    {
+      "title": "Cane Sugar (or Honey)"
+    },
+    {
+      "title": "Caraway"
+    },
+    {
+      "title": "Caraway (Carum carvi)"
+    },
+    {
+      "title": "Caraway (crushed)"
+    },
+    {
+      "title": "Caraway (lightly crushed)"
+    },
+    {
+      "title": "Cardamom"
+    },
+    {
+      "title": "Cardamom (ground)"
+    },
+    {
+      "title": "Carob (crushed)"
+    },
+    {
+      "title": "Carob (ground into powder)"
+    },
+    {
+      "title": "Carrier Oil"
+    },
+    {
+      "title": "Carrier Oil (e.g."
+    },
+    {
+      "title": "Carrier Oil (Olive)"
+    },
+    {
+      "title": "Carrier Oil (Olive/Almond)"
+    },
+    {
+      "title": "Carrier Oil (Olive/Sunflower)"
+    },
+    {
+      "title": "Carrier Oil (optional)"
+    },
+    {
+      "title": "Carrier Oil (Shea Butter/Palm Oil)"
+    },
+    {
+      "title": "Carrier Oil/Fat"
+    },
+    {
+      "title": "Carrier Oil/Petroleum Jelly"
+    },
+    {
+      "title": "Carrot"
+    },
+    {
+      "title": "Cascara (aged year)"
+    },
+    {
+      "title": "Cassava (crushed)"
+    },
+    {
+      "title": "Cassia Sieberiana Pulp (mashed)"
+    },
+    {
+      "title": "Castor Oil"
+    },
+    {
+      "title": "Castor Oil (cold pressed)"
+    },
+    {
+      "title": "Cat's Claw Inner (chopped)"
+    },
+    {
+      "title": "Catechu Heartwood Extract (powdered)"
+    },
+    {
+      "title": "Cattail (ground)"
+    },
+    {
+      "title": "Cayenne"
+    },
+    {
+      "title": "Cedar Nuts (Siberian Pine)"
+    },
+    {
+      "title": "Celandine Aerial Parts/Root"
+    },
+    {
+      "title": "Chaga"
+    },
+    {
+      "title": "Chaga Chunks (crushed)"
+    },
+    {
+      "title": "Chaga Chunks (or powder)"
+    },
+    {
+      "title": "Chaga Mushroom chunks"
+    },
+    {
+      "title": "Chamomile"
+    },
+    {
+      "title": "Chamomile (Matricaria chamomilla)"
+    },
+    {
+      "title": "Chanca Piedra Aerial Parts"
+    },
+    {
+      "title": "Chaparral Leaf/Stem"
+    },
+    {
+      "title": "Charcoal or Ember"
+    },
+    {
+      "title": "Charcoal/Ember"
+    },
+    {
+      "title": "Chaste Tree"
+    },
+    {
+      "title": "Chañar (chopped)"
+    },
+    {
+      "title": "Cherry"
+    },
+    {
+      "title": "Cherry (dried/shredded)"
+    },
+    {
+      "title": "Chewed or Khat"
+    },
+    {
+      "title": "Chia"
+    },
+    {
+      "title": "Chicory"
+    },
+    {
+      "title": "Chile de Árbol"
+    },
+    {
+      "title": "Chili (Cayenne)"
+    },
+    {
+      "title": "Chirata"
+    },
+    {
+      "title": "Chitrak"
+    },
+    {
+      "title": "Chrysanthemum"
+    },
+    {
+      "title": "Chuan Xiong (sliced)"
+    },
+    {
+      "title": "Chuchuhuasi"
+    },
+    {
+      "title": "Chuchuhuasi (chopped)"
+    },
+    {
+      "title": "Cinchona"
+    },
+    {
+      "title": "Cinchona (local species)"
+    },
+    {
+      "title": "Cinnamon"
+    },
+    {
+      "title": "Cinnamon Essential Oil"
+    },
+    {
+      "title": "Cinnamon)"
+    },
+    {
+      "title": "Cistus Leaves/Flowers"
+    },
+    {
+      "title": "Claret)"
+    },
+    {
+      "title": "Clarified Butter (Ghee)"
+    },
+    {
+      "title": "Clay"
+    },
+    {
+      "title": "Cloudberries"
+    },
+    {
+      "title": "Cloudberry"
+    },
+    {
+      "title": "Cloudberry and"
+    },
+    {
+      "title": "Cloudberry Leaves/Root"
+    },
+    {
+      "title": "Clove"
+    },
+    {
+      "title": "Cloves"
+    },
+    {
+      "title": "Coarse Rock Salt (warmed)"
+    },
+    {
+      "title": "Coarse Sea Salt"
+    },
+    {
+      "title": "Coca"
+    },
+    {
+      "title": "Coca (whole/crushed)"
+    },
+    {
+      "title": "Cocklebur (crushed)"
+    },
+    {
+      "title": "Cocoa Butter)"
+    },
+    {
+      "title": "Coconut Oil"
+    },
+    {
+      "title": "Coconut Oil)"
+    },
+    {
+      "title": "Coconut)"
+    },
+    {
+      "title": "Coconut/Olive Oil"
+    },
+    {
+      "title": "Codonopsis Slices"
+    },
+    {
+      "title": "Colchicum Seed/Corm (powdered)"
+    },
+    {
+      "title": "Cold-Pressed Baobab"
+    },
+    {
+      "title": "Cold-Pressed Black Oil"
+    },
+    {
+      "title": "Cold-Pressed Macadamia Nut Oil"
+    },
+    {
+      "title": "Cold-Pressed Marula Oil"
+    },
+    {
+      "title": "Cold-Pressed Moringa (clarified oil)"
+    },
+    {
+      "title": "Cold-Pressed Safflower"
+    },
+    {
+      "title": "Cold-Pressed Sea Buckthorn (pulp/seed)"
+    },
+    {
+      "title": "cold-pressed Sesame Oil"
+    },
+    {
+      "title": "Cold-Pressed Siberian Pine Nuts"
+    },
+    {
+      "title": "Cold-Pressed Ximenia"
+    },
+    {
+      "title": "Cold-Pressed Ximenia Oil"
+    },
+    {
+      "title": "Colloidal Oatmeal (finely ground)"
+    },
+    {
+      "title": "Colocynth Pulp (mashed)"
+    },
+    {
+      "title": "Colocynth Pulp (powdered)"
+    },
+    {
+      "title": "Coltsfoot"
+    },
+    {
+      "title": "Coltsfoot (mashed)"
+    },
+    {
+      "title": "Coltsfoot and"
+    },
+    {
+      "title": "Coltsfoot Flower/Leaf"
+    },
+    {
+      "title": "Coltsfoot Leaves/Flowers"
+    },
+    {
+      "title": "Combretum (powdered)"
+    },
+    {
+      "title": "Comfrey (crushed)"
+    },
+    {
+      "title": "Comfrey (powdered)"
+    },
+    {
+      "title": "Comfrey (Symphytum officinale)"
+    },
+    {
+      "title": "Cooked Rice"
+    },
+    {
+      "title": "Copal (small chips)"
+    },
+    {
+      "title": "Copal pieces (White or Gold)"
+    },
+    {
+      "title": "Copper (Tamra)"
+    },
+    {
+      "title": "Coptis (crushed)"
+    },
+    {
+      "title": "Coral (Praval)"
+    },
+    {
+      "title": "Cordyceps Fruiting Body"
+    },
+    {
+      "title": "Cordyceps Mushrooms/Powder"
+    },
+    {
+      "title": "Coriander (lightly crushed)"
+    },
+    {
+      "title": "Costus (powdered)"
+    },
+    {
+      "title": "Cotton/Linen Fabric"
+    },
+    {
+      "title": "Cowslip"
+    },
+    {
+      "title": "Cramp (shredded)"
+    },
+    {
+      "title": "Cranberries (fresh or frozen)"
+    },
+    {
+      "title": "Cranberry"
+    },
+    {
+      "title": "Cream of Tartar (food grade)"
+    },
+    {
+      "title": "Cretan Dittany (Origanum dictamnus)"
+    },
+    {
+      "title": "Culver's (powdered)"
+    },
+    {
+      "title": "Cumin"
+    },
+    {
+      "title": "Dagga Leaves/Flowers"
+    },
+    {
+      "title": "Damask Rose Petals"
+    },
+    {
+      "title": "Damiana"
+    },
+    {
+      "title": "Dandelion (roasted)"
+    },
+    {
+      "title": "Dang Gui (sliced/chopped)"
+    },
+    {
+      "title": "Dark Brown Sugar"
+    },
+    {
+      "title": "Daruharidra (powdered)"
+    },
+    {
+      "title": "Dashamula"
+    },
+    {
+      "title": "Dashamula)"
+    },
+    {
+      "title": "Date Palm Pollen"
+    },
+    {
+      "title": "Date Pits (roasted and ground)"
+    },
+    {
+      "title": "Dates (pitted)"
+    },
+    {
+      "title": "Decoction of (e.g."
+    },
+    {
+      "title": "Deer (Maral/Red) Antler Velvet"
+    },
+    {
+      "title": "Devil's Claw"
+    },
+    {
+      "title": "Devil's Claw (chopped)"
+    },
+    {
+      "title": "Devil's Claw (sliced/chopped)"
+    },
+    {
+      "title": "Devil's Claw Extract"
+    },
+    {
+      "title": "Dhataki"
+    },
+    {
+      "title": "Dhataki (fermentation starter)"
+    },
+    {
+      "title": "different herbs (e.g."
+    },
+    {
+      "title": "Dogwood"
+    },
+    {
+      "title": "Dong Quai Slices"
+    },
+    {
+      "title": "Dried"
+    },
+    {
+      "title": "Earthworms (Lumbricus terrestris)"
+    },
+    {
+      "title": "Echinacea"
+    },
+    {
+      "title": "Echinacea (chopped)"
+    },
+    {
+      "title": "Echinacea (sliced)"
+    },
+    {
+      "title": "Egg White (as binder)"
+    },
+    {
+      "title": "Egg White/Water"
+    },
+    {
+      "title": "Elderberries (dried or fresh)"
+    },
+    {
+      "title": "Elderberry (Sambucus nigra)"
+    },
+    {
+      "title": "Elecampane"
+    },
+    {
+      "title": "Elecampane (Inula helenium)"
+    },
+    {
+      "title": "Eleuthero"
+    },
+    {
+      "title": "Eleuthero (sliced)"
+    },
+    {
+      "title": "Epazote"
+    },
+    {
+      "title": "Epazote Leaves/Seeds"
+    },
+    {
+      "title": "Ephedra (chopped)"
+    },
+    {
+      "title": "etc. (8 total)"
+    },
+    {
+      "title": "etc.)"
+    },
+    {
+      "title": "Eucalyptus (crushed) or Essential Oil"
+    },
+    {
+      "title": "Eucalyptus Oil (optional)"
+    },
+    {
+      "title": "Euphorbia (milky latex)"
+    },
+    {
+      "title": "Euphorbia (powdered)"
+    },
+    {
+      "title": "Euphorbia hirta Herb"
+    },
+    {
+      "title": "Euphorbia Tirucalli Latex (sap)"
+    },
+    {
+      "title": "European Ash"
+    },
+    {
+      "title": "Fennel"
+    },
+    {
+      "title": "Fennel (crushed)"
+    },
+    {
+      "title": "Fennel (roasted/raw)"
+    },
+    {
+      "title": "Fennel (Shatapushpi)"
+    },
+    {
+      "title": "Fenugreek"
+    },
+    {
+      "title": "Fenugreek (ground)"
+    },
+    {
+      "title": "Fenugreek (powdered)"
+    },
+    {
+      "title": "Fermented Black Soybeans (paste form)"
+    },
+    {
+      "title": "Fermented Ume Plums (Paste)"
+    },
+    {
+      "title": "Fermenting agent (e.g."
+    },
+    {
+      "title": "Ferric Oxide (Calamine)"
+    },
+    {
+      "title": "Fever Tea"
+    },
+    {
+      "title": "Feverfew"
+    },
+    {
+      "title": "Feverfew Leaf/Flower"
+    },
+    {
+      "title": "Ficus Benghalensis)"
+    },
+    {
+      "title": "Figs"
+    },
+    {
+      "title": "Figs (chopped)"
+    },
+    {
+      "title": "Fir/Spruce"
+    },
+    {
+      "title": "Fire"
+    },
+    {
+      "title": "Fireweed (fermented)"
+    },
+    {
+      "title": "Flannel Cloth"
+    },
+    {
+      "title": "Flaxseed (Linseed)"
+    },
+    {
+      "title": "Flaxseed (meal)"
+    },
+    {
+      "title": "Flaxseed)"
+    },
+    {
+      "title": "Flaxseeds"
+    },
+    {
+      "title": "Flour"
+    },
+    {
+      "title": "Flour/Honey Binder"
+    },
+    {
+      "title": "Forest Woundwort"
+    },
+    {
+      "title": "Frankincense (powdered)"
+    },
+    {
+      "title": "Fresh"
+    },
+    {
+      "title": "Fresh/Dried Epazote"
+    },
+    {
+      "title": "Fresh/Frozen Cranberries"
+    },
+    {
+      "title": "Freshly Black Pepper"
+    },
+    {
+      "title": "Fringe Tree"
+    },
+    {
+      "title": "Fu Ling (finely powdered)"
+    },
+    {
+      "title": "Galbanum (gum)"
+    },
+    {
+      "title": "Garlic"
+    },
+    {
+      "title": "Garlic (crushed)"
+    },
+    {
+      "title": "Garlic (mashed)"
+    },
+    {
+      "title": "Garlic (peeled)"
+    },
+    {
+      "title": "Ghee"
+    },
+    {
+      "title": "Ghee (clarified butter)"
+    },
+    {
+      "title": "Ghee/Butter"
+    },
+    {
+      "title": "Ghee/Honey"
+    },
+    {
+      "title": "Gin (or strong Vodka)"
+    },
+    {
+      "title": "Ginger"
+    },
+    {
+      "title": "Ginger (crushed)"
+    },
+    {
+      "title": "Ginger (grated)"
+    },
+    {
+      "title": "Ginger (optional)"
+    },
+    {
+      "title": "Ginger (slice)"
+    },
+    {
+      "title": "Ginger (sliced)"
+    },
+    {
+      "title": "Ginger (small piece)"
+    },
+    {
+      "title": "Ginger Slices"
+    },
+    {
+      "title": "Gingko (chopped)"
+    },
+    {
+      "title": "Ginkgo"
+    },
+    {
+      "title": "Ginseng"
+    },
+    {
+      "title": "Ginseng (powdered)"
+    },
+    {
+      "title": "Ginseng Extract (Tincture)"
+    },
+    {
+      "title": "Glehnia (finely powdered)"
+    },
+    {
+      "title": "Glycerin"
+    },
+    {
+      "title": "Glycerin (or Sugar)"
+    },
+    {
+      "title": "Goat's Rue Aerial Parts"
+    },
+    {
+      "title": "Goji"
+    },
+    {
+      "title": "Goji and Chrysanthemum"
+    },
+    {
+      "title": "Gokshura"
+    },
+    {
+      "title": "Gold (Swarna)"
+    },
+    {
+      "title": "Golden Seal"
+    },
+    {
+      "title": "Goldenrod Aerial Parts"
+    },
+    {
+      "title": "Goldenseal"
+    },
+    {
+      "title": "Goldenseal (powdered)"
+    },
+    {
+      "title": "Gotu Kola (mashed)"
+    },
+    {
+      "title": "Grain Alcohol (Vodka)"
+    },
+    {
+      "title": "Grain Spirit (optional)"
+    },
+    {
+      "title": "Green Black Walnut Hulls"
+    },
+    {
+      "title": "Green Tea Powder/Leaves"
+    },
+    {
+      "title": "Griffonia (crushed)"
+    },
+    {
+      "title": "Guacatonga"
+    },
+    {
+      "title": "Guaco"
+    },
+    {
+      "title": "Guaco (fresh or dried)"
+    },
+    {
+      "title": "Guarana"
+    },
+    {
+      "title": "Guarana (ground to paste)"
+    },
+    {
+      "title": "Guduchi"
+    },
+    {
+      "title": "Guduchi (chopped)"
+    },
+    {
+      "title": "Guduchi (juiced)"
+    },
+    {
+      "title": "Guggul"
+    },
+    {
+      "title": "Guggul (powdered)"
+    },
+    {
+      "title": "Gypsum (Godanti)"
+    },
+    {
+      "title": "Hadjod (Bone Setter)"
+    },
+    {
+      "title": "Hardened Acacia pieces"
+    },
+    {
+      "title": "Haritaki"
+    },
+    {
+      "title": "Haritaki (Abhaya)"
+    },
+    {
+      "title": "Harungana"
+    },
+    {
+      "title": "Hawthorn Berries/Slices"
+    },
+    {
+      "title": "Heat Source"
+    },
+    {
+      "title": "Heather"
+    },
+    {
+      "title": "Hedge Mustard (Sisymbrium officinale) aerial parts"
+    },
+    {
+      "title": "Hellebore (finely powdered)"
+    },
+    {
+      "title": "Hemlock (mashed)"
+    },
+    {
+      "title": "Hemp (hulled or whole)"
+    },
+    {
+      "title": "Hemp Agrimony Aerial Parts"
+    },
+    {
+      "title": "Henna"
+    },
+    {
+      "title": "Henna (crushed)"
+    },
+    {
+      "title": "Herbal Juices"
+    },
+    {
+      "title": "Hercules' Club (small piece)"
+    },
+    {
+      "title": "Hibiscus"
+    },
+    {
+      "title": "Hibiscus (Calyxes)"
+    },
+    {
+      "title": "Hibiscus Calyxes"
+    },
+    {
+      "title": "Hierba del Sapo aerial parts"
+    },
+    {
+      "title": "Hierba Mora"
+    },
+    {
+      "title": "High UMF (Unique Manuka Factor) Manuka Honey"
+    },
+    {
+      "title": "High-proof Alcohol (Vodka/Brandy)"
+    },
+    {
+      "title": "high-quality"
+    },
+    {
+      "title": "Highly Grape Alcohol (95% Ethanol)"
+    },
+    {
+      "title": "Himsra Root/Bark (chopped)"
+    },
+    {
+      "title": "Honey"
+    },
+    {
+      "title": "Honey (optional emulsifier)"
+    },
+    {
+      "title": "Honey (optional)"
+    },
+    {
+      "title": "Honey (or Sugar)"
+    },
+    {
+      "title": "Honey or Water"
+    },
+    {
+      "title": "Honey)"
+    },
+    {
+      "title": "Honey/Milk"
+    },
+    {
+      "title": "Honey/Piloncillo"
+    },
+    {
+      "title": "Honey/Piloncillo (optional)"
+    },
+    {
+      "title": "Honey/Sugar"
+    },
+    {
+      "title": "Honey/Wax (optional)"
+    },
+    {
+      "title": "Honeysuckle"
+    },
+    {
+      "title": "Honeysuckle (Jin Yin Hua) and Forsythia (Lian Qiao)"
+    },
+    {
+      "title": "Hoodia (chopped)"
+    },
+    {
+      "title": "Hop"
+    },
+    {
+      "title": "Hops (Humulus lupulus)"
+    },
+    {
+      "title": "Horehound Herb"
+    },
+    {
+      "title": "Horehound Herb (decocted)"
+    },
+    {
+      "title": "Horehound Leaves/Flowers"
+    },
+    {
+      "title": "Horseradish (grated)"
+    },
+    {
+      "title": "Horsetail Aerial Parts"
+    },
+    {
+      "title": "Horsetail Aerial Parts (dried/powdered)"
+    },
+    {
+      "title": "Horsetail Herb"
+    },
+    {
+      "title": "Horsetail Root/Rhizome (powdered)"
+    },
+    {
+      "title": "Houttuynia"
+    },
+    {
+      "title": "Huamanpinta Flowers/Leaves"
+    },
+    {
+      "title": "Hundreds of ingredients (e.g."
+    },
+    {
+      "title": "Hyssop and"
+    },
+    {
+      "title": "Hyssop Leaves/Flowers"
+    },
+    {
+      "title": "Ice"
+    },
+    {
+      "title": "Iceland Moss"
+    },
+    {
+      "title": "Iceland Moss (Lichen)"
+    },
+    {
+      "title": "Icelandic Moss"
+    },
+    {
+      "title": "Icelandic Moss lichen"
+    },
+    {
+      "title": "Iron (Loha)"
+    },
+    {
+      "title": "Iron Oxide (Mandur)"
+    },
+    {
+      "title": "Isatis (Ban Lan Gen) and (Da Qing Ye)"
+    },
+    {
+      "title": "Isatis Slices"
+    },
+    {
+      "title": "Jaggery (Sugar)"
+    },
+    {
+      "title": "Jaggery (unrefined sugar)"
+    },
+    {
+      "title": "Jambu (finely powdered)"
+    },
+    {
+      "title": "Japanese Knotweed (chopped)"
+    },
+    {
+      "title": "Japanese Knotweed Slices"
+    },
+    {
+      "title": "Jasmine"
+    },
+    {
+      "title": "Jatamamsi"
+    },
+    {
+      "title": "Jewelweed Stems/Leaves"
+    },
+    {
+      "title": "Jewelweed Stems/Leaves (mashed)"
+    },
+    {
+      "title": "Joe Pye Weed"
+    },
+    {
+      "title": "Jujube Dates (optional)"
+    },
+    {
+      "title": "Jujube Dates (pitted)"
+    },
+    {
+      "title": "Juniper"
+    },
+    {
+      "title": "Juniper (crushed)"
+    },
+    {
+      "title": "Juniper (lightly crushed)"
+    },
+    {
+      "title": "Kapikachhu (powdered)"
+    },
+    {
+      "title": "Karanja Oil (cold-pressed)"
+    },
+    {
+      "title": "Katuki"
+    },
+    {
+      "title": "Katuki (finely powdered)"
+    },
+    {
+      "title": "Kawakawa (crushed)"
+    },
+    {
+      "title": "Kawakawa Sap/Gum"
+    },
+    {
+      "title": "Khadira (Acacia Catechu) heartwood decoction"
+    },
+    {
+      "title": "Khadira Heartwood (chopped)"
+    },
+    {
+      "title": "Khat Leaves/Tender Shoots"
+    },
+    {
+      "title": "Kiaat (chopped)"
+    },
+    {
+      "title": "Kigelia (powdered)"
+    },
+    {
+      "title": "Kigelia (pulp)"
+    },
+    {
+      "title": "Kigelia Pulp"
+    },
+    {
+      "title": "Kinkéliba"
+    },
+    {
+      "title": "Koji Starter (Aspergillus Oryzae)"
+    },
+    {
+      "title": "Kombu/Kelp Seaweed"
+    },
+    {
+      "title": "Korean Mint (mashed)"
+    },
+    {
+      "title": "Korean Mint Leaves/Flowers"
+    },
+    {
+      "title": "Koromiko (crushed)"
+    },
+    {
+      "title": "Kudzu"
+    },
+    {
+      "title": "Kutaja"
+    },
+    {
+      "title": "Kutaja (shredded)"
+    },
+    {
+      "title": "Kutjera (Desert Raisins)"
+    },
+    {
+      "title": "Kutki Root/Rhizome (powdered)"
+    },
+    {
+      "title": "Kuzu (Starch)"
+    },
+    {
+      "title": "Kuzu Slices/Powder"
+    },
+    {
+      "title": "Kuzu Starch/Powder"
+    },
+    {
+      "title": "Kōwhai (inner layer)"
+    },
+    {
+      "title": "Labrador Tea"
+    },
+    {
+      "title": "Larch (inner bark)"
+    },
+    {
+      "title": "Larch (Turpentine)"
+    },
+    {
+      "title": "Larch Tree (crude)"
+    },
+    {
+      "title": "Lard"
+    },
+    {
+      "title": "Lard (or Olive Oil)"
+    },
+    {
+      "title": "Lard or Olive Oil)"
+    },
+    {
+      "title": "Lard/Beeswax"
+    },
+    {
+      "title": "Lard/Fat"
+    },
+    {
+      "title": "Lard/Oil"
+    },
+    {
+      "title": "Lard/Olive Oil"
+    },
+    {
+      "title": "Lard/Tallow (or Shea Butter)"
+    },
+    {
+      "title": "Lavender"
+    },
+    {
+      "title": "Lavender (Lavandula angustifolia)"
+    },
+    {
+      "title": "Lavender (Ustukhuddus)"
+    },
+    {
+      "title": "Lemon"
+    },
+    {
+      "title": "Lemon Juice"
+    },
+    {
+      "title": "Lemon Myrtle"
+    },
+    {
+      "title": "Lemon or Lime Juice"
+    },
+    {
+      "title": "Lemon slice"
+    },
+    {
+      "title": "Lettuce Herb (decocted)"
+    },
+    {
+      "title": "Lettuce Leaf/Stem"
+    },
+    {
+      "title": "Lettuce Leaves/Flowering Tops"
+    },
+    {
+      "title": "Licorice"
+    },
+    {
+      "title": "Licorice (fresh or dried)"
+    },
+    {
+      "title": "Licorice (powdered)"
+    },
+    {
+      "title": "Licorice (section of root)"
+    },
+    {
+      "title": "Licorice (shredded)"
+    },
+    {
+      "title": "Licorice (Yashtimadhu) paste/powder"
+    },
+    {
+      "title": "Licorice Pieces"
+    },
+    {
+      "title": "Licorice Slices"
+    },
+    {
+      "title": "Lime Juice"
+    },
+    {
+      "title": "Lime Water"
+    },
+    {
+      "title": "Lime/Lemon Juice"
+    },
+    {
+      "title": "Linden (Lipa)"
+    },
+    {
+      "title": "Linden (Tilia)"
+    },
+    {
+      "title": "Lingonberries"
+    },
+    {
+      "title": "Lippia Alba Leaves/Flowers"
+    },
+    {
+      "title": "Live Saccharomyces boulardii Yeast (Capsule/Powder)"
+    },
+    {
+      "title": "Lobelia Herb (leaves/seeds)"
+    },
+    {
+      "title": "Lodhra (finely powdered)"
+    },
+    {
+      "title": "Long Pepper (Pippali)"
+    },
+    {
+      "title": "Longan (flesh)"
+    },
+    {
+      "title": "Lotus"
+    },
+    {
+      "title": "Lovage (rhizome)"
+    },
+    {
+      "title": "Lungwort"
+    },
+    {
+      "title": "Lungwort (powdered)"
+    },
+    {
+      "title": "Maca (finely powdered)"
+    },
+    {
+      "title": "Maca (yellow"
+    },
+    {
+      "title": "Magnolia (finely powdered)"
+    },
+    {
+      "title": "Mahanarayana Thailam)"
+    },
+    {
+      "title": "Mallow (or leaf)"
+    },
+    {
+      "title": "Mallow Leaves/Flowers"
+    },
+    {
+      "title": "Mandrake (sliced)"
+    },
+    {
+      "title": "Mango"
+    },
+    {
+      "title": "Manjistha"
+    },
+    {
+      "title": "Manjistha (chopped)"
+    },
+    {
+      "title": "Maral (Rhaponticum carthamoides)"
+    },
+    {
+      "title": "Marigold Flowers/Leaves"
+    },
+    {
+      "title": "Marjoram Leaf/Flower"
+    },
+    {
+      "title": "Marjoram Leaves/Flowers"
+    },
+    {
+      "title": "Marsh Tea/Wild Rosemary"
+    },
+    {
+      "title": "Marshmallow"
+    },
+    {
+      "title": "Marshmallow (Althaea officinalis)"
+    },
+    {
+      "title": "Marshmallow (chopped)"
+    },
+    {
+      "title": "Marshmallow (decocted)"
+    },
+    {
+      "title": "Marula"
+    },
+    {
+      "title": "Mastic (Tears) or Tincture"
+    },
+    {
+      "title": "Mayapple (powdered resin)"
+    },
+    {
+      "title": "Mayapple (powdered)"
+    },
+    {
+      "title": "Maypop Pulp"
+    },
+    {
+      "title": "Maytenus"
+    },
+    {
+      "title": "Meadowsweet and"
+    },
+    {
+      "title": "Meadowsweet Flowers/Leaves"
+    },
+    {
+      "title": "Meadowsweet Flowers/Leaves (finely powdered)"
+    },
+    {
+      "title": "Meadowsweet Leaf/Flower"
+    },
+    {
+      "title": "Meadowsweet Tops (Filipendula ulmaria)"
+    },
+    {
+      "title": "Medicated Oil (e.g."
+    },
+    {
+      "title": "Mercury"
+    },
+    {
+      "title": "Mercury (Parada)"
+    },
+    {
+      "title": "Mexican Cinnamon Sticks (Cinnamomum verum)"
+    },
+    {
+      "title": "Mezcal/Tequila (100% Agave)"
+    },
+    {
+      "title": "Milk"
+    },
+    {
+      "title": "Milk (optional)"
+    },
+    {
+      "title": "Milk or Water"
+    },
+    {
+      "title": "Milk/Water"
+    },
+    {
+      "title": "Millet Grain"
+    },
+    {
+      "title": "Mint"
+    },
+    {
+      "title": "Mint essential oil"
+    },
+    {
+      "title": "Mint/Lemon"
+    },
+    {
+      "title": "Mint/Raisins"
+    },
+    {
+      "title": "Molasses (Black Treacle)"
+    },
+    {
+      "title": "Moringa"
+    },
+    {
+      "title": "Motherwort Aerial Parts"
+    },
+    {
+      "title": "Mugwort"
+    },
+    {
+      "title": "Mugwort (Artemisia vulgaris) flowering tops"
+    },
+    {
+      "title": "Mugwort and"
+    },
+    {
+      "title": "Mugwort Floss (lit) or Compress"
+    },
+    {
+      "title": "Mugwort Leaves/Stems"
+    },
+    {
+      "title": "Mullein"
+    },
+    {
+      "title": "Mullein and"
+    },
+    {
+      "title": "Mullein Oil"
+    },
+    {
+      "title": "Mullein Oil (Verbascum thapsus)"
+    },
+    {
+      "title": "Musta (finely powdered)"
+    },
+    {
+      "title": "Musta Root/Rhizome (chopped)"
+    },
+    {
+      "title": "Musta Root/Rhizome (powdered)"
+    },
+    {
+      "title": "Musta)"
+    },
+    {
+      "title": "Mustard"
+    },
+    {
+      "title": "Mustard (or powder)"
+    },
+    {
+      "title": "Muña"
+    },
+    {
+      "title": "Myrrh"
+    },
+    {
+      "title": "Myrrh (powdered)"
+    },
+    {
+      "title": "Myrrh Tears (crushed)"
+    },
+    {
+      "title": "Myrrh Tincture"
+    },
+    {
+      "title": "Māmaku Pith/Sap"
+    },
+    {
+      "title": "Neem"
+    },
+    {
+      "title": "Neem (chopped)"
+    },
+    {
+      "title": "Neem (crushed)"
+    },
+    {
+      "title": "Neem (mashed)"
+    },
+    {
+      "title": "Nettle"
+    },
+    {
+      "title": "Nettle (ripe and dried)"
+    },
+    {
+      "title": "Nettle Leaves/Roots"
+    },
+    {
+      "title": "Nettle Leaves/Stems"
+    },
+    {
+      "title": "Nettle Slices"
+    },
+    {
+      "title": "Neutral Grain Spirit (e.g."
+    },
+    {
+      "title": "Nile Acacia (resin)"
+    },
+    {
+      "title": "Non-iodized Salt"
+    },
+    {
+      "title": "Nopal Cactus Pads (inner pulp)"
+    },
+    {
+      "title": "Nutmeg (freshly grated)"
+    },
+    {
+      "title": "Oak (inner bark)"
+    },
+    {
+      "title": "Oak (Quercus robur)"
+    },
+    {
+      "title": "Oak Galls (Oak Apples)"
+    },
+    {
+      "title": "Oat Straw/Green Tops"
+    },
+    {
+      "title": "Oatmeal"
+    },
+    {
+      "title": "Oil (e.g."
+    },
+    {
+      "title": "Oil/Lard"
+    },
+    {
+      "title": "Olive (crushed)"
+    },
+    {
+      "title": "Olive Oil"
+    },
+    {
+      "title": "Olive Oil (Extra Virgin)"
+    },
+    {
+      "title": "Olive Oil (or Lard)"
+    },
+    {
+      "title": "Olive Oil (or Sunflower Oil)"
+    },
+    {
+      "title": "Olive Oil)"
+    },
+    {
+      "title": "Olive Oil/Lard"
+    },
+    {
+      "title": "Olive Oil/Linseed Oil"
+    },
+    {
+      "title": "Olive or Sunflower)"
+    },
+    {
+      "title": "Onion (Red or White)"
+    },
+    {
+      "title": "Opium"
+    },
+    {
+      "title": "Opium Latex (from P. somniferum)"
+    },
+    {
+      "title": "or African Ginger (rhizome)"
+    },
+    {
+      "title": "or Birch"
+    },
+    {
+      "title": "or Calamus (small piece)"
+    },
+    {
+      "title": "or Chamomile"
+    },
+    {
+      "title": "or Chervil"
+    },
+    {
+      "title": "or Cola Nut (chunk)"
+    },
+    {
+      "title": "or Cola Nut Piece"
+    },
+    {
+      "title": "or Dandelion (Taraxacum officinale)"
+    },
+    {
+      "title": "or Elderberries"
+    },
+    {
+      "title": "or Elderflowers"
+    },
+    {
+      "title": "or Eucalyptus"
+    },
+    {
+      "title": "or Fadogia (section of root)"
+    },
+    {
+      "title": "or Figs (mashed)"
+    },
+    {
+      "title": "or Frozen Bilberries"
+    },
+    {
+      "title": "or Frozen Lingonberries"
+    },
+    {
+      "title": "or Hawthorn"
+    },
+    {
+      "title": "or Kakadu Plum"
+    },
+    {
+      "title": "or Kava (finely powdered)"
+    },
+    {
+      "title": "or Khat Leaves/Shoots"
+    },
+    {
+      "title": "or Latex/Sap"
+    },
+    {
+      "title": "or Lemongrass"
+    },
+    {
+      "title": "or Lettuce"
+    },
+    {
+      "title": "or Plantain"
+    },
+    {
+      "title": "or red)"
+    },
+    {
+      "title": "or Rhodiola (small slice)"
+    },
+    {
+      "title": "or Rose Hips (Rosa canina/rugosa)"
+    },
+    {
+      "title": "or Steamed Red Ginseng (sliced)"
+    },
+    {
+      "title": "or Sumac (drupes)"
+    },
+    {
+      "title": "or Sweet Flag (small piece)"
+    },
+    {
+      "title": "or White Poplar"
+    },
+    {
+      "title": "Orange"
+    },
+    {
+      "title": "Oregano Leaves/Flowers"
+    },
+    {
+      "title": "Origanum"
+    },
+    {
+      "title": "Osha (chopped)"
+    },
+    {
+      "title": "Osha Slices"
+    },
+    {
+      "title": "other herbs"
+    },
+    {
+      "title": "Other Herbs (Anise)"
+    },
+    {
+      "title": "Over complex ingredients (e.g."
+    },
+    {
+      "title": "over herbs"
+    },
+    {
+      "title": "Over herbs (e.g."
+    },
+    {
+      "title": "over other herbs (e.g."
+    },
+    {
+      "title": "Palm (naturally fermented)"
+    },
+    {
+      "title": "Palm Oil"
+    },
+    {
+      "title": "Palo Azul Chips"
+    },
+    {
+      "title": "Palo Santo Shavings"
+    },
+    {
+      "title": "Panax Ginseng"
+    },
+    {
+      "title": "Panax Ginseng Slices"
+    },
+    {
+      "title": "Pansy Aerial Parts"
+    },
+    {
+      "title": "Papaya (ground)"
+    },
+    {
+      "title": "Passionflower aerial parts"
+    },
+    {
+      "title": "Patala"
+    },
+    {
+      "title": "Pau D'Arco Inner"
+    },
+    {
+      "title": "Pau D'Arco Inner (chopped)"
+    },
+    {
+      "title": "Pelargonium"
+    },
+    {
+      "title": "Pelargonium (powdered)"
+    },
+    {
+      "title": "Pellitory of the Wall (Parietaria officinalis) aerial parts"
+    },
+    {
+      "title": "Pennyroyal"
+    },
+    {
+      "title": "Pennyroyal (Mentha pulegium)"
+    },
+    {
+      "title": "Pennyroyal Leaves/Flowers"
+    },
+    {
+      "title": "Perilla"
+    },
+    {
+      "title": "Persimmon Calyx (stem base)"
+    },
+    {
+      "title": "Peruvian Balsam"
+    },
+    {
+      "title": "Pharmaceutical Grade Epsom Salts (Magnesium Sulfate)"
+    },
+    {
+      "title": "Piloncillo/Honey"
+    },
+    {
+      "title": "Pimento and (crushed)"
+    },
+    {
+      "title": "Pine"
+    },
+    {
+      "title": "Pine (crushed)"
+    },
+    {
+      "title": "Pine (Scots Pine or Cedar)"
+    },
+    {
+      "title": "Pine (Scots Pine or Spruce)"
+    },
+    {
+      "title": "Pine (spring harvest)"
+    },
+    {
+      "title": "Pine/Spruce (Pitch)"
+    },
+    {
+      "title": "Pine/Spruce Buds/Tips"
+    },
+    {
+      "title": "Pineapple (optional)"
+    },
+    {
+      "title": "Pineapple/Quince"
+    },
+    {
+      "title": "Pippali"
+    },
+    {
+      "title": "Pippali (crushed)"
+    },
+    {
+      "title": "Pistachio (Mastic Gum)"
+    },
+    {
+      "title": "Plain"
+    },
+    {
+      "title": "Plain Sesame Oil (lukewarm)"
+    },
+    {
+      "title": "Plantain"
+    },
+    {
+      "title": "Plantain (whole)"
+    },
+    {
+      "title": "Pleurisy (sliced)"
+    },
+    {
+      "title": "Poke (finely mashed)"
+    },
+    {
+      "title": "Poke (mashed)"
+    },
+    {
+      "title": "Poke (sliced)"
+    },
+    {
+      "title": "Pomegranate"
+    },
+    {
+      "title": "Pomegranate (petals)"
+    },
+    {
+      "title": "Pomegranate Juice"
+    },
+    {
+      "title": "Pomegranate Seed/Rind"
+    },
+    {
+      "title": "Poppy (ground)"
+    },
+    {
+      "title": "Poria (finely powdered)"
+    },
+    {
+      "title": "Powdered"
+    },
+    {
+      "title": "Prepared (Cured) Fo-Ti"
+    },
+    {
+      "title": "Prepared (Steamed/Dried) Red Ginseng"
+    },
+    {
+      "title": "Prepared He Shou Wu (cooked)"
+    },
+    {
+      "title": "Prepared Rehmannia (cooked in wine)"
+    },
+    {
+      "title": "Press"
+    },
+    {
+      "title": "Prickly Pear Pulp (strained)"
+    },
+    {
+      "title": "Processed (Calcined) Oyster Shell"
+    },
+    {
+      "title": "Processed Oyster Shell (finely powdered)"
+    },
+    {
+      "title": "Propolis"
+    },
+    {
+      "title": "Prunus (powdered)"
+    },
+    {
+      "title": "Psyllium Husk Powder/Whole Husks"
+    },
+    {
+      "title": "Pulque (Fermented Agave Sap)"
+    },
+    {
+      "title": "Punarnava"
+    },
+    {
+      "title": "Punarnava (chopped)"
+    },
+    {
+      "title": "Punarnava Root/Herb"
+    },
+    {
+      "title": "Pure"
+    },
+    {
+      "title": "Pure Australian Sandalwood Essential Oil"
+    },
+    {
+      "title": "Pure Cod Liver Oil"
+    },
+    {
+      "title": "Pure Essential Oil"
+    },
+    {
+      "title": "Pure Frankincense (powdered)"
+    },
+    {
+      "title": "Pure Frankincense Tears (medium-sized)"
+    },
+    {
+      "title": "Pure Kunzea Essential Oil"
+    },
+    {
+      "title": "Pure Medicinal Clay (Food Grade)"
+    },
+    {
+      "title": "Pure Mustard Oil (cold-pressed)"
+    },
+    {
+      "title": "Pure Rose Water"
+    },
+    {
+      "title": "Pure Rose Water (distillate)"
+    },
+    {
+      "title": "Pure Rose Water (Edible Grade)"
+    },
+    {
+      "title": "Pure Tea Tree Essential Oil"
+    },
+    {
+      "title": "Pure Turpentine Oil"
+    },
+    {
+      "title": "Pure Unrefined Shea Butter"
+    },
+    {
+      "title": "Pure Virgin Olive Oil"
+    },
+    {
+      "title": "Purple Corn Cobs"
+    },
+    {
+      "title": "Pygeum (shredded)"
+    },
+    {
+      "title": "Quality Red Wine (e.g."
+    },
+    {
+      "title": "Quassia Chips"
+    },
+    {
+      "title": "Quebracho (chopped)"
+    },
+    {
+      "title": "Queen Anne's Lace (crushed)"
+    },
+    {
+      "title": "Queen of the Meadow"
+    },
+    {
+      "title": "Quince"
+    },
+    {
+      "title": "Quinoa Grain"
+    },
+    {
+      "title": "Quisqualis (pounded)"
+    },
+    {
+      "title": "Raspberries"
+    },
+    {
+      "title": "Raspberry"
+    },
+    {
+      "title": "Rauwiri Seaweed (Karengo)"
+    },
+    {
+      "title": "Raw"
+    },
+    {
+      "title": "Red Clay Brick"
+    },
+    {
+      "title": "Red Clover"
+    },
+    {
+      "title": "Red Clover Blossoms (dried)"
+    },
+    {
+      "title": "Red Dates (jujube fruit)"
+    },
+    {
+      "title": "Red Lentils"
+    },
+    {
+      "title": "Red Poppy Petals (corn poppy)"
+    },
+    {
+      "title": "Red Wine"
+    },
+    {
+      "title": "Reindeer Lichen"
+    },
+    {
+      "title": "Reindeer Moss (Cetraria)"
+    },
+    {
+      "title": "Reindeer Moss (Icelandic Moss)"
+    },
+    {
+      "title": "Reishi Mushroom (finely powdered)"
+    },
+    {
+      "title": "Reishi Slices"
+    },
+    {
+      "title": "Reishi Slices/Powder"
+    },
+    {
+      "title": "Rendered Llama or Alpaca Fat"
+    },
+    {
+      "title": "Rest Harrow"
+    },
+    {
+      "title": "Rhenish/Rhine Wine)"
+    },
+    {
+      "title": "Rhodiola"
+    },
+    {
+      "title": "Rhodiola Rosea"
+    },
+    {
+      "title": "Riesling)"
+    },
+    {
+      "title": "Rimu Sap/Gum"
+    },
+    {
+      "title": "Ripe Cloudberries"
+    },
+    {
+      "title": "Ripe Noni"
+    },
+    {
+      "title": "Roasted and Chicory"
+    },
+    {
+      "title": "Rock Salt"
+    },
+    {
+      "title": "Rock Salt (pinch)"
+    },
+    {
+      "title": "Rock Sugar"
+    },
+    {
+      "title": "Rock Sugar (Mishri)"
+    },
+    {
+      "title": "Rock Sugar (Sitopala)"
+    },
+    {
+      "title": "Roman Chamomile"
+    },
+    {
+      "title": "Rooibos Leaf/Stem"
+    },
+    {
+      "title": "Rooibos Leaves/Stems"
+    },
+    {
+      "title": "Rose Hips"
+    },
+    {
+      "title": "Rose Hips (crushed)"
+    },
+    {
+      "title": "Rose Hips (mashed)"
+    },
+    {
+      "title": "Rose Petals"
+    },
+    {
+      "title": "Rose Water"
+    },
+    {
+      "title": "Rose Water (Distillate)"
+    },
+    {
+      "title": "Rose Water/Herbal Juice"
+    },
+    {
+      "title": "Rosemary"
+    },
+    {
+      "title": "Rosemary Sprigs"
+    },
+    {
+      "title": "Rowan (cooked/processed)"
+    },
+    {
+      "title": "Rue"
+    },
+    {
+      "title": "Rue (Ruta graveolens)"
+    },
+    {
+      "title": "Rue (Ruta graveolens) leaves/stems"
+    },
+    {
+      "title": "Rue (small amount)"
+    },
+    {
+      "title": "Rue and"
+    },
+    {
+      "title": "Rye Bread"
+    },
+    {
+      "title": "Rye Bread (dried/toasted)"
+    },
+    {
+      "title": "Sabadilla"
+    },
+    {
+      "title": "Sabadilla (ground)"
+    },
+    {
+      "title": "Saffron"
+    },
+    {
+      "title": "Saffron Threads"
+    },
+    {
+      "title": "Saffron Threads (powdered)"
+    },
+    {
+      "title": "Sage"
+    },
+    {
+      "title": "Sage (Salvia officinalis)"
+    },
+    {
+      "title": "Salt"
+    },
+    {
+      "title": "Salt (optional)"
+    },
+    {
+      "title": "Salt (water/brine)"
+    },
+    {
+      "title": "Sandalwood"
+    },
+    {
+      "title": "Sandalwood (Santalum album)"
+    },
+    {
+      "title": "Sapo Skin Mucus (from gland secretion)"
+    },
+    {
+      "title": "Sariva (Anantmool)"
+    },
+    {
+      "title": "Sarsaparilla"
+    },
+    {
+      "title": "Sarsaparilla (sliced)"
+    },
+    {
+      "title": "Sarsaparilla Slices"
+    },
+    {
+      "title": "Sassafras"
+    },
+    {
+      "title": "Savory"
+    },
+    {
+      "title": "Sceletium Leaf/Stem (fermented or dried)"
+    },
+    {
+      "title": "Sceletium Leaves/Roots"
+    },
+    {
+      "title": "Sceletium Leaves/Roots (fermented/crushed)"
+    },
+    {
+      "title": "Schisandra"
+    },
+    {
+      "title": "Sea Buckthorn"
+    },
+    {
+      "title": "Senna"
+    },
+    {
+      "title": "Senna and"
+    },
+    {
+      "title": "Sesame"
+    },
+    {
+      "title": "Sesame Oil"
+    },
+    {
+      "title": "Sesame Oil (Carrier)"
+    },
+    {
+      "title": "Sesame Oil (Taila)"
+    },
+    {
+      "title": "Sesame Oil (warm)"
+    },
+    {
+      "title": "Shallaki (Boswellia)"
+    },
+    {
+      "title": "Shallaki (crushed)"
+    },
+    {
+      "title": "Shatavari"
+    },
+    {
+      "title": "Shatavari (paste/juice)"
+    },
+    {
+      "title": "Shea Butter"
+    },
+    {
+      "title": "Shea Butter (Ori)"
+    },
+    {
+      "title": "Shea Butter/Palm Oil"
+    },
+    {
+      "title": "Shepherd's Purse Aerial Parts"
+    },
+    {
+      "title": "Shepherd's Purse Herb"
+    },
+    {
+      "title": "Shiitake"
+    },
+    {
+      "title": "Shiitake Mushrooms"
+    },
+    {
+      "title": "Shiitake Mushrooms (sliced)"
+    },
+    {
+      "title": "Shilajit"
+    },
+    {
+      "title": "Shilajit (Mineral Pitch)"
+    },
+    {
+      "title": "Shirish Bark/Seed"
+    },
+    {
+      "title": "Shyonaka"
+    },
+    {
+      "title": "Siberian Fir"
+    },
+    {
+      "title": "Siberian Motherwort Herb"
+    },
+    {
+      "title": "Sichuan Peppercorns (ground)"
+    },
+    {
+      "title": "Sideritis (Ironwort) Aerial Parts"
+    },
+    {
+      "title": "Silverweed Aerial Parts"
+    },
+    {
+      "title": "Simple Syrup"
+    },
+    {
+      "title": "Skullcap Herb (leaves/stems)"
+    },
+    {
+      "title": "Skunk Cabbage (finely mashed)"
+    },
+    {
+      "title": "Skunk Cabbage Leaves/Root (mashed)"
+    },
+    {
+      "title": "Slippery Elm"
+    },
+    {
+      "title": "Slippery Elm (finely powdered)"
+    },
+    {
+      "title": "Slippery Elm Inner"
+    },
+    {
+      "title": "Sloe"
+    },
+    {
+      "title": "Sloe (Prunus spinosa)"
+    },
+    {
+      "title": "Soap/Shampoo"
+    },
+    {
+      "title": "Solomon's Seal"
+    },
+    {
+      "title": "Solomon's Seal (powdered)"
+    },
+    {
+      "title": "Sorrel/Hibiscus Calyces"
+    },
+    {
+      "title": "sourdough starter or a few raisins)"
+    },
+    {
+      "title": "Spelt Grain (Hildegard's preferred grain)"
+    },
+    {
+      "title": "Spicebush (crushed)"
+    },
+    {
+      "title": "Spicebush Twigs/Berries (crushed)"
+    },
+    {
+      "title": "Spices (Cumin"
+    },
+    {
+      "title": "Spikenard (sliced/chopped)"
+    },
+    {
+      "title": "Spirulina"
+    },
+    {
+      "title": "Sprouted Corn (Jora)"
+    },
+    {
+      "title": "Spruce Tips/Needles"
+    },
+    {
+      "title": "Squaw Vine Leaves/Stems"
+    },
+    {
+      "title": "St. John's Wort"
+    },
+    {
+      "title": "Star Anise"
+    },
+    {
+      "title": "Steam Distillation"
+    },
+    {
+      "title": "Stillingia"
+    },
+    {
+      "title": "Stone Pine (crude)"
+    },
+    {
+      "title": "Stonecrop (Sedum acre) aerial parts"
+    },
+    {
+      "title": "Strong Alcohol (95% neutral spirit)"
+    },
+    {
+      "title": "Strong Alcohol (Vodka/Grain Spirit)"
+    },
+    {
+      "title": "Strong Goldenseal Decoction (strained)"
+    },
+    {
+      "title": "Strong Rooibos Tea"
+    },
+    {
+      "title": "Strong Rosemary Infusion"
+    },
+    {
+      "title": "Strong Sage Infusion (cooled)"
+    },
+    {
+      "title": "Strong Sumac Decoction (cooled)"
+    },
+    {
+      "title": "Sublimed Sulfur (purified)"
+    },
+    {
+      "title": "Sugar"
+    },
+    {
+      "title": "Sugar (optional)"
+    },
+    {
+      "title": "Sugar (or Honey)"
+    },
+    {
+      "title": "Sugar (or rock candy)"
+    },
+    {
+      "title": "Sugar Cane Juice"
+    },
+    {
+      "title": "Sugar Syrup"
+    },
+    {
+      "title": "Sugar/Honey"
+    },
+    {
+      "title": "Sugar/Honey (optional)"
+    },
+    {
+      "title": "Sugar/Jaggery"
+    },
+    {
+      "title": "Sugar/Pectin"
+    },
+    {
+      "title": "Sugar/Piloncillo"
+    },
+    {
+      "title": "Sugar/Sweetener"
+    },
+    {
+      "title": "Sulfur"
+    },
+    {
+      "title": "Sulfur (Gandhaka)"
+    },
+    {
+      "title": "Sumac (crushed)"
+    },
+    {
+      "title": "Sumac Berries/Powder"
+    },
+    {
+      "title": "Sumac)"
+    },
+    {
+      "title": "Sunflower or Olive)"
+    },
+    {
+      "title": "Suranjan (Colchicum)"
+    },
+    {
+      "title": "Sutherlandia Leaves/Stems"
+    },
+    {
+      "title": "Sweet Gale Leaves/Catkins"
+    },
+    {
+      "title": "Sweet Marigold Leaves/Flowers"
+    },
+    {
+      "title": "Sweet Marjoram Leaves/Flowers"
+    },
+    {
+      "title": "Syrian Rue"
+    },
+    {
+      "title": "Szechuan Lovage Slices"
+    },
+    {
+      "title": "Table Salt"
+    },
+    {
+      "title": "Tagar (crushed)"
+    },
+    {
+      "title": "Talispatra (Himalayan Fir Leaf)"
+    },
+    {
+      "title": "Tamarind Pulp"
+    },
+    {
+      "title": "Tamboti Chips"
+    },
+    {
+      "title": "Tangerine (sliced)"
+    },
+    {
+      "title": "Tarata Leaves/Bark"
+    },
+    {
+      "title": "Tejocote (cooked)"
+    },
+    {
+      "title": "Thuja Twigs (leaves)"
+    },
+    {
+      "title": "Thyme"
+    },
+    {
+      "title": "Thyme (dried)"
+    },
+    {
+      "title": "Thyme and"
+    },
+    {
+      "title": "Thyme Leaf/Flower"
+    },
+    {
+      "title": "Thyme Leaf/Flower (powdered)"
+    },
+    {
+      "title": "Thyme Leaves/Flowers"
+    },
+    {
+      "title": "Ti Kouka (inner core)"
+    },
+    {
+      "title": "Ti Tree"
+    },
+    {
+      "title": "Toasted Black Sesame (ground)"
+    },
+    {
+      "title": "Tobacco (mashed/chewed)"
+    },
+    {
+      "title": "Toloache"
+    },
+    {
+      "title": "Tolu Balsam"
+    },
+    {
+      "title": "Tormentil (rhizome)"
+    },
+    {
+      "title": "Trikatu"
+    },
+    {
+      "title": "Triphala"
+    },
+    {
+      "title": "Triphala Decoction"
+    },
+    {
+      "title": "Turmeric"
+    },
+    {
+      "title": "Turmeric (grated)"
+    },
+    {
+      "title": "Turmeric Slices (or powder)"
+    },
+    {
+      "title": "Turmeric)"
+    },
+    {
+      "title": "Tītoki (crushed)"
+    },
+    {
+      "title": "Umckaloabo"
+    },
+    {
+      "title": "Unpasteurized Honey"
+    },
+    {
+      "title": "Unrefined Red Palm Oil"
+    },
+    {
+      "title": "Unsweetened Cranberry Juice"
+    },
+    {
+      "title": "Usnea Lichen (Usnea barbata)"
+    },
+    {
+      "title": "Uziza Seeds/Leaves"
+    },
+    {
+      "title": "Vacha"
+    },
+    {
+      "title": "Vacha (Sweet Flag)"
+    },
+    {
+      "title": "Valerian"
+    },
+    {
+      "title": "Valerian (fresh or dried)"
+    },
+    {
+      "title": "Valerian (mashed) or"
+    },
+    {
+      "title": "Valerian (Valeriana officinalis)"
+    },
+    {
+      "title": "Vamshalochana"
+    },
+    {
+      "title": "Vanilla bean"
+    },
+    {
+      "title": "Vasa (chopped)"
+    },
+    {
+      "title": "Vasaka (juiced)"
+    },
+    {
+      "title": "Vegetable Glycerin"
+    },
+    {
+      "title": "Vervain and"
+    },
+    {
+      "title": "Vidanga"
+    },
+    {
+      "title": "Vinegar"
+    },
+    {
+      "title": "Virgin Coconut Oil (solid or liquid)"
+    },
+    {
+      "title": "Virgin Olive Oil"
+    },
+    {
+      "title": "Virgin Olive Oil (Warmed)"
+    },
+    {
+      "title": "Voacanga (powdered)"
+    },
+    {
+      "title": "Vodka"
+    },
+    {
+      "title": "Vodka/Brandy (50% alcohol minimum)"
+    },
+    {
+      "title": "Vodka/Ethanol"
+    },
+    {
+      "title": "Warburgia"
+    },
+    {
+      "title": "Water"
+    },
+    {
+      "title": "Water (below boiling)"
+    },
+    {
+      "title": "Water (cooked to a paste)"
+    },
+    {
+      "title": "Water (hot)"
+    },
+    {
+      "title": "Water (not boiling)"
+    },
+    {
+      "title": "Water (often combined with DMT source)"
+    },
+    {
+      "title": "Water (optional)"
+    },
+    {
+      "title": "Water Mint"
+    },
+    {
+      "title": "Water Pepper Aerial Parts"
+    },
+    {
+      "title": "Water/Alcohol"
+    },
+    {
+      "title": "Water/Broth"
+    },
+    {
+      "title": "Water/Honey"
+    },
+    {
+      "title": "Water/Juice"
+    },
+    {
+      "title": "Water/Milk"
+    },
+    {
+      "title": "Water/Oil"
+    },
+    {
+      "title": "Water/Rice"
+    },
+    {
+      "title": "Water/Vinegar"
+    },
+    {
+      "title": "Watermelon"
+    },
+    {
+      "title": "Wattle (lightly crushed)"
+    },
+    {
+      "title": "Wax (Beeswax or Shea Butter)"
+    },
+    {
+      "title": "Wax/Honey Binder"
+    },
+    {
+      "title": "White Ash"
+    },
+    {
+      "title": "White Fungus"
+    },
+    {
+      "title": "White Horehound"
+    },
+    {
+      "title": "White Horehound (Marrubium vulgare)"
+    },
+    {
+      "title": "White Horehound (powdered)"
+    },
+    {
+      "title": "White Horehound Leaf/Stem"
+    },
+    {
+      "title": "White Lily Petals"
+    },
+    {
+      "title": "White Oak"
+    },
+    {
+      "title": "White Peony (sliced)"
+    },
+    {
+      "title": "White Peony Slices"
+    },
+    {
+      "title": "White Pine (crushed)"
+    },
+    {
+      "title": "White Pine Bark/Needles"
+    },
+    {
+      "title": "White Pine Inner (shredded)"
+    },
+    {
+      "title": "White Poplar (shredded)"
+    },
+    {
+      "title": "White Sage Bundles"
+    },
+    {
+      "title": "White Sage Leaves/Bundles"
+    },
+    {
+      "title": "White Willow (chopped)"
+    },
+    {
+      "title": "White Willow Shreds"
+    },
+    {
+      "title": "White Willow Shreds (local species)"
+    },
+    {
+      "title": "White Willow/Poplar Slices"
+    },
+    {
+      "title": "White Wine"
+    },
+    {
+      "title": "White Wine (e.g."
+    },
+    {
+      "title": "Whole Clove Buds"
+    },
+    {
+      "title": "Willow (White Willow)"
+    },
+    {
+      "title": "Wine"
+    },
+    {
+      "title": "Wine Yeast"
+    },
+    {
+      "title": "Wine/Brandy"
+    },
+    {
+      "title": "Witch Hazel Leaves/Bark"
+    },
+    {
+      "title": "Witch Hazel Leaves/Bark (mashed/extracted)"
+    },
+    {
+      "title": "Wormwood"
+    },
+    {
+      "title": "Wormwood (Artemisia absinthium)"
+    },
+    {
+      "title": "Yacon (juiced and reduced)"
+    },
+    {
+      "title": "Yam"
+    },
+    {
+      "title": "Yam (chopped)"
+    },
+    {
+      "title": "Yam (sliced)"
+    },
+    {
+      "title": "Yam (sliced/chopped)"
+    },
+    {
+      "title": "Yarrow (chewed/crushed)"
+    },
+    {
+      "title": "Yarrow Aerial Parts (leaf/flower)"
+    },
+    {
+      "title": "Yarrow and"
+    },
+    {
+      "title": "Yarrow Flower/Leaf"
+    },
+    {
+      "title": "Yarrow Flowers/Leaves"
+    },
+    {
+      "title": "Yarrow Leaves/Flowers"
+    },
+    {
+      "title": "Yarrow Leaves/Flowers (finely powdered)"
+    },
+    {
+      "title": "Yaupon Holly (lightly roasted)"
+    },
+    {
+      "title": "Yeast"
+    },
+    {
+      "title": "Yeast (or Rye Bread Starter)"
+    },
+    {
+      "title": "Yeast/Starter"
+    },
+    {
+      "title": "Yellow Dock"
+    },
+    {
+      "title": "Yerba Mansa"
+    },
+    {
+      "title": "Yerba Maté"
+    },
+    {
+      "title": "Yerba Maté Leaves/Stems"
+    },
+    {
+      "title": "Yerba Santa"
+    },
+    {
+      "title": "Yohimbe Shreds"
+    },
+    {
+      "title": "Young Birch"
+    },
+    {
+      "title": "Za'atar Mix (Thyme"
+    },
+    {
+      "title": "Zinc (Yashad)"
+    },
+    {
+      "title": "Zinc Oxide"
+    },
+    {
+      "title": "Ziziphus (lightly crushed)"
+    }
+  ],
+  "recipes": {
+    "1": {
+      "ingredientIndexes": [
+        105,
+        287,
+        563,
+        659,
+        771
+      ]
+    },
+    "2": {
+      "ingredientIndexes": [
+        252,
+        573,
+        831,
+        881,
+        886
+      ]
+    },
+    "3": {
+      "ingredientIndexes": [
+        295,
+        1060
+      ]
+    },
+    "4": {
+      "ingredientIndexes": [
+        634,
+        972,
+        1063
+      ]
+    },
+    "5": {
+      "ingredientIndexes": [
+        458,
+        477,
+        1063
+      ]
+    },
+    "6": {
+      "ingredientIndexes": [
+        339,
+        695,
+        1104
+      ]
+    },
+    "7": {
+      "ingredientIndexes": [
+        713
+      ]
+    },
+    "8": {
+      "ingredientIndexes": [
+        262,
+        571,
+        691
+      ]
+    },
+    "9": {
+      "ingredientIndexes": [
+        156,
+        980,
+        1063
+      ]
+    },
+    "10": {
+      "ingredientIndexes": [
+        407,
+        951,
+        980
+      ]
+    },
+    "11": {
+      "ingredientIndexes": [
+        61,
+        64,
+        346,
+        477
+      ]
+    },
+    "12": {
+      "ingredientIndexes": [
+        34,
+        763
+      ]
+    },
+    "13": {
+      "ingredientIndexes": [
+        53,
+        165,
+        190,
+        885,
+        1114
+      ]
+    },
+    "14": {
+      "ingredientIndexes": [
+        688,
+        1063
+      ]
+    },
+    "15": {
+      "ingredientIndexes": [
+        477,
+        653,
+        1104
+      ]
+    },
+    "16": {
+      "ingredientIndexes": [
+        111
+      ]
+    },
+    "17": {
+      "ingredientIndexes": [
+        30,
+        162,
+        881
+      ]
+    },
+    "18": {
+      "ingredientIndexes": [
+        348,
+        477,
+        1104
+      ]
+    },
+    "19": {
+      "ingredientIndexes": [
+        29,
+        139
+      ]
+    },
+    "20": {
+      "ingredientIndexes": [
+        89,
+        105,
+        695
+      ]
+    },
+    "21": {
+      "ingredientIndexes": [
+        182,
+        434,
+        477
+      ]
+    },
+    "22": {
+      "ingredientIndexes": [
+        191,
+        1063,
+        1087
+      ]
+    },
+    "23": {
+      "ingredientIndexes": [
+        492,
+        1046
+      ]
+    },
+    "24": {
+      "ingredientIndexes": [
+        621
+      ]
+    },
+    "25": {
+      "ingredientIndexes": [
+        21,
+        29
+      ]
+    },
+    "26": {
+      "ingredientIndexes": [
+        761
+      ]
+    },
+    "27": {
+      "ingredientIndexes": [
+        55,
+        65,
+        477,
+        682
+      ]
+    },
+    "28": {
+      "ingredientIndexes": [
+        642,
+        852
+      ]
+    },
+    "29": {
+      "ingredientIndexes": [
+        480,
+        863
+      ]
+    },
+    "30": {
+      "ingredientIndexes": [
+        172,
+        982,
+        1063,
+        1129
+      ]
+    },
+    "31": {
+      "ingredientIndexes": [
+        774,
+        973
+      ]
+    },
+    "32": {
+      "ingredientIndexes": [
+        105,
+        695,
+        845
+      ]
+    },
+    "33": {
+      "ingredientIndexes": [
+        477,
+        1015,
+        1063
+      ]
+    },
+    "34": {
+      "ingredientIndexes": [
+        698,
+        966
+      ]
+    },
+    "35": {
+      "ingredientIndexes": [
+        603,
+        1063
+      ]
+    },
+    "36": {
+      "ingredientIndexes": [
+        29,
+        424
+      ]
+    },
+    "37": {
+      "ingredientIndexes": [
+        115,
+        849,
+        980
+      ]
+    },
+    "38": {
+      "ingredientIndexes": [
+        29,
+        220
+      ]
+    },
+    "39": {
+      "ingredientIndexes": [
+        105,
+        695,
+        851,
+        1039
+      ]
+    },
+    "40": {
+      "ingredientIndexes": [
+        343,
+        498
+      ]
+    },
+    "41": {
+      "ingredientIndexes": [
+        29,
+        619
+      ]
+    },
+    "42": {
+      "ingredientIndexes": [
+        153,
+        1121
+      ]
+    },
+    "43": {
+      "ingredientIndexes": [
+        405,
+        957,
+        1076
+      ]
+    },
+    "44": {
+      "ingredientIndexes": [
+        180
+      ]
+    },
+    "45": {
+      "ingredientIndexes": [
+        67,
+        312,
+        477
+      ]
+    },
+    "46": {
+      "ingredientIndexes": [
+        29,
+        390
+      ]
+    },
+    "47": {
+      "ingredientIndexes": [
+        399,
+        660,
+        695
+      ]
+    },
+    "48": {
+      "ingredientIndexes": [
+        105,
+        569,
+        631
+      ]
+    },
+    "49": {
+      "ingredientIndexes": [
+        59,
+        477,
+        861,
+        1086,
+        1105
+      ]
+    },
+    "50": {
+      "ingredientIndexes": [
+        391,
+        570,
+        881
+      ]
+    },
+    "51": {
+      "ingredientIndexes": [
+        29,
+        727
+      ]
+    },
+    "52": {
+      "ingredientIndexes": [
+        32,
+        136,
+        477
+      ]
+    },
+    "53": {
+      "ingredientIndexes": [
+        213,
+        378,
+        884
+      ]
+    },
+    "54": {
+      "ingredientIndexes": [
+        167,
+        1063
+      ]
+    },
+    "55": {
+      "ingredientIndexes": [
+        29,
+        971
+      ]
+    },
+    "56": {
+      "ingredientIndexes": [
+        307,
+        982,
+        1063
+      ]
+    },
+    "57": {
+      "ingredientIndexes": [
+        29,
+        1026
+      ]
+    },
+    "58": {
+      "ingredientIndexes": [
+        29,
+        929
+      ]
+    },
+    "59": {
+      "ingredientIndexes": [
+        609,
+        1063
+      ]
+    },
+    "60": {
+      "ingredientIndexes": [
+        368,
+        486,
+        1063
+      ]
+    },
+    "61": {
+      "ingredientIndexes": [
+        22,
+        897
+      ]
+    },
+    "62": {
+      "ingredientIndexes": [
+        29,
+        290
+      ]
+    },
+    "63": {
+      "ingredientIndexes": [
+        865
+      ]
+    },
+    "64": {
+      "ingredientIndexes": [
+        651,
+        982,
+        1063
+      ]
+    },
+    "65": {
+      "ingredientIndexes": [
+        66,
+        477,
+        509,
+        581
+      ]
+    },
+    "66": {
+      "ingredientIndexes": [
+        1063,
+        1137
+      ]
+    },
+    "67": {
+      "ingredientIndexes": [
+        753,
+        1063
+      ]
+    },
+    "68": {
+      "ingredientIndexes": [
+        29,
+        1013
+      ]
+    },
+    "69": {
+      "ingredientIndexes": [
+        840,
+        1063
+      ]
+    },
+    "70": {
+      "ingredientIndexes": [
+        193,
+        226
+      ]
+    },
+    "71": {
+      "ingredientIndexes": [
+        29,
+        1052
+      ]
+    },
+    "72": {
+      "ingredientIndexes": [
+        423,
+        620,
+        1063
+      ]
+    },
+    "73": {
+      "ingredientIndexes": [
+        728
+      ]
+    },
+    "74": {
+      "ingredientIndexes": [
+        29,
+        735
+      ]
+    },
+    "75": {
+      "ingredientIndexes": [
+        477,
+        528,
+        1104
+      ]
+    },
+    "76": {
+      "ingredientIndexes": [
+        876,
+        980,
+        1063
+      ]
+    },
+    "77": {
+      "ingredientIndexes": [
+        109,
+        695,
+        877
+      ]
+    },
+    "78": {
+      "ingredientIndexes": [
+        462,
+        1063
+      ]
+    },
+    "79": {
+      "ingredientIndexes": [
+        857,
+        1063
+      ]
+    },
+    "80": {
+      "ingredientIndexes": [
+        338,
+        689,
+        1063
+      ]
+    },
+    "81": {
+      "ingredientIndexes": [
+        29,
+        942
+      ]
+    },
+    "82": {
+      "ingredientIndexes": [
+        56,
+        435,
+        477
+      ]
+    },
+    "83": {
+      "ingredientIndexes": [
+        848,
+        980,
+        1063
+      ]
+    },
+    "84": {
+      "ingredientIndexes": [
+        1063,
+        1089
+      ]
+    },
+    "85": {
+      "ingredientIndexes": [
+        153,
+        652
+      ]
+    },
+    "86": {
+      "ingredientIndexes": [
+        294,
+        500,
+        1063
+      ]
+    },
+    "87": {
+      "ingredientIndexes": [
+        695,
+        1017
+      ]
+    },
+    "88": {
+      "ingredientIndexes": [
+        775,
+        980,
+        1063
+      ]
+    },
+    "89": {
+      "ingredientIndexes": [
+        164,
+        477,
+        874,
+        950
+      ]
+    },
+    "90": {
+      "ingredientIndexes": [
+        31,
+        72
+      ]
+    },
+    "91": {
+      "ingredientIndexes": [
+        658,
+        1063
+      ]
+    },
+    "92": {
+      "ingredientIndexes": [
+        105,
+        568,
+        715
+      ]
+    },
+    "93": {
+      "ingredientIndexes": [
+        105,
+        695,
+        776
+      ]
+    },
+    "94": {
+      "ingredientIndexes": [
+        695,
+        1070
+      ]
+    },
+    "95": {
+      "ingredientIndexes": [
+        430,
+        1063
+      ]
+    },
+    "96": {
+      "ingredientIndexes": [
+        66,
+        583,
+        985,
+        1088
+      ]
+    },
+    "97": {
+      "ingredientIndexes": [
+        29,
+        176
+      ]
+    },
+    "98": {
+      "ingredientIndexes": [
+        153,
+        1123
+      ]
+    },
+    "99": {
+      "ingredientIndexes": [
+        105,
+        560,
+        695
+      ]
+    },
+    "100": {
+      "ingredientIndexes": [
+        152,
+        1063
+      ]
+    },
+    "101": {
+      "ingredientIndexes": [
+        397
+      ]
+    },
+    "102": {
+      "ingredientIndexes": [
+        82,
+        1063
+      ]
+    },
+    "103": {
+      "ingredientIndexes": [
+        29,
+        300
+      ]
+    },
+    "104": {
+      "ingredientIndexes": [
+        144,
+        477,
+        800
+      ]
+    },
+    "105": {
+      "ingredientIndexes": [
+        93,
+        1063
+      ]
+    },
+    "106": {
+      "ingredientIndexes": [
+        556,
+        1063
+      ]
+    },
+    "107": {
+      "ingredientIndexes": [
+        184,
+        344
+      ]
+    },
+    "108": {
+      "ingredientIndexes": [
+        29,
+        913
+      ]
+    },
+    "109": {
+      "ingredientIndexes": [
+        549,
+        1063
+      ]
+    },
+    "110": {
+      "ingredientIndexes": [
+        853
+      ]
+    },
+    "111": {
+      "ingredientIndexes": [
+        265,
+        919
+      ]
+    },
+    "112": {
+      "ingredientIndexes": [
+        1010,
+        1063
+      ]
+    },
+    "113": {
+      "ingredientIndexes": [
+        1063,
+        1092
+      ]
+    },
+    "114": {
+      "ingredientIndexes": [
+        518,
+        1063
+      ]
+    },
+    "115": {
+      "ingredientIndexes": [
+        84
+      ]
+    },
+    "116": {
+      "ingredientIndexes": [
+        173,
+        1063
+      ]
+    },
+    "117": {
+      "ingredientIndexes": [
+        513,
+        1063
+      ]
+    },
+    "118": {
+      "ingredientIndexes": [
+        421
+      ]
+    },
+    "119": {
+      "ingredientIndexes": [
+        120,
+        1063
+      ]
+    },
+    "120": {
+      "ingredientIndexes": [
+        765,
+        1063
+      ]
+    },
+    "121": {
+      "ingredientIndexes": [
+        1063,
+        1100
+      ]
+    },
+    "122": {
+      "ingredientIndexes": [
+        607
+      ]
+    },
+    "123": {
+      "ingredientIndexes": [
+        801,
+        1063
+      ]
+    },
+    "124": {
+      "ingredientIndexes": [
+        302,
+        1063
+      ]
+    },
+    "125": {
+      "ingredientIndexes": [
+        415,
+        846,
+        1063
+      ]
+    },
+    "126": {
+      "ingredientIndexes": [
+        501,
+        1063
+      ]
+    },
+    "127": {
+      "ingredientIndexes": [
+        418,
+        477
+      ]
+    },
+    "128": {
+      "ingredientIndexes": [
+        758,
+        1063
+      ]
+    },
+    "129": {
+      "ingredientIndexes": [
+        1063,
+        1117
+      ]
+    },
+    "130": {
+      "ingredientIndexes": [
+        1067,
+        1134
+      ]
+    },
+    "131": {
+      "ingredientIndexes": [
+        29,
+        186
+      ]
+    },
+    "132": {
+      "ingredientIndexes": [
+        906,
+        1063
+      ]
+    },
+    "133": {
+      "ingredientIndexes": [
+        1063,
+        1135
+      ]
+    },
+    "134": {
+      "ingredientIndexes": [
+        29,
+        210
+      ]
+    },
+    "135": {
+      "ingredientIndexes": [
+        153,
+        264
+      ]
+    },
+    "136": {
+      "ingredientIndexes": [
+        29,
+        341
+      ]
+    },
+    "137": {
+      "ingredientIndexes": [
+        443,
+        1074
+      ]
+    },
+    "138": {
+      "ingredientIndexes": [
+        135,
+        1063
+      ]
+    },
+    "139": {
+      "ingredientIndexes": [
+        29,
+        739
+      ]
+    },
+    "140": {
+      "ingredientIndexes": [
+        949,
+        1063
+      ]
+    },
+    "141": {
+      "ingredientIndexes": [
+        215,
+        1063
+      ]
+    },
+    "142": {
+      "ingredientIndexes": [
+        392,
+        1038
+      ]
+    },
+    "143": {
+      "ingredientIndexes": [
+        29,
+        245
+      ]
+    },
+    "144": {
+      "ingredientIndexes": [
+        317,
+        1063
+      ]
+    },
+    "145": {
+      "ingredientIndexes": [
+        353,
+        1063
+      ]
+    },
+    "146": {
+      "ingredientIndexes": [
+        439,
+        1063
+      ]
+    },
+    "147": {
+      "ingredientIndexes": [
+        232,
+        477,
+        1063
+      ]
+    },
+    "148": {
+      "ingredientIndexes": [
+        29,
+        629
+      ]
+    },
+    "149": {
+      "ingredientIndexes": [
+        85,
+        1063
+      ]
+    },
+    "150": {
+      "ingredientIndexes": [
+        228,
+        1063
+      ]
+    },
+    "151": {
+      "ingredientIndexes": [
+        833,
+        1063
+      ]
+    },
+    "152": {
+      "ingredientIndexes": [
+        1099
+      ]
+    },
+    "153": {
+      "ingredientIndexes": [
+        477,
+        714,
+        1063
+      ]
+    },
+    "154": {
+      "ingredientIndexes": [
+        29,
+        1132
+      ]
+    },
+    "155": {
+      "ingredientIndexes": [
+        227,
+        1063
+      ]
+    },
+    "156": {
+      "ingredientIndexes": [
+        201,
+        268,
+        825
+      ]
+    },
+    "157": {
+      "ingredientIndexes": [
+        153,
+        534
+      ]
+    },
+    "158": {
+      "ingredientIndexes": [
+        356
+      ]
+    },
+    "159": {
+      "ingredientIndexes": [
+        723,
+        1063
+      ]
+    },
+    "160": {
+      "ingredientIndexes": [
+        575,
+        1063
+      ]
+    },
+    "161": {
+      "ingredientIndexes": [
+        567,
+        1011
+      ]
+    },
+    "162": {
+      "ingredientIndexes": [
+        864,
+        1069
+      ]
+    },
+    "163": {
+      "ingredientIndexes": [
+        200,
+        819
+      ]
+    },
+    "164": {
+      "ingredientIndexes": [
+        841,
+        1063
+      ]
+    },
+    "165": {
+      "ingredientIndexes": [
+        29,
+        534
+      ]
+    },
+    "166": {
+      "ingredientIndexes": [
+        557,
+        1063
+      ]
+    },
+    "167": {
+      "ingredientIndexes": [
+        433
+      ]
+    },
+    "168": {
+      "ingredientIndexes": [
+        472,
+        813
+      ]
+    },
+    "169": {
+      "ingredientIndexes": [
+        1021,
+        1063
+      ]
+    },
+    "170": {
+      "ingredientIndexes": [
+        552,
+        1074
+      ]
+    },
+    "171": {
+      "ingredientIndexes": [
+        386,
+        692,
+        1034
+      ]
+    },
+    "172": {
+      "ingredientIndexes": [
+        722,
+        1063
+      ]
+    },
+    "173": {
+      "ingredientIndexes": [
+        567,
+        862
+      ]
+    },
+    "174": {
+      "ingredientIndexes": [
+        200,
+        814
+      ]
+    },
+    "175": {
+      "ingredientIndexes": [
+        672
+      ]
+    },
+    "176": {
+      "ingredientIndexes": [
+        535
+      ]
+    },
+    "177": {
+      "ingredientIndexes": [
+        1063,
+        1081
+      ]
+    },
+    "178": {
+      "ingredientIndexes": [
+        1055
+      ]
+    },
+    "179": {
+      "ingredientIndexes": [
+        548,
+        1063
+      ]
+    },
+    "180": {
+      "ingredientIndexes": [
+        275
+      ]
+    },
+    "181": {
+      "ingredientIndexes": [
+        1020,
+        1063
+      ]
+    },
+    "182": {
+      "ingredientIndexes": [
+        818
+      ]
+    },
+    "183": {
+      "ingredientIndexes": [
+        5,
+        1063
+      ]
+    },
+    "184": {
+      "ingredientIndexes": [
+        205,
+        816
+      ]
+    },
+    "185": {
+      "ingredientIndexes": [
+        286,
+        1077
+      ]
+    },
+    "186": {
+      "ingredientIndexes": [
+        479,
+        640,
+        894
+      ]
+    },
+    "187": {
+      "ingredientIndexes": [
+        823
+      ]
+    },
+    "188": {
+      "ingredientIndexes": [
+        201,
+        699,
+        826
+      ]
+    },
+    "189": {
+      "ingredientIndexes": [
+        274
+      ]
+    },
+    "190": {
+      "ingredientIndexes": [
+        188,
+        200
+      ]
+    },
+    "191": {
+      "ingredientIndexes": [
+        365
+      ]
+    },
+    "192": {
+      "ingredientIndexes": [
+        388,
+        665,
+        1063
+      ]
+    },
+    "193": {
+      "ingredientIndexes": [
+        808,
+        1063
+      ]
+    },
+    "194": {
+      "ingredientIndexes": [
+        1008,
+        1063
+      ]
+    },
+    "195": {
+      "ingredientIndexes": [
+        962
+      ]
+    },
+    "196": {
+      "ingredientIndexes": [
+        29,
+        670
+      ]
+    },
+    "197": {
+      "ingredientIndexes": [
+        768
+      ]
+    },
+    "198": {
+      "ingredientIndexes": [
+        832,
+        1063
+      ]
+    },
+    "199": {
+      "ingredientIndexes": [
+        369,
+        1076
+      ]
+    },
+    "200": {
+      "ingredientIndexes": [
+        60,
+        1063
+      ]
+    },
+    "201": {
+      "ingredientIndexes": [
+        33,
+        218
+      ]
+    },
+    "202": {
+      "ingredientIndexes": [
+        400,
+        477
+      ]
+    },
+    "203": {
+      "ingredientIndexes": [
+        686
+      ]
+    },
+    "204": {
+      "ingredientIndexes": [
+        529,
+        1063
+      ]
+    },
+    "205": {
+      "ingredientIndexes": [
+        331,
+        1063
+      ]
+    },
+    "206": {
+      "ingredientIndexes": [
+        52
+      ]
+    },
+    "207": {
+      "ingredientIndexes": [
+        411,
+        955,
+        1063
+      ]
+    },
+    "208": {
+      "ingredientIndexes": [
+        14,
+        29
+      ]
+    },
+    "209": {
+      "ingredientIndexes": [
+        78,
+        1063
+      ]
+    },
+    "210": {
+      "ingredientIndexes": [
+        440,
+        1063
+      ]
+    },
+    "211": {
+      "ingredientIndexes": [
+        207,
+        542
+      ]
+    },
+    "212": {
+      "ingredientIndexes": [
+        770,
+        1063
+      ]
+    },
+    "213": {
+      "ingredientIndexes": [
+        29,
+        759
+      ]
+    },
+    "214": {
+      "ingredientIndexes": [
+        166,
+        1063
+      ]
+    },
+    "215": {
+      "ingredientIndexes": [
+        360,
+        1063
+      ]
+    },
+    "216": {
+      "ingredientIndexes": [
+        712
+      ]
+    },
+    "217": {
+      "ingredientIndexes": [
+        838,
+        1063
+      ]
+    },
+    "218": {
+      "ingredientIndexes": [
+        131,
+        1063
+      ]
+    },
+    "219": {
+      "ingredientIndexes": [
+        812,
+        1063
+      ]
+    },
+    "220": {
+      "ingredientIndexes": [
+        28,
+        1063
+      ]
+    },
+    "221": {
+      "ingredientIndexes": [
+        830,
+        1063
+      ]
+    },
+    "222": {
+      "ingredientIndexes": [
+        143,
+        589
+      ]
+    },
+    "223": {
+      "ingredientIndexes": [
+        29,
+        1058
+      ]
+    },
+    "224": {
+      "ingredientIndexes": [
+        352,
+        1063
+      ]
+    },
+    "225": {
+      "ingredientIndexes": [
+        361
+      ]
+    },
+    "226": {
+      "ingredientIndexes": [
+        90
+      ]
+    },
+    "227": {
+      "ingredientIndexes": [
+        466
+      ]
+    },
+    "228": {
+      "ingredientIndexes": [
+        543,
+        1063
+      ]
+    },
+    "229": {
+      "ingredientIndexes": [
+        100
+      ]
+    },
+    "230": {
+      "ingredientIndexes": [
+        86,
+        1063
+      ]
+    },
+    "231": {
+      "ingredientIndexes": [
+        822,
+        1051
+      ]
+    },
+    "232": {
+      "ingredientIndexes": [
+        410,
+        986,
+        1063
+      ]
+    },
+    "233": {
+      "ingredientIndexes": [
+        684,
+        1063
+      ]
+    },
+    "234": {
+      "ingredientIndexes": [
+        32,
+        943,
+        1025
+      ]
+    },
+    "235": {
+      "ingredientIndexes": [
+        815
+      ]
+    },
+    "236": {
+      "ingredientIndexes": [
+        214,
+        383,
+        456
+      ]
+    },
+    "237": {
+      "ingredientIndexes": [
+        314,
+        1063
+      ]
+    },
+    "238": {
+      "ingredientIndexes": [
+        311,
+        1063
+      ]
+    },
+    "239": {
+      "ingredientIndexes": [
+        123,
+        1063
+      ]
+    },
+    "240": {
+      "ingredientIndexes": [
+        576,
+        1063
+      ]
+    },
+    "241": {
+      "ingredientIndexes": [
+        153,
+        1106
+      ]
+    },
+    "242": {
+      "ingredientIndexes": [
+        142,
+        477,
+        1030
+      ]
+    },
+    "243": {
+      "ingredientIndexes": [
+        486,
+        493,
+        1063
+      ]
+    },
+    "244": {
+      "ingredientIndexes": [
+        284
+      ]
+    },
+    "245": {
+      "ingredientIndexes": [
+        587
+      ]
+    },
+    "246": {
+      "ingredientIndexes": [
+        153,
+        195
+      ]
+    },
+    "247": {
+      "ingredientIndexes": [
+        208,
+        1140
+      ]
+    },
+    "248": {
+      "ingredientIndexes": [
+        842,
+        1036
+      ]
+    },
+    "249": {
+      "ingredientIndexes": [
+        640,
+        686
+      ]
+    },
+    "250": {
+      "ingredientIndexes": [
+        596
+      ]
+    },
+    "251": {
+      "ingredientIndexes": [
+        75,
+        1077
+      ]
+    },
+    "252": {
+      "ingredientIndexes": [
+        666,
+        1063
+      ]
+    },
+    "253": {
+      "ingredientIndexes": [
+        101,
+        1063
+      ]
+    },
+    "254": {
+      "ingredientIndexes": [
+        408,
+        418,
+        1063
+      ]
+    },
+    "255": {
+      "ingredientIndexes": [
+        30,
+        163,
+        705,
+        1108
+      ]
+    },
+    "256": {
+      "ingredientIndexes": [
+        858,
+        882,
+        1105
+      ]
+    },
+    "257": {
+      "ingredientIndexes": [
+        611,
+        695
+      ]
+    },
+    "258": {
+      "ingredientIndexes": [
+        29,
+        272
+      ]
+    },
+    "259": {
+      "ingredientIndexes": [
+        64,
+        187,
+        399,
+        570,
+        645,
+        881,
+        884,
+        896
+      ]
+    },
+    "260": {
+      "ingredientIndexes": [
+        408,
+        482,
+        503,
+        668,
+        704,
+        893
+      ]
+    },
+    "261": {
+      "ingredientIndexes": [
+        70,
+        1063
+      ]
+    },
+    "262": {
+      "ingredientIndexes": [
+        29,
+        108
+      ]
+    },
+    "263": {
+      "ingredientIndexes": [
+        107,
+        695
+      ]
+    },
+    "264": {
+      "ingredientIndexes": [
+        631,
+        1063
+      ]
+    },
+    "265": {
+      "ingredientIndexes": [
+        695,
+        966
+      ]
+    },
+    "266": {
+      "ingredientIndexes": [
+        347,
+        477,
+        1110
+      ]
+    },
+    "267": {
+      "ingredientIndexes": [
+        649,
+        979
+      ]
+    },
+    "268": {
+      "ingredientIndexes": [
+        29,
+        59,
+        363,
+        1113
+      ]
+    },
+    "269": {
+      "ingredientIndexes": [
+        884,
+        1063
+      ]
+    },
+    "270": {
+      "ingredientIndexes": [
+        473,
+        1090
+      ]
+    },
+    "271": {
+      "ingredientIndexes": [
+        701,
+        843
+      ]
+    },
+    "272": {
+      "ingredientIndexes": [
+        153,
+        762
+      ]
+    },
+    "273": {
+      "ingredientIndexes": [
+        1023
+      ]
+    },
+    "274": {
+      "ingredientIndexes": [
+        29,
+        1043
+      ]
+    },
+    "275": {
+      "ingredientIndexes": [
+        459
+      ]
+    },
+    "276": {
+      "ingredientIndexes": [
+        622,
+        1063
+      ]
+    },
+    "277": {
+      "ingredientIndexes": [
+        460,
+        1054
+      ]
+    },
+    "278": {
+      "ingredientIndexes": [
+        475
+      ]
+    },
+    "279": {
+      "ingredientIndexes": [
+        373,
+        422,
+        590,
+        1140
+      ]
+    },
+    "280": {
+      "ingredientIndexes": [
+        155,
+        1063
+      ]
+    },
+    "281": {
+      "ingredientIndexes": [
+        949,
+        1076
+      ]
+    },
+    "282": {
+      "ingredientIndexes": [
+        234,
+        986,
+        1063
+      ]
+    },
+    "283": {
+      "ingredientIndexes": [
+        29,
+        432
+      ]
+    },
+    "284": {
+      "ingredientIndexes": [
+        29,
+        1124
+      ]
+    },
+    "285": {
+      "ingredientIndexes": [
+        29,
+        134
+      ]
+    },
+    "286": {
+      "ingredientIndexes": [
+        695,
+        790
+      ]
+    },
+    "287": {
+      "ingredientIndexes": [
+        102
+      ]
+    },
+    "288": {
+      "ingredientIndexes": [
+        1063,
+        1119
+      ]
+    },
+    "289": {
+      "ingredientIndexes": [
+        29,
+        597
+      ]
+    },
+    "290": {
+      "ingredientIndexes": [
+        486,
+        1063,
+        1096
+      ]
+    },
+    "291": {
+      "ingredientIndexes": [
+        341,
+        1063
+      ]
+    },
+    "292": {
+      "ingredientIndexes": [
+        29,
+        436
+      ]
+    },
+    "293": {
+      "ingredientIndexes": [
+        29,
+        396
+      ]
+    },
+    "294": {
+      "ingredientIndexes": [
+        308,
+        1063
+      ]
+    },
+    "295": {
+      "ingredientIndexes": [
+        29,
+        944
+      ]
+    },
+    "296": {
+      "ingredientIndexes": [
+        1112
+      ]
+    },
+    "297": {
+      "ingredientIndexes": [
+        626
+      ]
+    },
+    "298": {
+      "ingredientIndexes": [
+        961,
+        1063
+      ]
+    },
+    "299": {
+      "ingredientIndexes": [
+        29,
+        969
+      ]
+    },
+    "300": {
+      "ingredientIndexes": [
+        946
+      ]
+    },
+    "301": {
+      "ingredientIndexes": [
+        1063,
+        1097
+      ]
+    },
+    "302": {
+      "ingredientIndexes": [
+        734
+      ]
+    },
+    "303": {
+      "ingredientIndexes": [
+        29,
+        313
+      ]
+    },
+    "304": {
+      "ingredientIndexes": [
+        48,
+        1063
+      ]
+    },
+    "305": {
+      "ingredientIndexes": [
+        153,
+        1000
+      ]
+    },
+    "306": {
+      "ingredientIndexes": [
+        253,
+        1028,
+        1063
+      ]
+    },
+    "307": {
+      "ingredientIndexes": [
+        50,
+        250,
+        322,
+        335,
+        403,
+        477
+      ]
+    },
+    "308": {
+      "ingredientIndexes": [
+        69,
+        640,
+        1063
+      ]
+    },
+    "309": {
+      "ingredientIndexes": [
+        637,
+        993
+      ]
+    },
+    "310": {
+      "ingredientIndexes": [
+        676,
+        1069
+      ]
+    },
+    "311": {
+      "ingredientIndexes": [
+        20,
+        118,
+        327,
+        334,
+        486
+      ]
+    },
+    "312": {
+      "ingredientIndexes": [
+        428,
+        636,
+        992
+      ]
+    },
+    "313": {
+      "ingredientIndexes": [
+        196,
+        259,
+        983,
+        1027,
+        1028,
+        1053
+      ]
+    },
+    "314": {
+      "ingredientIndexes": [
+        112,
+        920
+      ]
+    },
+    "315": {
+      "ingredientIndexes": [
+        551,
+        1063
+      ]
+    },
+    "316": {
+      "ingredientIndexes": [
+        299,
+        574,
+        992
+      ]
+    },
+    "317": {
+      "ingredientIndexes": [
+        240,
+        745,
+        1028,
+        1033
+      ]
+    },
+    "318": {
+      "ingredientIndexes": [
+        918,
+        1042,
+        1063
+      ]
+    },
+    "319": {
+      "ingredientIndexes": [
+        159,
+        403,
+        1063
+      ]
+    },
+    "320": {
+      "ingredientIndexes": [
+        157
+      ]
+    },
+    "321": {
+      "ingredientIndexes": [
+        520,
+        532,
+        673,
+        918,
+        1030
+      ]
+    },
+    "322": {
+      "ingredientIndexes": [
+        81,
+        987
+      ]
+    },
+    "323": {
+      "ingredientIndexes": [
+        333,
+        515,
+        536
+      ]
+    },
+    "324": {
+      "ingredientIndexes": [
+        301,
+        880
+      ]
+    },
+    "325": {
+      "ingredientIndexes": [
+        87,
+        323,
+        640,
+        745,
+        918
+      ]
+    },
+    "326": {
+      "ingredientIndexes": [
+        76,
+        142,
+        314,
+        354,
+        403,
+        408,
+        866
+      ]
+    },
+    "327": {
+      "ingredientIndexes": [
+        403,
+        465,
+        477,
+        993,
+        1028
+      ]
+    },
+    "328": {
+      "ingredientIndexes": [
+        333,
+        741,
+        904,
+        980,
+        1028
+      ]
+    },
+    "329": {
+      "ingredientIndexes": [
+        80,
+        88,
+        118,
+        640,
+        743,
+        918
+      ]
+    },
+    "330": {
+      "ingredientIndexes": [
+        92,
+        196,
+        248,
+        599,
+        870
+      ]
+    },
+    "331": {
+      "ingredientIndexes": [
+        483,
+        935,
+        1029
+      ]
+    },
+    "332": {
+      "ingredientIndexes": [
+        447
+      ]
+    },
+    "333": {
+      "ingredientIndexes": [
+        984
+      ]
+    },
+    "334": {
+      "ingredientIndexes": [
+        43,
+        449
+      ]
+    },
+    "335": {
+      "ingredientIndexes": [
+        196,
+        248,
+        980,
+        1007,
+        1027,
+        1047
+      ]
+    },
+    "336": {
+      "ingredientIndexes": [
+        333,
+        515,
+        536
+      ]
+    },
+    "337": {
+      "ingredientIndexes": [
+        322,
+        452,
+        515,
+        918
+      ]
+    },
+    "338": {
+      "ingredientIndexes": [
+        403,
+        640,
+        925,
+        1063
+      ]
+    },
+    "339": {
+      "ingredientIndexes": [
+        87,
+        333,
+        613,
+        901,
+        980
+      ]
+    },
+    "340": {
+      "ingredientIndexes": [
+        530,
+        1076
+      ]
+    },
+    "341": {
+      "ingredientIndexes": [
+        553
+      ]
+    },
+    "342": {
+      "ingredientIndexes": [
+        427,
+        447,
+        1027,
+        1028
+      ]
+    },
+    "343": {
+      "ingredientIndexes": [
+        402,
+        406
+      ]
+    },
+    "344": {
+      "ingredientIndexes": [
+        43,
+        1139
+      ]
+    },
+    "345": {
+      "ingredientIndexes": [
+        447,
+        922
+      ]
+    },
+    "346": {
+      "ingredientIndexes": [
+        366,
+        1063
+      ]
+    },
+    "347": {
+      "ingredientIndexes": [
+        428,
+        465,
+        636
+      ]
+    },
+    "348": {
+      "ingredientIndexes": [
+        512,
+        810,
+        1027,
+        1028
+      ]
+    },
+    "349": {
+      "ingredientIndexes": [
+        26,
+        1063
+      ]
+    },
+    "350": {
+      "ingredientIndexes": [
+        213,
+        447,
+        1028
+      ]
+    },
+    "351": {
+      "ingredientIndexes": [
+        130
+      ]
+    },
+    "352": {
+      "ingredientIndexes": [
+        29,
+        450
+      ]
+    },
+    "353": {
+      "ingredientIndexes": [
+        1050
+      ]
+    },
+    "354": {
+      "ingredientIndexes": [
+        253,
+        550,
+        1063
+      ]
+    },
+    "355": {
+      "ingredientIndexes": [
+        403,
+        477,
+        868,
+        1027,
+        1028,
+        1030
+      ]
+    },
+    "356": {
+      "ingredientIndexes": [
+        403,
+        477,
+        599
+      ]
+    },
+    "357": {
+      "ingredientIndexes": [
+        403,
+        741,
+        794,
+        1027
+      ]
+    },
+    "358": {
+      "ingredientIndexes": [
+        465,
+        511,
+        1028
+      ]
+    },
+    "359": {
+      "ingredientIndexes": [
+        42,
+        248,
+        259,
+        333,
+        408,
+        477
+      ]
+    },
+    "360": {
+      "ingredientIndexes": [
+        280,
+        474,
+        783
+      ]
+    },
+    "361": {
+      "ingredientIndexes": [
+        241,
+        408,
+        447,
+        744,
+        1028
+      ]
+    },
+    "362": {
+      "ingredientIndexes": [
+        403,
+        586,
+        1063
+      ]
+    },
+    "363": {
+      "ingredientIndexes": [
+        51
+      ]
+    },
+    "364": {
+      "ingredientIndexes": [
+        784
+      ]
+    },
+    "365": {
+      "ingredientIndexes": [
+        142,
+        408,
+        599
+      ]
+    },
+    "366": {
+      "ingredientIndexes": [
+        29,
+        521
+      ]
+    },
+    "367": {
+      "ingredientIndexes": [
+        821
+      ]
+    },
+    "368": {
+      "ingredientIndexes": [
+        446
+      ]
+    },
+    "369": {
+      "ingredientIndexes": [
+        613,
+        744,
+        893,
+        901,
+        918
+      ]
+    },
+    "370": {
+      "ingredientIndexes": [
+        821
+      ]
+    },
+    "371": {
+      "ingredientIndexes": [
+        333,
+        453,
+        515,
+        1053
+      ]
+    },
+    "372": {
+      "ingredientIndexes": [
+        45
+      ]
+    },
+    "373": {
+      "ingredientIndexes": [
+        531
+      ]
+    },
+    "374": {
+      "ingredientIndexes": [
+        79,
+        333,
+        408,
+        515
+      ]
+    },
+    "375": {
+      "ingredientIndexes": [
+        663
+      ]
+    },
+    "376": {
+      "ingredientIndexes": [
+        403,
+        477,
+        936
+      ]
+    },
+    "377": {
+      "ingredientIndexes": [
+        160,
+        918
+      ]
+    },
+    "378": {
+      "ingredientIndexes": [
+        608,
+        635
+      ]
+    },
+    "379": {
+      "ingredientIndexes": [
+        665,
+        1079
+      ]
+    },
+    "380": {
+      "ingredientIndexes": [
+        444,
+        1063
+      ]
+    },
+    "381": {
+      "ingredientIndexes": [
+        20,
+        118,
+        327,
+        334,
+        486
+      ]
+    },
+    "382": {
+      "ingredientIndexes": [
+        49,
+        113,
+        452
+      ]
+    },
+    "383": {
+      "ingredientIndexes": [
+        585,
+        1063
+      ]
+    },
+    "384": {
+      "ingredientIndexes": [
+        29,
+        447
+      ]
+    },
+    "385": {
+      "ingredientIndexes": [
+        80,
+        87,
+        640,
+        918
+      ]
+    },
+    "386": {
+      "ingredientIndexes": [
+        447,
+        664,
+        746,
+        934,
+        1041
+      ]
+    },
+    "387": {
+      "ingredientIndexes": [
+        662,
+        1063
+      ]
+    },
+    "388": {
+      "ingredientIndexes": [
+        333,
+        515,
+        780,
+        1053
+      ]
+    },
+    "389": {
+      "ingredientIndexes": [
+        476,
+        1063
+      ]
+    },
+    "390": {
+      "ingredientIndexes": [
+        237,
+        363,
+        980,
+        1063,
+        1080
+      ]
+    },
+    "391": {
+      "ingredientIndexes": [
+        869,
+        877
+      ]
+    },
+    "392": {
+      "ingredientIndexes": [
+        793,
+        980,
+        1063
+      ]
+    },
+    "393": {
+      "ingredientIndexes": [
+        403,
+        572,
+        980,
+        1028
+      ]
+    },
+    "394": {
+      "ingredientIndexes": [
+        39,
+        447,
+        998
+      ]
+    },
+    "395": {
+      "ingredientIndexes": [
+        224,
+        372,
+        477,
+        577,
+        956,
+        1063
+      ]
+    },
+    "396": {
+      "ingredientIndexes": [
+        594,
+        980,
+        1063
+      ]
+    },
+    "397": {
+      "ingredientIndexes": [
+        153,
+        773
+      ]
+    },
+    "398": {
+      "ingredientIndexes": [
+        257,
+        1061
+      ]
+    },
+    "399": {
+      "ingredientIndexes": [
+        707,
+        898,
+        1063
+      ]
+    },
+    "400": {
+      "ingredientIndexes": [
+        648,
+        889,
+        980,
+        1063,
+        1128
+      ]
+    },
+    "401": {
+      "ingredientIndexes": [
+        510,
+        1063
+      ]
+    },
+    "402": {
+      "ingredientIndexes": [
+        153,
+        527
+      ]
+    },
+    "403": {
+      "ingredientIndexes": [
+        201,
+        914,
+        997
+      ]
+    },
+    "404": {
+      "ingredientIndexes": [
+        731,
+        986,
+        1063
+      ]
+    },
+    "405": {
+      "ingredientIndexes": [
+        860,
+        1061
+      ]
+    },
+    "406": {
+      "ingredientIndexes": [
+        1063,
+        1122
+      ]
+    },
+    "407": {
+      "ingredientIndexes": [
+        115,
+        980,
+        1063,
+        1109
+      ]
+    },
+    "408": {
+      "ingredientIndexes": [
+        57,
+        1061
+      ]
+    },
+    "409": {
+      "ingredientIndexes": [
+        219,
+        802
+      ]
+    },
+    "410": {
+      "ingredientIndexes": [
+        29,
+        125,
+        477,
+        771,
+        806
+      ]
+    },
+    "411": {
+      "ingredientIndexes": [
+        481,
+        678
+      ]
+    },
+    "412": {
+      "ingredientIndexes": [
+        1044,
+        1059
+      ]
+    },
+    "413": {
+      "ingredientIndexes": [
+        103,
+        1063
+      ]
+    },
+    "414": {
+      "ingredientIndexes": [
+        424,
+        1063
+      ]
+    },
+    "415": {
+      "ingredientIndexes": [
+        349,
+        1061
+      ]
+    },
+    "416": {
+      "ingredientIndexes": [
+        121,
+        477,
+        646
+      ]
+    },
+    "417": {
+      "ingredientIndexes": [
+        582,
+        1063
+      ]
+    },
+    "418": {
+      "ingredientIndexes": [
+        1063,
+        1107
+      ]
+    },
+    "419": {
+      "ingredientIndexes": [
+        309
+      ]
+    },
+    "420": {
+      "ingredientIndexes": [
+        883,
+        1063
+      ]
+    },
+    "421": {
+      "ingredientIndexes": [
+        153,
+        592
+      ]
+    },
+    "422": {
+      "ingredientIndexes": [
+        707,
+        1061
+      ]
+    },
+    "423": {
+      "ingredientIndexes": [
+        328,
+        338
+      ]
+    },
+    "424": {
+      "ingredientIndexes": [
+        153,
+        382
+      ]
+    },
+    "425": {
+      "ingredientIndexes": [
+        306,
+        491
+      ]
+    },
+    "426": {
+      "ingredientIndexes": [
+        630,
+        1063
+      ]
+    },
+    "427": {
+      "ingredientIndexes": [
+        558,
+        1063
+      ]
+    },
+    "428": {
+      "ingredientIndexes": [
+        615,
+        1061
+      ]
+    },
+    "429": {
+      "ingredientIndexes": [
+        194,
+        1063
+      ]
+    },
+    "430": {
+      "ingredientIndexes": [
+        970,
+        1082
+      ]
+    },
+    "431": {
+      "ingredientIndexes": [
+        137,
+        980,
+        1063,
+        1109
+      ]
+    },
+    "432": {
+      "ingredientIndexes": [
+        256,
+        1063
+      ]
+    },
+    "433": {
+      "ingredientIndexes": [
+        151,
+        201,
+        702
+      ]
+    },
+    "434": {
+      "ingredientIndexes": [
+        527,
+        1061
+      ]
+    },
+    "435": {
+      "ingredientIndexes": [
+        73,
+        486,
+        1063
+      ]
+    },
+    "436": {
+      "ingredientIndexes": [
+        153,
+        318
+      ]
+    },
+    "437": {
+      "ingredientIndexes": [
+        229,
+        654
+      ]
+    },
+    "438": {
+      "ingredientIndexes": [
+        153,
+        840
+      ]
+    },
+    "439": {
+      "ingredientIndexes": [
+        255,
+        477,
+        1059
+      ]
+    },
+    "440": {
+      "ingredientIndexes": [
+        1063,
+        1122
+      ]
+    },
+    "441": {
+      "ingredientIndexes": [
+        695,
+        966
+      ]
+    },
+    "442": {
+      "ingredientIndexes": [
+        457,
+        1063
+      ]
+    },
+    "443": {
+      "ingredientIndexes": [
+        105,
+        127,
+        567
+      ]
+    },
+    "444": {
+      "ingredientIndexes": [
+        630,
+        1061
+      ]
+    },
+    "445": {
+      "ingredientIndexes": [
+        63,
+        839,
+        986
+      ]
+    },
+    "446": {
+      "ingredientIndexes": [
+        561
+      ]
+    },
+    "447": {
+      "ingredientIndexes": [
+        289,
+        980,
+        1063
+      ]
+    },
+    "448": {
+      "ingredientIndexes": [
+        1016,
+        1063
+      ]
+    },
+    "449": {
+      "ingredientIndexes": [
+        938,
+        968
+      ]
+    },
+    "450": {
+      "ingredientIndexes": [
+        687,
+        1063
+      ]
+    },
+    "451": {
+      "ingredientIndexes": [
+        559,
+        1063
+      ]
+    },
+    "452": {
+      "ingredientIndexes": [
+        875,
+        980,
+        1063,
+        1109
+      ]
+    },
+    "453": {
+      "ingredientIndexes": [
+        721,
+        1061
+      ]
+    },
+    "454": {
+      "ingredientIndexes": [
+        136,
+        153
+      ]
+    },
+    "455": {
+      "ingredientIndexes": [
+        117,
+        1063
+      ]
+    },
+    "456": {
+      "ingredientIndexes": [
+        179,
+        239,
+        485,
+        1048,
+        1063
+      ]
+    },
+    "457": {
+      "ingredientIndexes": [
+        132,
+        606,
+        729,
+        797
+      ]
+    },
+    "458": {
+      "ingredientIndexes": [
+        40,
+        477,
+        809
+      ]
+    },
+    "459": {
+      "ingredientIndexes": [
+        236,
+        591,
+        769,
+        1063
+      ]
+    },
+    "460": {
+      "ingredientIndexes": [
+        837,
+        1065
+      ]
+    },
+    "461": {
+      "ingredientIndexes": [
+        351,
+        1063
+      ]
+    },
+    "462": {
+      "ingredientIndexes": [
+        230,
+        298
+      ]
+    },
+    "463": {
+      "ingredientIndexes": [
+        248,
+        779,
+        829,
+        991,
+        1063
+      ]
+    },
+    "464": {
+      "ingredientIndexes": [
+        71,
+        203
+      ]
+    },
+    "465": {
+      "ingredientIndexes": [
+        441,
+        484,
+        1063
+      ]
+    },
+    "466": {
+      "ingredientIndexes": [
+        820,
+        1063
+      ]
+    },
+    "467": {
+      "ingredientIndexes": [
+        153,
+        755
+      ]
+    },
+    "468": {
+      "ingredientIndexes": [
+        153,
+        154
+      ]
+    },
+    "469": {
+      "ingredientIndexes": [
+        246,
+        1063
+      ]
+    },
+    "470": {
+      "ingredientIndexes": [
+        589,
+        685,
+        1063
+      ]
+    },
+    "471": {
+      "ingredientIndexes": [
+        153,
+        750
+      ]
+    },
+    "472": {
+      "ingredientIndexes": [
+        506,
+        647,
+        1063,
+        1133
+      ]
+    },
+    "473": {
+      "ingredientIndexes": [
+        502,
+        1063
+      ]
+    },
+    "474": {
+      "ingredientIndexes": [
+        105,
+        201,
+        266,
+        767
+      ]
+    },
+    "475": {
+      "ingredientIndexes": [
+        905,
+        1063
+      ]
+    },
+    "476": {
+      "ingredientIndexes": [
+        27,
+        29,
+        202
+      ]
+    },
+    "477": {
+      "ingredientIndexes": [
+        381,
+        1098
+      ]
+    },
+    "478": {
+      "ingredientIndexes": [
+        23,
+        1063
+      ]
+    },
+    "479": {
+      "ingredientIndexes": [
+        486,
+        1012,
+        1063
+      ]
+    },
+    "480": {
+      "ingredientIndexes": [
+        477,
+        638,
+        1063
+      ]
+    },
+    "481": {
+      "ingredientIndexes": [
+        477,
+        703
+      ]
+    },
+    "482": {
+      "ingredientIndexes": [
+        566,
+        1024,
+        1063
+      ]
+    },
+    "483": {
+      "ingredientIndexes": [
+        153,
+        667
+      ]
+    },
+    "484": {
+      "ingredientIndexes": [
+        85,
+        1068
+      ]
+    },
+    "485": {
+      "ingredientIndexes": [
+        59,
+        153
+      ]
+    },
+    "486": {
+      "ingredientIndexes": [
+        754,
+        1074
+      ]
+    },
+    "487": {
+      "ingredientIndexes": [
+        153,
+        263
+      ]
+    },
+    "488": {
+      "ingredientIndexes": [
+        29,
+        238,
+        477
+      ]
+    },
+    "489": {
+      "ingredientIndexes": [
+        317,
+        1061
+      ]
+    },
+    "490": {
+      "ingredientIndexes": [
+        469,
+        990,
+        1063
+      ]
+    },
+    "491": {
+      "ingredientIndexes": [
+        244,
+        1063
+      ]
+    },
+    "492": {
+      "ingredientIndexes": [
+        29,
+        891
+      ]
+    },
+    "493": {
+      "ingredientIndexes": [
+        153,
+        595
+      ]
+    },
+    "494": {
+      "ingredientIndexes": [
+        639,
+        742,
+        1114
+      ]
+    },
+    "495": {
+      "ingredientIndexes": [
+        357,
+        856
+      ]
+    },
+    "496": {
+      "ingredientIndexes": [
+        737,
+        1061
+      ]
+    },
+    "497": {
+      "ingredientIndexes": [
+        62,
+        201,
+        269,
+        1063
+      ]
+    },
+    "498": {
+      "ingredientIndexes": [
+        29,
+        562,
+        903
+      ]
+    },
+    "499": {
+      "ingredientIndexes": [
+        749,
+        1063
+      ]
+    },
+    "500": {
+      "ingredientIndexes": [
+        153,
+        1001
+      ]
+    },
+    "501": {
+      "ingredientIndexes": [
+        201,
+        351,
+        564
+      ]
+    },
+    "502": {
+      "ingredientIndexes": [
+        1,
+        963,
+        1063
+      ]
+    },
+    "503": {
+      "ingredientIndexes": [
+        153,
+        488
+      ]
+    },
+    "504": {
+      "ingredientIndexes": [
+        244,
+        1061
+      ]
+    },
+    "505": {
+      "ingredientIndexes": [
+        1063,
+        1115
+      ]
+    },
+    "506": {
+      "ingredientIndexes": [
+        657,
+        697
+      ]
+    },
+    "507": {
+      "ingredientIndexes": [
+        892,
+        952,
+        1063
+      ]
+    },
+    "508": {
+      "ingredientIndexes": [
+        153,
+        726
+      ]
+    },
+    "509": {
+      "ingredientIndexes": [
+        62,
+        898,
+        1063
+      ]
+    },
+    "510": {
+      "ingredientIndexes": [
+        29,
+        246,
+        477
+      ]
+    },
+    "511": {
+      "ingredientIndexes": [
+        709,
+        1063
+      ]
+    },
+    "512": {
+      "ingredientIndexes": [
+        17
+      ]
+    },
+    "513": {
+      "ingredientIndexes": [
+        470,
+        1063
+      ]
+    },
+    "514": {
+      "ingredientIndexes": [
+        44,
+        1066
+      ]
+    },
+    "515": {
+      "ingredientIndexes": [
+        1063,
+        1127
+      ]
+    },
+    "516": {
+      "ingredientIndexes": [
+        471,
+        567
+      ]
+    },
+    "517": {
+      "ingredientIndexes": [
+        153,
+        873
+      ]
+    },
+    "518": {
+      "ingredientIndexes": [
+        999,
+        1063
+      ]
+    },
+    "519": {
+      "ingredientIndexes": [
+        94,
+        479,
+        1063
+      ]
+    },
+    "520": {
+      "ingredientIndexes": [
+        29,
+        329
+      ]
+    },
+    "521": {
+      "ingredientIndexes": [
+        29,
+        1035
+      ]
+    },
+    "522": {
+      "ingredientIndexes": [
+        254,
+        541,
+        1063
+      ]
+    },
+    "523": {
+      "ingredientIndexes": [
+        673,
+        1063
+      ]
+    },
+    "524": {
+      "ingredientIndexes": [
+        13,
+        1063
+      ]
+    },
+    "525": {
+      "ingredientIndexes": [
+        538
+      ]
+    },
+    "526": {
+      "ingredientIndexes": [
+        1063,
+        1136
+      ]
+    },
+    "527": {
+      "ingredientIndexes": [
+        468,
+        986,
+        1063
+      ]
+    },
+    "528": {
+      "ingredientIndexes": [
+        129
+      ]
+    },
+    "529": {
+      "ingredientIndexes": [
+        358
+      ]
+    },
+    "530": {
+      "ingredientIndexes": [
+        74,
+        1063
+      ]
+    },
+    "531": {
+      "ingredientIndexes": [
+        274
+      ]
+    },
+    "532": {
+      "ingredientIndexes": [
+        1040,
+        1063
+      ]
+    },
+    "533": {
+      "ingredientIndexes": [
+        171
+      ]
+    },
+    "534": {
+      "ingredientIndexes": [
+        153,
+        656
+      ]
+    },
+    "535": {
+      "ingredientIndexes": [
+        29,
+        129
+      ]
+    },
+    "536": {
+      "ingredientIndexes": [
+        12,
+        1063
+      ]
+    },
+    "537": {
+      "ingredientIndexes": [
+        211,
+        1063
+      ]
+    },
+    "538": {
+      "ingredientIndexes": [
+        624,
+        1063
+      ]
+    },
+    "539": {
+      "ingredientIndexes": [
+        827
+      ]
+    },
+    "540": {
+      "ingredientIndexes": [
+        451
+      ]
+    },
+    "541": {
+      "ingredientIndexes": [
+        650
+      ]
+    },
+    "542": {
+      "ingredientIndexes": [
+        1062
+      ]
+    },
+    "543": {
+      "ingredientIndexes": [
+        153,
+        374
+      ]
+    },
+    "544": {
+      "ingredientIndexes": [
+        912
+      ]
+    },
+    "545": {
+      "ingredientIndexes": [
+        9,
+        206
+      ]
+    },
+    "546": {
+      "ingredientIndexes": [
+        408,
+        467,
+        778,
+        1063
+      ]
+    },
+    "547": {
+      "ingredientIndexes": [
+        7
+      ]
+    },
+    "548": {
+      "ingredientIndexes": [
+        177,
+        1063
+      ]
+    },
+    "549": {
+      "ingredientIndexes": [
+        1037
+      ]
+    },
+    "550": {
+      "ingredientIndexes": [
+        235
+      ]
+    },
+    "551": {
+      "ingredientIndexes": [
+        329,
+        1063
+      ]
+    },
+    "552": {
+      "ingredientIndexes": [
+        442
+      ]
+    },
+    "553": {
+      "ingredientIndexes": [
+        10
+      ]
+    },
+    "554": {
+      "ingredientIndexes": [
+        612,
+        1063
+      ]
+    },
+    "555": {
+      "ingredientIndexes": [
+        177,
+        898,
+        1063
+      ]
+    },
+    "556": {
+      "ingredientIndexes": [
+        273
+      ]
+    },
+    "557": {
+      "ingredientIndexes": [
+        747
+      ]
+    },
+    "558": {
+      "ingredientIndexes": [
+        7,
+        1063
+      ]
+    },
+    "559": {
+      "ingredientIndexes": [
+        64,
+        975
+      ]
+    },
+    "560": {
+      "ingredientIndexes": [
+        679,
+        1063
+      ]
+    },
+    "561": {
+      "ingredientIndexes": [
+        177,
+        1063
+      ]
+    },
+    "562": {
+      "ingredientIndexes": [
+        94,
+        1063
+      ]
+    },
+    "563": {
+      "ingredientIndexes": [
+        282
+      ]
+    },
+    "564": {
+      "ingredientIndexes": [
+        11
+      ]
+    },
+    "565": {
+      "ingredientIndexes": [
+        29,
+        999
+      ]
+    },
+    "566": {
+      "ingredientIndexes": [
+        29,
+        1136
+      ]
+    },
+    "567": {
+      "ingredientIndexes": [
+        3,
+        1063
+      ]
+    },
+    "568": {
+      "ingredientIndexes": [
+        47,
+        898,
+        1063
+      ]
+    },
+    "569": {
+      "ingredientIndexes": [
+        277
+      ]
+    },
+    "570": {
+      "ingredientIndexes": [
+        8,
+        230
+      ]
+    },
+    "571": {
+      "ingredientIndexes": [
+        128
+      ]
+    },
+    "572": {
+      "ingredientIndexes": [
+        247,
+        1063
+      ]
+    },
+    "573": {
+      "ingredientIndexes": [
+        650,
+        1077
+      ]
+    },
+    "574": {
+      "ingredientIndexes": [
+        332,
+        748,
+        926
+      ]
+    },
+    "575": {
+      "ingredientIndexes": [
+        315,
+        1063
+      ]
+    },
+    "576": {
+      "ingredientIndexes": [
+        4,
+        1063
+      ]
+    },
+    "577": {
+      "ingredientIndexes": [
+        29,
+        911
+      ]
+    },
+    "578": {
+      "ingredientIndexes": [
+        95,
+        1063
+      ]
+    },
+    "579": {
+      "ingredientIndexes": [
+        153,
+        169
+      ]
+    },
+    "580": {
+      "ingredientIndexes": [
+        29,
+        315
+      ]
+    },
+    "581": {
+      "ingredientIndexes": [
+        338,
+        947,
+        1076
+      ]
+    },
+    "582": {
+      "ingredientIndexes": [
+        233,
+        486,
+        1063
+      ]
+    },
+    "583": {
+      "ingredientIndexes": [
+        29,
+        431
+      ]
+    },
+    "584": {
+      "ingredientIndexes": [
+        342,
+        1063
+      ]
+    },
+    "585": {
+      "ingredientIndexes": [
+        134,
+        1063
+      ]
+    },
+    "586": {
+      "ingredientIndexes": [
+        522
+      ]
+    },
+    "587": {
+      "ingredientIndexes": [
+        153,
+        1094
+      ]
+    },
+    "588": {
+      "ingredientIndexes": [
+        29,
+        149
+      ]
+    },
+    "589": {
+      "ingredientIndexes": [
+        104,
+        153
+      ]
+    },
+    "590": {
+      "ingredientIndexes": [
+        1063,
+        1101
+      ]
+    },
+    "591": {
+      "ingredientIndexes": [
+        733,
+        1063
+      ]
+    },
+    "592": {
+      "ingredientIndexes": [
+        153,
+        155
+      ]
+    },
+    "593": {
+      "ingredientIndexes": [
+        908,
+        1063
+      ]
+    },
+    "594": {
+      "ingredientIndexes": [
+        1063,
+        1111
+      ]
+    },
+    "595": {
+      "ingredientIndexes": [
+        29,
+        48
+      ]
+    },
+    "596": {
+      "ingredientIndexes": [
+        153,
+        959
+      ]
+    },
+    "597": {
+      "ingredientIndexes": [
+        29,
+        146
+      ]
+    },
+    "598": {
+      "ingredientIndexes": [
+        657
+      ]
+    },
+    "599": {
+      "ingredientIndexes": [
+        788
+      ]
+    },
+    "600": {
+      "ingredientIndexes": [
+        217
+      ]
+    },
+    "601": {
+      "ingredientIndexes": [
+        345,
+        486,
+        1063
+      ]
+    },
+    "602": {
+      "ingredientIndexes": [
+        965,
+        1063
+      ]
+    },
+    "603": {
+      "ingredientIndexes": [
+        29,
+        755
+      ]
+    },
+    "604": {
+      "ingredientIndexes": [
+        153,
+        834
+      ]
+    },
+    "605": {
+      "ingredientIndexes": [
+        708
+      ]
+    },
+    "606": {
+      "ingredientIndexes": [
+        627,
+        1063
+      ]
+    },
+    "607": {
+      "ingredientIndexes": [
+        786
+      ]
+    },
+    "608": {
+      "ingredientIndexes": [
+        945
+      ]
+    },
+    "609": {
+      "ingredientIndexes": [
+        153,
+        844
+      ]
+    },
+    "610": {
+      "ingredientIndexes": [
+        787,
+        1063
+      ]
+    },
+    "611": {
+      "ingredientIndexes": [
+        29,
+        1116
+      ]
+    },
+    "612": {
+      "ingredientIndexes": [
+        153,
+        690
+      ]
+    },
+    "613": {
+      "ingredientIndexes": [
+        1063,
+        1091
+      ]
+    },
+    "614": {
+      "ingredientIndexes": [
+        375
+      ]
+    },
+    "615": {
+      "ingredientIndexes": [
+        29,
+        54
+      ]
+    },
+    "616": {
+      "ingredientIndexes": [
+        1120
+      ]
+    },
+    "617": {
+      "ingredientIndexes": [
+        680,
+        898,
+        1063
+      ]
+    },
+    "618": {
+      "ingredientIndexes": [
+        1063,
+        1084
+      ]
+    },
+    "619": {
+      "ingredientIndexes": [
+        29,
+        580
+      ]
+    },
+    "620": {
+      "ingredientIndexes": [
+        628,
+        989
+      ]
+    },
+    "621": {
+      "ingredientIndexes": [
+        524,
+        1063
+      ]
+    },
+    "622": {
+      "ingredientIndexes": [
+        414
+      ]
+    },
+    "623": {
+      "ingredientIndexes": [
+        153,
+        764
+      ]
+    },
+    "624": {
+      "ingredientIndexes": [
+        29,
+        138
+      ]
+    },
+    "625": {
+      "ingredientIndexes": [
+        954,
+        1063
+      ]
+    },
+    "626": {
+      "ingredientIndexes": [
+        150,
+        1063
+      ]
+    },
+    "627": {
+      "ingredientIndexes": [
+        29,
+        929
+      ]
+    },
+    "628": {
+      "ingredientIndexes": [
+        578,
+        986
+      ]
+    },
+    "629": {
+      "ingredientIndexes": [
+        270,
+        958
+      ]
+    },
+    "630": {
+      "ingredientIndexes": [
+        175,
+        1063
+      ]
+    },
+    "631": {
+      "ingredientIndexes": [
+        409,
+        1063
+      ]
+    },
+    "632": {
+      "ingredientIndexes": [
+        29,
+        1131
+      ]
+    },
+    "633": {
+      "ingredientIndexes": [
+        29,
+        134
+      ]
+    },
+    "634": {
+      "ingredientIndexes": [
+        29,
+        233
+      ]
+    },
+    "635": {
+      "ingredientIndexes": [
+        789
+      ]
+    },
+    "636": {
+      "ingredientIndexes": [
+        336,
+        1063
+      ]
+    },
+    "637": {
+      "ingredientIndexes": [
+        153,
+        1125
+      ]
+    },
+    "638": {
+      "ingredientIndexes": [
+        29,
+        953
+      ]
+    },
+    "639": {
+      "ingredientIndexes": [
+        974
+      ]
+    },
+    "640": {
+      "ingredientIndexes": [
+        835,
+        1063
+      ]
+    },
+    "641": {
+      "ingredientIndexes": [
+        267,
+        1002
+      ]
+    },
+    "642": {
+      "ingredientIndexes": [
+        1063,
+        1118
+      ]
+    },
+    "643": {
+      "ingredientIndexes": [
+        29,
+        150
+      ]
+    },
+    "644": {
+      "ingredientIndexes": [
+        477,
+        947,
+        1063
+      ]
+    },
+    "645": {
+      "ingredientIndexes": [
+        138,
+        1063
+      ]
+    },
+    "646": {
+      "ingredientIndexes": [
+        29,
+        844
+      ]
+    },
+    "647": {
+      "ingredientIndexes": [
+        29,
+        340
+      ]
+    },
+    "648": {
+      "ingredientIndexes": [
+        486,
+        1063,
+        1095
+      ]
+    },
+    "649": {
+      "ingredientIndexes": [
+        121,
+        153
+      ]
+    },
+    "650": {
+      "ingredientIndexes": [
+        223,
+        1063
+      ]
+    },
+    "651": {
+      "ingredientIndexes": [
+        486,
+        777,
+        1063
+      ]
+    },
+    "652": {
+      "ingredientIndexes": [
+        890,
+        980,
+        1063,
+        1130
+      ]
+    },
+    "653": {
+      "ingredientIndexes": [
+        528
+      ]
+    },
+    "654": {
+      "ingredientIndexes": [
+        258,
+        1063
+      ]
+    },
+    "655": {
+      "ingredientIndexes": [
+        29,
+        859
+      ]
+    },
+    "656": {
+      "ingredientIndexes": [
+        279
+      ]
+    },
+    "657": {
+      "ingredientIndexes": [
+        1063,
+        1102
+      ]
+    },
+    "658": {
+      "ingredientIndexes": [
+        874,
+        986,
+        1063
+      ]
+    },
+    "659": {
+      "ingredientIndexes": [
+        106,
+        899,
+        1063
+      ]
+    },
+    "660": {
+      "ingredientIndexes": [
+        126,
+        565
+      ]
+    },
+    "661": {
+      "ingredientIndexes": [
+        720,
+        981,
+        1063
+      ]
+    },
+    "662": {
+      "ingredientIndexes": [
+        850,
+        1063
+      ]
+    },
+    "663": {
+      "ingredientIndexes": [
+        153,
+        380
+      ]
+    },
+    "664": {
+      "ingredientIndexes": [
+        29,
+        349
+      ]
+    },
+    "665": {
+      "ingredientIndexes": [
+        394,
+        986,
+        1063
+      ]
+    },
+    "666": {
+      "ingredientIndexes": [
+        153,
+        192
+      ]
+    },
+    "667": {
+      "ingredientIndexes": [
+        124
+      ]
+    },
+    "668": {
+      "ingredientIndexes": [
+        507,
+        1063
+      ]
+    },
+    "669": {
+      "ingredientIndexes": [
+        116,
+        153
+      ]
+    },
+    "670": {
+      "ingredientIndexes": [
+        281
+      ]
+    },
+    "671": {
+      "ingredientIndexes": [
+        153,
+        291
+      ]
+    },
+    "672": {
+      "ingredientIndexes": [
+        153,
+        631
+      ]
+    },
+    "673": {
+      "ingredientIndexes": [
+        121,
+        1063
+      ]
+    },
+    "674": {
+      "ingredientIndexes": [
+        174,
+        1063
+      ]
+    },
+    "675": {
+      "ingredientIndexes": [
+        153,
+        1124
+      ]
+    },
+    "676": {
+      "ingredientIndexes": [
+        29,
+        1101
+      ]
+    },
+    "677": {
+      "ingredientIndexes": [
+        719
+      ]
+    },
+    "678": {
+      "ingredientIndexes": [
+        410,
+        1063
+      ]
+    },
+    "679": {
+      "ingredientIndexes": [
+        126,
+        643
+      ]
+    },
+    "680": {
+      "ingredientIndexes": [
+        496
+      ]
+    },
+    "681": {
+      "ingredientIndexes": [
+        347,
+        1063
+      ]
+    },
+    "682": {
+      "ingredientIndexes": [
+        153,
+        881
+      ]
+    },
+    "683": {
+      "ingredientIndexes": [
+        29,
+        121
+      ]
+    },
+    "684": {
+      "ingredientIndexes": [
+        29,
+        631
+      ]
+    },
+    "685": {
+      "ingredientIndexes": [
+        976,
+        1063
+      ]
+    },
+    "686": {
+      "ingredientIndexes": [
+        477,
+        914,
+        1063
+      ]
+    },
+    "687": {
+      "ingredientIndexes": [
+        105,
+        700,
+        964
+      ]
+    },
+    "688": {
+      "ingredientIndexes": [
+        54,
+        1063
+      ]
+    },
+    "689": {
+      "ingredientIndexes": [
+        29,
+        121
+      ]
+    },
+    "690": {
+      "ingredientIndexes": [
+        153,
+        499
+      ]
+    },
+    "691": {
+      "ingredientIndexes": [
+        255,
+        986
+      ]
+    },
+    "692": {
+      "ingredientIndexes": [
+        527,
+        1063
+      ]
+    },
+    "693": {
+      "ingredientIndexes": [
+        178,
+        900
+      ]
+    },
+    "694": {
+      "ingredientIndexes": [
+        350,
+        1063
+      ]
+    },
+    "695": {
+      "ingredientIndexes": [
+        730
+      ]
+    },
+    "696": {
+      "ingredientIndexes": [
+        194,
+        204
+      ]
+    },
+    "697": {
+      "ingredientIndexes": [
+        122
+      ]
+    },
+    "698": {
+      "ingredientIndexes": [
+        153,
+        310
+      ]
+    },
+    "699": {
+      "ingredientIndexes": [
+        29,
+        221
+      ]
+    },
+    "700": {
+      "ingredientIndexes": [
+        153,
+        772
+      ]
+    },
+    "701": {
+      "ingredientIndexes": [
+        288,
+        693
+      ]
+    },
+    "702": {
+      "ingredientIndexes": [
+        1063,
+        1101
+      ]
+    },
+    "703": {
+      "ingredientIndexes": [
+        29,
+        347
+      ]
+    },
+    "704": {
+      "ingredientIndexes": [
+        486,
+        507,
+        1063
+      ]
+    },
+    "705": {
+      "ingredientIndexes": [
+        632
+      ]
+    },
+    "706": {
+      "ingredientIndexes": [
+        153,
+        874
+      ]
+    },
+    "707": {
+      "ingredientIndexes": [
+        153,
+        1019
+      ]
+    },
+    "708": {
+      "ingredientIndexes": [
+        29,
+        499
+      ]
+    },
+    "709": {
+      "ingredientIndexes": [
+        29,
+        850
+      ]
+    },
+    "710": {
+      "ingredientIndexes": [
+        1126
+      ]
+    },
+    "711": {
+      "ingredientIndexes": [
+        153,
+        694
+      ]
+    },
+    "712": {
+      "ingredientIndexes": [
+        379,
+        1056
+      ]
+    },
+    "713": {
+      "ingredientIndexes": [
+        153,
+        917,
+        996,
+        1138
+      ]
+    },
+    "714": {
+      "ingredientIndexes": [
+        274
+      ]
+    },
+    "715": {
+      "ingredientIndexes": [
+        625
+      ]
+    },
+    "716": {
+      "ingredientIndexes": [
+        894,
+        1076
+      ]
+    },
+    "717": {
+      "ingredientIndexes": [
+        995,
+        1063
+      ]
+    },
+    "718": {
+      "ingredientIndexes": [
+        153,
+        618
+      ]
+    },
+    "719": {
+      "ingredientIndexes": [
+        791,
+        1063
+      ]
+    },
+    "720": {
+      "ingredientIndexes": [
+        326
+      ]
+    },
+    "721": {
+      "ingredientIndexes": [
+        367,
+        1063
+      ]
+    },
+    "722": {
+      "ingredientIndexes": [
+        477,
+        574,
+        1063
+      ]
+    },
+    "723": {
+      "ingredientIndexes": [
+        41
+      ]
+    },
+    "724": {
+      "ingredientIndexes": [
+        1014,
+        1056
+      ]
+    },
+    "725": {
+      "ingredientIndexes": [
+        153,
+        225
+      ]
+    },
+    "726": {
+      "ingredientIndexes": [
+        477,
+        751
+      ]
+    },
+    "727": {
+      "ingredientIndexes": [
+        153,
+        764
+      ]
+    },
+    "728": {
+      "ingredientIndexes": [
+        401,
+        1056
+      ]
+    },
+    "729": {
+      "ingredientIndexes": [
+        199
+      ]
+    },
+    "730": {
+      "ingredientIndexes": [
+        153,
+        505
+      ]
+    },
+    "731": {
+      "ingredientIndexes": [
+        314,
+        1063
+      ]
+    },
+    "732": {
+      "ingredientIndexes": [
+        899,
+        977
+      ]
+    },
+    "733": {
+      "ingredientIndexes": [
+        803
+      ]
+    },
+    "734": {
+      "ingredientIndexes": [
+        881,
+        1056
+      ]
+    },
+    "735": {
+      "ingredientIndexes": [
+        35,
+        477,
+        677
+      ]
+    },
+    "736": {
+      "ingredientIndexes": [
+        477,
+        1030
+      ]
+    },
+    "737": {
+      "ingredientIndexes": [
+        29,
+        738
+      ]
+    },
+    "738": {
+      "ingredientIndexes": [
+        98,
+        377
+      ]
+    },
+    "739": {
+      "ingredientIndexes": [
+        828
+      ]
+    },
+    "740": {
+      "ingredientIndexes": [
+        385,
+        1063
+      ]
+    },
+    "741": {
+      "ingredientIndexes": [
+        59,
+        153
+      ]
+    },
+    "742": {
+      "ingredientIndexes": [
+        978
+      ]
+    },
+    "743": {
+      "ingredientIndexes": [
+        479,
+        640,
+        894
+      ]
+    },
+    "744": {
+      "ingredientIndexes": [
+        378,
+        645,
+        980,
+        1063
+      ]
+    },
+    "745": {
+      "ingredientIndexes": [
+        824
+      ]
+    },
+    "746": {
+      "ingredientIndexes": [
+        248,
+        413,
+        1063
+      ]
+    },
+    "747": {
+      "ingredientIndexes": [
+        1057
+      ]
+    },
+    "748": {
+      "ingredientIndexes": [
+        101,
+        153
+      ]
+    },
+    "749": {
+      "ingredientIndexes": [
+        153,
+        251
+      ]
+    },
+    "750": {
+      "ingredientIndexes": [
+        610,
+        1063
+      ]
+    },
+    "751": {
+      "ingredientIndexes": [
+        325
+      ]
+    },
+    "752": {
+      "ingredientIndexes": [
+        133,
+        477
+      ]
+    },
+    "753": {
+      "ingredientIndexes": [
+        153,
+        887
+      ]
+    },
+    "754": {
+      "ingredientIndexes": [
+        878,
+        901
+      ]
+    },
+    "755": {
+      "ingredientIndexes": [
+        367,
+        1063
+      ]
+    },
+    "756": {
+      "ingredientIndexes": [
+        574,
+        898,
+        1063
+      ]
+    },
+    "757": {
+      "ingredientIndexes": [
+        153,
+        495
+      ]
+    },
+    "758": {
+      "ingredientIndexes": [
+        29,
+        881
+      ]
+    },
+    "759": {
+      "ingredientIndexes": [
+        379,
+        640,
+        1069
+      ]
+    },
+    "760": {
+      "ingredientIndexes": [
+        29,
+        995
+      ]
+    },
+    "761": {
+      "ingredientIndexes": [
+        278
+      ]
+    },
+    "762": {
+      "ingredientIndexes": [
+        225,
+        695
+      ]
+    },
+    "763": {
+      "ingredientIndexes": [
+        486,
+        494
+      ]
+    },
+    "764": {
+      "ingredientIndexes": [
+        29,
+        894
+      ]
+    },
+    "765": {
+      "ingredientIndexes": [
+        261,
+        1056
+      ]
+    },
+    "766": {
+      "ingredientIndexes": [
+        718
+      ]
+    },
+    "767": {
+      "ingredientIndexes": [
+        425,
+        1063
+      ]
+    },
+    "768": {
+      "ingredientIndexes": [
+        854,
+        1063
+      ]
+    },
+    "769": {
+      "ingredientIndexes": [
+        83,
+        1063
+      ]
+    },
+    "770": {
+      "ingredientIndexes": [
+        320,
+        413,
+        1063
+      ]
+    },
+    "771": {
+      "ingredientIndexes": [
+        370
+      ]
+    },
+    "772": {
+      "ingredientIndexes": [
+        168,
+        932,
+        1063
+      ]
+    },
+    "773": {
+      "ingredientIndexes": [
+        1063,
+        1093
+      ]
+    },
+    "774": {
+      "ingredientIndexes": [
+        526,
+        1078
+      ]
+    },
+    "775": {
+      "ingredientIndexes": [
+        153,
+        489
+      ]
+    },
+    "776": {
+      "ingredientIndexes": [
+        799,
+        1063
+      ]
+    },
+    "777": {
+      "ingredientIndexes": [
+        455,
+        1063
+      ]
+    },
+    "778": {
+      "ingredientIndexes": [
+        337,
+        1073
+      ]
+    },
+    "779": {
+      "ingredientIndexes": [
+        91,
+        153
+      ]
+    },
+    "780": {
+      "ingredientIndexes": [
+        303,
+        1063
+      ]
+    },
+    "781": {
+      "ingredientIndexes": [
+        153,
+        417
+      ]
+    },
+    "782": {
+      "ingredientIndexes": [
+        153,
+        242
+      ]
+    },
+    "783": {
+      "ingredientIndexes": [
+        555,
+        1063
+      ]
+    },
+    "784": {
+      "ingredientIndexes": [
+        798,
+        1073
+      ]
+    },
+    "785": {
+      "ingredientIndexes": [
+        525,
+        986,
+        1063,
+        1085
+      ]
+    },
+    "786": {
+      "ingredientIndexes": [
+        519,
+        1063
+      ]
+    },
+    "787": {
+      "ingredientIndexes": [
+        477,
+        1022
+      ]
+    },
+    "788": {
+      "ingredientIndexes": [
+        408,
+        752,
+        1063
+      ]
+    },
+    "789": {
+      "ingredientIndexes": [
+        588,
+        1063
+      ]
+    },
+    "790": {
+      "ingredientIndexes": [
+        153,
+        652
+      ]
+    },
+    "791": {
+      "ingredientIndexes": [
+        796
+      ]
+    },
+    "792": {
+      "ingredientIndexes": [
+        913,
+        1063
+      ]
+    },
+    "793": {
+      "ingredientIndexes": [
+        271,
+        1073
+      ]
+    },
+    "794": {
+      "ingredientIndexes": [
+        153,
+        426
+      ]
+    },
+    "795": {
+      "ingredientIndexes": [
+        18,
+        153,
+        338
+      ]
+    },
+    "796": {
+      "ingredientIndexes": [
+        1063,
+        1103
+      ]
+    },
+    "797": {
+      "ingredientIndexes": [
+        296,
+        544
+      ]
+    },
+    "798": {
+      "ingredientIndexes": [
+        1032,
+        1063
+      ]
+    },
+    "799": {
+      "ingredientIndexes": [
+        58,
+        1079
+      ]
+    },
+    "800": {
+      "ingredientIndexes": [
+        153,
+        939
+      ]
+    },
+    "801": {
+      "ingredientIndexes": [
+        29,
+        1093
+      ]
+    },
+    "802": {
+      "ingredientIndexes": [
+        437,
+        1064
+      ]
+    },
+    "803": {
+      "ingredientIndexes": [
+        248,
+        260,
+        363,
+        940,
+        967
+      ]
+    },
+    "804": {
+      "ingredientIndexes": [
+        29,
+        855
+      ]
+    },
+    "805": {
+      "ingredientIndexes": [
+        514,
+        1063
+      ]
+    },
+    "806": {
+      "ingredientIndexes": [
+        785,
+        1063
+      ]
+    },
+    "807": {
+      "ingredientIndexes": [
+        153,
+        600
+      ]
+    },
+    "808": {
+      "ingredientIndexes": [
+        29,
+        751
+      ]
+    },
+    "809": {
+      "ingredientIndexes": [
+        371
+      ]
+    },
+    "810": {
+      "ingredientIndexes": [
+        644,
+        1063
+      ]
+    },
+    "811": {
+      "ingredientIndexes": [
+        413,
+        526,
+        1063
+      ]
+    },
+    "812": {
+      "ingredientIndexes": [
+        153,
+        601
+      ]
+    },
+    "813": {
+      "ingredientIndexes": [
+        766,
+        1063
+      ]
+    },
+    "814": {
+      "ingredientIndexes": [
+        655
+      ]
+    },
+    "815": {
+      "ingredientIndexes": [
+        1004,
+        1063
+      ]
+    },
+    "816": {
+      "ingredientIndexes": [
+        153,
+        547
+      ]
+    },
+    "817": {
+      "ingredientIndexes": [
+        805
+      ]
+    },
+    "818": {
+      "ingredientIndexes": [
+        29,
+        931
+      ]
+    },
+    "819": {
+      "ingredientIndexes": [
+        554
+      ]
+    },
+    "820": {
+      "ingredientIndexes": [
+        420,
+        1072
+      ]
+    },
+    "821": {
+      "ingredientIndexes": [
+        425,
+        526,
+        1063
+      ]
+    },
+    "822": {
+      "ingredientIndexes": [
+        546
+      ]
+    },
+    "823": {
+      "ingredientIndexes": [
+        804
+      ]
+    },
+    "824": {
+      "ingredientIndexes": [
+        153,
+        631
+      ]
+    },
+    "825": {
+      "ingredientIndexes": [
+        695,
+        871
+      ]
+    },
+    "826": {
+      "ingredientIndexes": [
+        293
+      ]
+    },
+    "827": {
+      "ingredientIndexes": [
+        725
+      ]
+    },
+    "828": {
+      "ingredientIndexes": [
+        29,
+        244
+      ]
+    },
+    "829": {
+      "ingredientIndexes": [
+        153,
+        616
+      ]
+    },
+    "830": {
+      "ingredientIndexes": [
+        907,
+        1063
+      ]
+    },
+    "831": {
+      "ingredientIndexes": [
+        545,
+        1063
+      ]
+    },
+    "832": {
+      "ingredientIndexes": [
+        508,
+        1063
+      ]
+    },
+    "833": {
+      "ingredientIndexes": [
+        29,
+        429
+      ]
+    },
+    "834": {
+      "ingredientIndexes": [
+        153,
+        930
+      ]
+    },
+    "835": {
+      "ingredientIndexes": [
+        2,
+        1104
+      ]
+    },
+    "836": {
+      "ingredientIndexes": [
+        523
+      ]
+    },
+    "837": {
+      "ingredientIndexes": [
+        1064,
+        1133
+      ]
+    },
+    "838": {
+      "ingredientIndexes": [
+        297
+      ]
+    },
+    "839": {
+      "ingredientIndexes": [
+        681,
+        1063
+      ]
+    },
+    "840": {
+      "ingredientIndexes": [
+        185,
+        695
+      ]
+    },
+    "841": {
+      "ingredientIndexes": [
+        486,
+        623
+      ]
+    },
+    "842": {
+      "ingredientIndexes": [
+        29,
+        1135
+      ]
+    },
+    "843": {
+      "ingredientIndexes": [
+        605
+      ]
+    },
+    "844": {
+      "ingredientIndexes": [
+        832,
+        1063
+      ]
+    },
+    "845": {
+      "ingredientIndexes": [
+        757,
+        1063
+      ]
+    },
+    "846": {
+      "ingredientIndexes": [
+        153,
+        393
+      ]
+    },
+    "847": {
+      "ingredientIndexes": [
+        222,
+        1063
+      ]
+    },
+    "848": {
+      "ingredientIndexes": [
+        153,
+        1124
+      ]
+    },
+    "849": {
+      "ingredientIndexes": [
+        29,
+        740
+      ]
+    },
+    "850": {
+      "ingredientIndexes": [
+        153,
+        675
+      ]
+    },
+    "851": {
+      "ingredientIndexes": [
+        710,
+        1063
+      ]
+    },
+    "852": {
+      "ingredientIndexes": [
+        29,
+        209
+      ]
+    },
+    "853": {
+      "ingredientIndexes": [
+        836,
+        1063
+      ]
+    },
+    "854": {
+      "ingredientIndexes": [
+        29,
+        183
+      ]
+    },
+    "855": {
+      "ingredientIndexes": [
+        602,
+        1063
+      ]
+    },
+    "856": {
+      "ingredientIndexes": [
+        110
+      ]
+    },
+    "857": {
+      "ingredientIndexes": [
+        617,
+        695
+      ]
+    },
+    "858": {
+      "ingredientIndexes": [
+        170,
+        980,
+        1063
+      ]
+    },
+    "859": {
+      "ingredientIndexes": [
+        1045,
+        1063
+      ]
+    },
+    "860": {
+      "ingredientIndexes": [
+        633,
+        1063
+      ]
+    },
+    "861": {
+      "ingredientIndexes": [
+        63,
+        477,
+        1014
+      ]
+    },
+    "862": {
+      "ingredientIndexes": [
+        362,
+        1063
+      ]
+    },
+    "863": {
+      "ingredientIndexes": [
+        477,
+        604
+      ]
+    },
+    "864": {
+      "ingredientIndexes": [
+        497,
+        1063
+      ]
+    },
+    "865": {
+      "ingredientIndexes": [
+        461,
+        479,
+        1063
+      ]
+    },
+    "866": {
+      "ingredientIndexes": [
+        29,
+        1071
+      ]
+    },
+    "867": {
+      "ingredientIndexes": [
+        22,
+        145
+      ]
+    },
+    "868": {
+      "ingredientIndexes": [
+        593,
+        1063
+      ]
+    },
+    "869": {
+      "ingredientIndexes": [
+        478,
+        695,
+        884
+      ]
+    },
+    "870": {
+      "ingredientIndexes": [
+        384,
+        1063
+      ]
+    },
+    "871": {
+      "ingredientIndexes": [
+        136,
+        1063
+      ]
+    },
+    "872": {
+      "ingredientIndexes": [
+        29,
+        231
+      ]
+    },
+    "873": {
+      "ingredientIndexes": [
+        817
+      ]
+    },
+    "874": {
+      "ingredientIndexes": [
+        477,
+        640,
+        894
+      ]
+    },
+    "875": {
+      "ingredientIndexes": [
+        274
+      ]
+    },
+    "876": {
+      "ingredientIndexes": [
+        464,
+        1054,
+        1063
+      ]
+    },
+    "877": {
+      "ingredientIndexes": [
+        504,
+        1063
+      ]
+    },
+    "878": {
+      "ingredientIndexes": [
+        29,
+        398
+      ]
+    },
+    "879": {
+      "ingredientIndexes": [
+        671,
+        921,
+        1063
+      ]
+    },
+    "880": {
+      "ingredientIndexes": [
+        364,
+        1063
+      ]
+    },
+    "881": {
+      "ingredientIndexes": [
+        916,
+        1063
+      ]
+    },
+    "882": {
+      "ingredientIndexes": [
+        37,
+        669
+      ]
+    },
+    "883": {
+      "ingredientIndexes": [
+        981,
+        1008,
+        1063
+      ]
+    },
+    "884": {
+      "ingredientIndexes": [
+        305,
+        695
+      ]
+    },
+    "885": {
+      "ingredientIndexes": [
+        879,
+        902
+      ]
+    },
+    "886": {
+      "ingredientIndexes": [
+        77,
+        1063
+      ]
+    },
+    "887": {
+      "ingredientIndexes": [
+        584
+      ]
+    },
+    "888": {
+      "ingredientIndexes": [
+        994,
+        1063
+      ]
+    },
+    "889": {
+      "ingredientIndexes": [
+        405,
+        477,
+        895
+      ]
+    },
+    "890": {
+      "ingredientIndexes": [
+        1003,
+        1063
+      ]
+    },
+    "891": {
+      "ingredientIndexes": [
+        29,
+        677
+      ]
+    },
+    "892": {
+      "ingredientIndexes": [
+        379,
+        696
+      ]
+    },
+    "893": {
+      "ingredientIndexes": [
+        941,
+        1063
+      ]
+    },
+    "894": {
+      "ingredientIndexes": [
+        203,
+        249
+      ]
+    },
+    "895": {
+      "ingredientIndexes": [
+        791,
+        1063
+      ]
+    },
+    "896": {
+      "ingredientIndexes": [
+        404,
+        448
+      ]
+    },
+    "897": {
+      "ingredientIndexes": [
+        387,
+        1063
+      ]
+    },
+    "898": {
+      "ingredientIndexes": [
+        68,
+        477,
+        985
+      ]
+    },
+    "899": {
+      "ingredientIndexes": [
+        63,
+        400,
+        695
+      ]
+    },
+    "900": {
+      "ingredientIndexes": [
+        529,
+        1063
+      ]
+    },
+    "901": {
+      "ingredientIndexes": [
+        197,
+        404,
+        477
+      ]
+    },
+    "902": {
+      "ingredientIndexes": [
+        216,
+        1074
+      ]
+    },
+    "903": {
+      "ingredientIndexes": [
+        324,
+        477
+      ]
+    },
+    "904": {
+      "ingredientIndexes": [
+        314,
+        1063
+      ]
+    },
+    "905": {
+      "ingredientIndexes": [
+        29,
+        683
+      ]
+    },
+    "906": {
+      "ingredientIndexes": [
+        198,
+        477,
+        1063
+      ]
+    },
+    "907": {
+      "ingredientIndexes": [
+        888
+      ]
+    },
+    "908": {
+      "ingredientIndexes": [
+        140,
+        389
+      ]
+    },
+    "909": {
+      "ingredientIndexes": [
+        948
+      ]
+    },
+    "910": {
+      "ingredientIndexes": [
+        25,
+        1063
+      ]
+    },
+    "911": {
+      "ingredientIndexes": [
+        316,
+        477
+      ]
+    },
+    "912": {
+      "ingredientIndexes": [
+        148,
+        479,
+        1063
+      ]
+    },
+    "913": {
+      "ingredientIndexes": [
+        29,
+        736
+      ]
+    },
+    "914": {
+      "ingredientIndexes": [
+        792,
+        1063
+      ]
+    },
+    "915": {
+      "ingredientIndexes": [
+        487,
+        782
+      ]
+    },
+    "916": {
+      "ingredientIndexes": [
+        181,
+        1063
+      ]
+    },
+    "917": {
+      "ingredientIndexes": [
+        378,
+        477,
+        915
+      ]
+    },
+    "918": {
+      "ingredientIndexes": [
+        46,
+        1005,
+        1063
+      ]
+    },
+    "919": {
+      "ingredientIndexes": [
+        304,
+        1063
+      ]
+    },
+    "920": {
+      "ingredientIndexes": [
+        63,
+        463,
+        1063
+      ]
+    },
+    "921": {
+      "ingredientIndexes": [
+        477,
+        795,
+        1063
+      ]
+    },
+    "922": {
+      "ingredientIndexes": [
+        147,
+        980,
+        1063
+      ]
+    },
+    "923": {
+      "ingredientIndexes": [
+        29,
+        579
+      ]
+    },
+    "924": {
+      "ingredientIndexes": [
+        419,
+        477,
+        1063
+      ]
+    },
+    "925": {
+      "ingredientIndexes": [
+        684,
+        1063
+      ]
+    },
+    "926": {
+      "ingredientIndexes": [
+        395,
+        477
+      ]
+    },
+    "927": {
+      "ingredientIndexes": [
+        410,
+        477,
+        574,
+        1063
+      ]
+    },
+    "928": {
+      "ingredientIndexes": [
+        376,
+        1063
+      ]
+    },
+    "929": {
+      "ingredientIndexes": [
+        1063,
+        1141
+      ]
+    },
+    "930": {
+      "ingredientIndexes": [
+        403,
+        847,
+        960,
+        1033,
+        1063
+      ]
+    },
+    "931": {
+      "ingredientIndexes": [
+        97,
+        1063
+      ]
+    },
+    "932": {
+      "ingredientIndexes": [
+        909,
+        1063
+      ]
+    },
+    "933": {
+      "ingredientIndexes": [
+        695,
+        881
+      ]
+    },
+    "934": {
+      "ingredientIndexes": [
+        1018
+      ]
+    },
+    "935": {
+      "ingredientIndexes": [
+        141,
+        921
+      ]
+    },
+    "936": {
+      "ingredientIndexes": [
+        517
+      ]
+    },
+    "937": {
+      "ingredientIndexes": [
+        29,
+        923
+      ]
+    },
+    "938": {
+      "ingredientIndexes": [
+        403,
+        452,
+        516
+      ]
+    },
+    "939": {
+      "ingredientIndexes": [
+        641,
+        811,
+        1063
+      ]
+    },
+    "940": {
+      "ingredientIndexes": [
+        640,
+        781,
+        1063
+      ]
+    },
+    "941": {
+      "ingredientIndexes": [
+        614,
+        1063
+      ]
+    },
+    "942": {
+      "ingredientIndexes": [
+        24,
+        29
+      ]
+    },
+    "943": {
+      "ingredientIndexes": [
+        119,
+        477
+      ]
+    },
+    "944": {
+      "ingredientIndexes": [
+        0,
+        118,
+        355,
+        427,
+        756,
+        937
+      ]
+    },
+    "945": {
+      "ingredientIndexes": [
+        445,
+        674,
+        1063
+      ]
+    },
+    "946": {
+      "ingredientIndexes": [
+        29,
+        1006
+      ]
+    },
+    "947": {
+      "ingredientIndexes": [
+        412,
+        867
+      ]
+    },
+    "948": {
+      "ingredientIndexes": [
+        537,
+        1063
+      ]
+    },
+    "949": {
+      "ingredientIndexes": [
+        581,
+        924,
+        980
+      ]
+    },
+    "950": {
+      "ingredientIndexes": [
+        408,
+        477
+      ]
+    },
+    "951": {
+      "ingredientIndexes": [
+        49,
+        403,
+        988,
+        1063
+      ]
+    },
+    "952": {
+      "ingredientIndexes": [
+        533
+      ]
+    },
+    "953": {
+      "ingredientIndexes": [
+        29,
+        1031
+      ]
+    },
+    "954": {
+      "ingredientIndexes": [
+        1049,
+        1063
+      ]
+    },
+    "955": {
+      "ingredientIndexes": [
+        49,
+        477
+      ]
+    },
+    "956": {
+      "ingredientIndexes": [
+        161,
+        919
+      ]
+    },
+    "957": {
+      "ingredientIndexes": [
+        114,
+        213
+      ]
+    },
+    "958": {
+      "ingredientIndexes": [
+        19,
+        1063
+      ]
+    },
+    "959": {
+      "ingredientIndexes": [
+        598
+      ]
+    },
+    "960": {
+      "ingredientIndexes": [
+        321,
+        477,
+        1063
+      ]
+    },
+    "961": {
+      "ingredientIndexes": [
+        661
+      ]
+    },
+    "962": {
+      "ingredientIndexes": [
+        427,
+        477,
+        810
+      ]
+    },
+    "963": {
+      "ingredientIndexes": [
+        96,
+        1063
+      ]
+    },
+    "964": {
+      "ingredientIndexes": [
+        330,
+        1063
+      ]
+    },
+    "965": {
+      "ingredientIndexes": [
+        706,
+        1063
+      ]
+    },
+    "966": {
+      "ingredientIndexes": [
+        540,
+        928
+      ]
+    },
+    "967": {
+      "ingredientIndexes": [
+        16,
+        1063
+      ]
+    },
+    "968": {
+      "ingredientIndexes": [
+        276
+      ]
+    },
+    "969": {
+      "ingredientIndexes": [
+        490,
+        1063
+      ]
+    },
+    "970": {
+      "ingredientIndexes": [
+        1009
+      ]
+    },
+    "971": {
+      "ingredientIndexes": [
+        1058,
+        1063
+      ]
+    },
+    "972": {
+      "ingredientIndexes": [
+        283
+      ]
+    },
+    "973": {
+      "ingredientIndexes": [
+        29,
+        438
+      ]
+    },
+    "974": {
+      "ingredientIndexes": [
+        285
+      ]
+    },
+    "975": {
+      "ingredientIndexes": [
+        169,
+        1063
+      ]
+    },
+    "976": {
+      "ingredientIndexes": [
+        910
+      ]
+    },
+    "977": {
+      "ingredientIndexes": [
+        153,
+        716
+      ]
+    },
+    "978": {
+      "ingredientIndexes": [
+        292,
+        1063
+      ]
+    },
+    "979": {
+      "ingredientIndexes": [
+        872,
+        1063
+      ]
+    },
+    "980": {
+      "ingredientIndexes": [
+        15,
+        29
+      ]
+    },
+    "981": {
+      "ingredientIndexes": [
+        539,
+        1063
+      ]
+    },
+    "982": {
+      "ingredientIndexes": [
+        36,
+        1075
+      ]
+    },
+    "983": {
+      "ingredientIndexes": [
+        158,
+        1063
+      ]
+    },
+    "984": {
+      "ingredientIndexes": [
+        212
+      ]
+    },
+    "985": {
+      "ingredientIndexes": [
+        29,
+        760
+      ]
+    },
+    "986": {
+      "ingredientIndexes": [
+        189,
+        927
+      ]
+    },
+    "987": {
+      "ingredientIndexes": [
+        711
+      ]
+    },
+    "988": {
+      "ingredientIndexes": [
+        807,
+        1063
+      ]
+    },
+    "989": {
+      "ingredientIndexes": [
+        724
+      ]
+    },
+    "990": {
+      "ingredientIndexes": [
+        359,
+        1083
+      ]
+    },
+    "991": {
+      "ingredientIndexes": [
+        38
+      ]
+    },
+    "992": {
+      "ingredientIndexes": [
+        6,
+        1063
+      ]
+    },
+    "993": {
+      "ingredientIndexes": [
+        454,
+        1063
+      ]
+    },
+    "994": {
+      "ingredientIndexes": [
+        717
+      ]
+    },
+    "995": {
+      "ingredientIndexes": [
+        99,
+        1063
+      ]
+    },
+    "996": {
+      "ingredientIndexes": [
+        732,
+        1063
+      ]
+    },
+    "997": {
+      "ingredientIndexes": [
+        29,
+        319
+      ]
+    },
+    "998": {
+      "ingredientIndexes": [
+        416,
+        1063
+      ]
+    },
+    "999": {
+      "ingredientIndexes": [
+        933,
+        1063
+      ]
+    },
+    "1000": {
+      "ingredientIndexes": [
+        29,
+        243
+      ]
+    }
+  }
+}

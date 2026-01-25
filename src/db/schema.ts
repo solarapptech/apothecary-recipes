@@ -18,6 +18,8 @@ CREATE TABLE IF NOT EXISTS recipes (
   detailedMeasurements TEXT NOT NULL,
   preparationSteps TEXT NOT NULL,
   usage TEXT NOT NULL,
+  storage TEXT NOT NULL,
+  equipmentNeeded TEXT NOT NULL,
   historicalContext TEXT NOT NULL,
   scientificEvidence TEXT NOT NULL,
   searchTextNormalized TEXT NOT NULL,

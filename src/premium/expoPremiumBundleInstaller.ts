@@ -97,6 +97,9 @@ async function writePremiumRecipesToDbAsync(db: SQLiteDatabase, recipes: Install
     for (const recipe of recipes) {
       const randomKey = computeDeterministicRandomKey(recipe);
       const imageLocalPath = recipe.imageFileName ? `${imagesDir}${recipe.imageFileName}` : null;
+      const usageJson = JSON.stringify(recipe.usage ?? {});
+      const storageJson = JSON.stringify(recipe.storage ?? {});
+      const equipmentNeededJson = JSON.stringify(recipe.equipmentNeeded ?? []);
       const searchTextNormalized = buildRecipeSearchTextNormalized({
         title: recipe.title,
         description: recipe.description,
@@ -123,13 +126,15 @@ async function writePremiumRecipesToDbAsync(db: SQLiteDatabase, recipes: Install
           detailedMeasurements,
           preparationSteps,
           usage,
+          storage,
+          equipmentNeeded,
           historicalContext,
           scientificEvidence,
           searchTextNormalized,
           randomKey,
           isPremium,
           imageLocalPath
-        ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,
+        ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,
         recipe.title,
         recipe.difficultyScore,
         recipe.preparationTime,
@@ -142,7 +147,9 @@ async function writePremiumRecipesToDbAsync(db: SQLiteDatabase, recipes: Install
         recipe.ingredients,
         recipe.detailedMeasurements,
         recipe.preparationSteps,
-        recipe.usage,
+        usageJson,
+        storageJson,
+        equipmentNeededJson,
         recipe.historicalContext,
         recipe.scientificEvidence,
         searchTextNormalized,

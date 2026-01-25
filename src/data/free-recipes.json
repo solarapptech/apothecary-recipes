@@ -10,12 +10,27 @@
     "ingredients": "Mullein Flower Oil, Coltsfoot Leaves, Pine Resin, Beeswax, Lard (or Olive Oil)",
     "detailedMeasurements": "1 part Mullein Oil, 1 part Coltsfoot tincture, 1 part Pine Resin, 4 parts Lard/Oil (carrier), 1 part Beeswax.",
     "preparationSteps": "1. Infuse Coltsfoot in alcohol to make a tincture. 2. Gently melt Lard/Oil and Beeswax in a double boiler. 3. Dissolve Pine Resin into the melted base. 4. Remove from heat and stir in Mullein Oil and Coltsfoot tincture. 5. Pour into small pots and allow to cool and solidify.",
-    "usage": "Apply liberally to the chest, back, and throat 2-3 times daily for coughs, congestion, and bronchial irritation. Massage into sore muscles.",
+    "usage": {
+      "summary": "Apply liberally to the chest, back, and throat 2-3 times daily for coughs, congestion, and bronchial irritation. Massage into sore muscles.",
+      "dosage": "",
+      "frequency": "",
+      "maxDuration": "",
+      "applicationAreas": "",
+      "bestPractices": ""
+    },
     "historicalContext": "Developed and preserved within monastic herbal gardens (Hortus conclusus) where monks translated and expanded upon classical texts, often using common forest and field herbs.",
     "scientificEvidence": "Mullein is a known demulcent and expectorant. Pine resin (turpentine) is a traditional counter-irritant and decongestant. Traditional use supported by constituents.",
     "isPremium": 0,
     "usedFor": "Respiratory System - Lungs & Chest, Musculoskeletal System - Muscle Pain & Spasm",
-    "alternativeNames": "Monastery Salve, Herbal Chest Rub"
+    "alternativeNames": "Monastery Salve, Herbal Chest Rub",
+    "storage": {
+      "yield": "",
+      "shelfLife": "",
+      "costEstimate": "",
+      "storageTemp": "",
+      "spoilageIndicators": ""
+    },
+    "equipmentNeeded": []
   },
   {
     "title": "Red Wine & Rue Cordial",
@@ -28,12 +43,27 @@
     "ingredients": "Rue (Ruta graveolens) leaves/stems, Fresh Rosemary, Dried Lemon Peel, Quality Red Wine (e.g., Claret)",
     "detailedMeasurements": "1 cup fresh Rue leaves, 1/2 cup fresh Rosemary, 1/4 cup dried Lemon Peel. Place in a jar and cover with 1 Liter of Red Wine.",
     "preparationSteps": "1. Lightly bruise the Rue and Rosemary. 2. Combine all herbs and peel in a sealed glass jar. 3. Fill the jar with the Red Wine. 4. Macerate (infuse) for 10 days in a cool, dark place, shaking daily. 5. Strain and bottle the resulting cordial.",
-    "usage": "Dosage: 1 small wineglass (approx. 30ml) taken after dinner. Historically used as a cardiac tonic and to 'clear melancholy' (anxiety/depression).",
+    "usage": {
+      "summary": "Dosage: 1 small wineglass (approx. 30ml) taken after dinner. Historically used as a cardiac tonic and to 'clear melancholy' (anxiety/depression).",
+      "dosage": "",
+      "frequency": "",
+      "maxDuration": "",
+      "applicationAreas": "",
+      "bestPractices": ""
+    },
     "historicalContext": "Used extensively in Roman and Medieval medicine; popularized in England by herbalists who integrated classical texts with local plant knowledge, used especially to ward off plague and venom.",
     "scientificEvidence": "Traditional use only. Rue is studied for its antispasmodic properties, but its toxicity profile limits modern therapeutic use. Rosemary is a circulatory stimulant.",
     "isPremium": 0,
     "usedFor": "Cardiovascular System, Nervous System & Sleep - Anxiety & Mood",
-    "alternativeNames": "Bitter Heart Tonic, Ruta Grappa"
+    "alternativeNames": "Bitter Heart Tonic, Ruta Grappa",
+    "storage": {
+      "yield": "",
+      "shelfLife": "",
+      "costEstimate": "",
+      "storageTemp": "",
+      "spoilageIndicators": ""
+    },
+    "equipmentNeeded": []
   },
   {
     "title": "Comfrey Knitbone Liniment",
@@ -46,12 +76,27 @@
     "ingredients": "Fresh Comfrey Root (Symphytum officinale), Vodka/Brandy (50% alcohol minimum)",
     "detailedMeasurements": "1 part fresh Comfrey Root (chopped), 2 parts 50% alcohol (ratio by weight).",
     "preparationSteps": "1. Wash and chop the fresh root finely. 2. Pack the root into a clean jar and cover completely with alcohol. 3. Seal and let macerate for 6-8 weeks, shaking occasionally. 4. Strain the mixture well through cheesecloth, pressing the roots to extract all liquid. Store in a dark bottle.",
-    "usage": "Apply externally (topically) 2-4 times daily to unbroken skin over sprains, bruises, or fractures to hasten healing. DO NOT APPLY TO BROKEN SKIN.",
+    "usage": {
+      "summary": "Apply externally (topically) 2-4 times daily to unbroken skin over sprains, bruises, or fractures to hasten healing. DO NOT APPLY TO BROKEN SKIN.",
+      "dosage": "",
+      "frequency": "",
+      "maxDuration": "",
+      "applicationAreas": "",
+      "bestPractices": ""
+    },
     "historicalContext": "A highly valued wound and bone-healing herb since Roman times. Its use was common in the apothecary well into the 19th century before PA toxicity was fully understood.",
     "scientificEvidence": "Modern studies confirm high Allantoin content, which promotes cell proliferation and tissue repair. The ban on internal use is widely upheld due to PA risks.",
     "isPremium": 0,
     "usedFor": "Musculoskeletal System - Joints & Arthritis, Skin & Wounds - Topical Healing",
-    "alternativeNames": "Symphytum Bruise Oil, Bone-Set Tincture"
+    "alternativeNames": "Symphytum Bruise Oil, Bone-Set Tincture",
+    "storage": {
+      "yield": "",
+      "shelfLife": "",
+      "costEstimate": "",
+      "storageTemp": "",
+      "spoilageIndicators": ""
+    },
+    "equipmentNeeded": []
   },
   {
     "title": "Meadowsweet Spiritus (Aqua Mirabilis)",
@@ -64,12 +109,27 @@
     "ingredients": "Meadowsweet Flower Tops (Filipendula ulmaria), Strong Alcohol (95% neutral spirit), Distilled Water",
     "detailedMeasurements": "1 part fresh/dried Meadowsweet tops, 5 parts 50% alcohol (made by diluting 95% spirit with water).",
     "preparationSteps": "1. Combine Meadowsweet tops and alcohol in a jar. 2. Infuse for 2 weeks, shaking daily. 3. Strain and filter. To make the Aqua Mirabilis (miracle water), dilute the finished tincture with equal parts distilled water.",
-    "usage": "Dosage: 10-20 drops diluted in a cup of water, taken up to 3 times daily, primarily for acid indigestion, heartburn, and mild rheumatic pain.",
+    "usage": {
+      "summary": "Dosage: 10-20 drops diluted in a cup of water, taken up to 3 times daily, primarily for acid indigestion, heartburn, and mild rheumatic pain.",
+      "dosage": "",
+      "frequency": "",
+      "maxDuration": "",
+      "applicationAreas": "",
+      "bestPractices": ""
+    },
     "historicalContext": "Known as the \"aspirin of the Middle Ages,\" it was a common strewing herb whose medicinal uses were extensively documented by herbalists for its ability to treat fever and stomach ailments without upsetting the digestion (unlike willow bark).",
     "scientificEvidence": "The presence of salicylates (precursors to aspirin) provides anti-inflammatory and analgesic effects. Traditional use as a stomachic is due to its tannins, which soothe the gut lining.",
     "isPremium": 0,
     "usedFor": "Digestive System - Stomach & Upper GI, Nervous System & Sleep - Pain & Headache",
-    "alternativeNames": "Spirea Water, Queen of the Meadow Tincture"
+    "alternativeNames": "Spirea Water, Queen of the Meadow Tincture",
+    "storage": {
+      "yield": "",
+      "shelfLife": "",
+      "costEstimate": "",
+      "storageTemp": "",
+      "spoilageIndicators": ""
+    },
+    "equipmentNeeded": []
   },
   {
     "title": "Hedge Mustard Syrup (for Singers)",
@@ -82,12 +142,27 @@
     "ingredients": "Fresh Hedge Mustard (Sisymbrium officinale) aerial parts, Honey, Distilled Water",
     "detailedMeasurements": "1 large handful fresh Hedge Mustard, 1 cup distilled water, 1 cup high-quality Honey.",
     "preparationSteps": "1. Chop the fresh Hedge Mustard roughly. 2. Place in a saucepan with the water, bring to a gentle simmer, and reduce by half. 3. Strain the liquid, pressing the herbs thoroughly. 4. Reheat the strained liquid and stir in the honey until fully dissolved. 5. Bottle and label.",
-    "usage": "Take 1 teaspoon slowly, every 2-3 hours, or as needed, to soothe hoarseness, loss of voice, and throat irritation.",
+    "usage": {
+      "summary": "Take 1 teaspoon slowly, every 2-3 hours, or as needed, to soothe hoarseness, loss of voice, and throat irritation.",
+      "dosage": "",
+      "frequency": "",
+      "maxDuration": "",
+      "applicationAreas": "",
+      "bestPractices": ""
+    },
     "historicalContext": "Known in French folk medicine as the herbe aux chantres (singer's herb). Its use dates back to classical antiquity, praised by Dioscorides for its action on the voice box.",
     "scientificEvidence": "Rich in mucilage and sulfur compounds, it acts as a demulcent to coat and soothe irritated vocal cords. Traditional use for aphonia (loss of voice) is widespread in Europe.",
     "isPremium": 0,
     "usedFor": "Respiratory System - Sinus & Upper Tract, Oral Health - Throat & Pharynx",
-    "alternativeNames": "Sisymbrium Linctus, Singer's Remedy"
+    "alternativeNames": "Sisymbrium Linctus, Singer's Remedy",
+    "storage": {
+      "yield": "",
+      "shelfLife": "",
+      "costEstimate": "",
+      "storageTemp": "",
+      "spoilageIndicators": ""
+    },
+    "equipmentNeeded": []
   },
   {
     "title": "Grave-Digger's Oil (Oil of Earthworms)",
@@ -100,12 +175,27 @@
     "ingredients": "Earthworms (Lumbricus terrestris), Olive Oil, White Wine",
     "detailedMeasurements": "1 part cleaned Earthworms, 4 parts Olive Oil, 1 part White Wine.",
     "preparationSteps": "1. Clean the earthworms thoroughly. 2. Heat the Olive Oil gently in a pot. 3. Add the earthworms and wine to the oil. 4. Simmer slowly until the wine has completely evaporated and the worms are fully dissolved/integrated into the oil. 5. Strain the remaining oil through a fine cloth while still warm. Store in a sealed container.",
-    "usage": "Apply warm oil with gentle friction to areas of chronic joint pain, rheumatism, and deep muscle aches 1-2 times daily. For external use only.",
+    "usage": {
+      "summary": "Apply warm oil with gentle friction to areas of chronic joint pain, rheumatism, and deep muscle aches 1-2 times daily. For external use only.",
+      "dosage": "",
+      "frequency": "",
+      "maxDuration": "",
+      "applicationAreas": "",
+      "bestPractices": ""
+    },
     "historicalContext": "This preparation was a documented ingredient in European apothecaries, especially during the 16th and 17th centuries, highlighting the transition from purely plant-based remedies to those incorporating animal matter (zootherapy).",
     "scientificEvidence": "Traditional use only. Contains fats and phospholipids. The therapeutic effect is largely attributed to the counter-irritant warmth of the oil and the psychological component of the ritual.",
     "isPremium": 0,
     "usedFor": "Musculoskeletal System - Muscle Pain & Spasm, Skin & Wounds - Topical Healing",
-    "alternativeNames": "Oleum Vermium, Worm Oil"
+    "alternativeNames": "Oleum Vermium, Worm Oil",
+    "storage": {
+      "yield": "",
+      "shelfLife": "",
+      "costEstimate": "",
+      "storageTemp": "",
+      "spoilageIndicators": ""
+    },
+    "equipmentNeeded": []
   },
   {
     "title": "Dandelion Root Coffee (Taraxacum Infusion)",
@@ -118,12 +208,27 @@
     "ingredients": "Fresh or Dried Dandelion Root (Taraxacum officinale)",
     "detailedMeasurements": "1 tablespoon dried, roasted, and coarsely ground Dandelion Root per 1 cup of boiling water.",
     "preparationSteps": "1. Thoroughly wash and chop the fresh Dandelion roots. 2. Roast the roots in an oven (350°F/175°C) until deep brown and aromatic, like coffee beans. 3. Grind the roasted roots coarsely. 4. Place the ground root in a French press or pot, cover with boiling water, and steep for 5-10 minutes.",
-    "usage": "Drink 1 cup twice daily, before morning and evening meals, as a gentle bitter digestive stimulant and liver tonic.",
+    "usage": {
+      "summary": "Drink 1 cup twice daily, before morning and evening meals, as a gentle bitter digestive stimulant and liver tonic.",
+      "dosage": "",
+      "frequency": "",
+      "maxDuration": "",
+      "applicationAreas": "",
+      "bestPractices": ""
+    },
     "historicalContext": "A ubiquitous folk remedy, particularly important in German and Austrian traditions for Frühlingskur (Spring Cleanses). Its diuretic action earned it the French nickname pissenlit ('wet the bed').",
     "scientificEvidence": "Well-supported traditional use. Studies confirm Dandelion's choleretic effects (increasing bile flow) and diuretic activity. Contains high levels of inulin, a prebiotic fiber.",
     "isPremium": 0,
     "usedFor": "Liver & Detox - Hepatic Support, Digestive System - Stomach & Upper GI",
-    "alternativeNames": "Poor Man's Tonic, Dandelion Decaf"
+    "alternativeNames": "Poor Man's Tonic, Dandelion Decaf",
+    "storage": {
+      "yield": "",
+      "shelfLife": "",
+      "costEstimate": "",
+      "storageTemp": "",
+      "spoilageIndicators": ""
+    },
+    "equipmentNeeded": []
   },
   {
     "title": "Lavender Bath Bags (Soporific)",
@@ -136,12 +241,27 @@
     "ingredients": "Dried Lavender Flowers (Lavandula angustifolia), Coarse Sea Salt, Oatmeal",
     "detailedMeasurements": "1/2 cup dried Lavender, 1/4 cup Oatmeal, 1/4 cup Coarse Sea Salt. Place ingredients into a muslin bag or old cotton sock.",
     "preparationSteps": "1. Combine all ingredients thoroughly. 2. Place in a strong muslin bag and tie securely. 3. Hang the bag under the running hot water while drawing a bath, allowing the heat to release the essential oils and the oatmeal to soften.",
-    "usage": "Soak in the warm bath for 20-30 minutes before bedtime to relieve anxiety, promote sleep, and soothe irritated, dry skin conditions.",
+    "usage": {
+      "summary": "Soak in the warm bath for 20-30 minutes before bedtime to relieve anxiety, promote sleep, and soothe irritated, dry skin conditions.",
+      "dosage": "",
+      "frequency": "",
+      "maxDuration": "",
+      "applicationAreas": "",
+      "bestPractices": ""
+    },
     "historicalContext": "Lavender's use in bathing dates back to Roman times (from lavare, 'to wash'). Highly prized in English and French Renaissance perfumery and domestic medicine for its soothing properties.",
     "scientificEvidence": "Extensive scientific evidence supports the anxiolytic (anti-anxiety) and mild sedative effects of Lavender's primary constituent, Linalool, particularly via inhalation.",
     "isPremium": 0,
     "usedFor": "Nervous System & Sleep - Anxiety & Mood, Skin & Wounds - Chronic Conditions (Eczema, etc.)",
-    "alternativeNames": "Lavandula Soporific, Sleep Sachet"
+    "alternativeNames": "Lavandula Soporific, Sleep Sachet",
+    "storage": {
+      "yield": "",
+      "shelfLife": "",
+      "costEstimate": "",
+      "storageTemp": "",
+      "spoilageIndicators": ""
+    },
+    "equipmentNeeded": []
   },
   {
     "title": "Borage Syrup for Melancholy",
@@ -154,12 +274,27 @@
     "ingredients": "Fresh Borage Flowers and Leaves (Borago officinalis), Sugar, Water",
     "detailedMeasurements": "2 parts fresh Borage aerial parts, 1 part water, 2 parts sugar (by weight).",
     "preparationSteps": "1. Gently bruise the Borage parts. 2. Place Borage and water in a saucepan and bring to a simmer for 5 minutes. 3. Strain the liquid, pressing the herbs thoroughly. 4. Measure the liquid. Add an equal volume of sugar. 5. Heat gently until the sugar is fully dissolved and the liquid forms a light syrup.",
-    "usage": "Dosage: 1-2 teaspoons, 2-3 times daily. Used to lift the spirits, dispel melancholy (mild depression/sadness), and support the adrenal glands.",
+    "usage": {
+      "summary": "Dosage: 1-2 teaspoons, 2-3 times daily. Used to lift the spirits, dispel melancholy (mild depression/sadness), and support the adrenal glands.",
+      "dosage": "",
+      "frequency": "",
+      "maxDuration": "",
+      "applicationAreas": "",
+      "bestPractices": ""
+    },
     "historicalContext": "Highly praised by classical herbalists like Pliny and Dioscorides. Its use was championed by the Elizabethans who believed it banished sadness and brought boldness.",
     "scientificEvidence": "Traditional use only. Borage contains mucilage (soothing) and trace minerals. The belief in its anti-melancholy effect is largely traditional, though it contains minerals useful for adrenal support.",
     "isPremium": 0,
     "usedFor": "Nervous System & Sleep - Anxiety & Mood, Endocrine System - Adrenals & Stress",
-    "alternativeNames": "Syrupus Boraginis, Courage Syrup"
+    "alternativeNames": "Syrupus Boraginis, Courage Syrup",
+    "storage": {
+      "yield": "",
+      "shelfLife": "",
+      "costEstimate": "",
+      "storageTemp": "",
+      "spoilageIndicators": ""
+    },
+    "equipmentNeeded": []
   },
   {
     "title": "Sloe Gin (for Colic & Cramps)",
@@ -172,12 +307,27 @@
     "ingredients": "Sloe Berries (Prunus spinosa), Gin (or strong Vodka), Sugar",
     "detailedMeasurements": "1 part Sloe berries, 2 parts Gin (or 50% spirit), 1/2 part Sugar (or to taste).",
     "preparationSteps": "1. Prick the sloes all over with a clean needle. 2. Place sloes and sugar in a large, sealed jar. 3. Pour the Gin over the mixture. 4. Infuse for 3 months, shaking every few days. 5. Strain and bottle the resulting deep red liqueur.",
-    "usage": "Dosage: 1 small liqueur glass (approx. 20ml) as needed for griping pain, colic, or severe menstrual cramps.",
+    "usage": {
+      "summary": "Dosage: 1 small liqueur glass (approx. 20ml) as needed for griping pain, colic, or severe menstrual cramps.",
+      "dosage": "",
+      "frequency": "",
+      "maxDuration": "",
+      "applicationAreas": "",
+      "bestPractices": ""
+    },
     "historicalContext": "A deeply ingrained folk remedy across the UK, typically made in the autumn and allowed to mature, originally considered a potent medicine before becoming solely a recreational drink.",
     "scientificEvidence": "Traditional use. Sloe berries are high in astringent tannins, which can help tone mucous membranes and reduce diarrhea, while the alcohol acts as a warming carminative and antispasmodic.",
     "isPremium": 0,
     "usedFor": "Digestive System - Bowel & Lower GI, Women's Health - Menstruation & Hormones",
-    "alternativeNames": "Prunus Spinosa Tincture, Blackthorn Elixir"
+    "alternativeNames": "Prunus Spinosa Tincture, Blackthorn Elixir",
+    "storage": {
+      "yield": "",
+      "shelfLife": "",
+      "costEstimate": "",
+      "storageTemp": "",
+      "spoilageIndicators": ""
+    },
+    "equipmentNeeded": []
   },
   {
     "title": "Elderberry and Anise Oxymel",
@@ -190,12 +340,27 @@
     "ingredients": "Elderberry (Sambucus nigra) fruit, Anise Seed (Pimpinella anisum), Raw Honey, Apple Cider Vinegar (ACV)",
     "detailedMeasurements": "2 parts Elderberry juice, 1 part Honey, 1 part ACV, 1/4 part Anise Seed (lightly crushed).",
     "preparationSteps": "1. Gently simmer Elderberries in a small amount of water to extract the juice and strain. 2. Lightly crush the Anise seeds and combine with the ACV in a jar. Let infuse for 24 hours. 3. Strain the ACV. 4. Combine the Elderberry juice, infused ACV, and Honey. Stir well (do not heat once Honey and ACV are added).",
-    "usage": "Dosage: 1-2 teaspoons, 3-4 times daily for coughs, congestion, and to boost recovery from colds and flu.",
+    "usage": {
+      "summary": "Dosage: 1-2 teaspoons, 3-4 times daily for coughs, congestion, and to boost recovery from colds and flu.",
+      "dosage": "",
+      "frequency": "",
+      "maxDuration": "",
+      "applicationAreas": "",
+      "bestPractices": ""
+    },
     "historicalContext": "The use of Elder (Sambucus) is almost universal in Northern European folk medicine. The oxymel (vinegar-honey) base is a very old preparation method dating back to Greek and Roman medicine.",
     "scientificEvidence": "Strong scientific evidence for Elderberry's antiviral activity (inhibiting viral replication and entry). Anise is a traditional expectorant (containing Anethole).",
     "isPremium": 0,
     "usedFor": "Respiratory System - Lungs & Chest, Immune System - Acute Illness (Fever/Cold)",
-    "alternativeNames": "Sambucus Syrup, Vinegar-Honey Elixir"
+    "alternativeNames": "Sambucus Syrup, Vinegar-Honey Elixir",
+    "storage": {
+      "yield": "",
+      "shelfLife": "",
+      "costEstimate": "",
+      "storageTemp": "",
+      "spoilageIndicators": ""
+    },
+    "equipmentNeeded": []
   },
   {
     "title": "Pennyroyal Tincture (Mentha pulegium)",
@@ -208,12 +373,27 @@
     "ingredients": "Pennyroyal Leaf (Mentha pulegium), 70% Alcohol (Vodka or Grain Spirit)",
     "detailedMeasurements": "1 part dried Pennyroyal leaf, 5 parts 70% alcohol (by weight/volume).",
     "preparationSteps": "1. Pack the dried Pennyroyal leaf loosely into a glass jar. 2. Cover completely with the alcohol. 3. Seal the jar and infuse for 4-6 weeks, shaking daily. 4. Strain the tincture through a fine cloth and store in a dark glass dropper bottle.",
-    "usage": "Dosage: EXTREME CAUTION: 5-10 drops diluted in water, taken 3 times daily, to help promote delayed menstruation (as an emmenagogue) or to settle severe gas and colic. Use ONLY under expert guidance.",
+    "usage": {
+      "summary": "Dosage: EXTREME CAUTION: 5-10 drops diluted in water, taken 3 times daily, to help promote delayed menstruation (as an emmenagogue) or to settle severe gas and colic. Use ONLY under expert guidance.",
+      "dosage": "",
+      "frequency": "",
+      "maxDuration": "",
+      "applicationAreas": "",
+      "bestPractices": ""
+    },
     "historicalContext": "Widely used but always carried a high risk. It was a common, though feared, remedy used for centuries, highlighting the risks inherent in forgotten powerful remedies.",
     "scientificEvidence": "Traditional use only. Contains Pulegone, which is the active but toxic compound. The therapeutic use is almost entirely obsolete due to toxicity risks.",
     "isPremium": 0,
     "usedFor": "Women's Health - Menstruation & Hormones, Digestive System - Bowel & Lower GI",
-    "alternativeNames": "Pulegium Spirit, Mother's Friend Tonic"
+    "alternativeNames": "Pulegium Spirit, Mother's Friend Tonic",
+    "storage": {
+      "yield": "",
+      "shelfLife": "",
+      "costEstimate": "",
+      "storageTemp": "",
+      "spoilageIndicators": ""
+    },
+    "equipmentNeeded": []
   },
   {
     "title": "Rue and Wormwood Bitter Cordial",
@@ -226,12 +406,27 @@
     "ingredients": "Rue (Ruta graveolens), Wormwood (Artemisia absinthium), Angelic Root, Cane Sugar, Brandy/Wine",
     "detailedMeasurements": "1 part Rue, 1 part Wormwood, 1/2 part Angelic Root. Cover herbs with Brandy or fortified Wine and sweeten with sugar to taste.",
     "preparationSteps": "1. Macerate the herbs in the alcohol for 2 weeks. 2. Strain, filter, and add sugar until a bitter-sweet cordial is achieved. 3. Age for 1 month before use.",
-    "usage": "Dosage: 1 tablespoon diluted in water, 15 minutes before a meal, to stimulate appetite and promote digestive enzyme secretion.",
+    "usage": {
+      "summary": "Dosage: 1 tablespoon diluted in water, 15 minutes before a meal, to stimulate appetite and promote digestive enzyme secretion.",
+      "dosage": "",
+      "frequency": "",
+      "maxDuration": "",
+      "applicationAreas": "",
+      "bestPractices": ""
+    },
     "historicalContext": "Rooted in classical medicine's use of intense bitters to 'fire up' the digestive organs (Agni). These bitter tonics were the precursor to modern aperitifs.",
     "scientificEvidence": "Bitter principles (Absinthin in Wormwood, various alkaloids in Rue) powerfully stimulate gastric acid, saliva, and bile secretion, improving digestion.",
     "isPremium": 0,
     "usedFor": "Digestive System - Stomach & Upper GI, Immune System - General Support",
-    "alternativeNames": "Absinthe Minus Worms, Stomach Bitter"
+    "alternativeNames": "Absinthe Minus Worms, Stomach Bitter",
+    "storage": {
+      "yield": "",
+      "shelfLife": "",
+      "costEstimate": "",
+      "storageTemp": "",
+      "spoilageIndicators": ""
+    },
+    "equipmentNeeded": []
   },
   {
     "title": "Oak Bark Decoction (Quercus robur)",
@@ -244,12 +439,27 @@
     "ingredients": "Dried Oak Bark (Quercus robur), Water",
     "detailedMeasurements": "1 tablespoon finely shredded dried Oak Bark per 2 cups of water.",
     "preparationSteps": "1. Combine bark and water in a stainless steel pot. 2. Bring to a boil, then reduce heat and simmer gently for 20-30 minutes, reducing volume by a third. 3. Strain immediately and allow to cool.",
-    "usage": "Internal: 1/4 cup decoction up to 3 times daily for acute diarrhea. External (Mouthwash/Gargle): Undiluted, gargle several times a day for bleeding gums, mouth ulcers, or sore throat. Spit out after use.",
+    "usage": {
+      "summary": "Internal: 1/4 cup decoction up to 3 times daily for acute diarrhea. External (Mouthwash/Gargle): Undiluted, gargle several times a day for bleeding gums, mouth ulcers, or sore throat. Spit out after use.",
+      "dosage": "",
+      "frequency": "",
+      "maxDuration": "",
+      "applicationAreas": "",
+      "bestPractices": ""
+    },
     "historicalContext": "A traditional remedy across Europe, the strong astringency of the bark has been used for tanning hides, which mirrors its medicinal use for 'toning' flabby or bleeding tissues.",
     "scientificEvidence": "Very high concentration of Tannins (up to 20%), which exert powerful astringent, antiseptic, and anti-diarrheal effects by binding to proteins in mucous membranes.",
     "isPremium": 0,
     "usedFor": "Oral Health - Gums & Teeth, Digestive System - Bowel & Lower GI",
-    "alternativeNames": "Quercus Mouthwash, Tannin Gurgle"
+    "alternativeNames": "Quercus Mouthwash, Tannin Gurgle",
+    "storage": {
+      "yield": "",
+      "shelfLife": "",
+      "costEstimate": "",
+      "storageTemp": "",
+      "spoilageIndicators": ""
+    },
+    "equipmentNeeded": []
   },
   {
     "title": "Mugwort Wine (Artemisia)",
@@ -262,12 +472,27 @@
     "ingredients": "Mugwort (Artemisia vulgaris) flowering tops, Dry White Wine, Honey",
     "detailedMeasurements": "1 part Mugwort tops, 5 parts Dry White Wine, Honey to sweeten.",
     "preparationSteps": "1. Macerate the Mugwort tops in the wine for 1 week. 2. Strain the wine thoroughly, pressing the herbs. 3. Stir in honey until the desired sweetness is reached.",
-    "usage": "Dosage: 1 small wineglass (approx. 30ml) before bed. Used to stimulate menstruation (emmenagogue), aid restful sleep, and promote vivid dreams.",
+    "usage": {
+      "summary": "Dosage: 1 small wineglass (approx. 30ml) before bed. Used to stimulate menstruation (emmenagogue), aid restful sleep, and promote vivid dreams.",
+      "dosage": "",
+      "frequency": "",
+      "maxDuration": "",
+      "applicationAreas": "",
+      "bestPractices": ""
+    },
     "historicalContext": "Deeply rooted in pre-Christian and Celtic traditions, Mugwort was revered as a protective herb for travelers and women, later adopted into monastic and folk medicine for its tonic properties.",
     "scientificEvidence": "Traditional use only. Contains volatile oils and bitter compounds. The emmenagogue effect is traditionally attributed to its circulatory stimulation in the pelvic area.",
     "isPremium": 0,
     "usedFor": "Women's Health - Menstruation & Hormones, Nervous System & Sleep - Anxiety & Mood",
-    "alternativeNames": "Artemisia Elixir, Dream Wine"
+    "alternativeNames": "Artemisia Elixir, Dream Wine",
+    "storage": {
+      "yield": "",
+      "shelfLife": "",
+      "costEstimate": "",
+      "storageTemp": "",
+      "spoilageIndicators": ""
+    },
+    "equipmentNeeded": []
   },
   {
     "title": "Betony Snuff (Stachys officinalis)",
@@ -280,12 +505,27 @@
     "ingredients": "Dried Betony Leaf and Flowering Top (Stachys officinalis)",
     "detailedMeasurements": "Finely ground dried Betony leaf and flower, used pure.",
     "preparationSteps": "1. Dry the Betony plant parts completely. 2. Grind the dried material into a very fine, uniform powder (like snuff). 3. Store in a small, airtight container.",
-    "usage": "Dosage: A very small pinch sniffed into each nostril, as needed, to induce sneezing and clear congestion, or to relieve tension headaches/migraines. Use sparingly.",
+    "usage": {
+      "summary": "Dosage: A very small pinch sniffed into each nostril, as needed, to induce sneezing and clear congestion, or to relieve tension headaches/migraines. Use sparingly.",
+      "dosage": "",
+      "frequency": "",
+      "maxDuration": "",
+      "applicationAreas": "",
+      "bestPractices": ""
+    },
     "historicalContext": "Highly praised in European herbalism; the Italian proverb states: 'Sell your coat and buy Betony.' Its use as a snuff was popular up through the 19th century.",
     "scientificEvidence": "Traditional use. The irritant quality of the fine powder mechanically stimulates sneezing, clearing the nasal passages, believed to 'expel humors' causing headache.",
     "isPremium": 0,
     "usedFor": "Respiratory System - Sinus & Upper Tract, Nervous System & Sleep - Pain & Headache",
-    "alternativeNames": "Betonica Snuff, Nose-Clearing Powder"
+    "alternativeNames": "Betonica Snuff, Nose-Clearing Powder",
+    "storage": {
+      "yield": "",
+      "shelfLife": "",
+      "costEstimate": "",
+      "storageTemp": "",
+      "spoilageIndicators": ""
+    },
+    "equipmentNeeded": []
   },
   {
     "title": "Rosemary Liniment (Spiritus Rosmarini)",
@@ -298,12 +538,27 @@
     "ingredients": "Fresh Rosemary Leaves, 70% Alcohol (e.g., Brandy or Spirit)",
     "detailedMeasurements": "1 part Fresh Rosemary leaves, 5 parts 70% Alcohol (by weight/volume).",
     "preparationSteps": "1. Pack the fresh Rosemary leaves into a glass jar. 2. Cover completely with the alcohol. 3. Seal the jar and infuse for 2-4 weeks in a warm, sunny location, shaking daily. 4. Strain the liquid and bottle.",
-    "usage": "Apply topically to painful joints, bruises, areas of poor circulation, or the temples/back of the neck for headache relief. Rub vigorously into the skin 2-3 times daily.",
+    "usage": {
+      "summary": "Apply topically to painful joints, bruises, areas of poor circulation, or the temples/back of the neck for headache relief. Rub vigorously into the skin 2-3 times daily.",
+      "dosage": "",
+      "frequency": "",
+      "maxDuration": "",
+      "applicationAreas": "",
+      "bestPractices": ""
+    },
     "historicalContext": "An early, simplified version of the famous 'Queen of Hungary's Water' (the first documented alcohol-based perfume in Europe, 14th century), prized by royalty for its anti-aging and anti-rheumatic qualities.",
     "scientificEvidence": "Rosemary contains volatile oils (cineole, camphor) which are counter-irritants and rubefacients (increase local blood flow), providing warmth and temporary pain relief.",
     "isPremium": 0,
     "usedFor": "Musculoskeletal System - Joints & Arthritis, Nervous System & Sleep - Pain & Headache",
-    "alternativeNames": "Hungarian Water (early form), Queen of Hungary's Water"
+    "alternativeNames": "Hungarian Water (early form), Queen of Hungary's Water",
+    "storage": {
+      "yield": "",
+      "shelfLife": "",
+      "costEstimate": "",
+      "storageTemp": "",
+      "spoilageIndicators": ""
+    },
+    "equipmentNeeded": []
   },
   {
     "title": "Elecampane Wine (Inula Wine)",
@@ -316,12 +571,27 @@
     "ingredients": "Elecampane Root (Inula helenium), Honey, Dry White Wine",
     "detailedMeasurements": "1 part dried, sliced Elecampane root, 5 parts Dry White Wine, 1/4 part Honey.",
     "preparationSteps": "1. Chop the dried root coarsely. 2. Place in a jar with the wine and honey. 3. Macerate for 2-3 weeks, shaking daily. 4. Strain and bottle.",
-    "usage": "Dosage: 1 small wineglass (approx. 30ml) after meals. Used as a warming expectorant for chronic coughs, asthma, and as a general lung tonic.",
+    "usage": {
+      "summary": "Dosage: 1 small wineglass (approx. 30ml) after meals. Used as a warming expectorant for chronic coughs, asthma, and as a general lung tonic.",
+      "dosage": "",
+      "frequency": "",
+      "maxDuration": "",
+      "applicationAreas": "",
+      "bestPractices": ""
+    },
     "historicalContext": "The name inula may derive from Helen of Troy, suggesting its ancient medicinal importance. It was an essential herb in European monastic gardens for treating consumption (tuberculosis) and chronic coughs.",
     "scientificEvidence": "Contains Inulin (a prebiotic fiber), and sesquiterpene lactones (like alantolactone) which have known antiseptic and expectorant actions, loosening respiratory mucus.",
     "isPremium": 0,
     "usedFor": "Respiratory System - Lungs & Chest, Immune System - General Support",
-    "alternativeNames": "Inula Helenium Cordial, Scabwort Wine"
+    "alternativeNames": "Inula Helenium Cordial, Scabwort Wine",
+    "storage": {
+      "yield": "",
+      "shelfLife": "",
+      "costEstimate": "",
+      "storageTemp": "",
+      "spoilageIndicators": ""
+    },
+    "equipmentNeeded": []
   },
   {
     "title": "Black Hellebore Tincture (Christmas Rose)",
@@ -334,12 +604,27 @@
     "ingredients": "Black Hellebore Root (Helleborus niger), 50% Alcohol",
     "detailedMeasurements": "DANGER: USE ONLY IN EXTREMELY DILUTE HOMEOPATHIC DOSES. THIS FORMULATION IS FOR HISTORICAL CONTEXT ONLY. 1 part dried root, 5 parts 50% alcohol (historical ratio).",
     "preparationSteps": "Historically prepared by macerating the root in alcohol for 10-14 days and straining.",
-    "usage": "EXTREMELY DANGEROUS/TOXIC. Historically used in minute, controlled doses as a drastic purgative, cardiac stimulant, and for treating 'melancholy' (severe mental illness).",
+    "usage": {
+      "summary": "EXTREMELY DANGEROUS/TOXIC. Historically used in minute, controlled doses as a drastic purgative, cardiac stimulant, and for treating 'melancholy' (severe mental illness).",
+      "dosage": "",
+      "frequency": "",
+      "maxDuration": "",
+      "applicationAreas": "",
+      "bestPractices": ""
+    },
     "historicalContext": "The name Melampodium comes from the legend of Melampus, who allegedly cured the daughters of the King of Argos of madness using Hellebore, highlighting its ancient association with psychiatric illness.",
     "scientificEvidence": "Traditional use. Its drastic effects are due to cardiotoxic glycosides, which act similarly to digitalis but with an unacceptably high safety risk, making it obsolete and dangerous.",
     "isPremium": 0,
     "usedFor": "Nervous System & Sleep - Anxiety & Mood, Cardiovascular System",
-    "alternativeNames": "Melampodium Tincture, Christmas Hellebore"
+    "alternativeNames": "Melampodium Tincture, Christmas Hellebore",
+    "storage": {
+      "yield": "",
+      "shelfLife": "",
+      "costEstimate": "",
+      "storageTemp": "",
+      "spoilageIndicators": ""
+    },
+    "equipmentNeeded": []
   },
   {
     "title": "Balsam of Peru Salve",
@@ -352,12 +637,27 @@
     "ingredients": "Balsam of Peru (Myroxylon balsamum), Olive Oil, Beeswax",
     "detailedMeasurements": "1 part Balsam of Peru, 4 parts Olive Oil, 1 part Beeswax.",
     "preparationSteps": "1. Gently melt the Beeswax and Olive Oil in a double boiler. 2. Remove from heat and stir in the thick Balsam of Peru resin until fully blended. 3. Pour into small pots and allow to cool.",
-    "usage": "Apply externally to slow-healing ulcers, persistent wounds, scabies, and chronic inflammatory skin conditions. A small amount can be rubbed on the chest for congestion.",
+    "usage": {
+      "summary": "Apply externally to slow-healing ulcers, persistent wounds, scabies, and chronic inflammatory skin conditions. A small amount can be rubbed on the chest for congestion.",
+      "dosage": "",
+      "frequency": "",
+      "maxDuration": "",
+      "applicationAreas": "",
+      "bestPractices": ""
+    },
     "historicalContext": "Introduced to Europe via colonial trade routes from South America (though the name refers to the port, not the origin). It became a staple in British and German pharmacopoeias for its documented antimicrobial action.",
     "scientificEvidence": "Proven antiseptic and parasiticide actions (due to Cinnamate and Benzoate esters). The modern risk is sensitization and contact allergy, limiting its contemporary use.",
     "isPremium": 0,
     "usedFor": "Skin & Wounds - Topical Healing, Respiratory System - Lungs & Chest",
-    "alternativeNames": "Peruvian Bark Salve, Toluifera pereira Ointment"
+    "alternativeNames": "Peruvian Bark Salve, Toluifera pereira Ointment",
+    "storage": {
+      "yield": "",
+      "shelfLife": "",
+      "costEstimate": "",
+      "storageTemp": "",
+      "spoilageIndicators": ""
+    },
+    "equipmentNeeded": []
   },
   {
     "title": "Sweet Flag Elixir (Calamus)",
@@ -370,12 +670,27 @@
     "ingredients": "Calamus Root (Acorus calamus), Honey, Grain Alcohol (Vodka)",
     "detailedMeasurements": "1 part fresh Calamus Root (sliced), 4 parts 50% Grain Alcohol, 1/4 part Honey (or to taste).",
     "preparationSteps": "1. Macerate the sliced root in the alcohol for 4 weeks. 2. Strain and filter the tincture. 3. Stir in honey to form an elixir.",
-    "usage": "Dosage: 10-20 drops diluted in water, 3 times daily, before meals, to promote appetite, reduce gas/bloating, and calm nervous tension.",
+    "usage": {
+      "summary": "Dosage: 10-20 drops diluted in water, 3 times daily, before meals, to promote appetite, reduce gas/bloating, and calm nervous tension.",
+      "dosage": "",
+      "frequency": "",
+      "maxDuration": "",
+      "applicationAreas": "",
+      "bestPractices": ""
+    },
     "historicalContext": "Highly valued by early herbalists and Norse settlers. It was one of the most common bitter herbs found in Northern European riverbanks and ditches.",
     "scientificEvidence": "Contains bitter principles and volatile oils (e.g., Acorone). Known spasmolytic (anti-spasmodic) action on the gut and mild sedative effect, supporting its traditional use.",
     "isPremium": 0,
     "usedFor": "Digestive System - Stomach & Upper GI, Nervous System & Sleep - Anxiety & Mood",
-    "alternativeNames": "Acorus Stomachic, Calamus Root Chew"
+    "alternativeNames": "Acorus Stomachic, Calamus Root Chew",
+    "storage": {
+      "yield": "",
+      "shelfLife": "",
+      "costEstimate": "",
+      "storageTemp": "",
+      "spoilageIndicators": ""
+    },
+    "equipmentNeeded": []
   },
   {
     "title": "Horehound Candy (Marrubium vulgare)",
@@ -388,12 +703,27 @@
     "ingredients": "White Horehound Leaf (Marrubium vulgare), Cane Sugar (or Honey), Water",
     "detailedMeasurements": "1 part Horehound infusion (made from 1 oz herb to 1 cup water), 2 parts Cane Sugar.",
     "preparationSteps": "1. Prepare a strong infusion of Horehound and strain. 2. Combine the infusion with the sugar in a heavy pot. 3. Boil rapidly until the mixture reaches the hard crack stage (300∘F/149∘C). 4. Pour onto a buttered slab, score into squares, and allow to cool and harden.",
-    "usage": "Dosage: Suck on 1-2 pieces as needed to relieve coughs, clear phlegm, or stimulate bile flow and appetite.",
+    "usage": {
+      "summary": "Dosage: Suck on 1-2 pieces as needed to relieve coughs, clear phlegm, or stimulate bile flow and appetite.",
+      "dosage": "",
+      "frequency": "",
+      "maxDuration": "",
+      "applicationAreas": "",
+      "bestPractices": ""
+    },
     "historicalContext": "A traditional candy form of medicine popular in the 18th and 19th centuries, widely available from chemists and confectioners before modern cough syrups took over.",
     "scientificEvidence": "The bitter compound Marrubiin stimulates mucus secretion (expectorant action) and gastric secretion (digestive tonic).",
     "isPremium": 0,
     "usedFor": "Respiratory System - Lungs & Chest, Digestive System - Stomach & Upper GI",
-    "alternativeNames": "White Horehound Pastille, Cough Drops"
+    "alternativeNames": "White Horehound Pastille, Cough Drops",
+    "storage": {
+      "yield": "",
+      "shelfLife": "",
+      "costEstimate": "",
+      "storageTemp": "",
+      "spoilageIndicators": ""
+    },
+    "equipmentNeeded": []
   },
   {
     "title": "Valerian and Hops Pillow",
@@ -406,12 +736,27 @@
     "ingredients": "Dried Valerian Root (Valeriana officinalis), Dried Hops Cones (Humulus lupulus)",
     "detailedMeasurements": "2 parts Dried Valerian Root, 1 part Dried Hops Cones.",
     "preparationSteps": "1. Ensure both ingredients are completely dry. 2. Coarsely chop the Valerian root and lightly shred the Hops cones. 3. Combine thoroughly and sew into a small, tightly woven cotton pillow or sachet.",
-    "usage": "Place the sachet inside a pillowcase and breathe deeply of the aroma while lying down. Use nightly for insomnia and anxiety.",
+    "usage": {
+      "summary": "Place the sachet inside a pillowcase and breathe deeply of the aroma while lying down. Use nightly for insomnia and anxiety.",
+      "dosage": "",
+      "frequency": "",
+      "maxDuration": "",
+      "applicationAreas": "",
+      "bestPractices": ""
+    },
     "historicalContext": "Used extensively in Victorian nurseries and sickrooms. The smell of Valerian was notoriously strong, but its efficacy was highly regarded. Hops' use as a sedative is documented back to the 9th century.",
     "scientificEvidence": "Both herbs contain compounds that interact with GABA receptors in the brain. Valerenic acid (Valerian) and methylbutenol (Hops, released when slightly warmed) are established sedatives and anxiolytics.",
     "isPremium": 0,
     "usedFor": "Nervous System & Sleep - Anxiety & Mood",
-    "alternativeNames": "Dreamer's Sachet, Quietude Pillow"
+    "alternativeNames": "Dreamer's Sachet, Quietude Pillow",
+    "storage": {
+      "yield": "",
+      "shelfLife": "",
+      "costEstimate": "",
+      "storageTemp": "",
+      "spoilageIndicators": ""
+    },
+    "equipmentNeeded": []
   },
   {
     "title": "Marshmallow Root Decoction",
@@ -424,12 +769,27 @@
     "ingredients": "Dried Marshmallow Root (Althaea officinalis)",
     "detailedMeasurements": "1 tablespoon dried, coarsely chopped root per 1 cup of cold water.",
     "preparationSteps": "1. Combine the root and cold water in a jar. Do not use hot water, as it sets the starch. 2. Let the mixture sit for at least 4 hours (or overnight) to allow the mucilage to extract (cold infusion). 3. Strain the thick liquid through a fine sieve.",
-    "usage": "Dosage: Drink 1/2 cup slowly, 3-4 times daily. Used to coat and soothe inflamed mucous membranes (sore throat, dry cough, gastric ulcers, gastritis).",
+    "usage": {
+      "summary": "Dosage: Drink 1/2 cup slowly, 3-4 times daily. Used to coat and soothe inflamed mucous membranes (sore throat, dry cough, gastric ulcers, gastritis).",
+      "dosage": "",
+      "frequency": "",
+      "maxDuration": "",
+      "applicationAreas": "",
+      "bestPractices": ""
+    },
     "historicalContext": "The use of the root was ubiquitous in antiquity; the genus name Althaea means 'to heal.' It was a staple in every European herbalist's chest.",
     "scientificEvidence": "Contains up to 35% Mucilage (a polysaccharide), which coats and protects irritated tissues (demulcent action). Very well-supported mechanism.",
     "isPremium": 0,
     "usedFor": "Digestive System - Stomach & Upper GI, Respiratory System - Lungs & Chest",
-    "alternativeNames": "Althaea Demulcent, Mucilage Drink"
+    "alternativeNames": "Althaea Demulcent, Mucilage Drink",
+    "storage": {
+      "yield": "",
+      "shelfLife": "",
+      "costEstimate": "",
+      "storageTemp": "",
+      "spoilageIndicators": ""
+    },
+    "equipmentNeeded": []
   },
   {
     "title": "Agrimony Tincture (Agrimonia eupatoria)",
@@ -442,12 +802,27 @@
     "ingredients": "Agrimony Aerial Parts (flowering), 50% Alcohol",
     "detailedMeasurements": "1 part dried flowering herb, 5 parts 50% alcohol.",
     "preparationSteps": "1. Macerate the dried herb in the alcohol for 2 weeks, shaking daily. 2. Strain and bottle.",
-    "usage": "Internal: 20-30 drops in water, 3 times daily, for sluggish liver and mild jaundice. External (Gargle): 1 teaspoon of tincture diluted in 1/4 cup of water for gargling sore throats or mouth sores. Spit out after use.",
+    "usage": {
+      "summary": "Internal: 20-30 drops in water, 3 times daily, for sluggish liver and mild jaundice. External (Gargle): 1 teaspoon of tincture diluted in 1/4 cup of water for gargling sore throats or mouth sores. Spit out after use.",
+      "dosage": "",
+      "frequency": "",
+      "maxDuration": "",
+      "applicationAreas": "",
+      "bestPractices": ""
+    },
     "historicalContext": "Referenced by Chaucer. Historically used to treat liver-related conditions and as an antidote to poison; its astringent quality made it a common gargle ingredient.",
     "scientificEvidence": "Contains high levels of Tannins (astringent) and bitter principles. Traditional uses for liver and gallbladder stimulation are supported by its cholagogue action.",
     "isPremium": 0,
     "usedFor": "Liver & Detox - Hepatic Support, Oral Health - Gums & Teeth",
-    "alternativeNames": "Liver Herb Tincture, Hepatic Tonic"
+    "alternativeNames": "Liver Herb Tincture, Hepatic Tonic",
+    "storage": {
+      "yield": "",
+      "shelfLife": "",
+      "costEstimate": "",
+      "storageTemp": "",
+      "spoilageIndicators": ""
+    },
+    "equipmentNeeded": []
   },
   {
     "title": "Pellitory of the Wall Infusion",
@@ -460,12 +835,27 @@
     "ingredients": "Dried Pellitory of the Wall (Parietaria officinalis) aerial parts",
     "detailedMeasurements": "1 tablespoon dried herb per 1 cup boiling water.",
     "preparationSteps": "1. Pour boiling water over the herb in a covered pot. 2. Steep for 10-15 minutes. 3. Strain immediately.",
-    "usage": "Dosage: Drink 1 cup, 3 times daily. Used as a demulcent diuretic to soothe the urinary tract, aid in the passage of kidney stones, and treat bladder inflammation.",
+    "usage": {
+      "summary": "Dosage: Drink 1 cup, 3 times daily. Used as a demulcent diuretic to soothe the urinary tract, aid in the passage of kidney stones, and treat bladder inflammation.",
+      "dosage": "",
+      "frequency": "",
+      "maxDuration": "",
+      "applicationAreas": "",
+      "bestPractices": ""
+    },
     "historicalContext": "Highly valued by Nicholas Culpeper. It was a common remedy for kidney and bladder stones throughout Europe, often used in conjunction with other lithotriptic (stone-breaking) herbs.",
     "scientificEvidence": "Traditional use. Its action is attributed to mucilage and potassium salts, which provide both a soothing (demulcent) and diuretic effect, flushing the urinary system gently.",
     "isPremium": 0,
     "usedFor": "Urinary System - Diuretics & Stones, Skin & Wounds - Topical Healing",
-    "alternativeNames": "Parietaria Diuretic, Stone Breaker Tea"
+    "alternativeNames": "Parietaria Diuretic, Stone Breaker Tea",
+    "storage": {
+      "yield": "",
+      "shelfLife": "",
+      "costEstimate": "",
+      "storageTemp": "",
+      "spoilageIndicators": ""
+    },
+    "equipmentNeeded": []
   },
   {
     "title": "Arctic Angelica Spirit (Archangelica)",
@@ -478,12 +868,27 @@
     "ingredients": "Angelica Root (Archangelica officinalis), Neutral Grain Spirit (e.g., Aquavit), Honey",
     "detailedMeasurements": "1 part dried, chopped root, 4 parts 60% alcohol, Honey to sweeten.",
     "preparationSteps": "1. Macerate the chopped root in the alcohol for 4-6 weeks in a cool, dark place. 2. Strain and press the root matter. 3. Sweeten with honey to taste.",
-    "usage": "Dosage: 1 teaspoon (5ml) diluted in warm water, 3 times daily. Used as a warming digestive tonic, carminative, and a powerful protective tonic against plague/cold weather.",
+    "usage": {
+      "summary": "Dosage: 1 teaspoon (5ml) diluted in warm water, 3 times daily. Used as a warming digestive tonic, carminative, and a powerful protective tonic against plague/cold weather.",
+      "dosage": "",
+      "frequency": "",
+      "maxDuration": "",
+      "applicationAreas": "",
+      "bestPractices": ""
+    },
     "historicalContext": "The root was so important it was cultivated in monasteries and even given its own name in some old Norse laws. Its anti-plague use made it famous across Europe.",
     "scientificEvidence": "Contains furanocoumarins (photosensitizers) and volatile oils (monoterpenes), which are antispasmodic, carminative, and warming expectorants.",
     "isPremium": 0,
     "usedFor": "Digestive System - Stomach & Upper GI, Respiratory System - Lungs & Chest",
-    "alternativeNames": "Kvan Likør (Danish), Root Spirit"
+    "alternativeNames": "Kvan Likør (Danish), Root Spirit",
+    "storage": {
+      "yield": "",
+      "shelfLife": "",
+      "costEstimate": "",
+      "storageTemp": "",
+      "spoilageIndicators": ""
+    },
+    "equipmentNeeded": []
   },
   {
     "title": "Reindeer Moss Decoction (Cetraria islandica)",
@@ -496,12 +901,27 @@
     "ingredients": "Dried Reindeer Moss (Icelandic Moss), Milk or Water",
     "detailedMeasurements": "1 tablespoon dried, coarsely chopped lichen per 1 cup water or milk.",
     "preparationSteps": "1. Combine the lichen and liquid (milk is preferred to soften the bitterness). 2. Simmer gently for 15-20 minutes until the liquid becomes slightly thick/gelatinous. 3. Strain immediately and drink warm.",
-    "usage": "Dosage: 1 cup, 2-3 times daily. Used as a demulcent for dry, hacking coughs, sore throats, and to soothe inflamed gastric mucosa (ulcers, gastritis).",
+    "usage": {
+      "summary": "Dosage: 1 cup, 2-3 times daily. Used as a demulcent for dry, hacking coughs, sore throats, and to soothe inflamed gastric mucosa (ulcers, gastritis).",
+      "dosage": "",
+      "frequency": "",
+      "maxDuration": "",
+      "applicationAreas": "",
+      "bestPractices": ""
+    },
     "historicalContext": "A staple in the famine foods and medicine of Iceland, where it was dried and used as a source of soluble fiber (mucilage) and for lung health.",
     "scientificEvidence": "Contains high levels of bitter lichen acids (e.g., Fumarprotocetraric acid) and mucilaginous polysaccharides, acting as a demulcent and bitter tonic.",
     "isPremium": 0,
     "usedFor": "Respiratory System - Lungs & Chest, Digestive System - Stomach & Upper GI",
-    "alternativeNames": "Icelandic Moss Tea, Cetraria Broth"
+    "alternativeNames": "Icelandic Moss Tea, Cetraria Broth",
+    "storage": {
+      "yield": "",
+      "shelfLife": "",
+      "costEstimate": "",
+      "storageTemp": "",
+      "spoilageIndicators": ""
+    },
+    "equipmentNeeded": []
   },
   {
     "title": "Cloudberry Conserve (Rubus chamaemorus)",
@@ -514,12 +934,27 @@
     "ingredients": "Ripe Cloudberries, Honey (or Sugar)",
     "detailedMeasurements": "1 part fresh Cloudberries, 1 part Honey (by weight).",
     "preparationSteps": "1. Gently combine the berries and honey in a stainless steel pot. 2. Heat very slowly to just below boiling point until the honey liquefies and the berries break down slightly. 3. Skim off any foam. 4. Pour into sterilized jars and seal.",
-    "usage": "Dosage: 1 tablespoon daily, straight or mixed into porridge, as a potent tonic for winter vitamin deficiency (scurvy prevention) and to boost immune function.",
+    "usage": {
+      "summary": "Dosage: 1 tablespoon daily, straight or mixed into porridge, as a potent tonic for winter vitamin deficiency (scurvy prevention) and to boost immune function.",
+      "dosage": "",
+      "frequency": "",
+      "maxDuration": "",
+      "applicationAreas": "",
+      "bestPractices": ""
+    },
     "historicalContext": "A vital food and medicine source for the Sámi people and early Norse settlers, often consumed preserved in rendered animal fat or oil.",
     "scientificEvidence": "Extremely high in Vitamin C (ascorbic acid) and essential omega-3 fatty acids in the seeds, justifying its historical use as an anti-scurvy tonic.",
     "isPremium": 0,
     "usedFor": "Immune System - General Support, Skin & Wounds - Topical Healing",
-    "alternativeNames": "Arctic Gold Jam, Bakeapple Conserve"
+    "alternativeNames": "Arctic Gold Jam, Bakeapple Conserve",
+    "storage": {
+      "yield": "",
+      "shelfLife": "",
+      "costEstimate": "",
+      "storageTemp": "",
+      "spoilageIndicators": ""
+    },
+    "equipmentNeeded": []
   },
   {
     "title": "Burdock Root Ferment (Lopukhov Kvass)",
@@ -532,12 +967,27 @@
     "ingredients": "Fresh Burdock Root (Arctium lappa), Water, Sugar (or Honey), Yeast (or Rye Bread Starter)",
     "detailedMeasurements": "1 kg fresh Burdock root (chopped), 3 L water, 1 cup sugar, 1 tbsp active yeast OR 1 slice rye bread.",
     "preparationSteps": "1. Boil chopped Burdock root in water for 30 minutes. Strain and cool the liquid to room temperature. 2. Dissolve sugar/honey and yeast/starter into the liquid. 3. Place in a large jar, cover with cloth (to allow airflow), and ferment in a warm place for 3-7 days. 4. Skim foam, strain, bottle, and refrigerate.",
-    "usage": "Dosage: 1/2 cup (125ml) twice daily, chilled. Used as a traditional spring tonic to cleanse the blood, stimulate liver function, and improve metabolism.",
+    "usage": {
+      "summary": "Dosage: 1/2 cup (125ml) twice daily, chilled. Used as a traditional spring tonic to cleanse the blood, stimulate liver function, and improve metabolism.",
+      "dosage": "",
+      "frequency": "",
+      "maxDuration": "",
+      "applicationAreas": "",
+      "bestPractices": ""
+    },
     "historicalContext": "Kvass is an ancient Slavic fermented drink. Burdock was widely incorporated into these tonics, prized for centuries as a 'blood purifier' in traditional medicine across Europe.",
     "scientificEvidence": "Contains inulin (prebiotic fiber) and polyacetylenes (antimicrobial). The ferment provides probiotics. Studies support its traditional use as a diuretic and hepatoprotective agent.",
     "isPremium": 0,
     "usedFor": "Liver & Detox - Hepatic Support, Immune System - General Support",
-    "alternativeNames": "Lopukhov Ferment, Burdock Kvass"
+    "alternativeNames": "Lopukhov Ferment, Burdock Kvass",
+    "storage": {
+      "yield": "",
+      "shelfLife": "",
+      "costEstimate": "",
+      "storageTemp": "",
+      "spoilageIndicators": ""
+    },
+    "equipmentNeeded": []
   },
   {
     "title": "Pine Needle Tincture (Pinus sylvestris)",
@@ -550,12 +1000,27 @@
     "ingredients": "Fresh Pine Needles (Scots Pine or Spruce), Strong Alcohol (Vodka/Grain Spirit)",
     "detailedMeasurements": "1 part fresh Pine Needles (finely chopped), 5 parts 50% alcohol.",
     "preparationSteps": "1. Pack the needles tightly into a jar and cover completely with alcohol. 2. Seal and infuse for 6 weeks in a cool, dark place. 3. Strain and bottle.",
-    "usage": "Dosage: 10-20 drops diluted in warm water, up to 4 times daily. Used as a strong antiseptic, expectorant, and source of Vitamin C for chest colds, bronchitis, and fatigue.",
+    "usage": {
+      "summary": "Dosage: 10-20 drops diluted in warm water, up to 4 times daily. Used as a strong antiseptic, expectorant, and source of Vitamin C for chest colds, bronchitis, and fatigue.",
+      "dosage": "",
+      "frequency": "",
+      "maxDuration": "",
+      "applicationAreas": "",
+      "bestPractices": ""
+    },
     "historicalContext": "Essential medicine for Sámi and forest-dwelling communities, where fresh sources of Vitamin C were nonexistent in winter. Its use as an inhalant/expectorant is ancient.",
     "scientificEvidence": "High in volatile oils (terpenes, pinene) which are stimulating expectorants and decongestants. Contains high levels of Vitamin C.",
     "isPremium": 0,
     "usedFor": "Respiratory System - Lungs & Chest, Immune System - Acute Illness (Fever/Cold)",
-    "alternativeNames": "Spruce Essence, Forest Spirit Tincture"
+    "alternativeNames": "Spruce Essence, Forest Spirit Tincture",
+    "storage": {
+      "yield": "",
+      "shelfLife": "",
+      "costEstimate": "",
+      "storageTemp": "",
+      "spoilageIndicators": ""
+    },
+    "equipmentNeeded": []
   },
   {
     "title": "Red Clover Salve (Trifolium pratense)",
@@ -568,12 +1033,27 @@
     "ingredients": "Red Clover Blossoms (dried), Olive Oil, Beeswax",
     "detailedMeasurements": "1 part dried Red Clover blossoms, 5 parts Olive Oil (carrier), 1 part Beeswax.",
     "preparationSteps": "1. Infuse the blossoms in the Olive Oil via a low, gentle heat (double boiler) for 2-4 hours. 2. Strain the oil, pressing the flowers. 3. Reheat the infused oil and dissolve the Beeswax until fully melted. 4. Pour into sterilized tins and cool.",
-    "usage": "Apply externally to patches of eczema, psoriasis, and persistent chronic skin irritations 2-3 times daily. For external use only.",
+    "usage": {
+      "summary": "Apply externally to patches of eczema, psoriasis, and persistent chronic skin irritations 2-3 times daily. For external use only.",
+      "dosage": "",
+      "frequency": "",
+      "maxDuration": "",
+      "applicationAreas": "",
+      "bestPractices": ""
+    },
     "historicalContext": "Used throughout Europe as a 'blood cleanser' for persistent skin eruptions, reflecting the old humoral link between internal health and skin conditions.",
     "scientificEvidence": "Contains phytoestrogens (isoflavones) which may help balance hormonal fluctuations linked to some skin conditions, along with anti-inflammatory compounds.",
     "isPremium": 0,
     "usedFor": "Skin & Wounds - Chronic Conditions (Eczema, etc.), Women's Health - Menstruation & Hormones",
-    "alternativeNames": "Trifolium Ointment, Eczema Salve"
+    "alternativeNames": "Trifolium Ointment, Eczema Salve",
+    "storage": {
+      "yield": "",
+      "shelfLife": "",
+      "costEstimate": "",
+      "storageTemp": "",
+      "spoilageIndicators": ""
+    },
+    "equipmentNeeded": []
   },
   {
     "title": "Wild Thyme Linctus (Thymus serpyllum)",
@@ -586,12 +1066,27 @@
     "ingredients": "Wild Thyme (dried), Honey, Water",
     "detailedMeasurements": "1 part Wild Thyme (dried), 2 parts Water, 2 parts Honey (by volume).",
     "preparationSteps": "1. Prepare a strong decoction by simmering the Wild Thyme in water for 15 minutes. 2. Strain the liquid, pressing the herbs. 3. Gently warm the strained liquid and dissolve the honey into it to form a thick syrup.",
-    "usage": "Dosage: 1-2 teaspoons, 3-4 times daily. Used as a gentle antiseptic and anti-spasmodic for dry, irritating coughs, mild asthma, and nervous tension.",
+    "usage": {
+      "summary": "Dosage: 1-2 teaspoons, 3-4 times daily. Used as a gentle antiseptic and anti-spasmodic for dry, irritating coughs, mild asthma, and nervous tension.",
+      "dosage": "",
+      "frequency": "",
+      "maxDuration": "",
+      "applicationAreas": "",
+      "bestPractices": ""
+    },
     "historicalContext": "A common garden and field herb with a long history of use in peasant medicine for coughs, particularly useful for children due to its gentle nature.",
     "scientificEvidence": "Rich in volatile oils (Thymol, Carvacrol) which are proven anti-spasmodic (calms muscle spasm) and potent antiseptics for the respiratory tract.",
     "isPremium": 0,
     "usedFor": "Respiratory System - Lungs & Chest, Nervous System & Sleep - Anxiety & Mood",
-    "alternativeNames": "Serpyllum Cough Syrup, Field Thyme Honey"
+    "alternativeNames": "Serpyllum Cough Syrup, Field Thyme Honey",
+    "storage": {
+      "yield": "",
+      "shelfLife": "",
+      "costEstimate": "",
+      "storageTemp": "",
+      "spoilageIndicators": ""
+    },
+    "equipmentNeeded": []
   },
   {
     "title": "St. John's Wort Oil (Hypericum perforatum)",
@@ -604,12 +1099,27 @@
     "ingredients": "Fresh St. John's Wort Flowers, Olive Oil (or Sunflower Oil)",
     "detailedMeasurements": "1 part fresh flowers (bruised), 4 parts Olive Oil (by volume).",
     "preparationSteps": "1. Bruise the fresh flowers (releasing the red hypericin). 2. Place in a clear jar and cover with oil. 3. Infuse in direct sunlight for 4-6 weeks (the oil should turn deep red). 4. Strain through cheesecloth and store the red oil in a dark bottle.",
-    "usage": "Apply externally (topically) 3-4 times daily to nerve pain (sciatica, neuralgia), cold sores, burns, and minor wounds. For external use only.",
+    "usage": {
+      "summary": "Apply externally (topically) 3-4 times daily to nerve pain (sciatica, neuralgia), cold sores, burns, and minor wounds. For external use only.",
+      "dosage": "",
+      "frequency": "",
+      "maxDuration": "",
+      "applicationAreas": "",
+      "bestPractices": ""
+    },
     "historicalContext": "Historically gathered on St. John's Day (Midsummer). The deep red color was thought to represent the 'blood' of the Baptist, making it magically and medicinally potent.",
     "scientificEvidence": "Contains Hypericin (antiviral) and Hyperforin (anti-inflammatory). Highly effective for topical nerve pain due to its affinity for nerve tissue.",
     "isPremium": 0,
     "usedFor": "Nervous System & Sleep - Anxiety & Mood, Skin & Wounds - Topical Healing",
-    "alternativeNames": "Hypericum Tincture Oil, Solar Oil"
+    "alternativeNames": "Hypericum Tincture Oil, Solar Oil",
+    "storage": {
+      "yield": "",
+      "shelfLife": "",
+      "costEstimate": "",
+      "storageTemp": "",
+      "spoilageIndicators": ""
+    },
+    "equipmentNeeded": []
   },
   {
     "title": "Lungwort Decoction (Pulmonaria officinalis)",
@@ -622,12 +1132,27 @@
     "ingredients": "Dried Lungwort Leaf, Water",
     "detailedMeasurements": "1 tablespoon dried leaf per 1 cup boiling water.",
     "preparationSteps": "1. Combine dried leaf and boiling water in a covered pot. 2. Steep for 15 minutes. 3. Strain and drink warm.",
-    "usage": "Dosage: 1 cup, 3 times daily. Used as a demulcent expectorant for dry, non-productive coughs, and to soothe inflamed, sensitive lung tissue.",
+    "usage": {
+      "summary": "Dosage: 1 cup, 3 times daily. Used as a demulcent expectorant for dry, non-productive coughs, and to soothe inflamed, sensitive lung tissue.",
+      "dosage": "",
+      "frequency": "",
+      "maxDuration": "",
+      "applicationAreas": "",
+      "bestPractices": ""
+    },
     "historicalContext": "Highly prized in the Middle Ages, its name is a direct reference to its primary medicinal use. The Doctrine of Signatures heavily influenced its use.",
     "scientificEvidence": "Contains high levels of mucilage (demulcent) and allantoin (tissue healing), supporting its traditional use for soothing irritated and damaged lung tissue.",
     "isPremium": 0,
     "usedFor": "Respiratory System - Lungs & Chest, Immune System - Acute Illness (Fever/Cold)",
-    "alternativeNames": "Jerusalem Cowslip Tea, Spotted Lung Herb"
+    "alternativeNames": "Jerusalem Cowslip Tea, Spotted Lung Herb",
+    "storage": {
+      "yield": "",
+      "shelfLife": "",
+      "costEstimate": "",
+      "storageTemp": "",
+      "spoilageIndicators": ""
+    },
+    "equipmentNeeded": []
   },
   {
     "title": "Goat's Rue Tincture (Galega officinalis)",
@@ -640,12 +1165,27 @@
     "ingredients": "Dried Goat's Rue Aerial Parts, 50% Alcohol",
     "detailedMeasurements": "1 part dried herb, 5 parts 50% alcohol.",
     "preparationSteps": "1. Macerate the dried herb in the alcohol for 4 weeks, shaking daily. 2. Strain and bottle.",
-    "usage": "Dosage: 10-20 drops diluted in water, 3 times daily, with meals. Used to support healthy blood sugar metabolism (mild hypoglycemic) and to enhance milk production in nursing mothers.",
+    "usage": {
+      "summary": "Dosage: 10-20 drops diluted in water, 3 times daily, with meals. Used to support healthy blood sugar metabolism (mild hypoglycemic) and to enhance milk production in nursing mothers.",
+      "dosage": "",
+      "frequency": "",
+      "maxDuration": "",
+      "applicationAreas": "",
+      "bestPractices": ""
+    },
     "historicalContext": "Its folk use led to the isolation of guanidine, which served as the chemical template for the modern synthetic biguanide anti-diabetic drug Metformin.",
     "scientificEvidence": "Contains galegine, a precursor to Metformin, which has a mild blood sugar lowering effect. Well-documented historical use for both lactation and diabetes.",
     "isPremium": 0,
     "usedFor": "Endocrine System - Blood Sugar & Metabolism, Women's Health - Postpartum/Lactation",
-    "alternativeNames": "Galega Spirit, Diabetic's Tonic"
+    "alternativeNames": "Galega Spirit, Diabetic's Tonic",
+    "storage": {
+      "yield": "",
+      "shelfLife": "",
+      "costEstimate": "",
+      "storageTemp": "",
+      "spoilageIndicators": ""
+    },
+    "equipmentNeeded": []
   },
   {
     "title": "Bilberry Wine (Vaccinium myrtillus)",
@@ -658,12 +1198,27 @@
     "ingredients": "Fresh Bilberries, Dry Red Wine, Sugar",
     "detailedMeasurements": "1 part fresh Bilberries (crushed), 3 parts Dry Red Wine, 1/4 part Sugar.",
     "preparationSteps": "1. Crush the fresh Bilberries and combine with the wine and sugar. 2. Macerate in a cool place for 1 month, shaking occasionally. 3. Strain, filter, and bottle.",
-    "usage": "Dosage: 1 small wineglass (30ml) nightly. Used to improve night vision, strengthen capillaries, and protect the vascular system.",
+    "usage": {
+      "summary": "Dosage: 1 small wineglass (30ml) nightly. Used to improve night vision, strengthen capillaries, and protect the vascular system.",
+      "dosage": "",
+      "frequency": "",
+      "maxDuration": "",
+      "applicationAreas": "",
+      "bestPractices": ""
+    },
     "historicalContext": "Used extensively in folk medicine for diarrhea and eye conditions. Its modern fame arose from WWII British pilots consuming Bilberry jam to improve night vision.",
     "scientificEvidence": "Extremely high in anthocyanosides, which have strong antioxidant effects, regenerate Rhodopsin (the pigment needed for low-light vision), and strengthen blood vessel walls.",
     "isPremium": 0,
     "usedFor": "Eye & Ear Health, Cardiovascular System",
-    "alternativeNames": "Myrtillus Ophthalmic Tonic, European Blueberry Wine"
+    "alternativeNames": "Myrtillus Ophthalmic Tonic, European Blueberry Wine",
+    "storage": {
+      "yield": "",
+      "shelfLife": "",
+      "costEstimate": "",
+      "storageTemp": "",
+      "spoilageIndicators": ""
+    },
+    "equipmentNeeded": []
   },
   {
     "title": "Celandine Tincture (Chelidonium majus)",
@@ -676,12 +1231,27 @@
     "ingredients": "Fresh Celandine Aerial Parts/Root, 50% Alcohol",
     "detailedMeasurements": "1 part fresh, chopped herb, 5 parts 50% alcohol.",
     "preparationSteps": "1. Chop the fresh plant and immediately macerate in the alcohol for 4 weeks. 2. Strain and bottle.",
-    "usage": "Internal: EXTREME CAUTION: 5-10 drops in water, 1-2 times daily, for severe liver and gallbladder spasm/pain (cholagogue). External: Apply 1 drop of fresh latex or tincture to warts 2 times daily.",
+    "usage": {
+      "summary": "Internal: EXTREME CAUTION: 5-10 drops in water, 1-2 times daily, for severe liver and gallbladder spasm/pain (cholagogue). External: Apply 1 drop of fresh latex or tincture to warts 2 times daily.",
+      "dosage": "",
+      "frequency": "",
+      "maxDuration": "",
+      "applicationAreas": "",
+      "bestPractices": ""
+    },
     "historicalContext": "Used since the Middle Ages. Its yellow sap was linked to the color of bile and was thus used to treat jaundice (Doctrine of Signatures).",
     "scientificEvidence": "Contains toxic isoquinoline alkaloids. Its efficacy as a wart remover is due to its caustic, cytotoxic nature. Highly risky internal use is now mostly obsolete.",
     "isPremium": 0,
     "usedFor": "Liver & Detox - Hepatic Support, Skin & Wounds - Topical Healing",
-    "alternativeNames": "Greater Celandine Spirit, Wart Killer"
+    "alternativeNames": "Greater Celandine Spirit, Wart Killer",
+    "storage": {
+      "yield": "",
+      "shelfLife": "",
+      "costEstimate": "",
+      "storageTemp": "",
+      "spoilageIndicators": ""
+    },
+    "equipmentNeeded": []
   },
   {
     "title": "Lichen Cream (Cetraria & Usnea)",
@@ -694,12 +1264,27 @@
     "ingredients": "Reindeer Moss (Cetraria), Usnea Lichen (Usnea barbata), Olive Oil, Beeswax",
     "detailedMeasurements": "1 part Cetraria, 1 part Usnea, 5 parts Olive Oil, 1 part Beeswax.",
     "preparationSteps": "1. Gently powder the lichens. 2. Infuse the lichens in the Olive Oil via a low, gentle heat (double boiler) for 3 hours. 3. Strain and press the lichens. 4. Reheat the oil and dissolve the Beeswax until fully melted. 5. Pour into jars.",
-    "usage": "Apply externally to chest and back for deep coughs, or to chronic inflammatory skin conditions like eczema and persistent fungal infections.",
+    "usage": {
+      "summary": "Apply externally to chest and back for deep coughs, or to chronic inflammatory skin conditions like eczema and persistent fungal infections.",
+      "dosage": "",
+      "frequency": "",
+      "maxDuration": "",
+      "applicationAreas": "",
+      "bestPractices": ""
+    },
     "historicalContext": "Lichens were a staple medicine in the far north. Usnea's use as a wound antiseptic and Cetraria's lung benefit were known to Viking-era settlers.",
     "scientificEvidence": "Usnea contains Usnic acid, a highly potent, broad-spectrum antibiotic and antifungal compound, supporting its traditional antiseptic use.",
     "isPremium": 0,
     "usedFor": "Respiratory System - Lungs & Chest, Skin & Wounds - Chronic Conditions (Eczema, etc.)",
-    "alternativeNames": "Usnea Salve, Tree Lung Cream"
+    "alternativeNames": "Usnea Salve, Tree Lung Cream",
+    "storage": {
+      "yield": "",
+      "shelfLife": "",
+      "costEstimate": "",
+      "storageTemp": "",
+      "spoilageIndicators": ""
+    },
+    "equipmentNeeded": []
   },
   {
     "title": "Horsetail Field Plaster (Equisetum arvense)",
@@ -712,12 +1297,27 @@
     "ingredients": "Horsetail Aerial Parts (dried/powdered), Egg White (as binder)",
     "detailedMeasurements": "2 parts powdered Horsetail, 1 part Egg White (or enough to form a thick, stiff paste).",
     "preparationSteps": "1. Finely powder the dried Horsetail herb. 2. Mix the powder slowly with the beaten Egg White until a dense, sticky paste forms. 3. Spread onto a piece of linen or cotton cloth.",
-    "usage": "Apply externally directly onto chronic, slow-healing wounds, poorly knitting bone fractures (splinted), or stubborn deep joint inflammation.",
+    "usage": {
+      "summary": "Apply externally directly onto chronic, slow-healing wounds, poorly knitting bone fractures (splinted), or stubborn deep joint inflammation.",
+      "dosage": "",
+      "frequency": "",
+      "maxDuration": "",
+      "applicationAreas": "",
+      "bestPractices": ""
+    },
     "historicalContext": "Its extremely high silica content led to its use as a 'mineralizing' and 'strengthening' plaster, following the belief that like cures like.",
     "scientificEvidence": "Extremely high in soluble silica (silicic acid), which is essential for collagen formation and bone/cartilage repair, supporting its traditional use for tissue strength.",
     "isPremium": 0,
     "usedFor": "Skin & Wounds - Topical Healing, Musculoskeletal System - Joints & Arthritis",
-    "alternativeNames": "Equisetum Compress, Silicea Skin Patch"
+    "alternativeNames": "Equisetum Compress, Silicea Skin Patch",
+    "storage": {
+      "yield": "",
+      "shelfLife": "",
+      "costEstimate": "",
+      "storageTemp": "",
+      "spoilageIndicators": ""
+    },
+    "equipmentNeeded": []
   },
   {
     "title": "Marsh Tea Tincture (Ledum palustre)",
@@ -730,12 +1330,27 @@
     "ingredients": "Dried Marsh Tea/Wild Rosemary Leaf, 70% Alcohol",
     "detailedMeasurements": "1 part dried leaf, 5 parts 70% alcohol.",
     "preparationSteps": "1. Macerate the dried leaf in the alcohol for 3 weeks. 2. Strain and bottle.",
-    "usage": "Dosage: EXTREME CAUTION: 3-5 drops diluted in water, 1-2 times daily. Used as a powerful expectorant, antispasmodic for whooping cough, and mild sedative.",
+    "usage": {
+      "summary": "Dosage: EXTREME CAUTION: 3-5 drops diluted in water, 1-2 times daily. Used as a powerful expectorant, antispasmodic for whooping cough, and mild sedative.",
+      "dosage": "",
+      "frequency": "",
+      "maxDuration": "",
+      "applicationAreas": "",
+      "bestPractices": ""
+    },
     "historicalContext": "Used by indigenous people and northern settlers in minute doses. Known for its strong medicinal effect and high toxicity, demonstrating the fine line in folk medicine.",
     "scientificEvidence": "Contains the volatile oil Ledol, which is neurotoxic and narcotic in large doses, but acts as a powerful antispasmodic/expectorant in minute amounts.",
     "isPremium": 0,
     "usedFor": "Respiratory System - Lungs & Chest, Nervous System & Sleep - Anxiety & Mood",
-    "alternativeNames": "Wild Rosemary Spirit, Labrador Tea Tincture"
+    "alternativeNames": "Wild Rosemary Spirit, Labrador Tea Tincture",
+    "storage": {
+      "yield": "",
+      "shelfLife": "",
+      "costEstimate": "",
+      "storageTemp": "",
+      "spoilageIndicators": ""
+    },
+    "equipmentNeeded": []
   },
   {
     "title": "Yarrow Sitz Bath (Achillea millefolium)",
@@ -748,12 +1363,27 @@
     "ingredients": "Dried Yarrow Aerial Parts (leaf/flower), Boiling Water",
     "detailedMeasurements": "1 cup dried Yarrow herb per 4 L boiling water.",
     "preparationSteps": "1. Place the Yarrow herb in a large basin or bath. 2. Pour boiling water over the herb and steep for 20 minutes (or until comfortable temperature). 3. Strain or simply remove the bulk of the herb.",
-    "usage": "Usage: Sit in the warm infusion, covering the hips and abdomen, for 20 minutes. Used to relieve pelvic congestion, painful menstruation, and bladder/kidney inflammation.",
+    "usage": {
+      "summary": "Usage: Sit in the warm infusion, covering the hips and abdomen, for 20 minutes. Used to relieve pelvic congestion, painful menstruation, and bladder/kidney inflammation.",
+      "dosage": "",
+      "frequency": "",
+      "maxDuration": "",
+      "applicationAreas": "",
+      "bestPractices": ""
+    },
     "historicalContext": "The herb was sacred to Achilles for stopping bleeding. Its use as an abdominal wash or sitz bath for 'female complaints' is ancient and ubiquitous across Europe.",
     "scientificEvidence": "Contains volatile oils and flavonoids that are anti-inflammatory, anti-spasmodic, and mild circulatory stimulants (improving pelvic blood flow).",
     "isPremium": 0,
     "usedFor": "Women's Health - Menstruation & Hormones, Urinary System - Kidney & Bladder",
-    "alternativeNames": "Millefolium Perineal Wash, Menstrual Pain Soak"
+    "alternativeNames": "Millefolium Perineal Wash, Menstrual Pain Soak",
+    "storage": {
+      "yield": "",
+      "shelfLife": "",
+      "costEstimate": "",
+      "storageTemp": "",
+      "spoilageIndicators": ""
+    },
+    "equipmentNeeded": []
   },
   {
     "title": "Spelt Porridge (Hildegard's Cereal)",
@@ -766,12 +1396,27 @@
     "ingredients": "Spelt Grain (Hildegard's preferred grain), Water/Milk, Ghee/Butter",
     "detailedMeasurements": "1 part Spelt grain (lightly crushed), 3 parts Water or Milk, a pinch of Salt, small amount of Ghee/Butter.",
     "preparationSteps": "1. Soak the spelt grain overnight (optional). 2. Combine spelt, liquid, and salt. 3. Bring to a boil, then reduce heat and simmer until the grain is soft and creamy (20-40 minutes). 4. Serve warm with Ghee/Butter.",
-    "usage": "Dosage: Eat a bowl for breakfast daily. Used as a foundational restorative food for all ailments, promoting gut health, vitality, and inner peace.",
+    "usage": {
+      "summary": "Dosage: Eat a bowl for breakfast daily. Used as a foundational restorative food for all ailments, promoting gut health, vitality, and inner peace.",
+      "dosage": "",
+      "frequency": "",
+      "maxDuration": "",
+      "applicationAreas": "",
+      "bestPractices": ""
+    },
     "historicalContext": "The foundation of Hildegard's medical system (12th Century). She wrote, \"Spelt is the best of all grains. It is rich and potent and easier to digest.\"",
     "scientificEvidence": "Traditional use. Spelt is an ancient grain with a high protein content and is often better tolerated by wheat-sensitive individuals (though it still contains gluten).",
     "isPremium": 0,
     "usedFor": "Digestive System - Stomach & Upper GI, General Wellness/Tonics",
-    "alternativeNames": "Dinkel Porridge, Spelt Gruel"
+    "alternativeNames": "Dinkel Porridge, Spelt Gruel",
+    "storage": {
+      "yield": "",
+      "shelfLife": "",
+      "costEstimate": "",
+      "storageTemp": "",
+      "spoilageIndicators": ""
+    },
+    "equipmentNeeded": []
   },
   {
     "title": "Calamint Infusion (Calamintha nepeta)",
@@ -784,12 +1429,27 @@
     "ingredients": "Dried Calamint Leaf and Flower",
     "detailedMeasurements": "1 teaspoon dried herb per 1 cup boiling water.",
     "preparationSteps": "1. Pour boiling water over the herb in a covered cup. 2. Steep for 5-7 minutes. 3. Strain and drink warm.",
-    "usage": "Dosage: 1 cup taken after meals for digestive aid, or before bed to promote restful sleep and soothe nervous tension.",
+    "usage": {
+      "summary": "Dosage: 1 cup taken after meals for digestive aid, or before bed to promote restful sleep and soothe nervous tension.",
+      "dosage": "",
+      "frequency": "",
+      "maxDuration": "",
+      "applicationAreas": "",
+      "bestPractices": ""
+    },
     "historicalContext": "A gentle, widely used folk remedy for calming the nerves, often associated with promoting kindliness and good humor.",
     "scientificEvidence": "Contains volatile oils (pulegone, menthone) which are antispasmodic for the gut and possess mild sedative properties.",
     "isPremium": 0,
     "usedFor": "Digestive System - Stomach & Upper GI, Nervous System & Sleep - Anxiety & Mood",
-    "alternativeNames": "Mountain Mint Tea, Nervous Digestant"
+    "alternativeNames": "Mountain Mint Tea, Nervous Digestant",
+    "storage": {
+      "yield": "",
+      "shelfLife": "",
+      "costEstimate": "",
+      "storageTemp": "",
+      "spoilageIndicators": ""
+    },
+    "equipmentNeeded": []
   },
   {
     "title": "Dittany and Honey Troches (Pastilles)",
@@ -802,12 +1462,27 @@
     "ingredients": "Cretan Dittany (Origanum dictamnus), Honey, Gum Arabic (as binder)",
     "detailedMeasurements": "1 part Dittany powder, 3 parts Honey (warmed), a pinch of Gum Arabic powder.",
     "preparationSteps": "1. Mix the Dittany powder and Gum Arabic thoroughly. 2. Slowly mix in the warmed honey until a stiff dough is formed. 3. Roll the dough into thin strips and cut into small, lozenge-sized pieces. 4. Allow to air dry until hard.",
-    "usage": "Dosage: Suck on 1 troche slowly, every 2 hours, for persistent sore throats, laryngitis, and chronic coughs.",
+    "usage": {
+      "summary": "Dosage: Suck on 1 troche slowly, every 2 hours, for persistent sore throats, laryngitis, and chronic coughs.",
+      "dosage": "",
+      "frequency": "",
+      "maxDuration": "",
+      "applicationAreas": "",
+      "bestPractices": ""
+    },
     "historicalContext": "Troches (or pastilles) were a common medieval and Renaissance dosage form used to deliver medicine slowly to the respiratory and oral membranes.",
     "scientificEvidence": "Contains Carvacrol (highly antiseptic) and mucilaginous components (from honey/gum) which provide a protective coating for the throat.",
     "isPremium": 0,
     "usedFor": "Oral Health - Throat & Pharynx, Respiratory System - Sinus & Upper Tract",
-    "alternativeNames": "Origanum Pastilles, Throat Lozenge"
+    "alternativeNames": "Origanum Pastilles, Throat Lozenge",
+    "storage": {
+      "yield": "",
+      "shelfLife": "",
+      "costEstimate": "",
+      "storageTemp": "",
+      "spoilageIndicators": ""
+    },
+    "equipmentNeeded": []
   },
   {
     "title": "Woundwort Tincture (Stachys sylvatica)",
@@ -820,12 +1495,27 @@
     "ingredients": "Fresh Forest Woundwort Leaf, 70% Alcohol",
     "detailedMeasurements": "1 part fresh leaf, 5 parts 70% alcohol.",
     "preparationSteps": "1. Macerate the fresh, lightly bruised leaf in the alcohol for 3 weeks. 2. Strain and bottle.",
-    "usage": "Usage: Apply a few drops directly to minor cuts and scrapes to stop bleeding (styptic) and prevent infection. Can be diluted with water for a wound wash.",
+    "usage": {
+      "summary": "Usage: Apply a few drops directly to minor cuts and scrapes to stop bleeding (styptic) and prevent infection. Can be diluted with water for a wound wash.",
+      "dosage": "",
+      "frequency": "",
+      "maxDuration": "",
+      "applicationAreas": "",
+      "bestPractices": ""
+    },
     "historicalContext": "Used since ancient times for staunching blood flow. The name 'Woundwort' reflects its primary and historical use.",
     "scientificEvidence": "Contains significant amounts of astringent tannins and bitter principles, which act as a powerful styptic (stopping bleeding) by constricting local blood vessels.",
     "isPremium": 0,
     "usedFor": "Skin & Wounds - Topical Healing, Cardiovascular System",
-    "alternativeNames": "Forest Betony Spirit, Stachys Styptic"
+    "alternativeNames": "Forest Betony Spirit, Stachys Styptic",
+    "storage": {
+      "yield": "",
+      "shelfLife": "",
+      "costEstimate": "",
+      "storageTemp": "",
+      "spoilageIndicators": ""
+    },
+    "equipmentNeeded": []
   },
   {
     "title": "Mullein and Garlic Ear Oil",
@@ -838,12 +1528,27 @@
     "ingredients": "Mullein Flower Oil (Verbascum thapsus), Garlic Cloves, Olive Oil",
     "detailedMeasurements": "1 part Mullein Flower Oil, 2 crushed Garlic Cloves, 5 parts Olive Oil.",
     "preparationSteps": "1. Gently warm the Olive Oil in a double boiler. 2. Add Mullein Oil and crushed Garlic. 3. Infuse (Macerate with heat) for 2-3 hours over very low heat. 4. Strain the oil while still warm, pressing the solids. Store in a dark dropper bottle.",
-    "usage": "Dosage: 2-3 drops of warm oil dripped into the affected ear, covered with a cotton ball. Used for earaches and external ear canal infections. DO NOT USE IF EARDRUM IS PERFORATED.",
+    "usage": {
+      "summary": "Dosage: 2-3 drops of warm oil dripped into the affected ear, covered with a cotton ball. Used for earaches and external ear canal infections. DO NOT USE IF EARDRUM IS PERFORATED.",
+      "dosage": "",
+      "frequency": "",
+      "maxDuration": "",
+      "applicationAreas": "",
+      "bestPractices": ""
+    },
     "historicalContext": "A ubiquitous folk remedy across Europe, combining Mullein's anti-inflammatory properties with Garlic's strong natural antibiotic action.",
     "scientificEvidence": "Contains volatile oils (Garlic) and mucilage/saponins (Mullein) that are locally analgesic, anti-inflammatory, and antimicrobial.",
     "isPremium": 0,
     "usedFor": "Eye & Ear Health, Musculoskeletal System - Pain & Headache",
-    "alternativeNames": "Verbascum and Allium Auricular Drops"
+    "alternativeNames": "Verbascum and Allium Auricular Drops",
+    "storage": {
+      "yield": "",
+      "shelfLife": "",
+      "costEstimate": "",
+      "storageTemp": "",
+      "spoilageIndicators": ""
+    },
+    "equipmentNeeded": []
   },
   {
     "title": "Meadowsweet Ointment (Spiraea)",
@@ -856,12 +1561,27 @@
     "ingredients": "Meadowsweet Flowers/Leaves, Lard/Tallow (or Shea Butter), Beeswax",
     "detailedMeasurements": "1 part dried Meadowsweet, 5 parts Lard/Tallow, 1 part Beeswax.",
     "preparationSteps": "1. Infuse the dried Meadowsweet in the Lard/Tallow via a low, gentle heat (double boiler) for 3 hours. 2. Strain the fat, pressing the herb. 3. Reheat the infused fat and dissolve the Beeswax until fully melted. 4. Pour into jars.",
-    "usage": "Apply externally, massaging into painful, swollen joints, or areas affected by gout and rheumatism 2-4 times daily.",
+    "usage": {
+      "summary": "Apply externally, massaging into painful, swollen joints, or areas affected by gout and rheumatism 2-4 times daily.",
+      "dosage": "",
+      "frequency": "",
+      "maxDuration": "",
+      "applicationAreas": "",
+      "bestPractices": ""
+    },
     "historicalContext": "Used throughout Europe for its pain-relieving action, particularly for rheumatic and arthritic conditions, due to its gentle effect on the stomach compared to Willow bark.",
     "scientificEvidence": "Contains Salicylates (natural Aspirin precursors) and strong anti-inflammatory flavonoids, providing topical pain relief.",
     "isPremium": 0,
     "usedFor": "Musculoskeletal System - Joints & Arthritis, Skin & Wounds - Topical Healing",
-    "alternativeNames": "Filipendula Salve, Salicylate Cream"
+    "alternativeNames": "Filipendula Salve, Salicylate Cream",
+    "storage": {
+      "yield": "",
+      "shelfLife": "",
+      "costEstimate": "",
+      "storageTemp": "",
+      "spoilageIndicators": ""
+    },
+    "equipmentNeeded": []
   },
   {
     "title": "Horehound and Anise Wine",
@@ -874,12 +1594,27 @@
     "ingredients": "White Horehound Leaf, Anise Seed, Dry White Wine (e.g., Riesling), Honey",
     "detailedMeasurements": "1 part dried Horehound, 1/2 part Anise Seed (crushed), 5 parts White Wine, 1/4 part Honey.",
     "preparationSteps": "1. Macerate the Horehound and Anise in the wine for 10 days, shaking daily. 2. Strain, press the herbs, and filter. 3. Stir in the honey until dissolved.",
-    "usage": "Dosage: 1 small glass (30ml) taken 15 minutes before a heavy meal to stimulate appetite and digestive juices, or slowly for a lingering cough.",
+    "usage": {
+      "summary": "Dosage: 1 small glass (30ml) taken 15 minutes before a heavy meal to stimulate appetite and digestive juices, or slowly for a lingering cough.",
+      "dosage": "",
+      "frequency": "",
+      "maxDuration": "",
+      "applicationAreas": "",
+      "bestPractices": ""
+    },
     "historicalContext": "Monastic medicine often relied on medicated wines and ales to deliver herbs. The combination of bitters (Horehound) and aromatics (Anise) is classical.",
     "scientificEvidence": "Horehound's Marrubiin is a powerful bitter, stimulating digestive juices. Anise is a carminative. The alcohol aids extraction and absorption.",
     "isPremium": 0,
     "usedFor": "Digestive System - Stomach & Upper GI, Respiratory System - Lungs & Chest",
-    "alternativeNames": "Marrubium and Anisum Aperitif, Bitter Stomach Wine"
+    "alternativeNames": "Marrubium and Anisum Aperitif, Bitter Stomach Wine",
+    "storage": {
+      "yield": "",
+      "shelfLife": "",
+      "costEstimate": "",
+      "storageTemp": "",
+      "spoilageIndicators": ""
+    },
+    "equipmentNeeded": []
   },
   {
     "title": "Rosemary and Lavender Smudging Blend",
@@ -892,12 +1627,27 @@
     "ingredients": "Dried Rosemary, Dried Lavender, Frankincense Resin (powdered)",
     "detailedMeasurements": "2 parts Dried Rosemary, 1 part Dried Lavender, 1/4 part Frankincense resin powder.",
     "preparationSteps": "1. Thoroughly dry the herbs and powder the resin. 2. Combine all ingredients and store in a tightly sealed container. 3. Burn a small pinch on a charcoal disk or hot stone.",
-    "usage": "Usage: Burn small amounts to cleanse the air of sickness (antiseptic smoke) and to calm nervous tension, particularly when illness is present. Do not inhale smoke directly.",
+    "usage": {
+      "summary": "Usage: Burn small amounts to cleanse the air of sickness (antiseptic smoke) and to calm nervous tension, particularly when illness is present. Do not inhale smoke directly.",
+      "dosage": "",
+      "frequency": "",
+      "maxDuration": "",
+      "applicationAreas": "",
+      "bestPractices": ""
+    },
     "historicalContext": "Fumigation was an ancient practice (Roman/Greek) used to purify temples, homes, and sick rooms, relying on the antiseptic properties of the volatile oils.",
     "scientificEvidence": "Volatile oils (cineole, linalool) are proven environmental antiseptics. Inhalation of the aroma is traditionally used to reduce anxiety.",
     "isPremium": 0,
     "usedFor": "Nervous System & Sleep - Anxiety & Mood, Immune System - General Support",
-    "alternativeNames": "Rosmarinus Incense, Purifying Smoke"
+    "alternativeNames": "Rosmarinus Incense, Purifying Smoke",
+    "storage": {
+      "yield": "",
+      "shelfLife": "",
+      "costEstimate": "",
+      "storageTemp": "",
+      "spoilageIndicators": ""
+    },
+    "equipmentNeeded": []
   },
   {
     "title": "Wild Lettuce Tincture (Lactuca virosa)",
@@ -910,12 +1660,27 @@
     "ingredients": "Fresh or Dried Wild Lettuce Leaf, 50% Alcohol",
     "detailedMeasurements": "1 part dried leaf (or fresh latex), 5 parts 50% alcohol.",
     "preparationSteps": "1. Macerate the dried leaf (or fresh, cut stem) in the alcohol for 4-6 weeks, shaking daily. 2. Strain and bottle.",
-    "usage": "Dosage: 10-20 drops diluted in water, used before bed for insomnia, or as needed for chronic nervous pain (analgesic).",
+    "usage": {
+      "summary": "Dosage: 10-20 drops diluted in water, used before bed for insomnia, or as needed for chronic nervous pain (analgesic).",
+      "dosage": "",
+      "frequency": "",
+      "maxDuration": "",
+      "applicationAreas": "",
+      "bestPractices": ""
+    },
     "historicalContext": "Highly prized in the 18th and 19th centuries as a safer alternative to opium for treating chronic pain, insomnia, and nervous coughs.",
     "scientificEvidence": "Contains sesquiterpene lactones (lactucin, lactucopicrin) which have documented sedative and analgesic properties, justifying its nickname \"Opium Lettuce.\"",
     "isPremium": 0,
     "usedFor": "Nervous System & Sleep - Anxiety & Mood, Nervous System & Sleep - Pain & Headache",
-    "alternativeNames": "Lactus Sedative, Opium Lettuce Spirit"
+    "alternativeNames": "Lactus Sedative, Opium Lettuce Spirit",
+    "storage": {
+      "yield": "",
+      "shelfLife": "",
+      "costEstimate": "",
+      "storageTemp": "",
+      "spoilageIndicators": ""
+    },
+    "equipmentNeeded": []
   },
   {
     "title": "Black Currant Bud Conserve (Ribes nigrum)",
@@ -928,12 +1693,27 @@
     "ingredients": "Fresh Black Currant Buds, Honey, Alcohol (optional)",
     "detailedMeasurements": "1 part fresh Black Currant Buds, 4 parts Honey (or 1 part buds to 10 parts Glycerin/Alcohol solution for a concentrated extract).",
     "preparationSteps": "1. Gently combine the fresh buds and honey. 2. Macerate for 4-6 weeks in a sealed jar, shaking daily. 3. Strain and press (or use the conserve whole).",
-    "usage": "Dosage: 1 teaspoon daily, stirred into warm water. Used as a powerful tonic for seasonal allergies, inflammation, and general adrenal support.",
+    "usage": {
+      "summary": "Dosage: 1 teaspoon daily, stirred into warm water. Used as a powerful tonic for seasonal allergies, inflammation, and general adrenal support.",
+      "dosage": "",
+      "frequency": "",
+      "maxDuration": "",
+      "applicationAreas": "",
+      "bestPractices": ""
+    },
     "historicalContext": "A classic remedy in Russian and Polish folk medicine, where the leaves and buds were used extensively for their vitamin content and anti-inflammatory action.",
     "scientificEvidence": "High in bioflavonoids and gamma-linolenic acid (GLA), with powerful anti-inflammatory and anti-allergic actions, particularly supporting adrenal function.",
     "isPremium": 0,
     "usedFor": "Immune System - General Support, Respiratory System - Sinus & Upper Tract",
-    "alternativeNames": "Bud Conserve, Ribes Gemmotherapy"
+    "alternativeNames": "Bud Conserve, Ribes Gemmotherapy",
+    "storage": {
+      "yield": "",
+      "shelfLife": "",
+      "costEstimate": "",
+      "storageTemp": "",
+      "spoilageIndicators": ""
+    },
+    "equipmentNeeded": []
   },
   {
     "title": "Fig and Rue Purgative",
@@ -946,12 +1726,27 @@
     "ingredients": "Dried Figs, Rue Leaf, Castor Oil",
     "detailedMeasurements": "5 Dried Figs (minced), 1 teaspoon dried Rue leaf (powdered), 1 tablespoon Castor Oil.",
     "preparationSteps": "1. Mince the figs and powder the Rue. 2. Combine the figs and Rue thoroughly in a small bowl. 3. Stir in the Castor Oil just before consumption.",
-    "usage": "Dosage: Consume the entire mixture rapidly on an empty stomach. Use only for severe, acute constipation or historical context.",
+    "usage": {
+      "summary": "Dosage: Consume the entire mixture rapidly on an empty stomach. Use only for severe, acute constipation or historical context.",
+      "dosage": "",
+      "frequency": "",
+      "maxDuration": "",
+      "applicationAreas": "",
+      "bestPractices": ""
+    },
     "historicalContext": "Rue and Figs were common digestive herbs. The addition of Castor Oil elevates this to a drastic purge, a common practice in ancient medicine.",
     "scientificEvidence": "The combined irritant laxative action of Castor Oil (ricinoleic acid) with the stimulant action of Rue and the bulk of the Fig results in a powerful, dangerous purge.",
     "isPremium": 0,
     "usedFor": "Digestive System - Bowel & Lower GI, Liver & Detox - Hepatic Support",
-    "alternativeNames": "Ficus Ruta Drastic, Strong Bowel Cleanser"
+    "alternativeNames": "Ficus Ruta Drastic, Strong Bowel Cleanser",
+    "storage": {
+      "yield": "",
+      "shelfLife": "",
+      "costEstimate": "",
+      "storageTemp": "",
+      "spoilageIndicators": ""
+    },
+    "equipmentNeeded": []
   },
   {
     "title": "Broom Top Decoction (Cytisus scoparius)",
@@ -964,12 +1759,27 @@
     "ingredients": "Dried Broom Tops (flowering parts), Water",
     "detailedMeasurements": "1 teaspoon dried herb per 1 cup water.",
     "preparationSteps": "1. Combine herb and water. 2. Bring to a boil, then simmer gently for 10 minutes. 3. Strain immediately and drink warm.",
-    "usage": "Dosage: 1 cup, once or twice daily, for mild congestive heart failure (cardiac edema) and as a strong diuretic.",
+    "usage": {
+      "summary": "Dosage: 1 cup, once or twice daily, for mild congestive heart failure (cardiac edema) and as a strong diuretic.",
+      "dosage": "",
+      "frequency": "",
+      "maxDuration": "",
+      "applicationAreas": "",
+      "bestPractices": ""
+    },
     "historicalContext": "Widely used since the Middle Ages. The presence of the alkaloid sparteine, a precursor to modern anti-arrhythmic drugs, made it a dangerous but potent heart remedy.",
     "scientificEvidence": "Contains sparteine (a mild cardiac stimulant and potent diuretic) and flavonoids (circulatory support). Highly effective but risky.",
     "isPremium": 0,
     "usedFor": "Cardiovascular System, Urinary System - Diuretics & Stones",
-    "alternativeNames": "Scoparium Diuretic, Broom Tea"
+    "alternativeNames": "Scoparium Diuretic, Broom Tea",
+    "storage": {
+      "yield": "",
+      "shelfLife": "",
+      "costEstimate": "",
+      "storageTemp": "",
+      "spoilageIndicators": ""
+    },
+    "equipmentNeeded": []
   },
   {
     "title": "Stonecrop Tincture (Sedum acre)",
@@ -982,12 +1792,27 @@
     "ingredients": "Fresh Stonecrop (Sedum acre) aerial parts, 50% Alcohol",
     "detailedMeasurements": "1 part fresh, minced herb, 5 parts 50% alcohol.",
     "preparationSteps": "1. Macerate the fresh, bruised herb in the alcohol for 2 weeks. 2. Strain and bottle.",
-    "usage": "External: Apply 1 drop of fresh juice or diluted tincture (1:5 with water) directly to warts, corns, or stubborn ulcers as a caustic agent. Do not ingest.",
+    "usage": {
+      "summary": "External: Apply 1 drop of fresh juice or diluted tincture (1:5 with water) directly to warts, corns, or stubborn ulcers as a caustic agent. Do not ingest.",
+      "dosage": "",
+      "frequency": "",
+      "maxDuration": "",
+      "applicationAreas": "",
+      "bestPractices": ""
+    },
     "historicalContext": "Named for its \"pepper-like\" pungent taste. Its caustic nature was employed in folk medicine for tough dermal conditions where a drawing/irritant action was required.",
     "scientificEvidence": "Contains alkaloids and mucilage. The caustic action is due to an irritant sap.",
     "isPremium": 0,
     "usedFor": "Skin & Wounds - Topical Healing, Oral Health - Gums & Teeth",
-    "alternativeNames": "Wall Pepper Spirit, Sedum Caustic"
+    "alternativeNames": "Wall Pepper Spirit, Sedum Caustic",
+    "storage": {
+      "yield": "",
+      "shelfLife": "",
+      "costEstimate": "",
+      "storageTemp": "",
+      "spoilageIndicators": ""
+    },
+    "equipmentNeeded": []
   },
   {
     "title": "Cowslip Flower Syrup (Primula veris)",
@@ -1000,12 +1825,27 @@
     "ingredients": "Fresh Cowslip Flowers, Water, Sugar (or Honey)",
     "detailedMeasurements": "1 cup fresh flowers, 1 cup water, 2 cups sugar.",
     "preparationSteps": "1. Simmer the flowers in water for 10 minutes, then strain. 2. Dissolve the sugar in the hot strained liquid to form a thick syrup. 3. Cool and bottle.",
-    "usage": "Dosage: 1 teaspoon before bed. Used as a gentle sedative for nervous insomnia and as a mild expectorant for coughs.",
+    "usage": {
+      "summary": "Dosage: 1 teaspoon before bed. Used as a gentle sedative for nervous insomnia and as a mild expectorant for coughs.",
+      "dosage": "",
+      "frequency": "",
+      "maxDuration": "",
+      "applicationAreas": "",
+      "bestPractices": ""
+    },
     "historicalContext": "The flowers were infused in wine or made into a syrup, valued by medieval apothecaries for their calmative properties.",
     "scientificEvidence": "Contains saponins (exhibit mild expectorant action) and trace amounts of sedative compounds that support its traditional use for anxiety and sleeplessness.",
     "isPremium": 0,
     "usedFor": "Nervous System & Sleep - Anxiety & Mood, Respiratory System - Lungs & Chest",
-    "alternativeNames": "Primula Syrup, Sleepy Cowslip"
+    "alternativeNames": "Primula Syrup, Sleepy Cowslip",
+    "storage": {
+      "yield": "",
+      "shelfLife": "",
+      "costEstimate": "",
+      "storageTemp": "",
+      "spoilageIndicators": ""
+    },
+    "equipmentNeeded": []
   },
   {
     "title": "Tormentil Tincture (Potentilla erecta)",
@@ -1018,12 +1858,27 @@
     "ingredients": "Dried Tormentil Root (rhizome), 50% Alcohol",
     "detailedMeasurements": "1 part dried, chopped root, 5 parts 50% alcohol.",
     "preparationSteps": "1. Macerate the chopped root in the alcohol for 4-6 weeks, shaking daily. 2. Strain and bottle.",
-    "usage": "Internal: 10-20 drops in water, 3 times daily, for acute diarrhea and dysentery. External: Dilute 1:5 with water for a mouthwash to treat bleeding gums, canker sores, and gargle for sore throats.",
+    "usage": {
+      "summary": "Internal: 10-20 drops in water, 3 times daily, for acute diarrhea and dysentery. External: Dilute 1:5 with water for a mouthwash to treat bleeding gums, canker sores, and gargle for sore throats.",
+      "dosage": "",
+      "frequency": "",
+      "maxDuration": "",
+      "applicationAreas": "",
+      "bestPractices": ""
+    },
     "historicalContext": "The root was a powerful styptic and remedy for dysentery throughout the Middle Ages, often used when other remedies failed.",
     "scientificEvidence": "Extremely high in condensed tannins (up to 30%), which provide a powerful astringent, antiseptic, and anti-diarrheal action by toning and tightening mucous membranes.",
     "isPremium": 0,
     "usedFor": "Digestive System - Bowel & Lower GI, Oral Health - Gums & Teeth",
-    "alternativeNames": "Potentilla Styptic, Sevenfold Root Spirit"
+    "alternativeNames": "Potentilla Styptic, Sevenfold Root Spirit",
+    "storage": {
+      "yield": "",
+      "shelfLife": "",
+      "costEstimate": "",
+      "storageTemp": "",
+      "spoilageIndicators": ""
+    },
+    "equipmentNeeded": []
   },
   {
     "title": "Shepherd's Purse Tincture (Capsella)",
@@ -1036,12 +1891,27 @@
     "ingredients": "Fresh Shepherd's Purse Aerial Parts, 50% Alcohol",
     "detailedMeasurements": "1 part fresh, chopped herb, 2 parts 50% alcohol. Note: Fresh herb preparation is critical for efficacy.",
     "preparationSteps": "1. Macerate the freshly chopped herb immediately in the alcohol for 2-4 weeks. 2. Strain and bottle.",
-    "usage": "Dosage: 10-20 drops every 3-4 hours during heavy menstrual bleeding or postpartum to help contract the uterus and stop bleeding (styptic).",
+    "usage": {
+      "summary": "Dosage: 10-20 drops every 3-4 hours during heavy menstrual bleeding or postpartum to help contract the uterus and stop bleeding (styptic).",
+      "dosage": "",
+      "frequency": "",
+      "maxDuration": "",
+      "applicationAreas": "",
+      "bestPractices": ""
+    },
     "historicalContext": "A ubiquitous weed whose highly specific use for hemorrhage was known across Europe, making it an essential, high-risk, high-reward remedy for midwives.",
     "scientificEvidence": "Contains tyramine, flavonoids, and peptides that promote uterine contraction and local hemostasis (stopping blood flow).",
     "isPremium": 0,
     "usedFor": "Women's Health - Menstruation & Hormones, Cardiovascular System",
-    "alternativeNames": "Bursa Pastoris Hemostatic, Womb Bleeding Spirit"
+    "alternativeNames": "Bursa Pastoris Hemostatic, Womb Bleeding Spirit",
+    "storage": {
+      "yield": "",
+      "shelfLife": "",
+      "costEstimate": "",
+      "storageTemp": "",
+      "spoilageIndicators": ""
+    },
+    "equipmentNeeded": []
   },
   {
     "title": "Mallow Root Poultice (Malva sylvestris)",
@@ -1054,12 +1924,27 @@
     "ingredients": "Fresh Mallow Root (or leaf), Water",
     "detailedMeasurements": "1 part crushed fresh root (or minced leaf), enough warm water to form a thick, cohesive paste.",
     "preparationSteps": "1. Thoroughly wash and crush the root (or mince the leaf). 2. Mix with warm water until a thick, mucilaginous, sticky paste is formed.",
-    "usage": "Apply thickly to insect stings, painful abscesses, stubborn ulcers, and drawing poultices. Used cold for sprains or hot for boils.",
+    "usage": {
+      "summary": "Apply thickly to insect stings, painful abscesses, stubborn ulcers, and drawing poultices. Used cold for sprains or hot for boils.",
+      "dosage": "",
+      "frequency": "",
+      "maxDuration": "",
+      "applicationAreas": "",
+      "bestPractices": ""
+    },
     "historicalContext": "Highly prized by the Romans (Malva was a staple vegetable) and used medicinally by the Greeks for its intensely demulcent properties.",
     "scientificEvidence": "Extremely high in mucilage (a polysaccharide), which coats, soothes, draws out inflammation, and softens hardened tissue.",
     "isPremium": 0,
     "usedFor": "Skin & Wounds - Topical Healing, Oral Health - Gums & Teeth",
-    "alternativeNames": "Cheeseweed Compress, Malva Emollient"
+    "alternativeNames": "Cheeseweed Compress, Malva Emollient",
+    "storage": {
+      "yield": "",
+      "shelfLife": "",
+      "costEstimate": "",
+      "storageTemp": "",
+      "spoilageIndicators": ""
+    },
+    "equipmentNeeded": []
   },
   {
     "title": "Fenugreek Seed Gruel (Trigonella)",
@@ -1072,12 +1957,27 @@
     "ingredients": "Fenugreek Seeds (ground), Water, Honey/Sugar",
     "detailedMeasurements": "1 part ground Fenugreek seeds, 4 parts water, Honey/Sugar to taste.",
     "preparationSteps": "1. Combine the ground seeds and water. 2. Bring to a gentle simmer, stirring constantly, until a thick gruel/porridge forms (5-10 minutes). 3. Sweeten to taste and serve warm.",
-    "usage": "Dosage: Eat 1 small bowl (100-150ml) twice daily. Used to significantly boost milk supply in nursing mothers and to support healthy blood sugar levels.",
+    "usage": {
+      "summary": "Dosage: Eat 1 small bowl (100-150ml) twice daily. Used to significantly boost milk supply in nursing mothers and to support healthy blood sugar levels.",
+      "dosage": "",
+      "frequency": "",
+      "maxDuration": "",
+      "applicationAreas": "",
+      "bestPractices": ""
+    },
     "historicalContext": "Used since ancient Egyptian times. Its use as a lactation aid and general restorative food spread across Europe via trade routes.",
     "scientificEvidence": "Contains alkaloids (trigonelline) and amino acids (4-hydroxyisoleucine) that have been shown to lower blood glucose and promote lactation.",
     "isPremium": 0,
     "usedFor": "Women's Health - Postpartum/Lactation, Endocrine System - Blood Sugar & Metabolism",
-    "alternativeNames": "Foenum-graecum Porridge, Galactagogue Gruel"
+    "alternativeNames": "Foenum-graecum Porridge, Galactagogue Gruel",
+    "storage": {
+      "yield": "",
+      "shelfLife": "",
+      "costEstimate": "",
+      "storageTemp": "",
+      "spoilageIndicators": ""
+    },
+    "equipmentNeeded": []
   },
   {
     "title": "Agrimony and Sage Gargle",
@@ -1090,12 +1990,27 @@
     "ingredients": "Dried Agrimony Leaf/Flower, Dried Sage Leaf (Salvia officinalis)",
     "detailedMeasurements": "1 part Agrimony, 1 part Sage, 2 cups boiling water.",
     "preparationSteps": "1. Combine the herbs and place in a pot. 2. Pour boiling water over the mixture and steep, covered, for 15 minutes. 3. Strain and allow to cool to a comfortable temperature.",
-    "usage": "Usage: Gargle frequently (every 1-2 hours) for tonsillitis, pharyngitis, and mouth ulcers. Spit out after use.",
+    "usage": {
+      "summary": "Usage: Gargle frequently (every 1-2 hours) for tonsillitis, pharyngitis, and mouth ulcers. Spit out after use.",
+      "dosage": "",
+      "frequency": "",
+      "maxDuration": "",
+      "applicationAreas": "",
+      "bestPractices": ""
+    },
     "historicalContext": "A classic folk and apothecary remedy for throat complaints, relying on the synergy of astringent tannins and antiseptic volatile oils.",
     "scientificEvidence": "Agrimony provides tannins (astringent). Sage provides volatile oils (Thujone, Cineole) which are potent local antiseptics and anti-inflammatories.",
     "isPremium": 0,
     "usedFor": "Oral Health - Gums & Teeth, Respiratory System - Sinus & Upper Tract",
-    "alternativeNames": "Agrimonia Salvia Wash, Tonsil Tonic"
+    "alternativeNames": "Agrimonia Salvia Wash, Tonsil Tonic",
+    "storage": {
+      "yield": "",
+      "shelfLife": "",
+      "costEstimate": "",
+      "storageTemp": "",
+      "spoilageIndicators": ""
+    },
+    "equipmentNeeded": []
   },
   {
     "title": "Coltsfoot Tincture (Tussilago farfara)",
@@ -1108,12 +2023,27 @@
     "ingredients": "Dried Coltsfoot Flower/Leaf, 40% Alcohol",
     "detailedMeasurements": "1 part dried leaf/flower, 5 parts 40% alcohol.",
     "preparationSteps": "1. Macerate the dried herb in the alcohol for 4 weeks, shaking daily. 2. Strain and bottle.",
-    "usage": "Dosage: 10-20 drops diluted in warm water, up to 3 times daily, for dry, irritated, and spasmodic coughs.",
+    "usage": {
+      "summary": "Dosage: 10-20 drops diluted in warm water, up to 3 times daily, for dry, irritated, and spasmodic coughs.",
+      "dosage": "",
+      "frequency": "",
+      "maxDuration": "",
+      "applicationAreas": "",
+      "bestPractices": ""
+    },
     "historicalContext": "The name Tussilago means 'cough-dispeller.' Used by Roman and Greek physicians, and later popularized in European herbalism for its specific action on the lungs.",
     "scientificEvidence": "Contains high levels of mucilage (demulcent) and flavonoids (anti-spasmodic), soothing the cough reflex. The PA risk limits modern internal use.",
     "isPremium": 0,
     "usedFor": "Respiratory System - Lungs & Chest, Skin & Wounds - Topical Healing",
-    "alternativeNames": "Tussilago Linctus, Cough Stop Spirit"
+    "alternativeNames": "Tussilago Linctus, Cough Stop Spirit",
+    "storage": {
+      "yield": "",
+      "shelfLife": "",
+      "costEstimate": "",
+      "storageTemp": "",
+      "spoilageIndicators": ""
+    },
+    "equipmentNeeded": []
   },
   {
     "title": "Chicory Root Coffee (Cichorium intybus)",
@@ -1126,12 +2056,27 @@
     "ingredients": "Roasted and Ground Chicory Root",
     "detailedMeasurements": "1 tablespoon roasted, ground root per 1 cup boiling water.",
     "preparationSteps": "1. Roast the washed and chopped Chicory root until dark brown (like coffee beans). 2. Grind the roasted root coarsely. 3. Brew using a coffee filter or French press for 5-10 minutes.",
-    "usage": "Dosage: 1 cup, 1-3 times daily, before or after meals. Used as a gentle bitter tonic to stimulate digestion, liver, and gallbladder function.",
+    "usage": {
+      "summary": "Dosage: 1 cup, 1-3 times daily, before or after meals. Used as a gentle bitter tonic to stimulate digestion, liver, and gallbladder function.",
+      "dosage": "",
+      "frequency": "",
+      "maxDuration": "",
+      "applicationAreas": "",
+      "bestPractices": ""
+    },
     "historicalContext": "Used widely during coffee shortages (e.g., Napoleonic Wars) and integrated into folk medicine due to the known hepatic action of the bitter root.",
     "scientificEvidence": "Contains high amounts of bitter sesquiterpene lactones (stimulate bile and digestive secretions) and inulin (a prebiotic fiber).",
     "isPremium": 0,
     "usedFor": "Liver & Detox - Hepatic Support, Digestive System - Stomach & Upper GI",
-    "alternativeNames": "Cichorium Hepatic Tonic, Roasted Root Brew"
+    "alternativeNames": "Cichorium Hepatic Tonic, Roasted Root Brew",
+    "storage": {
+      "yield": "",
+      "shelfLife": "",
+      "costEstimate": "",
+      "storageTemp": "",
+      "spoilageIndicators": ""
+    },
+    "equipmentNeeded": []
   },
   {
     "title": "Motherwort Syrup (Leonurus cardiaca)",
@@ -1144,12 +2089,27 @@
     "ingredients": "Fresh Motherwort Aerial Parts, Water, Sugar (or Honey)",
     "detailedMeasurements": "1 part fresh herb (minced), 1 part water, 2 parts sugar.",
     "preparationSteps": "1. Simmer the herb in water for 15 minutes, then strain, pressing the herb. 2. Gently heat the strained liquid and dissolve the sugar to form a syrup. 3. Cool and bottle.",
-    "usage": "Dosage: 1-2 teaspoons, 3 times daily, for nervous palpitations (anxiety-related racing heart), mild hypertension, and general anxiety/restlessness.",
+    "usage": {
+      "summary": "Dosage: 1-2 teaspoons, 3 times daily, for nervous palpitations (anxiety-related racing heart), mild hypertension, and general anxiety/restlessness.",
+      "dosage": "",
+      "frequency": "",
+      "maxDuration": "",
+      "applicationAreas": "",
+      "bestPractices": ""
+    },
     "historicalContext": "The name Cardiaca reflects its primary use for the heart. It was highly valued in medieval monasteries for its dual action on anxiety and the cardiac rhythm.",
     "scientificEvidence": "Contains Leonurine (mild uterine stimulant), bitter diterpenes, and flavonoids that act as mild sedatives and hypotensives (lowering blood pressure).",
     "isPremium": 0,
     "usedFor": "Cardiovascular System, Nervous System & Sleep - Anxiety & Mood",
-    "alternativeNames": "Cardiaca Syrup, Calming Heart Tonic"
+    "alternativeNames": "Cardiaca Syrup, Calming Heart Tonic",
+    "storage": {
+      "yield": "",
+      "shelfLife": "",
+      "costEstimate": "",
+      "storageTemp": "",
+      "spoilageIndicators": ""
+    },
+    "equipmentNeeded": []
   },
   {
     "title": "Icelandic Moss and Licorice Lozenges",
@@ -1162,12 +2122,27 @@
     "ingredients": "Icelandic Moss Powder, Licorice Root Powder, Gum Arabic, Honey",
     "detailedMeasurements": "1 part Moss powder, 1 part Licorice powder, 1/2 part Gum Arabic, Honey to bind.",
     "preparationSteps": "1. Mix the powders and Gum Arabic. 2. Slowly mix in warmed honey until a stiff dough is formed. 3. Roll into small ropes and cut into lozenges. 4. Allow to air dry for several days until hard.",
-    "usage": "Dosage: Suck on 1 lozenge slowly every 2-3 hours for sore throat, dry cough, or hoarseness.",
+    "usage": {
+      "summary": "Dosage: Suck on 1 lozenge slowly every 2-3 hours for sore throat, dry cough, or hoarseness.",
+      "dosage": "",
+      "frequency": "",
+      "maxDuration": "",
+      "applicationAreas": "",
+      "bestPractices": ""
+    },
     "historicalContext": "A classic apothecary confection, utilizing the demulcent properties of the lichen to coat the throat, made palatable by the addition of Licorice.",
     "scientificEvidence": "Combines the mucilage (soothing) from the moss with the glycyrrhizin (anti-inflammatory, antiviral) from the Licorice root.",
     "isPremium": 0,
     "usedFor": "Respiratory System - Lungs & Chest, Oral Health - Throat & Pharynx",
-    "alternativeNames": "Cetraria Glycyrrhiza Pastilles, Throat Relief"
+    "alternativeNames": "Cetraria Glycyrrhiza Pastilles, Throat Relief",
+    "storage": {
+      "yield": "",
+      "shelfLife": "",
+      "costEstimate": "",
+      "storageTemp": "",
+      "spoilageIndicators": ""
+    },
+    "equipmentNeeded": []
   },
   {
     "title": "Birch Leaf Infusion (Betula pendula)",
@@ -1180,12 +2155,27 @@
     "ingredients": "Dried Young Birch Leaves, Water",
     "detailedMeasurements": "1 tablespoon dried leaves per 1 cup boiling water.",
     "preparationSteps": "1. Pour boiling water over the leaves in a covered pot. 2. Steep for 10-15 minutes. 3. Strain and drink warm.",
-    "usage": "Dosage: 1 cup, 3 times daily, for 2-4 weeks. Used as a mild but reliable diuretic to flush the urinary tract and as a remedy for eczema and gout.",
+    "usage": {
+      "summary": "Dosage: 1 cup, 3 times daily, for 2-4 weeks. Used as a mild but reliable diuretic to flush the urinary tract and as a remedy for eczema and gout.",
+      "dosage": "",
+      "frequency": "",
+      "maxDuration": "",
+      "applicationAreas": "",
+      "bestPractices": ""
+    },
     "historicalContext": "The Birch tree is central to Nordic life (sap, bark, leaves). The leaf was traditionally used in spring to flush out winter toxins and treat chronic skin ailments.",
     "scientificEvidence": "Contains flavonoids (e.g., hyperoside, rutin) and potassium salts which provide a gentle, effective diuretic action, flushing uric acid and toxins.",
     "isPremium": 0,
     "usedFor": "Urinary System - Diuretics & Stones, Skin & Wounds - Chronic Conditions (Eczema, etc.)",
-    "alternativeNames": "Betula Diuretic Tea, Scandinavian Spring Cleanse"
+    "alternativeNames": "Betula Diuretic Tea, Scandinavian Spring Cleanse",
+    "storage": {
+      "yield": "",
+      "shelfLife": "",
+      "costEstimate": "",
+      "storageTemp": "",
+      "spoilageIndicators": ""
+    },
+    "equipmentNeeded": []
   },
   {
     "title": "Wild Pansy Decoction (Viola tricolor)",
@@ -1198,12 +2188,27 @@
     "ingredients": "Dried Wild Pansy Aerial Parts, Water",
     "detailedMeasurements": "1 tablespoon dried herb per 1 cup water.",
     "preparationSteps": "1. Combine herb and water. 2. Bring to a boil, then simmer gently for 10 minutes. 3. Strain and drink warm.",
-    "usage": "Dosage: 1 cup, 2-3 times daily. Used internally to treat chronic weeping eczema and skin eruptions, and as an expectorant for children's coughs.",
+    "usage": {
+      "summary": "Dosage: 1 cup, 2-3 times daily. Used internally to treat chronic weeping eczema and skin eruptions, and as an expectorant for children's coughs.",
+      "dosage": "",
+      "frequency": "",
+      "maxDuration": "",
+      "applicationAreas": "",
+      "bestPractices": ""
+    },
     "historicalContext": "Known as 'Heart's Ease.' Its use for skin conditions was documented extensively in the 17th and 18th centuries, often combined with Sarsaparilla for stubborn eruptions.",
     "scientificEvidence": "Contains salicylic acid derivatives (anti-inflammatory), mucilage (soothing), and flavonoids. Traditional use for 'blood purifying' to clear skin is well-supported.",
     "isPremium": 0,
     "usedFor": "Skin & Wounds - Chronic Conditions (Eczema, etc.), Respiratory System - Lungs & Chest",
-    "alternativeNames": "Viola Tricolor Skin Tea, Heart's Ease"
+    "alternativeNames": "Viola Tricolor Skin Tea, Heart's Ease",
+    "storage": {
+      "yield": "",
+      "shelfLife": "",
+      "costEstimate": "",
+      "storageTemp": "",
+      "spoilageIndicators": ""
+    },
+    "equipmentNeeded": []
   },
   {
     "title": "Thuja Tincture (Thuja occidentalis)",
@@ -1216,12 +2221,27 @@
     "ingredients": "Fresh Thuja Twigs (leaves), 70% Alcohol",
     "detailedMeasurements": "1 part fresh, minced twigs, 5 parts 70% alcohol.",
     "preparationSteps": "1. Macerate the fresh twigs in the alcohol for 4-6 weeks, shaking daily. 2. Strain and bottle.",
-    "usage": "External: Apply 1 drop of undiluted tincture directly to warts, skin tags, and molluscum 2 times daily. Internal: Micro-dose (2-3 drops max) for chronic sinus infections or polyps.",
+    "usage": {
+      "summary": "External: Apply 1 drop of undiluted tincture directly to warts, skin tags, and molluscum 2 times daily. Internal: Micro-dose (2-3 drops max) for chronic sinus infections or polyps.",
+      "dosage": "",
+      "frequency": "",
+      "maxDuration": "",
+      "applicationAreas": "",
+      "bestPractices": ""
+    },
     "historicalContext": "Introduced to Europe from North America, but quickly integrated into European and Homeopathic medicine for its potent action on growths and chronic damp conditions.",
     "scientificEvidence": "Contains Thujone, which is highly toxic but acts as a powerful local cytotoxic agent (cell-destroyer) for warts and growths.",
     "isPremium": 0,
     "usedFor": "Skin & Wounds - Topical Healing, Respiratory System - Sinus & Upper Tract",
-    "alternativeNames": "Arbor Vitae Spirit, Cedar Wart Tincture"
+    "alternativeNames": "Arbor Vitae Spirit, Cedar Wart Tincture",
+    "storage": {
+      "yield": "",
+      "shelfLife": "",
+      "costEstimate": "",
+      "storageTemp": "",
+      "spoilageIndicators": ""
+    },
+    "equipmentNeeded": []
   },
   {
     "title": "Raspberry Leaf Decoction (Rubus idaeus)",
@@ -1234,12 +2254,27 @@
     "ingredients": "Dried Raspberry Leaf, Water",
     "detailedMeasurements": "1 tablespoon dried leaf per 1 cup boiling water.",
     "preparationSteps": "1. Pour boiling water over the leaves in a covered pot. 2. Steep for 15 minutes. 3. Strain and drink warm.",
-    "usage": "Dosage: 1 cup, 2-3 times daily, during the last trimester of pregnancy to tone the uterus and ease labor. Also used for mild diarrhea.",
+    "usage": {
+      "summary": "Dosage: 1 cup, 2-3 times daily, during the last trimester of pregnancy to tone the uterus and ease labor. Also used for mild diarrhea.",
+      "dosage": "",
+      "frequency": "",
+      "maxDuration": "",
+      "applicationAreas": "",
+      "bestPractices": ""
+    },
     "historicalContext": "A key remedy in traditional European midwifery, believed to strengthen and tone the uterine muscle without causing contractions (unlike certain emmenagogues).",
     "scientificEvidence": "Contains fragments of the alkaloid fragarine, which has a toning (not stimulating) effect on the smooth muscle of the uterus. High in essential minerals.",
     "isPremium": 0,
     "usedFor": "Women's Health - Pregnancy & Birth, Digestive System - Bowel & Lower GI",
-    "alternativeNames": "Folium Rubi Uterine Tonic, Parturient Tea"
+    "alternativeNames": "Folium Rubi Uterine Tonic, Parturient Tea",
+    "storage": {
+      "yield": "",
+      "shelfLife": "",
+      "costEstimate": "",
+      "storageTemp": "",
+      "spoilageIndicators": ""
+    },
+    "equipmentNeeded": []
   },
   {
     "title": "Caraway and Chamomile Infusion",
@@ -1252,12 +2287,27 @@
     "ingredients": "Caraway Seeds (Carum carvi), Chamomile Flowers (Matricaria chamomilla)",
     "detailedMeasurements": "1 teaspoon Caraway seeds (crushed), 1 teaspoon Chamomile flowers, 1 cup boiling water.",
     "preparationSteps": "1. Crush the Caraway seeds lightly. 2. Combine herbs in a cup and pour boiling water over them. 3. Steep, covered, for 10 minutes. 4. Strain and cool.",
-    "usage": "Dosage: For infants/children: 1-2 teaspoons, cooled, given as needed for colic, gas, and restlessness. For adults: 1 cup, 3 times daily.",
+    "usage": {
+      "summary": "Dosage: For infants/children: 1-2 teaspoons, cooled, given as needed for colic, gas, and restlessness. For adults: 1 cup, 3 times daily.",
+      "dosage": "",
+      "frequency": "",
+      "maxDuration": "",
+      "applicationAreas": "",
+      "bestPractices": ""
+    },
     "historicalContext": "Chamomile and Caraway are among the oldest and safest remedies for infant and child digestive complaints, used for millennia across the continent.",
     "scientificEvidence": "Caraway provides volatile oils (carvone, limonene) that are strong carminatives (gas relievers). Chamomile provides anti-spasmodic and mild sedative actions.",
     "isPremium": 0,
     "usedFor": "Digestive System - Stomach & Upper GI, Nervous System & Sleep - Anxiety & Mood",
-    "alternativeNames": "Carum and Matricaria Gripe Water, Colic Tea"
+    "alternativeNames": "Carum and Matricaria Gripe Water, Colic Tea",
+    "storage": {
+      "yield": "",
+      "shelfLife": "",
+      "costEstimate": "",
+      "storageTemp": "",
+      "spoilageIndicators": ""
+    },
+    "equipmentNeeded": []
   },
   {
     "title": "Vervain Tincture (Verbena officinalis)",
@@ -1270,12 +2320,27 @@
     "ingredients": "Dried Vervain Leaf and Flower, 50% Alcohol",
     "detailedMeasurements": "1 part dried herb, 5 parts 50% alcohol.",
     "preparationSteps": "1. Macerate the dried herb in the alcohol for 4 weeks, shaking daily. 2. Strain and bottle.",
-    "usage": "Dosage: 10-20 drops diluted in water, 3 times daily, for nervous exhaustion, stress-related headaches, and sluggish, depressed liver function.",
+    "usage": {
+      "summary": "Dosage: 10-20 drops diluted in water, 3 times daily, for nervous exhaustion, stress-related headaches, and sluggish, depressed liver function.",
+      "dosage": "",
+      "frequency": "",
+      "maxDuration": "",
+      "applicationAreas": "",
+      "bestPractices": ""
+    },
     "historicalContext": "Sacred to the Druids and Romans. Valued in the Middle Ages for its use in treating nervous disorders and as a general protective amulet.",
     "scientificEvidence": "Contains iridoid glycosides and bitter compounds that act as a bitter tonic (digestive stimulant) and a nervine (calming but not sedating).",
     "isPremium": 0,
     "usedFor": "Nervous System & Sleep - Anxiety & Mood, Digestive System - Stomach & Upper GI",
-    "alternativeNames": "Verbena Spirit, Head-Clearing Tonic"
+    "alternativeNames": "Verbena Spirit, Head-Clearing Tonic",
+    "storage": {
+      "yield": "",
+      "shelfLife": "",
+      "costEstimate": "",
+      "storageTemp": "",
+      "spoilageIndicators": ""
+    },
+    "equipmentNeeded": []
   },
   {
     "title": "Marshmallow Syrup (Althaea officinalis)",
@@ -1288,12 +2353,27 @@
     "ingredients": "Dried Marshmallow Root, Water, Glycerin (or Sugar)",
     "detailedMeasurements": "1 part dried root (cold-infused liquid), 2 parts Glycerin (or 2 parts Sugar).",
     "preparationSteps": "1. Cold infuse the root in water for 4 hours (as per previous Marshmallow entry). 2. Strain the thick liquid. 3. Gently heat the liquid and dissolve the sugar or stir in the Glycerin until a smooth, thick syrup is achieved.",
-    "usage": "Dosage: 1 teaspoon, 3-4 times daily, slowly swallowed to coat and soothe dry coughs, sore throats, and gastric ulcers.",
+    "usage": {
+      "summary": "Dosage: 1 teaspoon, 3-4 times daily, slowly swallowed to coat and soothe dry coughs, sore throats, and gastric ulcers.",
+      "dosage": "",
+      "frequency": "",
+      "maxDuration": "",
+      "applicationAreas": "",
+      "bestPractices": ""
+    },
     "historicalContext": "A classical Roman and Greek remedy. This sweet syrup form made it palatable for treating children's coughs and gut irritation.",
     "scientificEvidence": "Contains up to 35% Mucilage, providing exceptional demulcent and anti-inflammatory action by physically coating irritated tissues.",
     "isPremium": 0,
     "usedFor": "Respiratory System - Lungs & Chest, Digestive System - Stomach & Upper GI",
-    "alternativeNames": "Althaea Root Linctus, Mucilage Syrup"
+    "alternativeNames": "Althaea Root Linctus, Mucilage Syrup",
+    "storage": {
+      "yield": "",
+      "shelfLife": "",
+      "costEstimate": "",
+      "storageTemp": "",
+      "spoilageIndicators": ""
+    },
+    "equipmentNeeded": []
   },
   {
     "title": "Plantain Infusion (Plantago major)",
@@ -1306,12 +2386,27 @@
     "ingredients": "Fresh or Dried Plantain Leaf",
     "detailedMeasurements": "1 tablespoon dried leaf per 1 cup boiling water.",
     "preparationSteps": "1. Pour boiling water over the herb in a covered cup. 2. Steep for 10 minutes. 3. Strain and cool.",
-    "usage": "Internal: 1 cup, 2-3 times daily, for mild diarrhea and gut inflammation. External: Use the cooled infusion as an antiseptic, soothing wash for wounds, insect bites, and inflamed skin.",
+    "usage": {
+      "summary": "Internal: 1 cup, 2-3 times daily, for mild diarrhea and gut inflammation. External: Use the cooled infusion as an antiseptic, soothing wash for wounds, insect bites, and inflamed skin.",
+      "dosage": "",
+      "frequency": "",
+      "maxDuration": "",
+      "applicationAreas": "",
+      "bestPractices": ""
+    },
     "historicalContext": "Often called 'White Man's Foot' by Native Americans as it followed European settlers. Its use as a field dressing (chewed leaf) is universal in folk medicine.",
     "scientificEvidence": "Contains Aucubin (an iridoid glycoside with mild antiseptic properties) and mucilage (soothing/demulcent), supporting its traditional wound-healing use.",
     "isPremium": 0,
     "usedFor": "Skin & Wounds - Topical Healing, Digestive System - Bowel & Lower GI",
-    "alternativeNames": "Plantago Wound Wash, Traveller's Tonic"
+    "alternativeNames": "Plantago Wound Wash, Traveller's Tonic",
+    "storage": {
+      "yield": "",
+      "shelfLife": "",
+      "costEstimate": "",
+      "storageTemp": "",
+      "spoilageIndicators": ""
+    },
+    "equipmentNeeded": []
   },
   {
     "title": "White Poplar Bud Tincture (Populus alba/nigra)",
@@ -1324,12 +2419,27 @@
     "ingredients": "Fresh or Dried White Poplar Buds, 70% Alcohol",
     "detailedMeasurements": "1 part dried buds, 5 parts 70% alcohol.",
     "preparationSteps": "1. Macerate the sticky, aromatic buds in the alcohol for 4-6 weeks, shaking daily. 2. Strain and bottle.",
-    "usage": "Dosage: 10-20 drops diluted in water, 3 times daily, for gout, arthritis pain, and chronic bladder inflammation (cystitis).",
+    "usage": {
+      "summary": "Dosage: 10-20 drops diluted in water, 3 times daily, for gout, arthritis pain, and chronic bladder inflammation (cystitis).",
+      "dosage": "",
+      "frequency": "",
+      "maxDuration": "",
+      "applicationAreas": "",
+      "bestPractices": ""
+    },
     "historicalContext": "Used in Russian and Central European folk medicine for centuries, particularly for conditions that worsen with cold or dampness.",
     "scientificEvidence": "Contains Salicylates (pain-relieving and anti-inflammatory precursors to Aspirin) and volatile oils (antiseptic).",
     "isPremium": 0,
     "usedFor": "Musculoskeletal System - Joints & Arthritis, Urinary System - Diuretics & Stones",
-    "alternativeNames": "Populus Balsam, Natural Salicylate Spirit"
+    "alternativeNames": "Populus Balsam, Natural Salicylate Spirit",
+    "storage": {
+      "yield": "",
+      "shelfLife": "",
+      "costEstimate": "",
+      "storageTemp": "",
+      "spoilageIndicators": ""
+    },
+    "equipmentNeeded": []
   },
   {
     "title": "Juniper Berry Wine (Juniperus communis)",
@@ -1342,12 +2452,27 @@
     "ingredients": "Fresh Juniper Berries (crushed), Dry White Wine, Honey",
     "detailedMeasurements": "1 part crushed berries, 5 parts Dry White Wine, Honey to sweeten.",
     "preparationSteps": "1. Crush the fresh Juniper berries. 2. Macerate the berries in the wine for 10 days. 3. Strain, press, and filter. 4. Sweeten with honey.",
-    "usage": "Dosage: 1 small wineglass (30ml) 1-2 times daily, with food. Used as a strong diuretic, urinary antiseptic, and warming carminative for the gut.",
+    "usage": {
+      "summary": "Dosage: 1 small wineglass (30ml) 1-2 times daily, with food. Used as a strong diuretic, urinary antiseptic, and warming carminative for the gut.",
+      "dosage": "",
+      "frequency": "",
+      "maxDuration": "",
+      "applicationAreas": "",
+      "bestPractices": ""
+    },
     "historicalContext": "The origin of Gin and Genever. The medicinal use of the berries is ancient, documented by the Greeks and popularized in the Middle Ages by monks.",
     "scientificEvidence": "Contains volatile oils (terpinen-4-ol) which significantly increase glomerular filtration rate (diuretic) and act as a urinary antiseptic.",
     "isPremium": 0,
     "usedFor": "Urinary System - Diuretics & Stones, Digestive System - Stomach & Upper GI",
-    "alternativeNames": "Genievre Tonic, Diuretic Elixir"
+    "alternativeNames": "Genievre Tonic, Diuretic Elixir",
+    "storage": {
+      "yield": "",
+      "shelfLife": "",
+      "costEstimate": "",
+      "storageTemp": "",
+      "spoilageIndicators": ""
+    },
+    "equipmentNeeded": []
   },
   {
     "title": "Rose Hip Syrup (Rosa canina)",
@@ -1360,12 +2485,27 @@
     "ingredients": "Fresh Rose Hips (mashed), Water, Sugar",
     "detailedMeasurements": "1 part fresh Rose Hips (mashed), 2 parts Water, 2 parts Sugar (or Honey).",
     "preparationSteps": "1. Gently simmer the mashed Hips in water for 15 minutes. 2. Strain the liquid, pressing thoroughly through a cloth to extract pulp and hair. 3. Bring the strained liquid back to a gentle heat and dissolve the sugar until a syrup forms.",
-    "usage": "Dosage: 1 teaspoon daily, for general health, preventing colds/flu, and treating minor skin irritations.",
+    "usage": {
+      "summary": "Dosage: 1 teaspoon daily, for general health, preventing colds/flu, and treating minor skin irritations.",
+      "dosage": "",
+      "frequency": "",
+      "maxDuration": "",
+      "applicationAreas": "",
+      "bestPractices": ""
+    },
     "historicalContext": "Used universally during WWII (especially in Britain) when citrus fruits were unavailable, making it a critical government-sponsored tonic to prevent scurvy.",
     "scientificEvidence": "Extremely high in Vitamin C (ascorbic acid), carotenoids, and pectin, supporting its traditional use for immunity and tissue health.",
     "isPremium": 0,
     "usedFor": "Immune System - General Support, Skin & Wounds - Topical Healing",
-    "alternativeNames": "Rosa Fructus Syrup, Vitamin C Elixir"
+    "alternativeNames": "Rosa Fructus Syrup, Vitamin C Elixir",
+    "storage": {
+      "yield": "",
+      "shelfLife": "",
+      "costEstimate": "",
+      "storageTemp": "",
+      "spoilageIndicators": ""
+    },
+    "equipmentNeeded": []
   },
   {
     "title": "Betony and Rose Oil (Ear Drops)",
@@ -1378,12 +2518,27 @@
     "ingredients": "Dried Betony Leaf, Rose Petals, Olive Oil",
     "detailedMeasurements": "1 part dried Betony, 1/2 part dried Rose Petals, 5 parts Olive Oil.",
     "preparationSteps": "1. Gently warm the Olive Oil in a double boiler. 2. Add the Betony and Rose. 3. Infuse (Macerate with heat) for 3-4 hours over very low heat. 4. Strain the oil while still warm. Store in a dark dropper bottle.",
-    "usage": "Dosage: 2-3 drops of warm oil dripped into the affected ear, covered with a cotton ball. Used for earaches and headache radiating to the ear. DO NOT USE IF EARDRUM IS PERFORATED.",
+    "usage": {
+      "summary": "Dosage: 2-3 drops of warm oil dripped into the affected ear, covered with a cotton ball. Used for earaches and headache radiating to the ear. DO NOT USE IF EARDRUM IS PERFORATED.",
+      "dosage": "",
+      "frequency": "",
+      "maxDuration": "",
+      "applicationAreas": "",
+      "bestPractices": ""
+    },
     "historicalContext": "A classic folk remedy combining Betony's headache-relieving properties with the soothing nature of Rose and Olive Oil.",
     "scientificEvidence": "Traditional use. The oil acts as a warming emollient, while Betony's compounds soothe local nerve endings.",
     "isPremium": 0,
     "usedFor": "Eye & Ear Health, Nervous System & Sleep - Pain & Headache",
-    "alternativeNames": "Betonica Rosmarinus Auricular Drops, Earache Oil"
+    "alternativeNames": "Betonica Rosmarinus Auricular Drops, Earache Oil",
+    "storage": {
+      "yield": "",
+      "shelfLife": "",
+      "costEstimate": "",
+      "storageTemp": "",
+      "spoilageIndicators": ""
+    },
+    "equipmentNeeded": []
   },
   {
     "title": "Hemp Agrimony Decoction (Eupatorium cannabinum)",
@@ -1396,12 +2551,27 @@
     "ingredients": "Dried Hemp Agrimony Aerial Parts, Water",
     "detailedMeasurements": "1 tablespoon dried herb per 1 cup water.",
     "preparationSteps": "1. Combine herb and water. 2. Bring to a boil, then simmer gently for 15 minutes. 3. Strain immediately and drink warm.",
-    "usage": "Dosage: 1 cup, 2-3 times daily. Used as a diuretic, cholagogue (bile flow stimulant), and historically as a tonic for 'break-bone fever' (dengue-like illness).",
+    "usage": {
+      "summary": "Dosage: 1 cup, 2-3 times daily. Used as a diuretic, cholagogue (bile flow stimulant), and historically as a tonic for 'break-bone fever' (dengue-like illness).",
+      "dosage": "",
+      "frequency": "",
+      "maxDuration": "",
+      "applicationAreas": "",
+      "bestPractices": ""
+    },
     "historicalContext": "Used throughout the Middle Ages as a powerful liver and fever remedy, particularly for high-mortality illnesses.",
     "scientificEvidence": "Contains bitter sesquiterpene lactones and PAs. The bitter compounds stimulate liver and immune function.",
     "isPremium": 0,
     "usedFor": "Liver & Detox - Hepatic Support, Immune System - Acute Illness (Fever/Cold)",
-    "alternativeNames": "Eupatorium Tea, Water Hemp Broth"
+    "alternativeNames": "Eupatorium Tea, Water Hemp Broth",
+    "storage": {
+      "yield": "",
+      "shelfLife": "",
+      "costEstimate": "",
+      "storageTemp": "",
+      "spoilageIndicators": ""
+    },
+    "equipmentNeeded": []
   },
   {
     "title": "Rest Harrow Root Decoction (Ononis spinosa)",
@@ -1414,12 +2584,27 @@
     "ingredients": "Dried Rest Harrow Root, Water",
     "detailedMeasurements": "1 tablespoon dried, chopped root per 1 cup water.",
     "preparationSteps": "1. Combine root and water. 2. Bring to a boil, then simmer gently for 20 minutes. 3. Strain and drink warm.",
-    "usage": "Dosage: 1 cup, 3 times daily. Used as a gentle diuretic and antispasmodic for bladder pain, cystitis, and to prevent/treat kidney and bladder gravel/stones.",
+    "usage": {
+      "summary": "Dosage: 1 cup, 3 times daily. Used as a gentle diuretic and antispasmodic for bladder pain, cystitis, and to prevent/treat kidney and bladder gravel/stones.",
+      "dosage": "",
+      "frequency": "",
+      "maxDuration": "",
+      "applicationAreas": "",
+      "bestPractices": ""
+    },
     "historicalContext": "Known for its ability to stop the plow (hence 'rest harrow'). Its medicinal use is documented by medieval herbalists for the urinary tract.",
     "scientificEvidence": "Contains triterpenes (onoceral), flavonoids, and essential oils, which act as a diuretic, antispasmodic, and anti-inflammatory in the urinary system.",
     "isPremium": 0,
     "usedFor": "Urinary System - Diuretics & Stones, Skin & Wounds - Chronic Conditions",
-    "alternativeNames": "Spiny Rest Harrow Diuretic, Ononis Stone Tea"
+    "alternativeNames": "Spiny Rest Harrow Diuretic, Ononis Stone Tea",
+    "storage": {
+      "yield": "",
+      "shelfLife": "",
+      "costEstimate": "",
+      "storageTemp": "",
+      "spoilageIndicators": ""
+    },
+    "equipmentNeeded": []
   },
   {
     "title": "Oak Apple Decoction (Quercus gall)",
@@ -1432,12 +2617,27 @@
     "ingredients": "Dried, Crushed Oak Galls (Oak Apples), Water",
     "detailedMeasurements": "1 teaspoon crushed Oak Galls per 1 cup water.",
     "preparationSteps": "1. Combine crushed galls and water. 2. Bring to a boil, then simmer gently for 20 minutes. 3. Strain immediately (liquid will be dark brown) and cool.",
-    "usage": "External: Undiluted, gargle several times a day for bleeding gums, severe canker sores, and gargle for tonsillitis. Internal: EXTREME CAUTION: 1/4 cup, once daily, for severe diarrhea/dysentery.",
+    "usage": {
+      "summary": "External: Undiluted, gargle several times a day for bleeding gums, severe canker sores, and gargle for tonsillitis. Internal: EXTREME CAUTION: 1/4 cup, once daily, for severe diarrhea/dysentery.",
+      "dosage": "",
+      "frequency": "",
+      "maxDuration": "",
+      "applicationAreas": "",
+      "bestPractices": ""
+    },
     "historicalContext": "Used for centuries for making ink (due to tannin content) and medicinally where the most powerful astringency was needed to stop bleeding or severe diarrhea.",
     "scientificEvidence": "Contains 50-70% Tannins (Gallic and Ellagic acid), providing unparalleled astringent, tissue-toning, and antiseptic action.",
     "isPremium": 0,
     "usedFor": "Oral Health - Gums & Teeth, Digestive System - Bowel & Lower GI",
-    "alternativeNames": "Gall Nut Styptic, Acorn Galls Gargle"
+    "alternativeNames": "Gall Nut Styptic, Acorn Galls Gargle",
+    "storage": {
+      "yield": "",
+      "shelfLife": "",
+      "costEstimate": "",
+      "storageTemp": "",
+      "spoilageIndicators": ""
+    },
+    "equipmentNeeded": []
   },
   {
     "title": "Silverweed Tincture (Potentilla anserina)",
@@ -1450,12 +2650,27 @@
     "ingredients": "Dried Silverweed Aerial Parts, 50% Alcohol",
     "detailedMeasurements": "1 part dried herb, 5 parts 50% alcohol.",
     "preparationSteps": "1. Macerate the dried herb in the alcohol for 4 weeks, shaking daily. 2. Strain and bottle.",
-    "usage": "Dosage: 10-20 drops in water, 3 times daily, for gastrointestinal cramping, irritable bowel syndrome (IBS), and painful menstrual cramps (dysmenorrhea).",
+    "usage": {
+      "summary": "Dosage: 10-20 drops in water, 3 times daily, for gastrointestinal cramping, irritable bowel syndrome (IBS), and painful menstrual cramps (dysmenorrhea).",
+      "dosage": "",
+      "frequency": "",
+      "maxDuration": "",
+      "applicationAreas": "",
+      "bestPractices": ""
+    },
     "historicalContext": "The name 'Goosegrass' reflects its traditional use as animal fodder. Its efficacy for cramps was a widespread secret of folk practitioners.",
     "scientificEvidence": "Contains potent anti-spasmodic flavonoids and tannins, which relax smooth muscle spasms in the gut and uterus, relieving cramping pain.",
     "isPremium": 0,
     "usedFor": "Women's Health - Menstruation & Hormones, Digestive System - Stomach & Upper GI",
-    "alternativeNames": "Anserina Cramp Spirit, Goosegrass Tonic"
+    "alternativeNames": "Anserina Cramp Spirit, Goosegrass Tonic",
+    "storage": {
+      "yield": "",
+      "shelfLife": "",
+      "costEstimate": "",
+      "storageTemp": "",
+      "spoilageIndicators": ""
+    },
+    "equipmentNeeded": []
   },
   {
     "title": "Angelica Root Honey Paste (Archangelica)",
@@ -1468,12 +2683,27 @@
     "ingredients": "Fresh Angelica Root (minced), Honey, Grain Spirit (optional)",
     "detailedMeasurements": "1 part fresh, minced root, 3 parts Honey (by volume), a few drops of spirit.",
     "preparationSteps": "1. Mince the fresh root finely. 2. Thoroughly mix the minced root with the honey (and spirit, if using) until a uniform paste forms. 3. Store in an airtight container in a cool place.",
-    "usage": "Dosage: 1/2 teaspoon slowly dissolved in the mouth, 3 times daily, for chronic congestion, low vitality, and historically, as a preventative against plague.",
+    "usage": {
+      "summary": "Dosage: 1/2 teaspoon slowly dissolved in the mouth, 3 times daily, for chronic congestion, low vitality, and historically, as a preventative against plague.",
+      "dosage": "",
+      "frequency": "",
+      "maxDuration": "",
+      "applicationAreas": "",
+      "bestPractices": ""
+    },
     "historicalContext": "Called the 'Angel's Herb,' it was one of the most widely cultivated and utilized anti-plague remedies across Europe due to its aromatic, pungent, and warming properties.",
     "scientificEvidence": "Contains volatile oils (monoterpenes) that are warming, carminative, and stimulating expectorants, alongside furanocoumarins (photosensitizers).",
     "isPremium": 0,
     "usedFor": "Respiratory System - Lungs & Chest, Immune System - General Support",
-    "alternativeNames": "Archangelica Confectio, Plague Paste"
+    "alternativeNames": "Archangelica Confectio, Plague Paste",
+    "storage": {
+      "yield": "",
+      "shelfLife": "",
+      "costEstimate": "",
+      "storageTemp": "",
+      "spoilageIndicators": ""
+    },
+    "equipmentNeeded": []
   },
   {
     "title": "Red Poppy Syrup (Papaver rhoeas)",
@@ -1486,12 +2716,27 @@
     "ingredients": "Fresh Red Poppy Petals (corn poppy), Water, Sugar",
     "detailedMeasurements": "1 cup fresh Petals, 1 cup Water, 2 cups Sugar.",
     "preparationSteps": "1. Infuse the fresh petals in hot water (just below boiling) for 15 minutes to extract color and mucilage, then strain. 2. Gently heat the strained, colored liquid and dissolve the sugar to form a thick, bright red syrup.",
-    "usage": "Dosage: 1 teaspoon before bed. Used as a very mild, gentle sedative for nervous agitation and a soothing demulcent for irritating coughs.",
+    "usage": {
+      "summary": "Dosage: 1 teaspoon before bed. Used as a very mild, gentle sedative for nervous agitation and a soothing demulcent for irritating coughs.",
+      "dosage": "",
+      "frequency": "",
+      "maxDuration": "",
+      "applicationAreas": "",
+      "bestPractices": ""
+    },
     "historicalContext": "Often distinguished from the Opium Poppy. Its use was common in Victorian nurseries and apothecaries for its gentle, non-addictive sedative effects.",
     "scientificEvidence": "Contains mild alkaloids (rhoeadine) and mucilage, giving it a very mild sedative and demulcent action, far weaker than Opium.",
     "isPremium": 0,
     "usedFor": "Nervous System & Sleep - Anxiety & Mood, Respiratory System - Lungs & Chest",
-    "alternativeNames": "Rhoeas Calming Syrup, Field Poppy Linctus"
+    "alternativeNames": "Rhoeas Calming Syrup, Field Poppy Linctus",
+    "storage": {
+      "yield": "",
+      "shelfLife": "",
+      "costEstimate": "",
+      "storageTemp": "",
+      "spoilageIndicators": ""
+    },
+    "equipmentNeeded": []
   },
   {
     "title": "White Horehound Decoction (Marrubium vulgare)",
@@ -1504,12 +2749,27 @@
     "ingredients": "Dried White Horehound Leaf/Stem, Water",
     "detailedMeasurements": "1 tablespoon dried herb per 1 cup water.",
     "preparationSteps": "1. Combine herb and water. 2. Bring to a boil, then simmer gently for 15 minutes. 3. Strain and drink warm.",
-    "usage": "Dosage: 1/2 cup, 3 times daily, as a bitter tonic for coughs with thick mucus (expectorant) and to stimulate bile flow.",
+    "usage": {
+      "summary": "Dosage: 1/2 cup, 3 times daily, as a bitter tonic for coughs with thick mucus (expectorant) and to stimulate bile flow.",
+      "dosage": "",
+      "frequency": "",
+      "maxDuration": "",
+      "applicationAreas": "",
+      "bestPractices": ""
+    },
     "historicalContext": "Referenced by Hippocrates. Its bitterness was key to its medicinal value, following the classical understanding that bitter tonics clear stagnant systems.",
     "scientificEvidence": "The bitter compound Marrubiin stimulates both mucus secretion (expectorant) and gastric secretion (digestive tonic).",
     "isPremium": 0,
     "usedFor": "Respiratory System - Lungs & Chest, Digestive System - Stomach & Upper GI",
-    "alternativeNames": "Marrubium Tea, Bitter Cough Broth"
+    "alternativeNames": "Marrubium Tea, Bitter Cough Broth",
+    "storage": {
+      "yield": "",
+      "shelfLife": "",
+      "costEstimate": "",
+      "storageTemp": "",
+      "spoilageIndicators": ""
+    },
+    "equipmentNeeded": []
   },
   {
     "title": "Mugwort Poultice (Artemisia vulgaris)",
@@ -1522,12 +2782,27 @@
     "ingredients": "Fresh Mugwort Leaf, Boiling Water",
     "detailedMeasurements": "1 large handful fresh Mugwort leaves, boiling water.",
     "preparationSteps": "1. Bruise the fresh leaves lightly. 2. Place in a cloth bag or wrap and pour boiling water over the bag to warm thoroughly. 3. Squeeze out excess water so it is warm and damp, but not dripping.",
-    "usage": "Usage: Apply the warm compress to the lower abdomen (womb area) for severe menstrual cramps, or to tight, spasmodic muscles.",
+    "usage": {
+      "summary": "Usage: Apply the warm compress to the lower abdomen (womb area) for severe menstrual cramps, or to tight, spasmodic muscles.",
+      "dosage": "",
+      "frequency": "",
+      "maxDuration": "",
+      "applicationAreas": "",
+      "bestPractices": ""
+    },
     "historicalContext": "Revered by the Saxons and Celts. Its association with women's health led to its use as a warming, circulatory compress for painful cycles.",
     "scientificEvidence": "Contains volatile oils (cineole) and bitter compounds that increase local circulation and have an anti-spasmodic effect on the smooth muscles of the uterus and gut.",
     "isPremium": 0,
     "usedFor": "Women's Health - Menstruation & Hormones, Musculoskeletal System - Muscle Pain & Spasm",
-    "alternativeNames": "Artemisia Warm Compress, Womb Stone"
+    "alternativeNames": "Artemisia Warm Compress, Womb Stone",
+    "storage": {
+      "yield": "",
+      "shelfLife": "",
+      "costEstimate": "",
+      "storageTemp": "",
+      "spoilageIndicators": ""
+    },
+    "equipmentNeeded": []
   },
   {
     "title": "Horsetail Root Poultice",
@@ -1540,12 +2815,27 @@
     "ingredients": "Horsetail Root/Rhizome (powdered), Comfrey Root (powdered), Water",
     "detailedMeasurements": "1 part Horsetail root powder, 1 part Comfrey root powder, enough water to form a thick paste.",
     "preparationSteps": "1. Combine powders in a bowl. 2. Gradually stir in warm water until a dense, sticky paste is formed.",
-    "usage": "Apply thickly to chronic, non-healing wounds, poorly knitting bone fractures, or areas of deep joint degeneration. Cover with a bandage. For external use only.",
+    "usage": {
+      "summary": "Apply thickly to chronic, non-healing wounds, poorly knitting bone fractures, or areas of deep joint degeneration. Cover with a bandage. For external use only.",
+      "dosage": "",
+      "frequency": "",
+      "maxDuration": "",
+      "applicationAreas": "",
+      "bestPractices": ""
+    },
     "historicalContext": "Combines the extreme silica content of Horsetail (for structure) with the extreme allantoin content of Comfrey (for cell proliferation).",
     "scientificEvidence": "Synergy of high Silica (structural support) and Allantoin (cell growth promoter) for enhanced tissue regeneration.",
     "isPremium": 0,
     "usedFor": "Skin & Wounds - Topical Healing, Musculoskeletal System - Joints & Arthritis",
-    "alternativeNames": "Equisetum Compositum Paste, Deep Wound Compress"
+    "alternativeNames": "Equisetum Compositum Paste, Deep Wound Compress",
+    "storage": {
+      "yield": "",
+      "shelfLife": "",
+      "costEstimate": "",
+      "storageTemp": "",
+      "spoilageIndicators": ""
+    },
+    "equipmentNeeded": []
   },
   {
     "title": "Wild Thyme Oil (Thymus serpyllum)",
@@ -1558,12 +2848,27 @@
     "ingredients": "Dried Wild Thyme Leaf/Flower, Olive Oil",
     "detailedMeasurements": "1 part dried herb, 5 parts Olive Oil.",
     "preparationSteps": "1. Gently warm the Olive Oil in a double boiler. 2. Stir in the dried Wild Thyme. 3. Infuse (Macerate with heat) for 3-4 hours over very low heat. 4. Strain the oil while still warm. Store in a dark bottle.",
-    "usage": "Apply externally, massaging into the chest, back, and throat for congestion, or into cramped/sore muscles for relief. For external use only.",
+    "usage": {
+      "summary": "Apply externally, massaging into the chest, back, and throat for congestion, or into cramped/sore muscles for relief. For external use only.",
+      "dosage": "",
+      "frequency": "",
+      "maxDuration": "",
+      "applicationAreas": "",
+      "bestPractices": ""
+    },
     "historicalContext": "Used in the Balkans for its strong warming and anti-spasmodic properties, similar to common Thyme oil but often preferred for its milder nature.",
     "scientificEvidence": "Rich in volatile oils (Thymol, Carvacrol), which are excellent rubefacients (warming agents) and topical anti-spasmodics for the bronchial tubes.",
     "isPremium": 0,
     "usedFor": "Respiratory System - Lungs & Chest, Musculoskeletal System - Muscle Pain & Spasm",
-    "alternativeNames": "Serpyllum Massage Oil, Warming Chest Rub"
+    "alternativeNames": "Serpyllum Massage Oil, Warming Chest Rub",
+    "storage": {
+      "yield": "",
+      "shelfLife": "",
+      "costEstimate": "",
+      "storageTemp": "",
+      "spoilageIndicators": ""
+    },
+    "equipmentNeeded": []
   },
   {
     "title": "Pine Bud Syrup (Pinus sylvestris)",
@@ -1576,12 +2881,27 @@
     "ingredients": "Fresh Pine Buds (spring harvest), Water, Sugar",
     "detailedMeasurements": "1 part fresh Pine Buds, 2 parts Water, 2 parts Sugar.",
     "preparationSteps": "1. Simmer the Pine Buds in water for 20 minutes, then strain. 2. Gently heat the strained liquid and dissolve the sugar to form a thick syrup. 3. Cool and bottle.",
-    "usage": "Dosage: 1-2 teaspoons, 3-4 times daily, for irritating coughs, chronic bronchitis, and to clear thick, sticky mucus.",
+    "usage": {
+      "summary": "Dosage: 1-2 teaspoons, 3-4 times daily, for irritating coughs, chronic bronchitis, and to clear thick, sticky mucus.",
+      "dosage": "",
+      "frequency": "",
+      "maxDuration": "",
+      "applicationAreas": "",
+      "bestPractices": ""
+    },
     "historicalContext": "Used extensively in Northern Europe where pine products were the local antiseptic and cough remedy.",
     "scientificEvidence": "Contains volatile oils and resins (turpentine compounds) which are stimulating expectorants, helping to thin and expel thick bronchial secretions.",
     "isPremium": 0,
     "usedFor": "Respiratory System - Lungs & Chest, Immune System - Acute Illness (Fever/Cold)",
-    "alternativeNames": "Pinus Expectorant, Bud Linctus"
+    "alternativeNames": "Pinus Expectorant, Bud Linctus",
+    "storage": {
+      "yield": "",
+      "shelfLife": "",
+      "costEstimate": "",
+      "storageTemp": "",
+      "spoilageIndicators": ""
+    },
+    "equipmentNeeded": []
   },
   {
     "title": "Sloe Berry and Rose Hip Cordial",
@@ -1594,12 +2914,27 @@
     "ingredients": "Sloe Berries, Rose Hips, Brandy/Vodka, Honey",
     "detailedMeasurements": "1 part Sloe Berries, 1 part Rose Hips, 4 parts 40% alcohol, Honey to sweeten.",
     "preparationSteps": "1. Prick the Sloe Berries and lightly crush the Rose Hips. 2. Macerate all solids in the alcohol for 3 months, shaking occasionally. 3. Strain, filter, and sweeten with honey to taste.",
-    "usage": "Dosage: 1 small glass (20ml) daily during winter as a potent source of vitamins and an antioxidant tonic.",
+    "usage": {
+      "summary": "Dosage: 1 small glass (20ml) daily during winter as a potent source of vitamins and an antioxidant tonic.",
+      "dosage": "",
+      "frequency": "",
+      "maxDuration": "",
+      "applicationAreas": "",
+      "bestPractices": ""
+    },
     "historicalContext": "A common country cordial, blending the medicinal properties of two high-antioxidant, late-harvest fruits into a warming winter tonic.",
     "scientificEvidence": "Combines the high Vitamin C/Antioxidants of Rose Hips with the astringent tannins and flavor of the Sloe Berry.",
     "isPremium": 0,
     "usedFor": "Immune System - General Support, Cardiovascular System",
-    "alternativeNames": "Blackthorn and Rose Compound, Winter Immune Tonic"
+    "alternativeNames": "Blackthorn and Rose Compound, Winter Immune Tonic",
+    "storage": {
+      "yield": "",
+      "shelfLife": "",
+      "costEstimate": "",
+      "storageTemp": "",
+      "spoilageIndicators": ""
+    },
+    "equipmentNeeded": []
   },
   {
     "title": "Swiss Arnica Tincture (Arnica montana)",
@@ -1612,12 +2947,27 @@
     "ingredients": "Fresh Arnica Flower Heads, 70% Alcohol (Grappa or Grain Spirit)",
     "detailedMeasurements": "1 part fresh flowers, 5 parts 70% alcohol.",
     "preparationSteps": "1. Macerate the fresh Arnica flowers in the alcohol for 4 weeks in a dark place. 2. Strain, bottle, and clearly label \"External Use Only.\"",
-    "usage": "External: Dilute 1 part tincture with 3 parts water and apply as a compress or rub to bruises, sprains, muscle soreness, and joint inflammation. Do not apply to broken skin.",
+    "usage": {
+      "summary": "External: Dilute 1 part tincture with 3 parts water and apply as a compress or rub to bruises, sprains, muscle soreness, and joint inflammation. Do not apply to broken skin.",
+      "dosage": "",
+      "frequency": "",
+      "maxDuration": "",
+      "applicationAreas": "",
+      "bestPractices": ""
+    },
     "historicalContext": "Collected from high mountain meadows. Its highly specific use for trauma has made it a cornerstone of European folk and homeopathic medicine.",
     "scientificEvidence": "Contains sesquiterpene lactones (helenalin) which are potent anti-inflammatory agents. The strong effect necessitates external-only use.",
     "isPremium": 0,
     "usedFor": "Musculoskeletal System - Muscle Pain & Spasm, Skin & Wounds - Topical Healing",
-    "alternativeNames": "Mountain Daisy Spirit, Leopards Bane Liniment"
+    "alternativeNames": "Mountain Daisy Spirit, Leopards Bane Liniment",
+    "storage": {
+      "yield": "",
+      "shelfLife": "",
+      "costEstimate": "",
+      "storageTemp": "",
+      "spoilageIndicators": ""
+    },
+    "equipmentNeeded": []
   },
   {
     "title": "Mullein Flower Infusion (Verbascum thapsus)",
@@ -1630,12 +2980,27 @@
     "ingredients": "Dried Mullein Flowers and Leaf, Water",
     "detailedMeasurements": "1 tablespoon dried flowers/leaf per 1 cup boiling water.",
     "preparationSteps": "1. Pour boiling water over the herb in a covered cup. 2. Steep for 15 minutes. 3. Strain through a fine cloth filter to remove fine irritating hairs.",
-    "usage": "Dosage: 1 cup, 3 times daily, for dry, painful coughs, asthma, and laryngitis. Used to soothe and moisten inflamed respiratory passages.",
+    "usage": {
+      "summary": "Dosage: 1 cup, 3 times daily, for dry, painful coughs, asthma, and laryngitis. Used to soothe and moisten inflamed respiratory passages.",
+      "dosage": "",
+      "frequency": "",
+      "maxDuration": "",
+      "applicationAreas": "",
+      "bestPractices": ""
+    },
     "historicalContext": "Used since the Middle Ages. The yellow flowers were traditionally infused into oil for earaches; the leaves were smoked for asthma.",
     "scientificEvidence": "High in mucilage (soothing/demulcent) and saponins (mild expectorant), supporting its use for irritating lung conditions.",
     "isPremium": 0,
     "usedFor": "Respiratory System - Lungs & Chest, Eye & Ear Health",
-    "alternativeNames": "Velvet Plant Tea, Lungwort Tea"
+    "alternativeNames": "Velvet Plant Tea, Lungwort Tea",
+    "storage": {
+      "yield": "",
+      "shelfLife": "",
+      "costEstimate": "",
+      "storageTemp": "",
+      "spoilageIndicators": ""
+    },
+    "equipmentNeeded": []
   },
   {
     "title": "Elderflower Ointment (Sambucus nigra)",
@@ -1648,12 +3013,27 @@
     "ingredients": "Fresh or Dried Elderflowers, Lard/Olive Oil, Beeswax",
     "detailedMeasurements": "1 part Elderflowers, 5 parts Lard or Olive Oil, 1 part Beeswax.",
     "preparationSteps": "1. Gently infuse the flowers in the fat/oil via a double boiler for 3 hours. 2. Strain the oil, pressing the flowers lightly. 3. Reheat the infused oil and dissolve the Beeswax. 4. Pour into jars.",
-    "usage": "Apply externally to soothe dry, inflamed skin, chapped lips, sunburn, and as a gentle, traditional facial emollient.",
+    "usage": {
+      "summary": "Apply externally to soothe dry, inflamed skin, chapped lips, sunburn, and as a gentle, traditional facial emollient.",
+      "dosage": "",
+      "frequency": "",
+      "maxDuration": "",
+      "applicationAreas": "",
+      "bestPractices": ""
+    },
     "historicalContext": "The Elder tree was considered a complete medicine chest. The flowers were prized for their cooling, anti-inflammatory properties for skin and fever.",
     "scientificEvidence": "Contains anti-inflammatory flavonoids (quercetin) and volatile oils, providing a gentle cooling and soothing topical effect.",
     "isPremium": 0,
     "usedFor": "Skin & Wounds - Topical Healing, Nervous System & Sleep - Anxiety & Mood",
-    "alternativeNames": "Sambucus Salve, Facial Calmer"
+    "alternativeNames": "Sambucus Salve, Facial Calmer",
+    "storage": {
+      "yield": "",
+      "shelfLife": "",
+      "costEstimate": "",
+      "storageTemp": "",
+      "spoilageIndicators": ""
+    },
+    "equipmentNeeded": []
   },
   {
     "title": "Pine Resin Salve (Colophonium)",
@@ -1666,12 +3046,27 @@
     "ingredients": "Pine/Spruce Resin (Pitch), Olive Oil, Beeswax",
     "detailedMeasurements": "1 part Pine Resin, 2 parts Olive Oil, 1 part Beeswax.",
     "preparationSteps": "1. Gently melt the Pine Resin into the Olive Oil in a double boiler. Stir well until dissolved (this can take time). 2. Stir in the Beeswax until melted. 3. Strain out any impurities and pour into jars.",
-    "usage": "Apply externally to draw out splinters, thorns, or pus from boils/abscesses. Also used as a warming rub for sore muscles. For external use only.",
+    "usage": {
+      "summary": "Apply externally to draw out splinters, thorns, or pus from boils/abscesses. Also used as a warming rub for sore muscles. For external use only.",
+      "dosage": "",
+      "frequency": "",
+      "maxDuration": "",
+      "applicationAreas": "",
+      "bestPractices": ""
+    },
     "historicalContext": "Pitch was a fundamental material, used for sealing boats and as a powerful antiseptic in folk medicine, particularly for stubborn infections.",
     "scientificEvidence": "Contains terpenes and resin acids which are warming, rubefacient (circulatory stimulant), and possess strong antiseptic properties.",
     "isPremium": 0,
     "usedFor": "Skin & Wounds - Topical Healing, Musculoskeletal System - Muscle Pain & Spasm",
-    "alternativeNames": "Spruce Pitch Salve, Drawing Ointment"
+    "alternativeNames": "Spruce Pitch Salve, Drawing Ointment",
+    "storage": {
+      "yield": "",
+      "shelfLife": "",
+      "costEstimate": "",
+      "storageTemp": "",
+      "spoilageIndicators": ""
+    },
+    "equipmentNeeded": []
   },
   {
     "title": "Water Mint Oil (Mentha aquatica)",
@@ -1684,12 +3079,27 @@
     "ingredients": "Fresh Water Mint Leaf, Olive Oil",
     "detailedMeasurements": "1 part fresh, bruised leaf, 5 parts Olive Oil.",
     "preparationSteps": "1. Bruise the fresh leaves lightly. 2. Place in a jar and cover with Olive Oil. 3. Macerate in the sun or a warm place for 2 weeks. 4. Strain and bottle.",
-    "usage": "Dosage (Internal): 5-10 drops on a cube of sugar or in warm water, for gut spasms, indigestion, and nervous stomach. External: Rub 2-3 drops on temples for tension headaches.",
+    "usage": {
+      "summary": "Dosage (Internal): 5-10 drops on a cube of sugar or in warm water, for gut spasms, indigestion, and nervous stomach. External: Rub 2-3 drops on temples for tension headaches.",
+      "dosage": "",
+      "frequency": "",
+      "maxDuration": "",
+      "applicationAreas": "",
+      "bestPractices": ""
+    },
     "historicalContext": "Used where it was locally abundant, often substituted for Peppermint for its milder flavor and action.",
     "scientificEvidence": "Contains volatile oils (pulegone, menthol, menthone) which are antispasmodic (muscle relaxing) and carminative (gas relieving).",
     "isPremium": 0,
     "usedFor": "Digestive System - Stomach & Upper GI, Nervous System & Sleep - Anxiety & Mood",
-    "alternativeNames": "Aquatic Mint Drops, Digestive Antispasmodic"
+    "alternativeNames": "Aquatic Mint Drops, Digestive Antispasmodic",
+    "storage": {
+      "yield": "",
+      "shelfLife": "",
+      "costEstimate": "",
+      "storageTemp": "",
+      "spoilageIndicators": ""
+    },
+    "equipmentNeeded": []
   },
   {
     "title": "European Goldenrod Decoction (Solidago virgaurea)",
@@ -1702,12 +3112,27 @@
     "ingredients": "Dried Goldenrod Aerial Parts, Water",
     "detailedMeasurements": "1 tablespoon dried herb per 1 cup water.",
     "preparationSteps": "1. Combine herb and water. 2. Bring to a boil, then simmer gently for 10 minutes. 3. Strain and drink warm.",
-    "usage": "Dosage: 1 cup, 3 times daily, for bladder infections, to flush out urinary stones (gravel), and for chronic kidney inflammation.",
+    "usage": {
+      "summary": "Dosage: 1 cup, 3 times daily, for bladder infections, to flush out urinary stones (gravel), and for chronic kidney inflammation.",
+      "dosage": "",
+      "frequency": "",
+      "maxDuration": "",
+      "applicationAreas": "",
+      "bestPractices": ""
+    },
     "historicalContext": "Used as a 'Wound Herb' in the Middle Ages. Its specific action on the urinary system was formalized by German herbalists in the 20th century.",
     "scientificEvidence": "Contains flavonoids (rutin) and saponins which increase urinary volume (diuretic) and have anti-inflammatory and antispasmodic actions on the bladder.",
     "isPremium": 0,
     "usedFor": "Urinary System - Diuretics & Stones, Skin & Wounds - Topical Healing",
-    "alternativeNames": "Virgaurea Stone Breaker, Wound Herb Tea"
+    "alternativeNames": "Virgaurea Stone Breaker, Wound Herb Tea",
+    "storage": {
+      "yield": "",
+      "shelfLife": "",
+      "costEstimate": "",
+      "storageTemp": "",
+      "spoilageIndicators": ""
+    },
+    "equipmentNeeded": []
   },
   {
     "title": "Horehound and Licorice Troches",
@@ -1720,12 +3145,27 @@
     "ingredients": "White Horehound Leaf (powdered), Licorice Root (powdered), Gum Arabic, Sugar Syrup",
     "detailedMeasurements": "1 part Horehound powder, 1 part Licorice powder, 1/2 part Gum Arabic, Sugar Syrup to bind.",
     "preparationSteps": "1. Mix the powders and Gum Arabic. 2. Slowly mix in warm, concentrated sugar syrup until a stiff dough is formed. 3. Roll out and cut into small, lozenge-sized pieces. 4. Allow to air dry until hard.",
-    "usage": "Dosage: Suck on 1 troche slowly, every 2 hours, for persistent, deep coughs and sore throats.",
+    "usage": {
+      "summary": "Dosage: Suck on 1 troche slowly, every 2 hours, for persistent, deep coughs and sore throats.",
+      "dosage": "",
+      "frequency": "",
+      "maxDuration": "",
+      "applicationAreas": "",
+      "bestPractices": ""
+    },
     "historicalContext": "The commercial origin of the popular horehound cough drop. The troche format ensured slow, topical delivery of the medicine.",
     "scientificEvidence": "Combines the bitter expectorant (Marrubiin) of Horehound with the soothing demulcent and anti-inflammatory properties (Glycyrrhizin) of Licorice.",
     "isPremium": 0,
     "usedFor": "Respiratory System - Lungs & Chest, Oral Health - Throat & Pharynx",
-    "alternativeNames": "Marrubium Linctus, Cough Pastilles"
+    "alternativeNames": "Marrubium Linctus, Cough Pastilles",
+    "storage": {
+      "yield": "",
+      "shelfLife": "",
+      "costEstimate": "",
+      "storageTemp": "",
+      "spoilageIndicators": ""
+    },
+    "equipmentNeeded": []
   },
   {
     "title": "Burnet Saxifrage Tincture (Pimpinella major/saxifraga)",
@@ -1738,12 +3178,27 @@
     "ingredients": "Dried Burnet Saxifrage Root, 50% Alcohol",
     "detailedMeasurements": "1 part dried, chopped root, 5 parts 50% alcohol.",
     "preparationSteps": "1. Macerate the chopped root in the alcohol for 4 weeks, shaking daily. 2. Strain and bottle.",
-    "usage": "Dosage: 10-20 drops diluted in water, 15 minutes before meals, as a bitter tonic to stimulate appetite and digestion. Also used for deep chest congestion.",
+    "usage": {
+      "summary": "Dosage: 10-20 drops diluted in water, 15 minutes before meals, as a bitter tonic to stimulate appetite and digestion. Also used for deep chest congestion.",
+      "dosage": "",
+      "frequency": "",
+      "maxDuration": "",
+      "applicationAreas": "",
+      "bestPractices": ""
+    },
     "historicalContext": "Used throughout the Middle Ages as a warming tonic, especially in winter, and as a specific remedy for deeply set coughs and loss of appetite.",
     "scientificEvidence": "Contains volatile oils and bitter compounds (saponins, coumarins) which stimulate digestive juices and act as a stimulating expectorant.",
     "isPremium": 0,
     "usedFor": "Digestive System - Stomach & Upper GI, Respiratory System - Lungs & Chest",
-    "alternativeNames": "Pimpinella Digestive Spirit, Stomach Warmer"
+    "alternativeNames": "Pimpinella Digestive Spirit, Stomach Warmer",
+    "storage": {
+      "yield": "",
+      "shelfLife": "",
+      "costEstimate": "",
+      "storageTemp": "",
+      "spoilageIndicators": ""
+    },
+    "equipmentNeeded": []
   },
   {
     "title": "Yarrow Steam Inhalation (Achillea millefolium)",
@@ -1756,12 +3211,27 @@
     "ingredients": "Dried Yarrow Flower/Leaf, Boiling Water",
     "detailedMeasurements": "1 large handful dried Yarrow, 1 bowl of boiling water.",
     "preparationSteps": "1. Place the Yarrow in a large bowl. 2. Pour boiling water over the herb. 3. Cover head with a towel and lean over the bowl, inhaling the steam deeply for 5-10 minutes.",
-    "usage": "Usage: Inhale the steam 2-3 times daily for severe sinus congestion, head colds, and hay fever to reduce inflammation and clear blockage.",
+    "usage": {
+      "summary": "Usage: Inhale the steam 2-3 times daily for severe sinus congestion, head colds, and hay fever to reduce inflammation and clear blockage.",
+      "dosage": "",
+      "frequency": "",
+      "maxDuration": "",
+      "applicationAreas": "",
+      "bestPractices": ""
+    },
     "historicalContext": "Used traditionally for colds and hay fever. The aromatic steam acts as a local antiseptic and promotes mucus drainage.",
     "scientificEvidence": "Contains volatile oils (cineole, azulenes) which are antiseptic and anti-inflammatory, delivered directly to the respiratory tract via steam.",
     "isPremium": 0,
     "usedFor": "Respiratory System - Sinus & Upper Tract, Immune System - Acute Illness (Fever/Cold)",
-    "alternativeNames": "Millefolium Sinus Steam, Sinus Clearer"
+    "alternativeNames": "Millefolium Sinus Steam, Sinus Clearer",
+    "storage": {
+      "yield": "",
+      "shelfLife": "",
+      "costEstimate": "",
+      "storageTemp": "",
+      "spoilageIndicators": ""
+    },
+    "equipmentNeeded": []
   },
   {
     "title": "Larch Resin Balm (Larix decidua)",
@@ -1774,12 +3244,27 @@
     "ingredients": "Larch Resin (Turpentine), Olive Oil, Beeswax",
     "detailedMeasurements": "1 part Larch Resin, 3 parts Olive Oil, 1/2 part Beeswax.",
     "preparationSteps": "1. Gently melt the Larch Resin into the Olive Oil in a double boiler. 2. Stir in the Beeswax until melted. 3. Strain out any impurities and pour into jars.",
-    "usage": "Apply externally, massaging into rheumatic joints, chronic muscle aches, and the chest/back for deep-seated coughs. For external use only.",
+    "usage": {
+      "summary": "Apply externally, massaging into rheumatic joints, chronic muscle aches, and the chest/back for deep-seated coughs. For external use only.",
+      "dosage": "",
+      "frequency": "",
+      "maxDuration": "",
+      "applicationAreas": "",
+      "bestPractices": ""
+    },
     "historicalContext": "Larch turpentine has been used in European medicine for centuries as a wound healer and a strong rubefacient for chronic pain.",
     "scientificEvidence": "High in volatile oils (terpenes) which are strongly warming, stimulating blood flow, and easing deep muscular and joint pain.",
     "isPremium": 0,
     "usedFor": "Musculoskeletal System - Joints & Arthritis, Respiratory System - Lungs & Chest",
-    "alternativeNames": "Larch Turpentine Ointment, Warming Liniment"
+    "alternativeNames": "Larch Turpentine Ointment, Warming Liniment",
+    "storage": {
+      "yield": "",
+      "shelfLife": "",
+      "costEstimate": "",
+      "storageTemp": "",
+      "spoilageIndicators": ""
+    },
+    "equipmentNeeded": []
   },
   {
     "title": "Bogbean Infusion (Menyanthes trifoliata)",
@@ -1792,11 +3277,26 @@
     "ingredients": "Dried Bogbean Leaf, Water",
     "detailedMeasurements": "1 teaspoon dried leaf per 1 cup boiling water.",
     "preparationSteps": "1. Pour boiling water over the herb in a covered cup. 2. Steep for 10 minutes. 3. Strain and drink warm.",
-    "usage": "Dosage: 1/2 cup, 15 minutes before main meals, as a powerful bitter tonic to stimulate appetite, bile, and digestive juices. Also used for chronic rheumatism.",
+    "usage": {
+      "summary": "Dosage: 1/2 cup, 15 minutes before main meals, as a powerful bitter tonic to stimulate appetite, bile, and digestive juices. Also used for chronic rheumatism.",
+      "dosage": "",
+      "frequency": "",
+      "maxDuration": "",
+      "applicationAreas": "",
+      "bestPractices": ""
+    },
     "historicalContext": "Used extensively in Northern Europe where it was recognized as a deep-acting bitter tonic for digestive stagnation and chronic conditions like rheumatism.",
     "scientificEvidence": "Contains extremely bitter secoiridoid glycosides (menyathin) that powerfully stimulate bile production and digestive enzyme secretion.",
     "isPremium": 0,
     "usedFor": "Digestive System - Stomach & Upper GI, Musculoskeletal System - Joints & Arthritis",
-    "alternativeNames": "Buckbean Bitter, Tri-leaf Tonic"
+    "alternativeNames": "Buckbean Bitter, Tri-leaf Tonic",
+    "storage": {
+      "yield": "",
+      "shelfLife": "",
+      "costEstimate": "",
+      "storageTemp": "",
+      "spoilageIndicators": ""
+    },
+    "equipmentNeeded": []
   }
 ]

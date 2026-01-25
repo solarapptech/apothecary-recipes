@@ -1,3 +1,20 @@
+export type RecipeUsage = {
+  summary: string;
+  dosage: string;
+  frequency: string;
+  maxDuration: string;
+  applicationAreas: string;
+  bestPractices: string;
+};
+
+export type RecipeStorage = {
+  yield: string;
+  shelfLife: string;
+  costEstimate: string;
+  storageTemp: string;
+  spoilageIndicators: string;
+};
+
 export type Recipe = {
   title: string;
   difficultyScore: number;
@@ -11,7 +28,9 @@ export type Recipe = {
   ingredients: string;
   detailedMeasurements: string;
   preparationSteps: string;
-  usage: string;
+  usage: RecipeUsage;
+  storage: RecipeStorage;
+  equipmentNeeded: string[];
   historicalContext: string;
   scientificEvidence: string;
   isPremium?: number;
