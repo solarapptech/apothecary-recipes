@@ -16,6 +16,7 @@ import type { SortMode } from '../types/sortMode';
 import type { ViewMode } from '../types/viewMode';
 
 import type { FilterCatalog } from '../repositories/filterCatalogRepository';
+import type { CategoryCounts } from '../repositories/recipesRepository';
 
 type DashboardControlsRowProps = {
   searchInput: string;
@@ -30,6 +31,7 @@ type DashboardControlsRowProps = {
   advancedFilters?: AdvancedFilters;
   onChangeAdvancedFilters?: (filters: AdvancedFilters) => void;
   category?: string | null;
+  categoryCounts?: CategoryCounts | null;
   onChangeCategory?: (category: string | null) => void;
   onPressClearFilters?: () => void;
   viewMode: ViewMode;
@@ -99,6 +101,7 @@ export function DashboardControlsRow({
   advancedFilters,
   onChangeAdvancedFilters,
   category,
+  categoryCounts,
   onChangeCategory,
   onPressClearFilters,
   viewMode,
@@ -498,6 +501,8 @@ export function DashboardControlsRow({
             ] as const
           ).map((item) => {
             const selected = (category ?? null) === item.key;
+            const countKey = (item.key ?? 'all') as keyof CategoryCounts;
+            const countValue = categoryCounts?.[countKey] ?? 0;
             return (
               <Pressable
                 key={item.key ?? 'all'}
@@ -512,9 +517,26 @@ export function DashboardControlsRow({
                 style={[styles.categoryChip, selected ? styles.categoryChipSelected : null]}
                 testID={`category-chip-${item.key ?? 'all'}`}
               >
-                <Text style={[styles.categoryChipText, selected ? styles.categoryChipTextSelected : null]}>
-                  {item.label}
-                </Text>
+                <View style={styles.categoryChipContent}>
+                  <Text style={[styles.categoryChipText, selected ? styles.categoryChipTextSelected : null]}>
+                    {item.label}
+                  </Text>
+                  <View
+                    style={[
+                      styles.categoryChipBadge,
+                      selected ? styles.categoryChipBadgeSelected : null,
+                    ]}
+                  >
+                    <Text
+                      style={[
+                        styles.categoryChipBadgeText,
+                        selected ? styles.categoryChipBadgeTextSelected : null,
+                      ]}
+                    >
+                      {countValue}
+                    </Text>
+                  </View>
+                </View>
               </Pressable>
             );
           })}
@@ -857,6 +879,31 @@ const styles = StyleSheet.create({
     color: theme.colors.ink.primary,
   },
   categoryChipTextSelected: {
+    color: theme.colors.ink.onBrand,
+  },
+  categoryChipContent: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 6,
+  },
+  categoryChipBadge: {
+    backgroundColor: 'rgba(46, 96, 67, 0.12)',
+    paddingHorizontal: 6,
+    paddingVertical: 2,
+    borderRadius: 999,
+    minWidth: 22,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  categoryChipBadgeSelected: {
+    backgroundColor: 'rgba(255, 255, 255, 0.2)',
+  },
+  categoryChipBadgeText: {
+    fontSize: 11,
+    fontFamily: theme.typography.fontFamily.sans.semiBold,
+    color: theme.colors.brand.primaryStrong,
+  },
+  categoryChipBadgeTextSelected: {
     color: theme.colors.ink.onBrand,
   },
   searchInput: {

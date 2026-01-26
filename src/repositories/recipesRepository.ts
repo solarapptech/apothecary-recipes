@@ -119,6 +119,25 @@ export type ListRecipesResult = {
   totalCount: number;
 };
 
+const CATEGORY_KEYS = [
+  'respiratory',
+  'digestive',
+  'immune',
+  'skin',
+  'sleep',
+  'pain',
+  'women',
+  'heart',
+  'urinary',
+  'tonics',
+] as const;
+
+export type CategoryKey = (typeof CATEGORY_KEYS)[number];
+
+export type CategoryCounts = Record<CategoryKey, number> & {
+  all: number;
+};
+
 function escapeLikeValue(value: string): string {
   return value.replace(/[\\%_]/g, (match) => `\\${match}`);
 }
@@ -518,5 +537,47 @@ export async function listRecipesAsync(
   return {
     rows: parsedRows,
     totalCount: countRow?.count ?? 0,
+  };
+}
+
+export async function listCategoryCountsAsync(
+  db: SQLiteDatabase,
+  input?: {
+    searchQuery?: string;
+    plan?: Plan;
+    filterMode?: FilterMode;
+    advancedFilters?: AdvancedFilters;
+  }
+): Promise<CategoryCounts> {
+  const allQuery = buildCountRecipesQueryWithFilter({
+    searchQuery: input?.searchQuery,
+    plan: input?.plan,
+    filterMode: input?.filterMode,
+    advancedFilters: input?.advancedFilters,
+  });
+
+  const categoryQueries = CATEGORY_KEYS.map((category) =>
+    buildCountRecipesQueryWithFilter({
+      searchQuery: input?.searchQuery,
+      plan: input?.plan,
+      filterMode: input?.filterMode,
+      advancedFilters: input?.advancedFilters,
+      category,
+    })
+  );
+
+  const [allRow, ...categoryRows] = await Promise.all([
+    db.getFirstAsync<{ count: number }>(allQuery.sql, ...allQuery.params),
+    ...categoryQueries.map((query) => db.getFirstAsync<{ count: number }>(query.sql, ...query.params)),
+  ]);
+
+  const counts = CATEGORY_KEYS.reduce((acc, key, index) => {
+    acc[key] = categoryRows[index]?.count ?? 0;
+    return acc;
+  }, {} as Record<CategoryKey, number>);
+
+  return {
+    all: allRow?.count ?? 0,
+    ...counts,
   };
 }

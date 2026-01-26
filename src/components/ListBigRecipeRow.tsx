@@ -1257,43 +1257,48 @@ export function ListBigRecipeRow({
               </Animated.View>
 
               {/* Equipment Needed Section */}
-              {equipmentNeeded && equipmentNeeded.length > 0 ? (
-                <Animated.View
-                  layout={reduceMotionEnabled ? undefined : Layout.duration(ingredientAnimDuration)}
-                  style={styles.equipmentGroupRow}
+              <Animated.View
+                layout={reduceMotionEnabled ? undefined : Layout.duration(ingredientAnimDuration)}
+                style={styles.equipmentGroupRow}
+              >
+                <WavePressable
+                  accessibilityRole="button"
+                  accessibilityLabel={equipmentExpanded ? 'Hide equipment needed' : 'Show equipment needed'}
+                  onPress={() => setEquipmentExpanded((prev) => !prev)}
+                  style={styles.equipmentTogglePressable}
+                  testID={`list-big-recipe-row-equipment-toggle-${recipeId}`}
+                  reduceMotionEnabled={reduceMotionEnabled}
                 >
-                  <WavePressable
-                    accessibilityRole="button"
-                    accessibilityLabel={equipmentExpanded ? 'Hide equipment needed' : 'Show equipment needed'}
-                    onPress={() => setEquipmentExpanded((prev) => !prev)}
-                    style={styles.equipmentTogglePressable}
-                    testID={`list-big-recipe-row-equipment-toggle-${recipeId}`}
-                    reduceMotionEnabled={reduceMotionEnabled}
-                  >
-                    <View style={styles.equipmentHeader}>
-                      <View style={styles.equipmentHeaderLeft}>
-                        <FieldIcon name="equipment" size={18} />
-                        <Text style={styles.equipmentHeaderLabel}>Equipment Needed</Text>
-                      </View>
-                      <Svg width={18} height={18} viewBox="0 0 24 24">
-                        <Path
-                          d={equipmentExpanded ? 'M7 14l5-5 5 5' : 'M7 10l5 5 5-5'}
-                          fill="none"
-                          stroke={theme.colors.brand.primaryStrong}
-                          strokeWidth={2}
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                        />
-                      </Svg>
+                  <View style={styles.equipmentHeader}>
+                    <View style={styles.equipmentHeaderLeft}>
+                      <FieldIcon name="equipment" size={18} />
+                      <Text style={styles.equipmentHeaderLabel}>Equipment Needed</Text>
                     </View>
-                  </WavePressable>
-                  {equipmentExpanded ? (
-                    <Animated.View
-                      entering={reduceMotionEnabled ? undefined : FadeInDown.duration(ingredientAnimDuration)}
-                      exiting={enableExitAnimations ? FadeOut.duration(ingredientAnimDuration) : undefined}
-                      layout={reduceMotionEnabled ? undefined : Layout.duration(ingredientAnimDuration)}
-                      style={styles.equipmentDetailPanel}
-                    >
+                    <Svg width={18} height={18} viewBox="0 0 24 24">
+                      <Path
+                        d={equipmentExpanded ? 'M7 14l5-5 5 5' : 'M7 10l5 5 5-5'}
+                        fill="none"
+                        stroke={theme.colors.brand.primaryStrong}
+                        strokeWidth={2}
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                      />
+                    </Svg>
+                  </View>
+                  {!equipmentExpanded ? (
+                    <Text style={styles.equipmentSummaryText} numberOfLines={2}>
+                      {equipmentNeeded.length > 0 ? equipmentNeeded.join(', ') : 'No equipment listed.'}
+                    </Text>
+                  ) : null}
+                </WavePressable>
+                {equipmentExpanded ? (
+                  <Animated.View
+                    entering={reduceMotionEnabled ? undefined : FadeInDown.duration(ingredientAnimDuration)}
+                    exiting={enableExitAnimations ? FadeOut.duration(ingredientAnimDuration) : undefined}
+                    layout={reduceMotionEnabled ? undefined : Layout.duration(ingredientAnimDuration)}
+                    style={styles.equipmentDetailPanel}
+                  >
+                    {equipmentNeeded.length > 0 ? (
                       <View style={styles.equipmentChips}>
                         {equipmentNeeded.map((item, idx) => (
                           <View key={idx} style={styles.equipmentChip}>
@@ -1301,10 +1306,12 @@ export function ListBigRecipeRow({
                           </View>
                         ))}
                       </View>
-                    </Animated.View>
-                  ) : null}
-                </Animated.View>
-              ) : null}
+                    ) : (
+                      <Text style={styles.equipmentEmptyText}>No equipment listed.</Text>
+                    )}
+                  </Animated.View>
+                ) : null}
+              </Animated.View>
 
               <SecondaryFieldRow
                 icon="historical"
@@ -2307,6 +2314,12 @@ const styles = StyleSheet.create({
     color: theme.colors.brand.primaryStrong,
     textTransform: 'uppercase',
   },
+  equipmentSummaryText: {
+    fontSize: 13,
+    lineHeight: 18,
+    fontFamily: theme.typography.fontFamily.sans.regular,
+    color: theme.colors.ink.muted,
+  },
   equipmentDetailPanel: {
     paddingHorizontal: 0,
     paddingTop: 8,
@@ -2329,5 +2342,10 @@ const styles = StyleSheet.create({
     fontSize: 12,
     fontFamily: theme.typography.fontFamily.sans.medium,
     color: theme.colors.ink.primary,
+  },
+  equipmentEmptyText: {
+    fontSize: 12,
+    fontFamily: theme.typography.fontFamily.sans.medium,
+    color: theme.colors.ink.subtle,
   },
 });

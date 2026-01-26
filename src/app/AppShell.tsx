@@ -49,6 +49,8 @@ import {
   listRecipesAsync as listRecipesDefaultAsync,
   type ListRecipesInput,
   type ListRecipesResult,
+  listCategoryCountsAsync as listCategoryCountsDefaultAsync,
+  type CategoryCounts,
 } from '../repositories/recipesRepository';
 import {
   listFilterCatalogAsync as listFilterCatalogDefaultAsync,
@@ -78,6 +80,10 @@ type RouteName = 'dashboard' | 'settings';
 type AppShellDeps = {
   initializeLibraryAsync: () => Promise<LibraryBootstrap>;
   listRecipesAsync: (db: LibraryBootstrap['db'], input: ListRecipesInput) => Promise<ListRecipesResult>;
+  listCategoryCountsAsync: (
+    db: LibraryBootstrap['db'],
+    input?: { searchQuery?: string; plan?: Plan; filterMode?: FilterMode; advancedFilters?: AdvancedFilters }
+  ) => Promise<CategoryCounts>;
   listFilterCatalogAsync: (db: LibraryBootstrap['db'], input: { plan: Plan }) => Promise<FilterCatalog>;
   setFavoriteAsync: (db: LibraryBootstrap['db'], recipeId: number, isFavorite: boolean) => Promise<void>;
   listFavoriteIdsAsync: (db: LibraryBootstrap['db']) => Promise<number[]>;
@@ -108,6 +114,7 @@ type AppShellDeps = {
 const defaultDeps: AppShellDeps = {
   initializeLibraryAsync,
   listRecipesAsync: listRecipesDefaultAsync,
+  listCategoryCountsAsync: listCategoryCountsDefaultAsync,
   listFilterCatalogAsync: listFilterCatalogDefaultAsync,
   setFavoriteAsync: setFavoriteDefaultAsync,
   listFavoriteIdsAsync: listFavoriteIdsDefaultAsync,
@@ -298,6 +305,7 @@ export function AppShell({ deps, initialPage }: AppShellProps) {
 
   const [recipes, setRecipes] = useState<ListRecipesResult['rows']>([]);
   const [totalCount, setTotalCount] = useState(0);
+  const [categoryCounts, setCategoryCounts] = useState<CategoryCounts | null>(null);
   const [recipesRefreshNonce, setRecipesRefreshNonce] = useState(0);
   const [focusResetNonce, setFocusResetNonce] = useState(0);
 
@@ -395,6 +403,31 @@ export function AppShell({ deps, initialPage }: AppShellProps) {
       cancelled = true;
     };
   }, [resolved, uiState]);
+
+  useEffect(() => {
+    if (uiState.status !== 'ready') {
+      return;
+    }
+
+    let cancelled = false;
+
+    (async () => {
+      const counts = await resolved.listCategoryCountsAsync(uiState.bootstrap.db, {
+        searchQuery: searchQuery.length > 0 ? searchQuery : undefined,
+        plan,
+        filterMode,
+        advancedFilters,
+      });
+      if (cancelled) {
+        return;
+      }
+      setCategoryCounts(counts);
+    })();
+
+    return () => {
+      cancelled = true;
+    };
+  }, [advancedFilters, filterMode, plan, premiumDownloadStatus, resolved, searchQuery, uiState]);
 
   useEffect(() => {
     const trimmed = searchInput.trim();
@@ -1084,6 +1117,7 @@ if (route === 'settings') {
                     setFocusResetNonce((value) => value + 1);
                     await resolved.setAdvancedFiltersAsync(uiState.bootstrap.db, next);
                   }}
+                  categoryCounts={categoryCounts}
                   category={selectedCategory}
                   onChangeCategory={async (nextCategory) => {
                     setRecipes([]);
