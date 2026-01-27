@@ -35,4 +35,5 @@ export type Recipe = {
   scientificEvidence: string;
   isPremium?: number;
   imageLocalPath?: string | null;
+  ingredientImageIds?: string[];
 };

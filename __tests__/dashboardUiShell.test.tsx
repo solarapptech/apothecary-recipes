@@ -369,6 +369,7 @@ test('switching from A–Z to Random still yields results and always provides la
           equipmentNeeded: [],
           historicalContext: '',
           scientificEvidence: '',
+          ingredientImageIds: [],
         },
       ],
       totalCount: 1,

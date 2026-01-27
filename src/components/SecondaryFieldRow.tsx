@@ -47,7 +47,12 @@ export function SecondaryFieldRow({
   ];
 
   const headerContent = collapsible ? (
-    <View style={styles.headerLinePressable}>
+    <View
+      style={[
+        styles.headerLinePressable,
+        variant === 'grouped' && styles.headerLinePressableGrouped,
+      ]}
+    >
       <View style={styles.headerLine}>
         <View style={styles.iconBox}>
           <FieldIcon name={icon} size={18} />
@@ -122,6 +127,7 @@ const styles = StyleSheet.create({
   containerGrouped: {
     backgroundColor: 'transparent',
     borderRadius: 0,
+    paddingHorizontal: 4,
   },
   containerDivider: {
     borderBottomWidth: StyleSheet.hairlineWidth,
@@ -137,10 +143,13 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'space-between',
     minHeight: 22,
-    backgroundColor: theme.colors.surface.dropdownHighlight,
+    backgroundColor: 'rgba(46, 96, 67, 0.08)',
     borderRadius: 8,
     paddingVertical: 6,
     paddingHorizontal: 8,
+  },
+  headerLinePressableGrouped: {
+    paddingHorizontal: 4,
   },
   iconBox: {
     width: 20,
@@ -167,5 +176,6 @@ const styles = StyleSheet.create({
     lineHeight: 18,
     fontFamily: theme.typography.fontFamily.sans.regular,
     color: theme.colors.ink.muted,
+    paddingLeft: 4,
   },
 });

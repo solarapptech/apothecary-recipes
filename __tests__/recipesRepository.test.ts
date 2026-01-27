@@ -157,6 +157,7 @@ test('buildCountRecipesQueryWithFilter includes advancedFilters clauses', () => 
       productTypes: ['Elixir'],
       conditions: ['Sleep'],
       ingredients: [],
+      regions: [],
     },
   });
 

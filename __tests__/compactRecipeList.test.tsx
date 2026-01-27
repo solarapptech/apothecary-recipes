@@ -113,6 +113,7 @@ function createRecipes(count = 1): RecipeRow[] {
         spoilageIndicators: '',
       },
       equipmentNeeded: [],
+      ingredientImageIds: [],
     };
   });
 }
@@ -950,6 +951,7 @@ test('falls back to placeholder when recipe image source is missing', () => {
         spoilageIndicators: '',
       },
       equipmentNeeded: [],
+      ingredientImageIds: [],
     },
   ];
 

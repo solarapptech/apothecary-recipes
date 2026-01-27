@@ -7,7 +7,7 @@ import { SCHEMA_SQL } from './schema';
 const FREE_RECIPES_BASE: Recipe[] = require('../data/free-recipes.json');
 
 export const TARGET_FREE_RECIPE_COUNT = 100;
-export const CURRENT_SEED_VERSION = 'free-100-v2-usage-storage-equipment';
+export const CURRENT_SEED_VERSION = 'free-100-v3-ingredient-images';
 
 type GetFirstResult<T> = T | null | undefined;
 
@@ -46,6 +46,7 @@ export async function ensureSchemaAsync(db: DbLike): Promise<void> {
     { sql: 'ALTER TABLE recipes ADD COLUMN storage TEXT NOT NULL DEFAULT ""' },
     { sql: 'ALTER TABLE recipes ADD COLUMN equipmentNeeded TEXT NOT NULL DEFAULT "[]"' },
     { sql: 'ALTER TABLE recipes ADD COLUMN searchTextNormalized TEXT NOT NULL DEFAULT ""' },
+    { sql: 'ALTER TABLE recipes ADD COLUMN ingredientImageIds TEXT' },
   ];
 
   for (const migration of migrations) {
@@ -146,6 +147,7 @@ async function insertRecipeAsync(db: DbLike, recipe: Recipe): Promise<void> {
   const usageJson = JSON.stringify(recipe.usage ?? {});
   const storageJson = JSON.stringify(recipe.storage ?? {});
   const equipmentNeededJson = JSON.stringify(recipe.equipmentNeeded ?? []);
+  const ingredientImageIdsJson = JSON.stringify(recipe.ingredientImageIds ?? []);
   const searchTextNormalized = buildRecipeSearchTextNormalized({
     title: recipe.title,
     description: recipe.description,
@@ -177,8 +179,9 @@ async function insertRecipeAsync(db: DbLike, recipe: Recipe): Promise<void> {
       historicalContext,
       scientificEvidence,
       searchTextNormalized,
-      randomKey
-    ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,
+      randomKey,
+      ingredientImageIds
+    ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,
     recipe.title,
     recipe.difficultyScore,
     recipe.preparationTime,
@@ -197,7 +200,8 @@ async function insertRecipeAsync(db: DbLike, recipe: Recipe): Promise<void> {
     recipe.historicalContext,
     recipe.scientificEvidence,
     searchTextNormalized,
-    randomKey
+    randomKey,
+    ingredientImageIdsJson
   );
 }
 

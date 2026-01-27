@@ -14,12 +14,14 @@ export type RecipeRow = Recipe & {
   isPremium: number;
   imageLocalPath: string | null;
   isFavorite: number;
+  ingredientImageIds: string[];
 };
 
-type RawRecipeRow = Omit<RecipeRow, 'usage' | 'storage' | 'equipmentNeeded'> & {
+type RawRecipeRow = Omit<RecipeRow, 'usage' | 'storage' | 'equipmentNeeded' | 'ingredientImageIds'> & {
   usage: RecipeUsage | string | null;
   storage: RecipeStorage | string | null;
   equipmentNeeded: string[] | string | null;
+  ingredientImageIds: string[] | string | null;
 };
 
 const EMPTY_USAGE: RecipeUsage = {
@@ -82,6 +84,27 @@ function parseStorage(value: RawRecipeRow['storage']): RecipeStorage {
 }
 
 function parseEquipmentNeeded(value: RawRecipeRow['equipmentNeeded']): string[] {
+  if (!value) {
+    return [];
+  }
+
+  if (Array.isArray(value)) {
+    return value;
+  }
+
+  try {
+    const parsed = JSON.parse(value) as string[] | null;
+    if (Array.isArray(parsed)) {
+      return parsed;
+    }
+  } catch (error) {
+    // fall through to empty
+  }
+
+  return [];
+}
+
+function parseIngredientImageIds(value: RawRecipeRow['ingredientImageIds']): string[] {
   if (!value) {
     return [];
   }
@@ -444,7 +467,7 @@ export function buildListRecipesQuery(input: ListRecipesInput): { sql: string; p
     params.push(input.launchSeed);
   }
 
-  const sql = `SELECT recipes.id, title, difficultyScore, preparationTime, description, timePeriod, warning, region, alternativeNames, usedFor, ingredients, detailedMeasurements, preparationSteps, usage, storage, equipmentNeeded, historicalContext, scientificEvidence, randomKey, isPremium, imageLocalPath,
+  const sql = `SELECT recipes.id, title, difficultyScore, preparationTime, description, timePeriod, warning, region, alternativeNames, usedFor, ingredients, detailedMeasurements, preparationSteps, usage, storage, equipmentNeeded, historicalContext, scientificEvidence, randomKey, isPremium, imageLocalPath, ingredientImageIds,
 CASE WHEN recipe_favorites.recipeId IS NULL THEN 0 ELSE 1 END AS isFavorite
 FROM recipes
 LEFT JOIN recipe_favorites ON recipe_favorites.recipeId = recipes.id
@@ -532,6 +555,7 @@ export async function listRecipesAsync(
     usage: parseUsage(row.usage),
     storage: parseStorage(row.storage),
     equipmentNeeded: parseEquipmentNeeded(row.equipmentNeeded),
+    ingredientImageIds: parseIngredientImageIds(row.ingredientImageIds),
   }));
 
   return {

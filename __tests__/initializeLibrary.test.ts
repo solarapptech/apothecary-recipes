@@ -56,7 +56,7 @@ test('initializeLibraryAsync seeds, loads preferences, and returns launchSeed', 
     },
     getAdvancedFiltersAsync: async () => {
       calls.push('getAdvancedFilters');
-      return { productTypes: ['Tincture'], conditions: ['Sleep'], ingredients: ['Lavender'] };
+      return { productTypes: ['Tincture'], conditions: ['Sleep'], ingredients: ['Lavender'], regions: [] };
     },
     getInfiniteScrollEnabledAsync: async () => {
       calls.push('getInfiniteScrollEnabled');
@@ -103,7 +103,7 @@ test('initializeLibraryAsync seeds, loads preferences, and returns launchSeed', 
     premiumDownloadError: 'some error',
     sortMode: 'random',
     filterMode: 'all',
-    advancedFilters: { productTypes: ['Tincture'], conditions: ['Sleep'], ingredients: ['Lavender'] },
+    advancedFilters: { productTypes: ['Tincture'], conditions: ['Sleep'], ingredients: ['Lavender'], regions: [] },
     infiniteScrollEnabled: false,
     pageSize: 50,
     viewMode: 'list',

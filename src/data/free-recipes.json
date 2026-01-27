@@ -37,6 +37,13 @@
       "Fine mesh strainer",
       "Tins or jars",
       "Labels"
+    ],
+    "ingredientImageIds": [
+      "1",
+      "placeholder",
+      "placeholder",
+      "placeholder",
+      "placeholder"
     ]
   },
   {
@@ -77,6 +84,13 @@
       "Funnel",
       "Glass bottles with caps",
       "Labels"
+    ],
+    "ingredientImageIds": [
+      "2",
+      "placeholder",
+      "placeholder",
+      "placeholder",
+      "placeholder"
     ]
   },
   {
@@ -110,7 +124,11 @@
       "storageTemp": "Refrigerate immediately",
       "spoilageIndicators": "Cloudiness, sour smell, or mold"
     },
-    "equipmentNeeded": []
+    "equipmentNeeded": [],
+    "ingredientImageIds": [
+      "3",
+      "placeholder"
+    ]
   },
   {
     "title": "Meadowsweet Spiritus (Aqua Mirabilis)",
@@ -151,6 +169,11 @@
       "Amber glass dropper bottles",
       "Kitchen scale",
       "Labels"
+    ],
+    "ingredientImageIds": [
+      "4",
+      "placeholder",
+      "placeholder"
     ]
   },
   {
@@ -190,6 +213,11 @@
       "Cheesecloth",
       "Funnel",
       "Glass bottle with cap"
+    ],
+    "ingredientImageIds": [
+      "5",
+      "placeholder",
+      "placeholder"
     ]
   },
   {
@@ -223,7 +251,12 @@
       "storageTemp": "Refrigerate immediately",
       "spoilageIndicators": "Cloudiness, sour smell, or mold"
     },
-    "equipmentNeeded": []
+    "equipmentNeeded": [],
+    "ingredientImageIds": [
+      "6",
+      "placeholder",
+      "placeholder"
+    ]
   },
   {
     "title": "Dandelion Root Coffee (Taraxacum Infusion)",
@@ -261,6 +294,9 @@
       "Fine mesh strainer",
       "Measuring cups",
       "Mug or jar"
+    ],
+    "ingredientImageIds": [
+      "7"
     ]
   },
   {
@@ -299,6 +335,11 @@
       "Fine mesh strainer",
       "Measuring cups",
       "Mug or jar"
+    ],
+    "ingredientImageIds": [
+      "8",
+      "placeholder",
+      "placeholder"
     ]
   },
   {
@@ -338,6 +379,11 @@
       "Cheesecloth",
       "Funnel",
       "Glass bottle with cap"
+    ],
+    "ingredientImageIds": [
+      "9",
+      "placeholder",
+      "placeholder"
     ]
   },
   {
@@ -379,6 +425,11 @@
       "Amber glass dropper bottles",
       "Kitchen scale",
       "Labels"
+    ],
+    "ingredientImageIds": [
+      "10",
+      "placeholder",
+      "placeholder"
     ]
   },
   {
@@ -419,6 +470,12 @@
       "Funnel",
       "Glass bottles with caps",
       "Labels"
+    ],
+    "ingredientImageIds": [
+      "11",
+      "placeholder",
+      "placeholder",
+      "placeholder"
     ]
   },
   {
@@ -459,6 +516,10 @@
       "Funnel",
       "Glass bottles",
       "Labels"
+    ],
+    "ingredientImageIds": [
+      "12",
+      "placeholder"
     ]
   },
   {
@@ -499,6 +560,13 @@
       "Funnel",
       "Glass bottles with caps",
       "Labels"
+    ],
+    "ingredientImageIds": [
+      "13",
+      "placeholder",
+      "placeholder",
+      "placeholder",
+      "placeholder"
     ]
   },
   {
@@ -537,6 +605,10 @@
       "Fine mesh strainer",
       "Measuring cups",
       "Mug or jar"
+    ],
+    "ingredientImageIds": [
+      "14",
+      "placeholder"
     ]
   },
   {
@@ -577,6 +649,11 @@
       "Funnel",
       "Glass bottles with caps",
       "Labels"
+    ],
+    "ingredientImageIds": [
+      "15",
+      "placeholder",
+      "placeholder"
     ]
   },
   {
@@ -615,6 +692,9 @@
       "Fine mesh sieve",
       "Airtight containers",
       "Kitchen scale"
+    ],
+    "ingredientImageIds": [
+      "16"
     ]
   },
   {
@@ -648,7 +728,12 @@
       "storageTemp": "Refrigerate immediately",
       "spoilageIndicators": "Cloudiness, sour smell, or mold"
     },
-    "equipmentNeeded": []
+    "equipmentNeeded": [],
+    "ingredientImageIds": [
+      "17",
+      "placeholder",
+      "placeholder"
+    ]
   },
   {
     "title": "Elecampane Wine (Inula Wine)",
@@ -688,6 +773,11 @@
       "Funnel",
       "Glass bottles with caps",
       "Labels"
+    ],
+    "ingredientImageIds": [
+      "18",
+      "placeholder",
+      "placeholder"
     ]
   },
   {
@@ -729,6 +819,10 @@
       "Amber glass dropper bottles",
       "Kitchen scale",
       "Labels"
+    ],
+    "ingredientImageIds": [
+      "19",
+      "placeholder"
     ]
   },
   {
@@ -769,6 +863,11 @@
       "Fine mesh strainer",
       "Tins or jars",
       "Labels"
+    ],
+    "ingredientImageIds": [
+      "20",
+      "placeholder",
+      "placeholder"
     ]
   },
   {
@@ -810,6 +909,11 @@
       "Amber glass dropper bottles",
       "Kitchen scale",
       "Labels"
+    ],
+    "ingredientImageIds": [
+      "21",
+      "placeholder",
+      "placeholder"
     ]
   },
   {
@@ -848,6 +952,11 @@
       "Fine mesh strainer",
       "Measuring cups",
       "Mug or jar"
+    ],
+    "ingredientImageIds": [
+      "22",
+      "placeholder",
+      "placeholder"
     ]
   },
   {
@@ -886,6 +995,10 @@
       "Empty capsules",
       "Funnel or scoop",
       "Airtight container"
+    ],
+    "ingredientImageIds": [
+      "23",
+      "placeholder"
     ]
   },
   {
@@ -924,6 +1037,9 @@
       "Fine mesh strainer",
       "Measuring cups",
       "Mug or jar"
+    ],
+    "ingredientImageIds": [
+      "24"
     ]
   },
   {
@@ -965,6 +1081,10 @@
       "Amber glass dropper bottles",
       "Kitchen scale",
       "Labels"
+    ],
+    "ingredientImageIds": [
+      "25",
+      "placeholder"
     ]
   },
   {
@@ -1003,6 +1123,9 @@
       "Fine mesh strainer",
       "Measuring cups",
       "Mug or jar"
+    ],
+    "ingredientImageIds": [
+      "26"
     ]
   },
   {
@@ -1044,6 +1167,12 @@
       "Amber glass dropper bottles",
       "Kitchen scale",
       "Labels"
+    ],
+    "ingredientImageIds": [
+      "27",
+      "placeholder",
+      "placeholder",
+      "placeholder"
     ]
   },
   {
@@ -1082,6 +1211,10 @@
       "Fine mesh strainer",
       "Measuring cups",
       "Mug or jar"
+    ],
+    "ingredientImageIds": [
+      "28",
+      "placeholder"
     ]
   },
   {
@@ -1120,6 +1253,10 @@
       "Fine mesh strainer",
       "Measuring cups",
       "Mug or jar"
+    ],
+    "ingredientImageIds": [
+      "29",
+      "placeholder"
     ]
   },
   {
@@ -1158,6 +1295,12 @@
       "Fine mesh strainer",
       "Measuring cups",
       "Mug or jar"
+    ],
+    "ingredientImageIds": [
+      "30",
+      "placeholder",
+      "placeholder",
+      "placeholder"
     ]
   },
   {
@@ -1199,6 +1342,10 @@
       "Amber glass dropper bottles",
       "Kitchen scale",
       "Labels"
+    ],
+    "ingredientImageIds": [
+      "31",
+      "placeholder"
     ]
   },
   {
@@ -1239,6 +1386,11 @@
       "Fine mesh strainer",
       "Tins or jars",
       "Labels"
+    ],
+    "ingredientImageIds": [
+      "32",
+      "placeholder",
+      "placeholder"
     ]
   },
   {
@@ -1278,6 +1430,11 @@
       "Cheesecloth",
       "Funnel",
       "Glass bottle with cap"
+    ],
+    "ingredientImageIds": [
+      "33",
+      "placeholder",
+      "placeholder"
     ]
   },
   {
@@ -1318,6 +1475,10 @@
       "Funnel",
       "Glass bottles",
       "Labels"
+    ],
+    "ingredientImageIds": [
+      "34",
+      "placeholder"
     ]
   },
   {
@@ -1356,6 +1517,10 @@
       "Fine mesh strainer",
       "Measuring cups",
       "Mug or jar"
+    ],
+    "ingredientImageIds": [
+      "35",
+      "placeholder"
     ]
   },
   {
@@ -1397,6 +1562,10 @@
       "Amber glass dropper bottles",
       "Kitchen scale",
       "Labels"
+    ],
+    "ingredientImageIds": [
+      "36",
+      "placeholder"
     ]
   },
   {
@@ -1437,6 +1606,11 @@
       "Funnel",
       "Glass bottles with caps",
       "Labels"
+    ],
+    "ingredientImageIds": [
+      "37",
+      "placeholder",
+      "placeholder"
     ]
   },
   {
@@ -1478,6 +1652,10 @@
       "Amber glass dropper bottles",
       "Kitchen scale",
       "Labels"
+    ],
+    "ingredientImageIds": [
+      "38",
+      "placeholder"
     ]
   },
   {
@@ -1518,6 +1696,12 @@
       "Fine mesh strainer",
       "Tins or jars",
       "Labels"
+    ],
+    "ingredientImageIds": [
+      "39",
+      "placeholder",
+      "placeholder",
+      "placeholder"
     ]
   },
   {
@@ -1556,6 +1740,10 @@
       "Spatula or spoon",
       "Airtight jar",
       "Labels"
+    ],
+    "ingredientImageIds": [
+      "40",
+      "placeholder"
     ]
   },
   {
@@ -1597,6 +1785,10 @@
       "Amber glass dropper bottles",
       "Kitchen scale",
       "Labels"
+    ],
+    "ingredientImageIds": [
+      "41",
+      "placeholder"
     ]
   },
   {
@@ -1635,6 +1827,10 @@
       "Fine mesh strainer",
       "Measuring cups",
       "Mug or jar"
+    ],
+    "ingredientImageIds": [
+      "42",
+      "placeholder"
     ]
   },
   {
@@ -1673,6 +1869,11 @@
       "Fine mesh strainer",
       "Measuring cups",
       "Mug or jar"
+    ],
+    "ingredientImageIds": [
+      "43",
+      "placeholder",
+      "placeholder"
     ]
   },
   {
@@ -1711,6 +1912,9 @@
       "Fine mesh strainer",
       "Measuring cups",
       "Mug or jar"
+    ],
+    "ingredientImageIds": [
+      "44"
     ]
   },
   {
@@ -1749,6 +1953,11 @@
       "Fine mesh sieve",
       "Airtight containers",
       "Kitchen scale"
+    ],
+    "ingredientImageIds": [
+      "45",
+      "placeholder",
+      "placeholder"
     ]
   },
   {
@@ -1790,6 +1999,10 @@
       "Amber glass dropper bottles",
       "Kitchen scale",
       "Labels"
+    ],
+    "ingredientImageIds": [
+      "46",
+      "placeholder"
     ]
   },
   {
@@ -1830,6 +2043,11 @@
       "Funnel",
       "Glass bottles",
       "Labels"
+    ],
+    "ingredientImageIds": [
+      "47",
+      "placeholder",
+      "placeholder"
     ]
   },
   {
@@ -1870,6 +2088,11 @@
       "Fine mesh strainer",
       "Tins or jars",
       "Labels"
+    ],
+    "ingredientImageIds": [
+      "48",
+      "placeholder",
+      "placeholder"
     ]
   },
   {
@@ -1910,6 +2133,13 @@
       "Funnel",
       "Glass bottles with caps",
       "Labels"
+    ],
+    "ingredientImageIds": [
+      "49",
+      "placeholder",
+      "placeholder",
+      "placeholder",
+      "placeholder"
     ]
   },
   {
@@ -1948,6 +2178,11 @@
       "Fine mesh sieve",
       "Airtight containers",
       "Kitchen scale"
+    ],
+    "ingredientImageIds": [
+      "50",
+      "placeholder",
+      "placeholder"
     ]
   },
   {
@@ -1989,6 +2224,10 @@
       "Amber glass dropper bottles",
       "Kitchen scale",
       "Labels"
+    ],
+    "ingredientImageIds": [
+      "51",
+      "placeholder"
     ]
   },
   {
@@ -2029,6 +2268,11 @@
       "Funnel",
       "Glass bottles with caps",
       "Labels"
+    ],
+    "ingredientImageIds": [
+      "52",
+      "placeholder",
+      "placeholder"
     ]
   },
   {
@@ -2067,6 +2311,11 @@
       "Fine mesh sieve",
       "Airtight containers",
       "Kitchen scale"
+    ],
+    "ingredientImageIds": [
+      "53",
+      "placeholder",
+      "placeholder"
     ]
   },
   {
@@ -2105,6 +2354,10 @@
       "Fine mesh strainer",
       "Measuring cups",
       "Mug or jar"
+    ],
+    "ingredientImageIds": [
+      "54",
+      "placeholder"
     ]
   },
   {
@@ -2146,6 +2399,10 @@
       "Amber glass dropper bottles",
       "Kitchen scale",
       "Labels"
+    ],
+    "ingredientImageIds": [
+      "55",
+      "placeholder"
     ]
   },
   {
@@ -2185,6 +2442,11 @@
       "Cheesecloth",
       "Funnel",
       "Glass bottle with cap"
+    ],
+    "ingredientImageIds": [
+      "56",
+      "placeholder",
+      "placeholder"
     ]
   },
   {
@@ -2226,6 +2488,10 @@
       "Amber glass dropper bottles",
       "Kitchen scale",
       "Labels"
+    ],
+    "ingredientImageIds": [
+      "57",
+      "placeholder"
     ]
   },
   {
@@ -2267,6 +2533,10 @@
       "Amber glass dropper bottles",
       "Kitchen scale",
       "Labels"
+    ],
+    "ingredientImageIds": [
+      "58",
+      "placeholder"
     ]
   },
   {
@@ -2305,6 +2575,10 @@
       "Spatula or spoon",
       "Airtight jar",
       "Labels"
+    ],
+    "ingredientImageIds": [
+      "59",
+      "placeholder"
     ]
   },
   {
@@ -2344,6 +2618,11 @@
       "Cheesecloth",
       "Funnel",
       "Glass bottle with cap"
+    ],
+    "ingredientImageIds": [
+      "60",
+      "placeholder",
+      "placeholder"
     ]
   },
   {
@@ -2382,6 +2661,10 @@
       "Fine mesh strainer",
       "Measuring cups",
       "Mug or jar"
+    ],
+    "ingredientImageIds": [
+      "61",
+      "placeholder"
     ]
   },
   {
@@ -2423,6 +2706,10 @@
       "Amber glass dropper bottles",
       "Kitchen scale",
       "Labels"
+    ],
+    "ingredientImageIds": [
+      "62",
+      "placeholder"
     ]
   },
   {
@@ -2461,6 +2748,9 @@
       "Fine mesh strainer",
       "Measuring cups",
       "Mug or jar"
+    ],
+    "ingredientImageIds": [
+      "63"
     ]
   },
   {
@@ -2500,6 +2790,11 @@
       "Cheesecloth",
       "Funnel",
       "Glass bottle with cap"
+    ],
+    "ingredientImageIds": [
+      "64",
+      "placeholder",
+      "placeholder"
     ]
   },
   {
@@ -2538,6 +2833,12 @@
       "Fine mesh sieve",
       "Airtight containers",
       "Kitchen scale"
+    ],
+    "ingredientImageIds": [
+      "65",
+      "placeholder",
+      "placeholder",
+      "placeholder"
     ]
   },
   {
@@ -2576,6 +2877,10 @@
       "Fine mesh strainer",
       "Measuring cups",
       "Mug or jar"
+    ],
+    "ingredientImageIds": [
+      "66",
+      "placeholder"
     ]
   },
   {
@@ -2614,6 +2919,10 @@
       "Fine mesh strainer",
       "Measuring cups",
       "Mug or jar"
+    ],
+    "ingredientImageIds": [
+      "67",
+      "placeholder"
     ]
   },
   {
@@ -2655,6 +2964,10 @@
       "Amber glass dropper bottles",
       "Kitchen scale",
       "Labels"
+    ],
+    "ingredientImageIds": [
+      "68",
+      "placeholder"
     ]
   },
   {
@@ -2693,6 +3006,10 @@
       "Fine mesh strainer",
       "Measuring cups",
       "Mug or jar"
+    ],
+    "ingredientImageIds": [
+      "69",
+      "placeholder"
     ]
   },
   {
@@ -2731,6 +3048,10 @@
       "Fine mesh strainer",
       "Measuring cups",
       "Mug or jar"
+    ],
+    "ingredientImageIds": [
+      "70",
+      "placeholder"
     ]
   },
   {
@@ -2772,6 +3093,10 @@
       "Amber glass dropper bottles",
       "Kitchen scale",
       "Labels"
+    ],
+    "ingredientImageIds": [
+      "71",
+      "placeholder"
     ]
   },
   {
@@ -2811,6 +3136,11 @@
       "Cheesecloth",
       "Funnel",
       "Glass bottle with cap"
+    ],
+    "ingredientImageIds": [
+      "72",
+      "placeholder",
+      "placeholder"
     ]
   },
   {
@@ -2849,6 +3179,9 @@
       "Fine mesh strainer",
       "Measuring cups",
       "Mug or jar"
+    ],
+    "ingredientImageIds": [
+      "73"
     ]
   },
   {
@@ -2890,6 +3223,10 @@
       "Amber glass dropper bottles",
       "Kitchen scale",
       "Labels"
+    ],
+    "ingredientImageIds": [
+      "74",
+      "placeholder"
     ]
   },
   {
@@ -2930,6 +3267,11 @@
       "Funnel",
       "Glass bottles with caps",
       "Labels"
+    ],
+    "ingredientImageIds": [
+      "75",
+      "placeholder",
+      "placeholder"
     ]
   },
   {
@@ -2969,6 +3311,11 @@
       "Cheesecloth",
       "Funnel",
       "Glass bottle with cap"
+    ],
+    "ingredientImageIds": [
+      "76",
+      "placeholder",
+      "placeholder"
     ]
   },
   {
@@ -3009,6 +3356,11 @@
       "Funnel",
       "Glass bottles",
       "Labels"
+    ],
+    "ingredientImageIds": [
+      "77",
+      "placeholder",
+      "placeholder"
     ]
   },
   {
@@ -3047,6 +3399,10 @@
       "Fine mesh strainer",
       "Measuring cups",
       "Mug or jar"
+    ],
+    "ingredientImageIds": [
+      "78",
+      "placeholder"
     ]
   },
   {
@@ -3085,6 +3441,10 @@
       "Fine mesh strainer",
       "Measuring cups",
       "Mug or jar"
+    ],
+    "ingredientImageIds": [
+      "79",
+      "placeholder"
     ]
   },
   {
@@ -3123,6 +3483,11 @@
       "Fine mesh strainer",
       "Measuring cups",
       "Mug or jar"
+    ],
+    "ingredientImageIds": [
+      "80",
+      "placeholder",
+      "placeholder"
     ]
   },
   {
@@ -3164,6 +3529,10 @@
       "Amber glass dropper bottles",
       "Kitchen scale",
       "Labels"
+    ],
+    "ingredientImageIds": [
+      "81",
+      "placeholder"
     ]
   },
   {
@@ -3202,6 +3571,11 @@
       "Spatula or spoon",
       "Airtight jar",
       "Labels"
+    ],
+    "ingredientImageIds": [
+      "82",
+      "placeholder",
+      "placeholder"
     ]
   },
   {
@@ -3242,6 +3616,11 @@
       "Funnel",
       "Glass bottles",
       "Labels"
+    ],
+    "ingredientImageIds": [
+      "83",
+      "placeholder",
+      "placeholder"
     ]
   },
   {
@@ -3280,6 +3659,10 @@
       "Fine mesh strainer",
       "Measuring cups",
       "Mug or jar"
+    ],
+    "ingredientImageIds": [
+      "84",
+      "placeholder"
     ]
   },
   {
@@ -3318,6 +3701,10 @@
       "Clean cloth or muslin",
       "Hot water",
       "Plastic wrap (optional)"
+    ],
+    "ingredientImageIds": [
+      "85",
+      "placeholder"
     ]
   },
   {
@@ -3356,6 +3743,11 @@
       "Spatula or spoon",
       "Airtight jar",
       "Labels"
+    ],
+    "ingredientImageIds": [
+      "86",
+      "placeholder",
+      "placeholder"
     ]
   },
   {
@@ -3396,6 +3788,10 @@
       "Funnel",
       "Glass bottles",
       "Labels"
+    ],
+    "ingredientImageIds": [
+      "87",
+      "placeholder"
     ]
   },
   {
@@ -3435,6 +3831,11 @@
       "Cheesecloth",
       "Funnel",
       "Glass bottle with cap"
+    ],
+    "ingredientImageIds": [
+      "88",
+      "placeholder",
+      "placeholder"
     ]
   },
   {
@@ -3475,6 +3876,12 @@
       "Funnel",
       "Glass bottles with caps",
       "Labels"
+    ],
+    "ingredientImageIds": [
+      "89",
+      "placeholder",
+      "placeholder",
+      "placeholder"
     ]
   },
   {
@@ -3516,6 +3923,10 @@
       "Amber glass dropper bottles",
       "Kitchen scale",
       "Labels"
+    ],
+    "ingredientImageIds": [
+      "90",
+      "placeholder"
     ]
   },
   {
@@ -3554,6 +3965,10 @@
       "Fine mesh strainer",
       "Measuring cups",
       "Mug or jar"
+    ],
+    "ingredientImageIds": [
+      "91",
+      "placeholder"
     ]
   },
   {
@@ -3594,6 +4009,11 @@
       "Fine mesh strainer",
       "Tins or jars",
       "Labels"
+    ],
+    "ingredientImageIds": [
+      "92",
+      "placeholder",
+      "placeholder"
     ]
   },
   {
@@ -3634,6 +4054,11 @@
       "Fine mesh strainer",
       "Tins or jars",
       "Labels"
+    ],
+    "ingredientImageIds": [
+      "93",
+      "placeholder",
+      "placeholder"
     ]
   },
   {
@@ -3675,6 +4100,10 @@
       "Amber glass dropper bottles",
       "Kitchen scale",
       "Labels"
+    ],
+    "ingredientImageIds": [
+      "94",
+      "placeholder"
     ]
   },
   {
@@ -3713,6 +4142,10 @@
       "Fine mesh strainer",
       "Measuring cups",
       "Mug or jar"
+    ],
+    "ingredientImageIds": [
+      "95",
+      "placeholder"
     ]
   },
   {
@@ -3752,6 +4185,12 @@
       "Cheesecloth",
       "Funnel",
       "Glass bottle with cap"
+    ],
+    "ingredientImageIds": [
+      "96",
+      "placeholder",
+      "placeholder",
+      "placeholder"
     ]
   },
   {
@@ -3793,6 +4232,10 @@
       "Amber glass dropper bottles",
       "Kitchen scale",
       "Labels"
+    ],
+    "ingredientImageIds": [
+      "97",
+      "placeholder"
     ]
   },
   {
@@ -3831,6 +4274,10 @@
       "Fine mesh strainer",
       "Measuring cups",
       "Mug or jar"
+    ],
+    "ingredientImageIds": [
+      "98",
+      "placeholder"
     ]
   },
   {
@@ -3871,6 +4318,11 @@
       "Fine mesh strainer",
       "Tins or jars",
       "Labels"
+    ],
+    "ingredientImageIds": [
+      "99",
+      "placeholder",
+      "placeholder"
     ]
   },
   {
@@ -3909,6 +4361,10 @@
       "Fine mesh strainer",
       "Measuring cups",
       "Mug or jar"
+    ],
+    "ingredientImageIds": [
+      "100",
+      "placeholder"
     ]
   }
 ]

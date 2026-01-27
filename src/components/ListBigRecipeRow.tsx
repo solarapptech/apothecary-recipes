@@ -1,5 +1,16 @@
 import { useEffect, useMemo, useRef, useState } from 'react';
-import { Image, Linking, Modal, Platform, Pressable, ScrollView, StyleSheet, Text, View } from 'react-native';
+import {
+  Image,
+  Linking,
+  Modal,
+  Platform,
+  Pressable,
+  ScrollView,
+  StyleSheet,
+  Text,
+  View,
+  useWindowDimensions,
+} from 'react-native';
 import Animated, {
   Extrapolate,
   FadeIn,
@@ -19,11 +30,18 @@ import { motionDurationMs } from '../app/motionPolicy';
 
 import { getRecipeImageSource } from '../assets/getRecipeImageSource';
 import type { RecipeImageEntry } from '../assets/recipeImageManifest';
+import { getIngredientImageSource, hasIngredientImage } from '../assets/getIngredientImageSource';
 
 import { FieldIcon } from '../ui/icons';
 import { theme } from '../ui/theme';
 
 import type { RecipeUsage, RecipeStorage } from '../types/recipe';
+
+import {
+  getIngredientMetadata,
+  normalizeIngredientKey,
+  isSkippedIngredient,
+} from '../repositories/ingredientMetadataRepository';
 
 import { DescriptionInline } from './DescriptionInline';
 import { FieldRow } from './FieldRow';
@@ -62,7 +80,8 @@ const attributionData = require('../../assets/herbs/image-attributions.json') as
 
 const EMPTY_TEXT = '—';
 
-type IngredientDefaults = {
+type IngredientDetail = {
+  title: string;
   description: string;
   ml: string;
   family: string;
@@ -73,115 +92,12 @@ type IngredientDefaults = {
   dosageGuidelines: string;
 };
 
-type IngredientDetail = IngredientDefaults & {
-  title: string;
-};
-
-type IngredientMetadata = {
-  ingredientDefaults: IngredientDefaults;
-  ingredientKeys: string[];
-  ingredients: Array<Partial<IngredientDetail> & { title: string }>;
-  recipes: Record<string, { ingredientIndexes: number[] }>;
-};
-
 type IngredientRow = {
   id: string;
   raw: string;
   normalizedKey: string;
   detail: IngredientDetail;
-};
-
-const ingredientMetadata = require('../data/ingredient-metadata.json') as IngredientMetadata;
-const ingredientKeyIndex = new Map(ingredientMetadata.ingredientKeys.map((key, index) => [key, index]));
-
-const INGREDIENT_ADJECTIVES = new Set([
-  'fresh',
-  'dried',
-  'dry',
-  'powdered',
-  'powder',
-  'ground',
-  'crushed',
-  'chopped',
-  'sliced',
-  'finely',
-  'coarsely',
-  'whole',
-  'raw',
-  'wild',
-  'organic',
-  'clean',
-  'purified',
-  'filtered',
-  'distilled',
-  'warm',
-  'hot',
-  'cold',
-]);
-
-const INGREDIENT_FORMS = new Set([
-  'root',
-  'roots',
-  'leaf',
-  'leaves',
-  'flower',
-  'flowers',
-  'stem',
-  'stems',
-  'bark',
-  'berry',
-  'berries',
-  'seed',
-  'seeds',
-  'rhizome',
-  'bulb',
-  'bulbs',
-  'peel',
-  'rind',
-  'zest',
-  'fruit',
-  'fruits',
-  'pod',
-  'pods',
-  'resin',
-  'sap',
-  'gum',
-  'bud',
-  'buds',
-  'cone',
-  'cones',
-  'needle',
-  'needles',
-  'sclerotium',
-  'clove',
-  'cloves',
-  'wood',
-  'frond',
-  'fronds',
-]);
-
-const normalizeIngredientKey = (raw: string): string => {
-  const tokens = raw
-    .split(/\s+/)
-    .map((token) => token.trim())
-    .filter(Boolean);
-
-  const kept = tokens.filter((token) => {
-    if (token.includes('(') || token.includes(')')) {
-      return true;
-    }
-    const cleaned = token.toLowerCase().replace(/[^a-z]/g, '');
-    if (!cleaned) {
-      return false;
-    }
-    if (INGREDIENT_ADJECTIVES.has(cleaned) || INGREDIENT_FORMS.has(cleaned)) {
-      return false;
-    }
-    return true;
-  });
-
-  const normalized = kept.join(' ').replace(/\s+/g, ' ').trim();
-  return (normalized || raw).toLowerCase();
+  imageId: string | null;
 };
 
 const splitIngredientList = (value: string): string[] => {
@@ -195,20 +111,23 @@ const splitIngredientList = (value: string): string[] => {
     .filter(Boolean);
 };
 
-const resolveIngredientDetail = (index: number | undefined, fallbackTitle: string): IngredientDetail => {
-  const base = ingredientMetadata.ingredientDefaults;
-  const detail = typeof index === 'number' ? ingredientMetadata.ingredients[index] : undefined;
-
-  return {
-    ...base,
-    ...detail,
-    title: detail?.title ?? fallbackTitle,
-  };
-};
-
 const formatIngredientValue = (value?: string): string => {
   const trimmed = value?.trim();
   return trimmed ? trimmed : EMPTY_TEXT;
+};
+
+const splitBestPractices = (value?: string): string[] => {
+  if (!value?.trim()) {
+    return [];
+  }
+
+  const toTitleCase = (line: string) => line.charAt(0).toUpperCase() + line.slice(1);
+
+  return value
+    .split(/\n|;|•|\u2022|\.\s+/)
+    .map((line) => line.replace(/^[-•\u2022]\s*/, '').replace(/\s*[.;\u2022•]\s*$/, '').trim())
+    .filter(Boolean)
+    .map(toTitleCase);
 };
 
 function formatUsage(usage: RecipeUsage): string {
@@ -245,6 +164,7 @@ type ListBigRecipeRowProps = {
   equipmentNeeded: string[];
   historicalContext: string;
   scientificEvidence: string;
+  ingredientImageIds?: string[];
   isFavorite?: boolean;
   onPressFavorite?: () => void;
   reduceMotionEnabled?: boolean;
@@ -279,6 +199,7 @@ export function ListBigRecipeRow({
   equipmentNeeded,
   historicalContext,
   scientificEvidence,
+  ingredientImageIds = [],
   isFavorite = false,
   onPressFavorite,
   reduceMotionEnabled = false,
@@ -295,6 +216,7 @@ export function ListBigRecipeRow({
   onPressMinimize,
   showDecorativeLeaves = false,
 }: ListBigRecipeRowProps) {
+  const { width: windowWidth } = useWindowDimensions();
   const [detailsModeInternal, setDetailsModeInternal] = useState(false);
   const [imageModalVisible, setImageModalVisible] = useState(false);
   const [attributionVisible, setAttributionVisible] = useState(false);
@@ -302,6 +224,8 @@ export function ListBigRecipeRow({
   const [carouselWidth, setCarouselWidth] = useState(0);
   const [ingredientsExpanded, setIngredientsExpanded] = useState(false);
   const [activeIngredientId, setActiveIngredientId] = useState<string | null>(null);
+  const [ingredientImageModalVisible, setIngredientImageModalVisible] = useState(false);
+  const [ingredientImageModalSource, setIngredientImageModalSource] = useState<any>(null);
   const [usageExpanded, setUsageExpanded] = useState(false);
   const [storageExpanded, setStorageExpanded] = useState(false);
   const [equipmentExpanded, setEquipmentExpanded] = useState(false);
@@ -325,6 +249,7 @@ export function ListBigRecipeRow({
   const summaryAllowsTitleWrap = showMinimizeButton && !detailsMode;
   const displayTitle = detailsMode || summaryAllowsTitleWrap ? title : title.replace(/\s*[\r\n]+\s*/g, ' ');
   const titleKey = detailsMode ? 'title-expanded' : 'title-collapsed';
+  const isCompactUsageLayout = windowWidth < 380;
 
   const usedForValue = usedFor
     .replace(/\s*[\r\n]+\s*/g, ' ')
@@ -337,22 +262,26 @@ export function ListBigRecipeRow({
 
   const ingredientRows = useMemo<IngredientRow[]>(() => {
     const items = splitIngredientList(ingredients);
+    let imageIdIndex = 0;
 
-    return items.map((raw, index) => {
-      const trimmed = raw.trim();
-      const normalizedKey = normalizeIngredientKey(trimmed);
-      const fallbackKey = trimmed.toLowerCase();
-      const lookupKey = normalizedKey || fallbackKey;
-      const metadataIndex = ingredientKeyIndex.get(lookupKey) ?? ingredientKeyIndex.get(fallbackKey);
+    return items
+      .filter((raw) => !isSkippedIngredient(raw.trim()))
+      .map((raw, index) => {
+        const trimmed = raw.trim();
+        const normalizedKey = normalizeIngredientKey(trimmed);
+        const detail = getIngredientMetadata(trimmed);
+        const imageId = ingredientImageIds[imageIdIndex] ?? null;
+        imageIdIndex += 1;
 
-      return {
-        id: `${lookupKey || 'ingredient'}-${index}`,
-        raw: trimmed,
-        normalizedKey: lookupKey,
-        detail: resolveIngredientDetail(metadataIndex, trimmed),
-      };
-    });
-  }, [ingredients]);
+        return {
+          id: `${normalizedKey || 'ingredient'}-${index}`,
+          raw: trimmed,
+          normalizedKey,
+          detail,
+          imageId,
+        };
+      });
+  }, [ingredients, ingredientImageIds]);
 
   useEffect(() => {
     if (!detailsMode) {
@@ -982,6 +911,30 @@ export function ListBigRecipeRow({
                                 testID={`list-big-recipe-row-ingredient-${recipeId}-${row.id}`}
                                 reduceMotionEnabled={reduceMotionEnabled}
                               >
+                                {hasIngredientImage(row.imageId) ? (
+                                  <Pressable
+                                    onPress={(e) => {
+                                      e.stopPropagation();
+                                      const source = getIngredientImageSource(row.imageId);
+                                      if (source) {
+                                        setIngredientImageModalSource(source);
+                                        setIngredientImageModalVisible(true);
+                                      }
+                                    }}
+                                    accessibilityRole="button"
+                                    accessibilityLabel={`View ${row.raw} image`}
+                                  >
+                                    <Image
+                                      source={getIngredientImageSource(row.imageId)!}
+                                      style={isActive ? styles.ingredientImageExpanded : styles.ingredientImageCollapsed}
+                                      resizeMode="cover"
+                                    />
+                                  </Pressable>
+                                ) : (
+                                  <View style={isActive ? styles.ingredientImagePlaceholderExpanded : styles.ingredientImagePlaceholderCollapsed}>
+                                    <Text style={styles.ingredientImagePlaceholderText}>IMG</Text>
+                                  </View>
+                                )}
                                 <View style={styles.ingredientRowText}>
                                   <Text style={styles.ingredientRowTitle}>{row.raw}</Text>
                                   {row.detail.scientificName?.trim() ? (
@@ -1030,7 +983,7 @@ export function ListBigRecipeRow({
                                     variant="grouped"
                                     showDivider
                                     collapsible
-                                    defaultCollapsed
+                                    defaultCollapsed={false}
                                     reduceMotionEnabled={reduceMotionEnabled}
                                   />
                                   <SecondaryFieldRow
@@ -1040,7 +993,7 @@ export function ListBigRecipeRow({
                                     variant="grouped"
                                     showDivider
                                     collapsible
-                                    defaultCollapsed
+                                    defaultCollapsed={false}
                                     reduceMotionEnabled={reduceMotionEnabled}
                                   />
                                   <SecondaryFieldRow
@@ -1050,7 +1003,7 @@ export function ListBigRecipeRow({
                                     variant="grouped"
                                     showDivider
                                     collapsible
-                                    defaultCollapsed
+                                    defaultCollapsed={false}
                                     reduceMotionEnabled={reduceMotionEnabled}
                                   />
                                   <SecondaryFieldRow
@@ -1060,7 +1013,7 @@ export function ListBigRecipeRow({
                                     variant="grouped"
                                     showDivider
                                     collapsible
-                                    defaultCollapsed
+                                    defaultCollapsed={false}
                                     reduceMotionEnabled={reduceMotionEnabled}
                                   />
                                   <SecondaryFieldRow
@@ -1070,7 +1023,7 @@ export function ListBigRecipeRow({
                                     variant="grouped"
                                     showDivider
                                     collapsible
-                                    defaultCollapsed
+                                    defaultCollapsed={false}
                                     reduceMotionEnabled={reduceMotionEnabled}
                                   />
                                   <SecondaryFieldRow
@@ -1080,7 +1033,7 @@ export function ListBigRecipeRow({
                                     variant="grouped"
                                     showDivider
                                     collapsible
-                                    defaultCollapsed
+                                    defaultCollapsed={false}
                                     reduceMotionEnabled={reduceMotionEnabled}
                                   />
                                   <SecondaryFieldRow
@@ -1089,7 +1042,7 @@ export function ListBigRecipeRow({
                                     value={formatIngredientValue(row.detail.dosageGuidelines)}
                                     variant="grouped"
                                     collapsible
-                                    defaultCollapsed
+                                    defaultCollapsed={false}
                                     reduceMotionEnabled={reduceMotionEnabled}
                                   />
                                 </Animated.View>
@@ -1145,27 +1098,27 @@ export function ListBigRecipeRow({
                     {usage.summary?.trim() ? (
                       <Text style={styles.usageFullSummary}>{usage.summary}</Text>
                     ) : null}
-                    <View style={styles.usageGrid}>
+                    <View style={[styles.usageGrid, isCompactUsageLayout && styles.usageGridCompact]}>
                       {usage.dosage?.trim() ? (
-                        <View style={styles.usageGridItem}>
+                        <View style={[styles.usageGridItem, isCompactUsageLayout && styles.usageGridItemCompact]}>
                           <Text style={styles.usageGridLabel}>Dosage</Text>
                           <Text style={styles.usageGridValue}>{usage.dosage}</Text>
                         </View>
                       ) : null}
                       {usage.frequency?.trim() ? (
-                        <View style={styles.usageGridItem}>
+                        <View style={[styles.usageGridItem, isCompactUsageLayout && styles.usageGridItemCompact]}>
                           <Text style={styles.usageGridLabel}>Frequency</Text>
                           <Text style={styles.usageGridValue}>{usage.frequency}</Text>
                         </View>
                       ) : null}
                       {usage.maxDuration?.trim() ? (
-                        <View style={styles.usageGridItem}>
+                        <View style={[styles.usageGridItem, isCompactUsageLayout && styles.usageGridItemCompact]}>
                           <Text style={styles.usageGridLabel}>Max Duration</Text>
                           <Text style={styles.usageGridValue}>{usage.maxDuration}</Text>
                         </View>
                       ) : null}
                       {usage.applicationAreas?.trim() ? (
-                        <View style={styles.usageGridItem}>
+                        <View style={[styles.usageGridItem, isCompactUsageLayout && styles.usageGridItemCompact]}>
                           <Text style={styles.usageGridLabel}>Application Areas</Text>
                           <Text style={styles.usageGridValue}>{usage.applicationAreas}</Text>
                         </View>
@@ -1174,8 +1127,8 @@ export function ListBigRecipeRow({
                     {usage.bestPractices?.trim() ? (
                       <View style={styles.usageBestPractices}>
                         <Text style={styles.usageBestPracticesLabel}>Best Practices</Text>
-                        {usage.bestPractices.split('\n').filter(Boolean).map((line, idx) => (
-                          <Text key={idx} style={styles.usageBestPracticesItem}>• {line.replace(/^[-•]\s*/, '')}</Text>
+                        {splitBestPractices(usage.bestPractices).map((line, idx) => (
+                          <Text key={idx} style={styles.usageBestPracticesItem}>• {line}</Text>
                         ))}
                       </View>
                     ) : null}
@@ -1557,6 +1510,38 @@ export function ListBigRecipeRow({
         </Pressable>
       </ModalBackdrop>
     </Modal>
+
+    <Modal
+      visible={ingredientImageModalVisible}
+      transparent={true}
+      animationType={reduceMotionEnabled ? "none" : "fade"}
+      onRequestClose={() => setIngredientImageModalVisible(false)}
+    >
+      <ModalBackdrop
+        testID={`list-big-recipe-row-ingredient-image-modal-overlay-${recipeId}`}
+        onPress={() => setIngredientImageModalVisible(false)}
+      >
+        <Pressable
+          onPress={(event) => event.stopPropagation()}
+          style={styles.modalCardWrapper}
+        >
+          <ModalCardBackground style={styles.modalCard}>
+            <View style={styles.modalContent}>
+              <View style={styles.carouselContainer}>
+                {ingredientImageModalSource ? (
+                  <Image
+                    source={ingredientImageModalSource}
+                    style={styles.modalImage}
+                    resizeMode="contain"
+                    testID={`list-big-recipe-row-ingredient-image-modal-image-${recipeId}`}
+                  />
+                ) : null}
+              </View>
+            </View>
+          </ModalCardBackground>
+        </Pressable>
+      </ModalBackdrop>
+    </Modal>
     </>
   );
 }
@@ -1866,8 +1851,8 @@ const styles = StyleSheet.create({
     overflow: 'hidden',
   },
   ingredientRowHeaderActive: {
-    backgroundColor: theme.colors.surface.dropdownHighlight,
-    borderColor: theme.colors.brand.primaryStrong,
+    backgroundColor: theme.colors.brand.moreInfoGreen,
+    borderColor: theme.colors.brand.primary,
   },
   ingredientRowText: {
     flex: 1,
@@ -1898,6 +1883,37 @@ const styles = StyleSheet.create({
     backgroundColor: theme.colors.surface.paper,
     borderRadius: 12,
     overflow: 'hidden',
+  },
+  ingredientImageCollapsed: {
+    width: 40,
+    height: 40,
+    borderRadius: 8,
+  },
+  ingredientImageExpanded: {
+    width: 56,
+    height: 56,
+    borderRadius: 10,
+  },
+  ingredientImagePlaceholderCollapsed: {
+    width: 40,
+    height: 40,
+    borderRadius: 8,
+    backgroundColor: theme.colors.surface.secondaryField,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  ingredientImagePlaceholderExpanded: {
+    width: 56,
+    height: 56,
+    borderRadius: 10,
+    backgroundColor: theme.colors.surface.secondaryField,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  ingredientImagePlaceholderText: {
+    fontSize: 10,
+    fontFamily: theme.typography.fontFamily.sans.medium,
+    color: theme.colors.ink.muted,
   },
   centeredNarrowField: {
     width: '100%',
@@ -2158,6 +2174,9 @@ const styles = StyleSheet.create({
     flexWrap: 'wrap',
     gap: 8,
   },
+  usageGridCompact: {
+    gap: 6,
+  },
   usageGridItem: {
     flexBasis: '48%',
     flexGrow: 1,
@@ -2165,6 +2184,11 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     padding: 12,
     gap: 4,
+  },
+  usageGridItemCompact: {
+    flexBasis: '100%',
+    paddingVertical: 10,
+    paddingHorizontal: 12,
   },
   usageGridLabel: {
     fontSize: 10,

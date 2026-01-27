@@ -411,6 +411,7 @@ export function DashboardScreen({
                 equipmentNeeded={item.equipmentNeeded}
                 historicalContext={item.historicalContext}
                 scientificEvidence={item.scientificEvidence}
+                ingredientImageIds={item.ingredientImageIds}
                 isFavorite={item.isFavorite === 1}
                 onPressFavorite={() => onToggleFavorite?.(item.id, item.isFavorite !== 1)}
                 reduceMotionEnabled={reduceMotionEnabled}
@@ -460,6 +461,7 @@ export function DashboardScreen({
                     equipmentNeeded={item.equipmentNeeded}
                     historicalContext={item.historicalContext}
                     scientificEvidence={item.scientificEvidence}
+                    ingredientImageIds={item.ingredientImageIds}
                     isFavorite={item.isFavorite === 1}
                     onPressFavorite={() => onToggleFavorite?.(item.id, item.isFavorite !== 1)}
                     reduceMotionEnabled={reduceMotionEnabled}

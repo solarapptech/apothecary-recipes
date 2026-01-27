@@ -25,7 +25,8 @@ CREATE TABLE IF NOT EXISTS recipes (
   searchTextNormalized TEXT NOT NULL,
   randomKey INTEGER NOT NULL,
   isPremium INTEGER NOT NULL DEFAULT 0,
-  imageLocalPath TEXT
+  imageLocalPath TEXT,
+  ingredientImageIds TEXT
 );
 
 CREATE INDEX IF NOT EXISTS idx_recipes_title ON recipes(title);
