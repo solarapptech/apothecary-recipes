@@ -4,6 +4,7 @@ import {
   ingredientImageManifest,
   INGREDIENT_IMAGE_PLACEHOLDER,
 } from './ingredientImageManifest';
+import { commonIngredientImageManifest } from './commonIngredientImageManifest';
 
 /**
  * Retrieves the image source for a given ingredient image ID.
@@ -14,6 +15,11 @@ import {
 export function getIngredientImageSource(imageId: string | null | undefined): ImageSourcePropType | null {
   if (!imageId) {
     return INGREDIENT_IMAGE_PLACEHOLDER;
+  }
+
+  const commonEntry = commonIngredientImageManifest[imageId];
+  if (commonEntry) {
+    return commonEntry.source;
   }
 
   const entry = ingredientImageManifest[imageId];
@@ -33,6 +39,10 @@ export function getIngredientImageSource(imageId: string | null | undefined): Im
 export function hasIngredientImage(imageId: string | null | undefined): boolean {
   if (!imageId) {
     return false;
+  }
+
+  if (imageId in commonIngredientImageManifest) {
+    return true;
   }
 
   return imageId in ingredientImageManifest;

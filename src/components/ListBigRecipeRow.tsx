@@ -98,6 +98,7 @@ type IngredientRow = {
   normalizedKey: string;
   detail: IngredientDetail;
   imageId: string | null;
+  isCommon: boolean;
 };
 
 const splitIngredientList = (value: string): string[] => {
@@ -110,6 +111,19 @@ const splitIngredientList = (value: string): string[] => {
     .map((item) => item.trim())
     .filter(Boolean);
 };
+
+const slugifyCommonIngredient = (value: string): string => {
+  const base = value
+    .toLowerCase()
+    .replace(/\([^)]*\)/g, '')
+    .replace(/[^a-z0-9]+/g, ' ')
+    .replace(/\s+/g, ' ')
+    .trim();
+
+  return base ? base.replace(/\s+/g, '-') : 'ingredient';
+};
+
+const getCommonIngredientImageId = (value: string): string => `etc:${slugifyCommonIngredient(value)}`;
 
 const formatIngredientValue = (value?: string): string => {
   const trimmed = value?.trim();
@@ -264,23 +278,28 @@ export function ListBigRecipeRow({
     const items = splitIngredientList(ingredients);
     let imageIdIndex = 0;
 
-    return items
-      .filter((raw) => !isSkippedIngredient(raw.trim()))
-      .map((raw, index) => {
-        const trimmed = raw.trim();
-        const normalizedKey = normalizeIngredientKey(trimmed);
-        const detail = getIngredientMetadata(trimmed);
-        const imageId = ingredientImageIds[imageIdIndex] ?? null;
-        imageIdIndex += 1;
+    return items.map((raw, index) => {
+      const trimmed = raw.trim();
+      const normalizedKey = normalizeIngredientKey(trimmed);
+      const detail = getIngredientMetadata(trimmed);
+      const isCommon = isSkippedIngredient(trimmed);
+      const imageId = isCommon
+        ? getCommonIngredientImageId(trimmed)
+        : ingredientImageIds[imageIdIndex] ?? null;
 
-        return {
-          id: `${normalizedKey || 'ingredient'}-${index}`,
-          raw: trimmed,
-          normalizedKey,
-          detail,
-          imageId,
-        };
-      });
+      if (!isCommon) {
+        imageIdIndex += 1;
+      }
+
+      return {
+        id: `${normalizedKey || 'ingredient'}-${index}`,
+        raw: trimmed,
+        normalizedKey,
+        detail,
+        imageId,
+        isCommon,
+      };
+    });
   }, [ingredients, ingredientImageIds]);
 
   useEffect(() => {
@@ -891,7 +910,9 @@ export function ListBigRecipeRow({
                         <Text style={styles.ingredientsEmptyText}>No ingredients listed.</Text>
                       ) : (
                         ingredientRows.map((row) => {
-                          const isActive = activeIngredientId === row.id;
+                          const isActive = !row.isCommon && activeIngredientId === row.id;
+                          const canExpand = !row.isCommon;
+                          const IngredientHeader = canExpand ? WavePressable : View;
 
                           return (
                             <Animated.View
@@ -899,17 +920,23 @@ export function ListBigRecipeRow({
                               layout={reduceMotionEnabled ? undefined : Layout.duration(ingredientAnimDuration)}
                               style={styles.ingredientRow}
                             >
-                              <WavePressable
-                                accessibilityRole="button"
-                                accessibilityLabel={isActive ? `Hide ${row.raw} details` : `Show ${row.raw} details`}
-                                onPress={() => handleIngredientPress(row.id)}
+                              <IngredientHeader
+                                {...(canExpand
+                                  ? {
+                                      accessibilityRole: 'button',
+                                      accessibilityLabel: isActive
+                                        ? `Hide ${row.raw} details`
+                                        : `Show ${row.raw} details`,
+                                      onPress: () => handleIngredientPress(row.id),
+                                      reduceMotionEnabled,
+                                    }
+                                  : {})}
                                 style={[
                                   styles.ingredientRowHeader,
                                   styles.ingredientRowPressable,
                                   isActive && styles.ingredientRowHeaderActive,
                                 ]}
                                 testID={`list-big-recipe-row-ingredient-${recipeId}-${row.id}`}
-                                reduceMotionEnabled={reduceMotionEnabled}
                               >
                                 {hasIngredientImage(row.imageId) ? (
                                   <Pressable
@@ -937,27 +964,29 @@ export function ListBigRecipeRow({
                                 )}
                                 <View style={styles.ingredientRowText}>
                                   <Text style={styles.ingredientRowTitle}>{row.raw}</Text>
-                                  {row.detail.scientificName?.trim() ? (
+                                  {!row.isCommon && row.detail.scientificName?.trim() ? (
                                     <Text style={styles.ingredientRowSubtitle}>{row.detail.scientificName}</Text>
                                   ) : null}
-                                  {!isActive && row.detail.description?.trim() ? (
+                                  {!row.isCommon && !isActive && row.detail.description?.trim() ? (
                                     <Text style={styles.ingredientRowDescription}>{row.detail.description}</Text>
                                   ) : null}
-                                  {!isActive ? (
+                                  {!row.isCommon && !isActive ? (
                                     <Text style={styles.ingredientRowHint}>Tap to view herb details →</Text>
                                   ) : null}
                                 </View>
-                                <Svg width={18} height={18} viewBox="0 0 24 24">
-                                  <Path
-                                    d={isActive ? 'M7 14l5-5 5 5' : 'M7 10l5 5 5-5'}
-                                    fill="none"
-                                    stroke={theme.colors.brand.primaryStrong}
-                                    strokeWidth={2}
-                                    strokeLinecap="round"
-                                    strokeLinejoin="round"
-                                  />
-                                </Svg>
-                              </WavePressable>
+                                {canExpand ? (
+                                  <Svg width={18} height={18} viewBox="0 0 24 24">
+                                    <Path
+                                      d={isActive ? 'M7 14l5-5 5 5' : 'M7 10l5 5 5-5'}
+                                      fill="none"
+                                      stroke={theme.colors.brand.primaryStrong}
+                                      strokeWidth={2}
+                                      strokeLinecap="round"
+                                      strokeLinejoin="round"
+                                    />
+                                  </Svg>
+                                ) : null}
+                              </IngredientHeader>
 
                               {isActive ? (
                                 <Animated.View
