@@ -1,3 +1,5 @@
+--Part 1--
+
 1- water
 https://commons.wikimedia.org/wiki/File:Water_pouring_from_a_faucet_into_a_clear_glass_cup._(15054813052).jpg
 
@@ -45,6 +47,8 @@ https://commons.wikimedia.org/wiki/File:White_Wine_Glas.jpg
 
 16- Yeast (or Rye Bread Starter)
 https://commons.wikimedia.org/wiki/File:100%25_Rye_Bread_(5752657009).jpg
+
+--Part 2--
 
 1- any % of alcohol, including any type of Brandy or Spirit, Strong Alcohol (Vodka/Grain Spirit),  should use the image 'grain-spirit.jpg'
 2- Angelic Root

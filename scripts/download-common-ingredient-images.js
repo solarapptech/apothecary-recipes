@@ -32,33 +32,91 @@ function slugify(name) {
 /**
  * Parse the input file to extract ingredient names and URLs
  */
+function splitNames(raw) {
+  return raw
+    .split(',')
+    .map((value) => value.replace(/[.]+$/g, '').trim())
+    .map((value) => value.replace(/^including\s+/i, '').trim())
+    .filter(Boolean);
+}
+
+function extractReuseFilename(value) {
+  const match = value.match(/use(?:s)?\s+(?:the\s+image\s+)?'([^']+)'/i);
+  return match ? match[1].trim() : null;
+}
+
+function stripReuseClause(value) {
+  return value.replace(/\.?\s*should\s+use.*$/i, '').trim();
+}
+
 function parseInputFile(filePath) {
   const content = fs.readFileSync(filePath, 'utf-8');
-  const lines = content.split('\n').map(l => l.trim()).filter(Boolean);
-  
-  const ingredients = [];
-  let currentName = null;
-  
+  const lines = content.split('\n').map((line) => line.trim());
+
+  const entries = [];
+  let currentNames = null;
+  let currentReuse = null;
+
   for (const line of lines) {
-    // Match lines like "1- water" or "2- boiling water"
-    const nameMatch = line.match(/^\d+-\s*(.+)$/);
-    if (nameMatch) {
-      currentName = nameMatch[1].trim();
+    if (!line) {
       continue;
     }
-    
-    // Match Wikimedia URLs
-    if (line.startsWith('https://commons.wikimedia.org/wiki/File:') && currentName) {
-      ingredients.push({
-        name: currentName,
-        slug: slugify(currentName),
+
+    const nameMatch = line.match(/^\d+-\s*(.+)$/);
+    if (nameMatch) {
+      const rawLine = nameMatch[1].trim();
+      const reuseFilename = extractReuseFilename(rawLine);
+      currentReuse = reuseFilename;
+      const namesPart = stripReuseClause(rawLine);
+      currentNames = splitNames(namesPart);
+
+      if (currentReuse) {
+        entries.push({
+          names: currentNames,
+          reuseFilename: currentReuse,
+        });
+        currentNames = null;
+        currentReuse = null;
+      }
+      continue;
+    }
+
+    if (line.startsWith('https://commons.wikimedia.org/wiki/File:') && currentNames) {
+      entries.push({
+        names: currentNames,
         wikimediaUrl: line,
       });
-      currentName = null;
+      currentNames = null;
+      currentReuse = null;
     }
   }
-  
-  return ingredients;
+
+  return entries;
+}
+
+function buildExpectedImageIds(entries) {
+  const expected = new Set();
+  entries.forEach((entry) => {
+    (entry.names || []).forEach((name) => {
+      const slug = slugify(name);
+      expected.add(`etc:${slug}`);
+    });
+  });
+  return expected;
+}
+
+function buildReuseMap(entries) {
+  const reuseMap = new Map();
+  entries.forEach((entry) => {
+    if (!entry.reuseFilename) {
+      return;
+    }
+    (entry.names || []).forEach((name) => {
+      const slug = slugify(name);
+      reuseMap.set(`etc:${slug}`, entry.reuseFilename);
+    });
+  });
+  return reuseMap;
 }
 
 /**
@@ -106,6 +164,7 @@ async function fetchWikimediaMetadata(filename) {
           const meta = imageinfo.extmetadata || {};
           // Use thumbnail URL at 512px width for reliable download
           const thumbUrl = `https://commons.wikimedia.org/wiki/Special:FilePath/${encodeURIComponent(filename)}?width=512`;
+          const thumbUrlSmall = `https://commons.wikimedia.org/wiki/Special:FilePath/${encodeURIComponent(filename)}?width=256`;
           
           resolve({
             title: filename,
@@ -115,6 +174,8 @@ async function fetchWikimediaMetadata(filename) {
             licenseUrl: meta.LicenseUrl?.value || '',
             changes: 'Resized to 512x512',
             downloadUrl: thumbUrl,
+            downloadUrlSmall: thumbUrlSmall,
+            originalUrl: imageinfo.url,
           });
         } catch (e) {
           reject(e);
@@ -132,7 +193,7 @@ async function downloadFile(url, destPath) {
   
   try {
     // Use curl with proper headers
-    execSync(`curl -L -o "${destPath}" -A "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36" "${url}"`, {
+    execSync(`curl -L --fail --retry 3 --retry-delay 2 --max-time 60 -o "${destPath}" -H "Accept: image/*" -A "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36" "${url}"`, {
       stdio: 'pipe',
       timeout: 30000,
     });
@@ -164,90 +225,186 @@ async function resizeImage(inputPath, outputPath) {
  */
 async function main() {
   console.log('Parsing input file...');
-  const ingredients = parseInputFile(INPUT_FILE);
-  console.log(`Found ${ingredients.length} ingredients to process.\n`);
-  
-  const attributions = [];
+  const entries = parseInputFile(INPUT_FILE);
+  const expectedImageIds = buildExpectedImageIds(entries);
+  const reuseMap = buildReuseMap(entries);
+  console.log(`Found ${entries.length} entries to process.\n`);
+
+  let existingAttributions = { ingredients: [] };
+  if (fs.existsSync(ATTRIBUTION_FILE)) {
+    const parsed = JSON.parse(fs.readFileSync(ATTRIBUTION_FILE, 'utf8'));
+    existingAttributions = {
+      ingredients: (parsed.ingredients || []).filter((item) => expectedImageIds.has(item.imageId)),
+    };
+  }
+
+  const attributionByImageId = new Map();
+  existingAttributions.ingredients.forEach((item) => {
+    attributionByImageId.set(item.imageId, item);
+  });
+
+  const attributions = [...existingAttributions.ingredients];
+  const manifestSources = new Map();
+  existingAttributions.ingredients.forEach((item) => {
+    if (reuseMap.has(item.imageId)) {
+      manifestSources.set(item.imageId, reuseMap.get(item.imageId));
+    }
+  });
   const tempDir = path.join(OUTPUT_DIR, 'temp');
-  
+
   if (!fs.existsSync(tempDir)) {
     fs.mkdirSync(tempDir, { recursive: true });
   }
-  
-  for (const ingredient of ingredients) {
-    console.log(`Processing: ${ingredient.name} (${ingredient.slug})`);
-    
+
+  for (const entry of entries) {
+    const names = entry.names || [];
+    if (names.length === 0) {
+      continue;
+    }
+
+    if (entry.reuseFilename) {
+      const reusePath = path.join(OUTPUT_DIR, entry.reuseFilename);
+      if (!fs.existsSync(reusePath)) {
+        console.log(`⚠ Reuse image not found: ${entry.reuseFilename}`);
+        continue;
+      }
+
+      const reuseSlug = path.basename(entry.reuseFilename, path.extname(entry.reuseFilename));
+      const reuseImageId = `etc:${reuseSlug}`;
+      const reuseAttribution = attributionByImageId.get(reuseImageId);
+      if (!reuseAttribution) {
+        console.log(`⚠ Attribution missing for reuse image: ${entry.reuseFilename}`);
+        continue;
+      }
+
+      for (const name of names) {
+        const slug = slugify(name);
+        const imageId = `etc:${slug}`;
+        if (attributionByImageId.has(imageId)) {
+          continue;
+        }
+
+        const attribution = {
+          ...reuseAttribution,
+          slug,
+          name,
+          imageId,
+        };
+        attributions.push(attribution);
+        attributionByImageId.set(imageId, reuseAttribution);
+        manifestSources.set(imageId, entry.reuseFilename);
+      }
+
+      continue;
+    }
+
+    if (!entry.wikimediaUrl) {
+      continue;
+    }
+
+    const primarySlug = slugify(names[0]);
+    console.log(`Processing: ${names.join(', ')} (${primarySlug})`);
+
     try {
-      const filename = extractFilename(ingredient.wikimediaUrl);
+      const filename = extractFilename(entry.wikimediaUrl);
       if (!filename) {
         console.log(`  ⚠ Could not extract filename from URL`);
         continue;
       }
-      
-      // Fetch metadata
+
       console.log(`  Fetching metadata...`);
       const metadata = await fetchWikimediaMetadata(filename);
       if (!metadata || !metadata.downloadUrl) {
         console.log(`  ⚠ Could not fetch metadata`);
         continue;
       }
-      
-      // Download original
+
       const ext = path.extname(filename).toLowerCase() || '.jpg';
-      const tempPath = path.join(tempDir, `${ingredient.slug}${ext}`);
+      const tempPath = path.join(tempDir, `${primarySlug}${ext}`);
       console.log(`  Downloading...`);
-      await downloadFile(metadata.downloadUrl, tempPath);
-      
-      // Resize to 512x512
-      const outputPath = path.join(OUTPUT_DIR, `${ingredient.slug}.jpg`);
-      console.log(`  Resizing to 512x512...`);
-      await resizeImage(tempPath, outputPath);
-      
-      // Clean up temp file
+      try {
+        await downloadFile(metadata.downloadUrl, tempPath);
+      } catch (error) {
+        if (metadata.downloadUrlSmall) {
+          console.log(`  Retrying with smaller thumbnail...`);
+          await downloadFile(metadata.downloadUrlSmall, tempPath);
+        } else {
+          throw error;
+        }
+      }
+
+      for (const name of names) {
+        const slug = slugify(name);
+        const outputPath = path.join(OUTPUT_DIR, `${slug}.jpg`);
+        if (!fs.existsSync(outputPath)) {
+          console.log(`  Resizing for ${name}...`);
+          try {
+            await resizeImage(tempPath, outputPath);
+          } catch (error) {
+            if (metadata.originalUrl && metadata.originalUrl !== metadata.downloadUrl) {
+              console.log(`  Retrying with original image for ${name}...`);
+              const fallbackPath = path.join(tempDir, `${primarySlug}-original${ext}`);
+              await downloadFile(metadata.originalUrl, fallbackPath);
+              await resizeImage(fallbackPath, outputPath);
+              fs.unlinkSync(fallbackPath);
+            } else {
+              throw error;
+            }
+          }
+        }
+
+        const imageId = `etc:${slug}`;
+        if (!attributionByImageId.has(imageId)) {
+          const attribution = {
+            slug,
+            name,
+            imageId,
+            title: metadata.title,
+            creator: metadata.creator,
+            source: metadata.source,
+            license: metadata.license,
+            licenseUrl: metadata.licenseUrl,
+            changes: metadata.changes,
+          };
+          attributions.push(attribution);
+          attributionByImageId.set(imageId, attribution);
+          manifestSources.set(imageId, `${slug}.jpg`);
+        }
+      }
+
       fs.unlinkSync(tempPath);
-      
-      // Add attribution
-      attributions.push({
-        slug: ingredient.slug,
-        name: ingredient.name,
-        imageId: `etc:${ingredient.slug}`,
-        title: metadata.title,
-        creator: metadata.creator,
-        source: metadata.source,
-        license: metadata.license,
-        licenseUrl: metadata.licenseUrl,
-        changes: metadata.changes,
-      });
-      
+
       console.log(`  ✓ Done\n`);
-      
-      // Small delay to be nice to Wikimedia servers
-      await new Promise(r => setTimeout(r, 500));
-      
+      await new Promise((r) => setTimeout(r, 500));
     } catch (error) {
       console.log(`  ✗ Error: ${error.message}\n`);
     }
   }
-  
-  // Clean up temp directory
+
   if (fs.existsSync(tempDir)) {
-    fs.rmdirSync(tempDir, { recursive: true });
+    fs.rmSync(tempDir, { recursive: true, force: true });
   }
-  
-  // Write attribution file
+
+  const uniqueAttributions = Array.from(
+    new Map(attributions.map((attr) => [attr.imageId, attr])).values()
+  ).sort((a, b) => a.imageId.localeCompare(b.imageId));
+
   console.log(`\nWriting attribution file...`);
-  fs.writeFileSync(ATTRIBUTION_FILE, JSON.stringify({ ingredients: attributions }, null, 2));
-  
+  fs.writeFileSync(ATTRIBUTION_FILE, JSON.stringify({ ingredients: uniqueAttributions }, null, 2));
+
   console.log(`\n=== Summary ===`);
-  console.log(`Processed: ${attributions.length}/${ingredients.length} ingredients`);
+  console.log(`Processed entries: ${entries.length}`);
+  console.log(`Attribution count: ${uniqueAttributions.length}`);
   console.log(`Attribution file: ${ATTRIBUTION_FILE}`);
   console.log(`\nImages saved to: ${OUTPUT_DIR}`);
-  
-  // Generate manifest entries
+
   console.log(`\n=== Manifest entries (copy to commonIngredientImageManifest.ts) ===\n`);
-  for (const attr of attributions) {
-    console.log(`  '${attr.imageId}': { source: require('../../assets/etc/${attr.slug}.jpg'), imageId: '${attr.imageId}' },`);
-  }
+  uniqueAttributions.forEach((attr) => {
+    const sourceFile = manifestSources.get(attr.imageId) ?? `${attr.slug}.jpg`;
+    console.log(
+      `  '${attr.imageId}': { source: require('../../assets/etc/${sourceFile}'), imageId: '${attr.imageId}' },`
+    );
+  });
 }
 
 main().catch(console.error);
