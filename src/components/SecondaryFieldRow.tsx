@@ -20,6 +20,7 @@ type SecondaryFieldRowProps = {
   valueTestID?: string;
   onTogglePress?: (e: any) => void;
   reduceMotionEnabled?: boolean;
+  tone?: 'default' | 'accent';
 };
 
 export function SecondaryFieldRow({
@@ -35,43 +36,59 @@ export function SecondaryFieldRow({
   valueTestID,
   onTogglePress,
   reduceMotionEnabled = false,
+  tone = 'default',
 }: SecondaryFieldRowProps) {
   const [collapsed, setCollapsed] = useState(defaultCollapsed);
 
   const resolvedChevronColor = chevronColor ?? theme.colors.brand.primaryStrong;
+  const isExpanded = collapsible && !collapsed;
+  const activeHeaderColor = theme.colors.ink.primary;
+  const iconColor = isExpanded ? activeHeaderColor : undefined;
+  const chevronStroke = isExpanded ? activeHeaderColor : resolvedChevronColor;
 
   const containerStyles = [
     styles.container,
     variant === 'grouped' && styles.containerGrouped,
     showDivider && styles.containerDivider,
+    tone === 'accent' && styles.containerAccent,
   ];
 
   const headerContent = collapsible ? (
-    <View
+    <WavePressable
+      testID={toggleTestID}
+      onPress={(e) => {
+        onTogglePress?.(e);
+        (e as any).stopPropagation?.();
+        setCollapsed((prev) => !prev);
+      }}
       style={[
         styles.headerLinePressable,
         variant === 'grouped' && styles.headerLinePressableGrouped,
+        isExpanded && styles.headerLinePressableActive,
       ]}
+      accessibilityRole="button"
+      accessibilityLabel={collapsed ? `Show ${label}` : `Hide ${label}`}
+      reduceMotionEnabled={reduceMotionEnabled}
     >
       <View style={styles.headerLine}>
         <View style={styles.iconBox}>
-          <FieldIcon name={icon} size={18} />
+          <FieldIcon name={icon} size={18} color={iconColor} />
         </View>
-        <Text style={styles.labelText}>{label}</Text>
+        <Text style={[styles.labelText, isExpanded && styles.labelTextActive]}>{label}</Text>
       </View>
       <View style={styles.chevronBox}>
         <Svg width={20} height={20} viewBox="0 0 24 24">
           <Path
             d={collapsed ? 'M7 10l5 5 5-5' : 'M7 14l5-5 5 5'}
             fill="none"
-            stroke={resolvedChevronColor}
+            stroke={chevronStroke}
             strokeWidth={2}
             strokeLinecap="round"
             strokeLinejoin="round"
           />
         </Svg>
       </View>
-    </View>
+    </WavePressable>
   ) : (
     <View style={styles.headerLine}>
       <View style={styles.iconBox}>
@@ -85,31 +102,12 @@ export function SecondaryFieldRow({
     <>
       {headerContent}
       {!collapsible || !collapsed ? (
-        <Text testID={valueTestID} style={styles.valueText}>
+        <Text testID={valueTestID} style={styles.valueText} selectable>
           {value}
         </Text>
       ) : null}
     </>
   );
-
-  if (collapsible) {
-    return (
-      <WavePressable
-        testID={toggleTestID}
-        onPress={(e) => {
-          onTogglePress?.(e);
-          (e as any).stopPropagation?.();
-          setCollapsed((prev) => !prev);
-        }}
-        style={[containerStyles, styles.containerPressable]}
-        accessibilityRole="button"
-        accessibilityLabel={collapsed ? `Show ${label}` : `Hide ${label}`}
-        reduceMotionEnabled={reduceMotionEnabled}
-      >
-        {content}
-      </WavePressable>
-    );
-  }
 
   return <View style={containerStyles}>{content}</View>;
 }
@@ -121,9 +119,6 @@ const styles = StyleSheet.create({
     padding: 12,
     gap: 6,
   },
-  containerPressable: {
-    overflow: 'hidden',
-  },
   containerGrouped: {
     backgroundColor: 'transparent',
     borderRadius: 0,
@@ -132,6 +127,12 @@ const styles = StyleSheet.create({
   containerDivider: {
     borderBottomWidth: StyleSheet.hairlineWidth,
     borderBottomColor: theme.colors.border.subtle,
+  },
+  containerAccent: {
+    backgroundColor: 'transparent',
+    borderRadius: 0,
+    paddingHorizontal: 10,
+    paddingVertical: 8,
   },
   headerLine: {
     flexDirection: 'row',
@@ -147,6 +148,11 @@ const styles = StyleSheet.create({
     borderRadius: 8,
     paddingVertical: 6,
     paddingHorizontal: 8,
+  },
+  headerLinePressableActive: {
+    backgroundColor: theme.colors.brand.moreInfoGreen,
+    borderWidth: StyleSheet.hairlineWidth,
+    borderColor: theme.colors.brand.primary,
   },
   headerLinePressableGrouped: {
     paddingHorizontal: 4,
@@ -170,6 +176,9 @@ const styles = StyleSheet.create({
     letterSpacing: 0.6,
     color: theme.colors.brand.primaryStrong,
     textTransform: 'uppercase',
+  },
+  labelTextActive: {
+    color: theme.colors.ink.primary,
   },
   valueText: {
     fontSize: 13,

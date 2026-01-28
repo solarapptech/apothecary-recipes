@@ -375,6 +375,50 @@
       "changes": "Resized to 512x512"
     },
     {
+      "slug": "40-alcohol",
+      "name": "40% Alcohol",
+      "imageId": "etc:40-alcohol",
+      "title": "Cilíndrica_botella_de_agua_con_tapa_negra.jpg",
+      "creator": "ELTORO.VET",
+      "source": "https://commons.wikimedia.org/wiki/File:Cil%C3%ADndrica_botella_de_agua_con_tapa_negra.jpg",
+      "license": "CC0",
+      "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+      "changes": "Resized to 512x512"
+    },
+    {
+      "slug": "50-alcohol",
+      "name": "50% Alcohol",
+      "imageId": "etc:50-alcohol",
+      "title": "Cilíndrica_botella_de_agua_con_tapa_negra.jpg",
+      "creator": "ELTORO.VET",
+      "source": "https://commons.wikimedia.org/wiki/File:Cil%C3%ADndrica_botella_de_agua_con_tapa_negra.jpg",
+      "license": "CC0",
+      "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+      "changes": "Resized to 512x512"
+    },
+    {
+      "slug": "70-alcohol",
+      "name": "70% Alcohol",
+      "imageId": "etc:70-alcohol",
+      "title": "Cilíndrica_botella_de_agua_con_tapa_negra.jpg",
+      "creator": "ELTORO.VET",
+      "source": "https://commons.wikimedia.org/wiki/File:Cil%C3%ADndrica_botella_de_agua_con_tapa_negra.jpg",
+      "license": "CC0",
+      "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+      "changes": "Resized to 512x512"
+    },
+    {
+      "slug": "95-alcohol",
+      "name": "95% Alcohol",
+      "imageId": "etc:95-alcohol",
+      "title": "Cilíndrica_botella_de_agua_con_tapa_negra.jpg",
+      "creator": "ELTORO.VET",
+      "source": "https://commons.wikimedia.org/wiki/File:Cil%C3%ADndrica_botella_de_agua_con_tapa_negra.jpg",
+      "license": "CC0",
+      "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+      "changes": "Resized to 512x512"
+    },
+    {
       "slug": "gum-arabic",
       "name": "Gum Arabic",
       "imageId": "etc:gum-arabic",

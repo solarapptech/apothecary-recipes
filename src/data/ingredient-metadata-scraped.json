@@ -2842,6 +2842,136 @@
       "activeConstituents": "Mucilage, flavonoids, iridoid glycosides (extracted into oil in small amounts)",
       "safetyClassification": "EXTERNAL USE ONLY. Do not use in the ear if the eardrum may be perforated. Discontinue if irritation occurs.",
       "dosageGuidelines": "Topical: apply a small amount as directed. For ear use: traditional use is warmed drops—only under appropriate guidance and never with suspected perforation."
+    },
+    "oak galls": {
+      "description": "Oak galls (oak apples) are abnormal growths on oak trees caused by wasp larvae. They are extremely rich in tannins and have been used traditionally as a powerful astringent.",
+      "ml": "Astringent, styptic, antiseptic, anti-inflammatory",
+      "family": "Fagaceae",
+      "scientificName": "Quercus spp. (galls)",
+      "usages": "Wound healing, hemorrhoid treatment, diarrhea, oral inflammation, ink making (historical)",
+      "activeConstituents": "Tannic acid (50-70%), gallic acid, ellagic acid",
+      "safetyClassification": "External use preferred. Internal use in small amounts only; high tannin content can irritate digestive tract.",
+      "dosageGuidelines": "External: decoction for washes, gargles, or compresses. Internal: very small doses under guidance."
+    },
+    "corn poppy": {
+      "description": "The corn poppy (red poppy) is a gentle sedative flower used traditionally for coughs, insomnia, and mild pain. Unlike opium poppy, it contains no morphine.",
+      "ml": "Mild sedative, expectorant, demulcent, antitussive",
+      "family": "Papaveraceae",
+      "scientificName": "Papaver rhoeas",
+      "usages": "Coughs, mild insomnia, anxiety, respiratory irritation",
+      "activeConstituents": "Rhoeadine, papaverine (trace), anthocyanins, mucilage",
+      "safetyClassification": "Generally safe in moderate amounts. Avoid in pregnancy. Not narcotic like opium poppy.",
+      "dosageGuidelines": "Dried petals: 1-2g as tea. Syrup: 1-2 tsp as needed for cough."
+    },
+    "red poppy": {
+      "description": "See 'corn poppy' - a gentle sedative flower used for coughs and mild insomnia.",
+      "ml": "Mild sedative, expectorant, demulcent, antitussive",
+      "family": "Papaveraceae",
+      "scientificName": "Papaver rhoeas",
+      "usages": "Coughs, mild insomnia, anxiety, respiratory irritation",
+      "activeConstituents": "Rhoeadine, papaverine (trace), anthocyanins, mucilage",
+      "safetyClassification": "Generally safe in moderate amounts. Avoid in pregnancy.",
+      "dosageGuidelines": "Dried petals: 1-2g as tea. Syrup: 1-2 tsp as needed."
+    },
+    "apple cider vinegar": {
+      "description": "Fermented apple juice used as a digestive tonic and topical remedy. Contains acetic acid and beneficial enzymes when raw and unfiltered.",
+      "ml": "Digestive stimulant, antimicrobial, alkalizing (metabolically)",
+      "family": "N/A (fermented product)",
+      "scientificName": "Malus domestica (fermented)",
+      "usages": "Digestive aid, blood sugar support, topical antiseptic, hair rinse, skin toner",
+      "activeConstituents": "Acetic acid (5-6%), malic acid, enzymes, probiotics (in raw form)",
+      "safetyClassification": "Generally safe diluted. Undiluted use can damage tooth enamel and irritate throat/stomach.",
+      "dosageGuidelines": "Internal: 1-2 tbsp diluted in water before meals. Topical: diluted 1:1 or more with water."
+    },
+    "castor oil": {
+      "description": "A thick oil pressed from castor beans, used externally as an emollient and traditionally in packs for inflammation. Internally it is a strong laxative.",
+      "ml": "Emollient, laxative (internal), anti-inflammatory (external)",
+      "family": "Euphorbiaceae",
+      "scientificName": "Ricinus communis",
+      "usages": "External: skin softening, castor oil packs, hair conditioning. Internal: constipation (short-term only)",
+      "activeConstituents": "Ricinoleic acid (85-95%), oleic acid, linoleic acid",
+      "safetyClassification": "External use safe. Internal use: strong purgative—avoid in pregnancy, intestinal obstruction. Seeds are toxic (ricin).",
+      "dosageGuidelines": "External: as needed. Internal laxative: 15-60ml single dose (adults)—not for regular use."
+    },
+    "icelandic moss": {
+      "description": "A lichen (not a true moss) used for respiratory and digestive complaints. Rich in mucilage and bitter compounds.",
+      "ml": "Demulcent, expectorant, bitter tonic, antimicrobial",
+      "family": "Parmeliaceae",
+      "scientificName": "Cetraria islandica",
+      "usages": "Coughs, bronchitis, sore throat, digestive weakness, appetite stimulation",
+      "activeConstituents": "Lichenin (mucilage), isolichenin, usnic acid, fumarprotocetraric acid",
+      "safetyClassification": "Generally safe. Some preparations may contain lead from environment—source carefully.",
+      "dosageGuidelines": "Tea/decoction: 2-6g dried lichen. Lozenges: as directed. Soak to remove bitterness if desired."
+    },
+    "reindeer moss": {
+      "description": "See 'icelandic moss' - a lichen used for respiratory and digestive support.",
+      "ml": "Demulcent, expectorant, bitter tonic, antimicrobial",
+      "family": "Parmeliaceae",
+      "scientificName": "Cetraria islandica",
+      "usages": "Coughs, bronchitis, sore throat, digestive weakness",
+      "activeConstituents": "Lichenin, isolichenin, usnic acid",
+      "safetyClassification": "Generally safe when properly sourced.",
+      "dosageGuidelines": "Tea/decoction: 2-6g dried lichen."
+    },
+    "yeast": {
+      "description": "A single-celled fungus used in fermentation. Nutritional yeast and brewer's yeast are rich in B vitamins and used as supplements.",
+      "ml": "Nutritive, probiotic (some strains), B-vitamin source",
+      "family": "Saccharomycetaceae",
+      "scientificName": "Saccharomyces cerevisiae",
+      "usages": "Fermentation, B-vitamin supplementation, digestive support, skin health",
+      "activeConstituents": "B vitamins (B1, B2, B3, B6, B9), protein, beta-glucans, minerals",
+      "safetyClassification": "Generally safe. Avoid in those with yeast sensitivity or taking MAOIs (high tyramine in some forms).",
+      "dosageGuidelines": "Nutritional yeast: 1-2 tbsp daily. Brewer's yeast: 1-2 tbsp or as supplement directs."
+    },
+    "water mint": {
+      "description": "A wild mint species growing near water, with similar properties to peppermint. Used for digestive complaints and headaches.",
+      "ml": "Carminative, antispasmodic, cooling, mild analgesic",
+      "family": "Lamiaceae",
+      "scientificName": "Mentha aquatica",
+      "usages": "Digestive upset, nausea, headache, respiratory congestion, flavoring",
+      "activeConstituents": "Menthol, menthone, limonene, cineole",
+      "safetyClassification": "Generally safe. Avoid in GERD (may worsen reflux). Use caution with gallstones.",
+      "dosageGuidelines": "Fresh leaves: 2-4g as tea. Dried: 1-2g. Essential oil: diluted topically only."
+    },
+    "pimpinella anisum": {
+      "description": "Aniseed plant, the source of anise seeds. Used for digestive complaints, coughs, and as a galactagogue.",
+      "ml": "Carminative, expectorant, galactagogue, antispasmodic",
+      "family": "Apiaceae",
+      "scientificName": "Pimpinella anisum",
+      "usages": "Digestive complaints, coughs, promoting milk production, flavoring",
+      "activeConstituents": "Anethole (80-90%), estragole, anise ketone, coumarins",
+      "safetyClassification": "Generally safe in culinary amounts. High doses may have estrogenic effects. Avoid essential oil in pregnancy.",
+      "dosageGuidelines": "Seeds: 1-5g crushed as tea. Essential oil: 0.05-0.2ml diluted (with caution)."
+    },
+    "aquavit": {
+      "description": "A Scandinavian spirit flavored with caraway, dill, and other botanicals. Used traditionally as a digestive aid.",
+      "ml": "Carminative (via botanicals), digestive stimulant",
+      "family": "N/A (distilled spirit)",
+      "scientificName": "N/A",
+      "usages": "Digestive aid (small amounts), flavoring, ceremonial use",
+      "activeConstituents": "Ethanol, caraway oils, dill oils (varies by recipe)",
+      "safetyClassification": "Alcoholic beverage - all standard alcohol cautions apply. Avoid in pregnancy, liver disease.",
+      "dosageGuidelines": "Small amounts as digestive (1-2 oz). Not for medicinal use in large quantities."
+    },
+    "rose hips": {
+      "description": "The fruit of the rose plant, extremely rich in vitamin C. Used for immune support and as a mild laxative.",
+      "ml": "Nutritive, mild laxative, anti-inflammatory, antioxidant",
+      "family": "Rosaceae",
+      "scientificName": "Rosa canina / Rosa spp.",
+      "usages": "Vitamin C supplementation, immune support, arthritis, skin health",
+      "activeConstituents": "Vitamin C (0.5-1.7%), carotenoids, flavonoids, galactolipids, polyphenols",
+      "safetyClassification": "Generally safe. High doses may cause digestive upset. Remove hairs before consuming (irritating).",
+      "dosageGuidelines": "Dried: 2-5g as tea. Powder: 5-10g daily. Syrup: 1-2 tsp as needed."
+    },
+    "rose petals": {
+      "description": "Fragrant flower petals used for emotional support, skin care, and gentle digestion. Mildly astringent and cooling.",
+      "ml": "Nervine, astringent, anti-inflammatory, cooling",
+      "family": "Rosaceae",
+      "scientificName": "Rosa spp.",
+      "usages": "Emotional support, skin care, sore throat, mild digestive upset, eye wash",
+      "activeConstituents": "Tannins, flavonoids, anthocyanins, geraniol, citronellol",
+      "safetyClassification": "Generally safe. Use only unsprayed, organic petals for internal use.",
+      "dosageGuidelines": "Dried petals: 1-2g as tea. Rose water: as desired. Infused honey: 1-2 tsp."
     }
   }
 }

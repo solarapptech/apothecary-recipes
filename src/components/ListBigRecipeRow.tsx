@@ -255,7 +255,7 @@ export function ListBigRecipeRow({
   const [imageIndex, setImageIndex] = useState(0);
   const [carouselWidth, setCarouselWidth] = useState(0);
   const [ingredientsExpanded, setIngredientsExpanded] = useState(false);
-  const [activeIngredientId, setActiveIngredientId] = useState<string | null>(null);
+  const [activeIngredientIds, setActiveIngredientIds] = useState<Set<string>>(() => new Set());
   const [ingredientImageModalVisible, setIngredientImageModalVisible] = useState(false);
   const [ingredientImageModalSource, setIngredientImageModalSource] = useState<any>(null);
   const [ingredientImageModalId, setIngredientImageModalId] = useState<string | null>(null);
@@ -303,11 +303,21 @@ export function ListBigRecipeRow({
       const normalizedKey = normalizeIngredientKey(trimmed);
       const detail = getIngredientMetadata(trimmed);
       const isCommon = isSkippedIngredient(trimmed);
-      const imageId = isCommon
-        ? getCommonIngredientImageId(trimmed)
-        : ingredientImageIds[imageIdIndex] ?? null;
 
-      if (!isCommon) {
+      // Always check for common ingredient image first
+      const commonImageId = getCommonIngredientImageId(trimmed);
+      const hasCommonImage = hasIngredientImage(commonImageId);
+
+      let imageId: string | null;
+      if (hasCommonImage) {
+        // Use common image if available (regardless of isCommon status)
+        imageId = commonImageId;
+      } else if (isCommon) {
+        // Skipped ingredient without common image
+        imageId = null;
+      } else {
+        // Non-skipped ingredient: use recipe-specific image
+        imageId = ingredientImageIds[imageIdIndex] ?? null;
         imageIdIndex += 1;
       }
 
@@ -327,28 +337,36 @@ export function ListBigRecipeRow({
       setImageModalVisible(false);
       setAttributionVisible(false);
       setIngredientsExpanded(false);
-      setActiveIngredientId(null);
+      setActiveIngredientIds(new Set());
     }
   }, [detailsMode]);
 
   useEffect(() => {
     setImageIndex(0);
     setIngredientsExpanded(false);
-    setActiveIngredientId(null);
+    setActiveIngredientIds(new Set());
   }, [recipeId]);
 
   const handleIngredientsToggle = () => {
     setIngredientsExpanded((prev) => {
       const next = !prev;
       if (!next) {
-        setActiveIngredientId(null);
+        setActiveIngredientIds(new Set());
       }
       return next;
     });
   };
 
   const handleIngredientPress = (rowId: string) => {
-    setActiveIngredientId((prev) => (prev === rowId ? null : rowId));
+    setActiveIngredientIds((prev) => {
+      const next = new Set(prev);
+      if (next.has(rowId)) {
+        next.delete(rowId);
+        return next;
+      }
+      next.add(rowId);
+      return next;
+    });
   };
 
   useEffect(() => {
@@ -859,37 +877,39 @@ export function ListBigRecipeRow({
                 style={styles.ingredientsGroupRow}
               >
                 {!ingredientsExpanded ? (
-                  <WavePressable
-                    accessibilityRole="button"
-                    accessibilityLabel="Show ingredients"
-                    onPress={handleIngredientsToggle}
-                    style={styles.ingredientsTogglePressable}
-                    testID={`list-big-recipe-row-ingredients-toggle-${recipeId}`}
-                    reduceMotionEnabled={reduceMotionEnabled}
-                  >
-                    <View style={styles.ingredientsHeader}>
-                      <View style={styles.ingredientsHeaderLeft}>
-                        <FieldIcon name="ingredients" size={18} />
-                        <Text style={styles.ingredientsHeaderLabel}>Ingredients</Text>
+                  <>
+                    <WavePressable
+                      accessibilityRole="button"
+                      accessibilityLabel="Show ingredients"
+                      onPress={handleIngredientsToggle}
+                      style={styles.ingredientsTogglePressable}
+                      testID={`list-big-recipe-row-ingredients-toggle-${recipeId}`}
+                      reduceMotionEnabled={reduceMotionEnabled}
+                    >
+                      <View style={styles.ingredientsHeader}>
+                        <View style={styles.ingredientsHeaderLeft}>
+                          <FieldIcon name="ingredients" size={18} />
+                          <Text style={styles.ingredientsHeaderLabel}>Ingredients</Text>
+                        </View>
+                        <View style={styles.ingredientsHeaderRight}>
+                          <Text style={styles.ingredientsHeaderCount}>
+                            {ingredientRows.length ? `${ingredientRows.length} items` : '0 items'}
+                          </Text>
+                          <Svg width={18} height={18} viewBox="0 0 24 24">
+                            <Path
+                              d="M7 10l5 5 5-5"
+                              fill="none"
+                              stroke={theme.colors.brand.primaryStrong}
+                              strokeWidth={2}
+                              strokeLinecap="round"
+                              strokeLinejoin="round"
+                            />
+                          </Svg>
+                        </View>
                       </View>
-                      <View style={styles.ingredientsHeaderRight}>
-                        <Text style={styles.ingredientsHeaderCount}>
-                          {ingredientRows.length ? `${ingredientRows.length} items` : '0 items'}
-                        </Text>
-                        <Svg width={18} height={18} viewBox="0 0 24 24">
-                          <Path
-                            d="M7 10l5 5 5-5"
-                            fill="none"
-                            stroke={theme.colors.brand.primaryStrong}
-                            strokeWidth={2}
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                          />
-                        </Svg>
-                      </View>
-                    </View>
-                    <Text style={styles.ingredientsSummaryText}>{ingredientsSummary}</Text>
-                  </WavePressable>
+                    </WavePressable>
+                    <Text style={styles.ingredientsSummaryText} selectable>{ingredientsSummary}</Text>
+                  </>
                 ) : (
                   <>
                     <WavePressable
@@ -930,7 +950,7 @@ export function ListBigRecipeRow({
                         <Text style={styles.ingredientsEmptyText}>No ingredients listed.</Text>
                       ) : (
                         ingredientRows.map((row) => {
-                          const isActive = !row.isCommon && activeIngredientId === row.id;
+                          const isActive = !row.isCommon && activeIngredientIds.has(row.id);
                           const canExpand = !row.isCommon;
                           const IngredientHeader = canExpand ? WavePressable : View;
 
@@ -1021,9 +1041,9 @@ export function ListBigRecipeRow({
                                     label="Profile"
                                     value={formatIngredientValue(row.detail.description)}
                                     variant="grouped"
-                                    showDivider
                                     collapsible
                                     defaultCollapsed={false}
+                                    tone="accent"
                                     reduceMotionEnabled={reduceMotionEnabled}
                                   />
                                   <SecondaryFieldRow
@@ -1031,9 +1051,9 @@ export function ListBigRecipeRow({
                                     label="Medicinal language"
                                     value={formatIngredientValue(row.detail.ml)}
                                     variant="grouped"
-                                    showDivider
                                     collapsible
                                     defaultCollapsed={false}
+                                    tone="accent"
                                     reduceMotionEnabled={reduceMotionEnabled}
                                   />
                                   <SecondaryFieldRow
@@ -1041,9 +1061,9 @@ export function ListBigRecipeRow({
                                     label="Family"
                                     value={formatIngredientValue(row.detail.family)}
                                     variant="grouped"
-                                    showDivider
                                     collapsible
                                     defaultCollapsed={false}
+                                    tone="accent"
                                     reduceMotionEnabled={reduceMotionEnabled}
                                   />
                                   <SecondaryFieldRow
@@ -1051,9 +1071,9 @@ export function ListBigRecipeRow({
                                     label="Scientific name"
                                     value={formatIngredientValue(row.detail.scientificName)}
                                     variant="grouped"
-                                    showDivider
                                     collapsible
                                     defaultCollapsed={false}
+                                    tone="accent"
                                     reduceMotionEnabled={reduceMotionEnabled}
                                   />
                                   <SecondaryFieldRow
@@ -1061,9 +1081,9 @@ export function ListBigRecipeRow({
                                     label="Therapeutic actions"
                                     value={formatIngredientValue(row.detail.usages)}
                                     variant="grouped"
-                                    showDivider
                                     collapsible
                                     defaultCollapsed={false}
+                                    tone="accent"
                                     reduceMotionEnabled={reduceMotionEnabled}
                                   />
                                   <SecondaryFieldRow
@@ -1071,9 +1091,9 @@ export function ListBigRecipeRow({
                                     label="Active constituents"
                                     value={formatIngredientValue(row.detail.activeConstituents)}
                                     variant="grouped"
-                                    showDivider
                                     collapsible
                                     defaultCollapsed={false}
+                                    tone="accent"
                                     reduceMotionEnabled={reduceMotionEnabled}
                                   />
                                   <SecondaryFieldRow
@@ -1081,9 +1101,9 @@ export function ListBigRecipeRow({
                                     label="Safety classification"
                                     value={formatIngredientValue(row.detail.safetyClassification)}
                                     variant="grouped"
-                                    showDivider
                                     collapsible
                                     defaultCollapsed={false}
+                                    tone="accent"
                                     reduceMotionEnabled={reduceMotionEnabled}
                                   />
                                   <SecondaryFieldRow
@@ -1093,6 +1113,7 @@ export function ListBigRecipeRow({
                                     variant="grouped"
                                     collapsible
                                     defaultCollapsed={false}
+                                    tone="accent"
                                     reduceMotionEnabled={reduceMotionEnabled}
                                   />
                                 </Animated.View>
@@ -1134,10 +1155,10 @@ export function ListBigRecipeRow({
                       />
                     </Svg>
                   </View>
-                  {!usageExpanded && usage.summary?.trim() ? (
-                    <Text style={styles.usageSummaryText} numberOfLines={2}>{usage.summary}</Text>
-                  ) : null}
                 </WavePressable>
+                {!usageExpanded && usage.summary?.trim() ? (
+                  <Text style={styles.usageSummaryText} numberOfLines={2} selectable>{usage.summary}</Text>
+                ) : null}
                 {usageExpanded ? (
                   <Animated.View
                     entering={reduceMotionEnabled ? undefined : FadeInDown.duration(ingredientAnimDuration)}
@@ -1146,31 +1167,31 @@ export function ListBigRecipeRow({
                     style={styles.usageDetailPanel}
                   >
                     {usage.summary?.trim() ? (
-                      <Text style={styles.usageFullSummary}>{usage.summary}</Text>
+                      <Text style={styles.usageFullSummary} selectable>{usage.summary}</Text>
                     ) : null}
                     <View style={[styles.usageGrid, isCompactUsageLayout && styles.usageGridCompact]}>
                       {usage.dosage?.trim() ? (
                         <View style={[styles.usageGridItem, isCompactUsageLayout && styles.usageGridItemCompact]}>
                           <Text style={styles.usageGridLabel}>Dosage</Text>
-                          <Text style={styles.usageGridValue}>{usage.dosage}</Text>
+                          <Text style={styles.usageGridValue} selectable>{usage.dosage}</Text>
                         </View>
                       ) : null}
                       {usage.frequency?.trim() ? (
                         <View style={[styles.usageGridItem, isCompactUsageLayout && styles.usageGridItemCompact]}>
                           <Text style={styles.usageGridLabel}>Frequency</Text>
-                          <Text style={styles.usageGridValue}>{usage.frequency}</Text>
+                          <Text style={styles.usageGridValue} selectable>{usage.frequency}</Text>
                         </View>
                       ) : null}
                       {usage.maxDuration?.trim() ? (
                         <View style={[styles.usageGridItem, isCompactUsageLayout && styles.usageGridItemCompact]}>
                           <Text style={styles.usageGridLabel}>Max Duration</Text>
-                          <Text style={styles.usageGridValue}>{usage.maxDuration}</Text>
+                          <Text style={styles.usageGridValue} selectable>{usage.maxDuration}</Text>
                         </View>
                       ) : null}
                       {usage.applicationAreas?.trim() ? (
                         <View style={[styles.usageGridItem, isCompactUsageLayout && styles.usageGridItemCompact]}>
                           <Text style={styles.usageGridLabel}>Application Areas</Text>
-                          <Text style={styles.usageGridValue}>{usage.applicationAreas}</Text>
+                          <Text style={styles.usageGridValue} selectable>{usage.applicationAreas}</Text>
                         </View>
                       ) : null}
                     </View>
@@ -1178,7 +1199,7 @@ export function ListBigRecipeRow({
                       <View style={styles.usageBestPractices}>
                         <Text style={styles.usageBestPracticesLabel}>Best Practices</Text>
                         {splitBestPractices(usage.bestPractices).map((line, idx) => (
-                          <Text key={idx} style={styles.usageBestPracticesItem}>• {line}</Text>
+                          <Text key={idx} style={styles.usageBestPracticesItem} selectable>• {line}</Text>
                         ))}
                       </View>
                     ) : null}
@@ -1227,32 +1248,32 @@ export function ListBigRecipeRow({
                       {storage.yield?.trim() ? (
                         <View style={styles.storageGridItem}>
                           <Text style={styles.storageGridLabel}>Yield</Text>
-                          <Text style={styles.storageGridValue}>{storage.yield}</Text>
+                          <Text style={styles.storageGridValue} selectable>{storage.yield}</Text>
                         </View>
                       ) : null}
                       {storage.shelfLife?.trim() ? (
                         <View style={styles.storageGridItem}>
                           <Text style={styles.storageGridLabel}>Shelf Life</Text>
-                          <Text style={styles.storageGridValue}>{storage.shelfLife}</Text>
+                          <Text style={styles.storageGridValue} selectable>{storage.shelfLife}</Text>
                         </View>
                       ) : null}
                       {storage.costEstimate?.trim() ? (
                         <View style={styles.storageGridItem}>
                           <Text style={styles.storageGridLabel}>Cost Estimate</Text>
-                          <Text style={styles.storageGridValue}>{storage.costEstimate}</Text>
+                          <Text style={styles.storageGridValue} selectable>{storage.costEstimate}</Text>
                         </View>
                       ) : null}
                       {storage.storageTemp?.trim() ? (
                         <View style={styles.storageGridItem}>
                           <Text style={styles.storageGridLabel}>Storage Temp</Text>
-                          <Text style={styles.storageGridValue}>{storage.storageTemp}</Text>
+                          <Text style={styles.storageGridValue} selectable>{storage.storageTemp}</Text>
                         </View>
                       ) : null}
                     </View>
                     {storage.spoilageIndicators?.trim() ? (
                       <View style={styles.storageSpoilage}>
                         <Text style={styles.storageSpoilageLabel}>Spoilage Indicators</Text>
-                        <Text style={styles.storageSpoilageValue}>{storage.spoilageIndicators}</Text>
+                        <Text style={styles.storageSpoilageValue} selectable>{storage.spoilageIndicators}</Text>
                       </View>
                     ) : null}
                   </Animated.View>
@@ -1288,12 +1309,12 @@ export function ListBigRecipeRow({
                       />
                     </Svg>
                   </View>
-                  {!equipmentExpanded ? (
-                    <Text style={styles.equipmentSummaryText} numberOfLines={2}>
-                      {equipmentNeeded.length > 0 ? equipmentNeeded.join(', ') : 'No equipment listed.'}
-                    </Text>
-                  ) : null}
                 </WavePressable>
+                {!equipmentExpanded ? (
+                  <Text style={styles.equipmentSummaryText} numberOfLines={2} selectable>
+                    {equipmentNeeded.length > 0 ? equipmentNeeded.join(', ') : 'No equipment listed.'}
+                  </Text>
+                ) : null}
                 {equipmentExpanded ? (
                   <Animated.View
                     entering={reduceMotionEnabled ? undefined : FadeInDown.duration(ingredientAnimDuration)}
@@ -1305,7 +1326,7 @@ export function ListBigRecipeRow({
                       <View style={styles.equipmentChips}>
                         {equipmentNeeded.map((item, idx) => (
                           <View key={idx} style={styles.equipmentChip}>
-                            <Text style={styles.equipmentChipText}>{item}</Text>
+                            <Text style={styles.equipmentChipText} selectable>{item}</Text>
                           </View>
                         ))}
                       </View>
@@ -1593,7 +1614,8 @@ export function ListBigRecipeRow({
                   />
                 ) : null}
               </View>
-              {ingredientImageModalId?.startsWith('etc:') ? (
+              <View style={styles.modalActionsRow}>
+                <View />
                 <Pressable
                   accessibilityRole="button"
                   accessibilityLabel="Show image attribution"
@@ -1602,7 +1624,7 @@ export function ListBigRecipeRow({
                 >
                   <Text style={styles.attributionButtonText}>Attribution</Text>
                 </Pressable>
-              ) : null}
+              </View>
             </View>
           </ModalCardBackground>
         </Pressable>
@@ -1629,28 +1651,56 @@ export function ListBigRecipeRow({
             >
               <Text style={styles.attributionTitle}>Image Attribution</Text>
               {(() => {
-                const ingredientAttr = commonIngredientAttributionData.ingredients.find(
-                  (item) => item.imageId === ingredientImageModalId
-                );
-                if (!ingredientAttr) {
+                // Check for common ingredient attribution (etc: prefix)
+                if (ingredientImageModalId?.startsWith('etc:')) {
+                  const ingredientAttr = commonIngredientAttributionData.ingredients.find(
+                    (item) => item.imageId === ingredientImageModalId
+                  );
+                  if (!ingredientAttr) {
+                    return <Text style={styles.attributionValue}>No attribution data available.</Text>;
+                  }
+                  return (
+                    <>
+                      {renderAttributionRow('Title', ingredientAttr.title)}
+                      {renderAttributionRow('Creator', ingredientAttr.creator)}
+                      {renderAttributionRow(
+                        'Source',
+                        ingredientAttr.source,
+                        isLinkValue(ingredientAttr.source) ? ingredientAttr.source : undefined
+                      )}
+                      {renderAttributionRow('License', ingredientAttr.license)}
+                      {renderAttributionRow(
+                        'License URL',
+                        ingredientAttr.licenseUrl,
+                        isLinkValue(ingredientAttr.licenseUrl) ? ingredientAttr.licenseUrl : undefined
+                      )}
+                      {renderAttributionRow('Changes', ingredientAttr.changes)}
+                    </>
+                  );
+                }
+                // Regular ingredient image - look up from recipe attribution data
+                const recipeAttribution = attributionData.recipes.find((recipe) => recipe.recipeNumber === recipeId);
+                const imageNumber = ingredientImageModalId ? parseInt(ingredientImageModalId, 10) : null;
+                const regularAttr = recipeAttribution?.images.find((img) => img.imageNumber === imageNumber);
+                if (!regularAttr) {
                   return <Text style={styles.attributionValue}>No attribution data available.</Text>;
                 }
                 return (
                   <>
-                    {renderAttributionRow('Title', ingredientAttr.title)}
-                    {renderAttributionRow('Creator', ingredientAttr.creator)}
+                    {renderAttributionRow('Title', regularAttr.title)}
+                    {renderAttributionRow('Creator', regularAttr.creator)}
                     {renderAttributionRow(
                       'Source',
-                      ingredientAttr.source,
-                      isLinkValue(ingredientAttr.source) ? ingredientAttr.source : undefined
+                      regularAttr.source,
+                      isLinkValue(regularAttr.source) ? regularAttr.source : undefined
                     )}
-                    {renderAttributionRow('License', ingredientAttr.license)}
+                    {renderAttributionRow('License', regularAttr.license)}
                     {renderAttributionRow(
                       'License URL',
-                      ingredientAttr.licenseUrl,
-                      isLinkValue(ingredientAttr.licenseUrl) ? ingredientAttr.licenseUrl : undefined
+                      regularAttr.licenseUrl,
+                      isLinkValue(regularAttr.licenseUrl) ? regularAttr.licenseUrl : undefined
                     )}
-                    {renderAttributionRow('Changes', ingredientAttr.changes)}
+                    {renderAttributionRow('Changes', regularAttr.changes)}
                   </>
                 );
               })()}
@@ -2005,8 +2055,11 @@ const styles = StyleSheet.create({
     color: theme.colors.brand.primary,
   },
   ingredientDetailPanel: {
-    backgroundColor: theme.colors.surface.paper,
-    borderRadius: 12,
+    backgroundColor: 'rgba(168, 202, 160, 0.22)',
+    borderTopLeftRadius: 10,
+    borderTopRightRadius: 10,
+    borderBottomLeftRadius: 10,
+    borderBottomRightRadius: 10,
     overflow: 'hidden',
   },
   ingredientImageCollapsed: {

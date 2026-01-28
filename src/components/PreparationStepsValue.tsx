@@ -22,7 +22,11 @@ export function PreparationStepsValue({ value }: PreparationStepsValueProps) {
   return (
     <View style={styles.container}>
       {parts.map((part, index) => (
-        <Text key={`${index}-${part.slice(0, 10)}`} style={[styles.stepText, index > 0 && styles.stepSpacing]}>
+        <Text
+          key={`${index}-${part.slice(0, 10)}`}
+          style={[styles.stepText, index > 0 && styles.stepSpacing]}
+          selectable
+        >
           {part.trim()}
         </Text>
       ))}
