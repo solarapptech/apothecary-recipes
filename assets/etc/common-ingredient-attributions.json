@@ -1,0 +1,180 @@
+{
+  "ingredients": [
+    {
+      "slug": "water",
+      "name": "water",
+      "imageId": "etc:water",
+      "title": "Water_pouring_from_a_faucet_into_a_clear_glass_cup._(15054813052).jpg",
+      "creator": "USEPA Environmental-Protection-Agency",
+      "source": "https://commons.wikimedia.org/wiki/File:Water_pouring_from_a_faucet_into_a_clear_glass_cup._(15054813052).jpg",
+      "license": "Public domain",
+      "licenseUrl": "",
+      "changes": "Resized to 512x512"
+    },
+    {
+      "slug": "boiling-water",
+      "name": "boiling water",
+      "imageId": "etc:boiling-water",
+      "title": "Boiling_water.jpg",
+      "creator": "GRAN",
+      "source": "https://commons.wikimedia.org/wiki/File:Boiling_water.jpg",
+      "license": "CC BY 3.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by/3.0",
+      "changes": "Resized to 512x512"
+    },
+    {
+      "slug": "brandy-spirit",
+      "name": "Brandy spirit",
+      "imageId": "etc:brandy-spirit",
+      "title": "Glass_of_brandy_cropped.jpg",
+      "creator": "Mike Finn",
+      "source": "https://commons.wikimedia.org/wiki/File:Glass_of_brandy_cropped.jpg",
+      "license": "CC BY 2.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by/2.0",
+      "changes": "Resized to 512x512"
+    },
+    {
+      "slug": "cane-sugar",
+      "name": "Cane Sugar",
+      "imageId": "etc:cane-sugar",
+      "title": "Indein,_Sugarcane,_Cane_sugar,_Shan_State,_Myanmar.jpg",
+      "creator": "Vyacheslav Argenberg",
+      "source": "https://commons.wikimedia.org/wiki/File:Indein%2C_Sugarcane%2C_Cane_sugar%2C_Shan_State%2C_Myanmar.jpg",
+      "license": "CC BY 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by/4.0",
+      "changes": "Resized to 512x512"
+    },
+    {
+      "slug": "cane-sugar",
+      "name": "Cane Sugar (Or Honey)",
+      "imageId": "etc:cane-sugar",
+      "title": "Indein,_Sugarcane,_Cane_sugar,_Shan_State,_Myanmar.jpg",
+      "creator": "Vyacheslav Argenberg",
+      "source": "https://commons.wikimedia.org/wiki/File:Indein%2C_Sugarcane%2C_Cane_sugar%2C_Shan_State%2C_Myanmar.jpg",
+      "license": "CC BY 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by/4.0",
+      "changes": "Resized to 512x512"
+    },
+    {
+      "slug": "coarse-sea-salt",
+      "name": "Coarse Sea Salt",
+      "imageId": "etc:coarse-sea-salt",
+      "title": "Sea_Salt_-_Macro_(51840172425).jpg",
+      "creator": "ajay_suresh",
+      "source": "https://commons.wikimedia.org/wiki/File:Sea_Salt_-_Macro_(51840172425).jpg",
+      "license": "CC BY 2.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by/2.0",
+      "changes": "Resized to 512x512"
+    },
+    {
+      "slug": "distilled-water",
+      "name": "Distilled Water",
+      "imageId": "etc:distilled-water",
+      "title": "Sterile_distilled_water_01.JPG",
+      "creator": "Saltanat ebli",
+      "source": "https://commons.wikimedia.org/wiki/File:Sterile_distilled_water_01.JPG",
+      "license": "CC0",
+      "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+      "changes": "Resized to 512x512"
+    },
+    {
+      "slug": "egg-white",
+      "name": "Egg White",
+      "imageId": "etc:egg-white",
+      "title": "Bowl_of_egg_whites_no_bg.png",
+      "creator": "Douglas P Perkins",
+      "source": "https://commons.wikimedia.org/wiki/File:Bowl_of_egg_whites_no_bg.png",
+      "license": "CC BY-SA 3.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+      "changes": "Resized to 512x512"
+    },
+    {
+      "slug": "grain-spirit",
+      "name": "Grain Spirit",
+      "imageId": "etc:grain-spirit",
+      "title": "Cilíndrica_botella_de_agua_con_tapa_negra.jpg",
+      "creator": "ELTORO.VET",
+      "source": "https://commons.wikimedia.org/wiki/File:Cil%C3%ADndrica_botella_de_agua_con_tapa_negra.jpg",
+      "license": "CC0",
+      "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+      "changes": "Resized to 512x512"
+    },
+    {
+      "slug": "red-wine",
+      "name": "Red Wine",
+      "imageId": "etc:red-wine",
+      "title": "Red_Wine_Glass.jpg",
+      "creator": "André Karwath aka Aka",
+      "source": "https://commons.wikimedia.org/wiki/File:Red_Wine_Glass.jpg",
+      "license": "CC BY-SA 3.0",
+      "licenseUrl": "http://creativecommons.org/licenses/by-sa/3.0/",
+      "changes": "Resized to 512x512"
+    },
+    {
+      "slug": "dry-red-wine",
+      "name": "Dry Red Wine",
+      "imageId": "etc:dry-red-wine",
+      "title": "Red_Wine_Glass.jpg",
+      "creator": "André Karwath aka Aka",
+      "source": "https://commons.wikimedia.org/wiki/File:Red_Wine_Glass.jpg",
+      "license": "CC BY-SA 3.0",
+      "licenseUrl": "http://creativecommons.org/licenses/by-sa/3.0/",
+      "changes": "Resized to 512x512"
+    },
+    {
+      "slug": "sugar-syrup",
+      "name": "Sugar Syrup",
+      "imageId": "etc:sugar-syrup",
+      "title": "Maltose_syrup.jpg",
+      "creator": "FotoosVanRobin from Netherlands",
+      "source": "https://commons.wikimedia.org/wiki/File:Maltose_syrup.jpg",
+      "license": "CC BY-SA 2.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0",
+      "changes": "Resized to 512x512"
+    },
+    {
+      "slug": "vodka-brandy",
+      "name": "Vodka/Brandy",
+      "imageId": "etc:vodka-brandy",
+      "title": "Cilíndrica_botella_de_agua_con_tapa_negra.jpg",
+      "creator": "ELTORO.VET",
+      "source": "https://commons.wikimedia.org/wiki/File:Cil%C3%ADndrica_botella_de_agua_con_tapa_negra.jpg",
+      "license": "CC0",
+      "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+      "changes": "Resized to 512x512"
+    },
+    {
+      "slug": "white-wine",
+      "name": "White Wine",
+      "imageId": "etc:white-wine",
+      "title": "White_Wine_Glas.jpg",
+      "creator": "André Karwath aka Aka",
+      "source": "https://commons.wikimedia.org/wiki/File:White_Wine_Glas.jpg",
+      "license": "CC BY-SA 2.5",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.5",
+      "changes": "Resized to 512x512"
+    },
+    {
+      "slug": "dry-white-wine",
+      "name": "Dry White Wine",
+      "imageId": "etc:dry-white-wine",
+      "title": "White_Wine_Glas.jpg",
+      "creator": "André Karwath aka Aka",
+      "source": "https://commons.wikimedia.org/wiki/File:White_Wine_Glas.jpg",
+      "license": "CC BY-SA 2.5",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.5",
+      "changes": "Resized to 512x512"
+    },
+    {
+      "slug": "yeast",
+      "name": "Yeast (or Rye Bread Starter)",
+      "imageId": "etc:yeast",
+      "title": "100%_Rye_Bread_(5752657009).jpg",
+      "creator": "Veganbaking.net from USA",
+      "source": "https://commons.wikimedia.org/wiki/File:100%25_Rye_Bread_(5752657009).jpg",
+      "license": "CC BY-SA 2.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0",
+      "changes": "Resized to 512x512"
+    }
+  ]
+}

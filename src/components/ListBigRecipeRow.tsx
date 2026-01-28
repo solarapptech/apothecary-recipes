@@ -78,6 +78,24 @@ type AttributionData = {
 
 const attributionData = require('../../assets/herbs/image-attributions.json') as AttributionData;
 
+type CommonIngredientAttribution = {
+  slug: string;
+  name: string;
+  imageId: string;
+  title: string;
+  creator: string;
+  source: string;
+  license: string;
+  licenseUrl: string;
+  changes: string;
+};
+
+type CommonIngredientAttributionData = {
+  ingredients: CommonIngredientAttribution[];
+};
+
+const commonIngredientAttributionData = require('../../assets/etc/common-ingredient-attributions.json') as CommonIngredientAttributionData;
+
 const EMPTY_TEXT = '—';
 
 type IngredientDetail = {
@@ -240,6 +258,8 @@ export function ListBigRecipeRow({
   const [activeIngredientId, setActiveIngredientId] = useState<string | null>(null);
   const [ingredientImageModalVisible, setIngredientImageModalVisible] = useState(false);
   const [ingredientImageModalSource, setIngredientImageModalSource] = useState<any>(null);
+  const [ingredientImageModalId, setIngredientImageModalId] = useState<string | null>(null);
+  const [ingredientAttributionVisible, setIngredientAttributionVisible] = useState(false);
   const [usageExpanded, setUsageExpanded] = useState(false);
   const [storageExpanded, setStorageExpanded] = useState(false);
   const [equipmentExpanded, setEquipmentExpanded] = useState(false);
@@ -945,6 +965,7 @@ export function ListBigRecipeRow({
                                       const source = getIngredientImageSource(row.imageId);
                                       if (source) {
                                         setIngredientImageModalSource(source);
+                                        setIngredientImageModalId(row.imageId);
                                         setIngredientImageModalVisible(true);
                                       }
                                     }}
@@ -1544,11 +1565,17 @@ export function ListBigRecipeRow({
       visible={ingredientImageModalVisible}
       transparent={true}
       animationType={reduceMotionEnabled ? "none" : "fade"}
-      onRequestClose={() => setIngredientImageModalVisible(false)}
+      onRequestClose={() => {
+        setIngredientImageModalVisible(false);
+        setIngredientAttributionVisible(false);
+      }}
     >
       <ModalBackdrop
         testID={`list-big-recipe-row-ingredient-image-modal-overlay-${recipeId}`}
-        onPress={() => setIngredientImageModalVisible(false)}
+        onPress={() => {
+          setIngredientImageModalVisible(false);
+          setIngredientAttributionVisible(false);
+        }}
       >
         <Pressable
           onPress={(event) => event.stopPropagation()}
@@ -1566,6 +1593,75 @@ export function ListBigRecipeRow({
                   />
                 ) : null}
               </View>
+              {ingredientImageModalId?.startsWith('etc:') ? (
+                <Pressable
+                  accessibilityRole="button"
+                  accessibilityLabel="Show image attribution"
+                  style={styles.attributionButton}
+                  onPress={() => setIngredientAttributionVisible(true)}
+                >
+                  <Text style={styles.attributionButtonText}>Attribution</Text>
+                </Pressable>
+              ) : null}
+            </View>
+          </ModalCardBackground>
+        </Pressable>
+      </ModalBackdrop>
+    </Modal>
+
+    <Modal
+      visible={ingredientAttributionVisible}
+      transparent={true}
+      animationType={reduceMotionEnabled ? "none" : "fade"}
+      onRequestClose={() => setIngredientAttributionVisible(false)}
+    >
+      <ModalBackdrop
+        onPress={() => setIngredientAttributionVisible(false)}
+        testID={`list-big-recipe-row-ingredient-attribution-modal-overlay-${recipeId}`}
+      >
+        <Pressable
+          onPress={(event) => event.stopPropagation()}
+          style={styles.attributionCardWrapper}
+        >
+          <ModalCardBackground style={styles.attributionCard}>
+            <View style={styles.attributionContent}
+              testID={`list-big-recipe-row-ingredient-attribution-modal-${recipeId}`}
+            >
+              <Text style={styles.attributionTitle}>Image Attribution</Text>
+              {(() => {
+                const ingredientAttr = commonIngredientAttributionData.ingredients.find(
+                  (item) => item.imageId === ingredientImageModalId
+                );
+                if (!ingredientAttr) {
+                  return <Text style={styles.attributionValue}>No attribution data available.</Text>;
+                }
+                return (
+                  <>
+                    {renderAttributionRow('Title', ingredientAttr.title)}
+                    {renderAttributionRow('Creator', ingredientAttr.creator)}
+                    {renderAttributionRow(
+                      'Source',
+                      ingredientAttr.source,
+                      isLinkValue(ingredientAttr.source) ? ingredientAttr.source : undefined
+                    )}
+                    {renderAttributionRow('License', ingredientAttr.license)}
+                    {renderAttributionRow(
+                      'License URL',
+                      ingredientAttr.licenseUrl,
+                      isLinkValue(ingredientAttr.licenseUrl) ? ingredientAttr.licenseUrl : undefined
+                    )}
+                    {renderAttributionRow('Changes', ingredientAttr.changes)}
+                  </>
+                );
+              })()}
+              <Pressable
+                accessibilityRole="button"
+                accessibilityLabel="Close attribution"
+                onPress={() => setIngredientAttributionVisible(false)}
+                style={styles.attributionCloseButton}
+              >
+                <Text style={styles.attributionCloseText}>Close</Text>
+              </Pressable>
             </View>
           </ModalCardBackground>
         </Pressable>
