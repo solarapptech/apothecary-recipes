@@ -68,6 +68,10 @@ import {
 } from '../premium/premiumBundleService';
 import { DashboardScreen } from '../screens/DashboardScreen';
 import { SettingsScreen } from '../screens/SettingsScreen';
+import { AboutUsScreen } from '../screens/AboutUsScreen';
+import { CategoriesScreen } from '../screens/CategoriesScreen';
+import { SideMenuDrawer } from '../components/SideMenuDrawer';
+import { NoFavoritesModal } from '../components/NoFavoritesModal';
 import { EMPTY_ADVANCED_FILTERS, type AdvancedFilters } from '../types/advancedFilters';
 import type { FilterMode } from '../types/filterMode';
 import type { Plan } from '../types/plan';
@@ -75,7 +79,7 @@ import type { SortMode } from '../types/sortMode';
 import type { ViewMode } from '../types/viewMode';
 import { theme } from '../ui/theme';
 
-type RouteName = 'dashboard' | 'settings';
+type RouteName = 'dashboard' | 'settings' | 'about' | 'categories';
 
 type AppShellDeps = {
   initializeLibraryAsync: () => Promise<LibraryBootstrap>;
@@ -218,11 +222,13 @@ export function AppShell({ deps, initialPage }: AppShellProps) {
     }
 
     setMenuVisible(false);
+    setSideMenuVisible(false);
     setPremiumDownloadModalVisible(false);
     setCodeEntryVisible(false);
     setPurchasePlanVisible(false);
     setPaywallVisible(false);
     setExitConfirmVisible(false);
+    setNoFavoritesModalVisible(false);
 
     setSearchInput('');
     setSearchQuery('');
@@ -256,6 +262,9 @@ export function AppShell({ deps, initialPage }: AppShellProps) {
   const [menuAnchor, setMenuAnchor] = useState<{ x: number; y: number; width: number; height: number } | null>(null);
   const overflowButtonRef = useRef<any>(null);
 
+  const [sideMenuVisible, setSideMenuVisible] = useState(false);
+  const [noFavoritesModalVisible, setNoFavoritesModalVisible] = useState(false);
+
   const [page, setPage] = useState(() => Math.max(1, initialPage ?? 1));
   const [pageSize, setPageSize] = useState(PAGE_SIZE);
 
@@ -285,6 +294,7 @@ export function AppShell({ deps, initialPage }: AppShellProps) {
   const [filterMode, setFilterMode] = useState<FilterMode>('all');
   const [advancedFilters, setAdvancedFilters] = useState<AdvancedFilters>(EMPTY_ADVANCED_FILTERS);
   const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
+  const previousRouteRef = useRef<RouteName>('dashboard');
   const [viewMode, setViewMode] = useState<ViewMode>('list');
   const [hasAnyFavorites, setHasAnyFavorites] = useState(false);
   const [reduceMotionEnabled, setReduceMotionEnabled] = useState(false);
@@ -453,6 +463,14 @@ export function AppShell({ deps, initialPage }: AppShellProps) {
     }
 
     const subscription = BackHandler.addEventListener('hardwareBackPress', () => {
+      if (sideMenuVisible) {
+        setSideMenuVisible(false);
+        return true;
+      }
+      if (noFavoritesModalVisible) {
+        setNoFavoritesModalVisible(false);
+        return true;
+      }
       if (menuVisible) {
         setMenuVisible(false);
         return true;
@@ -481,12 +499,27 @@ export function AppShell({ deps, initialPage }: AppShellProps) {
     return () => subscription.remove();
   }, [
     route,
+    sideMenuVisible,
+    noFavoritesModalVisible,
     menuVisible,
     premiumDownloadModalVisible,
     codeEntryVisible,
     paywallVisible,
     exitConfirmVisible,
   ]);
+
+  useEffect(() => {
+    if (route !== 'categories') {
+      return;
+    }
+
+    const subscription = BackHandler.addEventListener('hardwareBackPress', () => {
+      setRoute(previousRouteRef.current);
+      return true;
+    });
+
+    return () => subscription.remove();
+  }, [route]);
 
   const totalPages = Math.max(1, Math.ceil(totalCount / pageSize));
 
@@ -1011,6 +1044,87 @@ if (route === 'settings') {
     );
   }
 
+  if (route === 'about') {
+    return (
+      <>
+        <AppBackground>
+          <View style={styles.appContainer}>
+            {banner}
+            <Animated.View
+              entering={reduceMotionEnabled ? undefined : FadeInLeft.duration(transitionDuration)}
+              exiting={reduceMotionEnabled ? undefined : FadeOutLeft.duration(transitionDuration)}
+              style={styles.screenContainer}
+            >
+              <AboutUsScreen
+                onBackPress={() => {
+                  Keyboard.dismiss();
+                  setRoute('dashboard');
+                }}
+              />
+            </Animated.View>
+          </View>
+        </AppBackground>
+        <StatusBar style="auto" />
+      </>
+    );
+  }
+
+  if (route === 'categories') {
+    const categoryItems = categoryCounts
+      ? Object.entries(categoryCounts)
+          .filter(([_, count]) => count > 0)
+          .map(([name, count]) => {
+            const isAll = name === 'all';
+            return {
+              id: isAll ? 'all' : name.toLowerCase().replace(/\s+/g, '-'),
+              name: isAll ? 'All' : name,
+              count,
+              icon: 'leaf' as const,
+            };
+          })
+      : [];
+
+    return (
+      <>
+        <AppBackground>
+          <View style={styles.appContainer}>
+            {banner}
+            <Animated.View
+              entering={reduceMotionEnabled ? undefined : FadeInLeft.duration(transitionDuration)}
+              exiting={reduceMotionEnabled ? undefined : FadeOutLeft.duration(transitionDuration)}
+              style={styles.screenContainer}
+            >
+              <CategoriesScreen
+                onBackPress={() => {
+                  Keyboard.dismiss();
+                  setRoute(previousRouteRef.current);
+                }}
+                categories={categoryItems}
+                selectedCategoryId={selectedCategory ?? 'all'}
+                onSelectCategory={async (categoryId) => {
+                  const isAll = categoryId === 'all';
+                  const categoryName = isAll
+                    ? null
+                    : (categoryItems.find((c) => c.id === categoryId)?.name ?? null);
+                  setRoute(previousRouteRef.current);
+                  if (categoryName === selectedCategory) {
+                    return;
+                  }
+                  setRecipes([]);
+                  setPage(1);
+                  setInfinitePage(1);
+                  setSelectedCategory(categoryName);
+                  setFocusResetNonce((value) => value + 1);
+                }}
+              />
+            </Animated.View>
+          </View>
+        </AppBackground>
+        <StatusBar style="auto" />
+      </>
+    );
+  }
+
   return (
     <>
       <AppBackground>
@@ -1036,6 +1150,7 @@ if (route === 'settings') {
                 }
                 refreshDashboard();
               }}
+              onMenuPress={() => setSideMenuVisible(true)}
               headerTopBannerText={plan === 'free' ? 'Purchase a code to unlock 1000 recipes' : undefined}
               onPressHeaderTopBanner={
                 plan === 'free'
@@ -1149,6 +1264,10 @@ if (route === 'settings') {
                     setFocusResetNonce((value) => value + 1);
                     await resolved.setFilterModeAsync(uiState.bootstrap.db, 'all');
                     await resolved.setAdvancedFiltersAsync(uiState.bootstrap.db, EMPTY_ADVANCED_FILTERS);
+                  }}
+                  onPressCategoriesMenu={() => {
+                    previousRouteRef.current = route;
+                    setRoute('categories');
                   }}
                   viewMode={viewMode}
                   onChangeViewMode={async (mode) => {
@@ -1354,6 +1473,94 @@ if (route === 'settings') {
       <PurchasePlanModal
         visible={purchasePlanVisible}
         onRequestClose={() => setPurchasePlanVisible(false)}
+      />
+
+      <SideMenuDrawer
+        visible={sideMenuVisible}
+        onRequestClose={() => setSideMenuVisible(false)}
+        reduceMotionEnabled={reduceMotionEnabled}
+        menuItems={[
+          {
+            id: 'home',
+            label: 'Home',
+            icon: 'home',
+            onPress: () => {
+              setSideMenuVisible(false);
+              if (route !== 'dashboard') {
+                setRoute('dashboard');
+              }
+            },
+          },
+          {
+            id: 'premium',
+            label: 'Premium',
+            icon: 'premium',
+            onPress: () => {
+              setSideMenuVisible(false);
+              Keyboard.dismiss();
+              setRoute('settings');
+              setPurchasePlanVisible(true);
+            },
+          },
+          {
+            id: 'categories',
+            label: 'Categories',
+            icon: 'categories',
+            onPress: () => {
+              setSideMenuVisible(false);
+              previousRouteRef.current = route;
+              setRoute('categories');
+            },
+          },
+          {
+            id: 'favorites',
+            label: 'Favorites',
+            icon: 'favorites',
+            onPress: async () => {
+              if (!hasAnyFavorites) {
+                setNoFavoritesModalVisible(true);
+                return;
+              }
+              setSideMenuVisible(false);
+              if (uiState.status === 'ready') {
+                setRecipes([]);
+                setPage(1);
+                setInfinitePage(1);
+                setFilterMode('favorites');
+                setAdvancedFilters(EMPTY_ADVANCED_FILTERS);
+                setSelectedCategory(null);
+                setFocusResetNonce((value) => value + 1);
+                await resolved.setFilterModeAsync(uiState.bootstrap.db, 'favorites');
+                await resolved.setAdvancedFiltersAsync(uiState.bootstrap.db, EMPTY_ADVANCED_FILTERS);
+              }
+            },
+          },
+          {
+            id: 'settings',
+            label: 'Settings',
+            icon: 'settings',
+            onPress: () => {
+              setSideMenuVisible(false);
+              Keyboard.dismiss();
+              setRoute('settings');
+            },
+          },
+          {
+            id: 'about',
+            label: 'About Us',
+            icon: 'about',
+            onPress: () => {
+              setSideMenuVisible(false);
+              setRoute('about');
+            },
+          },
+        ]}
+      />
+
+      <NoFavoritesModal
+        visible={noFavoritesModalVisible}
+        onRequestClose={() => setNoFavoritesModalVisible(false)}
+        reduceMotionEnabled={reduceMotionEnabled}
       />
 
       <StatusBar style="auto" />

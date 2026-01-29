@@ -24,6 +24,7 @@ import type { ViewMode } from '../types/viewMode';
 type DashboardScreenProps = {
   title: string;
   onTitlePress?: () => void;
+  onMenuPress?: () => void;
   headerTopBannerText?: string;
   onPressHeaderTopBanner?: () => void;
   headerRight: ReactNode;
@@ -46,6 +47,7 @@ type DashboardScreenProps = {
 export function DashboardScreen({
   title,
   onTitlePress,
+  onMenuPress,
   headerTopBannerText,
   onPressHeaderTopBanner,
   headerRight,
@@ -333,6 +335,7 @@ export function DashboardScreen({
     <ScreenFrame
       title={title}
       onTitlePress={onTitlePress}
+      onMenuPress={onMenuPress}
       headerTopBannerText={headerTopBannerText}
       onPressHeaderTopBanner={onPressHeaderTopBanner}
       headerRight={headerRight}

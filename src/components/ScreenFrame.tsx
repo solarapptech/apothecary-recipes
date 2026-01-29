@@ -10,6 +10,7 @@ type ScreenFrameProps = {
   title: string;
   onBackPress?: () => void;
   onTitlePress?: () => void;
+  onMenuPress?: () => void;
   headerTopBannerText?: string;
   onPressHeaderTopBanner?: () => void;
   headerRight?: ReactNode;
@@ -22,6 +23,7 @@ export function ScreenFrame({
   title,
   onBackPress,
   onTitlePress,
+  onMenuPress,
   headerTopBannerText,
   onPressHeaderTopBanner,
   headerRight,
@@ -102,6 +104,36 @@ export function ScreenFrame({
           disabled={!onTitlePress}
           testID={onTitlePress ? 'header-title-button' : undefined}
         >
+          {onMenuPress ? (
+            <Pressable
+              accessibilityRole="button"
+              accessibilityLabel="Open menu"
+              onPress={onMenuPress}
+              style={styles.menuButton}
+              testID="header-menu-button"
+            >
+              <Svg width={22} height={22} viewBox="0 0 24 24" fill="none">
+                <Path
+                  d="M3 12H21"
+                  stroke={theme.colors.ink.primary}
+                  strokeWidth={2}
+                  strokeLinecap="round"
+                />
+                <Path
+                  d="M3 6H21"
+                  stroke={theme.colors.ink.primary}
+                  strokeWidth={2}
+                  strokeLinecap="round"
+                />
+                <Path
+                  d="M3 18H21"
+                  stroke={theme.colors.ink.primary}
+                  strokeWidth={2}
+                  strokeLinecap="round"
+                />
+              </Svg>
+            </Pressable>
+          ) : null}
           {onBackPress ? (
             <Pressable
               accessibilityRole="button"
@@ -202,6 +234,13 @@ const styles = StyleSheet.create({
     justifyContent: 'flex-end',
     minWidth: 44,
     zIndex: 1,
+  },
+  menuButton: {
+    height: 44,
+    width: 44,
+    alignItems: 'center',
+    justifyContent: 'center',
+    marginRight: 2,
   },
   backButton: {
     height: 44,

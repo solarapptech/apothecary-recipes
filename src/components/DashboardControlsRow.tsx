@@ -34,6 +34,7 @@ type DashboardControlsRowProps = {
   categoryCounts?: CategoryCounts | null;
   onChangeCategory?: (category: string | null) => void;
   onPressClearFilters?: () => void;
+  onPressCategoriesMenu?: () => void;
   viewMode: ViewMode;
   onChangeViewMode: (mode: ViewMode) => void;
   reduceMotionEnabled?: boolean;
@@ -104,6 +105,7 @@ export function DashboardControlsRow({
   categoryCounts,
   onChangeCategory,
   onPressClearFilters,
+  onPressCategoriesMenu,
   viewMode,
   onChangeViewMode,
   reduceMotionEnabled = false,
@@ -112,6 +114,8 @@ export function DashboardControlsRow({
   const searchInputRef = useRef<TextInput | null>(null);
   const sortButtonRef = useRef<View | null>(null);
   const filterButtonRef = useRef<View | null>(null);
+  const categoryScrollRef = useRef<ScrollView | null>(null);
+  const categoryChipPositions = useRef<Map<string, number>>(new Map());
 
   const [sortMenuVisible, setSortMenuVisible] = useState(false);
   const [sortMenuAnchor, setSortMenuAnchor] = useState<{
@@ -128,6 +132,28 @@ export function DashboardControlsRow({
     height: number;
   } | null>(null);
   const [isRandomizing, setIsRandomizing] = useState(false);
+
+  useEffect(() => {
+    const key = category ?? 'all';
+    const scrollToCategory = () => {
+      const position = categoryChipPositions.current.get(key);
+      if (position !== undefined && categoryScrollRef.current) {
+        categoryScrollRef.current.scrollTo({ x: Math.max(0, position - 8), animated: true });
+        return true;
+      }
+      return false;
+    };
+
+    if (scrollToCategory()) {
+      return;
+    }
+
+    const timeout = setTimeout(() => {
+      scrollToCategory();
+    }, 150);
+
+    return () => clearTimeout(timeout);
+  }, [category]);
 
   const resolvedCatalog: FilterCatalog = filterCatalog ?? {
     productTypes: [],
@@ -477,7 +503,24 @@ export function DashboardControlsRow({
       </View>
 
       <View style={[styles.categoryRow, viewMode === 'list-big' ? styles.categoryRowListBig : null]} testID="category-row">
+        {onPressCategoriesMenu ? (
+          <Pressable
+            accessibilityRole="button"
+            accessibilityLabel="Open categories menu"
+            onPress={onPressCategoriesMenu}
+            style={styles.categoriesGridButton}
+            testID="categories-grid-button"
+          >
+            <Svg width={18} height={18} viewBox="0 0 24 24" fill="none">
+              <Path d="M4 4H9V9H4V4Z" fill={theme.colors.ink.primary} />
+              <Path d="M15 4H20V9H15V4Z" fill={theme.colors.ink.primary} />
+              <Path d="M4 15H9V20H4V15Z" fill={theme.colors.ink.primary} />
+              <Path d="M15 15H20V20H15V15Z" fill={theme.colors.ink.primary} />
+            </Svg>
+          </Pressable>
+        ) : null}
         <ScrollView
+          ref={categoryScrollRef}
           horizontal
           showsHorizontalScrollIndicator={false}
           contentContainerStyle={[
@@ -494,50 +537,59 @@ export function DashboardControlsRow({
               { key: 'skin', label: 'Skin & Wounds' },
               { key: 'sleep', label: 'Sleep & Mood' },
               { key: 'pain', label: 'Pain / Musculoskeletal' },
-              { key: 'women', label: "Women’s Health" },
+              { key: 'women', label: "Women's Health" },
               { key: 'heart', label: 'Heart / Cardiovascular' },
               { key: 'urinary', label: 'Urinary' },
               { key: 'tonics', label: 'General / Tonics' },
             ] as const
-          ).map((item) => {
+          ).map((item, index) => {
             const selected = (category ?? null) === item.key;
             const countKey = (item.key ?? 'all') as keyof CategoryCounts;
             const countValue = categoryCounts?.[countKey] ?? 0;
             return (
-              <Pressable
+              <View
                 key={item.key ?? 'all'}
-                accessibilityRole="button"
-                accessibilityLabel={`Category ${item.label}`}
-                onPress={() => {
-                  if (!onChangeCategory) {
-                    return;
-                  }
-                  onChangeCategory(selected ? null : item.key);
+                onLayout={(e) => {
+                  categoryChipPositions.current.set(item.key ?? 'all', e.nativeEvent.layout.x);
                 }}
-                style={[styles.categoryChip, selected ? styles.categoryChipSelected : null]}
-                testID={`category-chip-${item.key ?? 'all'}`}
               >
-                <View style={styles.categoryChipContent}>
-                  <Text style={[styles.categoryChipText, selected ? styles.categoryChipTextSelected : null]}>
-                    {item.label}
-                  </Text>
-                  <View
-                    style={[
-                      styles.categoryChipBadge,
-                      selected ? styles.categoryChipBadgeSelected : null,
-                    ]}
-                  >
-                    <Text
+                <Pressable
+                  accessibilityRole="button"
+                  accessibilityLabel={`Category ${item.label}`}
+                  onPress={() => {
+                    if (!onChangeCategory) {
+                      return;
+                    }
+                    if (selected) {
+                      return;
+                    }
+                    onChangeCategory(item.key);
+                  }}
+                  style={[styles.categoryChip, selected ? styles.categoryChipSelected : null]}
+                  testID={`category-chip-${item.key ?? 'all'}`}
+                >
+                  <View style={styles.categoryChipContent}>
+                    <Text style={[styles.categoryChipText, selected ? styles.categoryChipTextSelected : null]}>
+                      {item.label}
+                    </Text>
+                    <View
                       style={[
-                        styles.categoryChipBadgeText,
-                        selected ? styles.categoryChipBadgeTextSelected : null,
+                        styles.categoryChipBadge,
+                        selected ? styles.categoryChipBadgeSelected : null,
                       ]}
                     >
-                      {countValue}
-                    </Text>
+                      <Text
+                        style={[
+                          styles.categoryChipBadgeText,
+                          selected ? styles.categoryChipBadgeTextSelected : null,
+                        ]}
+                      >
+                        {countValue}
+                      </Text>
+                    </View>
                   </View>
-                </View>
-              </Pressable>
+                </Pressable>
+              </View>
             );
           })}
         </ScrollView>
@@ -849,7 +901,8 @@ const styles = StyleSheet.create({
   container: {},
   categoryRow: {
     marginTop: 24,
-    justifyContent: 'center',
+    flexDirection: 'row',
+    alignItems: 'center',
   },
   categoryRowListBig: {
     marginTop: 24,
@@ -863,6 +916,18 @@ const styles = StyleSheet.create({
   categoryRowContentListBig: {
     paddingTop: 6,
     paddingBottom: 0,
+  },
+  categoriesGridButton: {
+    width: 36,
+    height: 36,
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: 'hsla(113, 72%, 29%, 0.10)',
+    borderRadius: 8,
+    marginTop: 6,
+    marginLeft: 2,
+    marginRight: 6,
+    flexShrink: 0,
   },
   categoryChip: {
     backgroundColor: 'hsla(113, 72%, 29%, 0.10)',
