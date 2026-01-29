@@ -943,6 +943,8 @@ export function ListBigRecipeRow({
                       </View>
                     </WavePressable>
                     <Animated.View
+                      entering={reduceMotionEnabled ? undefined : FadeInDown.duration(ingredientAnimDuration)}
+                      exiting={enableExitAnimations ? FadeOut.duration(ingredientAnimDuration) : undefined}
                       layout={reduceMotionEnabled ? undefined : Layout.duration(ingredientAnimDuration)}
                       style={styles.ingredientsList}
                     >
@@ -1337,42 +1339,46 @@ export function ListBigRecipeRow({
                 ) : null}
               </Animated.View>
 
-              <SecondaryFieldRow
-                icon="historical"
-                label="Historical"
-                value={historicalContext}
-                variant="grouped"
-              />
-              <SecondaryFieldRow
-                icon="region"
-                label="Region"
-                value={region}
-                variant="grouped"
-              />
-              <SecondaryFieldRow
-                icon="historical"
-                label="Alternative names"
-                value={alternativeNames?.trim() ? alternativeNames : '—'}
-                variant="grouped"
-              />
-              <SecondaryFieldRow
-                icon="evidence"
-                label="Evidence"
-                value={scientificEvidence}
-                variant="grouped"
-              />
-              <SecondaryFieldRow
-                icon="warning"
-                label="Warning"
-                value={warning}
-                variant="grouped"
-                collapsible
-                defaultCollapsed
-                chevronColor={theme.colors.brand.primaryStrong}
-                toggleTestID={`list-big-recipe-row-warning-toggle-${recipeId}`}
-                valueTestID={`list-big-recipe-row-warning-value-${recipeId}`}
-                reduceMotionEnabled={reduceMotionEnabled}
-              />
+              <Animated.View
+                layout={reduceMotionEnabled ? undefined : Layout.duration(ingredientAnimDuration)}
+              >
+                <SecondaryFieldRow
+                  icon="historical"
+                  label="Historical"
+                  value={historicalContext}
+                  variant="grouped"
+                />
+                <SecondaryFieldRow
+                  icon="region"
+                  label="Region"
+                  value={region}
+                  variant="grouped"
+                />
+                <SecondaryFieldRow
+                  icon="historical"
+                  label="Alternative names"
+                  value={alternativeNames?.trim() ? alternativeNames : '—'}
+                  variant="grouped"
+                />
+                <SecondaryFieldRow
+                  icon="evidence"
+                  label="Evidence"
+                  value={scientificEvidence}
+                  variant="grouped"
+                />
+                <SecondaryFieldRow
+                  icon="warning"
+                  label="Warning"
+                  value={warning}
+                  variant="grouped"
+                  collapsible
+                  defaultCollapsed
+                  chevronColor={theme.colors.brand.primaryStrong}
+                  toggleTestID={`list-big-recipe-row-warning-toggle-${recipeId}`}
+                  valueTestID={`list-big-recipe-row-warning-value-${recipeId}`}
+                  reduceMotionEnabled={reduceMotionEnabled}
+                />
+              </Animated.View>
             </Animated.View>
             {showDetailsButton && (
               <Animated.View
