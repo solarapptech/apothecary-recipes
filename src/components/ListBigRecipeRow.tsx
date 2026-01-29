@@ -874,7 +874,10 @@ export function ListBigRecipeRow({
             >
               <Animated.View
                 layout={reduceMotionEnabled ? undefined : Layout.duration(ingredientAnimDuration)}
-                style={styles.ingredientsGroupRow}
+                style={[
+                  styles.ingredientsGroupRow,
+                  ingredientsExpanded && styles.dropdownExpanded,
+                ]}
               >
                 {!ingredientsExpanded ? (
                   <>
@@ -1131,7 +1134,7 @@ export function ListBigRecipeRow({
               {/* Usage Instructions Section */}
               <Animated.View
                 layout={reduceMotionEnabled ? undefined : Layout.duration(ingredientAnimDuration)}
-                style={styles.usageGroupRow}
+                style={[styles.usageGroupRow, usageExpanded && styles.dropdownExpanded]}
               >
                 <WavePressable
                   accessibilityRole="button"
@@ -1212,7 +1215,7 @@ export function ListBigRecipeRow({
               {/* Yield & Storage Section */}
               <Animated.View
                 layout={reduceMotionEnabled ? undefined : Layout.duration(ingredientAnimDuration)}
-                style={styles.storageGroupRow}
+                style={[styles.storageGroupRow, storageExpanded && styles.dropdownExpanded]}
               >
                 <WavePressable
                   accessibilityRole="button"
@@ -1285,7 +1288,7 @@ export function ListBigRecipeRow({
               {/* Equipment Needed Section */}
               <Animated.View
                 layout={reduceMotionEnabled ? undefined : Layout.duration(ingredientAnimDuration)}
-                style={styles.equipmentGroupRow}
+                style={[styles.equipmentGroupRow, equipmentExpanded && styles.dropdownExpanded]}
               >
                 <WavePressable
                   accessibilityRole="button"
@@ -1957,6 +1960,9 @@ const styles = StyleSheet.create({
     gap: 8,
     borderBottomWidth: StyleSheet.hairlineWidth,
     borderBottomColor: theme.colors.border.subtle,
+  },
+  dropdownExpanded: {
+    backgroundColor: 'rgba(168, 202, 160, 0.22)',
   },
   ingredientsTogglePressable: {
     gap: 6,

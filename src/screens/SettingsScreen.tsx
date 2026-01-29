@@ -99,12 +99,12 @@ export function SettingsScreen({
           {!premiumCode ? (
             <Pressable
               accessibilityRole="button"
-              accessibilityLabel="Upgrade"
+              accessibilityLabel="Code Redeem"
               onPress={onPressUpgrade}
               style={styles.upgradeButton}
               testID="settings-upgrade-button"
             >
-              <Text style={styles.upgradeButtonText}>Upgrade</Text>
+              <Text style={styles.upgradeButtonText}>Code Redeem</Text>
             </Pressable>
           ) : null}
         </View>
@@ -155,7 +155,7 @@ export function SettingsScreen({
 
         {plan === 'free' ? (
           <View style={styles.purchaseSection} testID="settings-plan-purchase-section">
-            <Text style={styles.sectionTitle}>Plan purchase</Text>
+            <Text style={styles.sectionTitle}>Code Purchase</Text>
             <View style={styles.purchaseCard}>
               <Text style={styles.purchasePrice} testID="settings-plan-purchase-price">
                 $9.99
@@ -182,12 +182,12 @@ export function SettingsScreen({
 
               <Pressable
                 accessibilityRole="button"
-                accessibilityLabel="Purchase"
+                accessibilityLabel="Purchase Code"
                 onPress={onPressPurchasePlan}
                 style={styles.upgradeButton}
                 testID="settings-purchase-button"
               >
-                <Text style={styles.upgradeButtonText}>Purchase</Text>
+                <Text style={styles.upgradeButtonText}>Purchase Code</Text>
               </Pressable>
             </View>
           </View>

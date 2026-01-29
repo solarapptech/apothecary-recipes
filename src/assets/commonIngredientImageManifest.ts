@@ -35,6 +35,8 @@ export const commonIngredientImageManifest: Record<string, CommonIngredientImage
   'etc:beewax': { source: require('../../assets/etc/beewax.jpg'), imageId: 'etc:beewax' },
   'etc:boiling-water': { source: require('../../assets/etc/boiling-water.jpg'), imageId: 'etc:boiling-water' },
   'etc:brandy': { source: require('../../assets/etc/brandy-spirit.jpg'), imageId: 'etc:brandy' },
+  'etc:brandy-vodka': { source: require('../../assets/etc/grain-spirit.jpg'), imageId: 'etc:brandy-vodka' },
+  'etc:brandy-wine': { source: require('../../assets/etc/grain-spirit.jpg'), imageId: 'etc:brandy-wine' },
   'etc:brandy-spirit': { source: require('../../assets/etc/brandy-spirit.jpg'), imageId: 'etc:brandy-spirit' },
   'etc:brandy-or-spirit': { source: require('../../assets/etc/brandy-spirit.jpg'), imageId: 'etc:brandy-or-spirit' },
   'etc:cane-sugar': { source: require('../../assets/etc/cane-sugar.jpg'), imageId: 'etc:cane-sugar' },
@@ -127,7 +129,7 @@ export const commonIngredientImageManifest: Record<string, CommonIngredientImage
     imageId: 'etc:mullein-flower-oil',
   },
   'etc:neutral-grain-spirit': {
-    source: require('../../assets/etc/neutral-grain-spirit.jpg'),
+    source: require('../../assets/etc/grain-spirit.jpg'),
     imageId: 'etc:neutral-grain-spirit',
   },
   'etc:oatmeal': { source: require('../../assets/etc/oatmeal.jpg'), imageId: 'etc:oatmeal' },

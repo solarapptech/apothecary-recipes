@@ -1036,7 +1036,7 @@ if (route === 'settings') {
                 }
                 refreshDashboard();
               }}
-              headerTopBannerText={plan === 'free' ? 'Purchase a plan to unlock 1000 recipes' : undefined}
+              headerTopBannerText={plan === 'free' ? 'Purchase a code to unlock 1000 recipes' : undefined}
               onPressHeaderTopBanner={
                 plan === 'free'
                   ? () => {
